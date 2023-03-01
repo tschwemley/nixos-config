@@ -2,14 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
-	  # Allow unfree packages (mostly for nvidia drivers)
-	  nixpkgs.config.allowUnfree = true;
-	  
 	  imports =
 	    [
 		  # ./audio.nix
+		  #./file-system.nix
 		  ./boot.nix
 		  ./locale.nix
 		  ./network.nix
@@ -17,9 +15,21 @@
 		  ./xserver.nix
 	    ];
 
+	      nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+	nixpkgs.config.allowUnfree = true; 	
+
+
 	  services.xserver.videoDrivers = [ "nvidia" ];
 	  hardware.opengl.enable = true;
 	  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  # high-resolution display
+  hardware.video.hidpi.enable = lib.mkDefault true;
+
 
 	  # enable intel 
 	  hardware.opengl.extraPackages = with pkgs; [
@@ -38,4 +48,13 @@
 	  # Before changing this value read the documentation for this option
 	  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
 	  system.stateVersion = "22.11"; # Did you read the comment?
+
+	  #TODO: move this somewhere else
+	  environment.systemPackages = with pkgs; [
+		bun
+		cargo
+		nodejs
+		rustc
+		rustfmt
+	  ];
 }

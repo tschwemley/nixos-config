@@ -10,6 +10,7 @@ in
 		luaModules = with pkgs.luaPackages; [
 			luarocks
 			luadbi-mysql
+			vicious
 		];
 	};
 	home.file.${xdgHomePath}.source = configPath;
