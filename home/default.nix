@@ -15,6 +15,8 @@ let
 		home.packages = with pkgs; [
 			#TODO: anything in here should be moved to appropriate place
 
+			curl
+			go
 			hledger
 			manix
 			ripgrep
@@ -45,6 +47,7 @@ in
 					brave
 					haruna
 					sonic-pi
+					tigervnc
 					vlc
 				];
 			};

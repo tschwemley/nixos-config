@@ -5,12 +5,19 @@
 			office = self.lib.mkLinuxSystem {
 				imports = with pkgs; [ 
 					self.nixosModules.home-manager
-					self.users.schwem
+					self.users.pcs
 					self.audio.all
 					./../modules/fonts
+					./../modules/desktop/steam.nix
 					./office
-					# ./../modules/desktop/steam.nix
-					# self.nixosModules.dev.all
+				];
+			};
+
+			luxembourg = self.lib.mkLinuxSystem {
+				imports = with pkgs; [ 
+					self.nixosModules.home-manager
+					self.users.cloud.lux
+					./luxembourg
 				];
 			};
 		};

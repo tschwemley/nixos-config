@@ -15,10 +15,14 @@ let
   };
 in
 {
-  # Configuration common to all Linux systems
   flake = {
     users = {
-    	schwem = mkUserModule "schwem" [
+    	cloud = {
+			lux = mkUserModule "lux" [
+			];
+		};		
+		
+    	pcs = mkUserModule "schwem" [
 			self.homeModules.xServer
 		];
     };
