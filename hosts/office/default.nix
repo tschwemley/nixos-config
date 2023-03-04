@@ -4,48 +4,42 @@
 
 { config, pkgs, lib, ... }:
 {
-	  imports =
-	    [
-		  # ./audio.nix
-		  #./file-system.nix
-		  ./boot.nix
-		  ./locale.nix
-		  ./network.nix
-		  ./hardware-configuration.nix
-		  ./xserver.nix
-	    ];
+	imports =
+		[
+			./boot.nix
+			./locale.nix
+			./network.nix
+			./hardware-configuration.nix
+			./xserver.nix
+			self.modules.desktop.nvidia
+		];
 
-	      nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+	# Nix related settings
+	nix.settings.experimental-features = [ "nix-command" "flakes" ];
+		
 	nixpkgs.config.allowUnfree = true; 	
+	nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
 
-	  services.xserver.videoDrivers = [ "nvidia" ];
-	  hardware.opengl.enable = true;
-	  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
-
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
-
-
-	  # enable intel 
-	  hardware.opengl.extraPackages = with pkgs; [
+	# Display / Graphics / GPU
+	powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+	hardware.video.hidpi.enable = lib.mkDefault true;
+	hardware.opengl.extraPackages = with pkgs; [
 		intel-compute-runtime
-		#libva
-	  ];
+	];
+	
+	# CPU
+	hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-		#TODO: move this out
-	  # Enable automatic login for the user.
-	  services.getty.autologinUser = "schwem";
-
-	  # This value determines the NixOS release from which the default
-	  # settings for stateful data, like file locations and database versions
-	  # on your system were taken. It‘s perfectly fine and recommended to leave
-	  # this value at the release version of the first install of this system.
-	  # Before changing this value read the documentation for this option
-	  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-	  system.stateVersion = "22.11"; # Did you read the comment?
+# This value determines the NixOS release from which the default
+# settings for stateful data, like file locations and database versions
+# on your system were taken. It‘s perfectly fine and recommended to leave
+# this value at the release version of the first install of this system.
+# Before changing this value read the documentation for this option
+# (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+	system.stateVersion = "22.11"; # Did you read the comment?
+	
+	#TODO: move this out
+	# Enable automatic login for the user.
+	services.getty.autologinUser = "schwem";
 }

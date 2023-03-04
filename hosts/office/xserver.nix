@@ -11,15 +11,14 @@
 			defaultSession = "none+awesome";
 		};
 
-		# desktopManager = {
-		# 	plasma5.enable = true;
-		# };
-
+		# TODO: I think I would prefer this to be managed at the user level; but check if it proves
+		# to be troublesome with system config on NixOS
 		windowManager.awesome = {
 			enable = true;
 			luaModules = with pkgs.luaPackages; [
 				luarocks
 				luadbi-mysql
+				vicious
 			];
 		};
 	};

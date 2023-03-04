@@ -20,6 +20,7 @@
 			imports = [
 				./lib
 				./modules/audio
+				./modules/desktop
 				./home
 				./users
 				./hosts
