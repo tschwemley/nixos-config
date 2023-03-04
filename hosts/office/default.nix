@@ -34,7 +34,7 @@
 	  # enable intel 
 	  hardware.opengl.extraPackages = with pkgs; [
 		intel-compute-runtime
-		libva
+		#libva
 	  ];
 
 		#TODO: move this out
@@ -48,13 +48,4 @@
 	  # Before changing this value read the documentation for this option
 	  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
 	  system.stateVersion = "22.11"; # Did you read the comment?
-
-	  #TODO: move this somewhere else
-	  environment.systemPackages = with pkgs; [
-		bun
-		cargo
-		nodejs
-		rustc
-		rustfmt
-	  ];
 }

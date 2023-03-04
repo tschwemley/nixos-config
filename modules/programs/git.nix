@@ -7,6 +7,12 @@
 		
 		lfs.enable = true;
 
+		aliases = {
+			b = "branch";
+			co = "checkout";
+			s = "status";
+		};
+
 		extraConfig = {
 		  core = {
 			whitespace = "trailing-space,space-before-tab";

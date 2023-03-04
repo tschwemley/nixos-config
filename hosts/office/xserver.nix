@@ -4,16 +4,16 @@
 	services.xserver = {
 		enable = true;
 		layout = "us";
-		xkbVariant = "";
+		# xkbVariant = "";
 		
 		displayManager = {
 			sddm.enable = true;
-			#defaultSession = "none+awesome";
+			defaultSession = "none+awesome";
 		};
 
-		desktopManager = {
-			plasma5.enable = true;
-		};
+		# desktopManager = {
+		# 	plasma5.enable = true;
+		# };
 
 		windowManager.awesome = {
 			enable = true;

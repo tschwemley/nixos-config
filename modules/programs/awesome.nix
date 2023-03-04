@@ -4,14 +4,14 @@ let
 	configPath = ./../../home/config/awesome/rc.lua;
 in
 {
-	xsession.enable = true;
-	xsession.windowManager.awesome = {
-		enable = true;
-		luaModules = with pkgs.luaPackages; [
-			luarocks
-			luadbi-mysql
-			vicious
-		];
-	};
+	# xsession.enable = true;
+	# xsession.windowManager.awesome = {
+	# 	enable = true;
+	# 	luaModules = with pkgs.luaPackages; [
+	# 		luarocks
+	# 		luadbi-mysql
+	# 		vicious
+	# 	];
+	# };
 	home.file.${xdgHomePath}.source = configPath;
 }

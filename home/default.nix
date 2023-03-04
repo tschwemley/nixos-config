@@ -14,7 +14,6 @@ let
 		# TODO: should some of these be moved to devshell? dev home module?
 		home.packages = with pkgs; [
 			#TODO: anything in here should be moved to appropriate place
-
 			curl
 			go
 			hledger
@@ -39,7 +38,7 @@ in
 
 			xServer = {
 				imports = [
-					./../modules/programs/awesome.nix
+					# ./../modules/programs/awesome.nix
 					./../modules/programs/barrier.nix
 				];
 				
