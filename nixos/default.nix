@@ -16,13 +16,12 @@ in
 		nixosConfigurations = {
 			# office = mkSystem "office" [];
 			office = inputs.nixpkgs.lib.nixosSystem {
-				# inherit ();
+				# inherit ({ system.stateVersion = "23.05"; });
 				
 				system = "x86_64-linux";
 				modules = [
 					# { system.stateVersion = "23.05"; }
-					# ./modules/office.nix
-					# self.homeConfigurations.personal
+					./generated/office.nix
 				];
 			};
 			
