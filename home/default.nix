@@ -1,39 +1,37 @@
-{ self, inputs, config, ... }:
+{ self, inputs, config, lib, pkgs, utils, ... }:
 let 
-	mkHomeConfiguration = extraMods: inputs.home-manager.lib.homeManagerConfiguration {
-		pkgs = inputs.nixpkgs;
-		
-		modules = [
-			./modules/common.nix
-		] ++ extraMods;
-	};
-	
-	mkHomeModule = {};
+mkHomeConfiguration = user: extraMods: inputs.home-manager.lib.homeManagerConfiguration {
+	#pkgs = inputs.nixpkgs;
+
+	modules = [
+	{
+		home-manger.users.${user} = user;
+		home-manager.homeDirectory = "home/${user}";
+	}
+	./modules/common.nix
+	] ++ extraMods;
+};
 in
 {
-  flake = {
-	  homeConfigurations = {
-		kubernetes = {
-			agent = {};
-			server = {};
+	flake = {
+		homeConfigurations = {
+			k3s = mkHomeConfiguration "k3s" [];
+
+			personal = mkHomeConfiguration "schwem" [
+				./modules/desktop
+			];
+
+			work = {};
 		};
 
-		personal = mkHomeConfiguration [
-			{
-				home.username= "schwem";
-				home.homeDirectory= "/home/schwem";
-			}
-		];
-		
-		work = {};
-	  };
-	  
-	  nixosModules = {
-        home-manager = inputs.home-manager.nixosModule {
-        	home.stateVersion = "22.11";
-        	home.useGlobalPkgs = true;
-        	home.useUserPackages = true;
-        };
-	  };
-  };
+		nixosModules = {
+			home-manager = inputs.home-manager.nixosModule {
+				inherit config lib pkgs utils;
+
+				home-manager.stateVersion = "22.11";
+				home-manager.useGlobalPkgs = true;
+				home-manager.useUserPackages = true;
+			};
+		};
+	};
 }
