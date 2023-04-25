@@ -13,10 +13,12 @@
 						home-manager.users.schwem = self.homeConfigurations.personal;
 					}
 					./modules/common.nix
-					./modules/nvidia.nix
-					./modules/xsession.nix
-					./modules/pc
 					./modules/networking
+					./modules/pc/browsers.nix
+					./modules/pc/gaming.nix
+					./modules/audio/bluetooth.nix
+					./modules/hardware/nvidia.nix
+					./modules/xsession.nix
 				];
 			};
 		};

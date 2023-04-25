@@ -4,10 +4,12 @@
 	# import any modules that should be on every machine
 	imports = [
 		./bat.nix
-		./neovim.nix
+		./direnv.nix
+		./neovim
 		./wezterm.nix
 		./zsh.nix
 	];
+
 
 	home.packages = with pkgs; [
 		nnn

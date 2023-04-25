@@ -1,0 +1,5 @@
+{
+	plugin = telescope-nvim;
+	config = ''
+	'';
+}
