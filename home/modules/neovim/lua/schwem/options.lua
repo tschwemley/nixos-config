@@ -4,7 +4,8 @@ vim.api.nvim_set_keymap('c', 'jk', '<Esc>', {noremap = true})
 vim.api.nvim_set_keymap('v', 'jk', '<Esc>', {noremap = true})
 
 -- show relative numbers && curline
-vim.wo.number = true
+vim.o.number = true
+vim.o.relativenumber = true
 
 -- eww
 vim.o.errorbells = false
@@ -34,15 +35,14 @@ vim.o.termguicolors = true
 vim.o.scrolloff = 8
 
 vim.o.signcolumn = "yes"
-vim.o.isfname:append("@-@")
 
 vim.o.cmdheight = 1
 
 -- having longer update degrades user experience
 vim.o.updatetime = 50
 
--- don't pass message to |ins-completion-menu|
-vim.o.shortmess:append("c")
+vim.o.timeout = true
+vim.o.timeoutlen = 300
 
 -- TODO: consider switching to one of the plugins or writing my own func to only show when char
 -- reaches column limit

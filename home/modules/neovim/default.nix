@@ -4,13 +4,14 @@
 		enable = true;
 		defaultEditor = true;
 		extraLuaConfig = ''
-			require "modules.colorschemes"	
-			-- require "modules.keymap"	
-			require "modules.lsp"	
-			require "modules.options"	
+			require "schwem.colorschemes"	
+			require "schwem.keymap"	
+			require "schwem.lsp"	
+			require "schwem.options"	
 		'';
 		extraLuaPackages = [];
 		plugins = with pkgs.vimPlugins; [
+			comment-nvim
 			gruvbox-material
 			lsp-zero-nvim
 			luasnip
@@ -19,10 +20,10 @@
 			nvim-dap
 			nvim-luadev
 			nvim-lspconfig
+			nvim-treesitter
 			telescope-nvim
 			toggleterm-nvim
 			trouble-nvim
-			nvim-treesitter
 			vim-dadbod
 			vim-dadbod-ui
 			vim-dadbod-completion
