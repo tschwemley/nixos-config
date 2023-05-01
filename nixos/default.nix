@@ -14,8 +14,10 @@
 					}
 					./modules/common.nix
 					./modules/networking
+					./modules/pc/barrier.nix
 					./modules/pc/browsers.nix
 					./modules/pc/gaming.nix
+					./modules/pc/rustdesk.nix
 					./modules/audio/bluetooth.nix
 					./modules/hardware/nvidia.nix
 					./modules/xsession.nix
