@@ -5,14 +5,14 @@
 		homeConfigurations = {
 			k3s = {
 				imports = [
-					./modules/common.nix
+					./modules
 					./modules/git.nix
 				];
 			};
 
  			personal = {
 				imports = [
-					./modules/common.nix
+					./modules
 					./modules/git.nix
 				];
 			};
