@@ -1,4 +1,4 @@
-vim.g.mapleader = "<space>";
+vim.g.mapleader = " ";
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', {noremap = true})
 vim.api.nvim_set_keymap('c', 'jk', '<Esc>', {noremap = true})
 vim.api.nvim_set_keymap('v', 'jk', '<Esc>', {noremap = true})
