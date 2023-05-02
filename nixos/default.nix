@@ -7,6 +7,7 @@
 				system = "x86_64-linux";
 				modules = [
 					./office
+					inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
 					inputs.home-manager.nixosModule {
 						home-manager.useGlobalPkgs = true;						
 						home-manager.useUserPackages = true;						
@@ -19,7 +20,6 @@
 					./modules/pc/gaming.nix
 					./modules/pc/rustdesk.nix
 					./modules/audio/bluetooth.nix
-					./modules/hardware/nvidia.nix
 					./modules/xsession.nix
 				];
 			};
