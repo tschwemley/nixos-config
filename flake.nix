@@ -12,9 +12,6 @@
 	nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
 
 	nixos-hardware.url = "github:nixos/nixos-hardware/master";
-
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
@@ -26,33 +23,29 @@
     ...
   }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = ["x86_64-linux"];
+		imports = [
+			./home
+			./hosts
+			./modules
+		];	
+			
+		systems = [ "x86_64-linux" ];
 
-      perSystem = {
-        pkgs,
-        config,
-        lib,
-        utils,
-        inputs',
-        ...
-      }: {
-	# ensure packages available to perSystem/withSystem calls
-        _module.args.pkgs = inputs'.nixpkgs.legacyPackages;
+		perSystem = {
+			pkgs,
+			inputs',
+			...
+		}: {
+			# ensure packages available to perSystem/withSystem calls
+			_module.args.pkgs = inputs'.nixpkgs.legacyPackages;
 
-        devShells.default = pkgs.mkShell {
-          buildInputs = [
-            pkgs.alejandra
-          ];
-        };
+			devShells.default = pkgs.mkShell {
+			  buildInputs = [
+				pkgs.alejandra
+			  ];
+			};
 
-        formatter = pkgs.alejandra;
-      };
-
-      imports = [
-        ./home
-		./hosts
-        #./nixos
-        ./packages
-      ];
+			formatter = pkgs.alejandra;
+		};
 	};
 }

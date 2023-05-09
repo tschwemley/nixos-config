@@ -1,0 +1,3 @@
+{ ... }: {
+	schwem = import ./schwem.nix;
+}

@@ -1,75 +1,35 @@
-# Pre-Install
-Before installing drives must be partitioned and formatted. Since I'm using 
-ZFS the pool must be created as well.
+- uses nix flakes
+- home-manager
+- desktop/laptop configurations
+- server (self-hosted) configurations
+- split between system and user configurataion
+- secret management
 
-System state is removed upon every boot. For the reasoning on why see: (Erase your Darlings)[https://grahamc.com/blog/erase-your-darlings/]
+## Repo Features
 
-## Format Drives
-```
-#!/bin/bash
-set -e
+## Why Nix?
+I got too far in before I realized what I got myself into :shrug:
+Oh and declarative system configurations across multiple machines or something.
 
-DEVICE=$1
+## Architecture
+`flake.nix` - entry point
+#`apps/` 
+`home/`		- home configurations via home-manager
+`modules/`	- Reusable pieces of configuration modularized by scope.
+`hosts/`	- host configurations via nixos
+`overlays/` - overlays/overrides for particularly packages
+`pkgs/`
+`templates/`
 
-# Wipe the disk
-wipefs -a "${DEVICE}"
+## Prerequisites
+1. Install Nix
 
-# Create partitions using parted
-parted -a optimal --script "${DEVICE}" \
-    unit mib \
-    mklabel gpt \
-    mkpart ESP fat32 1 513 \
-    set 1 boot on \
-    mkpart primary 513 100% \
-    quit
+## Install Instructions
 
-echo "Partitioning completed."
-
-mkfs.fat -F 32 -n boot $DEVICE
-echo "Boot drive formatted."
-```
-
-## Create ZFS pool
-```
-zpool create \
-    -o ashift=12 \
-    -o autotrim=on \
-    -O acltype=posixacl \
-    -O atime=off \
-    -O canmount=off \
-    -O compression=zstd \
-    -O dnodesize=auto \
-    -O normalization=formD \
-    -O xattr=sa \
-    -O mountpoint=none \
-    -O encryption=on \
-    -O keylocation=prompt \
-    -O keyformat=passphrase \
-    rpool /dev/disk/by-id/<disk>
-
-zfs create -p -o refreservation=1G -o mountpoint=none rpool/local/reserved
-zfs create -p rpool/local/nix
-zfs create -p rpool/safe/persist
-```
-
-## Mount the drives
-```
-DEVICE=$1
-
-mount -t tmpfs none /mnt
-mkdir -p /mnt/{boot,nix,persist}
-
-mount "${DEVICE}" /mnt/boot
-mount -t zfs -o zfsutil rpool/local/nix /mnt/nix
-mount -t zfs -o zfsutil rpool/safe/persist /mnt/persist
-```
-
-# Architecture
-home
-nixos
-packages
-secrets
-templates
-
-TODO: consdider switching to: modules, hosts, users, containers?
+## About and Acknowlegements
+### Inspiration:
+- [Graham Chirstensen's Erase Your Darlings](https://grahamc.com/blog/erase-your-darlings/)
+- [Mike Royal's NixOS Guide](https://github.com/mikeroyal/NixOS-Guide)
+- [misterio77's config](https://github.com/Misterio77/nix-config)
+- [srid's NixOS Config](https://github.com/Misterio77/nix-config)
 

@@ -1,23 +1,9 @@
-{ self, inputs, config, lib, pkgs, utils, ... }:
+{ self, ... }:
 
 {
-	flake = {
-		homeConfigurations = {
-			k3s = {
-				imports = [
-					./modules
-					./modules/git.nix
-				];
-			};
-
- 			personal = {
-				imports = [
-					./modules
-					./modules/git.nix
-				];
-			};
-
-			work = {};
-		};
+	flake.homeConfigurations = {
+		k3s = import ./k3s.nix;
+		personal = import ./desktop.nix;
+		work = import ./work.nix;
 	};
 }
