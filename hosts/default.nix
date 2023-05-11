@@ -1,12 +1,16 @@
-{ self, inputs, config, lib, pkgs, utils, ... }:
-let
-	modules = self.nixosModules;
+{ inputs, ... }: 
+let 
+	mkSystem = configPath: inputs.nixpkgs.lib.nixosSystem {
+		system = "x86_64-linux";
+		modules = [
+		# imports = [
+			inputs.home-manager.nixosModule
+			./modules/common.nix
+		];
+	};
 in
 {
-	flake = {
-		nixosConfigurations = {
-			#lux = import ./lux;
-			office = { imports = [ ./office ]; };
-		};
+	flake.nixosConfigurations = {
+		office = mkSystem ./office.nix;
 	};
 }

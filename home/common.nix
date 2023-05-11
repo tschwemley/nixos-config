@@ -1,6 +1,9 @@
-{ self, ... }: {
+{ ... }: {
 	imports = [
-		self.nixosModules.programs.neovim
-		self.nixosModules.programs.wezterm
-	];
+		./modules/bat.nix
+		./modules/git.nix
+		./modules/home-manager.nix
+		./modules/shell.nix
+		./modules/neovim
+	];	
 }
