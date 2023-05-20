@@ -48,6 +48,7 @@
 		imports = [
 			./home
 			./hosts
+			./modules
 			./users
 		];
 	};
