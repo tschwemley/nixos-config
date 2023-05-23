@@ -13,6 +13,6 @@ in
 	flake.nixosConfigurations = {
 		# office = mkSystem ./office.nix;
 		# k3s-server = mkSystem ./k3s-server.nix;
-		mew = mkSystem ./mew;
+		moltres = mkSystem ./moltres;
 	};
 }
