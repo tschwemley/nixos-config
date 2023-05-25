@@ -29,7 +29,7 @@
                 type = "luks";
                 name = "crypted";
                 extraOpenArgs = [ "--allow-discards" ];
-                keyFile = lib.mkDefault "${pkgs.lib.genPasswdFile random 64}";
+				keyFile = "/tmp/passphrase";
                 content = {
                   type = "btrfs"; 
                   extraArgs = [ "-f" ];  

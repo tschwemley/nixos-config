@@ -55,9 +55,7 @@
 
 		imports = [
 			./home
-			./hosts
-			./modules
-			./users
+			./nixos
 		];
 	};
 }
