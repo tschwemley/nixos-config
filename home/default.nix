@@ -5,7 +5,11 @@ let
 		pkgs = inputs.nixpkgs;
 		lib = inputs.nixpkgs.lib;
 		modules = [
-			./common.nix
+			./config/home/bat.nix
+			./config/home/git.nix
+			./config/home/home-manager.nix
+			./config/home/shell.nix
+			./config/home/neovim
 			configPath
 		];
 	};

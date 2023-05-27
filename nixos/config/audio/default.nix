@@ -1,3 +1,0 @@
-{ ... }: {
-	bluetooth = import ./bluetooth.nix;		
-}

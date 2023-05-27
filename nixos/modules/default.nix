@@ -1,14 +1,13 @@
-{ pkgs, ... }:
+{ sops, pkgs, ... }:
 
 {
 	imports = [
-		./dev/direnv.nix
-		./disks.nix
+		./direnv.nix
 		./nix.nix
+		sops.nixosModules.sops
 	];
-	
-  nixpkgs.config.allowUnfree = true;
 
+	nixpkgs.config.allowUnfree = true;
 
 	environment.systemPackages = with pkgs; [
 		curl

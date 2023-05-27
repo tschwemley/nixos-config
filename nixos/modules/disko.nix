@@ -1,5 +1,7 @@
 { disks ? [ "/dev/sda" ], lib, pkgs, ... }: 
+
 {
+	
   disko.devices = {
     disk = {
       main = {
@@ -55,26 +57,4 @@
       };
     };
   }; 
-  
-  # boot.kernelParams = [
-  #   "cryptdevice=/dev/disk/by-label/crypted:cryptroot" 
-  # ];
-  # 
-  # fileSystems."/" = {
-  #   device = "/dev/mapper/cryptroot";
-  #   fsType = "btrfs";
-  #   options = [ "subvol=rootfs", "autodefrag", "compress=zstd" ];
-  # };
-  # 
-  # fileSystems."/home" = {
-  #   device = "/dev/mapper/cryptroot";
-  #   fsType = "btrfs";
-  #   options = [ "subvol=home" ];  
-  # };
-  # 
-  # fileSystems."/.snapshots" = {
-  #   device = "/dev/mapper/cryptroot";
-  #   fsType = "btrfs";
-  #   options = [ "subvol=.snapshots" ];    
-  # };
 }
