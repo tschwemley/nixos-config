@@ -14,8 +14,9 @@
 	
 	impermanence.url = "github:nix-community/impermanence/master";
 
-    nixos-generators.url = "github:nix-community/nixos-generators";
-	nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
+#TODO: determine if still needed
+ #    nixos-generators.url = "github:nix-community/nixos-generators";
+	# nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
 
 	nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
@@ -27,7 +28,7 @@
 	disko,
     flake-parts,
     home-manager,
-	nixos-generators,
+	# nixos-generators,
 	nixos-hardware,
 	sops,
     ...
@@ -50,12 +51,12 @@
 			};
 
 			formatter = pkgs.alejandra;
-			
 		};
 
 		imports = [
-			./home
-			./nixos
+			./hosts
+			./modules
+			#./users/home
 		];
 	};
 }
