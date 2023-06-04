@@ -1,23 +1,22 @@
 ## Features
+- System and user packages managed via home-manager
 - uses nix flakes
-- home-manager
+- packages are managed via home-manager for both system and user scope
 - desktop/laptop configurations
-- server (self-hosted) configurations
-- split between system and user configurataion
-- secret management
-
+- self-hosted configurations
+- secret management/editing via sops
 
 ## Why Nix?
 I got too far in before I realized what I got myself into :shrug:
 Oh and declarative system configurations across multiple machines or something.
 
 ## Architecture
-`flake.nix` - entry point
-`home/`		- home configurations via home-manager
-`hosts/`	- nixos configurations
-`overlays/` - overlays/overrides for particularly packages
-`pkgs/`
-`templates/`
+`flake.nix`  - entry point
+`home/`		 - standalone home-manager configurations
+`hosts/`	 - host specific configurations
+`modules/`	 - reusable nixosModules organized by domains.
+`templates/` - 
+`users/`     - user specific configurations
 
 ## Prerequisites
 1. Install Nix
