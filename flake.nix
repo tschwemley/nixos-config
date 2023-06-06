@@ -24,6 +24,7 @@
   };
 
     outputs = inputs @ { 
+		self,
 		nixpkgs, 
 		flake-parts, 
 		disko,
@@ -33,19 +34,25 @@
 		sops,
 		...
 	}: flake-parts.lib.mkFlake { inherit inputs; } {
+		debug = true;
 		systems = [
 			"x86_64-linux"
 		];
 
-		perSystem = { pkgs, system }: {
+		perSystem = { config, pkgs, ... }: {
+			devShells.default = pkgs.mkShell {
+				buildInputs = with pkgs; [
+					alejandra
+					sops
+					ssh-to-age
+				];
+			};
+		};
 			
-		};
-
-		flake = with inputs; {
-			imports = [
-				./hosts
-				./modules
-			];
-		};
+		# Import flake attrs
+		imports = [
+			./modules
+			./hosts
+		];
 	};
 }

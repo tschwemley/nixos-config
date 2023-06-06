@@ -1,8 +1,12 @@
-{ ... }: 
+{ nixosModules, ... }: 
 {
 	imports = [
 		./hardware-configuration.nix
-		../../modules/development
+		nixosModules.audio
+		nixosModules.homeManager
+		nixosModules.k3s
+		nixosModules.services
+		nixosModules.system
 		# ../modules/nixos/common.nix
 		# ../modules/nixos/boot/systemd.nix
 		# ../modules/nixos/k3s/server.nix

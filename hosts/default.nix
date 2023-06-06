@@ -1,4 +1,4 @@
-{ home-manager, sops, ... }: 
+{ nixosModules, home-manager, sops, ... }: 
 let 
 	mkSystem = configPath: {
 		system = "x86_64-linux";
@@ -11,7 +11,7 @@ let
 	};
 in
 {
-	nixosConfigurations = {
+	flake.nixosConfigurations = {
 	# charizard = mkSystem ./charizard;
 		moltres = mkSystem ./moltres;
 	};
