@@ -1,5 +1,4 @@
-{ disks ? [ "/dev/vda", "/dev/sda" ], lib, pkgs, ... }: {
-  disko.devices = {
+{ disks ? [ "/dev/vda" "/dev/sda" ], ... }: {
     disk = {
       main = {
         type = "disk";
@@ -8,21 +7,26 @@
           type = "table";
           format = "gpt";
           partitions = [
+			{
+				name = "boot";
+				start = "0";
+				end = "1M";
+				flags = [ "bios_grub" ];
+			}
             {
               name = "ESP";
-              start = "1MiB";
-              end = "100MiB";
+              start = "1M";
+              end = "512M";
               bootable = true;
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";  
-                mountOptions = [ "defaults" ];            
               };
             }
             {
               name = "main";
-              start = "100MiB";
+              start = "512M";
               end = "100%";
 			  content = {
                   type = "btrfs"; 
@@ -53,13 +57,12 @@
 			content = {
 				type = "btrfs";
 				extraArgs = [ "-f" ];
-				subvolumes = [
-					"/" = {
-						mountOptions = [ "compress=ztsd" ]
+				subvolumes = {
+					"/storage" = {
+						mountOptions = [ "compress=ztsd" ];
 					};
-				];
+				};
 			};
 	  };
     };
-  }; 
 }

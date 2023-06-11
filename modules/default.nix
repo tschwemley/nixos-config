@@ -1,8 +1,7 @@
-# { withSystem, ... }:
-{ ... }:
+{ inputs, ... }:
 {
-	imports = [
+	imports = [ 
 		./home
-		./nixos
+		./nixos 
 	];
 }
