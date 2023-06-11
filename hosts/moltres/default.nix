@@ -11,7 +11,7 @@
 	boot.loader.grub = {
 		devices = [ "/dev/vda" ];
 		version = 2;
-		# efiSupport = true;
+		efiSupport = true;
 		# efiInstallAsRemovable = true;
 	};
 
@@ -28,6 +28,9 @@
 		# This will generate a new key if the key specified above does not exist
 		age.generateKey = true;
 	};
+
+	services.getty.autologinuser = "k3s";
+	system.stateVersion = "23.11"; #nixos-unstable 
 
 	users.users.root.openssh.authorizedKeys.keys = [ (builtins.readFile ./moltres.pub) ];
 }

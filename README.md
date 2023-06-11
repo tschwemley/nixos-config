@@ -1,7 +1,7 @@
 ## Features
-- System and user packages managed via home-manager
 - uses nix flakes
-- packages are managed via home-manager for both system and user scope
+- standalong home-manager configuration
+- separation between user and system state
 - desktop/laptop configurations
 - self-hosted configurations
 - secret management/editing via sops
