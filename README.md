@@ -1,6 +1,6 @@
 ## Features
 - uses nix flakes
-- standalong home-manager configuration
+- standalone home-manager configuration
 - separation between user and system state
 - desktop/laptop configurations
 - self-hosted configurations
