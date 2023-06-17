@@ -15,7 +15,7 @@ in
 {
 	flake = {
 		nixosConfigurations = {
-			moltres = mkSystem ./hosts/moltres.nix "x86_64-linux";
+			moltres = mkSystem ./hosts/moltres "x86_64-linux";
 		};
 	};
 }

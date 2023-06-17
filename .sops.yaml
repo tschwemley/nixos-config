@@ -1,14 +1,14 @@
 keys:
-  - &personal age1rl4wtr4hj2mxp2rcdk2kuahtqmfx7e5meadsukxljl0l054eccksus4s2n
+  # - &personal age1rl4wtr4hj2mxp2rcdk2kuahtqmfx7e5meadsukxljl0l054eccksus4s2n
   - &moltres age1ynhtuk2g3ek9svvuysynlnxkp5vffgylkedzhhaa9q4g9l8huf3sktz6lc
 
 creation_rules:
-  - path_regex: secrets/global.yaml
-    key_groups:
-      - age:
-        - *personal
+  # - path_regex: secrets/global.yaml
+  #   key_groups:
+  #     - age:
+  #       - *personal
           
-  - path_regex: hosts/moltres/secrets.yaml
+  - path_regex: nixos/hosts/moltres/moltres.yaml
     key_groups:
       - age:
         - *moltres
