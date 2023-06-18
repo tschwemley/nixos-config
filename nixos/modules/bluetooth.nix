@@ -1,4 +1,4 @@
 {
-	hardware.bluetooth.enable = true;
-	services.bluetooth.enable = true;
-}	
+  hardware.bluetooth.enable = true;
+  services.bluetooth.enable = true;
+}

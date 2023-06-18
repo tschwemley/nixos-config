@@ -1,5 +1,5 @@
-{ ... }: {
-	imports = [
-		./wezterm.lua
-	];
+{...}: {
+  imports = [
+    ./wezterm.lua
+  ];
 }

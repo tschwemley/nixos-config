@@ -1,21 +1,23 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   services.xserver = {
-  	enable = true;
+    enable = true;
 
-	displayManager = {
-		sddm.enable = true;
-		defaultSession = "none+awesome";
-	};
+    displayManager = {
+      sddm.enable = true;
+      defaultSession = "none+awesome";
+    };
 
-	windowManager.awesome = {
-		enable = true;
-		luaModules = with pkgs.luaPackages; [
-			luarocks
-			luadbi-mysql
-		];
-	};
+    windowManager.awesome = {
+      enable = true;
+      luaModules = with pkgs.luaPackages; [
+        luarocks
+        luadbi-mysql
+      ];
+    };
   };
 
   services.xserver.dpi = 192;
