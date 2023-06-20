@@ -5,9 +5,12 @@
 }: {
   imports = [
     inputs.home-manager.nixosModule
-    {home-manager.useGlobalPkgs = true;}
+    {
+      home-manager.useGlobalPkgs = true;
+    }
+    # { home-manager.useGlobalPkgs = true; }
     inputs.sops.nixosModules.sops
-    inputs.disko.nixosModules.disko
+    # inputs.disko.nixosModules.disko
   ];
 
   environment.systemPackages = with pkgs; [
