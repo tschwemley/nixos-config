@@ -35,7 +35,12 @@
         "x86_64-linux"
       ];
 
-      perSystem = {pkgs, ...}: {
+      perSystem = {
+        config,
+        inputs',
+        pkgs,
+        ...
+      }: {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             alejandra
@@ -48,8 +53,8 @@
 
       # Import flake attrs
       imports = [
+        ./home
         ./nixos
-        ./home-manager
       ];
     };
 }
