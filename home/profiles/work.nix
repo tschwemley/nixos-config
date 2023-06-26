@@ -1,1 +1,5 @@
-{}
+{
+	imports = [
+		../programs/lazygit.nix
+	];
+}
