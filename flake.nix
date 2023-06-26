@@ -21,11 +21,11 @@
 
   outputs = inputs @ {
     self,
-    nixpkgs,
-    flake-parts,
     disko,
+    flake-parts,
     home-manager,
     nixos-hardware,
+    nixpkgs,
     sops,
     ...
   }:

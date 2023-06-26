@@ -1,5 +1,5 @@
 {
-  self,
+  inputs,
   lib,
   ...
 }: let
@@ -7,11 +7,11 @@
   swapSize = "-34G";
 in {
   imports = [
-    (import ../modules/disks/btrfs-ephemeral.nix {inherit diskName swapSize;})
-    self.nixos-hardware.nixosModules.common.cpu.intel
-    self.nixos-hardware.nixosModules.common.gpu.nvidia
-    self.nixos-hardware.nixosModules.common.pc.ssd
-    ../modules/users/desktop.nix
+    (import ../hardware/disks/btrfs-ephemeral.nix {inherit diskName swapSize;})
+    inputs.nixos-hardware.nixosModules.common-cpu-intel
+    inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+    ../pc.nix
+    #    ../users/desktop.nix
   ];
 
   boot = {
@@ -39,7 +39,6 @@ in {
   #   age.generateKey = true;
   # };
 
-  #TODO: change this after done testing sys config
   services.getty.autologinUser = "schwem";
 
   # don't update this
