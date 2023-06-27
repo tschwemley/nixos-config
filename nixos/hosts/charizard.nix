@@ -31,15 +31,6 @@ in {
     useDHCP = lib.mkDefault true;
   };
 
-  # sops = {
-  #   defaultSopsFile = ../../secrets/secrets.yaml;
-  #   age.sshKeyPaths = ./moltres.pub;
-  #   age.keyFile = "/var/lib/sops-nix/key.txt";
-  #   # This will generate a new key if the key specified above does not exist
-  #   age.generateKey = true;
-
-  # };
-
   services.getty.autologinUser = "schwem";
 
   # don't update this

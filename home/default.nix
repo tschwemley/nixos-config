@@ -7,7 +7,6 @@
 		{
 			home.username = username;
 			home.homeDirectory = "/home/${username}";
-			home.stateVersion = "23.05";
 		}
       ] ++ profiles;
     };

@@ -19,7 +19,4 @@ in {
     git
     wget
   ];
-
-  # TODO: I'm not sure if I want this enabled on every host or not. Possibly move out
-  services.openssh.enable = true;
 }
