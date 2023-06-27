@@ -7,5 +7,5 @@
     };
   };
 
-  home-manager.users.schwem = homeConfigurations.schwem.homeManagerConfiguration;
+  home-manager.users.schwem = homeConfigurations.schwem;
 }
