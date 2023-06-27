@@ -7,7 +7,7 @@
     };
   };
 
-  home-manager.users.schwem = homeConfigurations.schwem;
+  # home-manager.users.schwem = homeConfigurations.schwem;
   # home-manager.users.schwem = {
   #   imports = [
   #    (homeConfigurations.pc
