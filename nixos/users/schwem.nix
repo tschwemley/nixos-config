@@ -7,11 +7,8 @@
     };
   };
 
-  home-manager.users.schwem = (import ../../home/profiles/pc.nix {
-	  home.stateVersion = "23.05";
-	  home.username = "schwem";
-	  home.homeDirectory = "/home/schwem";
-  });
+  home.stateVersion = "23.05";
+  home-manager.users.schwem = (import ../../home/profiles/pc.nix {});
   # home-manager.users.schwem = {
   #   imports = [
   #    (homeConfigurations.pc
