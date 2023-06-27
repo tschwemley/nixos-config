@@ -11,7 +11,7 @@ in {
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-gpu-nvidia
     ./profiles/pc.nix
-    #    ../users/desktop.nix
+	../users/schwem.nix
   ];
 
   boot = {
