@@ -28,7 +28,7 @@ in {
   networking = {
     hostName = "charizard";
     networkmanager.enable = true;
-    useDHCP = true;
+    useDHCP = lib.mkDefault true;
   };
 
   # sops = {
