@@ -1,16 +1,18 @@
 {inputs, config, ...}: let
-  mkHomeConfig = profile:
+  mkHomeConfig = username: profiles:
     inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = inputs.nixpkgs.legacyPackages.${builtins.currentSystem};
+      pkgs = inputs.nixpkgs.legacyPackages;
       modules = [
         ./profiles/common.nix
-        profile
-      ];
+		{
+			home.username = username;
+			home.homeDirectory = "/home/${username}";
+			home.stateVersion = "23.05";
+		}
+      ] ++ profiles;
     };
 in {
   flake.homeConfigurations = {
-    pc = mkHomeConfig ./profiles/pc.nix;
-    server = mkHomeConfig ./profiles/server.nix;
-    work = mkHomeConfig ./profiles/work.nix;
+    schwem = mkHomeConfig "schwem" [ ./profiles/pc.nix ];
   };
 }
