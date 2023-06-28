@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-	
+
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -30,19 +30,22 @@
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
-      debug = true;
+      # debug = true;
       systems = [
         "x86_64-linux"
       ];
 
       perSystem = {
-		config,
+        config,
         pkgs,
-		system,
+        system,
         ...
       }: {
-		_module.args.pkgs = import inputs.nixpkgs {inherit system;};
-		  
+        # _module.args.pkgs = import inputs.nixpkgs {
+        # 	inherit config system;
+        # 	config.allowUnfree = true;
+        # };
+
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             alejandra
