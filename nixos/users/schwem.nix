@@ -7,5 +7,7 @@
     };
   };
 
-  home-manager.users.schwem = homeConfigurations.schwem;
+  home-manager.users.schwem.imports = [
+	../../home/profiles/pc.nix
+  ];
 }
