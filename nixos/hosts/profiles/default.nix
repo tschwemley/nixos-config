@@ -8,6 +8,7 @@ in {
     inputs.home-manager.nixosModule
     inputs.sops.nixosModules.sops
     inputs.disko.nixosModules.disko
+    ../../services/openssh.nix
     ../../system/nix.nix
     ../../users
   ];

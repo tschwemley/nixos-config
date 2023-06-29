@@ -3,8 +3,10 @@
   lib,
   ...
 }: let
-  diskName = "/dev/nvme0n1";
-  swapSize = "-34G";
+  diskConfig = import ../hardware/disks/btrfs-ephemeral.nix {
+    diskName = "/dev/nvme0n1";
+    swapSize = "-34G";
+  };
 in {
   imports = [
     (import ../hardware/disks/btrfs-ephemeral.nix {inherit diskName swapSize;})

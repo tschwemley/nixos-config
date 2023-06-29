@@ -3,14 +3,17 @@
   lib,
   ...
 }: let
-  diskName = "/dev/vda";
+  diskConfig = import ../hardware/disks/btrfs-ephemeral.nix {
+    diskName = "/dev/vda";
+    swapSize = "-4G";
+  };
 in {
   imports = [
-    (import ../modules/disks/btrfs-ephemeral.nix {inherit diskName;})
-    ../modules/k3s
-    ../modules/services/keycloak.nix
-    ../modules/server.nix
-    ../modules/users/k3s.nix
+    diskConfig
+    ./profiles/server.nix
+    ../services/k3s
+    ../services/keycloak.nix
+    ../users/k3s.nix
   ];
 
   boot = {
@@ -29,25 +32,6 @@ in {
     };
   };
 
-  networking = {
-    hostName = "moltres";
-    networkmanager.enable = false;
-    useDHCP = false;
-
-    interfaces.eth0 = {
-      useDHCP = false;
-
-      ipv4.addresses = [
-        {
-          address = "184.189.4.107";
-          prefixLength = 24;
-        }
-      ];
-    };
-
-    defaultGateway = "107.189.4.1";
-  };
-
   #TODO: change this after done testing sys config
   services.getty.autologinUser = "root";
 
@@ -56,6 +40,7 @@ in {
 
   users = {
     mutableUsers = false;
-	users.root.openssh.authorizedKeys.keys = [builtins.readFile ../../secrets/keys/moltres.pub];
+    users.root.openssh.authorizedKeys.keys = [(builtins.readFile ../../secrets/keys/moltres.pub)];
+    # users.root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAl9LJZ1yKITrHoPGRnqX5FvCmGcE7/a10BwDX52tUgU tschwemley@schwembook"];
   };
 }

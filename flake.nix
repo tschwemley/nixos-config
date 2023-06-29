@@ -18,7 +18,7 @@
 
     sops.url = "github:Mic92/sops-nix";
   };
-  
+
   outputs = inputs @ {
     self,
     disko,
@@ -41,8 +41,11 @@
         system,
         ...
       }: {
-		_module.args.pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
-		
+        _module.args.pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             alejandra
