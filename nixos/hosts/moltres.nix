@@ -40,7 +40,6 @@ in {
 
   users = {
     mutableUsers = false;
-    users.root.openssh.authorizedKeys.keys = [(builtins.readFile ../../secrets/keys/moltres.pub)];
-    # users.root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAl9LJZ1yKITrHoPGRnqX5FvCmGcE7/a10BwDX52tUgU tschwemley@schwembook"];
+    users.root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAl9LJZ1yKITrHoPGRnqX5FvCmGcE7/a10BwDX52tUgU user@host"];
   };
 }
