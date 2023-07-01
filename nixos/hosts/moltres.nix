@@ -37,7 +37,7 @@ in {
 
   sops = {
     defaultSopsFile = ./secrets/moltres.yaml;
-    sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+    age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
 
     # Specify machine secrets
     secrets = {
