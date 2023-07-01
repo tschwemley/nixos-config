@@ -36,7 +36,7 @@ in {
   services.getty.autologinUser = "k3s";
 
   sops = {
-    defaultSopsFile = ./secrets/moltres.yaml;
+    defaultSopsFile = ../../secrets/moltres.yaml;
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
 
     # Specify machine secrets
