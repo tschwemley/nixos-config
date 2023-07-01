@@ -1,6 +1,6 @@
 {
   imports = [./.];
-  
+
   users.users = {
     k3s = {
       isNormalUser = true;
