@@ -1,6 +1,6 @@
 keys:
   - &personal age1rl4wtr4hj2mxp2rcdk2kuahtqmfx7e5meadsukxljl0l054eccksus4s2n
-  - &moltres age1ynhtuk2g3ek9svvuysynlnxkp5vffgylkedzhhaa9q4g9l8huf3sktz6lc
+  - &moltres age1tc6r7z28g2zpnwmu2j9wxrpsn74mr9kl4a63r82u7xlywx9dma2qpparlf
 
 creation_rules:
   - path_regex: secrets/secrets.yaml
