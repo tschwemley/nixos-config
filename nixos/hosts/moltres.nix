@@ -33,6 +33,11 @@ in {
   };
 
   networking.hostName = "moltres";
+  # networking = {
+  #   hostName = "molters";
+  #   networkmanager.enable = true;
+  #   useDHCP = lib.mkDefault true;
+  # };
 
   # services.getty.autologinUser = "k3s";
   services.getty.autologinUser = "root";
@@ -43,13 +48,13 @@ in {
 
     # Specify machine secrets
     secrets = {
+	  k3s_user_password = {
+		 neededForUsers = true; 
+	  };
       systemd_networkd = {
         path = "/etc/systemd/network/10-ens3.network";
 		mode = "0644";
       };
-	  k3s_user_password = {
-		 neededForUsers = true; 
-	  };
     };
   };
 
@@ -57,18 +62,16 @@ in {
   system.stateVersion = "23.11";
 
   systemd.network.enable = true;
-  # systemd = {
-	 #  network.enable = true;
-		# services.networkd = {
-		# 	serviceConfig.SupplementaryGroups = [ config.users.groups.keys.name ];
-		# };
+  services.resolved.enable = true;
+  # services.resolved = {
+	 #  enable = true;
+	 #  fallbackDns = ["1.1.1.1" "1.0.0.1"];
   # };
 
   users = {
     mutableUsers = false;
     users = {
 		root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAl9LJZ1yKITrHoPGRnqX5FvCmGcE7/a10BwDX52tUgU"];
-	
 		k3s.passwordFile = config.sops.secrets.k3s_user_password.path;
 	};
   };
