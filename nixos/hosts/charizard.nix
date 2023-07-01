@@ -17,7 +17,10 @@ in {
   ];
 
   boot = {
-    initrd = ["nvme"];
+    initrd = {
+		availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod"];
+		kernelModules = ["kvm-intel"];
+	};
     supportedFilesystems = ["btrfs"];
     loader = {
       grub = {
