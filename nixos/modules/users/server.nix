@@ -1,13 +1,12 @@
-{config, ...}:
+{config, userName ? "server" ...}:
 {
   imports = [./.];
 
-  users.users = {
+  users.${userName} = {
     server = {
       isNormalUser = true;
-      home = "/home/k3s";
+      home = "/home/${userName}";
       extraGroups = ["wheel" "k3s"];
-      # openssh.authorizedKeys.keys = keys;
     };
   };
 
