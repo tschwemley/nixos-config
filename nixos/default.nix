@@ -25,8 +25,9 @@
 in {
   flake = {
     nixosConfigurations = {
-      charizard = mkSystem "x86_64-linux" ./hosts/charizard.nix;
-      moltres = mkSystem "x86_64-linux" ./hosts/moltres.nix;
+      charizard = mkSystem "x86_64-linux" ./charizard;
+      moltres = mkSystem "x86_64-linux" ./moltres;
+      zapados = mkSystem "x86_64-linux" ./zapados;
     };
   };
 }

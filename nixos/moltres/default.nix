@@ -4,17 +4,17 @@
   lib,
   ...
 }: let
-  diskConfig = import ../hardware/disks/btrfs-ephemeral.nix {
+  diskConfig = import ../modules/hardware/disks/btrfs-ephemeral.nix {
     diskName = "/dev/vda";
     swapSize = "-4G";
   };
 in {
   imports = [
     diskConfig
-    ./profiles/server.nix
+    ../profiles/server.nix
     # ../services/k3s
     # ../services/keycloak.nix
-    ../users/k3s.nix
+    ../modules/users/k3s.nix
   ];
 
   boot = {
@@ -41,7 +41,7 @@ in {
   services.getty.autologinUser = "root";
 
   sops = {
-    defaultSopsFile = ../../secrets/moltres.yaml;
+    defaultSopsFile = ./secrets.yaml;
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
 
     # Specify machine secrets
@@ -63,10 +63,6 @@ in {
 
   systemd.network.enable = true;
   services.resolved.enable = true;
-  # services.resolved = {
-	 #  enable = true;
-	 #  fallbackDns = ["1.1.1.1" "1.0.0.1"];
-  # };
 
   users = {
     mutableUsers = false;

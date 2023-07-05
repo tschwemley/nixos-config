@@ -4,18 +4,24 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
+    disko = {
+		url = "github:nix-community/disko";
+		inputs.nixpkgs.follows = "nixpkgs";
+	};
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+		url = "github:nix-community/home-manager";
+		inputs.nixpkgs.follows = "nixpkgs";
+	};
 
-    impermanence.url = "github:nix-community/impermanence/master";
+	nix-on-droid = {
+		url = "github:t184256/nix-on-droid";
+		inputs.nixpkgs.follows = "nixpkgs";
+	};
 
     flake-parts.url = "github:hercules-ci/flake-parts";
-
+    impermanence.url = "github:nix-community/impermanence/master";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
-
     sops.url = "github:Mic92/sops-nix";
   };
 
@@ -30,7 +36,6 @@
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
-      # debug = true;
       systems = [
         "x86_64-linux"
       ];

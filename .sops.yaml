@@ -2,6 +2,7 @@ keys:
   - &personal age1rl4wtr4hj2mxp2rcdk2kuahtqmfx7e5meadsukxljl0l054eccksus4s2n
   # - &charizard age
   - &moltres age1tc6r7z28g2zpnwmu2j9wxrpsn74mr9kl4a63r82u7xlywx9dma2qpparlf
+  - &zapados age1y6e5tplnaxzc6rhmdm7jjrka5276jfmgafd85ucl50d89qg29q3s0ur9nw
 
 creation_rules:
   - path_regex: secrets/secrets.yaml
@@ -9,19 +10,25 @@ creation_rules:
       - age:
         - *personal
           
-  - path_regex: secrets/charizard.yaml
+  - path_regex: nixos/charizard/secrets.yaml
     key_groups:
       - age:
         - *personal
         # - *charizard
           
-  - path_regex: secrets/moltres.yaml
+  - path_regex: nixos/moltres/secrets.yaml
     key_groups:
       - age:
         - *personal
         - *moltres
           
-  - path_regex: secrets/keys/keys.yaml
+  - path_regex: nixos/zapados/secrets.yaml
     key_groups:
       - age:
         - *personal
+        - *zapados
+          
+  # - path_regex: secrets/keys/keys.yaml
+  #   key_groups:
+  #     - age:
+  #       - *personal

@@ -2,10 +2,10 @@
   imports = [
     ./.
     inputs.nixos-hardware.nixosModules.common-pc-ssd
-    ../../hardware/audio.nix
-    ../../system/fonts.nix
-    ../../services/xserver.nix
-    ../../users/schwem.nix
+    ../modules/hardware/audio.nix
+    ../modules/system/fonts.nix
+    ../modules/services/xserver.nix
+    ../modules/users/schwem.nix
   ];
 
   # steam has to be installed system wide/as a nixos module instead of via home-manager 🤷
