@@ -11,6 +11,6 @@
   };
 
   home-manager.users.${userName}.imports = [
-    ../../../home/profiles/server.nix { inherit userName; };
+    ../../../home/profiles/server.nix { inherit userName; }
   ];
 }
