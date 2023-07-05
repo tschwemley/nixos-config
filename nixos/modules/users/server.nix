@@ -2,8 +2,8 @@
 {
   imports = [./.];
 
-  users.${userName} = {
-    server = {
+  users.users = {
+    ${userName} = {
       isNormalUser = true;
       home = "/home/${userName}";
       extraGroups = ["wheel" "k3s"];
