@@ -34,7 +34,7 @@
                 name = "root";
                 start = "128MiB";
                 end = swapSize;
-                # part-type = "primary";
+                part-type = "primary";
                 content = {
                   type = "btrfs";
                   extraArgs = ["-f"];
@@ -59,7 +59,7 @@
                 name = "swap";
                 start = swapSize;
                 end = "100%";
-                # part-type = "primary";
+                part-type = "primary";
                 content = {
                   type = "swap";
                   randomEncryption = true;
