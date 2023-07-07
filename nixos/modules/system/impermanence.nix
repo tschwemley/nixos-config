@@ -19,9 +19,8 @@
 
       files =
         [
-		  "/var/run/secrets.d/age-keys.txt"
-          "/etc/machine-id"
-          "/etc/nix/id_rsa"
+		  # "/var/run/secrets.d/age-keys.txt"
+          # "/etc/machine-id"
         ]
         ++ additionalFiles;
     };

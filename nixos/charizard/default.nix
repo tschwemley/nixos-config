@@ -60,7 +60,7 @@ in {
     useDHCP = lib.mkDefault true;
   };
 
-  services.getty.autologinUser = "schwem";
+  services.getty.autologinUser = "root";
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
