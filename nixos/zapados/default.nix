@@ -48,8 +48,8 @@ in {
   
   services.openssh = {
     enable = true;
-    passwordAuthentication = false;
-    kbdInteractiveAuthentication = false;
+    PasswordAuthentication = false;
+    KbdInteractiveAuthentication = false;
     hostKeys = [
       {
         bits = 4096;
@@ -95,7 +95,6 @@ in {
   users = {
     mutableUsers = false;
     users = {
-      # root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAl9LJZ1yKITrHoPGRnqX5FvCmGcE7/a10BwDX52tUgU"];
       root = {
         openssh.authorizedKeys.keys = [];
         passwordFile = config.sops.secrets.root_password.path;

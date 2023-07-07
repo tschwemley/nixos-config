@@ -39,7 +39,7 @@
                   type = "btrfs";
                   extraArgs = ["-f"];
                   subvolumes = {
-                    "/root" = {
+                    "/rootfs" = {
                       mountpoint = "/";
                       mountOptions = ["compress=lzo"];
                     };
@@ -52,17 +52,10 @@
                     "/persist" = {
                       mountOptions = ["compress=lzo" "noatime"];
                     };
+					"/swap" = {
+						mountOptions = [ "noatime" ];
+					};
                   };
-                };
-              }
-              {
-                name = "swap";
-                start = swapSize;
-                end = "100%";
-                part-type = "primary";
-                content = {
-                  type = "swap";
-                  randomEncryption = true;
                 };
               }
             ];
