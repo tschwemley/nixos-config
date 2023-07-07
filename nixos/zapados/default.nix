@@ -1,23 +1,25 @@
 {
-  self,
+  inputs,
   config,
   lib,
   ...
 }: let
   hostName = "zapados";
-  diskConfig = import ../modules/hardware/disks/btrfs-ephemeral.nix {
+  diskConfig = import ../modules/disks/btrfs-ephemeral.nix {
     diskName = "/dev/vda";
     swapSize = "-6G";
   };
-   user = import ../modules/users/server.nix {
-	   inherit config;
-	   userName = hostName;
-   };
+  impermanence = import ../modules/system/impermanence.nix { inherit inputs; };
+  user = import ../modules/users/server.nix {
+    inherit config;
+    userName = hostName;
+  };
 in {
   imports = [
     diskConfig
+	impermanence
+    user
     ../profiles/server.nix
-	user
     # ../services/k3s
     # ../services/keycloak.nix
   ];
@@ -38,8 +40,8 @@ in {
   };
 
   networking = {
-	  inherit hostName;
-	  dhcpcd.enable = false;
+    inherit hostName;
+    dhcpcd.enable = false;
   };
 
   services.getty.autologinUser = "root";
@@ -49,17 +51,17 @@ in {
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
 
     secrets = {
-	  root_password = {
-		 neededForUsers = true; 
-	  };
-	  user_password = {
-		 neededForUsers = true; 
-	  };
-	  # static ip config via systemd.networkd is stored via sops and symlinked to appropriate directory
+      root_password = {
+        neededForUsers = true;
+      };
+      user_password = {
+        neededForUsers = true;
+      };
+      # static ip config via systemd.networkd is stored via sops and symlinked to appropriate directory
       systemd_networkd_10_ens3 = {
-		mode = "0644";
+        mode = "0644";
         path = "/etc/systemd/network/10-ens3.network";
-		restartUnits = ["systemd-networkd" "systemd-resolved"];
+        restartUnits = ["systemd-networkd" "systemd-resolved"];
       };
     };
   };
@@ -73,12 +75,12 @@ in {
   users = {
     mutableUsers = false;
     users = {
-		# root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAl9LJZ1yKITrHoPGRnqX5FvCmGcE7/a10BwDX52tUgU"];
-		root = {
-			openssh.authorizedKeys.keys = [];
-			passwordFile = config.sops.secrets.root_password.path;	
-		};
-		${hostName}.passwordFile = config.sops.secrets.user_password.path;
-	};
+      # root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAl9LJZ1yKITrHoPGRnqX5FvCmGcE7/a10BwDX52tUgU"];
+      root = {
+        openssh.authorizedKeys.keys = [];
+        passwordFile = config.sops.secrets.root_password.path;
+      };
+      ${hostName}.passwordFile = config.sops.secrets.user_password.path;
+    };
   };
 }

@@ -71,4 +71,7 @@
       };
     };
   };
+
+  fileSystems."/home".neededForBoot = true;
+  fileSystems."/persist".neededForBoot = true;
 }

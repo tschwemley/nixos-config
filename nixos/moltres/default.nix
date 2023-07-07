@@ -1,10 +1,10 @@
 {
-  self,
+  inputs,
   config,
   lib,
   ...
 }: let
-  diskConfig = import ../modules/hardware/disks/btrfs-ephemeral.nix {
+  diskConfig = import ../modules/disks/btrfs-ephemeral.nix {
     diskName = "/dev/vda";
     swapSize = "-4G";
   };
@@ -33,8 +33,8 @@ in {
   };
 
   networking = {
-	  hostName = "moltres";
-	  dhcpcd.enable = false;
+    hostName = "moltres";
+    dhcpcd.enable = false;
   };
 
   # services.getty.autologinUser = "k3s";
@@ -46,14 +46,14 @@ in {
 
     # Specify machine secrets
     secrets = {
-	  k3s_user_password = {
-		 neededForUsers = true; 
-	  };
-	  # static ip config via systemd.networkd is stored via sops and symlinked to appropriate directory
+      k3s_user_password = {
+        neededForUsers = true;
+      };
+      # static ip config via systemd.networkd is stored via sops and symlinked to appropriate directory
       systemd_networkd_10_ens3 = {
-		mode = "0644";
+        mode = "0644";
         path = "/etc/systemd/network/10-ens3.network";
-		restartUnits = ["systemd-networkd" "systemd-resolved"];
+        restartUnits = ["systemd-networkd" "systemd-resolved"];
       };
     };
   };
@@ -67,8 +67,8 @@ in {
   users = {
     mutableUsers = false;
     users = {
-		root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAl9LJZ1yKITrHoPGRnqX5FvCmGcE7/a10BwDX52tUgU"];
-		k3s.passwordFile = config.sops.secrets.k3s_user_password.path;
-	};
+      root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAl9LJZ1yKITrHoPGRnqX5FvCmGcE7/a10BwDX52tUgU"];
+      k3s.passwordFile = config.sops.secrets.k3s_user_password.path;
+    };
   };
 }
