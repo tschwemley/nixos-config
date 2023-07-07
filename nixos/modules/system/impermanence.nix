@@ -12,6 +12,8 @@
         [
 		  #"/etc/systemd/network"
 		  "/etc/ssh"
+		  "/home"
+		  "/root"
           "/var/log"
         ]
         ++ additionalDirs;
@@ -23,12 +25,6 @@
           "/etc/nix/id_rsa"
         ]
         ++ additionalFiles;
-    };
-	
-    "/home" = {
-      directories = [
-        "/home"
-      ];
     };
   };
 }
