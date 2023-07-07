@@ -1,6 +1,6 @@
 {
   diskName,
-  swapSize,
+  # swapSize,
   ...
 }: {
   disko = {
@@ -33,7 +33,7 @@
               {
                 name = "root";
                 start = "128MiB";
-                end = swapSize;
+                end = "100%";
                 part-type = "primary";
                 content = {
                   type = "btrfs";
