@@ -65,7 +65,10 @@ in {
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
-    age.sshKeyPaths = ["/persist/etc/ssh/ssh_host_ed25519_key"];
+    age.sshKeyPaths = [
+		"/persist/etc/ssh/ssh_host_ed25519_key"
+		"/persist/etc/ssh/ssh_host_rsa_key"
+	];
     age.keyFile = "/persist/.age-keys.txt";
 
     secrets = {
