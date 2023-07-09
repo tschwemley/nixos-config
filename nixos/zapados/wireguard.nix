@@ -13,12 +13,12 @@
       listenPort = 51820;
 
       postSetup = ''
-        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.1.1.1/24 -o eth0 -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.1.1.1/24 -o ens3 -j MASQUERADE
       '';
 
       # This undoes the above command
       postShutdown = ''
-        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.1.1.1/24 -o eth0 -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.1.1.1/24 -o ens3 -j MASQUERADE
       '';
 
       privateKeyFile = "/persist/wireguard/private";
