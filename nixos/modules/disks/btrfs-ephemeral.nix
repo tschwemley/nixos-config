@@ -55,7 +55,7 @@
                   };
                 };
               }
-			   {
+              {
                 name = "swap";
                 start = swapSize;
                 end = "100%";
@@ -64,6 +64,7 @@
                   type = "swap";
                   randomEncryption = true;
                 };
+              }
             ];
           };
         };
