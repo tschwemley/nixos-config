@@ -1,4 +1,4 @@
-{
+{ pkgs, ...}: {
   # enable NAT
   networking.nat.enable = true;
   networking.nat.externalInterface = "ens3";
