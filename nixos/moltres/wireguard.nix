@@ -1,14 +1,11 @@
 {
-  networking.firewall = {
-    allowedUDPPorts = [51820];
+  networking.firewall.allowedUDPPorts = [51820];
   };
-  # Enable WireGuard
   networking.wireguard.interfaces = {
-    # "wg0" is the network interface name. You can name the interface arbitrarily.
     wg0 = {
       ips = ["10.1.1.1.2/24"];
       listenPort = 51820;
-      privateKeyFile = "path to private key file";
+      privateKeyFile = "/persist/wirgeguard/private";
 
       peers = [
         {
