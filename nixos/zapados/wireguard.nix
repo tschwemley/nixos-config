@@ -3,9 +3,7 @@
   networking.nat.enable = true;
   networking.nat.externalInterface = "ens3";
   networking.nat.internalInterfaces = ["wg0"];
-  networking.firewall.allowedUDPPorts = [53 51820];
-  networking.firewall.allowedTCPPorts = [53];
-  # networking.firewall.allowedTCPPorts = [53 51820];
+  networking.firewall.allowedUDPPorts = [51820];
 
   networking.wireguard.interfaces = {
     wg0 = {
