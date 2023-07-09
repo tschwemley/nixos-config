@@ -57,6 +57,7 @@
             nixos-generators
             pkgs.sops
             ssh-to-age
+			wireguard-tools
           ];
         };
       };
