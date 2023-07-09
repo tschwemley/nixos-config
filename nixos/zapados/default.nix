@@ -20,7 +20,7 @@ in {
     impermanence
     user
     ../profiles/server.nix
-    (../modules/networking/wireguard/server.nix { 
+    (import ../modules/networking/wireguard/server.nix { 
 		peers = [];
 	})
     # ../services/k3s
