@@ -12,7 +12,6 @@
         [
           #"/etc/systemd/network"
           "/etc/ssh"
-          "/root"
           "/var/log"
         ]
         ++ additionalDirs;
