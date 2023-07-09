@@ -12,7 +12,7 @@ in
 	  # use postUp instead of persistentKeepalive because persistentKeepalive doesn't auto-connect
 	  # to the peer. This is apparently because the private key is set after the persistentKeepalive
 	  # which happens because we're setting the private key from a file.
-	  postUp = ["wg set wgnet0 peer ${publicKey} persistent-keepalive 25"];
+	  postSetup = ["wg set wgnet0 peer ${publicKey} persistent-keepalive 25"];
       peers = [
         {
 		  inherit publicKey; 
