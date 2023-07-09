@@ -5,8 +5,14 @@
   privateKeyFile ? "/persist/wireguard/private",
   peers ? [],
   ...
-}: {
-  imports = [./.];
+}: 
+let
+	default = import ./. { inherit ipWithSubnet port privateKeyFile; };
+in
+{
+  imports = [
+	default
+  ];
 
   # Enable NAT
   networking.nat.enable = true;
