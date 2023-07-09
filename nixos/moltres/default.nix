@@ -40,13 +40,14 @@ in {
     };
   };
 
+  # moltres has issues with DHCP so disable and use systemd-networkd instead
   networking = {
     inherit hostName;
-    useDHCP = lib.mkDefault true;
+    useDHCP = lib.mkDefault false;
   };
 
   services.getty.autologinUser = "root";
-  
+
   services.openssh = {
     enable = true;
     # PasswordAuthentication = false;
@@ -71,6 +72,11 @@ in {
 
     # Specify machine secrets
     secrets = {
+      systemd_networkd_10_ens3 = {
+        mode = "0644";
+        path = "/etc/systemd/network/10-ens3.network";
+        restartUnits = ["systemd-networkd" "systemd-resolved"];
+      };
       user_password = {
         neededForUsers = true;
       };
@@ -79,6 +85,10 @@ in {
 
   # don't update this
   system.stateVersion = "23.11";
+
+  # enable systemd-networkd for this machine
+  systemd.network.enable = true;
+  services.resolved.enable = true;
 
   users = {
     mutableUsers = false;

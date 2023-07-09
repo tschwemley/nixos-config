@@ -47,4 +47,3 @@
     #"nvim/parser".source = "${parserDir}";
   };
 }
-
