@@ -14,8 +14,8 @@
   networking.nat.internalInterfaces = ["wg0"];
 
   networking.wireguard.interfaces = {
-    inherit peers privateKeyFile;
     wg0 = {
+	  inherit peers;
       ips = [ipWithSubnet];
       listenPort = port;
 
