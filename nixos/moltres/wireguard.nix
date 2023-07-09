@@ -2,7 +2,7 @@
   networking.firewall.allowedUDPPorts = [51820];
   networking.wireguard.interfaces = {
     wg0 = {
-      ips = ["10.1.1.1.2/24"];
+      ips = ["10.1.1.2/24"];
       listenPort = 51820;
       privateKeyFile = "/persist/wireguard/private";
 
@@ -12,8 +12,6 @@
 
           # Forward all the traffic via VPN.
           allowedIPs = ["0.0.0.0/0"];
-          # Or forward only particular subnets
-          #allowedIPs = [ "10.1.1.1.1" "91.108.12.0/22" ];
 
           endpoint = "wg.schwem.io:51820";
 
