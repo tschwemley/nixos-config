@@ -12,7 +12,7 @@ in {
       # to the peer. This is apparently because the private key is set after the persistentKeepalive
       # which happens because we're setting the private key from a file.
       # postSetUp = ["wg set wgnet0 peer ${publicKey} persistent-keepalive 25"];
-      postSetUp = ["wg set wg0 peer ${publicKey} persistent-keepalive 25"];
+      postSetup = ["wg set wg0 peer ${publicKey} persistent-keepalive 25"];
       peers = [
         {
           inherit publicKey;
