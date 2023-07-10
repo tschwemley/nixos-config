@@ -8,7 +8,6 @@ in {
     ./.
     ../programs/brave.nix
     ../programs/lazygit.nix
-    ../programs/nnn.nix
     ../programs/reaper.nix
     #../programs/rustdesk.nix
     ../terminals/wezterm.nix

@@ -42,15 +42,13 @@ in {
 
   networking = {
     inherit hostName;
-    useDHCP = lib.mkDefault true;
+    dhcpcd.enable = false;
   };
 
   services.getty.autologinUser = "root";
 
   services.openssh = {
     enable = true;
-    # PasswordAuthentication = false;
-    # KbdInteractiveAuthentication = false;
     hostKeys = [
       {
         bits = 4096;
@@ -78,22 +76,25 @@ in {
       user_password = {
         neededForUsers = true;
       };
+      systemd_networkd_10_ens3 = {
+        mode = "0644";
+        path = "/etc/systemd/network/10-ens3.network";
+        restartUnits = ["systemd-networkd" "systemd-resolved"];
+      };
       wireguard_private = {
-        mode = "0660";
+        mode = "0644";
         path = "/persist/wireguard/private";
         owner = config.users.users.systemd-network.name;
         group = config.users.users.systemd-network.group;
-        reloadUnits = ["systemd-networkd" "systemd-resolved"];
-      };
-      wireguard_public = {
-        #this doesn't need to be a secret but it's convenient
-        path = "/persist/wireguard/public";
+        restartUnits = ["systemd-networkd" "systemd-resolved"];
       };
     };
   };
 
   # don't update this
   system.stateVersion = "23.11";
+  systemd.network.enable = true;
+  services.resolved.enable = true;
 
   users = {
     mutableUsers = false;

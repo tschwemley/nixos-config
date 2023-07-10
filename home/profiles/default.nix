@@ -2,6 +2,7 @@
   imports = [
     ../neovim
     ../programs/bat.nix
+    ../programs/nnn.nix
     ../programs/ripgrep.nix
     ../programs/tmux.nix
     ../shell
