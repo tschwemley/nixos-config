@@ -11,7 +11,7 @@
   };
   impermanence = import ../modules/system/impermanence.nix {
 	  inherit inputs;
-	  # additionalDirs = [];
+	  additionalDirs = [ "/etc/systemd/network" ];
   };
   user = import ../modules/users/server.nix {
     inherit config;
@@ -23,7 +23,7 @@ in {
     impermanence
     user
     ../profiles/server.nix
-    ./wireguard.nix
+    # ./wireguard.nix
     # ../services/k3s
     # ../services/keycloak.nix
   ];
@@ -75,11 +75,6 @@ in {
 
     # Specify machine secrets
     secrets = {
-      systemd_networkd_10_ens3 = {
-        mode = "0644";
-        path = "/etc/systemd/network/10-ens3.network";
-        restartUnits = ["systemd-networkd" "systemd-resolved"];
-      };
       user_password = {
         neededForUsers = true;
       };
@@ -91,6 +86,11 @@ in {
 		mode = "0644";
 		path = "/persist/wireguard/public";
 	  };
+      systemd_networkd_10_ens3 = {
+        mode = "0644";
+        path = "/etc/systemd/network/10-ens3.network";
+        restartUnits = ["systemd-networkd" "systemd-resolved"];
+      };
     };
   };
 
