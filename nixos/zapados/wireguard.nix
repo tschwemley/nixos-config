@@ -31,7 +31,7 @@
       address = [
         "10.100.0.1/24"
       ];
-      # DHCP = "no";
+      DHCP = "yes";
       # dns = [ "" ];
       # gateway = [
       # "10.0.0.1"
