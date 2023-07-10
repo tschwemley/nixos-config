@@ -12,6 +12,7 @@ in {
       # to the peer. This is apparently because the private key is set after the persistentKeepalive
       # which happens because we're setting the private key from a file.
       # postSetUp = ["wg set wgnet0 peer ${publicKey} persistent-keepalive 25"];
+      postSetUp = ["wg set wg0 peer ${publicKey} persistent-keepalive 25"];
       peers = [
         {
           inherit publicKey;
@@ -22,7 +23,7 @@ in {
           endpoint = "wg.schwem.io:51820";
 
           # Send keepalives every 25 seconds. Important to keep NAT tables alive.
-          persistentKeepalive = 25;
+          # persistentKeepalive = 25;
         }
       ];
     };
