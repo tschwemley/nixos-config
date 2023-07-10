@@ -27,9 +27,9 @@ in {
 
   boot = {
     initrd = {
-      availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk" "wireguard"];
+      availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
     };
-    kernelModules = ["kvm-amd"];
+    kernelModules = ["kvm-amd" "wireguard"];
     supportedFilesystems = ["btrfs"];
     loader = {
       grub = {

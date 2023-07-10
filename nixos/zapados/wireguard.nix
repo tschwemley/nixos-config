@@ -1,6 +1,7 @@
 {config, ...}: {
-  boot.extraModulePackages = [config.boot.kernelPackages.wireguard];
+  # boot.extraModulePackages = [config.boot.kernelPackages.wireguard];
   networking.firewall.allowedUDPPorts = [51820];
+  networking.firewall.enable = true;
   systemd.network = {
     enable = true;
     netdevs = {
@@ -29,7 +30,7 @@
       # See also man systemd.network
       matchConfig.Name = "wg0";
       address = [
-        "10.100.0.1/24"
+        "10.0.0.1/24"
       ];
       DHCP = "yes";
       # dns = [ "" ];
