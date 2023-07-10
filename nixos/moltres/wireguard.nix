@@ -1,8 +1,6 @@
-let
-  publicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
-in {
+{
   networking.firewall.allowedUDPPorts = [51820];
-   boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
+  boot.extraModulePackages = [config.boot.kernelPackages.wireguard];
   systemd.network = {
     netdevs = {
       "20-wg0" = {
@@ -16,13 +14,15 @@ in {
           PrivateKeyFile = "/persist/wireguard/private";
           ListenPort = 9918;
         };
-        wireguardPeers = [{
-          wireguardPeerConfig = {
-            PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
-            AllowedIPs = [ "10.0.0.1/32" ];
-            Endpoint = "wg.schwem.io:51820";
+        wireguardPeers = [
+          {
+            wireguardPeerConfig = {
+              PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
+              AllowedIPs = ["10.0.0.1/32"];
+              Endpoint = "wg.schwem.io:51820";
+            };
           }
-        }];
+        ];
       };
     };
     networks.wg0 = {

@@ -1,5 +1,5 @@
 {config, ...}: {
-  boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
+  boot.extraModulePackages = [config.boot.kernelPackages.wireguard];
   networking.firewall.allowedUDPPorts = [51820];
   systemd.network = {
     enable = true;
@@ -15,12 +15,14 @@
           PrivateKeyFile = "/persist/wireguard/private";
           ListenPort = 51820;
         };
-        wireguardPeers = [{
-          wireguardPeerConfig = {
-            PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
-            AllowedIPs = [ "10.0.0.2/32" ];
+        wireguardPeers = [
+          {
+            wireguardPeerConfig = {
+              PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
+              AllowedIPs = ["10.0.0.2/32"];
+            };
           }
-        }];
+        ];
       };
     };
     networks.wg0 = {
@@ -32,9 +34,8 @@
       # DHCP = "no";
       # dns = [ "" ];
       # gateway = [
-        # "10.0.0.1"
+      # "10.0.0.1"
       # ];
     };
   };
-};
 }

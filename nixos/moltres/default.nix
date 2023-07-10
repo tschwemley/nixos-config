@@ -10,8 +10,8 @@
     swapSize = "-4G";
   };
   impermanence = import ../modules/system/impermanence.nix {
-	  inherit inputs;
-	  additionalDirs = [ "/etc/systemd/network" ];
+    inherit inputs;
+    additionalDirs = ["/etc/systemd/network"];
   };
   user = import ../modules/users/server.nix {
     inherit config;
@@ -46,7 +46,7 @@ in {
   # moltres has issues with DHCP so disable and use systemd-networkd instead
   networking = {
     inherit hostName;
-	dhcpcd.enable = false;
+    dhcpcd.enable = false;
   };
 
   services.getty.autologinUser = "root";
@@ -78,14 +78,15 @@ in {
       user_password = {
         neededForUsers = true;
       };
-	  wireguard_private = {
-		  mode = "0600";
-		  path = "/persist/wireguard/private";
-	  };
-	  wireguard_public = { #this doesn't need to be a secret but it's convenient
-		mode = "0644";
-		path = "/persist/wireguard/public";
-	  };
+      wireguard_private = {
+        mode = "0600";
+        path = "/persist/wireguard/private";
+      };
+      wireguard_public = {
+        #this doesn't need to be a secret but it's convenient
+        mode = "0644";
+        path = "/persist/wireguard/public";
+      };
       systemd_networkd_10_ens3 = {
         mode = "0644";
         path = "/etc/systemd/network/10-ens3.network";
