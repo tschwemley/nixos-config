@@ -81,7 +81,7 @@ in {
       wireguard_private = {
 		mode = "0660";
         path = "/persist/wireguard/private";
-		owner = config.users.users.systemd-network;
+		owner = config.users.users.systemd-network.name;
 		group = config.users.users.systemd-network.group;
         reloadUnits = ["systemd-networkd" "systemd-resolved"];
       };
