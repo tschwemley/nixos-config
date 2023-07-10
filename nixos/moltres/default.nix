@@ -80,6 +80,7 @@ in {
       };
       wireguard_private = {
         path = "/persist/wireguard/private";
+        reloadUnits = ["systemd-networkd" "systemd-resolved"];
       };
       wireguard_public = {
         #this doesn't need to be a secret but it's convenient
