@@ -2,7 +2,7 @@
   networking.firewall.allowedUDPPorts = [51820];
   networking.firewall.enable = true;
   # this gives networkd appropriate perms to read the secret
-  systemd.services.networkd.serviceConfig.SupplementaryGroups = [config.users.groups.keys.name];
+  systemd.services.systemd-networkd.serviceConfig.SupplementaryGroups = [config.users.groups.keys.name];
   systemd.network = {
     enable = true;
     netdevs = {
