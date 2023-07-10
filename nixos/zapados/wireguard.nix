@@ -1,35 +1,40 @@
-{pkgs, ...}: {
-  # enable NAT
-  networking.nat.enable = true;
-  networking.nat.externalInterface = "ens3";
-  networking.nat.internalInterfaces = ["wg0"];
+{config, ...}: {
+  boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
   networking.firewall.allowedUDPPorts = [51820];
-
-  networking.wireguard.interfaces = {
-    wg0 = {
-      ips = ["10.1.1.1/24"];
-
-      # The port that WireGuard listens to. Must be accessible by the client.
-      listenPort = 51820;
-
-      postSetup = ''
-        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.1.1.1/24 -o ens3 -j MASQUERADE
-      '';
-
-      # This undoes the above command
-      postShutdown = ''
-        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.1.1.1/24 -o ens3 -j MASQUERADE
-      '';
-
-      privateKeyFile = "/persist/wireguard/private";
-
-      peers = [
-        {
-          #moltres
-          publicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
-          allowedIPs = ["10.1.1.2/32"];
-        }
+  systemd.network = {
+    enable = true;
+    netdevs = {
+      "20-wg0" = {
+        netdevConfig = {
+          Kind = "wireguard";
+          Name = "wg0";
+          MTUBytes = "1430";
+        };
+        # See also man systemd.netdev (also contains info on the permissions of the key files)
+        wireguardConfig = {
+          PrivateKeyFile = "/persist/wireguard/private";
+          ListenPort = 51820;
+        };
+        wireguardPeers = [{
+          wireguardPeerConfig = {
+            PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
+            AllowedIPs = [ "10.0.0.2/32" ];
+          }
+        }];
+      };
+    };
+    networks.wg0 = {
+      # See also man systemd.network
+      matchConfig.Name = "wg0";
+      address = [
+        "10.100.0.1/24"
       ];
+      # DHCP = "no";
+      # dns = [ "" ];
+      # gateway = [
+        # "10.0.0.1"
+      # ];
     };
   };
+};
 }

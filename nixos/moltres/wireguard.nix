@@ -2,29 +2,34 @@ let
   publicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
 in {
   networking.firewall.allowedUDPPorts = [51820];
-  networking.wireguard.interfaces = {
-    wg0 = {
-      ips = ["10.1.1.2/24"];
-      listenPort = 51820;
-      privateKeyFile = "/persist/wireguard/private";
-
-      # use postUp instead of persistentKeepalive because persistentKeepalive doesn't auto-connect
-      # to the peer. This is apparently because the private key is set after the persistentKeepalive
-      # which happens because we're setting the private key from a file.
-      # postSetUp = ["wg set wgnet0 peer ${publicKey} persistent-keepalive 25"];
-      postSetup = ["wg set wg0 peer ${publicKey} persistent-keepalive 25"];
-      peers = [
-        {
-          inherit publicKey;
-
-          # Forward all the traffic via VPN.
-          allowedIPs = ["0.0.0.0/0"];
-
-          endpoint = "wg.schwem.io:51820";
-
-          # Send keepalives every 25 seconds. Important to keep NAT tables alive.
-          # persistentKeepalive = 25;
-        }
+   boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
+  systemd.network = {
+    netdevs = {
+      "20-wg0" = {
+        netdevConfig = {
+          Kind = "wireguard";
+          Name = "wg0";
+          MTUBytes = "1430";
+        };
+        # See also man systemd.netdev (also contains info on the permissions of the key files)
+        wireguardConfig = {
+          PrivateKeyFile = "/persist/wireguard/private";
+          ListenPort = 9918;
+        };
+        wireguardPeers = [{
+          wireguardPeerConfig = {
+            PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
+            AllowedIPs = [ "10.0.0.1/32" ];
+            Endpoint = "wg.schwem.io:51820";
+          }
+        }];
+      };
+    };
+    networks.wg0 = {
+      matchConfig.Name = "wg0";
+      # IP addresses the client interface will have
+      address = [
+        "10.0.0.2/24"
       ];
     };
   };
