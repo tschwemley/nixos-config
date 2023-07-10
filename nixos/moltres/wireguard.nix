@@ -1,6 +1,8 @@
 {
   networking.firewall.allowedUDPPorts = [51820];
-   # boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
+  networking.firewall.enable = true;
+  # this gives networkd appropriate perms to read the secret
+  systemd.services.networkd.serviceConfig.SupplementaryGroups = [config.users.groups.keys.name];
   systemd.network = {
     netdevs = {
       "20-wg0" = {
@@ -15,14 +17,14 @@
           ListenPort = 9918;
         };
         wireguardPeers = [
-		{
-          wireguardPeerConfig = {
-            PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
-            AllowedIPs = [ "10.0.0.1/32" ];
-            Endpoint = "wg.schwem.io:51820";
-          };
-        }
-		];
+          {
+            wireguardPeerConfig = {
+              PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
+              AllowedIPs = ["10.0.0.1/32"];
+              Endpoint = "wg.schwem.io:51820";
+            };
+          }
+        ];
       };
     };
     networks.wg0 = {
