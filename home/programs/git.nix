@@ -1,22 +1,17 @@
 {
-  name ? "Tyler Schwemley",
-  email ? "tjschwem@gmail.com",
-  enableLfs ? true,
+  name,
+  email,
   ...
 }: {
   programs.git = {
     enable = true;
-    config = {
-      init = {
-        defaultBranch = "main";
-      };
-      userEmail = name;
-      userName = email;
-      lfs.enable = true;
-      extraConfig = {
-        core = {
-          whitespace = "trailing-space,space-before-tab";
-        };
+    userEmail = name;
+    userName = email;
+    lfs.enable = true;
+    extraConfig = {
+		init.defaultBranch = "main";
+      core = {
+        whitespace = "trailing-space,space-before-tab";
       };
     };
   };
