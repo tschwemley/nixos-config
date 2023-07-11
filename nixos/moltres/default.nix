@@ -24,7 +24,7 @@ in {
     user
     ../profiles/server.nix
     ./wireguard.nix
-    # ../services/k3s
+    ../services/k3s/agent.nix
     # ../services/keycloak.nix
   ];
 

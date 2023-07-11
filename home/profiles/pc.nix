@@ -6,12 +6,10 @@ let
 in {
   imports = [
     ./.
-    ../programs/brave.nix
+    ../programs/discord.nix
     ../programs/lazygit.nix
     ../programs/reaper.nix
-    #../programs/rustdesk.nix
     ../terminals/wezterm.nix
-    ../window-managers
     git
   ];
 }

@@ -19,9 +19,9 @@ in {
     diskConfig
     impermanence
     user
-    ../profiles/server.nix
     ./wireguard.nix
-    # ../services/k3s
+    ../profiles/server.nix
+     ../services/k3s/server.nix
     # ../services/keycloak.nix
   ];
 
@@ -75,6 +75,7 @@ in {
       };
       user_password = {
         neededForUsers = true;
+        owner = config.users.users.zapados.name;
       };
       systemd_networkd_10_ens3 = {
         mode = "0644";

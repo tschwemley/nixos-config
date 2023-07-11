@@ -11,7 +11,7 @@
       defaultSession = "none+awesome";
     };
 
-    #TODO: split out
+	# this could also bet setup via home-manager but I found it more straightforward here.
     windowManager.awesome = {
       enable = true;
       luaModules = with pkgs.luaPackages; [
