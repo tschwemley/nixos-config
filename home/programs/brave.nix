@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [nnn];
+  home.packages = with pkgs; [brave];
 }

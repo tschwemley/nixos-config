@@ -75,6 +75,9 @@ in {
 
     # Specify machine secrets
     secrets = {
+      root_password = {
+        neededForUsers = true;
+      };
       user_password = {
         neededForUsers = true;
       };
@@ -103,8 +106,11 @@ in {
   users = {
     mutableUsers = false;
     users = {
-      root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAl9LJZ1yKITrHoPGRnqX5FvCmGcE7/a10BwDX52tUgU"];
-      ${hostName}.passwordFile = config.sops.secrets.user_password.path;
+      root.passwordFile = config.sops.secrets.root_password.path;
+      ${hostName} = {
+        passwordFile = config.sops.secrets.user_password.path;
+        openssh.authorizedKeys.keys = [(builtins.readFile ./ssh_key.pub)];
+      };
     };
   };
 }
