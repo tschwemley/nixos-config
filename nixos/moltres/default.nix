@@ -24,7 +24,8 @@ in {
     user
     ../profiles/server.nix
     ./wireguard.nix
-    (import ../modules/services/k3s/agent.nix { nodeIp = "10.0.0.2"; })
+    ../modules/services/k3s/agent.nix
+    # ../modules/services/keycloak.nix
   ];
 
   boot = {
@@ -46,6 +47,7 @@ in {
   networking = {
     inherit hostName;
     dhcpcd.enable = false;
+	wireguardIp = "10.0.0.2";
   };
 
   services.getty.autologinUser = "root";
