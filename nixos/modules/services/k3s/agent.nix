@@ -5,7 +5,7 @@
 }: {
   imports = [./.];
 
-  sops.secrets.k3s-server-token.sopsFile = ./secrets.yml;
+  sops.secrets.k3s-server-token.sopsFile = ./secrets.yaml;
   services.k3s.role = "agent";
   # generated random string
   services.k3s.tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
