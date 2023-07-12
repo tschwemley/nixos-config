@@ -47,7 +47,6 @@ in {
   networking = {
     inherit hostName;
     dhcpcd.enable = false;
-	wireguardIp = "10.0.0.2";
   };
 
   services.getty.autologinUser = "root";
