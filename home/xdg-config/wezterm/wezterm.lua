@@ -3,7 +3,7 @@ return {
   audible_bell = "Disabled",
   color_scheme = "Gruvbox dark, medium (base16)",
   font = wezterm.font("Hasklig"),
-  font_size = 18,
+  font_size = 20,
   keys = {
 	{
 	  key = 'h',
