@@ -33,6 +33,9 @@
       vim-dadbod-completion
       which-key-nvim
 
+      #colorschemes
+      gruvbox-material
+
       # completion plugins
       nvim-cmp
       cmp_luasnip

@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  # 51820 and 51821 for wg backend
+  firewall.allowedUDPPorts = [51820 51821];
+  # 10250 for kubelet metrics
+  firewall.allowedTCPPorts = [10250];
   services.k3s.enable = true;
 
   environment.systemPackages = with pkgs; [

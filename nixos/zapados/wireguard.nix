@@ -1,5 +1,5 @@
 {config, ...}: {
-  networking.firewall.allowedUDPPorts = [51820];
+  networking.firewall.allowedUDPPorts = [9918];
   networking.firewall.enable = true;
   # this gives networkd appropriate perms to read the secret
   systemd.services.systemd-networkd.serviceConfig.SupplementaryGroups = [config.users.groups.keys.name];
@@ -15,7 +15,7 @@
         # See also man systemd.netdev (also contains info on the permissions of the key files)
         wireguardConfig = {
           PrivateKeyFile = "/persist/wireguard/private";
-          ListenPort = 51820;
+          ListenPort = 9918;
         };
         wireguardPeers = [
           {
