@@ -24,7 +24,7 @@ in {
     user
     ../profiles/server.nix
     ./wireguard.nix
-    ../modules/services/k3s/agent.nix
+    ../modules/services/k3s/agent.nix { nodeIp = "10.0.0.2"; }
     # ../modules/services/keycloak.nix
   ];
 
