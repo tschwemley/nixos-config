@@ -44,7 +44,7 @@
                       mountOptions = ["compress=lzo"];
                     };
                     "/home" = {
-                      mountOptions = ["compress=lzo"];
+                      mountOptions = [];
                     };
                     "/nix" = {
                       mountOptions = ["compress=lzo" "noatime"];
