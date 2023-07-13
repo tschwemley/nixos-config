@@ -4,11 +4,8 @@
     ../programs/bat.nix
     ../programs/nnn.nix
     ../programs/ripgrep.nix
-    ../programs/tmux.nix
-  ];
-
-  home-manager.sharedModules = [
     ../shell
+    ../programs/tmux.nix
   ];
 
   nixpkgs = {
