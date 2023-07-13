@@ -5,6 +5,9 @@
     ../programs/nnn.nix
     ../programs/ripgrep.nix
     ../programs/tmux.nix
+  ];
+
+  home.sharedModules = [
     ../shell
   ];
 
