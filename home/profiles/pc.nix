@@ -17,6 +17,6 @@ in {
 
   # TODO: move this to system level or someplace more appropriate at a later date
   xdg.configFile = {
-    "awesome".source = ../xdg-config/awesome;
+    "awesome/rc.lua".source = ../xdg-config/awesome/rc.lua;
   };
 }
