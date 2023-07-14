@@ -2,8 +2,9 @@
   pkgs,
   lib,
   ...
-}: let
-in {
+}: {
+  imports = [./lsp.nix];
+
   programs.neovim = {
     enable = true;
     defaultEditor = lib.mkDefault true;
@@ -17,32 +18,41 @@ in {
     '';
     extraLuaPackages = [];
     plugins = with pkgs.vimPlugins; [
+      # bars and lines; you know - the fun stuff
       bufferline-nvim
-      comment-nvim
-      lsp-zero-nvim
-      luasnip
       lualine-nvim
+
+      # call the doctor, we diagnosing shit
+      trouble-nvim
+
+      comment-nvim
       nnn-vim
       nvim-dap
       nvim-luadev
-      nvim-lspconfig
       nvim-treesitter
       telescope-nvim
       toggleterm-nvim
-      trouble-nvim
-      vim-dadbod
-      vim-dadbod-ui
-      vim-dadbod-completion
       which-key-nvim
 
-      #colorschemes
-      gruvbox-material
-
-      # completion plugins
       nvim-cmp
       cmp_luasnip
       cmp-nvim-lsp
       cmp-nvim-lua
+      luasnip
+
+      # d b rockin dat dadbod
+      vim-dadbod
+      vim-dadbod-ui
+      vim-dadbod-completion
+
+      # lsp shennanery
+      lsp-zero-nvim
+      #mason-nvim
+      #mason-lspconfig-nvim
+      nvim-lspconfig
+
+      # pretty things
+      gruvbox-material
     ];
     withPython3 = true;
     withNodeJs = true;
