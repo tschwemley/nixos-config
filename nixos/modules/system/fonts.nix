@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    fontconfig
+  ];
+
   fonts = {
     enableDefaultFonts = true;
 
