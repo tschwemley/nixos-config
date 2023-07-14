@@ -21,7 +21,6 @@ in {
       inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./profiles/common.nix
           ./profiles/pc.nix
           {
             home.username = "schwem";

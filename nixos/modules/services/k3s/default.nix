@@ -17,4 +17,8 @@
     wants = ["containerd.service"];
     after = ["containerd.service"];
   };
+
+  programs.zsh.shellAliases = {
+    kubectl = "k3s kubectl";
+  };
 }

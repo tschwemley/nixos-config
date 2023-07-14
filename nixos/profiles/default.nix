@@ -5,11 +5,12 @@
 }: let
 in {
   imports = [
-    inputs.home-manager.nixosModule
+    inputs.home-manager.nixosModules.home-manager
     inputs.sops.nixosModules.sops
     inputs.disko.nixosModules.disko
     ../modules/services/openssh.nix
     ../modules/system/nix.nix
+    ../modules/shell
     ../modules/users
   ];
 
@@ -17,7 +18,7 @@ in {
   environment.systemPackages = with pkgs; [
     curl
     git
-	ripgrep
+    ripgrep
     rustc
     rustfmt
     wget
@@ -25,6 +26,8 @@ in {
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+
+  # enable at system level even though managed via home-manager so proper files are sourced
   # home-manager.sharedModules = [
   #
   # ];

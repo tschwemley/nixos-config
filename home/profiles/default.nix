@@ -4,7 +4,6 @@
     ../programs/bat.nix
     ../programs/nnn.nix
     ../programs/ripgrep.nix
-    ../shell
     ../programs/tmux.nix
   ];
 
