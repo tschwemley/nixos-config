@@ -7,7 +7,7 @@
     nodePackages.yaml-language-server
   ];
 
-  programz.neovim.extraLuaConfig = "require 'schwem.lsp'";
+  programs.neovim.extraLuaConfig = "require 'schwem.lsp'";
   programs.neovim.plugins = with pkgs.vimPlugins; [
       lsp-zero-nvim
       nvim-lspconfig
