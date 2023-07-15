@@ -3,6 +3,11 @@
   lib,
   ...
 }: {
+  imports = [
+	  ./db.nix
+	  ./lsp.nix
+  ];
+
   programs.neovim = {
     enable = true;
     defaultEditor = lib.mkDefault true;
@@ -50,11 +55,4 @@
     "nvim/lua".source = ../xdg-config/nvim/lua;
     "nvim/ftplugin".source = ../xdg-config/nvim/ftplugin;
   };
-  
-  # import at the end so extraLuaConfig in this file loads first in case there are any dependencies
-  imports = [
-	  ./db.nix
-	  ./lsp.nix
-  ];
-
 }
