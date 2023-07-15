@@ -14,7 +14,7 @@
       require "schwem.colorschemes"
       require "schwem.keymap"
       require "schwem.helpers"
-      require "schwem.lsp"
+      --require "schwem.lsp"
       require "schwem.options"
       require "schwem.plugins"
     '';
