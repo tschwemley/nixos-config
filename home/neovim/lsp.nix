@@ -8,14 +8,13 @@
   ];
 
   programs.neovim = {
-	  extraLuaConfig = "require 'schwem.lsp'";
-	  plugins = with pkgs.vimPlugins; [
-		  lsp-zero-nvim
-		  nvim-lspconfig
-		  # TODO: remove these if unnecesasry
-		  #mason-nvim
-		  #mason-lspconfig-nvim
-	  ];
-
+    extraLuaConfig = "require 'schwem.lsp'";
+    plugins = with pkgs.vimPlugins; [
+      lsp-zero-nvim
+      nvim-lspconfig
+      # TODO: remove these if unnecesasry
+      #mason-nvim
+      #mason-lspconfig-nvim
+    ];
   };
 }

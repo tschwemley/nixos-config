@@ -4,8 +4,11 @@
   ...
 }: {
   imports = [
-	  ./db.nix
-	  ./lsp.nix
+    ./completion.nix
+    ./db.nix
+    ./debugging.nix
+    ./lsp.nix
+    ./navigation.nix
   ];
 
   programs.neovim = {
@@ -20,27 +23,15 @@
     '';
     extraLuaPackages = [];
     plugins = with pkgs.vimPlugins; [
-      # bars and lines; you know - the fun stuff
-      bufferline-nvim
-      lualine-nvim
-
       # call the doctor, we diagnosing shit
       trouble-nvim
 
       comment-nvim
-      nnn-vim
-      nvim-dap
       nvim-luadev
       nvim-treesitter
       telescope-nvim
       toggleterm-nvim
       which-key-nvim
-
-      nvim-cmp
-      cmp_luasnip
-      cmp-nvim-lsp
-      cmp-nvim-lua
-      luasnip
 
       # pretty things
       gruvbox-material
