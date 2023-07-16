@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     gopls
-	lua-language-server
+	#lua-language-server
     nixd
     nodePackages.intelephense
     nodePackages.typescript-language-server
@@ -13,9 +13,6 @@
     plugins = with pkgs.vimPlugins; [
       lsp-zero-nvim
       nvim-lspconfig
-      # TODO: remove these if unnecesasry
-      #mason-nvim
-      #mason-lspconfig-nvim
     ];
   };
 }
