@@ -10,3 +10,7 @@ with the exception of standalone plugins, which use the `config` option in `plug
 
 ## Import Ordering
 TODO: fill this out if it matters. Import order in  nix is in reverse array order.
+
+### TODOs
+- TODO: Add language injection to treesitter config
+
