@@ -5,7 +5,7 @@
   programs.neovim = {
     plugins = with pkgs.vimPlugins; [
       # comment-nvim
-      nvim-treesitter
+      nvim-treesitter.withAllGrammars
     ];
 	extraLuaConfig = "";
   };
