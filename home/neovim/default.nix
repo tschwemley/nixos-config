@@ -2,22 +2,12 @@
   pkgs,
   lib,
   ...
-}: let
-	plugins = import ./plugins { inherit (pkgs) vimPlugins; inherit (lib.types) submodule; };
-in
-{
+}: {
   imports = [
-    ./colors.nix
-    ./completion.nix
-    ./db.nix
-    ./debugging.nix
-    ./formatters-parsers.nix
-    ./lsp.nix
-    ./navigation.nix
+    ./modules
   ];
 
   programs.neovim = {
-	  inherit plugins;
     enable = true;
     defaultEditor = lib.mkDefault true;
 	# plugins = with lib.types.submobule; [
