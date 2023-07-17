@@ -8,12 +8,15 @@
     ./completion.nix
     ./db.nix
     ./debugging.nix
-    ./formatters-parsers.nix
+    ./treesitter.nix
     ./lsp.nix
     ./navigation.nix
-    (import ./plugins {
-      inherit (pkgs) vimPlugins;
-      inherit (lib.types) submodule;
-    })
   ];
+
+  # plugins that don't fit into a module are defined here
+  programs.neovim.plugins = with pkgs.vimPlugins; [
+	comment-nvim
+	which-key-nvim	
+  ];
+  
 }
