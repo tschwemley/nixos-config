@@ -7,7 +7,7 @@
   programs.neovim = {
     plugins = with pkgs.vimPlugins; [
       nvim-dap
+      # nvim-dap-ui
     ];
-    extraLuaConfig = "require 'schwem.debugging'";
   };
 }
