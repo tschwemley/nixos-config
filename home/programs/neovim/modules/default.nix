@@ -10,8 +10,8 @@
     };
   };
 in {
-  inherit moduleArgs;
   imports = [
+	moduleArgs
     ./colors.nix
     ./completion.nix
     ./db.nix
