@@ -2,7 +2,10 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+	comment = import ./plugins/comment.nix { inherit (pkgs) vimPlugins; };
+in
+{
   imports = [
     ./colors.nix
     ./completion.nix
@@ -16,16 +19,9 @@
   programs.neovim = {
     enable = true;
     defaultEditor = lib.mkDefault true;
-    # extraLuaConfig = ''
-    #   require "schwem.keymap"
-    #   require "schwem.helpers"
-    #   require "schwem.options"
-    #   require "schwem.plugins"
-    # '';
-    extraLuaPackages = [];
     plugins = with pkgs.vimPlugins; [
       # I don't know where to put these ones yet
-      comment-nvim
+	  comment
       nvim-luadev
       toggleterm-nvim
       which-key-nvim
