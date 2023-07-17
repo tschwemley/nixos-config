@@ -2,7 +2,15 @@
   pkgs,
   lib,
   ...
-}: {
+}: 
+let
+	mkPlugin = pluginName: config: {
+		type = "lua";	
+		plugin = pkgs.vimPlugins.${pluginName};
+		inherit config;
+	};
+in
+{
   imports = [
     ./completion.nix
     ./db.nix
@@ -24,7 +32,8 @@
     extraLuaPackages = [];
     plugins = with pkgs.vimPlugins; [
       # I don't know where to put these ones yet
-      comment-nvim
+	  mkPlugin "comment-nvim" "require("Comment").setup()"
+      # comment-nvim
       nvim-luadev
       nvim-treesitter
       telescope-nvim

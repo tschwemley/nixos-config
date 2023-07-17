@@ -1,2 +1,2 @@
-require("Comment").setup()
+-- require("Comment").setup()
 require("toggleterm").setup()
