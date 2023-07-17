@@ -1,3 +1,6 @@
+# TODO: 
+- Rewrite this
+
 ## Features
 - uses nix flakes
 - standalone home-manager configuration
