@@ -9,7 +9,6 @@
   ];
 
   programs.neovim = {
-    extraLuaConfig = "require 'schwem.lsp'";
     plugins = with pkgs.vimPlugins; [
       lsp-zero-nvim
       nvim-lspconfig

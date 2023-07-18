@@ -4,6 +4,5 @@
       # comment-nvim
       nvim-treesitter.withAllGrammars
     ];
-    extraLuaConfig = "";
   };
 }
