@@ -5,10 +5,7 @@
   ...
 }: let
   hostName = "moltres";
-  diskConfig = import ../../modules/disks/btrfs-ephemeral.nix {
-    diskName = "/dev/vda";
-    swapSize = "-4G";
-  };
+  diskConfig = import ../../modules/disks/k3s.nix { diskName = "/dev/vda"; };
   impermanence = import ../../modules/system/impermanence.nix {
     inherit inputs;
     additionalDirs = ["/etc/systemd/network"];
@@ -22,10 +19,9 @@ in {
     diskConfig
     impermanence
     user
-    ../../profiles/server.nix
+    ../../profiles/k3s.nix
     ./wireguard.nix
     ../../modules/services/k3s/agent.nix
-    # ../../modules/services/keycloak.nix
   ];
 
   boot = {
