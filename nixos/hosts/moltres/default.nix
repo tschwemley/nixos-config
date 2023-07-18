@@ -5,7 +5,7 @@
   ...
 }: let
   hostName = "moltres";
-  diskConfig = import ../../modules/disks/k3s.nix { diskName = "/dev/vda"; };
+  # diskConfig = import ../../modules/disks/k3s.nix { diskName = "/dev/vda"; };
   impermanence = import ../../modules/system/impermanence.nix {
     inherit inputs;
     additionalDirs = ["/etc/systemd/network"];
@@ -16,7 +16,7 @@
   };
 in {
   imports = [
-    diskConfig
+    # diskConfig
     impermanence
     user
     ../../profiles/k3s.nix
