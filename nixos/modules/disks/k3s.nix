@@ -1,5 +1,5 @@
 {
-  diskName ? "/dev/vda",
+  diskName,
   ...
 }: {
   disko = {

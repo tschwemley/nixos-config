@@ -5,7 +5,7 @@
   ...
 }: let
   hostName = "zapados";
-  # diskConfig = import ../../modules/disks/k3s.nix { diskName = "/dev/vda"; };
+  diskConfig = import ../../modules/disks/k3s.nix { diskName = "/dev/vda"; };
   impermanence = import ../../modules/system/impermanence.nix {inherit inputs;};
   user = import ../../modules/users/server.nix {
     inherit config;
@@ -13,13 +13,13 @@
   };
 in {
   imports = [
-    # diskConfig
+    diskConfig
     impermanence
     user
     ./wireguard.nix
     ../../modules/services/k3s/server.nix
     ../../profiles/k3s.nix
-    # ../../modules/services/keycloak.nix
+  j # ../../modules/services/keycloak.nix
   ];
 
   boot = {
