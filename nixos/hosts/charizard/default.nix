@@ -4,23 +4,23 @@
   lib,
   ...
 }: let
-  diskConfig = import ../modules/disks/btrfs-ephemeral.nix {
+  diskConfig = import ../../modules/disks/btrfs-ephemeral.nix {
     diskName = "/dev/nvme0n1";
     swapSize = "-37G"; #37G gets me close to ram +2gb and I don't wanna math right now
   };
   hardware = {
     imports = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
-      ../modules/hardware/nvidia.nix
-      ../modules/hardware/opengl.nix
+      ../../modules/hardware/nvidia.nix
+      ../../modules/hardware/opengl.nix
     ];
   };
 in {
   imports = [
     diskConfig
     hardware
-    ../profiles/pc.nix
-    ../modules/users/schwem.nix
+    ../../profiles/pc.nix
+    ../../modules/users/schwem.nix
   ];
 
   boot = {

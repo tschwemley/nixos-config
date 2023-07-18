@@ -1,5 +1,8 @@
 {pkgs, ...}: {
-  imports = [./.];
+  imports = [
+	  ./.
+	  ../modules/services/fail2ban.nix
+  ];
 
   environment.systemPackages = with pkgs; [
     wireguard-tools
