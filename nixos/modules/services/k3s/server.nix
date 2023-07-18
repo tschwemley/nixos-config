@@ -1,4 +1,4 @@
-{lib, ...}: {
+{config, lib, ...}: {
   imports = [./.];
 
   networking.firewall.allowedTCPPorts = [6443];
