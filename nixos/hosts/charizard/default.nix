@@ -59,19 +59,12 @@ in {
     useDHCP = lib.mkDefault true;
   };
 
-  services.getty.autologinUser = "root";
+  services.getty.autologinUser = "schwem";
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
     age.keyFile = "/persist/.age-keys.txt";
-
-    # Specify machine secrets
-    secrets = {
-      schwem_user_password = {
-        neededForUsers = true;
-      };
-    };
   };
 
   # don't update this
