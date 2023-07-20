@@ -4,10 +4,15 @@
   lib,
   ...
 }: let
-  diskConfig = import ../../modules/disks/btrfs-ephemeral.nix {
-    diskName = "/dev/nvme1n1";
-    swapSize = "-34Gib";
-  };
+  diskConfig = {
+	imports = [
+	  (import ../../modules/hardware/disks/btrfs-ephemeral.nix {
+		diskName = "/dev/nvme1n1";
+	  };)
+	  ../../modules/hardware/swap.nix
+	];
+  }
+  
   hardware = {
     imports = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
