@@ -1,7 +1,4 @@
-{
-  diskName,
-  ...
-}: {
+{diskName, ...}: {
   disko = {
     devices = {
       disk = {

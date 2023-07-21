@@ -1,10 +1,12 @@
 # TODO: this is just the default config for now. Customze this as needed
 {
- services.fail2ban = {
+  services.fail2ban = {
     enable = true;
     maxretry = 5; # Observe 5 violations before banning an IP
     ignoreIP = [
-      "10.0.0.0/8" "172.16.0.0/12" "192.168.0.0/16"
+      "10.0.0.0/8"
+      "172.16.0.0/12"
+      "192.168.0.0/16"
     ];
     bantime = "24h"; # Set bantime to one day
     bantime-increment = {
