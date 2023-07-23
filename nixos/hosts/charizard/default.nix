@@ -4,11 +4,10 @@
   lib,
   ...
 }: let
+  diskName = "/dev/nvme1n1";
   diskConfig = {
     imports = [
-      (import ../../modules/hardware/disks/btrfs-ephemeral.nix {
-        diskName = "/dev/nvme1n1";
-      })
+      (import ../../modules/hardware/disks/btrfs-ephemeral.nix { inherit diskName; })
       ../../modules/hardware/swap.nix
     ];
   };
@@ -38,7 +37,7 @@ in {
       grub = {
         efiSupport = true;
         efiInstallAsRemovable = true;
-        devices = ["/dev/nvme0n1"];
+        devices = [diskName];
       };
     };
   };
