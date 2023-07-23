@@ -7,7 +7,7 @@
   diskName = "/dev/nvme1n1";
   diskConfig = {
     imports = [
-      (import ../../modules/hardware/disks/btrfs-ephemeral.nix { inherit diskName; })
+      (import ../../modules/hardware/disks/btrfs-ephemeral.nix {inherit diskName;})
       ../../modules/hardware/swap.nix
     ];
   };
