@@ -42,10 +42,6 @@ in {
     };
   };
 
-  home-manager.sharedModules = [
-      ../../modules/hardware/opengl.nix
-  ];
-
   services.openssh = {
     enable = true;
     hostKeys = [
