@@ -31,7 +31,7 @@
     disko,
     flake-parts,
     home-manager,
-	kubenix,
+    kubenix,
     nixos-hardware,
     nixpkgs,
     sops,
