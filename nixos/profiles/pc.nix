@@ -7,6 +7,7 @@
     ./.
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     ../modules/hardware/audio.nix
+    ../modules/programs/barrier.nix
     ../modules/programs/steam.nix
     ../modules/system/fonts.nix
     ../modules/services/xserver.nix
