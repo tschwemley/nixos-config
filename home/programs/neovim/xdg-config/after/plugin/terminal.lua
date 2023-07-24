@@ -10,5 +10,5 @@ require('which-key').register({
 	},
 	{prefix = '<leader>'}
 }, {
-   '<C-\>' = { '<cmd>ToggleTerm dir=float<cr>', 'Floating Terminal'},
+   [[<C-\>]] = { '<cmd>ToggleTerm dir=float<cr>', 'Floating Terminal'},
 })
