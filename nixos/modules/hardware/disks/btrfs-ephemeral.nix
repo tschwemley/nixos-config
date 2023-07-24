@@ -42,9 +42,6 @@
                     "/home" = {
                       mountOptions = ["compress=zstd"];
                     };
-                    "/home/games" = {
-                      mountOptions = ["defaults" "nofail" "x-systemd.growfs" "noatime" "lazytime" "compress-force=zstd" "space_cache=v2" "autodefrag"];
-                    };
                     "/nix" = {
                       mountOptions = ["compress=zstd" "noatime"];
                     };
