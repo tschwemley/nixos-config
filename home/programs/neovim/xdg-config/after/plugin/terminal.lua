@@ -9,4 +9,6 @@ require('which-key').register({
 		v = { '<cmd>ToggleTerm dir=vertical<cr>', 'Vertical Terminal'},
 	},
 	{prefix = '<leader>'}
+}, {
+   '<C-\>' = { '<cmd>ToggleTerm dir=float<cr>', 'Floating Terminal'},
 })
