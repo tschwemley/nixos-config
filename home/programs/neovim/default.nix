@@ -16,8 +16,8 @@
     vimdiffAlias = true;
   };
 
+  # link neovim config to $HOME/.config/nvim
   xdg.configFile = {
-    "nvim/lua".source = ./xdg-config/lua;
-    "nvim/after".source = ./xdg-config/after;
+    "nvim".source = ./xdg-config;
   };
 }

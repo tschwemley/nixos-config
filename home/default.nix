@@ -3,34 +3,22 @@
   withSystem,
   ...
 }: let
-  mkHome = system: user: withSystem system ({pkgs, ...}:
+  mkHome = system: user: profile:
+    withSystem system ({pkgs, ...}:
       inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./profiles/pc.nix
+          profile
           {
             home.username = user;
             home.homeDirectory = "/home/${user}";
           }
         ];
       });
-in
-{
+in {
   flake.homeConfigurations = {
-    schwem = mkHome "x86_64-linux" "schwem";
-    "work@linux" = mkHome "x86_64-linux" "tschwemley";
-    /*
-    schwem = withSystem "x86_64-linux" ({pkgs, ...}:
-      inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./profiles/pc.nix
-          {
-            home.username = "schwem";
-            home.homeDirectory = "/home/schwem";
-          }
-        ];
-      });
-    */
+    schwem = mkHome "x86_64-linux" "schwem" ./profiles/pc.nix;
+    "work@dev" = mkHome "x86_64-linux" "tschwemley" ./profiles/work.nix;
+    "work@mac" = mkHome "x86_64-darwin" "tschwemley" ./profiles/work.nix;
   };
 }

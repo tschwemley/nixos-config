@@ -1,4 +1,8 @@
-{lib, pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./.
     ../modules/services/fail2ban.nix
@@ -9,7 +13,7 @@
   ];
 
   time.timeZone = lib.mkDefault "UTC";
-  
+
   # security.acme = {
   #   acceptTerms = true;
   #   defaults.email = "me@tylerschwemley.com";
