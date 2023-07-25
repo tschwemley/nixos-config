@@ -14,7 +14,11 @@ vim.o.errorbells = false
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
-vim.o.smartindent = true
+vim.o.cindent = true
+
+-- always use unix line endings by default
+vim.o.fileformats=unix,dos
+vim.o.fileformat=unix
 
 vim.o.wrap = false
 
