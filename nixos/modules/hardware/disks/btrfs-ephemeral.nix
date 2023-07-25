@@ -48,9 +48,11 @@
                     "/persist" = {
                       mountOptions = ["defaults" "compress=zstd" "noatime"];
                     };
+                    /*
                     "/games" = {
                       mountOptions = ["defaults" "autodefrag" "compress=zstd" "lazytime" "nofail" "noatime" "x-systemd.growfs" "space_cache=v2"];
                     };
+                    */
                     "/swap" = {
                       mountOptions = ["noatime" "nodatacow"];
                     };
