@@ -37,16 +37,19 @@
                   subvolumes = {
                     "/rootfs" = {
                       mountpoint = "/";
-                      mountOptions = ["compress=zstd"];
+                      mountOptions = ["defaults" "compress=zstd"];
                     };
                     "/home" = {
-                      mountOptions = ["compress=zstd"];
+                      mountOptions = ["defaults" "compress=zstd"];
                     };
                     "/nix" = {
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = ["defaults" "compress=zstd" "noatime"];
                     };
                     "/persist" = {
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = ["defaults" "compress=zstd" "noatime"];
+                    };
+                    "/games" = {
+                      mountOptions = ["defaults" "autodefrag" "compress=zstd" "lazytime" "nofail" "noatime" "x-systemd.growfs" "space_cache=v2"];
                     };
                     "/swap" = {
                       mountOptions = ["noatime" "nodatacow"];
