@@ -55,6 +55,7 @@
 
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
+            manix
             nixos-generators
             pkgs.sops
             ssh-to-age
