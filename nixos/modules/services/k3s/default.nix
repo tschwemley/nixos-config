@@ -17,14 +17,14 @@
   services.k3s.enable = true;
   sops.secrets.k3s-server-token.sopsFile = ./secrets.yaml;
   systemd.services = {
-	  k3s = {
-		requires = ["containerd.service" "run-secrets.d.mount" "systemd-networkd.service"];
-		after = ["containerd.service" "firewall.service" "run-secrets.d.mount" "systemd-networkd.service"];
-	  };
-	  systemd-networkd = {
-		requires = ["run-secrets.d.mount"];
-		after = ["run-secrets.d.mount"];
-	  };
+    k3s = {
+      requires = ["containerd.service" "run-secrets.d.mount" "systemd-networkd.service"];
+      after = ["containerd.service" "firewall.service" "run-secrets.d.mount" "systemd-networkd.service"];
+    };
+    systemd-networkd = {
+      requires = ["run-secrets.d.mount"];
+      after = ["run-secrets.d.mount"];
+    };
   };
 
   virtualisation.containerd = {
