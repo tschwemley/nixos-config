@@ -18,7 +18,7 @@
   sops.secrets.k3s-server-token.sopsFile = ./secrets.yaml;
   systemd.services = {
 	  k3s = {
-		wants = ["containerd.service" "run-secrets.d.mount" "systemd-networkd.service"];
+		requires = ["containerd.service" "run-secrets.d.mount" "systemd-networkd.service"];
 		after = ["containerd.service" "firewall.service" "run-secrets.d.mount" "systemd-networkd.service"];
 	  };
 	  systemd-networkd = {
