@@ -15,9 +15,6 @@ in {
     git
   ];
 
-  # on my personal machines I don't want to be prompted for my pw
-  security.sudo.wheelNeedsPassword = false;
-
   # TODO: move this to system level or someplace more appropriate at a later date
   xdg.configFile = {
     "awesome/rc.lua".source = ../xdg-config/awesome/rc.lua;
