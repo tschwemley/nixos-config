@@ -10,7 +10,6 @@
     "/persist" = {
       directories =
         [
-          #"/etc/systemd/network"
           "/etc/ssh"
           "/var/log"
         ]
@@ -18,7 +17,7 @@
 
       files =
         [
-          # "/var/run/secrets.d/age-keys.txt"
+          "/var/run/secrets.d/age-keys.txt"
           # "/etc/machine-id"
         ]
         ++ additionalFiles;
