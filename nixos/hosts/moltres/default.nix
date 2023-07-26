@@ -22,9 +22,10 @@ in {
     diskConfig
     impermanence
     user
-    ../../profiles/k3s.nix
+    # ../../profiles/k3s.nix
+    ../../profiles/default.nix
     ./wireguard.nix
-    ../../modules/services/k3s/agent.nix
+    # ../../modules/services/k3s/agent.nix
   ];
 
   boot = {
