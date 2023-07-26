@@ -8,6 +8,7 @@ in {
     inputs.home-manager.nixosModules.home-manager
     inputs.sops.nixosModules.sops
     inputs.disko.nixosModules.disko
+    ../modules/programs/thefuck.nix
     ../modules/programs/zsh.nix
     ../modules/services/openssh.nix
     ../modules/system/nix.nix
@@ -18,6 +19,7 @@ in {
   environment.systemPackages = with pkgs; [
     curl
     git
+    jq
     ripgrep
     rustc
     rustfmt
@@ -26,9 +28,4 @@ in {
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-
-  # enable at system level even though managed via home-manager so proper files are sourced
-  # home-manager.sharedModules = [
-  #
-  # ];
 }
