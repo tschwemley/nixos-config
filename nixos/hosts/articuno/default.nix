@@ -15,11 +15,11 @@
   };
 in {
   imports = [
-    modulesPath + "/profiles/qemu-guest.nix"
+    (modulesPath + "/profiles/qemu-guest.nix")
     impermanence
     user
-    ./wireguard.nix
     ../../profiles/default.nix
+    # ./wireguard.nix
     # ../../modules/services/k3s/server.nix
     # ../../profiles/k3s.nix
   ];
