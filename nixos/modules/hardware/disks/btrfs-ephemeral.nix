@@ -3,7 +3,7 @@
     disk = {
       "${diskName}" = {
         type = "disk";
-        device = "/dev/${diskName}";
+        #device = "/dev/${diskName}";
         content = {
           type = "gpt";
           partitions = {
@@ -27,7 +27,7 @@
                 type = "luks";
                 name = "crypted";
                 # extraOpenArgs = ["--allow-discards"];
-                settings.keyFile = "/tmp/secret.key";
+                # settings.keyFile = "/tmp/secret.key";
                 content = {
                   type = "btrfs";
                   extraArgs = ["-f"];
