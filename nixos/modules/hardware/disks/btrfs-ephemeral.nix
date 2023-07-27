@@ -3,7 +3,7 @@
     disk = {
       "${diskName}" = {
         type = "disk";
-        #device = "/dev/${diskName}";
+        device = "/dev/${diskName}";
         content = {
           type = "gpt";
           partitions = {
