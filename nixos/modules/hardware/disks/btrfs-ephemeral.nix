@@ -22,6 +22,7 @@
               };
             };
             luks = {
+              device = diskName;
               size = "100%";
               content = {
                 type = "luks";
