@@ -8,7 +8,6 @@
   diskConfig = {
     imports = [
       (import ../../modules/hardware/disks/btrfs-ephemeral.nix {inherit diskName;})
-      ../../modules/hardware/swap.nix
     ];
   };
 
