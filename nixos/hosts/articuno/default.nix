@@ -6,8 +6,7 @@
   ...
 }: let
   hostName = "articuno";
-
-  impermanence = import ../../modules/system/impermanence.nix {inherit inputs;};
+  # impermanence = import ../../modules/system/impermanence.nix {inherit inputs;};
   # user = import ../../modules/users/server.nix {
   #   inherit config;
   #   userName = hostName;

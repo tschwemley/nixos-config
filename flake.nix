@@ -19,6 +19,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     flake-parts.url = "github:hercules-ci/flake-parts";
     impermanence.url = "github:nix-community/impermanence/master";
     kubenix.url = "github:hall/kubenix";
@@ -33,6 +38,7 @@
     home-manager,
     kubenix,
     nixos-hardware,
+    nixos-generators,
     nixpkgs,
     sops,
     ...
@@ -56,16 +62,47 @@
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             manix
-            nixos-generators
             pkgs.sops
             ssh-to-age
             wireguard-tools
           ];
         };
 
+        packages.installer = nixos-generators.nixosGenerate {
+          inherit system;
+          modules = [
+            # ./nixos/modules/system/nix.nix
+            # ./nixos/profiles/default.nix
+          ];
+          format = "install-iso";
+        };
+
         formatter = pkgs.alejandra;
       };
 
+      # # TODO: move this somewhere
+      #  packages.x86_64-linux = {
+      #  nixnixnix = nixos-generators.nixosGenerate {
+      # system = "x86_64-linux";
+      # modules = [
+      #    # inputs.disko.nixosModules.disko
+      #   # ./nixos/modules/system/nix.nix
+      # ];
+      # format = "install-iso";
+      #
+      # # optional arguments:
+      # # explicit nixpkgs and lib:
+      # # pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      # # lib = nixpkgs.legacyPackages.x86_64-linux.lib;
+      # # additional arguments to pass to modules:
+      # # specialArgs = { myExtraArg = "foobar"; };
+      #
+      # # you can also define your own custom formats
+      # # customFormats = { "myFormat" = <myFormatModule>; ... };
+      # # format = "myFormat";
+      #  };
+      #  };
+      #
       # Import flake attrs
       imports = [
         ./home
