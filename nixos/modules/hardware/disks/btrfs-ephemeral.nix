@@ -26,8 +26,6 @@
               content = {
                 type = "luks";
                 name = "crypted";
-                # extraOpenArgs = ["--allow-discards"];
-                settings.keyFile = "/tmp/secret.key";
                 content = {
                   type = "btrfs";
                   extraArgs = ["-f"];
@@ -37,7 +35,7 @@
                       mountOptions = ["defaults" "compress=zstd" "ssd" "noatime"];
                     };
                     "/home" = {
-                      mountOptions = ["defaults" "compress=zstd" "noatime" "ssd"];
+                      mountOptions = ["defaults" "autodefrag" "compress=zstd" "noatime" "ssd"];
                     };
                     "/nix" = {
                       mountOptions = ["defaults" "compress=zstd" "noatime" "ssd"];
