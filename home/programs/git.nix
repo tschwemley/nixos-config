@@ -6,7 +6,7 @@
   aliases = {
     b = "branch";
     cb = "checkout --branch";
-    cm = "!git add . && commit -am";
+    cm = "!git add . && git commit -am";
     s = "status";
   };
 in {
