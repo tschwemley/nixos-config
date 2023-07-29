@@ -30,20 +30,24 @@
                   type = "btrfs";
                   extraArgs = ["--allow-discards"];
                   subvolumes = {
-                    "/root" = {
+                    "rootfs" = {
                       mountpoint = "/";
                       mountOptions = ["defaults" "compress=zstd" "ssd" "noatime"];
                     };
-                    "/home" = {
+                    "home" = {
+                      mountpoint = "/home";
                       mountOptions = ["defaults" "autodefrag" "compress=zstd" "noatime" "ssd"];
                     };
-                    "/nix" = {
+                    "nix" = {
+                      mountpoint = "/nix";
                       mountOptions = ["defaults" "compress=zstd" "noatime" "ssd"];
                     };
-                    "/persist" = {
+                    "persist" = {
+                      mountpoint = "/persist";
                       mountOptions = ["defaults" "compress=zstd" "noatime" "ssd"];
                     };
-                    "/games" = {
+                    "games" = {
+                      mountpoint = "/games";
                       mountOptions = ["defaults" "autodefrag" "compress=zstd" "lazytime" "nofail" "noatime" "x-systemd.growfs" "space_cache=v2"];
                     };
                   };
@@ -57,7 +61,6 @@
   };
 
   #fileSystems."/".neededForBoot = true;
-  #fileSystems."/home".neededForBoot = true;
+  # fileSystems."/home".neededForBoot = true;
   #fileSystems."/persist".neededForBoot = true;
 }
-

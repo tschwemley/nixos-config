@@ -7,7 +7,7 @@
   diskName = "nvme1n1";
   diskConfig = {
     imports = [
-      (import ../../modules/hardware/disks/btrfs-ephemeral.nix {inherit diskName;})
+      (import ../../modules/hardware/disks/btrfs-encrypted.nix {inherit diskName;})
     ];
   };
 
@@ -33,9 +33,9 @@ in {
     };
     supportedFilesystems = ["btrfs"];
     loader.systemd-boot = {
-		enable = true;
-		editor = false; # leaving true allows for root access to be gained via passing kernal param
-	};
+      enable = true;
+      editor = false; # leaving true allows for root access to be gained via passing kernal param
+    };
   };
 
   services.openssh = {
