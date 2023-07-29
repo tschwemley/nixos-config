@@ -26,9 +26,10 @@
               content = {
                 type = "luks";
                 name = "crypted";
+                extraOpenArgs = ["--allow-discards"];
                 content = {
                   type = "btrfs";
-                  extraArgs = ["--allow-discards"];
+                  extraArgs = ["-f"];
                   subvolumes = {
                     "rootfs" = {
                       mountpoint = "/";
