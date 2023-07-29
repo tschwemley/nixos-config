@@ -1,11 +1,10 @@
-{homeConfigurations, ...}: {
+{config, homeConfigurations, ...}: {
   imports = [./.];
 
   users.users = {
     schwem = {
       isNormalUser = true;
-      extraGroups = ["wheel" "networkmanager"];
-      # openssh.authorizedKeys.keyFiles = [(builtins.readFile ../../secrets/keys/charizard.pub)];
+      extraGroups = ["wheel" "networkmanager" config.users.groups.keys.name];
     };
   };
 
