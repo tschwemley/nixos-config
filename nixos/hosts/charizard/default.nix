@@ -68,6 +68,9 @@ in {
 
     # these are all user secrets. might be better to use home-manager but idgaf right now
     secrets = {
+      "bw_email" = {
+        owner = "schwem";
+      };
       "moltres_key" = {
         key = "ssh_private_key";
         owner = "schwem";
