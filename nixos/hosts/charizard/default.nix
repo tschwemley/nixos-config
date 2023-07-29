@@ -67,7 +67,10 @@ in {
     age.keyFile = "/home/schwem/.config/sops/age/keys.txt";
 
     secrets = {
-      "bw_email" = {};
+      "bw_email" = {
+        mode = "0440";
+        owner = "schwem";
+      };
     };
   };
 
