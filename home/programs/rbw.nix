@@ -2,7 +2,7 @@
   programs.rbw = {
     enable = true;
     settings = {
-      email = "(cat /run/secrets/bw_email)";
+      # email =";
       pinentry = "tty";
     };
   };
