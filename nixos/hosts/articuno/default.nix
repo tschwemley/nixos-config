@@ -5,10 +5,10 @@
   ...
 }: let
   hostName = "articuno";
-  profile = (import ../profiles/proxmox.nix {
+  profile = (import ./../profiles/proxmox.nix {
       inherit config;
       profile = "k3s"; 
-      extraImports = ["../../modules/services/k3s/server.nix"];
+      extraImports = [./../../modules/services/k3s/server.nix];
     });
   # impermanence = import ../../modules/system/impermanence.nix {inherit inputs;};
   # user = import ../../modules/users/server.nix {
