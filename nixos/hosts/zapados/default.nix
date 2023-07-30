@@ -2,14 +2,19 @@
   inputs,
   config,
   lib,
+  pkgs,
   ...
 }: let
   hostName = "zapados";
 
   diskConfig = import ../../modules/hardware/disks/k3s.nix {diskName = "/dev/vda";};
-
   impermanence = import ../../modules/system/impermanence.nix {inherit inputs;};
-
+  k3s = import ../../profiles/k3s.nix {
+    inherit config lib pkgs;
+    clusterInit = true;
+    nodeIP = "10.0.0.1";
+    role = "server";
+  };
   user = import ../../modules/users/server.nix {
     inherit config;
     userName = hostName;
@@ -18,6 +23,7 @@ in {
   imports = [
     diskConfig
     impermanence
+    k3s
     user
     ./wireguard.nix
     ../../profiles/default.nix

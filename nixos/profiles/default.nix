@@ -20,8 +20,8 @@
     git
     jq
     ripgrep
-#rustc
-#rustfmt
+    #rustc
+    #rustfmt
     wget
   ];
 
