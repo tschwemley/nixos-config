@@ -26,7 +26,7 @@ in {
     k3s
     user
     ./wireguard.nix
-    ../../profiles/default.nix
+    #../../profiles/default.nix
     # ../../modules/services/k3s/server.nix
     # ../../profiles/k3s.nix
     # ../../modules/services/keycloak.nix
