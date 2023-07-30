@@ -8,7 +8,6 @@
   hostName = "zapados";
 
   diskConfig = import ../../modules/hardware/disks/k3s.nix {diskName = "/dev/vda";};
-  impermanence = import ../../modules/system/impermanence.nix {inherit inputs;};
   k3s = import ../../profiles/k3s.nix {
     inherit config lib pkgs;
     clusterInit = true;
@@ -22,7 +21,6 @@
 in {
   imports = [
     diskConfig
-    impermanence
     k3s
     user
     ./wireguard.nix
