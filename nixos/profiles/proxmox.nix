@@ -7,10 +7,11 @@
   memory ? 4096,
   profile ? "default",
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/virtualisation/proxmox-image.nix")
-    "./${profile}.nix"
+    (./. + "/${profile}.nix")
   ] ++ extraImports;
 
   proxmox.qemuConf = {
