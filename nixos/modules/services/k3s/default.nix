@@ -9,6 +9,12 @@
 }: let
   defaultFlags = "--node-ip ${nodeIP} --node-external-ip ${nodeIP} --container-runtime-endpoint unix:///run/containerd/containerd.sock ";
   serverFlags = "--disable traefik --flannel-backend=wireguard-native --flannel-external-ip";
+
+  extraFlags = defaultFlags + (if role == "server" then serverFlags else "");
+  serverAddr =
+    if !clusterInit
+    then "https://10.0.0.1:6443"
+    else "";
 in {
   environment.systemPackages = with pkgs; [
     (writeShellScriptBin "k3s-reset-node" (builtins.readFile ./k3s-reset-node))
@@ -26,14 +32,9 @@ in {
   };
 
   services.k3s = {
-    inherit clusterInit role;
+    inherit clusterInit extraFlags role serverAddr;
     enable = true;
-    serverAddr =
-      if !clusterInit
-      then "https://10.0.0.1:6443"
-      else "";
     tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
-    extraFlags = defaultFlags + (if role == "server" then serverFlags else "");
   };
 
   sops.secrets.k3s-server-token.sopsFile = ./secrets.yaml;
