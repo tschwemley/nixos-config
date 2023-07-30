@@ -8,7 +8,7 @@
   role ? "agent",
   ...
 }: let
-  impermanence = import ../../modules/system/impermanence.nix {
+  impermanence = import ../system/impermanence.nix {
     inherit inputs;
     additionalFiles = [
       "/var/lib/rancher/k3s/server/token"
