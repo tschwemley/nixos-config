@@ -40,12 +40,15 @@
                       mountOptions = ["compress=lzo"];
                     };
                     "/home" = {
+                      mountpoint = "/home";
                       mountOptions = [];
                     };
                     "/nix" = {
+                      mountpoint = "/nix";
                       mountOptions = ["compress=lzo" "noatime"];
                     };
                     "/persist" = {
+                      mountpoint = "/persist";
                       mountOptions = ["compress=lzo" "noatime"];
                     };
                   };
