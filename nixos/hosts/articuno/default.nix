@@ -8,7 +8,7 @@
 }: let
   hostName = "articuno";
   k3s = import ../../profiles/k3s.nix {
-    inherit config lib pkgs;
+    inherit inputs config lib pkgs;
     nodeIP = "10.0.0.2";
     role = "server";
   };

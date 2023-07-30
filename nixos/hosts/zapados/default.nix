@@ -9,7 +9,7 @@
 
   diskConfig = import ../../modules/hardware/disks/k3s.nix {diskName = "/dev/vda";};
   k3s = import ../../profiles/k3s.nix {
-    inherit config lib pkgs;
+    inherit inputs config lib pkgs;
     clusterInit = true;
     nodeIP = "10.0.0.1";
     role = "server";
