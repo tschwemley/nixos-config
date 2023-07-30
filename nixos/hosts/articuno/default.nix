@@ -6,7 +6,7 @@
 }: let
   hostName = "articuno";
   profile = (import ../../profiles/proxmox.nix {
-      inherit config;
+      inherit config modulesPath;
       profile = "k3s"; 
       extraImports = [../../modules/services/k3s/server.nix];
     });
