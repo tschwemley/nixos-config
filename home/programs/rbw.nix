@@ -1,9 +1,9 @@
 {config, ...}: {
   programs.rbw = {
     enable = true;
-    settings = {
-      # email =";
+    /* settings = {
+      email 
       pinentry = "tty";
-    };
+    }; */
   };
 }
