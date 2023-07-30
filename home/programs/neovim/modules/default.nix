@@ -15,7 +15,9 @@
 
   # plugins that don't fit into a module are defined here
   programs.neovim.plugins = with pkgs.vimPlugins; [
+    better-escape-nvim
     comment-nvim
+    glow-nvim
     toggleterm-nvim
     which-key-nvim
   ];
