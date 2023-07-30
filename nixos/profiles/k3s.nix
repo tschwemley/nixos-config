@@ -7,9 +7,9 @@
   role ? "agent",
   ...
 }: let
-  k3s = import (../modules/services/k3s {
+  k3s = import ../modules/services/k3s {
     inherit config lib pkgs clusterInit nodeIP role;
-  });
+  };
 in {
   imports = [
     k3s
