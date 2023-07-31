@@ -19,7 +19,7 @@
     inherit config;
     userName = hostName;
   };
-  wireguard = import .../../modules/networking/wireguard.nix {
+  wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
     ip = wireguardIP;
     peers = [
