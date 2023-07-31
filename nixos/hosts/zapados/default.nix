@@ -25,15 +25,18 @@
     inherit config;
     ip = wireguardIP;
     peers = [
-      { # articuno
+      {
+        # articuno
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
         AllowedIPs = ["10.0.0.1/32"];
       }
-      { # moltres
+      {
+        # moltres
         PublicKey = "uIrOynrMnIpY//v+1WLsTD//swl0Y4J/an0/gllWpz4=";
         AllowedIPs = ["10.0.0.3/32"];
       }
-      { #eevee
+      {
+        #eevee
         PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
         AllowedIPs = ["10.0.0.4/32"];
       }
