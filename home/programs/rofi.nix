@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   programs.rofi = {
     enable = true;
-    plugins = with pkgs; [rofi-rbw];
+    terminal = "wezterm";
   };
+
+  home.packages = with pkgs; [ rofi-rbw ];
 }
