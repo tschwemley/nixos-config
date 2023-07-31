@@ -15,9 +15,9 @@ in {
   systemd.services.networkd.serviceConfig.SupplementaryGroups = [config.users.groups.keys.name];
 
   systemd.network = {
-    inherit wireguardPeers;
     netdevs = {
       "20-wg0" = {
+        inherit wireguardPeers;
         netdevConfig = {
           Kind = "wireguard";
           Name = "wg0";
