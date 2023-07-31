@@ -3,7 +3,6 @@
   # my config file
   home.packages = with pkgs; [
     rbw
-    rofi-rbw
     pinentry
   ];
 }
