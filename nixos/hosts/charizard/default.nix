@@ -15,9 +15,8 @@
   hardware = {
     imports = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
-      inputs.nixos-hardware.nixosModules.common-gpu-nvidia { inherit lib pkgs; }
-      ../../modules/hardware/opengl.nix
-#../../modules/hardware/nvidia.nix
+      # ../../modules/hardware/opengl.nix
+      ../../modules/hardware/nvidia.nix
     ];
   };
 in {
