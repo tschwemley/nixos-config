@@ -69,25 +69,25 @@ in {
 
     # these are all user secrets. might be better to use home-manager but idgaf right now
     secrets = {
+      "articuno_key" = {
+        key = "ssh_private_key";
+        owner = "schwem";
+        path = "/home/schwem/.ssh/articuno";
+        sopsFile = ./../articuno/secrets.yaml;
+      };
       "bw_email" = {
         owner = "schwem";
       };
-      "moltres_key" = {
+      "eevee_key" = {
         key = "ssh_private_key";
         owner = "schwem";
-        path = "/home/schwem/.ssh/moltres";
-        sopsFile = ./../moltres/secrets.yaml;
+        path = "/home/schwem/.ssh/eevee";
+        sopsFile = ./../eevee/secrets.yaml;
       };
       "ssh_config" = {
         mode = "0600";
         owner = "schwem";
         path = "/home/schwem/.ssh/config";
-      };
-      "zapados_key" = {
-        key = "ssh_private_key";
-        owner = "schwem";
-        path = "/home/schwem/.ssh/zapados";
-        sopsFile = ./../zapados/secrets.yaml;
       };
     };
   };

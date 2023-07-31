@@ -3,117 +3,62 @@
   config,
   lib,
   pkgs,
+  modulesPath,
   ...
 }: let
   hostName = "zapados";
+  wireguardIP = "10.0.0.2";
 
-  diskConfig = import ../../modules/hardware/disks/k3s.nix {diskName = "/dev/vda";};
   k3s = import ../../profiles/k3s.nix {
     inherit inputs config lib pkgs;
-    clusterInit = true;
-    nodeIP = "10.0.0.1";
+    nodeIP = wireguardIP;
     role = "server";
+  };
+  proxmox = import ../../profiles/proxmox.nix {
+    inherit config modulesPath;
   };
   user = import ../../modules/users/server.nix {
     inherit config;
     userName = hostName;
   };
-in {
-  imports = [
-    diskConfig
-    k3s
-    user
-    ./wireguard.nix
-    #../../profiles/default.nix
-    # ../../modules/services/k3s/server.nix
-    # ../../profiles/k3s.nix
-    # ../../modules/services/keycloak.nix
-  ];
-
-  boot = {
-    initrd = {
-      availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
-    };
-    kernelModules = ["kvm-amd" "wireguard"];
-    supportedFilesystems = ["btrfs"];
-    loader = {
-      grub = {
-        efiSupport = true;
-        efiInstallAsRemovable = true;
-        devices = ["/dev/vda"];
-      };
-    };
-  };
-
-  networking = {
-    inherit hostName;
-    dhcpcd.enable = false;
-  };
-
-  services.getty.autologinUser = "root";
-
-  services.openssh = {
-    enable = true;
-    hostKeys = [
-      {
-        bits = 4096;
-        path = "/etc/ssh/ssh_host_rsa_key";
-        type = "rsa";
+  wireguard = import .../../modules/networking/wireguard.nix {
+    inherit config;
+    ip = wireguardIP;
+    peers = [
+      { # articuno
+        PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
+        AllowedIPs = ["10.0.0.1/32"];
       }
-      {
-        path = "/etc/ssh/ssh_host_ed25519_key";
-        type = "ed25519";
+      { # moltres
+        PublicKey = "uIrOynrMnIpY//v+1WLsTD//swl0Y4J/an0/gllWpz4=";
+        AllowedIPs = ["10.0.0.3/32"];
+      }
+      { #eevee
+        PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
+        AllowedIPs = ["10.0.0.4/32"];
       }
     ];
   };
+in {
+  imports = [
+    k3s
+    proxmox
+    user
+    wireguard
+  ];
+
+  networking.hostName = hostName;
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
-    # age.sshKeyPaths = [
-    #   "/persist/etc/ssh/ssh_host_ed25519_key"
-    # ];
     age.keyFile = "/persist/.age-keys.txt";
-
-    secrets = {
-      root_password = {
-        mode = "0440";
-        neededForUsers = true;
-      };
-      user_password = {
-        mode = "0440";
-        neededForUsers = true;
-      };
-      systemd_networkd_10_ens3 = {
-        mode = "0644";
-        path = "/etc/systemd/network/10-ens3.network";
-        restartUnits = ["systemd-networkd" "systemd-resolved"];
-      };
-      wireguard_private = {
-        mode = "0644";
-        path = "/persist/wireguard/private";
-        owner = config.users.users.systemd-network.name;
-        group = config.users.users.systemd-network.group;
-        restartUnits = ["systemd-networkd" "systemd-resolved"];
-      };
-    };
   };
+
+  # TODO: change this for all hosts soon
+  services.getty.autologinUser = "root";
 
   # don't update this
   system.stateVersion = "23.05";
   systemd.network.enable = true;
   services.resolved.enable = true;
-
-  users = {
-    mutableUsers = false;
-    users = {
-      root = {
-        passwordFile = config.sops.secrets.root_password.path;
-        openssh.authorizedKeys.keys = [(builtins.readFile ./ssh_key.pub)];
-      };
-      ${hostName} = {
-        passwordFile = config.sops.secrets.user_password.path;
-        openssh.authorizedKeys.keys = [(builtins.readFile ./ssh_key.pub)];
-      };
-    };
-  };
 }

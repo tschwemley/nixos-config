@@ -4,5 +4,5 @@
     terminal = "wezterm";
   };
 
-  home.packages = with pkgs; [ rofi-rbw ];
+  home.packages = with pkgs; [rofi-rbw];
 }
