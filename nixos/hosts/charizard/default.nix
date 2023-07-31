@@ -14,8 +14,9 @@
   hardware = {
     imports = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
-      ../../modules/hardware/nvidia.nix
+      inputs.nixos-hardware.nixosModules.common-gpu-nvidia
       ../../modules/hardware/opengl.nix
+#../../modules/hardware/nvidia.nix
     ];
   };
 in {

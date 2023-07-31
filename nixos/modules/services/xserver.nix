@@ -11,6 +11,10 @@
       defaultSession = "none+awesome";
     };
 
+    dpi = 192;
+
+    libinput.enable = true;
+
     # this could also bet setup via home-manager but I found it more straightforward here.
     windowManager.awesome = {
       enable = true;
@@ -20,6 +24,4 @@
       ];
     };
   };
-
-  services.xserver.dpi = 192;
 }
