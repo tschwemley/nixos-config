@@ -2,6 +2,7 @@
   inputs,
   config,
   lib,
+  pkgs,
   ...
 }: let
   diskName = "nvme1n1";
@@ -14,7 +15,7 @@
   hardware = {
     imports = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
-      inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+      inputs.nixos-hardware.nixosModules.common-gpu-nvidia { inherit lib pkgs; }
       ../../modules/hardware/opengl.nix
 #../../modules/hardware/nvidia.nix
     ];
