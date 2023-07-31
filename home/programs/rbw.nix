@@ -3,6 +3,6 @@
   # my config file
   home.packages = with pkgs; [
     rbw
-    pinentry-tty
+    pinentry
   ];
 }
