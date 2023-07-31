@@ -29,9 +29,6 @@ in {
     # ./wireguard.nix
   ];
 
-  # TODO: move to proxmox if this doens't work for cloud vms, otherwise move to k3s
-  services.cloud-init.network.enable = true;
-
   networking.hostName = hostName;
 
   # TODO: change this for all hosts soon

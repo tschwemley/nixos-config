@@ -11,6 +11,9 @@
       libvdpau-va-gl
     ];
   };
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "VDPAU";
+  };
   # TODO: I don't know if this is necessary using vdpau/libvdpau-va-gl. reassess
   /*
      environment.sessionVariables = {
