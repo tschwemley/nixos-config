@@ -10,6 +10,7 @@ in {
     ../programs/discord.nix
     ../programs/reaper.nix
     ../programs/rbw.nix
+    ../programs/realvnc.nix
     ../programs/rofi.nix
     ../programs/slack.nix
     ../terminals/wezterm.nix
