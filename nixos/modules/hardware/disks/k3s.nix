@@ -61,7 +61,7 @@
     };
   };
 
-  boot.supportedFileSystems = ["btrfs"];
+  boot.supportedFilesystems = ["btrfs"];
   fileSystems."/" = {
     device = lib.mkForce "/dev/vda3";
     neededForBoot = true;
