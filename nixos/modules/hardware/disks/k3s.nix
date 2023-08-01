@@ -62,8 +62,9 @@
   };
 
   fileSystems."/" = {
+    device = lib.mkDefault "/dev/vda3";
     neededForBoot = true;
-    fsType = (lib.mkForce "btrfs");
+    fsType = lib.mkDefault "btrfs";
   };
   fileSystems."/persist".neededForBoot = true;
 }
