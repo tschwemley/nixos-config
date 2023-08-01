@@ -5,17 +5,18 @@
   pkgs,
   clusterInit ? false,
   diskName ? "/dev/vda",
+  enableImpermanence ? true,
   nodeIP,
   role ? "agent",
   ...
 }: let
   diskConfig = import ../modules/hardware/disks/k3s.nix {inherit diskName lib;};
-  impermanence = import ../modules/system/impermanence.nix {
+  impermanence = if enableImpermanence then import ../modules/system/impermanence.nix {
     inherit inputs;
     additionalFiles = [
       "/var/lib/rancher/k3s/server/token"
     ];
-  };
+  } else {};
   k3s = import ../modules/services/k3s {
     inherit config lib pkgs clusterInit nodeIP role;
   };
