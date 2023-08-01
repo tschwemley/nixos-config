@@ -63,7 +63,7 @@
 
   fileSystems."/" = {
     neededForBoot = true;
-    type = lib.mkDefault "btrfs";
+    fsType = lib.mkDefault "btrfs";
   };
   fileSystems."/persist".neededForBoot = true;
 }
