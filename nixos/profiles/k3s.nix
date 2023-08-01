@@ -26,6 +26,7 @@ in {
   ];
 
   # These are the sops secrets required by every k3s node
+  /*
   sops = {
     secrets = {
       root_password = {
@@ -45,4 +46,5 @@ in {
       };
     };
   };
+  */
 }
