@@ -9,7 +9,7 @@
   role ? "agent",
   ...
 }: let
-  diskConfig = import ../../modules/hardware/disks/k3s.nix {inherit diskName;};
+  diskConfig = import ../modules/hardware/disks/k3s.nix {inherit diskName;};
   impermanence = import ../modules/system/impermanence.nix {
     inherit inputs;
     additionalFiles = [
