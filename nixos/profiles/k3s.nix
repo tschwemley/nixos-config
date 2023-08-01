@@ -4,13 +4,11 @@
   lib,
   pkgs,
   clusterInit ? false,
-  diskName ? "/dev/vda",
   enableImpermanence ? true,
   nodeIP,
   role ? "agent",
   ...
 }: let
-  diskConfig = import ../modules/hardware/disks/k3s.nix {inherit diskName lib;};
   impermanence = if enableImpermanence then import ../modules/system/impermanence.nix {
     inherit inputs;
     additionalFiles = [
@@ -22,7 +20,6 @@
   };
 in {
   imports = [
-    diskConfig
     impermanence
     k3s
     ./server.nix
