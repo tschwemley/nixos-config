@@ -6,9 +6,11 @@
   modulesPath,
   ...
 }: let
+  diskName = "/dev/sda";
   hostName = "zapados";
   wireguardIP = "10.0.0.2";
-
+  
+  disk = import ../../modules/hardware/disks/k3s.nix { inherit diskName; };
   k3s = import ../../profiles/k3s.nix {
     inherit inputs config lib pkgs;
     enableImpermanence = false;
@@ -45,11 +47,24 @@
   };
 in {
   imports = [
+	disk
     k3s
     proxmox
     user
     wireguard
   ];
+  
+  boot = {
+    initrd = {
+      availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
+    };
+    kernelModules = ["kvm-amd" "wireguard"];
+    supportedFilesystems = ["btrfs"];
+    loader.systemd-boot = {
+      enable = true;
+      editor = false; # leaving true allows for root access to be gained via passing kernal param
+    };
+  };
 
   networking.hostName = hostName;
 
