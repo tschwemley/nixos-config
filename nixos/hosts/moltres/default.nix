@@ -9,7 +9,7 @@
   diskName = "/dev/sda";
   hostName = "moltres";
   wireguardIP = "10.0.0.3";
-  
+
   k3s = import ../../profiles/k3s.nix {
     inherit inputs config diskName lib nodeName pkgs;
     enableImpermanence = false;
@@ -45,17 +45,17 @@ in {
   imports = [
     k3s
     user
-	wireguard
+    wireguard
   ];
-  
-	boot.loader.systemd-boot = {
-		enable = true;
-		editor = false; # leaving true allows for root access to be gained via passing kernal param
-	};
-	
+
+  boot.loader.systemd-boot = {
+    enable = true;
+    editor = false; # leaving true allows for root access to be gained via passing kernal param
+  };
+
   # TODO: might be needed for proxmox to configure networking
-	#services.cloud-init.network.enable = true;
-	
+  #services.cloud-init.network.enable = true;
+
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "/persist/.age-keys.txt";
