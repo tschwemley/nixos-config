@@ -62,5 +62,6 @@
   };
 
   boot.supportedFilesystems = ["btrfs"];
+  fileSystems."/".neededForBoot = true;
   fileSystems."/persist".neededForBoot = true;
 }

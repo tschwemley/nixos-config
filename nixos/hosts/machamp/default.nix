@@ -9,7 +9,7 @@
   wireguardIP = "10.0.0.99";
 
   # TODO: change this to (and create) a hydra profile
-  disk = import ../../modules/hardware/disks/k3s.nix {inherit diskName; }; # TODO: not a k3s machine but this is easy
+  disk = import ../../modules/hardware/disks/k3s.nix { inherit diskName; }; # TODO: not a k3s machine but this is easy
   profile = import ../../profiles/hydra.nix;
   # profile = import ../../profiles/proxmox.nix {
   #   inherit config modulesPath;
