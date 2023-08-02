@@ -5,11 +5,9 @@
   pkgs,
   ...
 }: let
-  diskName = "/dev/vda";
   hostName = "articuno";
   wireguardIP = "10.0.0.1";
 
-  diskConfig = import ../modules/hardware/disks/k3s.nix {inherit diskName lib;};
   k3s = import ../../profiles/k3s.nix {
     inherit inputs config lib pkgs;
     clusterInit = true;
@@ -48,26 +46,29 @@
   };
 in {
   imports = [
-    diskConfig
     k3s
     user
     ./wireguard.nix
   ];
 
-  boot = {
-    initrd = {
-      availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
-    };
-    kernelModules = ["kvm-amd" "wireguard"];
-    supportedFilesystems = ["btrfs"];
-    loader = {
-      grub = {
-        efiSupport = true;
-        efiInstallAsRemovable = true;
-        devices = ["/dev/vda"];
-      };
-    };
-  };
+  # boot = {
+  #   initrd = {
+  #     availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
+  #   };
+  #   kernelModules = ["kvm-amd" "wireguard"];
+  #   supportedFilesystems = ["btrfs"];
+  #   loader = {
+  #     grub = {
+  #       efiSupport = true;
+  #       efiInstallAsRemovable = true;
+  #       devices = ["/dev/vda"];
+  #     };
+  #   };
+  # };
+boot.loader.systemd-boot = {
+	enable = true;
+	editor = false; # leaving true allows for root access to be gained via passing kernal param
+};
 
   networking = {
     inherit hostName;
@@ -106,8 +107,6 @@ in {
 
   # don't update this
   system.stateVersion = "23.05";
-  systemd.network.enable = true;
-  services.resolved.enable = true;
 
   users = {
     mutableUsers = false;
