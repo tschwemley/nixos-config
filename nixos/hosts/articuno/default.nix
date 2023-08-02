@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  hostName = "articuno";
+  nodeName = "articuno";
   wireguardIP = "10.0.0.1";
 
   k3s = import ../../profiles/k3s.nix {
