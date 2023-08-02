@@ -9,12 +9,16 @@
   role ? "agent",
   ...
 }: let
-  impermanence = if enableImpermanence then import ../modules/system/impermanence.nix {
-    inherit inputs;
-    additionalFiles = [
-      "/var/lib/rancher/k3s/server/token"
-    ];
-  } else {};
+  impermanence =
+    if enableImpermanence
+    then
+      import ../modules/system/impermanence.nix {
+        inherit inputs;
+        additionalFiles = [
+          "/var/lib/rancher/k3s/server/token"
+        ];
+      }
+    else {};
   k3s = import ../modules/services/k3s {
     inherit config lib pkgs clusterInit nodeIP role;
   };
