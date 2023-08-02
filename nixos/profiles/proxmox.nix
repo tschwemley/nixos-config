@@ -3,7 +3,7 @@
   modulesPath,
   bios ? "ovmf",
   cores ? 2,
-  diskSize ? "20000",
+  diskSize ? "32000",
   memory ? 4096,
   ...
 }: {

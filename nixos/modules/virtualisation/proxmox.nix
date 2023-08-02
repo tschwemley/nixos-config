@@ -6,7 +6,7 @@
   memory ? 4096,
   ...
 }: {
-  imports = [(modulesPath + "/virtualisation/proxmox-image.nix")];
+  imports = [./proxmox-image.nix];
 
   proxmox.qemuConf = {
     inherit bios cores memory;
