@@ -74,15 +74,15 @@
 		#TODO: make this generic for k3s nodes
         # packages.k3s-node = nixos-generators.nixosGenerate {
         packages.zapados = nixos-generators.nixosGenerate {
+			inherit system;
 			customFormats = {
-				inherit system;
-				modules = [
-					./nixos/hosts/zapados	
-				];
 				"vma" = {
 					imports = [./nixos/modules/virtualisation/proxmox-image.nix];
 				};
 			};
+			modules = [
+				./nixos/hosts/zapados	
+			];
 			format = "vma";
 		};
       };
