@@ -4,10 +4,11 @@
   pkgs,
   clusterInit,
   nodeIP,
+  nodeName,
   role ? "agent",
   ...
 }: let
-  defaultFlags = "--node-ip ${nodeIP} --node-external-ip ${nodeIP} --container-runtime-endpoint unix:///run/containerd/containerd.sock ";
+  defaultFlags = "--node-ip ${nodeIP} --node-name ${nodeName} --node-external-ip ${nodeIP} --container-runtime-endpoint unix:///run/containerd/containerd.sock ";
   serverFlags = "--disable traefik --flannel-backend=wireguard-native --flannel-external-ip";
 
   extraFlags =

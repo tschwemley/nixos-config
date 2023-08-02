@@ -7,18 +7,14 @@
   ...
 }: let
   diskName = "/dev/sda";
-  hostName = "zapados";
+  nodeName = "zapados";
   wireguardIP = "10.0.0.2";
 
-  disk = import ../../modules/hardware/disks/k3s.nix {inherit diskName;};
   k3s = import ../../profiles/k3s.nix {
-    inherit inputs config lib pkgs;
+    inherit inputs config diskName lib nodeName pkgs;
     enableImpermanence = false;
     nodeIP = wireguardIP;
     role = "server";
-  };
-  proxmox = import ../../profiles/proxmox.nix {
-    inherit config lib modulesPath;
   };
   user = import ../../modules/users/server.nix {
     inherit config;
@@ -35,7 +31,7 @@
       }
       {
         # moltres
-        PublicKey = "";
+        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
         AllowedIPs = ["10.0.0.3/32"];
       }
       {
@@ -47,29 +43,21 @@
   };
 in {
   imports = [
-    disk
     k3s
-    proxmox
     user
     wireguard
   ];
-
-  boot = {
-    initrd = {
-      availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
-    };
-    kernelModules = ["kvm-amd" "wireguard"];
-    supportedFilesystems = ["btrfs"];
-    loader.systemd-boot = {
-      enable = true;
-      editor = false; # leaving true allows for root access to be gained via passing kernal param
-    };
-  };
-
-  networking.hostName = hostName;
+  
+		boot.loader.systemd-boot = {
+			enable = true;
+			editor = false; # leaving true allows for root access to be gained via passing kernal param
+		};
 
   # TODO: change this for all hosts soon
   services.getty.autologinUser = "root";
+
+  # TODO: might be needed for proxmox to configure networking
+	#services.cloud-init.network.enable = true;
 
   # don't update this
   system.stateVersion = "23.05";
