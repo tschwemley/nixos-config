@@ -18,7 +18,7 @@
               {
                 name = "ESP";
                 start = "1MiB";
-                end = "512MiB";
+                end = "128MiB";
                 bootable = true;
                 content = {
                   type = "filesystem";
