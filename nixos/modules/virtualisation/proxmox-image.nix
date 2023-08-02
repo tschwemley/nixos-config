@@ -310,7 +310,7 @@ with lib; {
     fileSystems."/" = {
       device = "/dev/disk/by-label/nixos";
       autoResize = true;
-      fsType = "ext4";
+      fsType = "btrfs"; #TODO: better to make this be in the non-patched file but I'm lazy
     };
     fileSystems."/boot" = lib.mkIf hasBootPartition {
       device = "/dev/disk/by-label/ESP";
