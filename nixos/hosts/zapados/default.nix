@@ -18,7 +18,7 @@
     role = "server";
   };
   proxmox = import ../../profiles/proxmox.nix {
-    inherit config modulesPath;
+    inherit config lib modulesPath;
   };
   user = import ../../modules/users/server.nix {
     inherit config;
