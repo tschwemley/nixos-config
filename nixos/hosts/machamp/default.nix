@@ -55,6 +55,21 @@ in {
     # ../../modules/services/k3s/server.nix
     # ../../profiles/k3s.nix
   ];
+  
+  boot = {
+    initrd = {
+      availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
+    };
+    kernelModules = ["kvm-amd" "wireguard"];
+    supportedFilesystems = ["btrfs"];
+    loader = {
+      grub = {
+        efiSupport = true;
+        efiInstallAsRemovable = true;
+        devices = ["/dev/sda"];
+      };
+    };
+  };
 
   networking.hostName = hostName;
   # TODO: determine if this is needed for qemu
