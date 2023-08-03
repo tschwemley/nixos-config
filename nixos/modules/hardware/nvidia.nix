@@ -4,7 +4,7 @@
   ...
 }: {
   services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
-  hardware.nvidia.modesetting = true;
+  hardware.nvidia.modesetting.enable = true;
   hardware.opengl = {
     enable = true;
     driSupport32Bit = true; # also enable support for 32 bit applications (e.g. wine)
