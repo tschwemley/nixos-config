@@ -33,7 +33,7 @@ in {
   networking.firewall.allowedUDPPorts = [51820 51821];
   # 2379/2389 embedded etcd; 6443 for api server; 10250 for kubelet metrics
   networking.firewall.allowedTCPPorts = [
-    2379 
+    2379
     2380
     6443
     10250
