@@ -7,7 +7,7 @@
   ...
 }: let
   diskName = "/dev/sda";
-  hostName = "moltres";
+  nodeName = "moltres";
   wireguardIP = "10.0.0.3";
 
   k3s = import ../../profiles/k3s.nix {
@@ -18,7 +18,7 @@
   };
   user = import ../../modules/users/server.nix {
     inherit config;
-    userName = hostName;
+    userName = nodeName;
   };
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
