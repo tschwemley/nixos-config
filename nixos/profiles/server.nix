@@ -13,7 +13,7 @@
   ];
 
   # disable man pages on servers
-  manual.manpages.enable = false;
+  documentation.man.enable = false;
 
   time.timeZone = lib.mkDefault "UTC";
 
