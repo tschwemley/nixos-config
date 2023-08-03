@@ -12,6 +12,9 @@
     wireguard-tools
   ];
 
+  # disable man pages on servers
+  manual.manpages.enable = false;
+
   time.timeZone = lib.mkDefault "UTC";
 
   # security.acme = {
