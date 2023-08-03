@@ -28,14 +28,15 @@ in {
     k9s
   ];
 
+  # TODO: optionize firewall
   # 51820 and 51821 for wg backend
   networking.firewall.allowedUDPPorts = [51820 51821];
-  # 6443 for api server; 10250 for kubelet metrics
+  # 2379/2389 embedded etcd; 6443 for api server; 10250 for kubelet metrics
   networking.firewall.allowedTCPPorts = [
-    10250
+    2379 
+    2380
     6443
-    (lib.mkIf role == "server" 2379)
-    (lib.mkIf role == "server" 2380)
+    10250
   ];
 
   programs.zsh.shellAliases = {
