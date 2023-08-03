@@ -6,10 +6,11 @@
   ...
 }: let
   nodeName = "articuno";
+  useGrub = true;
   wireguardIP = "10.0.0.1";
 
   k3s = import ../../profiles/k3s.nix {
-    inherit inputs config lib nodeName pkgs;
+    inherit inputs config lib nodeName pkgs useGrub;
     clusterInit = true;
     nodeIP = wireguardIP;
     role = "server";
