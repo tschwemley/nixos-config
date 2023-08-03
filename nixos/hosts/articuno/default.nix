@@ -51,23 +51,19 @@ in {
     wireguard
   ];
 
-  # boot = {
-  #   initrd = {
-  #     availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
-  #   };
-  #   kernelModules = ["kvm-amd" "wireguard"];
-  #   supportedFilesystems = ["btrfs"];
-  #   loader = {
-  #     grub = {
-  #       efiSupport = true;
-  #       efiInstallAsRemovable = true;
-  #       devices = ["/dev/vda"];
-  #     };
-  #   };
-  # };
-  boot.loader.systemd-boot = {
-    enable = true;
-    editor = false; # leaving true allows for root access to be gained via passing kernal param
+  boot = {
+    initrd = {
+      availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
+    };
+    kernelModules = ["kvm-amd" "wireguard"];
+    supportedFilesystems = ["btrfs"];
+    loader = {
+      grub = {
+        efiSupport = true;
+        efiInstallAsRemovable = true;
+        devices = ["/dev/vda"];
+      };
+    };
   };
 
   networking.dhcpcd.enable = false;
