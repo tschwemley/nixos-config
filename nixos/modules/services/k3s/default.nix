@@ -31,7 +31,12 @@ in {
   # 51820 and 51821 for wg backend
   networking.firewall.allowedUDPPorts = [51820 51821];
   # 6443 for api server; 10250 for kubelet metrics
-  networking.firewall.allowedTCPPorts = [10250 (lib.mkIf clusterInit 6443)];
+  networking.firewall.allowedTCPPorts = [
+    10250 
+    6443
+    (lib.mkIf role == "server" 2379)
+    (lib.mkIf role == "server" 2380)
+  ];
 
   programs.zsh.shellAliases = {
     ctr = "k3s ctr";
