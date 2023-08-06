@@ -3,6 +3,7 @@
   ip,
   peers,
   endpoint ? "",
+  gateway ? "10.0.0.1",
   listenPort ? 9918,
   ...
 }: let
@@ -32,6 +33,7 @@ in {
     };
     networks = {
       "20-wg0" = {
+        inherit gateway;
         matchConfig.Name = "wg0";
         # IP addresses the client interface will have
         address = [
