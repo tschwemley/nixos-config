@@ -25,23 +25,23 @@
     peers = [
       {
         # zapados
-        PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
         AllowedIPs = ["10.0.0.2/32"];
+        PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
       }
       {
         # moltres
-        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
         AllowedIPs = ["10.0.0.3/32"];
+        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
       }
       {
         #eevee
-        PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
         AllowedIPs = ["10.0.0.4/32"];
+        PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
       }
       {
         #machamp
-        PublicKey = "Mm+2LeQCIxh1Rc89tCErB2G4v8QB1aXMTf9VTT1+52w=";
         AllowedIPs = ["10.0.0.99/32"];
+        PublicKey = "Mm+2LeQCIxh1Rc89tCErB2G4v8QB1aXMTf9VTT1+52w=";
       }
     ];
   };
