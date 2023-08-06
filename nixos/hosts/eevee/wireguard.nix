@@ -19,8 +19,8 @@
         wireguardPeers = [
           {
             wireguardPeerConfig = {
-              PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
               AllowedIPs = ["10.0.0.1/32"];
+              PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
               Endpoint = "wg.schwem.io:9918";
             };
           }
