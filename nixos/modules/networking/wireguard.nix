@@ -3,7 +3,7 @@
   ip,
   peers,
   endpoint ? "",
-  gateway ? "10.0.0.1",
+  gateway ? ["10.0.0.1"],
   listenPort ? 9918,
   ...
 }: let
