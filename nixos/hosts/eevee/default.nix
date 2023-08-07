@@ -5,25 +5,37 @@
   pkgs,
   ...
 }: let
-  diskName = "/dev/vda";
-  hostName = "eevee";
+  nodeName = "eevee";
+  useGrub = true;
+  wireguardIP = "10.0.0.4";
 
-  diskConfig = import ../modules/hardware/disks/k3s.nix {inherit diskName lib;};
   k3s = import ../../profiles/k3s.nix {
-    inherit inputs config lib pkgs;
-    nodeIP = "10.0.0.4";
-    role = "agent";
+    inherit inputs config lib nodeName pkgs useGrub;
+    clusterInit = true;
+    nodeIP = wireguardIP;
+    role = "server";
   };
   user = import ../../modules/users/server.nix {
     inherit config;
-    userName = hostName;
+    userName = nodeName;
+  };
+  wireguard = import ../../modules/networking/wireguard.nix {
+    inherit config;
+    ip = wireguardIP;
+    peers = [
+      {
+        # articuno
+        AllowedIPs = ["10.0.0.1/32"];
+        Endpoint = "wg.schwem.io:9918";
+        PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
+      }
+    ];
   };
 in {
   imports = [
-    diskConfig
+    k3s
     user
-    ../../profiles/default.nix
-    ./wireguard.nix
+    wireguard
   ];
 
   boot = {
@@ -43,10 +55,11 @@ in {
 
   # eevee has issues with DHCP so disable and use systemd-networkd instead
   networking = {
-    inherit hostName;
+    inherit nodeName;
     dhcpcd.enable = false;
   };
 
+  #TODO: change this on all servers
   services.getty.autologinUser = "root";
 
   services.openssh = {
@@ -96,6 +109,7 @@ in {
 
   # don't update this
   system.stateVersion = "23.05";
+
   users = {
     mutableUsers = false;
     users = {
@@ -103,7 +117,7 @@ in {
         passwordFile = config.sops.secrets.root_password.path;
         openssh.authorizedKeys.keys = [(builtins.readFile ./ssh_key.pub)];
       };
-      ${hostName} = {
+      ${nodeName} = {
         passwordFile = config.sops.secrets.user_password.path;
         openssh.authorizedKeys.keys = [(builtins.readFile ./ssh_key.pub)];
       };

@@ -8,6 +8,7 @@
     ./completion.nix
     ./db.nix
     ./debugging.nix
+    ./editing.nix
     ./treesitter.nix
     ./lsp.nix
     ./navigation.nix
