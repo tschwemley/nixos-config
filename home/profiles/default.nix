@@ -1,6 +1,7 @@
 {
   imports = [
     ../programs/bat.nix
+    ../programs/github.nix
     ../programs/glow.nix
     ../programs/lazygit.nix
     ../programs/neovim
