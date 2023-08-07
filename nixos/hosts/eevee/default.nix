@@ -55,7 +55,7 @@ in {
 
   # eevee has issues with DHCP so disable and use systemd-networkd instead
   networking = {
-    hostname = nodeName;
+    hostName = nodeName;
     dhcpcd.enable = false;
   };
 
