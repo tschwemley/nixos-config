@@ -1,6 +1,9 @@
-{
+{pkgs, ...}: {
   programs.gh = {
     enable = true;
-    extensions = [];
+    extensions = with pkgs; [
+      gh-dash
+      gh-eco
+    ];
   };
 }
