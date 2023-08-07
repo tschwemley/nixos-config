@@ -28,6 +28,16 @@
         Endpoint = "wg.schwem.io:9918";
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       }
+      {
+        # zapados
+        AllowedIPs = ["10.0.0.2/32"];
+        PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
+      }
+      {
+        # moltres
+        AllowedIPs = ["10.0.0.3/32"];
+        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
+      }
     ];
   };
 in {
