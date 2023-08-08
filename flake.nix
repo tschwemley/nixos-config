@@ -56,29 +56,21 @@
         system,
         ...
       }: {
+        # makes pkgs available to all perSystem functions
         _module.args.pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-        };
-
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            age
-            manix
-            nixos-generators.packages.${system}.nixos-generate
-            pkgs.sops
-            sqlite # this is for if the nix-store fucks me for the Nth time
-            ssh-to-age
-            wireguard-tools
-          ];
         };
 
         formatter = pkgs.alejandra;
       };
 
       imports = [
+        ./devShells
         ./home
         ./nixos
+        ./nixos/containers
+        ./packages
       ];
     };
 }
