@@ -100,6 +100,9 @@ in {
 
   users = {
     mutableUsers = true; # allow mutable users on non-servers
+    users.schwem.extraGroups = ["docker"];
     # users.schwem.passwordFile = config.sops.secrets.schwem_user_password.path;
   };
+
+  virtualisation.docker.enable = true;
 }
