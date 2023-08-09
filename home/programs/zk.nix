@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  home.programs = with pkgs; [zk];
+  home.packages = with pkgs; [zk];
 }
