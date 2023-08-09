@@ -11,12 +11,7 @@
   # TODO: change this to (and create) a hydra profile
   disk = import ../../modules/hardware/disks/k3s.nix {inherit diskName;}; # TODO: not a k3s machine but this is easy
   profile = import ../../profiles/hydra.nix;
-  # profile = import ../../profiles/proxmox.nix {
-  #   inherit config modulesPath;
-  #   profile = "k3s";
-  #   extraImports = [../../modules/services/k3s/server.nix];
-  # };
-  # impermanence = import ../../modules/system/impermanence.nix {inherit inputs;};
+  impermanence = import ../../modules/system/impermanence.nix {inherit inputs;};
   user = import ../../modules/users/server.nix {
     inherit config;
     userName = hostName;
@@ -30,31 +25,14 @@
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
         AllowedIPs = ["10.0.0.1/32"];
       }
-      {
-        # zapados
-        PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
-        AllowedIPs = ["10.0.0.2/32"];
-      }
-      {
-        # moltres
-        PublicKey = "";
-        AllowedIPs = ["10.0.0.3/32"];
-      }
-      {
-        #eevee
-        PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
-        AllowedIPs = ["10.0.0.4/32"];
-      }
     ];
   };
 in {
   imports = [
     disk
     profile
-    #impermanence
+    impermanence
     user
-    # ../../modules/services/k3s/server.nix
-    # ../../profiles/k3s.nix
   ];
 
   boot = {
