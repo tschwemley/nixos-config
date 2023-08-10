@@ -30,6 +30,7 @@ in {
     disk
     profile
     user
+    ./nginx.nix
   ];
 
   boot = {
