@@ -14,17 +14,17 @@
     inherit config;
     userName = hostName;
   };
-  # wireguard = import ../../modules/networking/wireguard.nix {
-  #   inherit config;
-  #   ip = wireguardIP;
-  #   peers = [
-  #     {
-  #       # articuno
-  #       PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
-  #       AllowedIPs = ["10.0.0.1/32"];
-  #     }
-  #   ];
-  # };
+  wireguard = import ../../modules/networking/wireguard.nix {
+    inherit config;
+    ip = wireguardIP;
+    peers = [
+      {
+        # articuno
+        PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
+        AllowedIPs = ["10.0.0.1/32"];
+      }
+    ];
+  };
 in {
   imports = [
     disk
@@ -50,7 +50,7 @@ in {
   services.openssh.enable = true;
   sops = {
     defaultSopsFile = ./secrets.yaml;
-    age.keyFile = "/persist/.age-keys.txt";
+    age.keyFile = "/root/.config/sops/age/.age-keys.txt";
 
     secrets = {
       ssh_host_ed25519_key.path = "/etc/ssh/ssh_host_ed25519_key";
