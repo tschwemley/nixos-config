@@ -4,6 +4,7 @@ keys:
   - &articuno age1y6e5tplnaxzc6rhmdm7jjrka5276jfmgafd85ucl50d89qg29q3s0ur9nw
   - &charizard age1yhsl8v77jja50pgtg6yklddfe2uprs7y2l8lx6595e3sntjj3gjq98he3a
   - &eevee age1tc6r7z28g2zpnwmu2j9wxrpsn74mr9kl4a63r82u7xlywx9dma2qpparlf
+  - &machamp age1k5e5uk0897ne5lrvmhhgn6am5cr32l2w7aa4ldapncwluv0rqekspj8w97
 
 creation_rules:
   - path_regex: secrets/secrets.yaml
@@ -33,7 +34,7 @@ creation_rules:
     key_groups:
       - age:
         - *personal
-        # - *machamp
+        - *machamp
 
   - path_regex: nixos/hosts/moltres/secrets.yaml
     key_groups:
