@@ -63,10 +63,20 @@ in {
         path = "/etc/ssh/ssh_host_rsa_key.pub";
         mode = "0644";
       };
+      wireguard_private = {
+        mode = "0644";
+        path = "/persist/wireguard/private";
+        owner = config.users.users.systemd-network.name;
+        group = config.users.users.systemd-network.group;
+        restartUnits = ["systemd-networkd" "systemd-resolved"];
+      };
     };
   };
  
 
   # don't update this
   system.stateVersion = "23.05";
+
+  systemd.network.enable = true;
+  services.resolved.enable = true;
 }
