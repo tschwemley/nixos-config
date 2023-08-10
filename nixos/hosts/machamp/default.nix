@@ -30,6 +30,7 @@ in {
     disk
     profile
     user
+    wireguard
     ./nginx.nix
   ];
 
