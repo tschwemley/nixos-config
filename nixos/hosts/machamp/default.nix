@@ -73,7 +73,6 @@ in {
       };
     };
   };
- 
 
   # don't update this
   system.stateVersion = "23.05";
