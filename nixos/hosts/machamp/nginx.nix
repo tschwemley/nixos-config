@@ -4,11 +4,11 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     # other Nginx options
-    virtualHosts."build.schwem.io" = {
+    virtualHosts."machamp.schwem.io" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        proxyPass = "http://127.0.0.1:12345";
+        proxyPass = "http://127.0.0.1:3000";
         # proxyWebsockets = true; # needed if you need to use WebSocket
         /*
          extraConfig =
@@ -19,10 +19,12 @@
         "proxy_pass_header Authorization;";
         */
       };
+      serverAliaes = ["build.schwem.io"];
     };
   };
 
   networking.firewall.allowedTCPPorts = [80 443];
 
   security.acme.acceptTerms = true;
+  secruity.acme.defaults.email = "me@tylerschwemley.com";
 }
