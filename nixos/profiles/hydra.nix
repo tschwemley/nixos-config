@@ -1,6 +1,6 @@
 { inputs,...}: 
 let
-  impermanence = import ../../modules/system/impermanence.nix {inherit inputs;};
+  impermanence = import ../modules/system/impermanence.nix {inherit inputs;};
 in
 {
   imports = [
