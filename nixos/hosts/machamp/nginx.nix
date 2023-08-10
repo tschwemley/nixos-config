@@ -19,7 +19,7 @@
         "proxy_pass_header Authorization;";
         */
       };
-      serverAliaes = ["build.schwem.io"];
+      serverAliases = ["build.schwem.io"];
     };
   };
 
