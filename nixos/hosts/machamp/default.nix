@@ -50,7 +50,7 @@ in {
   services.openssh.enable = true;
   sops = {
     defaultSopsFile = ./secrets.yaml;
-    age.keyFile = "/root/.config/sops/age/.age-keys.txt";
+    age.keyFile = "/persist/.age-keys.txt";
 
     secrets = {
       ssh_host_ed25519_key.path = "/etc/ssh/ssh_host_ed25519_key";
