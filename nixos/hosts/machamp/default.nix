@@ -55,16 +55,6 @@ in {
     age.keyFile = "/persist/.age-keys.txt";
 
     secrets = {
-      ssh_host_ed25519_key.path = "/etc/ssh/ssh_host_ed25519_key";
-      ssh_host_ed25519_key_pub = {
-        path = "/etc/ssh/ssh_host_ed25519_key.pub";
-        mode = "0644";
-      };
-      ssh_host_rsa_key.path = "/etc/ssh/ssh_host_rsa_key";
-      ssh_host_rsa_key_pub = {
-        path = "/etc/ssh/ssh_host_rsa_key.pub";
-        mode = "0644";
-      };
       wireguard_private = {
         mode = "0644";
         path = "/persist/wireguard/private";
