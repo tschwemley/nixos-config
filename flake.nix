@@ -57,7 +57,6 @@
         system,
         ...
       }: {
-		  inputs.nixpkgs.config.allowUnfree = true;
         # makes pkgs available to all perSystem functions
         _module.args.pkgs = inputs'.nixpkgs.legacyPackages;
 
