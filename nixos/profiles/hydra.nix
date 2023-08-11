@@ -1,8 +1,6 @@
-{ inputs,...}: 
-let
+{inputs, ...}: let
   impermanence = import ../modules/system/impermanence.nix {inherit inputs;};
-in
-{
+in {
   imports = [
     impermanence
     ./server.nix
