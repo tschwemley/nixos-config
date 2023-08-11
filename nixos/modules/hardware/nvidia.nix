@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   pkgs,
   ...
@@ -17,10 +18,15 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true; # also enable support for 32 bit applications (e.g. wine)
+    extraPackages = with pkgs; [
+      vaapiVdpau
+    ];
   };
 
   environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "nvidia";
-    VDPAU_DRIVER_NAME = "nvidia";
+#VDPAU_DRIVER_NAME = "nvidia";
+    # LIBVA_DRIVER_NAME = "nvidia";
+    # LIBVA_DRIVER = "nvidia";
+    VDPAU_DRIVER = "nvidia";
   };
 }
