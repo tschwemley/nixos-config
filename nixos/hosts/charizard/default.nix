@@ -15,9 +15,10 @@
   hardware = {
     imports = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
-      inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+      #inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
       inputs.nixos-hardware.nixosModules.common-pc
       inputs.nixos-hardware.nixosModules.common-pc-ssd
+      ../../modules/hardware/nvidia.nix
     ];
   };
 in {
@@ -38,11 +39,6 @@ in {
       enable = true;
       editor = false; # leaving true allows for root access to be gained via passing kernal param
     };
-  };
-
-  environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "nvidia";
-    VDPAU_DRIVER_NAME = "nvidia";
   };
 
   services.openssh = {
