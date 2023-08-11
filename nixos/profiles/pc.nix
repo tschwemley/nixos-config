@@ -12,6 +12,7 @@
     ../modules/system/fonts.nix
     ../modules/services/xserver.nix
     ../modules/users/schwem.nix
+    ../modules/system/xdg.nix
   ];
 
   # on my personal machines I don't want to be prompted for my pw
