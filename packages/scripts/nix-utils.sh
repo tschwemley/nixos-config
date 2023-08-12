@@ -14,13 +14,13 @@ extractSshHostKeys() {
 }
 
 extractWireguardPrivateKey() {
-	if [ -n "$3" ]
+	if [ -n "$2" ]
 	then
-		path="$3"
+		path="$2"
 	else
 		path="/persist/wireguard/private"
 	fi
-	secretsPath=./nixos/hosts/$2/secrets.yaml
+	secretsPath=./nixos/hosts/$1/secrets.yaml
 	sops -d --extract '["wireguard_private"]' $secretsPath > $path 
 }
 
@@ -33,7 +33,7 @@ then
 elif [[ "$1" == "extract-wg-private" ]]
 then
 	[ $# -lt 2 ] || [ ! -f nixos/hosts/$2/secrets.yaml ] && echo "Incorrect number of args or file does not exist" && printHelp
-	extractWireguardPrivateKey
+	extractWireguardPrivateKey $2
 else
 	printHelp
 fi
