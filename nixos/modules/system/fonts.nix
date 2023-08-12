@@ -18,9 +18,11 @@
     ];
 
     fontconfig = {
-      antialias = true;
-      hinting.enable = true;
-      subpixel.rgba = "rgb";
+      enable = true;
+      # TODO: useful for oled? test with secondary monitor
+      # antialias = true;
+      # hinting.enable = true;
+      # subpixel.rgba = "rgb";
     };
   };
 }
