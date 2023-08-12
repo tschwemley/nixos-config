@@ -7,6 +7,7 @@
     netdevs = {
       "20-wg0" = {
         netdevConfig = {
+          KeepAliveSec = "25";
           Kind = "wireguard";
           Name = "wg0";
           MTUBytes = "1430";
