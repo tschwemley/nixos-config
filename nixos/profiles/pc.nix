@@ -9,10 +9,10 @@
     ../modules/programs/barrier.nix
     ../modules/services/mullvad.nix
     #../modules/programs/steam.nix
-    ../modules/system/fonts.nix
+    ../modules/services/flatpak.nix
     ../modules/services/xserver.nix
+    ../modules/system/fonts.nix
     ../modules/users/schwem.nix
-    ../modules/system/xdg.nix
   ];
 
   # on my personal machines I don't want to be prompted for my pw
