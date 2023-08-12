@@ -24,7 +24,7 @@
     else "";
 in {
   environment.sessionVariables = {
-    KUBCONFIG = "/etc/rancher/k3s/k3s.yaml";
+    KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
   };
 
   environment.systemPackages = with pkgs; [
