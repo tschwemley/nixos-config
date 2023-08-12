@@ -23,6 +23,10 @@
     then "https://10.0.0.1:6443"
     else "";
 in {
+  environment.sessionVariables = {
+    KUBCONFIG = "/etc/rancher/k3s/k3s.yaml";
+  };
+
   environment.systemPackages = with pkgs; [
     (writeShellScriptBin "k3s-reset-node" (builtins.readFile ./k3s-reset-node))
     k9s
