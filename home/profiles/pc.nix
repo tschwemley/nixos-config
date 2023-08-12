@@ -14,7 +14,7 @@ in {
     ../programs/rofi.nix
     ../programs/slack.nix
     ../programs/sonic-pi.nix
-    ../programs/tightvnc.nix
+    ../programs/tigervnc.nix
     ../programs/zk
     ../services/spotifyd.nix
     ../terminals/wezterm.nix
