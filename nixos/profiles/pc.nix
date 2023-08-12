@@ -8,7 +8,7 @@
     ../modules/hardware/audio.nix
     ../modules/programs/barrier.nix
     ../modules/services/mullvad.nix
-    ../modules/programs/steam.nix
+    #../modules/programs/steam.nix
     ../modules/system/fonts.nix
     ../modules/services/xserver.nix
     ../modules/users/schwem.nix
