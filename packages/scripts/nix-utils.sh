@@ -13,12 +13,27 @@ extractSshHostKeys() {
 	sops -d --extract '["ssh_host_ed25519_key"]' $secretsPath > /persist/etc/ssh/ssh_host_ed25519_key
 }
 
+extractWireguardPrivateKey() {
+	if [ -e $3 ]
+	then
+		path=$3
+	else
+		path="/persist/wireguard/private"
+	fi
+	secretsPath=./nixos/hosts/$2/secrets.yaml
+	sops -d --extract '["wireguard_private"]' $secretsPath > $path 
+}
+
 [ $# -lt 1 ] && printHelp
 
 if [[ $1 -eq "extract-host-keys" ]]
 then
 	[ $# -lt 2 ] || [ ! -f nixos/hosts/$2/secrets.yaml ] && echo "Incorrect number of args or file does not exist" && printHelp
 	extractSshHostKeys
+elif [[ $1 -eq "extract-wg-private" ]]
+then
+	[ $# -lt 2 ] || [ ! -f nixos/hosts/$2/secrets.yaml ] && echo "Incorrect number of args or file does not exist" && printHelp
+	extractWireguardPrivateKey
 else
 	printHelp
 fi
