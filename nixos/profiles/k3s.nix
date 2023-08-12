@@ -21,7 +21,10 @@
         additionalFiles = [
           "/var/lib/rancher/k3s/server/token"
         ];
-        additionalDirs = if nodeName == "eevee" then ["/etc/systemd/network"] else [];
+        additionalDirs =
+          if nodeName == "eevee"
+          then ["/etc/systemd/network"]
+          else [];
       }
     else {};
   k3s = import ../modules/services/k3s {
