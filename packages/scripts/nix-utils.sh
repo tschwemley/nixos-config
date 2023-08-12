@@ -14,9 +14,9 @@ extractSshHostKeys() {
 }
 
 extractWireguardPrivateKey() {
-	if [ -e $3 ]
+	if [ -n "$3" ]
 	then
-		path=$3
+		path="$3"
 	else
 		path="/persist/wireguard/private"
 	fi
