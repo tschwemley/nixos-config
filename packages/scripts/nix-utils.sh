@@ -3,6 +3,14 @@ printHelp() {
 	exit 1
 }
 
+extractSshDir() {
+	secretsPath=./nixos/hosts/$HOST/secrets.yaml
+	[[ "$2" == "pc" ]] && \
+		sops -d --extract '["ssh_config"]' $secrets > $HOME/.ssh/config && \
+		sops -d --extract '["gh_ssh_key"]' $secrets > $HOME/.ssh/personal-gh && \
+		sops -d --extract '["mac_ssh_key"]' $secrets > $HOME/.ssh/personal-gh
+}
+
 extractSshHostKeys() {
 	secretsPath=./nixos/hosts/$2/secrets.yaml
 	keys_to_extract='["ssh_host_ed25519_key" "ssh_host_ed25519_key_pub" "ssh_host_rsa_key" "ssh_host_rsa_key_pub"]'
@@ -30,6 +38,9 @@ if [[ "$1" == "extract-host-keys" ]]
 then
 	[ $# -lt 2 ] || [ ! -f nixos/hosts/$2/secrets.yaml ] && echo "Incorrect number of args or file does not exist" && printHelp
 	extractSshHostKeys
+elif [[ "$1" == "extract-ssh-keys" ]]
+then
+	extractSshDir $2
 elif [[ "$1" == "extract-wg-private" ]]
 then
 	[ $# -lt 2 ] || [ ! -f nixos/hosts/$2/secrets.yaml ] && echo "Incorrect number of args or file does not exist" && printHelp

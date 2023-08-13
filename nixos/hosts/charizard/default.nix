@@ -86,6 +86,16 @@ in {
         path = "/home/schwem/.ssh/eevee";
         sopsFile = ./../eevee/secrets.yaml;
       };
+      "gh_key" = {
+        key = "ssh_private_key";
+        owner = "schwem";
+        path = "/home/schwem/.ssh/github_key";
+      };
+      "mac_key" = {
+        key = "ssh_private_key";
+        owner = "schwem";
+        path = "/home/schwem/.ssh/mac_ssh_key";
+      };
       "ssh_config" = {
         mode = "0600";
         owner = "schwem";
