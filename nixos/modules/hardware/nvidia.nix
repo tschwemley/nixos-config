@@ -24,8 +24,9 @@
   };
 
   environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "nvidia";
-    VDPAU_DRIVER = "nvidia";
+    LIBVA_DRIVER_NAME = "vdpau";
+    #VDPAU_DRIVER = "nvidia";
+    VDPAU_DRIVER = "vdpau";
   };
 
   services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
