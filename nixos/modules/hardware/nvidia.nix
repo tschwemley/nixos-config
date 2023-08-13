@@ -7,7 +7,7 @@
   hardware.nvidia = {
     open = false;
     modesetting.enable = true;
-#nvidiaSettings = true;
+    nvidiaSettings = true;
     # TODO: read https://download.nvidia.com/XFree86/Linux-x86_64/396.51/README/nvidia-persistenced.html 
     # and determine if should set
     #nvidiaPersistenced = true;
@@ -19,12 +19,12 @@
     driSupport32Bit = true; # also enable support for 32 bit applications (e.g. wine)
     extraPackages = with pkgs; [
       vaapiVdpau
-      nvidia-vaapi-driver
+#nvidia-vaapi-driver
     ];
   };
 
   environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "nvidia";
+#LIBVA_DRIVER_NAME = "nvidia";
     VDPAU_DRIVER = "nvidia";
   };
 
