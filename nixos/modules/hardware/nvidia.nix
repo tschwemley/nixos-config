@@ -19,12 +19,12 @@
     driSupport32Bit = true; # also enable support for 32 bit applications (e.g. wine)
     extraPackages = with pkgs; [
       vaapiVdpau
-#nvidia-vaapi-driver
+      nvidia-vaapi-driver
     ];
   };
 
   environment.sessionVariables = {
-#LIBVA_DRIVER_NAME = "nvidia";
+    LIBVA_DRIVER_NAME = "nvidia";
     VDPAU_DRIVER = "nvidia";
   };
 
