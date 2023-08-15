@@ -33,7 +33,7 @@ in {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod"];
       kernelModules = ["amdgpu" "kvm-intel"];
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+#kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = ["btrfs"];
     loader.systemd-boot = {
       enable = true;
