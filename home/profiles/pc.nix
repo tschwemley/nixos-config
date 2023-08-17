@@ -1,4 +1,4 @@
-{
+{inputs, ...}: {
   imports = [
     ./.
     ../programs/brave.nix
@@ -12,10 +12,13 @@
     ../programs/tigervnc.nix
     ../programs/zk
     ../terminals/wezterm.nix
+    inputs.hyprland.homeManagerModules.default
   ];
 
+  wayland.windowManager.hyprland.enable = true;
+
   # TODO: move this to system level or someplace more appropriate at a later date
-  xdg.configFile = {
-    "awesome/rc.lua".source = ../xdg-config/awesome/rc.lua;
-  };
+  # xdg.configFile = {
+  #   "awesome/rc.lua".source = ../xdg-config/awesome/rc.lua;
+  # };
 }

@@ -3,10 +3,13 @@
   withSystem,
   ...
 }: let
-  mkHome = system: user: profile:
-    withSystem system ({pkgs, ...}:
+  mkHome = system: user: profile: extraModules:
+    withSystem system ({pkgs, extraModules ? [], ...}:
       inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+        extraSpecialArgs = {
+          inherit inputs;
+        };
         modules = [
           profile
           {
