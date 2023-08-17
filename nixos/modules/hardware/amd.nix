@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   services.xserver.videoDrivers = ["modesetting"];
   environment.variables.AMD_VULKANICD = "RADV";
 
@@ -6,8 +6,8 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
-    extraPackages = with pkgs; [ 
-      # amdvlkt 
+    extraPackages = with pkgs; [
+      # amdvlkt
       rocm-opencl-icd
     ];
   };

@@ -19,7 +19,7 @@
   environment.systemPackages = with pkgs; [
     curl
     git
-	htop
+    htop
     jq
     ripgrep
     #rustc

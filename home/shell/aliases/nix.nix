@@ -1,3 +1,3 @@
-{config, ...}: {
-  "nrbs" = "sudo nixos-rebuild switch --flake .#${config.networking.hostName}";
+{
+  "nrbs" = "sudo nixos-rebuild switch --flake .#$HOST";
 }

@@ -3,25 +3,20 @@
   withSystem,
   ...
 }: let
-  mkHome = system: user: profile: extraModules:
-    withSystem system ({pkgs, extraModules ? [], ...}:
+  mkHome = system: modules:
+    withSystem system ({pkgs, ...}:
       inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {
-          inherit inputs;
-        };
-        modules = [
-          profile
-          {
-            home.username = user;
-            home.homeDirectory = "/home/${user}";
-          }
-        ];
+        inherit modules pkgs;
       });
 in {
   flake.homeConfigurations = {
-    schwem = mkHome "x86_64-linux" "schwem" ./profiles/pc.nix;
-    "work@dev" = mkHome "x86_64-linux" "tschwemley" ./profiles/work.nix;
-    "work@mac" = mkHome "x86_64-darwin" "tschwemley" ./profiles/work.nix;
+    # TODO: this would probably be cleaner if it was extra modules being passed into the profile
+    schwem = mkHome ("x86_64-linux" [
+      ./profiles/pc.nix
+      inputs.hyprland.homeModules.default
+      {home.username = "schwem";}
+    ]);
+    # "work@dev" = mkHome "x86_64-linux" [ ./profiles/work.nix ];
+    # "work@mac" = mkHome "x86_64-darwin" [ ./profiles/work.nix ];
   };
 }
