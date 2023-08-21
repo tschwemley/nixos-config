@@ -11,6 +11,6 @@ in {
   perSystem = {pkgs, ...}: let
     nix-utils = pkgs.writeShellScriptBin "nix-utils" lib.readFile ./scripts/nix-utils.sh;
   in {
-    apps.default = mkAppFromScript "nix-utils" pkgs ./scripts/nix-utils.sh; 
+    apps.default = mkAppFromScript "nix-utils" pkgs ./scripts/nix-utils.sh;
   };
 }
