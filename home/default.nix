@@ -13,7 +13,6 @@ in {
     # TODO: this would probably be cleaner if it was extra modules being passed into the profile
     schwem = mkHome ("x86_64-linux" [
       ./profiles/pc.nix
-      inputs.hyprland.homeModules.default
       {home.username = "schwem";}
     ]);
     # "work@dev" = mkHome "x86_64-linux" [ ./profiles/work.nix ];

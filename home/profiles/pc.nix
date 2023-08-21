@@ -12,7 +12,6 @@
     ../programs/tigervnc.nix
     ../programs/zk
     ../terminals/wezterm.nix
-    ../wayland
   ];
 
   # TODO: move this to system level or someplace more appropriate at a later date
