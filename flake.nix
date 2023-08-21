@@ -28,7 +28,6 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     impermanence.url = "github:nix-community/impermanence/master";
-    kubenix.url = "github:hall/kubenix";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     sops.url = "github:Mic92/sops-nix";
   };
@@ -38,7 +37,6 @@
     disko,
     flake-parts,
     home-manager,
-    kubenix,
     nixos-hardware,
     nixos-generators,
     nixpkgs,
