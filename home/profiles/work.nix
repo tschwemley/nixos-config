@@ -1,6 +1,5 @@
 {
   imports = [
     ./.
-    ../programs/lazygit.nix
   ];
 }
