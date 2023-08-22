@@ -15,6 +15,7 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
 
     nix-on-droid = {
       url = "github:t184256/nix-on-droid";

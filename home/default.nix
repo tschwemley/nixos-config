@@ -4,12 +4,9 @@
   ...
 }: let
   mkHome = system: modules:
-    withSystem system ({pkgs, ...}:
+    withSystem system ({inputs, pkgs, ...}:
       inputs.home-manager.lib.homeManagerConfiguration {
         inherit modules pkgs;
-        extraSpecialArgs = {
-          hyprland = inputs.hyprland;  
-        };
       });
 in {
   flake.homeConfigurations = {

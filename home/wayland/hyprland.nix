@@ -1,7 +1,11 @@
-{hyprland, pkgs, ...}: {
+{pkgs, ...}: {
   wayland.windowManager.hyprland = {
     enable = true;
+    plugins = [
+      pkgs.waybar-hyprland
+    ];
     settings = {
+      "$mod" = "SUPER";
       bind = ["$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"];
     };
     # extraConfig = ''
