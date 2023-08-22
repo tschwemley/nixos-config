@@ -1,4 +1,4 @@
-{
+{...}: {
   imports = [
     ./.
     ../programs/brave.nix
@@ -12,10 +12,11 @@
     ../programs/tigervnc.nix
     ../programs/zk
     ../terminals/wezterm.nix
-    ../wayland
+    ../wayland/hyprland.nix
   ];
 
   home.username = "schwem";
+  home.homeDirectory = "/home/schwem";
   # TODO: move this to system level or someplace more appropriate at a later date
   xdg.configFile = {
     "awesome/rc.lua".source = ../xdg-config/awesome/rc.lua;

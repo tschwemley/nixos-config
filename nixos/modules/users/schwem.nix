@@ -5,7 +5,9 @@
 }: let
   defaultSopsFile = config.sops.defaultSopsFile;
 in {
-  imports = [./.];
+  imports = [
+    ./.
+  ];
 
   users.users = {
     schwem = {
