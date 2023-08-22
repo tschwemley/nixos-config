@@ -71,6 +71,7 @@
         ./home
         ./hydra
         ./nixos
+        ./packages
         ./shells
       ];
     };
