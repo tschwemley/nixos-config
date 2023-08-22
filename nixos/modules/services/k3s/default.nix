@@ -29,7 +29,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     (writeShellScriptBin "k3s-reset-node" (builtins.readFile ./k3s-reset-node))
-    helm
+    kubernetes-helm
     k9s
   ];
 
