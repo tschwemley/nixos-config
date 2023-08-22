@@ -2,7 +2,8 @@
   home.packages = with pkgs; [
     gopls
     lua-language-server
-    nixd
+    # nixd
+    nil
     nodePackages.intelephense
     nodePackages.typescript-language-server
     nodePackages.yaml-language-server
