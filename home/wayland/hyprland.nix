@@ -3,12 +3,15 @@
   inputs,
   ...
 }: {
+  imports = [
+    inputs.hyprland.homeManagerModules.default
+  ];
+
   wayland.windowManager.hyprland = let
     hyprlandPlugins = inputs.hyprland-plugins.packages.${pkgs.system};
   in {
     enable = true;
     plugins = [
-      inputs.hyprland.homeManagerModules.default
       hyprlandPlugins.hyprbars
       # pkgs.waybar-hyprland
     ];
