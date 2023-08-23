@@ -3,10 +3,6 @@
   inputs,
   ...
 }: {
-  imports = [
-    inputs.hyprland.homeManagerModules.default
-  ];
-
   wayland.windowManager.hyprland = let
     hyprlandPlugins = inputs.hyprland-plugins.packages.${pkgs.system};
   in {
