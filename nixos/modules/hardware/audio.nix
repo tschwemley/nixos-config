@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  sound.enable = true;
+
   hardware.bluetooth.enable = true;
   # enables blueman-applet and blueman-manager for gui (can also connect via cli bluetoothctl)
   #services.blueman.enable = true;
@@ -12,7 +14,7 @@
     wireplumber.enable = true;
     # If you want to use JACK applications, uncomment this
     # TODO: determine if needed for live-audio e.g. sonic pi or reaper
-    #jack.enable = true;
+    jack.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
