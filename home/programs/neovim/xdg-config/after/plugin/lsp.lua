@@ -7,9 +7,9 @@ end)
 
 -- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md for naming
 -- TODO: remove this after testing different nix servers
-lsp.setup_servers({ 'gopls', 'intelephense', 'lua_ls', 'nil_ls', 'tsserver', 'yamlls' })
+lsp.setup_servers({ 'gopls', 'intelephense', 'lua_ls', 'tsserver', 'yamlls' })
 
-require('lspconfig').nil_ls.setup {
+require('lspzero').configure('nil_ls', {
    settings = {
       ['nil'] = {
          formatting = {
@@ -17,6 +17,6 @@ require('lspconfig').nil_ls.setup {
          },
       },
    },
-}
+})
 
 lsp.setup()

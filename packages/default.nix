@@ -5,7 +5,7 @@
         pname = "bambu-studio";
         version = "v01.07.04.52";
         src = pkgs.fetchurl {
-              url = "https://github.com/bambulab/BambuStudio/archive/refs/tags/${version}.tar.gz";
+          url = "https://github.com/bambulab/BambuStudio/archive/refs/tags/${version}.tar.gz";
           hash = "sha256:1vrmvz2b6p142r8a2r23rjj5xn9bd6c5rhjpx8g4jz6aa8nl8rw7";
         };
         # bambuStudio = pkgs.appimageTools.wrapType2 {

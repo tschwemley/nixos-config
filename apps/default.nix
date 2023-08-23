@@ -1,8 +1,4 @@
-{
-  self,
-  lib,
-  ...
-}: let
+{lib, ...}: let
   mkAppFromScript = name: pkgs: scriptPath: {
     type = "app";
     program = pkgs.writeShellScriptBin name lib.readFile scriptPath;
