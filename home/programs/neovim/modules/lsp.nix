@@ -1,8 +1,9 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    alejandra
     gopls
     lua-language-server
-    nixd
+    nil
     nodePackages.intelephense
     nodePackages.typescript-language-server
     nodePackages.yaml-language-server
