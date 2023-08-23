@@ -9,7 +9,7 @@ end)
 -- TODO: remove this after testing different nix servers
 lsp.setup_servers({ 'gopls', 'intelephense', 'lua_ls', 'tsserver', 'yamlls' })
 
-require('lspzero').configure('nil_ls', {
+require('lsp-zero').configure('nil_ls', {
    settings = {
       ['nil'] = {
          formatting = {
