@@ -8,6 +8,7 @@
   in {
     enable = true;
     plugins = [
+      inputs.hyprland.homeManagerModules.default
       hyprlandPlugins.hyprbars
       # pkgs.waybar-hyprland
     ];
