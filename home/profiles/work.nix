@@ -1,4 +1,4 @@
-let
+{system, ...}: let
   username = "tschwemley";
 in {
   imports = [
@@ -8,7 +8,7 @@ in {
   home = {
     inherit username;
     homeDirectory =
-      if builtins.currentSystem == "x86_64-linux"
+      if system == "x86_64-linux"
       then "/home/${username}"
       else "/Users/${username}";
   };
