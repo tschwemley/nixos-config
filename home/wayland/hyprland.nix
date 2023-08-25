@@ -18,7 +18,15 @@
     ];
     settings = {
       "$mod" = "SUPER";
-      bind = ["$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"];
+
+      bind = [
+        "$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"
+      ];
+
+      workspace = [
+        "name:start, monitor:HDMI-1, default: true"
+        "name:code, monitor:HDMI-1"
+      ];
     };
     # extraConfig = ''
     #   $mod = SUPER
