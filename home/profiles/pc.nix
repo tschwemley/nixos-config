@@ -9,6 +9,7 @@
     ../programs/rofi.nix
     ../programs/slack.nix
     ../programs/sonic-pi.nix
+    ../programs/spotify.nix
     ../programs/tigervnc.nix
     ../programs/wezterm
     ../programs/zk
