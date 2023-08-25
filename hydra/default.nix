@@ -1,10 +1,8 @@
 {self, ...}: let
-  configurations =
-    builtins.mapAttrs
-    (name: config: {${name} = config.config.system.build.toplevel;})
-    self.nixosConfigurations;
+  inherit (self.inputs.nixpkgs.lib) mapAttrs;
+  getHostConfig = _: config: config.config.system.build.toplevel;
 in {
   flake.hydraJobs = {
-    inherit configurations;
+    hosts = mapAttrs getHostConfig self.outputs.nixosConfigurations;
   };
 }
