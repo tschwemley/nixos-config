@@ -1,9 +1,7 @@
 {diskName, ...}: {
-  loader = {
-    grub = {
-      efiSupport = true;
-      efiInstallAsRemovable = true;
-      devices = [diskName];
-    };
+  boot.loader.grub = {
+    efiSupport = true;
+    efiInstallAsRemovable = true;
+    devices = [diskName];
   };
 }
