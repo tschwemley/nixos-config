@@ -32,20 +32,29 @@ extractWireguardPrivateKey() {
 	sops -d --extract '["wireguard_private"]' $secretsPath > $path 
 }
 
+initializeDisk () {
+	echo $#
+	[ $# -ne 2 ] && echo "arg count"
+	echo "nix run --experimental-features 'nix-command flakes' github:nix-community/disko -- -m disko --arg diskName '\"$2\"' nixos/modules/hardware/disks/$1.nix"
+}
+
 [ $# -lt 1 ] && printHelp
 
-if [[ "$1" == "extract-host-keys" ]]
-then
-	[ $# -lt 2 ] || [ ! -f nixos/hosts/$2/secrets.yaml ] && echo "Incorrect number of args or file does not exist" && printHelp
-	extractSshHostKeys
-elif [[ "$1" == "extract-ssh-keys" ]]
-then
-	extractSshDir $2
-elif [[ "$1" == "extract-wg-private" ]]
-then
-	[ $# -lt 2 ] || [ ! -f nixos/hosts/$2/secrets.yaml ] && echo "Incorrect number of args or file does not exist" && printHelp
-	extractWireguardPrivateKey $2
-else
-	printHelp
-fi
+case $1 in
+	"extract-host-keys")
+		extractSshHostKeys
+		;;
+
+	"extract-ssh-keys" | "extract-ssh")
+		extractSshDir $2
+		;;
+
+	"extract-wg-private" | "extract-wg")
+		extractWireguardPrivateKey $2
+		;;
+
+	"init-disk" | "initialize-disk")
+		initializeDisk $2 $3
+		;;
+esac
 
