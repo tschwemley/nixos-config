@@ -48,7 +48,6 @@
           };
         };
       };
-      postCreateHook = "btrfs subvolume snapshot /mnt /mnt/root-blank";
     }
   ];
   noGrubPartitions = [
