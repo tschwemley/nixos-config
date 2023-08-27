@@ -25,11 +25,11 @@ in {
     KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
   };
 
-  environment.systemPackages = with pkgs; [
-    (writeShellScriptBin "k3s-reset-node" (builtins.readFile ./k3s-reset-node))
-    kubernetes-helm
-    k9s
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   (writeShellScriptBin "k3s-reset-node" (builtins.readFile ./k3s-reset-node))
+  #   # kubernetes-helm
+  #   k9s
+  # ];
 
   # TODO: optionize firewall
   # 51820 and 51821 for wg backend
@@ -47,22 +47,22 @@ in {
     kubectl = "k3s kubectl";
   };
 
-  services.k3s = {
-    inherit clusterInit extraFlags role serverAddr;
-    enable = true;
-    #tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
-    tokenFile = "/var/lib/rancher/k3s/server/token";
-  };
-
-  # sops.secrets.k3s-server-token = {
-  #   sopsFile = ./secrets.yaml;
-  #   path = "/var/lib/rancher/k3s/server/token";
+  # services.k3s = {
+  #   inherit clusterInit extraFlags role serverAddr;
+  #   enable = true;
+  #   #tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
+  #   tokenFile = "/var/lib/rancher/k3s/server/token";
   # };
+
+  sops.secrets.k3s-server-token = {
+    sopsFile = ./secrets.yaml;
+    # path = "/var/lib/rancher/k3s/server/token";
+  };
   systemd.services = {
-    k3s = {
-      requires = ["containerd.service" "run-secrets.d.mount" "systemd-networkd.service"];
-      after = ["containerd.service" "firewall.service" "run-secrets.d.mount" "systemd-networkd.service"];
-    };
+    # k3s = {
+    #   requires = ["containerd.service" "run-secrets.d.mount" "systemd-networkd.service"];
+    #   after = ["containerd.service" "firewall.service" "run-secrets.d.mount" "systemd-networkd.service"];
+    # };
     systemd-networkd = {
       requires = ["run-secrets.d.mount"];
       after = ["run-secrets.d.mount"];
