@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  diskName = "nvme1n1";
+  diskName = "/dev/nvme1n1";
   diskConfig = {
     imports = [
       (import ../../modules/hardware/disks/btrfs-encrypted.nix {inherit diskName;})
