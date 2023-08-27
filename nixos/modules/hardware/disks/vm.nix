@@ -47,8 +47,8 @@
             mountOptions = ["compress=lzo" "noatime"];
           };
         };
-        postCreateHook = "btrfs subvolume snapshot /mnt /mnt/root-blank";
       };
+      postCreateHook = "btrfs subvolume snapshot /mnt /mnt/root-blank";
     }
   ];
   noGrubPartitions = [
