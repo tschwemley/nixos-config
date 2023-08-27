@@ -33,6 +33,9 @@
           "/rootfs" = {
             mountpoint = "/";
             mountOptions = ["compress=lzo"];
+            postCreateHook = ''
+              btrfs subvolume snapshot -r /mnt/root /mnt/root-blank
+            '';
           };
           "/home" = {
             mountpoint = "/home";
@@ -48,7 +51,6 @@
           };
         };
       };
-      postCreateHook = "btrfs subvolume snapshot -r /mnt/root /mnt/root-blank";
     }
   ];
   noGrubPartitions = [
