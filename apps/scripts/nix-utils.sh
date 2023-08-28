@@ -12,8 +12,6 @@ extractSshDir() {
 }
 
 extractSshHostKeys() {
-	echo $1
-	echo $2
 	secretsPath=./nixos/hosts/$1/secrets.yaml
 	extractPath="/persist/etc/ssh" 
 	if [ "$2" != "" ]; then extractPath="$2"; fi
@@ -50,7 +48,7 @@ case $1 in
 		;;
 
 	"extract-wg-private" | "extract-wg")
-		extractWireguardPrivateKey $2
+		extractWireguardPrivateKey $2 $3
 		;;
 
 	"init-disk" | "initialize-disk")
