@@ -15,7 +15,7 @@ extractSshHostKeys() {
 	echo $1
 	echo $2
 	secretsPath=./nixos/hosts/$1/secrets.yaml
-	extractPath=(($2 != "") ? $2 : "/persist/etc/ssh"
+	extractPath=(($2 != "" ? $2 : "/persist/etc/ssh"))
 	echo $extractPath
 	exit 69
 	keys_to_extract='["ssh_host_ed25519_key" "ssh_host_ed25519_key_pub" "ssh_host_rsa_key" "ssh_host_rsa_key_pub"]'
