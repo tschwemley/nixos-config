@@ -52,10 +52,6 @@ in {
         mode = "0440";
         neededForUsers = true;
       };
-      user_password = {
-        mode = "0440";
-        neededForUsers = true;
-      };
       wireguard_private = {
         mode = "0644";
         path = "/persist/wireguard/private";
