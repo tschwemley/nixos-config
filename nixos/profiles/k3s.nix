@@ -18,9 +18,6 @@
     then
       import ../modules/system/impermanence.nix {
         inherit inputs;
-        additionalFiles = [
-          "/var/lib/rancher/k3s/server/token"
-        ];
         additionalDirs =
           if nodeName == "eevee"
           then ["/etc/systemd/network"]
