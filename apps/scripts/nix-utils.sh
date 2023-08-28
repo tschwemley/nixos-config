@@ -47,7 +47,7 @@ initializeDisk () {
 
 case $1 in
 	"extract-host-keys")
-		extractSshHostKeys
+		extractSshHostKeys $2 $3
 		;;
 
 	"extract-ssh-keys" | "extract-ssh")
