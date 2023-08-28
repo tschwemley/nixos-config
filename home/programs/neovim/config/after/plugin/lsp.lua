@@ -6,13 +6,19 @@ lsp.on_attach(function(client, bufnr)
    lsp.buffer_autoformat()
 
    whichKey.register({
+      g = {
+         name = 'Go To...',
+         d = { vim.lsp.buf.definition, 'Go To Definition', { buffer = true } },
+         D = { vim.lsp.buf.declaration, 'Go To Declaration', { buffer = true } },
+      },
+   })
+
+   whichKey.register({
       l = {
-         name = "LSP",
-         d = { vim.lsp.buf.definition, "Go To Definition", { buffer = true } },
-         D = { vim.lsp.buf.declaration, "Go To Declaration", { buffer = true } },
-         r = { "<cmd>:Telescope lsp.referenes<cr>", "Show References", { buffer = true } },
-      }
-   }, { prefix = '<leader>' })
+         name = 'LSP',
+         r = { '<cmd>Telescope lsp.references<cr>', 'List References', { buffer = true } },
+      },
+   }, { prfeix = '<leader>' })
 end)
 
 -- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md for naming
