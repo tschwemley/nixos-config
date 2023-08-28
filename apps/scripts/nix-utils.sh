@@ -29,7 +29,7 @@ extractWireguardPrivateKey() {
 	extractPath="/persist/wireguard/private" 
 	if [ "$2" != "" ]; then extractPath="$2"; fi
 	secretsPath=./nixos/hosts/$1/secrets.yaml
-	sops -d --extract '["wireguard_private"]' $secretsPath > $path 
+	sops -d --extract '["wireguard_private"]' $secretsPath > $extractPath 
 }
 
 initializeDisk () {
