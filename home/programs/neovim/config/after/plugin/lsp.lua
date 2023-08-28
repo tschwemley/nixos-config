@@ -16,7 +16,7 @@ lsp.on_attach(function(client, bufnr)
    whichKey.register({
       l = {
          name = 'LSP',
-         r = { '<cmd>Telescope lsp.references<cr>', 'List References', { buffer = true } },
+         r = { '<cmd>Telescope lsp_references<cr>', 'List References', { buffer = true } },
       },
    }, { prfeix = '<leader>' })
 end)
