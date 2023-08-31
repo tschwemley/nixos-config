@@ -18,8 +18,8 @@ require('luasnip.loaders.from_vscode').lazy_load()
 -- Completion config
 cmp.setup({
    sources = {
-      { name = 'buffer',  group_index = 3 },
-      { name = 'copilot', group_index = 2 },
+      { name = 'buffer' },
+      { name = 'copilot' },
       { name = 'luasnip' },
       { name = 'nvim_lsp' },
       { name = 'nvim_lua' },
