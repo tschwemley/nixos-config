@@ -7,12 +7,15 @@
     packages = {
       bambuStudio = pkgs.stdenv.mkDerivation rec {
         pname = "bambu-studio";
-        version = "v01.07.04.52";
-        src = pkgs.fetchurl {
-          url = "https://github.com/bambulab/BambuStudio/archive/refs/tags/${version}.tar.gz";
-          hash = "sha256:1vrmvz2b6p142r8a2r23rjj5xn9bd6c5rhjpx8g4jz6aa8nl8rw7";
+        version = "01.07.04.52";
+        src = pkgs.fetchFromGitHub {
+          repo = "BambuStudio";
+          owner = "bambulab";
+          rev = "v${version}";
+          hash = "sha256-JYSSah2KiNn9jb0X/GZFFziQpP11eXc66ozh1L6Zcf0=";
         };
       };
+
       localAI = pkgs.stdenv.mkDerivation {
         pname = "local-ai";
         version = "1.25.0";
