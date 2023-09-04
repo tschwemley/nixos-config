@@ -1,20 +1,12 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ../programs/eww
     ../services/dunst.nix
   ];
 
-  wayland.windowManager.hyprland = let
-    hyprlandPlugins = inputs.hyprland-plugins.packages.${pkgs.system};
-  in {
+  wayland.windowManager.hyprland = {
     enable = true;
     plugins = [
-      hyprlandPlugins.hyprbars
-      # pkgs.waybar-hyprland
     ];
     settings = {
       "$mod" = "SUPER";
@@ -24,8 +16,10 @@
       ];
 
       workspace = [
-        "name:start, monitor:HDMI-1, default: true"
-        "name:code, monitor:HDMI-1"
+        "name:start, monitor:DP-2, default: true"
+        "name:code, monitor:DP-2"
+        # "name:start, monitor:HDMI-1, default: true"
+        # "name:code, monitor:HDMI-1"
       ];
     };
     # extraConfig = ''
