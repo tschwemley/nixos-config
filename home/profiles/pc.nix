@@ -4,6 +4,7 @@
     ../programs/brave.nix
     ../programs/discord.nix
     ../programs/firefox.nix
+    ../programs/flameshot.nix
     ../programs/reaper.nix
     ../programs/rbw.nix
     ../programs/rofi.nix

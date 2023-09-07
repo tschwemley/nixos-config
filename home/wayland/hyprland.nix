@@ -16,8 +16,8 @@
       ];
 
       workspace = [
-        "name:start, monitor:DP-2, default: true"
-        "name:code, monitor:DP-2"
+        # "name:start, monitor:DP-2, default: true"
+        # "name:code, monitor:DP-2"
         # "name:start, monitor:HDMI-1, default: true"
         # "name:code, monitor:HDMI-1"
       ];

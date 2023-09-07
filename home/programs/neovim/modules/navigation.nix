@@ -6,7 +6,7 @@
       lualine-nvim
 
       nnn-vim
-      nvim-ufo
+      # nvim-ufo
       telescope-nvim
     ];
   };
