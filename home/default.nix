@@ -19,7 +19,10 @@
       });
 in {
   flake.homeConfigurations = {
-    schwem = mkHome "x86_64-linux" [./profiles/pc.nix];
+    schwem = mkHome "x86_64-linux" [
+      ./profiles/pc.nix
+      # inputs.hyprland.homeManagerModules.default
+    ];
     "work@mac" = mkHome "aarch64-darwin" [./profiles/work.nix];
     # "work@dev" = mkHome "x86_64-linux" [ ./profiles/work.nix ];
   };
