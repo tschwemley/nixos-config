@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    gtkcord4
+    webcord
+    # gtkcord4
     # discordo # dicord terminal client
   ];
 }
