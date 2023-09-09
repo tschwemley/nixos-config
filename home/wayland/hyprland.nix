@@ -25,7 +25,7 @@
 
       bind = [
         "$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"
-        "$mod, p, exec, ${pkgs.rofi}/bin/rofi -show"
+        "$mod, p, exec, ${pkgs.rofi}/bin/rofi -show drun"
       ];
 
       exec-once = [
