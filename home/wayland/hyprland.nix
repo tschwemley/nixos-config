@@ -17,7 +17,7 @@
     # '';
 
     plugins = [
-      "/nix/store/yhwdlzii9a29r92a6az579gx1mwa838k-hyprbars-0.1/lib/libhyprbars.so"
+      "$HOME/.config/hypr/libhyprbars.so"
     ];
 
     settings = {
