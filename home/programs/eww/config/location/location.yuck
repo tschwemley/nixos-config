@@ -1,0 +1,5 @@
+(defpoll TIME :interval "5s" `date +\"%I:%M %p\"`)
+(defpoll DATE :interval "5s" `date +\"%A, %B %d\"`)
+(defpoll ICON :interval "15m" `scripts/weather_info --icon`)
+(defpoll TEMPERATURE :interval "15m" `scripts/weather_info --temp`)
+(defpoll HEX :interval "15m" `scripts/weather_info --hex`)
