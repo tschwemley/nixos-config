@@ -3,3 +3,6 @@
 (defpoll ICON :interval "15m" `scripts/weather_info --icon`)
 (defpoll TEMPERATURE :interval "15m" `scripts/weather_info --temp`)
 (defpoll HEX :interval "15m" `scripts/weather_info --hex`)
+
+(include "/home/schwem/.config/eww/location/widget.yuck")
+(include "/home/schwem/.config/eww/location/window.yuck")
