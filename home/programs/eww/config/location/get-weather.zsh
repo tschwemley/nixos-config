@@ -7,8 +7,8 @@ cache_weather_hex=${cache_dir}/weather-hex
 cache_weather_icon=${cache_dir}/weather-icon
 
 ## Weather data
-KEY="YOUR_KEY"
-ID="CITY_ID"
+KEY=$(cat /home/schwem/.config/.openweather-api-key)
+ID=$(cat /home/schwem/.config/.openweather-city-id)
 UNIT="imperial"
 
 ## Make cache dir
