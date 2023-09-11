@@ -1,4 +1,4 @@
-(defwidget music [] 
+(defwidget sys-info [] 
 		(box :class "dockbox"
 			(box :orientation "h" :spacing 0 :valign "center" :halign "start" :space-evenly "false" :vexpand "false" :hexpand "false"
 				(box :class "album_art" :vexpand "false" :hexpand "false" :style "background-image: url('${COVER}');")
@@ -6,7 +6,5 @@
 					(label :class "song" :halign "start" :wrap "false" :limit-width 20 :text SONG)
 					(label :class "artist" :halign "start" :wrap "false" :limit-width 20 :text ARTIST)))
 			(box :class "musicbuttons" :orientation "h" :spacing 10 :valign "center" :halign "end" :space-evenly "false" :vexpand "false" :hexpand "false"
-				(button :style "background-image: url('images/icons/music/previous-button.png');" :class "trackbutton" :onclick "/home/schwem/.config/eww/config/music/music_info --prev")
-				(button :style "background-image: url('${STATUS}');" :class "playbutton" :onclick "/home/schwem/.config/eww/config/music/music_info --toggle")
 				(button :style "background-image: url('images/icons/music/next-button.png');" :class "trackbutton" :onclick "/home/schwem/.config/eww/config/music/music_info --next"))))
 

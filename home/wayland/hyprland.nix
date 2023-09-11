@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  system,
+  ...
+}: {
   imports = [
     ../programs/eww
     ../services/dunst.nix
@@ -12,13 +16,11 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
-    # extraConfig = ''
-    #   exec-once=hyprpaper
-    # '';
-
-    plugins = [
-      "/home/schwem/.config/hypr/libhyprbars.so"
-    ];
+    # plugins = let
+    #   hyprbarsPath =
+    # in [
+    #   "${hyprbarsPath}/lib/hyprbars.so"
+    # ];
 
     settings = {
       "$mod" = "SUPER";

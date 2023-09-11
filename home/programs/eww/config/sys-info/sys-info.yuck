@@ -1,0 +1,2 @@
+(include "/home/schwem/.config/eww/sys-info/widget.yuck")
+(include "/home/schwem/.config/eww/sys-info/window.yuck")

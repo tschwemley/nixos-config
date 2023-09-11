@@ -1,3 +1,4 @@
+# TODO: make this work with spotify instead; just use as a skeleton
 ## Get data
 STATUS="$(mpc status)"
 COVER="/tmp/.music_cover.jpg"
