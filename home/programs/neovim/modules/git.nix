@@ -1,3 +1,6 @@
 {pkgs, ...}: {
-  programs.neovim.plugins = with pkgs.vimPlugins; [neogit];
+  programs.neovim.plugins = with pkgs.vimPlugins; [
+    gitsigns-nvim
+    neogit
+  ];
 }
