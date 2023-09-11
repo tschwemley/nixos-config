@@ -1,5 +1,4 @@
 {
-  self,
   config,
   # homeConfigurations,
   ...
@@ -19,7 +18,6 @@
     imports = [
       # homeConfigurations.schwem.activation-script
       ../../../home/profiles/pc.nix
-      {inherit self;}
     ];
   };
 }
