@@ -5,6 +5,7 @@
     ./db.nix
     ./debugging.nix
     ./editing.nix
+    ./git.nix
     ./languages.nix
     ./lsp.nix
     ./treesitter.nix
