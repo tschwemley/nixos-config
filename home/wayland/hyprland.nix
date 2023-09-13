@@ -13,8 +13,6 @@
     grim # grab images
     hyprpaper # wallpaper
     hyprpicker #color picker
-    libsForQt5.qt5.qtwayland
-    qt6.qtwayland
     slurp # select a region (used in conjunction w/ grim)
   ];
 
