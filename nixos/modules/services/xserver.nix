@@ -8,10 +8,10 @@
 
     displayManager = {
       sddm.enable = true;
-      defaultSession = "none+awesome";
+      defaultSession = "hyprland";
     };
 
-    dpi = 192;
+    # dpi = 192;
 
     libinput.enable = true;
 

@@ -8,6 +8,7 @@
     ../programs/reaper.nix
     ../programs/rbw.nix
     ../programs/rofi.nix
+    ../programs/rustdesk.nix
     ../programs/slack.nix
     ../programs/sonic-pi.nix
     ../programs/spotify.nix
