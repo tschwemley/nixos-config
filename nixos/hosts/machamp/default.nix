@@ -10,11 +10,7 @@
 
   disk = import ../../modules/hardware/disks/vm.nix {inherit diskName;};
   profile = import ../../profiles/hydra.nix;
-  user = import ../../modules/users/server.nix {
-    inherit config;
-    userName = hostName;
-    userSSHKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGtX7rD2rPRB1L+/CuPYZ7uCbLzezgBpoUcHAW6ZP5yu *";
-  };
+  user = import ../../modules/users/server.nix {inherit config;};
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
     ip = wireguardIP;
