@@ -2,7 +2,7 @@
   impermanence = import ../modules/system/impermanence.nix {inherit inputs;};
 in {
   imports = [
-    impermanence
+    # impermanence
     ./server.nix
     ../modules/services/cloudflared.nix
     ../modules/services/hydra.nix
