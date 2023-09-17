@@ -1,7 +1,7 @@
 {...}: {
   flake.templates = {
     go = {
-      path = ./go.nix;
+      path = ./go;
       description = "Basic go application";
     };
   };
