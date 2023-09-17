@@ -77,6 +77,7 @@
         ./nixos
         ./packages
         ./shells
+        ./templates
       ];
     };
 }
