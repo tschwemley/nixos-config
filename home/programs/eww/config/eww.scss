@@ -1,7 +1,6 @@
 *{
 	all: unset;
-	font-family: feather;
-	font-family: DaddyTimeMono NF;
+	font-family: Hasklig;
 }
 
 /** General **/
@@ -9,19 +8,4 @@
     background-color: #0f0f17;
     // border-radius: 16px;
 }
-.module {
-    margin: 0px 0px 0px 0px;
-    border-radius: 10px 16px 0px 10px;
-}
 
-/** tooltip!! **/
-tooltip.background {
-    background-color: #0f0f17;
-    font-size: 18;
-    border-radius: 10px;
-    color: #bfc9db;
-}
-
-tooltip label {
-    margin: 6px;
-}

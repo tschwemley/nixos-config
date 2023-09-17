@@ -1,6 +1,0 @@
-(defwidget search [] 
-  (box :class "dockbox"
-       (box :orientation "h" :spacing 30 :valign "center" :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
-            (button :style "background-image: url('/home/schwem/.config/eww/search/icon-search-1.svg');" :class "genicon" :onclick "search.zsh --search")
-            (button :style "background-image: url('/home/schwem/.config/eww/search/icon-dashboard.svg');" :class "genicon" :onclick "search.zsh --menu")
-            (label :class "workspace" :halign "start" :text WINDOW_COUNT))))

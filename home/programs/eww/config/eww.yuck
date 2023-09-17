@@ -1,7 +1,5 @@
 (include "/home/schwem/.config/eww/bar.yuck")
 
-
-
 ;; (include "/home/schwem/.config/eww/app-bar/app-bar.yuck")
 ;; (include "/home/schwem/.config/eww/location/location.yuck")
 ;; (include "/home/schwem/.config/eww/music/music.yuck")
