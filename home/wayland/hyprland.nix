@@ -41,22 +41,27 @@
         "hyprpaper"
       ];
 
+      extraConfig = ''
+        # unscale XWayland
+        xwayland {
+          force_zero_scaling = true
+        }
+
+        env = GDK_SCALE,2
+        env = XCURSOR_SIZE,32
+      '';
+
       monitor = [
         "HDMI-A-2,3840x2160,0x0,1"
         "DP-2,2560x2880@60,3840x0,1"
       ];
 
+      systemdIntegration = true;
+
       workspace = [
         # "name:start, monitor:HDMI-A-2, default: true"
       ];
     };
-
-    extraConfig = ''
-      # unscale XWayland
-      xwayland {
-        force_zero_scaling = true
-      }
-    '';
   };
 
   xdg.configFile."hypr/hyprpaper.conf".text = ''
