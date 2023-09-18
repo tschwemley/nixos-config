@@ -60,8 +60,8 @@
       ];
 
       workspace = [
-        "name:1, monitor:HDMI-A-2, default: true"
-        "name:1, monitor:DP-2, default: true"
+        "1,monitor:HDMI-A-2,default: true"
+        "2,monitor:DP-2,default: true"
       ];
     };
 
