@@ -1,0 +1,13 @@
+(defpoll time :interval "10s"
+  "date '+%H:%M %b %d, %Y'")
+
+(defwidget timeAndDate[]
+  (box :class "clock"
+       :orientation "h"
+       :halign "end"
+       time))
+
+(defwidget bar[]
+  (box :class "bar"
+       :orientation "h"
+       (timeAndDate)))
