@@ -8,8 +8,8 @@
       src = pkgs.fetchFromGitHub {
         owner = "hyprwm";
         repo = "hyprland-plugins";
-        rev = "b5d0cfdff726676b8c6df564fdb1732558d6c25b";
-        sha256 = "sha256-US7WfYWqMax+uEaRPpCOn8ib2pLYDLa5Fy8dIjWH0aM=";
+        rev = "f9578d28d272fb61753417e175b0fcd5bedc1443";
+        sha256 = "sha256-TYsRfn8LLNPNQ0B4LgrGQmXZJrdAtwttRZSxLp1yqVc=";
       };
       sourceRoot = "source/hyprbars";
 
@@ -52,8 +52,6 @@ in {
     '';
 
     plugins = [
-      # "/nix/store/yhwdlzii9a29r92a6az579gx1mwa838k-hyprbars-0.1/lib/libhyprbars.so"
-      # "/home/schwem/.config/hypr/hyprbar/lib/libhyprbars.so"
       hyprbars
     ];
 
