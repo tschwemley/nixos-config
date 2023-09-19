@@ -1,4 +1,23 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  hyprbars = let
+    hyprland = pkgs.hyprland;
+  in
+    pkgs.stdenv.mkDerivation {
+      pname = "hyprbars";
+      version = "0.1";
+      src = pkgs.fetchFromGitHub {
+        owner = "hyprwm";
+        repo = "hyprland-plugins";
+        rev = "b5d0cfdff726676b8c6df564fdb1732558d6c25b";
+        sha256 = "sha256-US7WfYWqMax+uEaRPpCOn8ib2pLYDLa5Fy8dIjWH0aM=";
+      };
+      sourceRoot = "source/hyprbars";
+
+      inherit (hyprland) nativeBuildInputs;
+
+      buildInputs = [hyprland] ++ hyprland.buildInputs;
+    };
+in {
   imports = [
     # ../programs/eww
     ../services/dunst.nix
@@ -33,7 +52,9 @@
     '';
 
     plugins = [
-      "/nix/store/yhwdlzii9a29r92a6az579gx1mwa838k-hyprbars-0.1/lib/libhyprbars.so"
+      # "/nix/store/yhwdlzii9a29r92a6az579gx1mwa838k-hyprbars-0.1/lib/libhyprbars.so"
+      # "/home/schwem/.config/hypr/hyprbar/lib/libhyprbars.so"
+      hyprbars
     ];
 
     settings = {
@@ -60,8 +81,16 @@
       ];
 
       workspace = [
-        "1,monitor:HDMI-A-2,default: true"
-        "2,monitor:DP-2,default: true"
+        "HDMI-A-2,1"
+        "HDMI-A-2,3"
+        "HDMI-A-2,5"
+        "HDMI-A-2,7"
+        "HDMI-A-2,9"
+        "DP-2,2"
+        "DP-2,4"
+        "DP-2,6"
+        "DP-2,8"
+        "DP-2,10"
       ];
     };
 
