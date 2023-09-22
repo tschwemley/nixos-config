@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{...}: {
   imports = [
     ./.
     ../modules/hardware/audio.nix
@@ -11,14 +7,12 @@
     ../modules/programs/steam.nix
     ../modules/services/xserver.nix
     ../modules/system/fonts.nix
+    ../modules/system/man.nix
     ../modules/system/podman.nix
     ../modules/system/xdg.nix
     ../modules/users/schwem.nix
     ../modules/wayland
   ];
-
-  documentation.dev.enable = true;
-  environment.systemPackages = with pkgs; [man-pages man-pages-posix];
 
   # on my personal machines I don't want to be prompted for my pw
   security.sudo.wheelNeedsPassword = false;
