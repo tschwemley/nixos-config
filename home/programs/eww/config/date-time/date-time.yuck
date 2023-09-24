@@ -1,21 +1,31 @@
-(defpoll calendar_day :interval "20h" "date '+%d'")
-(defpoll calendar_year :interval "20h" "date '+%Y'")
+(defpoll calendarDay :interval "20h" "date '+%d'")
+(defpoll calendarYear :interval "20h" "date '+%Y'")
+(defpoll clock_time :interval "5m" "date +\%I")
+(defpoll clock_minute :interval "5s" "date +\%M")
+(defpoll clock_date :interval "10h" "date '+%d/%m'")
 
-(defpoll time :interval "10s"
-  "date '+%H:%M'")
-
-(defwidget clock[]
-  (box :class "clock"
-       :orientation "h"
-       :halign "end"
-       time))
+(defvar time_rev false)
 
 (defwidget cal[]
-  (calendar
-    :class "calendar"
-    :day calendar_day
-    :year calendar_year
-  ))
+    (calendar
+      :class "calendar"
+      :day calendarDay
+      :year calendarYear))
+
+(defwidget dateTime[]
+  (eventbox :onhover "eww update time_rev=true"
+			  :onhoverlost "eww update time_rev=false"
+    (box :class "module" :space-evenly "false" :orientation "h" :spacing "3" 
+      (label :text clock_time :class "clock_time_class" )
+      (label :text ":" :class "clock_time_sep" )
+      (label :text clock_minute :class "clock_minute_class")
+	  (revealer :transition "slideleft"
+			  :reveal time_rev
+			  ;; :duration "350ms"
+      (button :class "clock_date_class"
+             :onclick "/home/schwem/.config/eww/config/scripts/pop calendar" clock_date
+        )
+  ))))
 
 (defwindow dateTime
   :class "date-time"
@@ -27,19 +37,4 @@
                       :height "30px"
                       :anchor "top right")
   :stacking "fg"
-(cal))
-
-;; (defwidget clock_module []
-;;   (eventbox :onhover "${eww} update time_rev=true"
-;; 			  :onhoverlost "${eww} update time_rev=false"
-;;     (box :class "module" :space-evenly "false" :orientation "h" :spacing "3" 
-;;       (label :text clock_time :class "clock_time_class" )
-;;       (label :text "" :class "clock_time_sep" )
-;;       (label :text clock_minute :class "clock_minute_class")
-;; 	  (revealer :transition "slideleft"
-;; 			  :reveal time_rev
-;; 			  :duration "350ms"
-;;       (button :class "clock_date_class"
-;;              :onclick "$HOME/.config/eww/bar/scripts/pop calendar" clock_date
-;;         )
-;;   ))))
+  (dateTime))
