@@ -19,6 +19,7 @@ in {
     lfs.enable = true;
     extraConfig = {
       init.defaultBranch = "main";
+      pull.rebase = true;
       core = {
         whitespace = "trailing-space,space-before-tab";
       };
