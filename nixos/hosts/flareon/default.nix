@@ -7,12 +7,11 @@
 }: let
   diskName = "/dev/sda";
   nodeName = "flareon";
-  useGrub = false;
   wireguardIP = "10.0.0.5";
 
-  boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
+  boot = import ../../modules/system/systemd-boot.nix;
   k3s = import ../../profiles/k3s.nix {
-    inherit inputs config lib nodeName pkgs useGrub;
+    inherit inputs config diskName lib nodeName pkgs;
     nodeIP = wireguardIP;
     role = "agent";
   };
