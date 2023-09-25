@@ -15,6 +15,8 @@
   # disable man pages on servers
   documentation.man.enable = false;
 
+  services.getty.autologinUser = "root";
+
   # make sure every user config has a root_password setup in secrets
   sops = {
     secrets = {
