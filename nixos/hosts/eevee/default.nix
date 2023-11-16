@@ -5,19 +5,18 @@
   pkgs,
   ...
 }: let
+  diskName = "/dev/vda";
   nodeName = "eevee";
   useGrub = true;
   wireguardIP = "10.0.0.4";
 
+  boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
   k3s = import ../../profiles/k3s.nix {
     inherit inputs config lib nodeName pkgs useGrub;
     nodeIP = wireguardIP;
     role = "agent";
   };
-  user = import ../../modules/users/server.nix {
-    inherit config;
-    userName = nodeName;
-  };
+  user = import ../../modules/users/server.nix {inherit config;};
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
     ip = wireguardIP;
@@ -42,6 +41,7 @@
   };
 in {
   imports = [
+    boot
     k3s
     user
     wireguard
@@ -53,13 +53,6 @@ in {
     };
     kernelModules = ["kvm-amd"];
     supportedFilesystems = ["btrfs"];
-    loader = {
-      grub = {
-        efiSupport = true;
-        efiInstallAsRemovable = true;
-        devices = ["/dev/vda"];
-      };
-    };
   };
 
   # eevee has issues with DHCP so disable and use systemd-networkd instead
@@ -98,9 +91,6 @@ in {
       root_password = {
         neededForUsers = true;
       };
-      user_password = {
-        neededForUsers = true;
-      };
       systemd_networkd_10_ens3 = {
         mode = "0644";
         path = "/etc/systemd/network/10-ens3.network";
@@ -121,18 +111,4 @@ in {
 
   # don't update this
   system.stateVersion = "23.05";
-
-  users = {
-    mutableUsers = false;
-    users = {
-      root = {
-        passwordFile = config.sops.secrets.root_password.path;
-        openssh.authorizedKeys.keys = [(builtins.readFile ./ssh_key.pub)];
-      };
-      ${nodeName} = {
-        passwordFile = config.sops.secrets.user_password.path;
-        openssh.authorizedKeys.keys = [(builtins.readFile ./ssh_key.pub)];
-      };
-    };
-  };
 }
