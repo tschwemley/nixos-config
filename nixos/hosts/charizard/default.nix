@@ -18,6 +18,11 @@
       inputs.nixos-hardware.nixosModules.common-gpu-amd
       inputs.nixos-hardware.nixosModules.common-pc
       inputs.nixos-hardware.nixosModules.common-pc-ssd
+      {
+        systemd.tmpfiles.rules = [
+          "L+   /opt/rocm/hip  -  -  -  -  ${pkgs.hip}"
+        ];
+      }
 #../../modules/hardware/amd.nix
     ];
   };
@@ -34,7 +39,7 @@ in {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod"];
       kernelModules = ["kvm-intel"];
     };
-#kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = ["btrfs"];
     loader.systemd-boot = {
       enable = true;
