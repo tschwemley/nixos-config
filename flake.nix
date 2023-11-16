@@ -83,6 +83,7 @@
 					imports = [./nixos/modules/virtualisation/proxmox-image.nix];
 				};
 			};
+			format = "vma";
 		};
       };
 
