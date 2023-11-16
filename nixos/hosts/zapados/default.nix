@@ -19,7 +19,7 @@ in {
     ./wireguard.nix
     ../../modules/services/k3s/server.nix
     ../../profiles/k3s.nix
-  j # ../../modules/services/keycloak.nix
+    # ../../modules/services/keycloak.nix
   ];
 
   boot = {
