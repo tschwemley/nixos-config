@@ -87,12 +87,12 @@ in {
         sopsFile = ./../eevee/secrets.yaml;
       };
       "gh_key" = {
-        key = "gh_private_key";
+        key = "gh_ssh_key";
         owner = "schwem";
         path = "/home/schwem/.ssh/github_key";
       };
       "mac_key" = {
-        key = "ssh_private_key";
+        key = "mac_ssh_key";
         owner = "schwem";
         path = "/home/schwem/.ssh/mac_ssh_key";
       };
