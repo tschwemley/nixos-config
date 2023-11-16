@@ -14,6 +14,8 @@
 	nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
 
 	nixos-hardware.url = "github:nixos/nixos-hardware/master";
+
+	sops.url = "github:Mic92/sops-nix";
   };
 
   outputs = inputs @ {

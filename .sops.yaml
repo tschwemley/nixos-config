@@ -1,0 +1,9 @@
+keys:
+  - &users:
+    - &schwem 3CA9107533528033EA3B25D9D1934164A402AE6F
+
+creation_rules:
+  - path_regex: hosts/moltres/secrets.yaml
+    key_groups:
+      - pgp:
+        - *schwem
