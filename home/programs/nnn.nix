@@ -1,5 +1,5 @@
 {...}: {
-  home.programs.nnn = {
+  programs.nnn = {
     enable = true;
     bookmarks = {
       D = "~/Downloads";

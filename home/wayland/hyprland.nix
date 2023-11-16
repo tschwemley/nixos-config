@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ../programs/eww
+    # ../programs/eww
     ../services/dunst.nix
   ];
 
