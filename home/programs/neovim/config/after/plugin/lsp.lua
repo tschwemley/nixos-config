@@ -23,22 +23,10 @@ lsp.on_attach(function(client, bufnr)
    })
 end)
 
--- listen for code actions
--- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
---    pattern = { "*", },
---    callback = function()
---       local params = vim.lsp.util.make_range_params()
---       params.context = vim.lsp.diagnostic.get_line_diagnostics()
---       vim.lsp.buf_request(0, 'textDocument/codeAction', params, function(err, result, ctx, config)
---          -- do something with the result
---          print(result)
---       end)
---    end
--- })
-
 whichKey.register({
    l = {
       name = 'LSP',
+      a = { '<cmd>Lspsaga code_action', 'Code Action', { buffer = true } },
       c = { '<cmd>Telescope lsp_document_symbols ignore_symbols=class,function,method,property,variable<cr>',
          'List Constants',
          { buffer = true } },
