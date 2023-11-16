@@ -13,7 +13,7 @@ wk.register({
       n = {':bn<cr>', 'Next Buffer'},
    },
    c = {':close<cr>', 'Close File' },
-   e = {'<cmd>NnnExplorer<cr>', 'Explore Files'},
+   e = {'<cmd>NnnExplorer %:p:h<cr>', 'Explore Files'},
    q = {':q!<cr>', 'Quit' },
    w = {':w!<cr>', 'Save File' },
 }, { prefix = '<leader>' })
