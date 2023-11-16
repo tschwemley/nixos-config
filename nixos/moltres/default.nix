@@ -46,7 +46,7 @@ in {
   # moltres has issues with DHCP so disable and use systemd-networkd instead
   networking = {
     inherit hostName;
-	dhcpd.enable = false;
+	dhcpcd.enable = false;
   };
 
   services.getty.autologinUser = "root";
