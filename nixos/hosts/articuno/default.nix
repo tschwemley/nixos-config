@@ -35,6 +35,7 @@
       {
         #eevee
         AllowedIPs = ["10.0.0.4/32"];
+        PersistentKeepalive = 25;
         PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
       }
       {
@@ -46,6 +47,7 @@
       {
         #machamp
         AllowedIPs = ["10.0.0.99/32"];
+        PersistentKeepalive = 25;
         PublicKey = "tetndLcx82SrEVzR0hjoqASdQPEjdb5nZHXizL82vUI=";
       }
     ];
