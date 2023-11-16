@@ -33,13 +33,11 @@
       {
         # moltres
         AllowedIPs = ["10.0.0.3/32"];
-		Endpoint = "10.0.0.1:9918";
         PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
       }
       {
         #eevee
         AllowedIPs = ["10.0.0.4/32"];
-		Endpoint = "10.0.0.1:9918";
         PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
       }
     ];
