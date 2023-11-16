@@ -11,10 +11,10 @@ in {
     ../programs/firefox.nix
     ../programs/reaper.nix
     ../programs/rbw.nix
-    ../programs/realvnc.nix
     ../programs/rofi.nix
     ../programs/slack.nix
     ../programs/sonic-pi.nix
+    ../programs/tightvnc.nix
     ../programs/zk
     ../services/spotifyd.nix
     ../terminals/wezterm.nix
