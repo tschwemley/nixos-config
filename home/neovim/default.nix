@@ -3,7 +3,9 @@
   lib,
   ...
 }: {
-  imports = [./lsp.nix];
+  imports = [
+	  ./lsp.nix
+  ];
 
   programs.neovim = {
     enable = true;
@@ -44,12 +46,6 @@
       vim-dadbod
       vim-dadbod-ui
       vim-dadbod-completion
-
-      # lsp shennanery
-      lsp-zero-nvim
-      #mason-nvim
-      #mason-lspconfig-nvim
-      nvim-lspconfig
 
       # pretty things
       gruvbox-material
