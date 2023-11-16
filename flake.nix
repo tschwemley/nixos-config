@@ -29,7 +29,6 @@
     kubenix.url = "github:hall/kubenix";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     sops.url = "github:Mic92/sops-nix";
-    terranix.url = "github:terranix/terranix";
   };
 
   outputs = inputs @ {
@@ -42,7 +41,6 @@
     nixos-generators,
     nixpkgs,
     sops,
-    terranix,
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
@@ -57,7 +55,7 @@
         ...
       }: {
         # makes pkgs available to all perSystem functions
-		_module.args.pkgs = import nixpkgs {
+        _module.args.pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
         };
@@ -68,7 +66,7 @@
       imports = [
         ./home
         ./nixos
-#./packages
+        #./packages
         ./shells
       ];
     };
