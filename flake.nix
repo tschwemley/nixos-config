@@ -16,7 +16,7 @@
     flake-parts,
     ...
   }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+    flake-parts.lib.mkFlake { inherit inputs; } {
       systems = ["x86_64-linux"];
 
       perSystem = {
@@ -27,6 +27,9 @@
         inputs',
         ...
       }: {
+	# ensure packages available to perSystem/withSystem calls
+        _module.args.pkgs = inputs'.nixpkgs.legacyPackages;
+
         devShells.default = pkgs.mkShell {
           buildInputs = [
             pkgs.alejandra
@@ -36,7 +39,12 @@
         formatter = pkgs.alejandra;
       };
 
-      # modules = [./modules];
+      /*
+      flake.nixosModules = {
+      	home-manager = inputs.home-manager.nixosModule {
+	};
+      };
+      */
 
       imports = [
         ./home

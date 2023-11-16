@@ -1,7 +1,7 @@
-{ self, ... }:
+{ pkgs, ... }:
 
 {
-	self.inputs.home-manager.programs.git = {
+	programs.git = {
 		enable = true;
 		userEmail = "tjschwem@gmail.com";
 		userName = "Tyler Schwemley";
