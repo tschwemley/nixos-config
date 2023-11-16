@@ -32,12 +32,10 @@ in {
     };
   };
 
-  networking.hostName = "moltres";
-  # networking = {
-  #   hostName = "molters";
-  #   networkmanager.enable = true;
-  #   useDHCP = lib.mkDefault true;
-  # };
+  networking = {
+	  hostName = "moltres";
+	  dhcpcd.enable = false;
+  };
 
   # services.getty.autologinUser = "k3s";
   services.getty.autologinUser = "root";
