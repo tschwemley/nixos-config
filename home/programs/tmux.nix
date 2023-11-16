@@ -5,6 +5,7 @@
       vim-tmux-navigator
     ];
     mouse = true;
-    shortcut = "a";
+    shortcut = "b";
+    terminal = "wezterm";
   };
 }

@@ -24,7 +24,6 @@ in {
     ];
 
     plugins = with pkgs.vimPlugins; [
-      lsp-format-modifications
       lsp-zero
       nvim-lspconfig
     ];
