@@ -7,9 +7,10 @@
     };
   };
 
-  home-manager.users.schwem = {
-	  inherit (homeConfigurations) schwem;
-  };
+  home-manager.users.schwem = homeConfigurations.schwem;
+  # home-manager.users = {
+	 #  inherit (homeConfigurations) schwem;
+  # };
 
   # home-manager.users.schwem = homeConfigurations.schwem;
   # home-manager.users.schwem = {
