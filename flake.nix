@@ -20,6 +20,8 @@
 
     impermanence.url = "github:nix-community/impermanence/master";
 
+    musnix.url = "github:musnix/musnix";
+
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     nix-on-droid = {

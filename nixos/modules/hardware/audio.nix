@@ -1,21 +1,4 @@
 {pkgs, ...}: {
-  sound.enable = true;
-
-  hardware.bluetooth.enable = true;
-  # enables blueman-applet and blueman-manager for gui (can also connect via cli bluetoothctl)
-  #services.blueman.enable = true;
-
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    wireplumber.enable = true;
-    # TODO: determine if needed for live-audio e.g. sonic pi or reaper
-    jack.enable = true;
-  };
-
   environment.systemPackages = with pkgs; [
     pavucontrol
   ];
@@ -42,4 +25,23 @@
       }
     '';
   };
+
+  musnix.enable = true;
+
+  hardware.bluetooth.enable = true;
+  # enables blueman-applet and blueman-manager for gui (can also connect via cli bluetoothctl)
+  #services.blueman.enable = true;
+
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+    # TODO: determine if needed for live-audio e.g. sonic pi or reaper
+    jack.enable = true;
+  };
+
+  sound.enable = true;
 }
