@@ -11,8 +11,6 @@ let
 in
 {
 	flake.nixosConfigurations = {
-		# office = mkSystem ./office.nix;
-		# k3s-server = mkSystem ./k3s-server.nix;
-		moltres = mkSystem ./moltres;
+		moltres = mkSystem ./hosts/moltres;
 	};
 }

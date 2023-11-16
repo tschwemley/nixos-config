@@ -1,9 +1,8 @@
 keys:
-  - &users:
-    - &schwem 3CA9107533528033EA3B25D9D1934164A402AE6F
+  - &moltres age1ynhtuk2g3ek9svvuysynlnxkp5vffgylkedzhhaa9q4g9l8huf3sktz6lc
 
 creation_rules:
   - path_regex: hosts/moltres/secrets.yaml
     key_groups:
-      - pgp:
-        - *schwem
+      - age:
+        - *moltres
