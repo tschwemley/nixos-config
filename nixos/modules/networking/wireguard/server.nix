@@ -6,12 +6,9 @@
   peers ? [],
   ...
 }: 
-let
-	default = import ./. { inherit ipWithSubnet pkgs port privateKeyFile; };
-in
 {
   imports = [
-	default
+	(import ./. { inherit ipWithSubnet pkgs port privateKeyFile; })
   ];
 
   # Enable NAT
