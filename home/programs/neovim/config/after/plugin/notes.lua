@@ -1,11 +1,16 @@
 require('neorg').setup {
    load = {
-      ["core.defaults"] = {}
+      ['core.defaults'] = {},
+      ['core.ui.calendar'] = {},
+      ['core.concealer'] = {},
+      ['core.dirman'] = {
+         notes = '~/notes',
+      },
    }
 }
 
 -- example neorg telescope keybindings mappings
-local neorg_callbacks = require("neorg.core.callbacks")
+-- local neorg_callbacks = require("neorg.core.callbacks")
 
 --     -- Map all the below keybinds only when the "norg" mode is active
 --     keybinds.map_event_to_mode("norg", {
