@@ -4,10 +4,10 @@
   lib,
   ...
 }: let
-  hostName = "zapados";
+  hostName = "moltres";
   diskConfig = import ../modules/disks/btrfs-ephemeral.nix {
     diskName = "/dev/vda";
-    swapSize = "-6G";
+    swapSize = "-4G";
   };
   impermanence = import ../modules/system/impermanence.nix {inherit inputs;};
   user = import ../modules/users/server.nix {
@@ -20,7 +20,7 @@ in {
     impermanence
     user
     ../profiles/server.nix
-    ./wireguard.nix
+    # ./wireguard.nix
     # ../services/k3s
     # ../services/keycloak.nix
   ];
