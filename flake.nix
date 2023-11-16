@@ -27,6 +27,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+
     flake-parts.url = "github:hercules-ci/flake-parts";
     impermanence.url = "github:nix-community/impermanence/master";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
