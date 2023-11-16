@@ -1,4 +1,4 @@
-{ disks ? [ "/dev/sda" ], lib, pkgs, ... }: {
+{ disks ? [ "/dev/vda", "/dev/sda" ], lib, pkgs, ... }: {
   disko.devices = {
     disk = {
       main = {
@@ -21,7 +21,7 @@
               };
             }
             {
-              name = "luks";
+              name = "main";
               start = "100MiB";
               end = "100%";
 			  content = {
@@ -46,6 +46,20 @@
           ];
         };
       };
+	  
+	  block = {
+			device = builtins.elemAt disks 1;
+			type = "disk";
+			content = {
+				type = "btrfs";
+				extraArgs = [ "-f" ];
+				subvolumes = [
+					"/" = {
+						mountOptions = [ "compress=ztsd" ]
+					};
+				];
+			};
+	  };
     };
   }; 
 }
