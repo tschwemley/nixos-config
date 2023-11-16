@@ -53,5 +53,5 @@ creation_rules:
         - *personal
         - *articuno
         # - *moltres
-        #- *zapados
+        # - *zapados
         - *eevee
