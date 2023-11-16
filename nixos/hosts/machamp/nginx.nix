@@ -19,11 +19,11 @@
         "proxy_pass_header Authorization;";
         */
       };
-      serverAliases = ["build.schwem.io"];
+      # serverAliases = ["build.schwem.io"];
     };
   };
 
-  networking.firewall.allowedTCPPorts = [80 443];
+  networking.firewall.allowedTCPPorts = [80 443 3000];
 
   security.acme.acceptTerms = true;
   security.acme.defaults.email = "me@tylerschwemley.com";

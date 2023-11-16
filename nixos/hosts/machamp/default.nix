@@ -27,7 +27,7 @@ in {
     profile
     user
     wireguard
-    ./nginx.nix
+    # ./nginx.nix
   ];
 
   boot = {
