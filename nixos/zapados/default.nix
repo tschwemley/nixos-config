@@ -17,6 +17,7 @@ in {
   imports = [
     diskConfig
     ../profiles/server.nix
+	user
     # ../services/k3s
     # ../services/keycloak.nix
   ];
