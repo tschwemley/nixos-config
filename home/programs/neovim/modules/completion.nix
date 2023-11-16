@@ -9,6 +9,5 @@
       cmp-path
       luasnip
     ];
-    extraLuaConfig = "require 'schwem.completion'";
   };
 }
