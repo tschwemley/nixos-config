@@ -9,17 +9,16 @@
 
   impermanence = import ../../modules/system/impermanence.nix {inherit inputs;};
 
-  user = import ../../modules/users/server.nix {
-    inherit config;
-    userName = hostName;
-  };
+  # user = import ../../modules/users/server.nix {
+  #   inherit config;
+  #   userName = hostName;
+  # };
 in {
   imports = [
-#(modulesPath + "/profiles/qemu-guest.nix")
     (modulesPath + "/virtualisation/proxmox-image.nix")
-    impermanence
-    user
-    ../../profiles/default.nix
+#impermanence
+    # user
+#../../profiles/default.nix
     # ./wireguard.nix
     # ../../modules/services/k3s/server.nix
     # ../../profiles/k3s.nix
@@ -35,7 +34,7 @@ in {
 
   networking = {
     inherit hostName;
-    dhcpcd.enable = false;
+    # dhcpcd.enable = false;
   };
 
   services.getty.autologinUser = "root";
@@ -85,7 +84,7 @@ in {
   # };
 
   # don't update this
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
   # systemd.network.enable = true;
   # services.resolved.enable = true;
 
