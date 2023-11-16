@@ -3,7 +3,7 @@
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = inputs.nixpkgs;
       modules = [
-        ./common.nix
+        ./profiles/common.nix
         profile
       ];
     };

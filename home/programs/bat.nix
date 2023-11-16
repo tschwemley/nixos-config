@@ -1,8 +1,10 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
-    bat
-    bat-extras.batdiff
-    bat-extras.batpipe
-    bat-extras.batwatch
-  ];
+	programs.bat = {
+		enable = true;
+		extraPackages = with pkgs; [
+			bat-extras.batdiff
+			bat-extras.batpipe
+			bat-extras.batwatch
+		];
+	};
 }

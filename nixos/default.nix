@@ -14,7 +14,7 @@
         };
 
         modules = [
-          ./common.nix
+          ./hosts/profiles/common.nix
           configPath
         ];
       });
