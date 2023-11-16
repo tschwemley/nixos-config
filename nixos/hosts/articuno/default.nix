@@ -16,7 +16,7 @@
   };
   user = import ../../modules/users/server.nix {
     inherit config;
-    userName = hostName;
+    userName = nodeName;
   };
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
@@ -70,11 +70,7 @@ in {
     editor = false; # leaving true allows for root access to be gained via passing kernal param
   };
 
-  networking = {
-    inherit hostName;
-    dhcpcd.enable = false;
-  };
-
+  networking.dhcpcd.enable = false;
   services.getty.autologinUser = "root";
 
   services.openssh = {
@@ -115,7 +111,7 @@ in {
         passwordFile = config.sops.secrets.root_password.path;
         openssh.authorizedKeys.keys = [(builtins.readFile ./ssh_key.pub)];
       };
-      ${hostName} = {
+      ${nodeName} = {
         passwordFile = config.sops.secrets.user_password.path;
         openssh.authorizedKeys.keys = [(builtins.readFile ./ssh_key.pub)];
       };
