@@ -17,6 +17,11 @@ return {
       },
    },
    enable_wayland = false,
-   unix_domains = {
+   ssh_domain = {
+      {
+         name = "dev",
+         remote_address = 'dev',
+         username = 'tschwemley',
+      },
    },
 }
