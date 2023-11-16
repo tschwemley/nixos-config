@@ -1,1 +1,2 @@
-(include "./search/search.yuck")
+(include "/home/schwem/.config/eww/search/app-bar.yuck")
+(include "/home/schwem/.config/eww/search/search.yuck")
