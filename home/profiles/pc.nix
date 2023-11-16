@@ -19,6 +19,7 @@ in {
     ../programs/rofi.nix
     ../programs/rustdesk.nix
     ../programs/slack.nix
+    ../programs/strawberry.nix
     ../programs/sonic-pi.nix
     ../programs/spotify.nix
     ../programs/tigervnc.nix
