@@ -1,33 +1,14 @@
-local lsp = require('lsp-zero')
-
-lsp.preset("recommended")
-
-lsp.ensure_installed({
-   'lua_ls',
-   'gopls',
-   'nil_ls', -- nix
-   'sqlls',
-   'tsserver',
-   --'rust_analyzer',
-
-   -- TODO: move these to the appropriate workspace(s) when time instead of ensuring globally
-   'astro',
-   'intelephense', -- php
-})
-
--- Fix Undefined global 'vim'
-lsp.configure('lua-language-server', {
-   settings = {
-      Lua = {
-         diagnostics = {
-            globals = { 'vim' }
-         }
-      }
-   }
-})
+local lsp = require('lsp-zero').preset({})
 
 lsp.on_attach(function(client, bufnr)
-   lsp.default_keymaps({buffer = bufnr})
+  lsp.default_keymaps({buffer = bufnr})
 end)
+
+-- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md for naming
+lsp.setup_servers({'gopls', 'intelephense', 'lua_ls', 'nixd', 'sqls', 'tsserver', 'yamlls'})
+
+-- TODO: see if we need this when using nix or if it comes setup by default
+-- (Optional) Configure lua language server for neovim
+-- require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
 lsp.setup()
