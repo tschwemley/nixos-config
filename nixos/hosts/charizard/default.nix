@@ -104,7 +104,6 @@ in {
       "openweather_api_key" = {
         key = "openweather_api_key";
         owner = "schwem";
-        path = "/home/schwem/.config/eww/location/openweather-api-key";
       };
       "ssh_config" = {
         mode = "0600";
