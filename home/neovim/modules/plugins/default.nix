@@ -2,6 +2,8 @@
 let
 	comment = import ./comment.nix { inherit vimPlugins; };
 in
-with submodule; [
-	comment
-]
+{
+	programs.neovim.plugins = with submodule; [
+		comment
+	];
+}
