@@ -37,6 +37,7 @@
     disko,
     flake-parts,
     home-manager,
+    hyprland,
     nixos-hardware,
     nixos-generators,
     nixpkgs,
