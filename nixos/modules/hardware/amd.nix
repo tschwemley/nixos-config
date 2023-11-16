@@ -18,7 +18,6 @@
   };
 
   services.xserver.videoDrivers = ["modesetting"];
-  # services.xserver.videoDrivers = ["amdgpu"];
 
   systemd.tmpfiles.rules = [
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"

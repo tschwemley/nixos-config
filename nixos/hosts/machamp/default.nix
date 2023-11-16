@@ -36,6 +36,7 @@ in {
     profile
     user
     wireguard
+    ./cloudflared.nix
     ./nginx.nix
   ];
 
