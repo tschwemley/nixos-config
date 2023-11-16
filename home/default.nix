@@ -20,7 +20,7 @@
 in {
   flake.homeConfigurations = {
     schwem = mkHome "x86_64-linux" [./profiles/pc.nix];
-    # "work@dev" = mkHome "x86_64-linux" [ ./profiles/work.nix ];
     "work@mac" = mkHome "aarch64-darwin" [./profiles/work.nix];
+    # "work@dev" = mkHome "x86_64-linux" [ ./profiles/work.nix ];
   };
 }
