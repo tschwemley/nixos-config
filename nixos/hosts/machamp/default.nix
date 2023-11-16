@@ -4,6 +4,7 @@
   modulesPath,
   ...
 }: let
+  diskName = "/dev/sda";
   hostName = "machamp";
   wireguardIP = "10.0.0.99";
 
