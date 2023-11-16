@@ -13,7 +13,7 @@
     inherit inputs config lib nodeName pkgs useGrub;
     clusterInit = true;
     nodeIP = wireguardIP;
-    role = "server";
+    role = "agent";
   };
   user = import ../../modules/users/server.nix {
     inherit config;
