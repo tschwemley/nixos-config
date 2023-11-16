@@ -2,6 +2,7 @@
   inputs,
   config,
   lib,
+  pkgs,
   ...
 }: let
   hostName = "zapados";
@@ -21,6 +22,7 @@ in {
     user
     ../profiles/server.nix
     (import ../modules/networking/wireguard/server.nix { 
+		inherit pkgs;
 		peers = [];
 	})
     # ../services/k3s
