@@ -48,14 +48,6 @@ in {
     defaultGateway = "107.189.4.1";
   };
 
-  # sops = {
-  #   defaultSopsFile = ../../secrets/secrets.yaml;
-  #   age.sshKeyPaths = ./moltres.pub;
-  #   age.keyFile = "/var/lib/sops-nix/key.txt";
-  #   # This will generate a new key if the key specified above does not exist
-  #   age.generateKey = true;
-  # };
-
   #TODO: change this after done testing sys config
   services.getty.autologinUser = "root";
 
@@ -64,7 +56,6 @@ in {
 
   users = {
     mutableUsers = false;
-    # users.root.openssh.authorizedKeys.keys = [(builtins.readFile ../../secrets/keys/moltres.pub)];
+	users.root.openssh.authorizedKeys.keys = [builtins.readFile ../../secrets/keys/moltres.pub];
   };
-  users.users.root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAl9LJZ1yKITrHoPGRnqX5FvCmGcE7/a10BwDX52tUgU tschwemley@schwembook"];
 }

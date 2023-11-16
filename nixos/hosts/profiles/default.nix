@@ -1,15 +1,14 @@
 {
   inputs,
-  # homeConfigurations,
   pkgs,
   ...
 }: let
 in {
   imports = [
+    inputs.home-manager.nixosModule
     inputs.sops.nixosModules.sops
     inputs.disko.nixosModules.disko
     ../../system/nix.nix
-    ../../system/home-manager.nix
     ../../users
   ];
 
@@ -19,4 +18,6 @@ in {
     git
     wget
   ];
+
+  home-manager.useGlobalPkgs = true;
 }
