@@ -47,10 +47,18 @@ in {
     kubectl = "k3s kubectl";
   };
 
+  /*
+  TODO: fix the k3s issue with not starting that is being caused by the upstream bug in k3s
+        see:
+          1. https://github.com/k3s-io/k3s/issues/8293
+          2. https://github.com/NixOS/nixpkgs/issues/263580
+
+        in the meantime use 1.25 if necessary
+  */
   services.k3s = {
     inherit clusterInit extraFlags role serverAddr;
     enable = true;
-    package = pkgs.k3s_1_26;
+    # package = pkgs.k3s_1_25;
     tokenFile = "/var/lib/rancher/k3s/server/token";
   };
 
