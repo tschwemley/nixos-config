@@ -13,12 +13,13 @@ extractSshDir() {
 
 extractSshHostKeys() {
 	secretsPath=./nixos/hosts/$2/secrets.yaml
+	extractPath=${3:"/persist/etc/ssh"}
 	keys_to_extract='["ssh_host_ed25519_key" "ssh_host_ed25519_key_pub" "ssh_host_rsa_key" "ssh_host_rsa_key_pub"]'
 	echo "Extracting and dumping ssh host keys"
-	sops -d --extract '["ssh_host_ed25519_key.pub"]' $secretsPath > /persist/etc/ssh/ssh_host_ed25519_key.pub
-	sops -d --extract '["ssh_host_ed25519_key"]' $secretsPath > /persist/etc/ssh/ssh_host_ed25519_key
-	sops -d --extract '["ssh_host_ed25519_key.pub"]' $secretsPath > /persist/etc/ssh/ssh_host_ed25519_key.pub
-	sops -d --extract '["ssh_host_ed25519_key"]' $secretsPath > /persist/etc/ssh/ssh_host_ed25519_key
+	sops -d --extract '["ssh_host_ed25519_key.pub"]' $secretsPath > "$extractPath/ssh_host_ed25519_key.pub"
+	sops -d --extract '["ssh_host_ed25519_key"]' $secretsPath > "$extractPath/ssh_host_ed25519_key"
+	sops -d --extract '["ssh_host_ed25519_key.pub"]' $secretsPath > "$extractPath/ssh_host_ed25519_key.pub"
+	sops -d --extract '["ssh_host_ed25519_key"]' $secretsPath > "$extractPath/ssh_host_ed25519_key"
 }
 
 extractWireguardPrivateKey() {
