@@ -19,9 +19,10 @@ in {
     ./formatters-parsers.nix
     ./lsp.nix
     ./navigation.nix
-    (import ./plugins {
-      inherit (pkgs) vimPlugins;
-      inherit (lib.types) submodule;
-    })
+	./plugins
+    # (import ./plugins {
+    #   inherit (pkgs) vimPlugins;
+    #   inherit (lib.types) submodule;
+    # })
   ];
 }
