@@ -24,6 +24,8 @@
   };
 
   environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "nvidia";
+    LIBVA_DRIVER = "nvidia";
     VDPAU_DRIVER = "nvidia";
   };
 }
