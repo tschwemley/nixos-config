@@ -19,7 +19,7 @@
   systemd.services = {
 	  k3s = {
 		wants = ["containerd.service" "run-secrets.d.mount" "systemd-networkd"];
-		after = ["containerd.service" "firewall.service" "run-secrets.d.mount" "systemd-networkd"];
+		after = ["containerd.service" "firewall.service" "run-secrets.d.mount" "systemd-networkd.service"];
 	  };
 	  systemd-networkd = {
 		requires = ["run-secrets.d.mount"];
