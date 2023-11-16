@@ -49,6 +49,7 @@
   };
 in {
   imports = [
+	disk
     profile
     #impermanence
     user
