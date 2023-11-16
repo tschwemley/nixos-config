@@ -1,6 +1,8 @@
-{ ... }: {
-	swapDevices = [ {
-		device = "/swap";
-		size = 8*1024; #8G
-	} ];
- }
+{...}: {
+  swapDevices = [
+    {
+      device = "/swap";
+      size = 8 * 1024; #8G
+    }
+  ];
+}

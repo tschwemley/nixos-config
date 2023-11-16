@@ -5,10 +5,10 @@
 }: {
   programs.zsh = {
     enable = true;
-	autocd = true;
+    autocd = true;
     enableAutosuggestions = true;
     enableCompletion = true;
-	history.extended = true;
+    history.extended = true;
     #shellAliases = shellAliases;
   };
 }

@@ -5,14 +5,14 @@
   ...
 }: let
   diskConfig = {
-	imports = [
-	  (import ../../modules/hardware/disks/btrfs-ephemeral.nix {
-		diskName = "/dev/nvme1n1";
-	  };)
-	  ../../modules/hardware/swap.nix
-	];
-  }
-  
+    imports = [
+      (import ../../modules/hardware/disks/btrfs-ephemeral.nix {
+        diskName = "/dev/nvme1n1";
+      })
+      ../../modules/hardware/swap.nix
+    ];
+  };
+
   hardware = {
     imports = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -77,6 +77,6 @@ in {
 
   users = {
     mutableUsers = true; # allow mutable users on non-servers
-    users.schwem.passwordFile = config.sops.secrets.schwem_user_password.path;
+    # users.schwem.passwordFile = config.sops.secrets.schwem_user_password.path;
   };
 }
