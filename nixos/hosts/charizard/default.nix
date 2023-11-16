@@ -102,6 +102,9 @@ in {
         owner = "schwem";
         path = "/home/schwem/.ssh/mac_ssh_key";
       };
+      "openweather_api_key" = {
+        path = "/home/schwem/.config/eww/location/openweather-api-key";
+      };
       "ssh_config" = {
         mode = "0600";
         owner = "schwem";
