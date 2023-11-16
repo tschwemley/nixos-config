@@ -27,8 +27,13 @@
     wget
   ];
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
+  home-manager = {
+    extraSpecialArgs = {
+      inherit inputs;
+    };
+    useGlobalPkgs = true;
+    useUserPackages = true;
+  };
 
   nixpkgs.config.allowUnfree = lib.mkDefault true;
 }

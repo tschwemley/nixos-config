@@ -1,8 +1,15 @@
-{pkgs, ...}: {
-  wayland.windowManager.hyprland = {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  wayland.windowManager.hyprland = let 
+    hyprlandPlugins = inputs.hyprland-plugins.packages.${pkgs.system};
+  in {
     enable = true;
     plugins = [
-      pkgs.waybar-hyprland
+      hyprlandPlugins.hyprbars
+      # pkgs.waybar-hyprland
     ];
     settings = {
       "$mod" = "SUPER";
