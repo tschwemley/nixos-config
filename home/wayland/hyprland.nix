@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ../programs/eww.nix
+    ../programs/eww
     ../services/dunst.nix
   ];
 
