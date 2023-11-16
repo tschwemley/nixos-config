@@ -38,7 +38,7 @@ in {
       };
       wireguard_private = {
         mode = "0644";
-        path = "/persist/wireguard/private";
+        path = "/var/lib/rancher/k3s/wireguard_private";
         owner = config.users.users.systemd-network.name;
         group = config.users.users.systemd-network.group;
         restartUnits = ["systemd-networkd" "systemd-resolved"];
