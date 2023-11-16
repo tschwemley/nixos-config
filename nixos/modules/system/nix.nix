@@ -4,5 +4,8 @@
     experimental-features = ["nix-command" "flakes"];
   };
 
-  # nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
+
+  # automatically trigger garbage collection (by default weekly)
+  nix.gc.automatic = true;
 }
