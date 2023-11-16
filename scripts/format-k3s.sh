@@ -1,5 +1,29 @@
 # TODO: make this take args
-root = sda
+
+<<comment
+gdisk <<EOF
+YES
+n
+1
+
+500M
+ef00
+n
+2
+
+2G
+8200
+n
+3
+
+
+
+Y
+EOF
+comment
+
+boot=sda1
+root=sda3
 
 # NOTE: this script assumes paritioning prior to running
 
@@ -25,7 +49,7 @@ mount -t tmpfs none /mnt
 mkdir /mnt/{boot,nix,home,persist}
 mkdir /mnt/etc/nixos
 
-mount /dev/<boot-partition> /mnt/boot
+mount /dev/$boot /mnt/boot
 
 mount /dev/mapper/root -o compress-force=zstd,noatime,ssd,subvol=nix /mnt/nix
 mount /dev/mapper/root -o compress-force=zstd,noatime,ssd,subvol=home /mnt/home
