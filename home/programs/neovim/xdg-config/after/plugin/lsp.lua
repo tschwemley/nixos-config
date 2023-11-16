@@ -7,6 +7,6 @@ end)
 
 -- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md for naming
 -- TODO: remove this after testing different nix servers
-lsp.setup_servers({ 'gopls', 'intelephense', 'lua_ls', 'nil_ls', 'tsserver', 'yamlls' })
+lsp.setup_servers({ 'gopls', 'intelephense', 'lua_ls', 'nixd', 'tsserver', 'yamlls' })
 
 lsp.setup()
