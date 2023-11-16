@@ -18,7 +18,7 @@
       else "/Users/${username}";
 
     # work specific programs to install
-    programs = with pkgs; [
+    packages = with pkgs; [
       mysql
     ];
   };
