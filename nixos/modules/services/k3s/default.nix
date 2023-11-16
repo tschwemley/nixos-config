@@ -9,17 +9,30 @@
   networking.firewall.allowedUDPPorts = [51820 51821];
   # 10250 for kubelet metrics
   networking.firewall.allowedTCPPorts = [10250];
-  
+
   programs.zsh.shellAliases = {
     kubectl = "k3s kubectl";
   };
-  
+
   services.k3s.enable = true;
   sops.secrets.k3s-server-token.sopsFile = ./secrets.yaml;
   systemd.services.k3s = {
     wants = ["containerd.service"];
-    after = ["containerd.service"];
+    after = ["containerd.service" "firewall.service"];
   };
 
-  virtualisation.containerd.enable = true;
+  virtualisation.containerd = {
+    enable = true;
+    settings = {
+      version = 2;
+      plugins."io.containerd.grpc.v1.cri" = {
+        cni.conf_dir = "/var/lib/rancher/k3s/agent/etc/cni/net.d/";
+        # FIXME: upstream
+        cni.bin_dir = "${pkgs.runCommand "cni-bin-dir" {} ''
+          mkdir -p $out
+          ln -sf ${pkgs.cni-plugins}/bin/* ${pkgs.cni-plugin-flannel}/bin/* $out
+        ''}";
+      };
+    };
+  };
 }

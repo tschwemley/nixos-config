@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     gopls
-	#lua-language-server
+    #lua-language-server
     nixd
     nodePackages.intelephense
     nodePackages.typescript-language-server
