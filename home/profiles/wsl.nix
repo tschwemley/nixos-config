@@ -1,7 +1,8 @@
-{ ... }: {
-	imports = [./pc.nix];
-	  home = {
-		username = "tschwemley";
-		homeDirectory = "/home/tschwemley";
-	  };
+{pkgs, ...}: {
+  imports = [./pc.nix];
+  home = {
+    homeDirectory = "/home/tschwemley";
+    packages = with pkgs; [coreutils];
+    username = "tschwemley";
+  };
 }

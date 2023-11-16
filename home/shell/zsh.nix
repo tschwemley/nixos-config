@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{config, ...}: let
   shellAliases = import ./aliases;
 in {
   programs.zsh = {
@@ -19,6 +15,7 @@ in {
     };
     initExtra = ''
       . ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh
+      export PATH=${config.home.profileDirectory}/bin
     '';
   };
 }
