@@ -1,9 +1,7 @@
 { vimPlugins, submodule}: 
 let
-	comment = import ./comment.nix { inherit submodule vimPlugins; };
+	comment = import ./comment.nix { inherit vimPlugins; };
 in
-{
-	plugins = [
-		comment
-	];
-}
+with submodule; [
+	comment
+]
