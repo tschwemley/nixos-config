@@ -20,7 +20,7 @@
 		  }
           ../nixos/modules/k3s/server.nix
         ];
-        format = "proxmox";
+        format = "proxmox-lxc";
       };
 	};
 }
