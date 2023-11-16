@@ -33,7 +33,7 @@ in {
       then "https://10.0.0.1:6443"
       else "";
     tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
-    extraFlags = lib.mkMerge defaultFlags (lib.mkIf role == "server" serverFlags);
+    extraFlags = defaultFlags + (if role == "server" then serverFlags else "");
   };
 
   sops.secrets.k3s-server-token.sopsFile = ./secrets.yaml;
