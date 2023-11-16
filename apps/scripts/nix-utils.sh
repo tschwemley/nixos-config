@@ -13,23 +13,23 @@ extractSshDir() {
 
 extractSshHostKeys() {
 	secretsPath=./nixos/hosts/$1/secrets.yaml
-	extractPath="/etc/ssh" 
-	if [ "$2" != "" ]; then extractPath="$2"; fi
-	[ ! -d "$extractPath" ] && mkdir -p $extractPath
+	extractDir="/etc/ssh" 
+	if [ "$2" != "" ]; then extractDir="$2"; fi
+	[ ! -d "$extractDir" ] && mkdir -p $extractDir
 	keys_to_extract='["ssh_host_ed25519_key" "ssh_host_ed25519_key_pub" "ssh_host_rsa_key" "ssh_host_rsa_key_pub"]'
 	echo "Extracting and dumping ssh host keys"
-	sops -d --extract '["ssh_host_ed25519_key.pub"]' $secretsPath > "$extractPath/ssh_host_ed25519_key.pub"
-	sops -d --extract '["ssh_host_ed25519_key"]' $secretsPath > "$extractPath/ssh_host_ed25519_key"
-	sops -d --extract '["ssh_host_rsa_key.pub"]' $secretsPath > "$extractPath/ssh_host_rsa_key.pub"
-	sops -d --extract '["ssh_host_rsa_key"]' $secretsPath > "$extractPath/ssh_host_rsa_key"
+	sops -d --extract '["ssh_host_ed25519_key.pub"]' $secretsPath > "$extractDir/ssh_host_ed25519_key.pub"
+	sops -d --extract '["ssh_host_ed25519_key"]' $secretsPath > "$extractDir/ssh_host_ed25519_key"
+	sops -d --extract '["ssh_host_rsa_key.pub"]' $secretsPath > "$extractDir/ssh_host_rsa_key.pub"
+	sops -d --extract '["ssh_host_rsa_key"]' $secretsPath > "$extractDir/ssh_host_rsa_key"
 }
 
 extractWireguardPrivateKey() {
-	extractPath="/persist/wireguard/private" 
-	if [ "$2" != "" ]; then extractPath="$2"; fi
-	[ ! -d "$extractPath" ] && mkdir -p $extractPath
+	extractDir="/persist/wireguard" 
+	if [ "$2" != "" ]; then extractDir="$2"; fi
+	[ ! -d "$extractDir" ] && mkdir -p $extractDir
 	secretsPath=./nixos/hosts/$1/secrets.yaml
-	sops -d --extract '["wireguard_private"]' $secretsPath > $extractPath 
+	sops -d --extract '["wireguard_private"]' $secretsPath > "$extractDir/private"
 }
 
 genSshKeys() {
