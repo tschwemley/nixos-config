@@ -41,10 +41,12 @@ in {
 
     # Specify machine secrets
     secrets = {
-      systemd-networkd = {
-        # this symlinks the config from /run/secrets to the path
+      systemd_networkd = {
         path = "/etc/systemd/network/10-ens3.network";
       };
+	  user_password = {
+		 neededForUsers = true; 
+	  };
     };
   };
 
