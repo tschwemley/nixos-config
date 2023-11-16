@@ -1,6 +1,6 @@
 {
   diskName,
-  # swapSize,
+  swapSize,
   ...
 }: {
   disko = {
@@ -55,6 +55,15 @@
                   };
                 };
               }
+			   {
+                name = "swap";
+                start = swapSize;
+                end = "100%";
+                part-type = "primary";
+                content = {
+                  type = "swap";
+                  randomEncryption = true;
+                };
             ];
           };
         };
