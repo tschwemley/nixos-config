@@ -4,18 +4,17 @@
   ];
 
   fonts = {
-    enableDefaultFonts = true;
+#TODO: this option was renamed from enableDefaultFonts on 07/24/23. Now is a good time to decide
+# if I want to keep it or not
+#enableDefaultPackages = true;
 
-    fonts = with pkgs; [
+    packages = with pkgs; [
       # NOTE: Some fonts may break colour emojis in Chrome
       # cf. https://github.com/NixOS/nixpkgs/issues/69073#issuecomment-621982371
       # If this happens , keep noto-fonts-emoji and try disabling others (nerdfonts, etc.)
       noto-fonts-emoji
       fira-code
-      cascadia-code
       hasklig
-      b612
-      #nerdfonts
     ];
 
     fontconfig = {
