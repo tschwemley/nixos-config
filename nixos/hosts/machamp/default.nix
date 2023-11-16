@@ -5,24 +5,52 @@
   ...
 }: let
   hostName = "machamp";
+  wireguardIP = "10.0.0.99";
 
   # TODO: change this to (and create) a hydra profile
-  profile = import ../../profiles/proxmox.nix {
-    inherit config modulesPath;
-    profile = "k3s";
-    extraImports = [../../modules/services/k3s/server.nix];
-  };
-  # impermanence = import ../../modules/system/impermanence.nix {inherit inputs;};
-  # user = import ../../modules/users/server.nix {
-  #   inherit config;
-  #   userName = hostName;
+  disk = import ../../modules/hardware/disks/k3s.nix {inherit diskName; }; # TODO: not a k3s machine but this is easy
+  profile = import ../../profiles/hydra.nix;
+  # profile = import ../../profiles/proxmox.nix {
+  #   inherit config modulesPath;
+  #   profile = "k3s";
+  #   extraImports = [../../modules/services/k3s/server.nix];
   # };
+  # impermanence = import ../../modules/system/impermanence.nix {inherit inputs;};
+  user = import ../../modules/users/server.nix {
+    inherit config;
+    userName = hostName;
+  };
+  wireguard = import ../../modules/networking/wireguard.nix {
+    inherit config;
+    ip = wireguardIP;
+    peers = [
+	  {
+        # articuno
+        PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
+        AllowedIPs = ["10.0.0.1/32"];
+	  }
+      {
+        # zapados
+        PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
+        AllowedIPs = ["10.0.0.2/32"];
+      }
+      {
+        # moltres
+        PublicKey = "uIrOynrMnIpY//v+1WLsTD//swl0Y4J/an0/gllWpz4=";
+        AllowedIPs = ["10.0.0.3/32"];
+      }
+      {
+        #eevee
+        PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
+        AllowedIPs = ["10.0.0.4/32"];
+      }
+    ];
+  };
 in {
   imports = [
     profile
     #impermanence
-    # user
-    # ./wireguard.nix
+    user
     # ../../modules/services/k3s/server.nix
     # ../../profiles/k3s.nix
   ];
