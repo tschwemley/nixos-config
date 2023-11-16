@@ -8,6 +8,7 @@
   clusterInit ? false,
   diskName ? "/dev/vda",
   enableImpermanence ? true,
+  extraKernelModules ? [],
   role ? "agent",
   useGrub ? false,
   ...
@@ -39,7 +40,7 @@ in {
     initrd = {
       availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
     };
-    kernelModules = ["kvm-amd" "wireguard"];
+    kernelModules = ["wireguard"] ++ extraKernelModules;
     supportedFilesystems = ["btrfs"];
   };
 

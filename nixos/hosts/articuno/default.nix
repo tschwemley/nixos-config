@@ -11,10 +11,11 @@
   wireguardIP = "10.0.0.1";
 
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
-  k3s = import ../../profiles/k3s.nix {
+  k3r = import ../../profiles/k3s.nix {
     inherit inputs config lib nodeName pkgs useGrub;
     clusterInit = true;
     enableImpermanence = false;
+    extraKernelModules = ["kvm-amd"];
     nodeIP = wireguardIP;
     role = "server";
   };
@@ -59,14 +60,6 @@ in {
     user
     wireguard
   ];
-
-  boot = {
-    initrd = {
-      availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
-    };
-    kernelModules = ["kvm-amd" "wireguard"];
-    supportedFilesystems = ["btrfs"];
-  };
 
   networking.dhcpcd.enable = false;
 

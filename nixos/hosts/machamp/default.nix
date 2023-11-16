@@ -1,11 +1,21 @@
-{config, ...}: let
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   diskName = "/dev/sda";
-  hostName = "machamp";
-  wireguardIP = "10.0.0.99";
+  nodeName = "machamp";
+  wireguardIP = "10.0.0.90";
 
   boot = import ../../modules/system/systemd-boot.nix;
-  disk = import ../../modules/hardware/disks/vm.nix {inherit diskName;};
-  profile = import ../../profiles/hydra.nix;
+  k3s = import ../../profiles/k3s.nix {
+    inherit inputs config diskName lib nodeName pkgs;
+    enableImpermanence = false;
+    nodeIP = wireguardIP;
+    role = "agent";
+  };
   user = import ../../modules/users/server.nix {inherit config;};
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
@@ -32,27 +42,12 @@
 in {
   imports = [
     boot
-    disk
-    profile
+    k3s
     user
     wireguard
-    ./cloudflared.nix
-    ./nginx.nix
   ];
 
-  boot = {
-    initrd = {
-      availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
-    };
-    kernelModules = ["kvm-amd" "wireguard"];
-    supportedFilesystems = ["btrfs"];
-    loader.systemd-boot = {
-      enable = true;
-      editor = false; # leaving true allows for root access to be gained via passing kernal param
-    };
-  };
-
-  networking.hostName = hostName;
+  networking.hostName = nodeName;
 
   # this fixes a 'restricted url' issue when building host configs
   nix.extraOptions = ''
