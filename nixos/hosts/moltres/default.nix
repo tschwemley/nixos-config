@@ -33,13 +33,11 @@
       {
         # zapados
         AllowedIPs = ["10.0.0.2/32"];
-        Gateway = "10.0.0.1";
         PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
       }
       {
         #eevee
         AllowedIPs = ["10.0.0.4/32"];
-        Gateway = "10.0.0.1";
         PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
       }
     ];
