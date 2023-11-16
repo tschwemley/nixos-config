@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{lib, pkgs, ...}: {
   imports = [
     ./.
     ../modules/services/fail2ban.nix
