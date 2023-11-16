@@ -6,7 +6,6 @@
   ...
 }: let
   hostName = "eevee";
-  diskConfig = import ../../modules/hardware/disks/k3s.nix {diskName = "/dev/vda";};
   k3s = import ../../profiles/k3s.nix {
     inherit inputs config lib pkgs;
     nodeIP = "10.0.0.4";
@@ -18,7 +17,6 @@
   };
 in {
   imports = [
-    diskConfig
     user
     ../../profiles/default.nix
     ./wireguard.nix
