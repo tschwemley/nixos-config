@@ -9,6 +9,7 @@
   hostName = "moltres";
   k3s = import ../../profiles/k3s.nix {
     inherit inputs config lib pkgs;
+    enableImpermanence = false;
     nodeIP = "10.0.0.3";
     role = "server";
   };
