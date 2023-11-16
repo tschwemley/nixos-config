@@ -1,7 +1,5 @@
 { vimPlugins }: {
 	type = "lua";	
 	plugin = vimPlugins.comment-nvim;
-	config = /* lua */ ''
-		require('Comment').setup()
-	'';
+	config = "require('Comment').setup()";
 }
