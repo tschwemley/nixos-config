@@ -1,8 +1,4 @@
-{
-  pkgs,
-  system,
-  ...
-}: {
+{pkgs, ...}: {
   home.sessionVariables = {
     NNN_FIFO = "/tmp/nnn.fifo";
   };
@@ -14,11 +10,11 @@
       n = "~/nixos-config";
     };
     extraPackages =
-      if system == "aarch64-darwin"
+      if pkgs.system == "aarch64-darwin"
       then []
       else with pkgs; [imv];
     plugins =
-      if system == "aarch64-darwin"
+      if pkgs.system == "aarch64-darwin"
       then {}
       else {
         src = "${pkgs.nnn.src}/plugins";
