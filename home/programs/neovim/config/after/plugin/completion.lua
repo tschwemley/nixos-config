@@ -1,19 +1,17 @@
+local copilot = require("copilot")
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 local ls = require('luasnip')
 
--- Copilot config
-use {
-   "zbirenbaum/copilot.lua",
-   cmd = "Copilot",
-   event = "InsertEnter",
-   config = function()
-      require("copilot").setup({
+vim.api.nvim_create_autocmd("InsertEnter", {
+   callback = function()
+      require('copilot').setup({
+         -- diabled on recommendation of coilot-cmp see: https://github.com/zbirenbaum/copilot-cmp/
          suggestion = { enabled = false },
          panel = { enabled = false },
       })
-   end,
-}
+   end
+})
 
 -- Completion config
 cmp.setup({
@@ -25,7 +23,7 @@ cmp.setup({
 
    sources = {
       { name = 'buffer',  group_index = 3 },
-      { name = "copilot", group_index = 2 },
+      { name = 'copilot', group_index = 2 },
       { name = 'luasnip' },
       { name = 'nvim_lsp' },
       { name = 'nvim_lua' },
@@ -34,4 +32,4 @@ cmp.setup({
 })
 
 -- Snippet config
-ls.loaders.from_vscode.lazy_load({})
+require('luasnip.loaders.from_vscode').lazy_load({})
