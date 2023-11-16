@@ -9,6 +9,7 @@ in {
     ../programs/brave.nix
     ../programs/discord.nix
     ../programs/reaper.nix
+    ../programs/rofi.nix
     ../programs/slack.nix
     ../terminals/wezterm.nix
     git
