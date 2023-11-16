@@ -62,6 +62,7 @@
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             manix
+            nixos-generators.packages.${system}.nixos-generate
             pkgs.sops
             ssh-to-age
             wireguard-tools
