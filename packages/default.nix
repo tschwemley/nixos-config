@@ -1,8 +1,5 @@
 {self, ...}: {
-  perSystem = {
-    pkgs,
-    ...
-  }: {
+  perSystem = {pkgs, ...}: {
     packages.default = {
     };
   };

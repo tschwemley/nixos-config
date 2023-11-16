@@ -4,7 +4,7 @@
   ...
 }: let
   shellAliases = import ./aliases;
-in{
+in {
   programs.zsh = {
     inherit shellAliases;
 
