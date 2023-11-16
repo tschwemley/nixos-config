@@ -1,6 +1,6 @@
 {lib, ...}: {
   programs.wezterm = {
     enable = true;
-    extraConfig = lib.fileContents ../config/wezterm.lua;
+    extraConfig = lib.fileContents ../xdg-config/wezterm/wezterm.lua;
   };
 }

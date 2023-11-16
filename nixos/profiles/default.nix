@@ -17,8 +17,8 @@ in {
   environment.systemPackages = with pkgs; [
     curl
     git
-	rustc
-	rustfmt
+    rustc
+    rustfmt
     wget
   ];
 

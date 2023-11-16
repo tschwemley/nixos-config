@@ -1,6 +1,6 @@
 {pkgs, ...}: {
-	home.packages = with pkgs; [
-		discord
-		discordo # dicord terminal client
-	];
+  home.packages = with pkgs; [
+    discord
+    discordo # dicord terminal client
+  ];
 }

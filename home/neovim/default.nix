@@ -1,10 +1,15 @@
-{pkgs, lib, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.neovim = {
     enable = true;
     defaultEditor = lib.mkDefault true;
     extraLuaConfig = ''
       require "schwem.colorschemes"
       require "schwem.keymap"
+      require "schwem.helpers"
       require "schwem.lsp"
       require "schwem.options"
       require "schwem.plugins"
@@ -12,7 +17,6 @@
     extraLuaPackages = [];
     plugins = with pkgs.vimPlugins; [
       comment-nvim
-      gruvbox-material
       lsp-zero-nvim
       luasnip
       lualine-nvim
@@ -42,8 +46,7 @@
   };
 
   xdg.configFile = {
-    "nvim/lua".source = ../config/nvim/lua;
-    #"nvim/init.lua".source = ./lua/init.lua;
-    #"nvim/parser".source = "${parserDir}";
+    "nvim/lua".source = ../xdg-config/nvim/lua;
+    "nvim/ftplugin".source = ../xdg-config/nvim/ftplugin;
   };
 }
