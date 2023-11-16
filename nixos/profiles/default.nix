@@ -8,9 +8,9 @@ in {
     inputs.home-manager.nixosModules.home-manager
     inputs.sops.nixosModules.sops
     inputs.disko.nixosModules.disko
+    ../modules/programs/zsh.nix
     ../modules/services/openssh.nix
     ../modules/system/nix.nix
-    ../modules/shell
     ../modules/users
   ];
 
