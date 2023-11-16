@@ -5,14 +5,15 @@
   ...
 }: {
   # disable integrated graphics
-  boot.kernelParams = ["module_blacklist=i915"];
+  #boot.kernelParams = ["module_blacklist=i915"];
+
+  imports = [ inputs.nixos-hardware.common-gpu-nvidia-nonprime  ];
 
   hardware.nvidia = {
     open = false;
     modesetting.enable = true;
     nvidiaSettings = true;
   };
-  services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
 
   hardware.opengl = {
     enable = true;
@@ -25,7 +26,6 @@
 
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "nvidia";
-    LIBVA_DRIVER = "nvidia";
     VDPAU_DRIVER = "nvidia";
   };
 }
