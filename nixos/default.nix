@@ -4,7 +4,7 @@ let
 		system = "x86_64-linux";
 		modules = [
 			inputs.home-manager.nixosModule
-			../modules/nixos/common.nix
+			./modules
 			configPath
 		];
 	};
