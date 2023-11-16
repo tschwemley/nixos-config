@@ -15,6 +15,7 @@ in {
     ../programs/rofi.nix
     ../programs/slack.nix
     ../programs/sonic-pi.nix
+    ../programs/zk.nix
     ../services/spotifyd.nix
     ../terminals/wezterm.nix
     git
