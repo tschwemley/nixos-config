@@ -31,7 +31,7 @@ in {
   boot = {
     initrd = {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod"];
-      kernelModules = ["amdgpu" "kvm-intel"];
+      kernelModules = ["kvm-intel"];
     };
     kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = ["btrfs"];
