@@ -3,6 +3,7 @@
   hostName = "machamp";
   wireguardIP = "10.0.0.99";
 
+  boot = import ../../modules/system/systemd-boot.nix;
   disk = import ../../modules/hardware/disks/vm.nix {inherit diskName;};
   profile = import ../../profiles/hydra.nix;
   user = import ../../modules/users/server.nix {inherit config;};
@@ -21,6 +22,7 @@
   };
 in {
   imports = [
+    boot
     disk
     profile
     user

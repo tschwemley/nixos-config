@@ -1,28 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
-  # {pkgs, ...}: let
-  #   hyprbars = let
-  #     hyprland = pkgs.hyprland;
-  #   in
-  #     pkgs.stdenv.mkDerivation {
-  #       pname = "hyprbars";
-  #       version = "0.1";
-  #       src = pkgs.fetchFromGitHub {
-  #         owner = "hyprwm";
-  #         repo = "hyprland-plugins";
-  #         rev = "f9578d28d272fb61753417e175b0fcd5bedc1443";
-  #         sha256 = "sha256-TYsRfn8LLNPNQ0B4LgrGQmXZJrdAtwttRZSxLp1yqVc=";
-  #       };
-  #       sourceRoot = "source/hyprbars";
-  #
-  #       inherit (hyprland) nativeBuildInputs;
-  #
-  #       buildInputs = [hyprland] ++ hyprland.buildInputs;
-  #     };
-  # in {
+{pkgs, ...}: {
   imports = [
     ../programs/eww
     ../services/dunst.nix
@@ -47,6 +23,10 @@
     enable = true;
 
     extraConfig = ''
+      master {
+        orientation = right
+      }
+
       # unscale XWayland
       xwayland {
         force_zero_scaling = true
@@ -67,6 +47,8 @@
       bind = [
         "$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"
         "$mod, p, exec, ${pkgs.rofi}/bin/rofi -show drun"
+
+        "alt, tab, cyclenext"
       ];
 
       env = [

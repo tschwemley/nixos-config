@@ -14,8 +14,8 @@
           src = pkgs.fetchFromGitHub {
             owner = "hyprwm";
             repo = "hyprland-plugins";
-            rev = "15ac326593db5a6337b0e2ba3db932aada825cd5";
-            sha256 = "sha256-ZvV35GsOXLEM3J9/iBBS1CQcwzQt8V3ag0Gb82I89lk=";
+            rev = "33c3ced2c28eb228f64d637904a4070dc748457a";
+            sha256 = "sha256-UGEwNcnIYUESei7vWLlFwkjOJhu1rQQm3t+P5t175LE=";
           };
           sourceRoot = "source/hyprbars";
 

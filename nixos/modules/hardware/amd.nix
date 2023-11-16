@@ -12,10 +12,13 @@
       rocm-opencl-icd
       rocm-opencl-runtime
     ];
+    extraPackages32 = with pkgs; [
+      driversi686Linux.amdvlk
+    ];
   };
 
-  # services.xserver.videoDrivers = ["modesetting"];
-  services.xserver.videoDrivers = ["amdgpu"];
+  services.xserver.videoDrivers = ["modesetting"];
+  # services.xserver.videoDrivers = ["amdgpu"];
 
   systemd.tmpfiles.rules = [
     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
