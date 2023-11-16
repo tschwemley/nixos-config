@@ -20,9 +20,9 @@ in {
     impermanence
     user
     ./wireguard.nix
+    ../../profiles/default.nix
     # ../../modules/services/k3s/server.nix
     # ../../profiles/k3s.nix
-    ../../profiles/default.nix
     # ../../modules/services/keycloak.nix
   ];
 
