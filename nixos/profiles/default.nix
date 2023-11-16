@@ -22,8 +22,7 @@
     htop
     jq
     ripgrep
-    #rustc
-    #rustfmt
+    unzip
     wget
   ];
 
