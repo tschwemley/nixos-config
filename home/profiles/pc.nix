@@ -11,6 +11,7 @@
     ../programs/sonic-pi.nix
     ../programs/spotify.nix
     ../programs/tigervnc.nix
+    ../programs/visidata.nix
     ../programs/wezterm
     ../programs/zk
     ../programs/zoom.nix
