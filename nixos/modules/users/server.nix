@@ -3,7 +3,7 @@
   imports = [./.];
 
   users.users = {
-    k3s = {
+    server = {
       isNormalUser = true;
       home = "/home/k3s";
       extraGroups = ["wheel" "k3s"];
@@ -11,7 +11,7 @@
     };
   };
 
-  home-manager.users.k3s.imports = [
-    ../../home/profiles/server.nix
+  home-manager.users.server.imports = [
+    ../../../home/profiles/server.nix
   ];
 }

@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  diskConfig = import ../hardware/disks/btrfs-ephemeral.nix {
+  diskConfig = import ../modules/hardware/disks/btrfs-ephemeral.nix {
     diskName = "/dev/nvme0n1";
     swapSize = "-34G";
   };
@@ -13,8 +13,8 @@ in {
     diskConfig
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-    ./profiles/pc.nix
-    ../users/schwem.nix
+    ../profiles/pc.nix
+    ../modules/users/schwem.nix
   ];
 
   boot = {
@@ -41,7 +41,7 @@ in {
   services.getty.autologinUser = "schwem";
   
   sops = {
-    defaultSopsFile = ../../secrets/moltres.yaml;
+    defaultSopsFile = ./secrets.yaml;
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
 
     # Specify machine secrets
