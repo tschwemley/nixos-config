@@ -32,7 +32,7 @@ in
     extraLuaPackages = [];
     plugins = with pkgs.vimPlugins; [
       # I don't know where to put these ones yet
-	  mkPlugin "comment-nvim" "require("Comment").setup()"
+	  mkPlugin "comment-nvim" "require('Comment').setup()"
       # comment-nvim
       nvim-luadev
       nvim-treesitter
