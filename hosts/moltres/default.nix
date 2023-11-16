@@ -1,27 +1,33 @@
-{ nixosModules, ... }: 
+{ lib, modulesPath, ... }:
 {
 	imports = [
-		./hardware-configuration.nix
-		nixosModules.audio
-		nixosModules.homeManager
-		nixosModules.k3s
-		nixosModules.services
-		nixosModules.system
-		# ../modules/nixos/common.nix
-		# ../modules/nixos/boot/systemd.nix
-		# ../modules/nixos/k3s/server.nix
+		(modulesPath + "/profiles/qemu-guest.nix")
 	];
 
-	networking.hostName = "moltres";
-	# 
-	# # {}: (import ../../modules/disko.nix)
-	#
-	# sops = {
-	# 	defaultSopsFile = ./secrets.yaml;
-	# 	age.sshKeyPaths = ./moltres.pub;
-	# 	age.keyFile = "/var/lib/sops-nix/key.txt";
-	# 	# This will generate a new key if the key specified above does not exist
-	# 	age.generateKey = true;
-	# };
-}
+	boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk" ];
+	boot.kernelModules = [ "kvm-amd" ];
+	
+	boot.supportedFilesystems = [ "btrfs" ];
+	boot.loader.grub = {
+		devices = [ "/dev/vda" ];
+		version = 2;
+		# efiSupport = true;
+		# efiInstallAsRemovable = true;
+	};
 
+	disko.devices = import ./disk-config.nix {
+		inherit lib;
+	};
+
+	networking.hostName = "moltres";
+	
+	sops = {
+		defaultSopsFile = ./secrets.yaml;
+		age.sshKeyPaths = ./moltres.pub;
+		age.keyFile = "/var/lib/sops-nix/key.txt";
+		# This will generate a new key if the key specified above does not exist
+		age.generateKey = true;
+	};
+
+	users.users.root.openssh.authorizedKeys.keys = [ (builtins.readFile ./moltres.pub) ];
+}

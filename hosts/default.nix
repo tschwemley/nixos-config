@@ -1,18 +1,23 @@
-{ nixosModules, home-manager, sops, ... }: 
+{ inputs, self, withSystem, ... }: 
 let 
-	mkSystem = configPath: {
-		system = "x86_64-linux";
+	commonModules = [
+		self.nixosModules.homeManager
+		self.nixosModules.services #TODO: this is too broad and should probably be split
+		self.nixosModules.system
+		inputs.sops.nixosModules.sops
+		inputs.disko.nixosModules.disko
+	];
+	
+	mkSystem = configPath: withSystem "x86_64-linux" ({system, ... }: inputs.nixpkgs.lib.nixosSystem {
+		inherit system ;
+		
 		modules = [
-			# inputs.home-manager.nixosModule
-			nixosModules.homeManager
-			sops.nixosModules.sops
 			configPath
-		];
-	};
+		] ++ commonModules;
+	});
 in
 {
 	flake.nixosConfigurations = {
-	# charizard = mkSystem ./charizard;
 		moltres = mkSystem ./moltres;
 	};
 }

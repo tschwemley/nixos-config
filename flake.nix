@@ -12,10 +12,6 @@
 
 	flake-parts.url = "github:hercules-ci/flake-parts";
 
-#TODO: determine if still needed
- #    nixos-generators.url = "github:nix-community/nixos-generators";
-	# nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
-	
 	nixos-hardware.url = "github:nixos/nixos-hardware/master";
 	
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -29,7 +25,6 @@
 		flake-parts, 
 		disko,
 		home-manager,
-		# nixos-generators,
 		nixos-hardware,
 		sops,
 		...
@@ -51,8 +46,9 @@
 			
 		# Import flake attrs
 		imports = [
-			./modules
+			./home
 			./hosts
+			./modules
 		];
 	};
 }

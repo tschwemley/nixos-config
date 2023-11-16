@@ -8,7 +8,7 @@ creation_rules:
       - age:
         - *personal
           
-  - path_regex: secrets/moltres.yaml
+  - path_regex: hosts/moltres/secrets.yaml
     key_groups:
       - age:
         - *moltres
