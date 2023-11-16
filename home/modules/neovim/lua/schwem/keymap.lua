@@ -6,13 +6,14 @@ local wk = require("which-key")
 
 -- <leader>* keybindings:
 wk.register({
-	"<leader>" = { 
+	["<leader>"] = { 
 		e = { "<cmd>NnnExplorer<cr>", "Explore Files" },
+		f = { "<cmd>Telescope find_files<cr>", "Search Files" },
 
-		f = {
-			name = "Find",
-			f = { "<cmd>Telescope find_files<cr>", "Find Files" },
-			t = { "<cmd>Telescope live_grep<cr>", "Find Implementations" },
+		s = {
+			name = "Search",
+			f = { "<cmd>Telescope find_files<cr>", "Search Files" },
+			t = { "<cmd>Telescope live_grep<cr>", "Search Text" },
 			w = { "<cmd>Telescope grep_string<cr>", "Find Visual/Word Under Cursor" }
 		},
 
@@ -30,6 +31,11 @@ wk.register({
 -- 
 -- TERMINAL MODE
 --
+wk.register({
+	["<leader>"] = { 
+		e = { "<cmd>NnnExplorer<cr>", "Explore Files" },
+	},
+}, { mode = "t" })
 
 
 
