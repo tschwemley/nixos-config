@@ -17,10 +17,7 @@
     nodeIP = wireguardIP;
     role = "server";
   };
-  user = import ../../modules/users/server.nix {
-    inherit config;
-    userName = nodeName;
-  };
+  user = import ../../modules/users/server.nix {inherit config;};
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
     ip = wireguardIP;
@@ -96,20 +93,6 @@ in {
 
   # don't update this
   system.stateVersion = "23.05";
-
-  users = {
-    mutableUsers = false;
-    users = {
-      root = {
-        passwordFile = config.sops.secrets.root_password.path;
-        openssh.authorizedKeys.keys = [(builtins.readFile ./ssh_key.pub)];
-      };
-      ${nodeName} = {
-        passwordFile = config.sops.secrets.user_password.path;
-        openssh.authorizedKeys.keys = [(builtins.readFile ./ssh_key.pub)];
-      };
-    };
-  };
 
   # TODO: move this if it works out well
   # Note `lib.mkBefore` is used instead of `lib.mkAfter` here.

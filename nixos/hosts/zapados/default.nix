@@ -16,10 +16,7 @@
     nodeIP = wireguardIP;
     role = "server";
   };
-  user = import ../../modules/users/server.nix {
-    inherit config;
-    userName = nodeName;
-  };
+  user = import ../../modules/users/server.nix {inherit config;};
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
     ip = wireguardIP;
