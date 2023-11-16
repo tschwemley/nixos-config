@@ -31,9 +31,11 @@ extractWireguardPrivateKey() {
 }
 
 genSshKeys() {
-	ssh-keygen -t ed25519 -f ./ssh_host_ed25519_key
-	ssh-keygen -t rsa -f ./ssh_host_ed25519_key
-	ssh-keygen -t ed25519 -f ./auth_key
+	# [ $# -ne 2 ] && echo "ERROR: Need to provide a host name. Usage: nix run .# <cmd> <host>" && exit
+	ssh-keygen -t ed25519 -f ./ssh_host_ed25519_key -q -N ""
+	ssh-keygen -t rsa -f ./ssh_host_rsa_key -q -N ""
+	ssh-keygen -t ed25519 -f ./auth_key -q -N ""
+	ssh-to-age -private-key -i ./ssh_host_ed25519_key > ./age.txt
 }
 
 genWgKeys() {

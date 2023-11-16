@@ -5,16 +5,15 @@
   pkgs,
   ...
 }: let
-  diskName = "/dev/sda";
-  nodeName = "moltres";
-  wireguardIP = "10.0.0.3";
+  diskName = "/dev/vda";
+  nodeName = "flareon";
+  wireguardIP = "10.0.0.5";
 
-  boot = import ../../modules/system/systemd-boot.nix;
+  boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
   k3s = import ../../profiles/k3s.nix {
-    inherit inputs config diskName lib nodeName pkgs;
-    enableImpermanence = false;
+    inherit inputs config lib nodeName pkgs;
     nodeIP = wireguardIP;
-    role = "server";
+    role = "agent";
   };
   user = import ../../modules/users/server.nix {inherit config;};
   wireguard = import ../../modules/networking/wireguard.nix {
@@ -23,7 +22,7 @@
     peers = [
       {
         # articuno
-        AllowedIPs = ["10.0.0.1/32" "10.0.0.2/32"];
+        AllowedIPs = ["10.0.0.1/32" "10.0.0.2/32" "10.0.0.3/32"];
         Endpoint = "wg.schwem.io:9918";
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       }
@@ -33,15 +32,9 @@
         PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
       }
       {
-        #eevee
-        AllowedIPs = ["10.0.0.4/32"];
-        PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
-      }
-      {
-        #flareon
-        AllowedIPs = ["10.0.0.5/32"];
-        PersistentKeepalive = 25;
-        PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
+        # moltres
+        AllowedIPs = ["10.0.0.3/32"];
+        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
       }
     ];
   };
@@ -51,18 +44,23 @@ in {
     k3s
     user
     wireguard
-    ../../modules/system/systemd-boot.nix
   ];
 
-  boot.loader.systemd-boot = {
-    enable = true;
-    editor = false; # leaving true allows for root access to be gained via passing kernal param
+  boot = {
+    initrd = {
+      availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
+    };
+    kernelModules = ["kvm-amd"];
+    supportedFilesystems = ["btrfs"];
   };
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "/persist/.age-keys.txt";
   };
+
+  systemd.network.enable = true;
+  services.resolved.enable = true;
 
   # don't update this
   system.stateVersion = "23.05";
