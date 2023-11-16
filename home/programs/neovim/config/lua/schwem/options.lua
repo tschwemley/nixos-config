@@ -56,3 +56,9 @@ vim.o.timeoutlen = 300
 -- TODO: consider switching to one of the plugins or writing my own func to only show when char
 -- reaches column limit
 vim.o.colorcolumn = "100"
+
+-- folds
+vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true

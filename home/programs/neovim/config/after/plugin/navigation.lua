@@ -1,9 +1,19 @@
+local ufo = require('ufo');
 local wk = require('which-key')
 
 require('bufferline').setup()
 require('lualine').setup()
-require('ufo').setup({
-   disabled = { 'norg' }
+
+vim.keymap.set('n', 'zR', ufo.openAllFolds)
+vim.keymap.set('n', 'zM', ufo.closeAllFolds)
+
+ufo.setup({
+   provider_selector = function(bufnr, filetype, buftype)
+      if filetype == 'norg' then
+         return ''
+      else
+      return { 'treesitter', 'indent' }
+   end
 })
 
 wk.register({
