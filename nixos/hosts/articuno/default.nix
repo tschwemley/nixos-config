@@ -47,7 +47,6 @@
       {
         #machamp
         AllowedIPs = ["10.0.0.99/32"];
-        PersistentKeepalive = 25;
         PublicKey = "tetndLcx82SrEVzR0hjoqASdQPEjdb5nZHXizL82vUI=";
       }
     ];
