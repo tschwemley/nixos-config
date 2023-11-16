@@ -11,6 +11,7 @@
     ../modules/programs/steam.nix
     ../modules/services/xserver.nix
     ../modules/system/fonts.nix
+    ../modules/system/podman.nix
     ../modules/system/xdg.nix
     ../modules/users/schwem.nix
     ../modules/wayland
