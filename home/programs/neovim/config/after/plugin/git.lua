@@ -3,6 +3,8 @@ local neogit = require('neogit')
 require('gitsigns').setup()
 neogit.setup()
 
-require('which-key').register({
-   g = { '<cmd>Neogit<cr>', 'Open Neogit', { prefix = '<leader>' } }
+require('which-key').register({ {
+   g = { name = 'Git', { '<cmd>Neogit<cr>', '', { buffer = true } }, },
+},
+   { prefix = '<leader>' }
 })
