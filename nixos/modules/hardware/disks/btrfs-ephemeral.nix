@@ -1,9 +1,9 @@
 {diskName, ...}: {
   disko.devices = {
     disk = {
-      main = {
+      "${diskName}" = {
         type = "disk";
-        device = diskName;
+        device = "/dev/${diskName}";
         content = {
           type = "gpt";
           partitions = {
@@ -22,17 +22,12 @@
               };
             };
             luks = {
-              device = diskName;
               size = "100%";
               content = {
                 type = "luks";
                 name = "crypted";
-                extraOpenArgs = ["--allow-discards"];
-                # if you want to use the key for interactive login be sure there is no trailing newline
-                # for example use `echo -n "password" > /tmp/secret.key`
-                #keyFile = "/tmp/secret.key"; # Interactive
+                # extraOpenArgs = ["--allow-discards"];
                 settings.keyFile = "/tmp/secret.key";
-                # additionalKeyFiles = ["/tmp/additionalSecret.key"];
                 content = {
                   type = "btrfs";
                   extraArgs = ["-f"];

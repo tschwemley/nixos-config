@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  diskName = "/dev/nvme1n1";
+  diskName = "nvme1n1";
   diskConfig = {
     imports = [
       (import ../../modules/hardware/disks/btrfs-ephemeral.nix {inherit diskName;})
