@@ -29,13 +29,13 @@ vim.o.incsearch = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+-- used for bufferline
 vim.o.termguicolors = true
 
 -- min number of lines to always keep above and below cursor
 vim.o.scrolloff = 8
 
 vim.o.signcolumn = "yes"
-
 vim.o.cmdheight = 1
 
 -- having longer update degrades user experience
