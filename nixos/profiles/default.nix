@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   pkgs,
   ...
 }: {
@@ -28,5 +29,5 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = lib.mkDefault true;
 }
