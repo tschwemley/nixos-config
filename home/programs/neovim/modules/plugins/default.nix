@@ -1,5 +1,7 @@
-# { vimPlugins, submodule}:
-{submodule, ...}: let
+{
+  vimPlugins,
+  submodule,
+}: let
   betterEscape = import ./better-escape.nix {inherit vimPlugins;};
   comment = import ./comment.nix {inherit vimPlugins;};
 in {
