@@ -3,6 +3,8 @@
   inputs,
   ...
 }: {
+  imports = [../services/dunst.nix];
+
   wayland.windowManager.hyprland = let
     hyprlandPlugins = inputs.hyprland-plugins.packages.${pkgs.system};
   in {
