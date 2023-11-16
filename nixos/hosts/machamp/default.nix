@@ -40,7 +40,6 @@
       {
         #flareon
         AllowedIPs = ["10.0.0.5/32"];
-        PersistentKeepalive = 25;
         PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
       }
     ];
