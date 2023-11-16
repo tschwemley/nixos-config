@@ -9,7 +9,7 @@
   wireguardIP = "10.0.0.1";
 
   k3s = import ../../profiles/k3s.nix {
-    inherit inputs config lib pkgs;
+    inherit inputs config lib nodeName pkgs;
     clusterInit = true;
     nodeIP = wireguardIP;
     role = "server";
