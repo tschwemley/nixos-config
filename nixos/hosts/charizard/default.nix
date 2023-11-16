@@ -15,10 +15,11 @@
   hardware = {
     imports = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
-      # inputs.nixos-hardware.nixosModules.common-gpu-amd
+      inputs.nixos-hardware.nixosModules.common-gpu-amd
       inputs.nixos-hardware.nixosModules.common-pc
       inputs.nixos-hardware.nixosModules.common-pc-ssd
-      ../../modules/hardware/amd.nix
+      # TODO: make a decision on amd custom vs nixos-hardware import
+      # ../../modules/hardware/amd.nix
     ];
   };
 in {

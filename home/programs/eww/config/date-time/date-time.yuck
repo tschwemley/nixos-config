@@ -5,27 +5,29 @@
 (defpoll clock_date :interval "10h" "date '+%d/%m'")
 
 (defvar time_rev false)
+(defvar show_cal false)
 
 (defwidget cal[]
-    (calendar
-      :class "calendar"
-      :day calendarDay
-      :year calendarYear))
+  (calendar
+    :class "calendar"
+    :day calendarDay
+    :year calendarYear))
 
 (defwidget dateTime[]
   (eventbox :onhover "eww update time_rev=true"
-			  :onhoverlost "eww update time_rev=false"
-    (box :class "module" :space-evenly "false" :orientation "h" :spacing "3" 
-      (label :text clock_time :class "clock_time_class" )
-      (label :text ":" :class "clock_time_sep" )
-      (label :text clock_minute :class "clock_minute_class")
-	  (revealer :transition "slideleft"
-			  :reveal time_rev
-			  ;; :duration "350ms"
-      (button :class "clock_date_class"
-             :onclick "/home/schwem/.config/eww/config/scripts/pop calendar" clock_date
-        )
-  ))))
+            :onhoverlost "eww update time_rev=false"
+            (box :class "module" :space-evenly "false" :orientation "h" :spacing "3" 
+                 (label :text clock_time :class "clock_time_class" )
+                 (label :text ":" :class "clock_time_sep" )
+                 (label :text clock_minute :class "clock_minute_class")
+                 (revealer :transition "slideleft"
+                           :reveal time_rev
+                           :duration "350ms"
+                           (button :class "clock_date_class"
+                                   :onclick "/home/schwem/.config/eww/scripts/calendar toggle"
+                                   )
+                           )
+                 )))
 
 (defwindow dateTime
   :class "date-time"
@@ -38,3 +40,15 @@
                       :anchor "top right")
   :stacking "fg"
   (dateTime))
+
+(defwindow calendar
+  :class "calendar"
+  :monitor 1
+  :exclusive true
+  :geometry (geometry :x "0%"
+                      :y "42px"
+                      :width "5%"
+                      :height "30px"
+                      :anchor "top right")
+  :stacking "fg"
+  (cal))

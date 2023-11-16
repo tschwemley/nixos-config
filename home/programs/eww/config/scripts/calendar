@@ -1,0 +1,11 @@
+showCal=$(eww get show_cal)
+
+if [[ $1 == "toggle" ]] ; then
+	if $showCal ; then 
+		eww update show_cal=false
+		eww close calendar
+	else 
+		eww update show_cal=true
+		eww open calendar
+	fi
+fi

@@ -4,25 +4,15 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    arion.url = "github:hercules-ci/arion";
-
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     flake-parts.url = "github:hercules-ci/flake-parts";
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    home-manager.url = "github:nix-community/home-manager";
     impermanence.url = "github:nix-community/impermanence/master";
-
     musnix.url = "github:musnix/musnix";
-
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     nix-on-droid = {
       url = "github:t184256/nix-on-droid";
@@ -37,13 +27,11 @@
     };
 
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-
     sops.url = "github:Mic92/sops-nix";
   };
 
   outputs = inputs @ {
     self,
-    arion,
     disko,
     flake-parts,
     home-manager,
@@ -69,9 +57,6 @@
         _module.args.pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-          overlays = [
-            inputs.neovim-nightly-overlay.overlay
-          ];
         };
 
         formatter = pkgs.alejandra;

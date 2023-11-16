@@ -3,7 +3,9 @@
     ./.
     ../modules/hardware/audio.nix
     ../modules/programs/barrier.nix
-    ../modules/services/mullvad.nix
+    # BUG: currently fails due to iproute/etc not existing. Either keep or move off to a custom
+    #      systemd-networkd config
+    # ../modules/services/mullvad.nix
     ../modules/programs/steam.nix
     ../modules/services/xserver.nix
     ../modules/system/fonts.nix
