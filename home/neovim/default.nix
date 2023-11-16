@@ -19,7 +19,7 @@ in
   programs.neovim = {
     enable = true;
     defaultEditor = lib.mkDefault true;
-	plugins = [
+	plugins = with lib.types.submobule; [
 		comment
 	];
    #  plugins = with pkgs.vimPlugins; [
