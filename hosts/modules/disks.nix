@@ -27,7 +27,7 @@ let
 in
 {
   boot.initrd = {
-    supportedFilesystems = [ "btrfs" ];
+	supportedFilesystems = [ "btrfs" ];
     postDeviceCommands = lib.mkIf (!phase1Systemd) (lib.mkBefore wipeScript);
     systemd.services.restore-root = lib.mkIf phase1Systemd {
       description = "Rollback btrfs rootfs";
@@ -44,6 +44,8 @@ in
       serviceConfig.Type = "oneshot";
       script = wipeScript;
     };
+	
+	luks.devices."${hostname}".device = "/dev/disk/by-label/${hostname}_crypt";
   };
 
   fileSystems = {

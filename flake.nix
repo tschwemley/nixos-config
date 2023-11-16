@@ -7,6 +7,8 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+	
+	impermanence.url = "github:nix-community/impermanence/master";
 
     nixos-generators.url = "github:nix-community/nixos-generators";
 	nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
@@ -16,19 +18,13 @@
 
   outputs = inputs @ {
     self,
-    home-manager,
     flake-parts,
+    home-manager,
 	nixos-generators,
 	nixos-hardware,
     ...
   }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-		imports = [
-			./home
-			./hosts
-			./modules
-		];	
-			
 		systems = [ "x86_64-linux" ];
 
 		perSystem = {
@@ -46,6 +42,13 @@
 			};
 
 			formatter = pkgs.alejandra;
+			
 		};
+
+		imports = [
+			./home
+			./hosts
+			./users
+		];
 	};
 }

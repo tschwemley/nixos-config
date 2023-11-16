@@ -1,9 +1,10 @@
-{ self, ... }:
+{ pkgs, ... }:
+
 {
 	imports = [
-		self.nixosModules.development
-		self.nixosModules.home-manager
-		self.nixosModules.programs.common
+		./direnv.nix
+		./disks.nix
+		./nix.nix
 	];
 	
   nixpkgs.config.allowUnfree = true;
