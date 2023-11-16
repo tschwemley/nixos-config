@@ -3,7 +3,7 @@
     k3s = {
       isNormalUser = true;
       home = "/home/k3s";
-      extraGroups = [ "wheel" "k3s" ];
+      extraGroups = ["wheel" "k3s"];
       # uid = 1000;
       # openssh.authorizedKeys.keys = keys;
     };
