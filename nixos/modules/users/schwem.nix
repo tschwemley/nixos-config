@@ -1,10 +1,9 @@
 {
+  self,
   config,
-  homeConfigurations,
+  # homeConfigurations,
   ...
-}: let
-  # defaultSopsFile = config.sops.defaultSopsFile;
-in {
+}: {
   imports = [
     ./.
   ];
@@ -20,6 +19,7 @@ in {
     imports = [
       # homeConfigurations.schwem.activation-script
       ../../../home/profiles/pc.nix
+      {inherit self;}
     ];
   };
 }
