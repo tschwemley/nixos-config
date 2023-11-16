@@ -23,6 +23,13 @@
 					./modules/xsession.nix
 				];
 			};
+
+			k3s-server = inputs.nixpkgs.lib.nixosSystem {
+				system = "x86_64-linux";
+				modules = [
+					./k3s
+				];
+			};
 		};
 	};
 }
