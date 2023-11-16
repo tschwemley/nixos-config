@@ -33,7 +33,7 @@
               {
                 name = "root";
                 start = "128MiB";
-                end = "100%";
+                end = swapSize;
                 part-type = "primary";
                 content = {
                   type = "btrfs";
