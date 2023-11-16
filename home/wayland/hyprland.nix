@@ -83,7 +83,7 @@
       ];
     };
 
-    systemdIntegration = true;
+    systemd.enable = true;
   };
 
   xdg.configFile."hypr/hyprpaper.conf".text = ''
