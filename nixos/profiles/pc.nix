@@ -7,6 +7,7 @@
     ../modules/programs/steam.nix
     ../modules/services/xserver.nix
     ../modules/system/fonts.nix
+    ../modules/system/gamemode.nix
     ../modules/system/man.nix
     ../modules/system/podman.nix
     ../modules/system/xdg.nix
