@@ -9,8 +9,6 @@ require('neorg').setup {
             },
          }
       },
-      ['core.tempus'] = {},
-      ['core.ui.calendar'] = {},
    }
 }
 

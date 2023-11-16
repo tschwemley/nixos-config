@@ -1,23 +1,24 @@
-{pkgs, ...}: let
-  hyprbars = let
-    hyprland = pkgs.hyprland;
-  in
-    pkgs.stdenv.mkDerivation {
-      pname = "hyprbars";
-      version = "0.1";
-      src = pkgs.fetchFromGitHub {
-        owner = "hyprwm";
-        repo = "hyprland-plugins";
-        rev = "f9578d28d272fb61753417e175b0fcd5bedc1443";
-        sha256 = "sha256-TYsRfn8LLNPNQ0B4LgrGQmXZJrdAtwttRZSxLp1yqVc=";
-      };
-      sourceRoot = "source/hyprbars";
-
-      inherit (hyprland) nativeBuildInputs;
-
-      buildInputs = [hyprland] ++ hyprland.buildInputs;
-    };
-in {
+{pkgs, ...}: {
+  # {pkgs, ...}: let
+  #   hyprbars = let
+  #     hyprland = pkgs.hyprland;
+  #   in
+  #     pkgs.stdenv.mkDerivation {
+  #       pname = "hyprbars";
+  #       version = "0.1";
+  #       src = pkgs.fetchFromGitHub {
+  #         owner = "hyprwm";
+  #         repo = "hyprland-plugins";
+  #         rev = "f9578d28d272fb61753417e175b0fcd5bedc1443";
+  #         sha256 = "sha256-TYsRfn8LLNPNQ0B4LgrGQmXZJrdAtwttRZSxLp1yqVc=";
+  #       };
+  #       sourceRoot = "source/hyprbars";
+  #
+  #       inherit (hyprland) nativeBuildInputs;
+  #
+  #       buildInputs = [hyprland] ++ hyprland.buildInputs;
+  #     };
+  # in {
   imports = [
     ../programs/eww
     ../services/dunst.nix
@@ -52,7 +53,7 @@ in {
     '';
 
     plugins = [
-      hyprbars
+      # hyprbars
     ];
 
     settings = {
