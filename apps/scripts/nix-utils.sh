@@ -12,10 +12,10 @@ extractSshDir() {
 }
 
 extractSshHostKeys() {
-	[ ! -d "$2" ] && mkdir -p $2
 	secretsPath=./nixos/hosts/$1/secrets.yaml
 	extractPath="/etc/ssh" 
 	if [ "$2" != "" ]; then extractPath="$2"; fi
+	[ ! -d "$extractPath" ] && mkdir -p $extractPath
 	keys_to_extract='["ssh_host_ed25519_key" "ssh_host_ed25519_key_pub" "ssh_host_rsa_key" "ssh_host_rsa_key_pub"]'
 	echo "Extracting and dumping ssh host keys"
 	sops -d --extract '["ssh_host_ed25519_key.pub"]' $secretsPath > "$extractPath/ssh_host_ed25519_key.pub"
@@ -25,9 +25,9 @@ extractSshHostKeys() {
 }
 
 extractWireguardPrivateKey() {
-	[ ! -d "$2" ] && mkdir -p $2
 	extractPath="/persist/wireguard/private" 
 	if [ "$2" != "" ]; then extractPath="$2"; fi
+	[ ! -d "$extractPath" ] && mkdir -p $extractPath
 	secretsPath=./nixos/hosts/$1/secrets.yaml
 	sops -d --extract '["wireguard_private"]' $secretsPath > $extractPath 
 }
