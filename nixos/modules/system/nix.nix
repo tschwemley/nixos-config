@@ -1,5 +1,8 @@
 {
   nix.settings = {
+    allowed-uris = [
+      "https://git.sr.ht/~rycee"
+    ];
     auto-optimise-store = true;
     experimental-features = ["nix-command" "flakes"];
   };

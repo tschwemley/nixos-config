@@ -16,9 +16,4 @@
   documentation.man.enable = false;
 
   time.timeZone = lib.mkDefault "UTC";
-
-  # security.acme = {
-  #   acceptTerms = true;
-  #   defaults.email = "me@tylerschwemley.com";
-  # };
 }
