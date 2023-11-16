@@ -1,6 +1,5 @@
 {
   networking.firewall.allowedUDPPorts = [51820];
-  };
   networking.wireguard.interfaces = {
     wg0 = {
       ips = ["10.1.1.1.2/24"];
