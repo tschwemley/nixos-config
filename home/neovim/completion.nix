@@ -7,6 +7,6 @@
       cmp-nvim-lua
       luasnip
     ];
+	extraLuaConfig = "require 'schwem.completion'";
   };
-  extraLuaConfig = "require 'schwem.completion'";
 }
