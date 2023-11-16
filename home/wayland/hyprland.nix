@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  wayland.windowManager.hyprland = let 
+  wayland.windowManager.hyprland = let
     hyprlandPlugins = inputs.hyprland-plugins.packages.${pkgs.system};
   in {
     enable = true;
