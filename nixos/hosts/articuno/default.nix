@@ -17,22 +17,25 @@
     inherit config modulesPath;
     # extraImports = [../../modules/services/k3s/server.nix];
   };
-  # user = import ../../modules/users/server.nix {
-  #   inherit config;
-  #   userName = hostName;
-  # };
+  user = import ../../modules/users/server.nix {
+    inherit config;
+    userName = hostName;
+  };
 in {
   imports = [
     k3s
     proxmox
-    # user
+    user
     # ./wireguard.nix
   ];
 
+  # TODO: move to proxmox if this doens't work for cloud vms, otherwise move to k3s
+  services.cloud-init.network.enable = true;
+
   networking.hostName = hostName;
 
-  # TODO: determine if this is needed for qemu
-  #services.getty.autologinUser = "root";
+  # TODO: change this for all hosts soon
+  services.getty.autologinUser = "root";
 
   # don't update this
   system.stateVersion = "23.05";
