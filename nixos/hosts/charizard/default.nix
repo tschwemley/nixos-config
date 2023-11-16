@@ -19,6 +19,8 @@
       inputs.nixos-hardware.nixosModules.common-pc
       inputs.nixos-hardware.nixosModules.common-pc-ssd
       {
+        hardware.enableRedistributableFirmware = true;
+        # TODO: determine if this makes any difference and move out
         systemd.tmpfiles.rules = [
           "L+   /opt/rocm/hip  -  -  -  -  ${pkgs.hip}"
         ];
