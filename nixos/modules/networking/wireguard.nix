@@ -33,7 +33,7 @@ in {
     };
     networks = {
       "20-wg0" = {
-        # inherit gateway;
+        inherit gateway;
         matchConfig.Name = "wg0";
         # IP addresses the client interface will have
         address = [
