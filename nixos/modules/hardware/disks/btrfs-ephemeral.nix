@@ -37,16 +37,16 @@
                   subvolumes = {
                     "/rootfs" = {
                       mountpoint = "/";
-                      mountOptions = ["defaults" "compress=zstd"];
+                      mountOptions = ["defaults" "compress=zstd" "ssd"];
                     };
                     "/home" = {
-                      mountOptions = ["defaults" "compress=zstd"];
+                      mountOptions = ["defaults" "compress=zstd" "ssd"];
                     };
                     "/nix" = {
-                      mountOptions = ["defaults" "compress=zstd" "noatime"];
+                      mountOptions = ["defaults" "compress=zstd" "noatime" "ssd"];
                     };
                     "/persist" = {
-                      mountOptions = ["defaults" "compress=zstd" "noatime"];
+                      mountOptions = ["defaults" "compress=zstd" "noatime" "ssd"];
                     };
                     /*
                     "/games" = {
@@ -54,7 +54,7 @@
                     };
                     */
                     "/swap" = {
-                      mountOptions = ["noatime" "nodatacow"];
+                      mountOptions = ["noatime" "nodatacow" "ssd"];
                     };
                   };
                 };
