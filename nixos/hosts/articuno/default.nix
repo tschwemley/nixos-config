@@ -8,7 +8,7 @@
   profile = import ../../profiles/proxmox.nix {
     inherit config modulesPath;
     profile = "k3s";
-    extraImports = [../../modules/services/k3s/server.nix];
+    # extraImports = [../../modules/services/k3s/server.nix];
   };
   # impermanence = import ../../modules/system/impermanence.nix {inherit inputs;};
   # user = import ../../modules/users/server.nix {
@@ -21,8 +21,6 @@ in {
     #impermanence
     # user
     # ./wireguard.nix
-    # ../../modules/services/k3s/server.nix
-    # ../../profiles/k3s.nix
   ];
 
   networking.hostName = hostName;
