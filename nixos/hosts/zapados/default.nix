@@ -18,7 +18,7 @@
   };
   user = import ../../modules/users/server.nix {
     inherit config;
-    userName = hostName;
+    userName = nodeName;
   };
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
