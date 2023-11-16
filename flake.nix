@@ -36,8 +36,9 @@
       ];
 
       perSystem = {
-		  config,
+		config,
         pkgs,
+		system,
         ...
       }: {
         devShells.default = pkgs.mkShell {

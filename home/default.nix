@@ -1,7 +1,7 @@
 {inputs, ...}: let
-  mkHomeConfig = profile:
+  mkHomeConfig = profile: {system ? "x86_64-linux"}:
     inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = inputs.nixpkgs;
+      pkgs = inputs.nixpkgs.legacyPackages.${system};
       modules = [
         ./profiles/common.nix
         profile

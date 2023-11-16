@@ -10,11 +10,11 @@
 
   home-manager.users.schwem = {
     imports = [
-      homeConfigurations.pc
+     (homeConfigurations.pc
       {
         home.username = "schwem";
         home.homeDirectory = "/home/schwem";
-      }
+      })
     ];
   };
 }
