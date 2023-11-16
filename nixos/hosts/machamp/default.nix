@@ -8,8 +8,7 @@
   hostName = "machamp";
   wireguardIP = "10.0.0.99";
 
-  # TODO: change this to (and create) a hydra profile
-  disk = import ../../modules/hardware/disks/k3s.nix {inherit diskName;}; # TODO: not a k3s machine but this is easy
+  disk = import ../../modules/hardware/disks/vm.nix {inherit diskName;};
   profile = import ../../profiles/hydra.nix;
   user = import ../../modules/users/server.nix {
     inherit config;
@@ -30,7 +29,6 @@ in {
   imports = [
     disk
     profile
-    impermanence
     user
   ];
 

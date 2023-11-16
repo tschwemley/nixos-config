@@ -12,7 +12,7 @@
   useGrub ? false,
   ...
 }: let
-  disk = import ../modules/hardware/disks/k3s.nix {inherit diskName useGrub;};
+  disk = import ../modules/hardware/disks/vm.nix {inherit diskName useGrub;};
   impermanence =
     if enableImpermanence
     then
