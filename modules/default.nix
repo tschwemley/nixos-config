@@ -5,8 +5,10 @@
 	# 	./nix.nix
 	# 	sops.nixosModules.sops
 	# ];
-	flake.modules = {
-		# audio = { imports = [ ./audio ]; };
-		development = { imports = [ ./development ]; };
+	nixosModules = let
+		development = import ./development;
+		homeManager = import ./home-manager;
+	in {
+		inherit development homeManager;
 	};
 }

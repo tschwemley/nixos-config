@@ -1,3 +1,4 @@
+#TODO: I think I can make this cleaner by passing in a shouldEncyrypt var or defining an option
 { disks ? [ "/dev/sda" ], lib, pkgs, ... }: {
   disko.devices = {
     disk = {

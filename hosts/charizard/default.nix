@@ -14,13 +14,10 @@
 	  # hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 		
 		networking = {
-			hostName = "office";
+			hostName = "charizard";
 			networkmanager.enable = true;
+			useDHCP = true;
 		};
-		
-		networking.useDHCP = lib.mkDefault true;
-#TODO: I'm 99% sure this is covered via flake-parts and defined in the system config but better to be safe for now
-	# nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 	
 	system.stateVersion = "23.05"; # Did you read the comment?
 }
