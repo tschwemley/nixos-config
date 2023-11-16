@@ -37,6 +37,8 @@
           buildInputs = with pkgs; [
             bun
             nodejs_18
+            prefetch-npm-deps
+            prefetch-yarn-deps
           ];
         };
 

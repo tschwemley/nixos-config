@@ -10,7 +10,7 @@
   users.users = {
     schwem = {
       isNormalUser = true;
-      extraGroups = ["audio" "wheel" "networkmanager" config.users.groups.keys.name];
+      extraGroups = ["audio" "docker" "wheel" "networkmanager" config.users.groups.keys.name];
     };
   };
 
