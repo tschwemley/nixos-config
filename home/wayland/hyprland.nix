@@ -14,8 +14,11 @@
 
   # make stuff work on wayland
   home.sessionVariables = {
-    QT_QPA_PLATFORM = "wayland";
+    GDK_BACKEND = "wayland,x11";
+    GDK_SCALE = 2;
+    QT_QPA_PLATFORM = "wayland;xcb";
     SDL_VIDEODRIVER = "wayland";
+    XCURSOR_SIZE = 32;
     XDG_SESSION_TYPE = "wayland";
   };
 
@@ -23,7 +26,12 @@
     enable = true;
 
     extraConfig = ''
+      general {
+        layout = master
+      }
+
       master {
+        new_is_master = false
         orientation = right
       }
 
@@ -31,9 +39,6 @@
       xwayland {
         force_zero_scaling = true
       }
-
-      env = GDK_SCALE,2
-      env = XCURSOR_SIZE,32
     '';
 
     plugins = [
@@ -48,13 +53,11 @@
         "$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"
         "$mod, p, exec, ${pkgs.rofi}/bin/rofi -show drun"
 
-        "alt, tab, cyclenext"
-      ];
-
-      env = [
-        # toolkit-specific scale
-        "GDK_SCALE,2"
-        "XCURSOR_SIZE,32"
+        "alt, tab, layoutmsg, cyclenext"
+        "alt shift, tab, layoutmsg, cycleprev"
+        "$mod, l, layoutmsg, swapnext"
+        "$mod, h, layoutmsg, swapprev"
+        "$mod, w, killactive"
       ];
 
       exec-once = [
