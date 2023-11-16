@@ -1,8 +1,4 @@
-{
-  pkgs,
-  system,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ../programs/eww
     ../services/dunst.nix
@@ -18,6 +14,16 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+
+    extraConfig = ''
+      # unscale XWayland
+      xwayland {
+        force_zero_scaling = true
+      }
+
+      env = GDK_SCALE,2
+      env = XCURSOR_SIZE,32
+    '';
 
     plugins = [
       "/nix/store/yhwdlzii9a29r92a6az579gx1mwa838k-hyprbars-0.1/lib/libhyprbars.so"
@@ -41,27 +47,17 @@
         "hyprpaper"
       ];
 
-      extraConfig = ''
-        # unscale XWayland
-        xwayland {
-          force_zero_scaling = true
-        }
-
-        env = GDK_SCALE,2
-        env = XCURSOR_SIZE,32
-      '';
-
       monitor = [
         "HDMI-A-2,3840x2160,0x0,1"
         "DP-2,2560x2880@60,3840x0,1"
       ];
 
-      systemdIntegration = true;
-
       workspace = [
         # "name:start, monitor:HDMI-A-2, default: true"
       ];
     };
+
+    systemdIntegration = true;
   };
 
   xdg.configFile."hypr/hyprpaper.conf".text = ''
