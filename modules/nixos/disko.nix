@@ -1,8 +1,8 @@
-{ disks ? [ "/dev/vda" ], ... }: 
+{ disks ? [ "/dev/sda" ], ... }: 
 {
   disko.devices = {
     disk = {
-      disk0 = {
+      main = {
         type = "disk";
         device = builtins.elemAt disks 0;
         content = {
@@ -29,7 +29,7 @@
                 type = "luks";
                 name = "crypted";
                 extraOpenArgs = [ "--allow-discards" ];
-                keyFile = "/passphrase";
+                keyFile = lib.mkDefault "${pkgs.lib.genPasswdFile random 64}";
                 content = {
                   type = "btrfs"; 
                   extraArgs = [ "-f" ];  

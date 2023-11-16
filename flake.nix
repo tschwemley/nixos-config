@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+	disko.url = "github:nix-community/disko";
+	disko.inputs.nixpkgs.follows = "nixpkgs";
+	
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     home-manager.url = "github:nix-community/home-manager";
@@ -20,10 +24,12 @@
 
   outputs = inputs @ {
     self,
+	disko,
     flake-parts,
     home-manager,
 	nixos-generators,
 	nixos-hardware,
+	sops,
     ...
   }:
     flake-parts.lib.mkFlake { inherit inputs; } {

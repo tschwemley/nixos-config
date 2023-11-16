@@ -2,7 +2,6 @@
 
 {
   imports = [ 
-		(../../modules/nixos/disko.nix)
 		(modulesPath + "/profiles/qemu-guest.nix")
     ];
 
