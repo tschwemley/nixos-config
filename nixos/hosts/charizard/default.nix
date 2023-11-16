@@ -87,7 +87,7 @@ in {
         sopsFile = ./../eevee/secrets.yaml;
       };
       "gh_key" = {
-        key = "ssh_private_key";
+        key = "gh_private_key";
         owner = "schwem";
         path = "/home/schwem/.ssh/github_key";
       };
