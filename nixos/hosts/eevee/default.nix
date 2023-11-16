@@ -5,44 +5,22 @@
   pkgs,
   ...
 }: let
-  hostName = "articuno";
-  wireguardIP = "10.0.0.1";
-
+  hostName = "eevee";
   diskConfig = import ../../modules/hardware/disks/k3s.nix {diskName = "/dev/vda";};
   k3s = import ../../profiles/k3s.nix {
     inherit inputs config lib pkgs;
-    clusterInit = true;
-    nodeIP = wireguardIP;
-    role = "server";
+    nodeIP = "10.0.0.4";
+    role = "agent";
   };
   user = import ../../modules/users/server.nix {
     inherit config;
     userName = hostName;
   };
-  wireguard = import .../../modules/networking/wireguard.nix {
-    inherit config;
-    ip = wireguardIP;
-    peers = [
-      { # zapados
-        PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
-        AllowedIPs = ["10.0.0.2/32"];
-      }
-      { # moltres
-        
-        PublicKey = "uIrOynrMnIpY//v+1WLsTD//swl0Y4J/an0/gllWpz4=";
-        AllowedIPs = ["10.0.0.3/32"];
-      }
-      { #eevee
-        PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
-        AllowedIPs = ["10.0.0.4/32"];
-      }
-    ];
-  };
 in {
   imports = [
     diskConfig
-    k3s
     user
+    ../../profiles/default.nix
     ./wireguard.nix
   ];
 
@@ -50,7 +28,7 @@ in {
     initrd = {
       availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
     };
-    kernelModules = ["kvm-amd" "wireguard"];
+    kernelModules = ["kvm-amd"];
     supportedFilesystems = ["btrfs"];
     loader = {
       grub = {
@@ -61,6 +39,7 @@ in {
     };
   };
 
+  # eevee has issues with DHCP so disable and use systemd-networkd instead
   networking = {
     inherit hostName;
     dhcpcd.enable = false;
@@ -70,6 +49,8 @@ in {
 
   services.openssh = {
     enable = true;
+    # PasswordAuthentication = false;
+    # KbdInteractiveAuthentication = false;
     hostKeys = [
       {
         bits = 4096;
@@ -85,12 +66,27 @@ in {
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
+    age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
     age.keyFile = "/persist/.age-keys.txt";
 
+    # Specify machine secrets
     secrets = {
+      root_password = {
+        neededForUsers = true;
+      };
+      user_password = {
+        neededForUsers = true;
+      };
       systemd_networkd_10_ens3 = {
         mode = "0644";
         path = "/etc/systemd/network/10-ens3.network";
+        restartUnits = ["systemd-networkd" "systemd-resolved"];
+      };
+      wireguard_private = {
+        mode = "0644";
+        path = "/persist/wireguard/private";
+        owner = config.users.users.systemd-network.name;
+        group = config.users.users.systemd-network.group;
         restartUnits = ["systemd-networkd" "systemd-resolved"];
       };
     };
@@ -98,6 +94,8 @@ in {
 
   # don't update this
   system.stateVersion = "23.05";
+
+  # enable systemd-networkd for this machine
   systemd.network.enable = true;
   services.resolved.enable = true;
 

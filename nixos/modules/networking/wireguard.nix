@@ -1,11 +1,21 @@
-{config, ip, ...}: {
+{
+  config,
+  ip,
+  peers,
+  endpoint ? "",
+  listenPort ? 9918,
+  ...
+}: let
+  wireguardPeers = builtins.map (peer: {wireguardPeerConfig = peer;}) peers;
+in {
   networking.firewall.enable = true;
-  networking.firewall.allowedUDPPorts = [9918];
+  networking.firewall.allowedUDPPorts = [listenPort];
 
   # this gives networkd appropriate perms to read the secret
   systemd.services.networkd.serviceConfig.SupplementaryGroups = [config.users.groups.keys.name];
 
   systemd.network = {
+    inherit wireguardPeers;
     netdevs = {
       "20-wg0" = {
         netdevConfig = {
@@ -16,17 +26,8 @@
         # See also man systemd.netdev (also contains info on the permissions of the key files)
         wireguardConfig = {
           PrivateKeyFile = "/persist/wireguard/private";
-          ListenPort = 9918;
+          ListenPort = listenPort;
         };
-        wireguardPeers = [
-          {
-            wireguardPeerConfig = {
-              PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
-              AllowedIPs = ["10.0.0.1/32"];
-              Endpoint = "wg.schwem.io:9918";
-            };
-          }
-        ];
       };
     };
     networks = {

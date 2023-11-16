@@ -4,9 +4,10 @@
 ## Features
 - uses nix flakes
 - standalone home-manager configuration
-- separation between user and system state
 - desktop/laptop configurations
-- self-hosted configurations
+- k3s configuration
+- virtualisation
+- wireguard site-to-site config
 - secret management/editing via sops
 
 ## Why Nix?
@@ -14,17 +15,13 @@ I got too far in before I realized what I got myself into :shrug:
 Oh and declarative system configurations across multiple machines or something.
 
 ## Architecture
-`flake.nix`  - entry point
-`home/`		 - standalone home-manager configurations
-`hosts/`	 - host specific configurations
-`modules/`	 - reusable nixosModules organized by domains.
-`templates/` - 
-`users/`     - user specific configurations
+TODO
 
 ## Prerequisites
-1. Install Nix
+TODO
 
 ## Install Instructions
+TODO
 
 ## About and Acknowlegements
 ### Inspiration:
