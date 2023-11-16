@@ -1,7 +1,7 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   programs.neovim = {
     enable = true;
-    defaultEditor = true;
+    defaultEditor = lib.mkDefault true;
     extraLuaConfig = ''
       require "schwem.colorschemes"
       require "schwem.keymap"
