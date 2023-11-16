@@ -1,6 +1,6 @@
 (defwidget search [] 
   (box :class "dockbox"
        (box :orientation "h" :spacing 30 :valign "center" :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
-            (button :style "background-image: url('icon-search-1.svg');" :class "genicon" :onclick "scripts/search.sh --search")
-            (button :style "background-image: url('icon-dashboard.svg');" :class "genicon" :onclick "scripts/search.sh --menu")
+            (button :style "background-image: url('icon-search-1.svg');" :class "genicon" :onclick "search.zsh --search")
+            (button :style "background-image: url('icon-dashboard.svg');" :class "genicon" :onclick "search.zsh --menu")
             (label :class "workspace" :halign "start" :text WMS))))
