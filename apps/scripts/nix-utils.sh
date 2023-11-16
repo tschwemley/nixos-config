@@ -13,7 +13,7 @@ extractSshDir() {
 
 extractSshHostKeys() {
 	secretsPath=./nixos/hosts/$1/secrets.yaml
-	extractPath="/persist/etc/ssh" 
+	extractPath="/etc/ssh" 
 	if [ "$2" != "" ]; then extractPath="$2"; fi
 	keys_to_extract='["ssh_host_ed25519_key" "ssh_host_ed25519_key_pub" "ssh_host_rsa_key" "ssh_host_rsa_key_pub"]'
 	echo "Extracting and dumping ssh host keys"
@@ -51,16 +51,8 @@ initializeDisk () {
 [ $# -lt 1 ] && printHelp
 
 case $1 in
-	"extract-host-keys")
-		extractSshHostKeys $2 $3
-		;;
-
 	"extract-ssh-keys" | "extract-ssh")
 		extractSshDir $2
-		;;
-
-	"extract-wg-private" | "extract-wg")
-		extractWireguardPrivateKey $2 $3
 		;;
 
 	"gen-keys" )
@@ -70,6 +62,12 @@ case $1 in
 
 	"init-disk" | "initialize-disk")
 		initializeDisk $2 $3
+		;;
+
+	"post-install" )
+		[[! -e "$3" ]] && mkdir -p $3
+		extractSshHostKeys $2 $3
+		extractWireguardPrivateKey $2 $3
 		;;
 esac
 
