@@ -21,10 +21,6 @@ in {
     impermanence
     user
     ../profiles/server.nix
-    (import ../modules/networking/wireguard/server.nix { 
-		inherit pkgs;
-		peers = [];
-	})
     # ../services/k3s
     # ../services/keycloak.nix
   ];
