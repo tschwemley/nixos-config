@@ -49,3 +49,7 @@ require('lsp-zero').configure('nil_ls', {
 })
 
 lsp.setup()
+
+vim.diagnostic.config({
+   virtual_text = true,
+})
