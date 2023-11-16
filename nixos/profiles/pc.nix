@@ -12,7 +12,7 @@
     ../modules/users/schwem.nix
   ];
 
-  /* 
+  /*
     TODO: make this specific to Charizard if works - testing a fix for Brave having SIGSEGV that
           may be related to not being able to find a libva driver. If confirmed working then move
           to brave module and make brave a system-level program.

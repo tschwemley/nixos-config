@@ -2,10 +2,8 @@
   pkgs,
   lib,
   ...
-}: 
-let
-in
-{
+}: let
+in {
   programs.neovim = {
     enable = true;
     defaultEditor = lib.mkDefault true;
