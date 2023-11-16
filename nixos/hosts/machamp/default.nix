@@ -45,8 +45,8 @@ in {
   # this fixes a 'restricted url' issue when building host configs
   nix.extraOptions = ''
     allowed-uris = https://git.sr.ht/
-    # allowed-uris = https://github.com/ https://git.savannah.gnu.org/
   '';
+
   services.getty.autologinUser = "root";
   services.openssh.enable = true;
 
