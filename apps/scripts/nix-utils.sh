@@ -30,6 +30,16 @@ extractWireguardPrivateKey() {
 	sops -d --extract '["wireguard_private"]' $secretsPath > $extractPath 
 }
 
+genSshKeys() {
+	ssh-keygen -t ed25519 -f ./ssh_host_ed25519_key
+	ssh-keygen -t rsa -f ./ssh_host_ed25519_key
+	ssh-keygen -t ed25519 -f ./auth_key
+}
+
+genWgKeys() {
+	wg genkey | tee wg-private | wg pubkey > wg-public
+}
+
 initializeDisk () {
 	echo $#
 	[ $# -ne 2 ] && echo "arg count"
@@ -49,6 +59,11 @@ case $1 in
 
 	"extract-wg-private" | "extract-wg")
 		extractWireguardPrivateKey $2 $3
+		;;
+
+	"gen-keys" )
+		genSshKeys
+		genWgKeys
 		;;
 
 	"init-disk" | "initialize-disk")
