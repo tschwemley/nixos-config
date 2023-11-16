@@ -1,10 +1,18 @@
-{...}: {
+{...}: let
+  git = import ../programs/git.nix {
+    name = "Tyler Schwemley";
+    email = "tjschwem@gmail.com";
+  };
+in {
   imports = [
+    git
     ./.
     ../programs/brave.nix
     ../programs/discord.nix
     ../programs/firefox.nix
     ../programs/flameshot.nix
+    ../programs/github.nix
+    ../programs/glow.nix
     ../programs/godot.nix
     ../programs/reaper.nix
     ../programs/rbw.nix

@@ -2,10 +2,15 @@
   pkgs,
   system,
   ...
-}: {
+}: let
+  git = import ../programs/git.nix {
+    name = "Tyler Schwemley";
+    email = "tschwemley@zynga.com";
+  };
+in {
   imports = [
+    git
     ./.
-    ../programs/wezterm
   ];
 
   home = let

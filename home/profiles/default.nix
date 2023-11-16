@@ -1,19 +1,11 @@
-{...}: let
-  git = import ../programs/git.nix {
-    name = "Tyler Schwemley";
-    email = "tjschwem@gmail.com";
-  };
-in {
+{...}: {
   imports = [
-    git
     ../programs/bat.nix
-    ../programs/github.nix
-    ../programs/glow.nix
-    ../programs/lazygit.nix
     ../programs/neovim
     ../programs/nnn.nix
     ../programs/ripgrep.nix
     ../programs/tmux.nix
+    ../programs/wezterm
     ../shell
   ];
 

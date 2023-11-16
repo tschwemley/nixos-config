@@ -139,4 +139,25 @@ in {
     # we can unmount /mnt and continue on the boot process.
     umount /mnt
   '';
+
+  # TODO: move this out to it's own file
+  programs.extra-container.enable = true;
+  containers.hydra = {
+    config = {
+      services.hydra = {
+        enable = true;
+        extraConfig = ''
+          <dynamicruncommand>
+            enable = 1
+          </dynamicruncommand>
+        '';
+        hydraURL = "http://127.0.0.1:3000"; # externally visible URL
+        notificationSender = "hydra@localhost"; # e-mail of hydra service
+        # a standalone hydra will require you to unset the buildMachinesFiles list to avoid using a nonexistant /etc/nix/machines
+        buildMachinesFiles = [];
+        # you will probably also want, otherwise *everything* will be built from scratch
+        useSubstitutes = true;
+      };
+    };
+  };
 }
