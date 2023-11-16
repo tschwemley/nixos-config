@@ -16,11 +16,7 @@
     nodeIP = wireguardIP;
     role = "server";
   };
-  user = import ../../modules/users/server.nix {
-    inherit config;
-    userName = nodeName;
-    userSSHKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFxO3CvE6rMxoSG1qUuyNaXuZ6s2Qsq4dbrfPA93eWU5 *";
-  };
+  user = import ../../modules/users/server.nix {inherit config;};
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
     ip = wireguardIP;
