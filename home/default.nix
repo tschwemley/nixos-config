@@ -23,7 +23,7 @@ in {
       ./profiles/pc-gui.nix
     ];
     wsl = mkHome "x86_64-linux" [
-	 ./profiles/wsl.nix
+      ./profiles/wsl.nix
     ];
     "work@mac" = mkHome "aarch64-darwin" [./profiles/work.nix];
     "work@dev" = mkHome "x86_64-linux" [./profiles/work.nix];
