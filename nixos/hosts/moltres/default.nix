@@ -2,10 +2,16 @@
   inputs,
   config,
   lib,
+  pkgs,
   ...
 }: let
   hostName = "moltres";
   diskConfig = import ../../modules/hardware/disks/k3s.nix {diskName = "/dev/vda";};
+  k3s = import ../../profiles/k3s.nix {
+    inherit config lib pkgs;
+    nodeIP = "10.0.0.4";
+    role = "agent";
+  };
   user = import ../../modules/users/server.nix {
     inherit config;
     userName = hostName;

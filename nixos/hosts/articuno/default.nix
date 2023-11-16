@@ -1,29 +1,36 @@
 {
   inputs,
   config,
+  lib,
+  pkgs,
   modulesPath,
   ...
 }: let
   hostName = "articuno";
-  profile = import ../../profiles/proxmox.nix {
+  k3s = import ../../profiles/k3s.nix {
+    inherit config lib pkgs;
+    nodeIP = "10.0.0.2";
+    role = "server";
+  };
+
+  proxmox = import ../../profiles/proxmox.nix {
     inherit config modulesPath;
-    profile = "k3s";
     # extraImports = [../../modules/services/k3s/server.nix];
   };
-  # impermanence = import ../../modules/system/impermanence.nix {inherit inputs;};
   # user = import ../../modules/users/server.nix {
   #   inherit config;
   #   userName = hostName;
   # };
 in {
   imports = [
-    profile
-    #impermanence
+    k3s
+    proxmox
     # user
     # ./wireguard.nix
   ];
 
   networking.hostName = hostName;
+
   # TODO: determine if this is needed for qemu
   #services.getty.autologinUser = "root";
 

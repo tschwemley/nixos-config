@@ -10,7 +10,13 @@
   defaultFlags = "--node-ip ${nodeIP} --node-external-ip ${nodeIP} --container-runtime-endpoint unix:///run/containerd/containerd.sock ";
   serverFlags = "--disable traefik --flannel-backend=wireguard-native --flannel-external-ip";
 
-  extraFlags = defaultFlags + (if role == "server" then serverFlags else "");
+  extraFlags =
+    defaultFlags
+    + (
+      if role == "server"
+      then serverFlags
+      else ""
+    );
   serverAddr =
     if !clusterInit
     then "https://10.0.0.1:6443"
