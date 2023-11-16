@@ -9,7 +9,10 @@
     diskName = "/dev/vda";
     swapSize = "-4G";
   };
-  impermanence = import ../modules/system/impermanence.nix {inherit inputs;};
+  impermanence = import ../modules/system/impermanence.nix {
+	  inherit inputs;
+	  # additionalDirs = [];
+  };
   user = import ../modules/users/server.nix {
     inherit config;
     userName = hostName;
@@ -43,7 +46,7 @@ in {
   # moltres has issues with DHCP so disable and use systemd-networkd instead
   networking = {
     inherit hostName;
-    useDHCP = lib.mkDefault false;
+	dhcpd.enable = false;
   };
 
   services.getty.autologinUser = "root";
