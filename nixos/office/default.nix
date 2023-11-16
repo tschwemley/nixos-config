@@ -74,21 +74,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
-
-  services.xserver = {
-  	enable = true;
-
-	displayManager = {
-		sddm.enable = true;
-		defaultSession = "none+awesome";
-	};
-
-	windowManager.awesome = {
-		enable = true;
-		luaModules = with pkgs.luaPackages; [
-			luarocks
-			luadbi-mysql
-		];
-	};
-  };
 }

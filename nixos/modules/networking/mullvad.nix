@@ -1,7 +1,7 @@
 { pkgs, ... }:
-
 {
 	environment.systemPackages = with pkgs; [
-		firefox-unwrapped
+		mullvad
+		#mullvad-vpn
 	];
 }

@@ -1,10 +1,5 @@
 { self, inputs, config, lib, pkgs, utils, ... }:
-let
-	/*
-	mkHomeModule = extraMods: inputs.home-manager.nixosModule {
-	};
-	*/
-in
+
 {
 	flake = {
 		nixosConfigurations = {
@@ -17,7 +12,11 @@ in
 						home-manager.useUserPackages = true;						
 						home-manager.users.schwem = self.homeConfigurations.personal;
 					}
-					./modules/pc/brave.nix
+					./modules/fonts.nix
+					./modules/nvidia.nix
+					./modules/xsession.nix
+					./modules/pc
+					./modules/networking
 				];
 			};
 			

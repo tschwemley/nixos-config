@@ -39,13 +39,6 @@
         formatter = pkgs.alejandra;
       };
 
-      /*
-      flake.nixosModules = {
-      	home-manager = inputs.home-manager.nixosModule {
-	};
-      };
-      */
-
       imports = [
         ./home
         ./nixos

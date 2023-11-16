@@ -2,6 +2,6 @@
 
 {
 	environment.systemPackages = with pkgs; [
-		firefox-unwrapped
+		barrier
 	];
 }
