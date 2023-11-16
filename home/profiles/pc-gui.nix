@@ -5,7 +5,7 @@
   };
 in {
   imports = [
-	./pc.nix
+    ./pc.nix
     ../programs/brave.nix
     ../programs/discord.nix
     ../programs/firefox.nix
@@ -15,6 +15,7 @@ in {
     ../programs/rbw.nix
     ../programs/rofi.nix
     ../programs/rustdesk.nix
+    ../programs/nzbget.nix
     ../programs/slack.nix
     ../programs/sonic-pi.nix
     ../programs/spotify.nix
@@ -25,8 +26,8 @@ in {
   ];
 
   home = {
-	username = "schwem";
-	homeDirectory = "/home/schwem";
+    username = "schwem";
+    homeDirectory = "/home/schwem";
   };
 
   # TODO: move this to system level or someplace more appropriate at a later date
