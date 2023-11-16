@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-	comment = import ./plugins/comment.nix { inherit (pkgs) vimPlugins; };
+	comment = import ./plugins/comment.nix { inherit (pkgs) vimPlugins (lib) types; };
 in
 {
   imports = [
