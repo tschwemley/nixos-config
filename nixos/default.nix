@@ -1,7 +1,6 @@
 {
   self,
   withSystem,
-  pkgs,
   ...
 }: let
   mkSystem = systemString: configPath:
