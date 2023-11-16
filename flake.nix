@@ -41,6 +41,8 @@
 		system,
         ...
       }: {
+		_module.args.pkgs = import inputs.nixpkgs {inherit system;};
+		  
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             alejandra
