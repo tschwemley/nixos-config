@@ -98,10 +98,12 @@ in {
 
   users = {
     mutableUsers = false;
-    root.passwordFile = config.sops.secrets.root_password.path;
-    ${hostName} = {
-      passwordFile = config.sops.secrets.user_password.path;
-      openssh.authorizedKeys.keys = [(builtins.readFile ./ssh_key.pub)];
+    users = {
+      root.passwordFile = config.sops.secrets.root_password.path;
+      ${hostName} = {
+        passwordFile = config.sops.secrets.user_password.path;
+        openssh.authorizedKeys.keys = [(builtins.readFile ./ssh_key.pub)];
+      };
     };
   };
 }
