@@ -1,7 +1,8 @@
 {
   hardware.opengl.enable = true;
   environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "iHD";
+    LIBVA_DRIVER_NAME = "VDPAU";
+    #LIBVA_DRIVER_NAME = "iHD";
   };
 }
 # TODO: remove below if no issues
@@ -27,3 +28,4 @@
   };
 }
 */
+
