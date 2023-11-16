@@ -52,8 +52,9 @@ in {
 		 neededForUsers = true; 
 	  };
       systemd_networkd = {
-        path = "/etc/systemd/network/10-ens3.network";
 		mode = "0644";
+        path = "/etc/systemd/network/10-ens3.network";
+		restartUnits = ["systemd-networkd" "systemd-resolved"];
       };
     };
   };
