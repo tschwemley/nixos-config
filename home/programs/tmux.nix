@@ -6,6 +6,6 @@
     ];
     mouse = true;
     shortcut = "b";
-    terminal = "xterm-256color";
+    terminal = "wezterm";
   };
 }

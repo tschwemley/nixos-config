@@ -6,7 +6,11 @@ require('neorg').setup {
             engine = 'nvim-cmp',
          },
       },
-      ['core.concealer'] = {},
+      ['core.concealer'] = {
+         config = {
+            folds = true
+         },
+      },
       ['core.dirman'] = {
          config = {
             workspaces = {
@@ -17,6 +21,7 @@ require('neorg').setup {
    }
 }
 
+vim.api.nvim_create_user_command('Journal', 'Neorg journal', {})
 -- example neorg telescope keybindings mappings
 -- local neorg_callbacks = require("neorg.core.callbacks")
 
