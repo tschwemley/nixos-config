@@ -9,18 +9,20 @@
       inputs.nixpkgs.lib.nixosSystem {
         inherit system;
 
-        specialArgs = {
-          inherit inputs;
-        };
+        # specialArgs = {
+        #   inherit inputs;
+        # };
         modules = [
-          ./modules
+          {_module.args.inputs = inputs;}
+          ./common.nix
           configPath
         ];
       });
 in {
   flake = {
     nixosConfigurations = {
-      moltres = mkSystem ./moltres "x86_64-linux";
+      charizard = mkSystem ./hosts/charizard "x86_64-linux";
+      moltres = mkSystem ./hosts/moltres "x86_64-linux";
     };
   };
 }
