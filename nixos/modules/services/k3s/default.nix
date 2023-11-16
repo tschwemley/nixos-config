@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    # (pkgs.writeShellScriptBin "k3s-reset-node" (builtins.readFile ./k3s-reset-node))
     (writeShellScriptBin "k3s-reset-node" (builtins.readFile ./k3s-reset-node))
     k9s
   ];
@@ -29,10 +28,10 @@
         cni.conf_dir = "/var/lib/rancher/k3s/agent/etc/cni/net.d/";
         # TODO: check if this still needs fixed
         # FIXME: upstream
-        # cni.bin_dir = "${pkgs.runCommand "cni-bin-dir" {} ''
-        #   mkdir -p $out
-        #   ln -sf ${pkgs.cni-plugins}/bin/* ${pkgs.cni-plugin-flannel}/bin/* $out
-        # ''}";
+        cni.bin_dir = "${pkgs.runCommand "cni-bin-dir" {} ''
+          mkdir -p $out
+          ln -sf ${pkgs.cni-plugins}/bin/* ${pkgs.cni-plugin-flannel}/bin/* $out
+        ''}";
       };
     };
   };
