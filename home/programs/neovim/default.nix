@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   imports = [
     ./modules
   ];
@@ -18,6 +14,6 @@
 
   # link neovim config to $HOME/.config/nvim
   xdg.configFile = {
-    "nvim".source = ./xdg-config;
+    "nvim".source = ./config;
   };
 }
