@@ -13,6 +13,7 @@
     ../programs/tigervnc.nix
     ../programs/wezterm
     ../programs/zk
+    ../programs/zoom.nix
     ../wayland/hyprland.nix
   ];
 
