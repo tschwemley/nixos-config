@@ -7,7 +7,6 @@
       isNormalUser = true;
       home = "/home/k3s";
       extraGroups = ["wheel" "k3s"];
-	  passwordFile = config.sops.secrets.k3s_user_password.path;
       # openssh.authorizedKeys.keys = keys;
     };
   };
