@@ -18,14 +18,14 @@
       inputs.nixos-hardware.nixosModules.common-gpu-amd
       inputs.nixos-hardware.nixosModules.common-pc
       inputs.nixos-hardware.nixosModules.common-pc-ssd
+      # TODO: move this to it's own module
       {
         hardware.enableRedistributableFirmware = true;
-        # TODO: determine if this makes any difference and move out
+        # TODO: determine if this makes any difference
         systemd.tmpfiles.rules = [
           "L+   /opt/rocm/hip  -  -  -  -  ${pkgs.hip}"
         ];
       }
-#../../modules/hardware/amd.nix
     ];
   };
 in {
@@ -45,7 +45,7 @@ in {
     supportedFilesystems = ["btrfs"];
     loader.systemd-boot = {
       enable = true;
-      editor = false; # leaving true allows for root access to be gained via passing kernal param
+      editor = false; # leaving true allows for root access to be gained via passing kernel param
       memtest86.enable = true;
     };
   };

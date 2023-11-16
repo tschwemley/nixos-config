@@ -1,9 +1,4 @@
-let
-  git = import ../programs/git.nix {
-    name = "Tyler Schwemley";
-    email = "tjschwem@gmail.com";
-  };
-in {
+{
   imports = [
     ./.
     ../programs/brave.nix
