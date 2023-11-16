@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  modulesPath,
+  # modulesPath,
   bios ? "ovmf",
   cores ? 2,
   diskSize ? "32000",
