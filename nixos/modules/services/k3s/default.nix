@@ -50,6 +50,7 @@ in {
   services.k3s = {
     inherit clusterInit extraFlags role serverAddr;
     enable = true;
+    package = pkgs.k3s_1_26;
     tokenFile = "/var/lib/rancher/k3s/server/token";
   };
 
