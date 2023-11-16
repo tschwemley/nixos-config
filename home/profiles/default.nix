@@ -1,4 +1,4 @@
-{
+{ inputs, ... }: {
   imports = [
     ../programs/bat.nix
     ../programs/github.nix
@@ -11,6 +11,7 @@
     ../shell
   ];
 
+	inputs.nixpkgs.config.allowUnfree = true;
   nixpkgs = {
     config = {
       allowUnfree = true;
