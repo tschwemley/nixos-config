@@ -1,4 +1,9 @@
-local lsp = require('lsp-zero').preset({})
+local lsp = require('lsp-zero').preset({
+   name = 'minimal',
+   set_lsp_keymaps = true,
+   manage_nvim_cmp = true,
+   suggest_lsp_servers = false,
+})
 local whichKey = require('which-key')
 
 lsp.on_attach(function(client, bufnr)
@@ -26,7 +31,7 @@ whichKey.register({
       c = { '<cmd>Telescope lsp_document_symbols ignore_symbols=class,function,method,property,variable<cr>',
          'List Constants',
          { buffer = true } },
-      r = { '<cmd>lua vim.lua.lsp.buf.rename<cr>', 'Rename', { buffer = true } },
+      -- r = { '<cmd>lua vim.lua.lsp.buf.rename<cr>', 'Rename', { buffer = true } },
       R = { '<cmd>Telescope lsp_references<cr>', 'List References', { buffer = true } },
       m = { '<cmd>Telescope lsp_document_symbols ignore_symbols=constant,class,property,variable<cr>', 'List Methods',
          { buffer = true } },

@@ -1,12 +1,11 @@
 require('toggleterm').setup({
    direction = 'float',
    open_mapping = [[<C-\>]],
+   insert_mappings = true,
    terminal_mappings = true,
 })
 
 require('which-key').register({
-   -- ['<C-\\>'] = { '<cmd>ToggleTerm<cr>', 'Toggle Terminal' },
-   -- ['<leader>t'] = {
    t = {
       name = 'Terminal',
       f = { '<cmd>ToggleTerm direction=float<cr>', 'Floating Terminal' },

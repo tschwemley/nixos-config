@@ -1,7 +1,7 @@
 local copilot = require("copilot")
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
-local ls = require('luasnip')
+-- require('luasnip')
 
 vim.api.nvim_create_autocmd("InsertEnter", {
    callback = function()
