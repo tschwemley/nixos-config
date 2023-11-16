@@ -10,7 +10,7 @@
     };
   };
 
-  home-manager.users.server.imports = [
-    ../../../home/profiles/server.nix
+  home-manager.users.${userName}.imports = [
+    ../../../home/profiles/server.nix { inherit userName; };
   ];
 }
