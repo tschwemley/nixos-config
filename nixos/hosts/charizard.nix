@@ -9,7 +9,7 @@ in {
   imports = [
     (import ../hardware/disks/btrfs-ephemeral.nix {inherit diskName swapSize;})
     inputs.nixos-hardware.nixosModules.common-cpu-intel
-    inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+    inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nvidia-nonprime
     ./profiles/pc.nix
 	../users/schwem.nix
   ];
@@ -37,6 +37,7 @@ in {
   #   age.keyFile = "/var/lib/sops-nix/key.txt";
   #   # This will generate a new key if the key specified above does not exist
   #   age.generateKey = true;
+
   # };
 
   services.getty.autologinUser = "schwem";
