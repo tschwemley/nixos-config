@@ -24,7 +24,6 @@ in {
     supportedFilesystems = ["btrfs"];
     loader = {
       grub = {
-        # efiSupport = false;
         efiSupport = true;
         efiInstallAsRemovable = true;
         devices = ["/dev/vda"];
@@ -32,14 +31,30 @@ in {
     };
   };
 
-  #TODO: change this after done testing sys config
-  services.getty.autologinUser = "root";
+  networking.hostName = "moltres";
+
+  services.getty.autologinUser = "k3s";
+
+  sops = {
+    defaultSopsFile = ./secrets/moltres.yaml;
+    sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+
+    # Specify machine secrets
+    secrets = {
+      systemd-networkd = {
+        # this symlinks the config from /run/secrets to the path
+        path = "/etc/systemd/network/10-ens3.network";
+      };
+    };
+  };
 
   # don't update this
   system.stateVersion = "23.11";
 
+  systemd.networkd.enable = true;
+
   users = {
     mutableUsers = false;
-    users.root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAl9LJZ1yKITrHoPGRnqX5FvCmGcE7/a10BwDX52tUgU user@host"];
+    users.root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAl9LJZ1yKITrHoPGRnqX5FvCmGcE7/a10BwDX52tUgU"];
   };
 }

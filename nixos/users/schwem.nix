@@ -1,6 +1,6 @@
 {homeConfigurations, ...}: {
   imports = [./.];
-  
+
   users.users = {
     schwem = {
       isNormalUser = true;
