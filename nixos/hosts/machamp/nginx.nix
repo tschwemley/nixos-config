@@ -7,8 +7,7 @@
       #enableACME = true;
       # forceSSL = true;
       locations."/" = {
-        # proxyPass = "http://127.0.0.1:3000";
-        proxyPass = "http://10.0.0.99:3000";
+        proxyPass = "http://127.0.0.1:3000";
         # proxyWebsockets = true; # needed if you need to use WebSocket
         /*
          extraConfig =
@@ -19,12 +18,8 @@
         "proxy_pass_header Authorization;";
         */
       };
-      # serverAliases = ["build.schwem.io"];
     };
   };
 
   networking.firewall.allowedTCPPorts = [80 443 3000];
-
-  security.acme.acceptTerms = true;
-  security.acme.defaults.email = "me@tylerschwemley.com";
 }
