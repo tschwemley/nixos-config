@@ -55,13 +55,15 @@
 
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            alejandra
+            #alejandra
             nixos-generators
             pkgs.sops
             ssh-to-age
             wireguard-tools
           ];
         };
+
+        formatter = pkgs.alejandra;
       };
 
       # Import flake attrs
