@@ -1,33 +1,34 @@
-# TODO: 
-- Rewrite this
-- Switch to terraform for infra (like vm config)
+## About
+Custom written nix flake configuration with standalone home-manager configs. A pinch of inspiration
+from other config repos thrown in to add texture.
 
 ## Features
-- uses nix flakes
-- standalone home-manager configuration
 - desktop/laptop configurations
 - k3s configuration
-- virtualisation
+- standalone home-manager configuration
+- secret management via sops
+- uses nix flakes
 - wireguard site-to-site config
-- secret management/editing via sops
 
 ## Why Nix?
-I got too far in before I realized what I got myself into :shrug:
-Oh and declarative system configurations across multiple machines or something.
+Why not?
 
 ## Architecture
-TODO
+Mirrors the flake.nix format with minor changes for mneomnic reasons. Home-manager config is in
+home directory. Xdg config files live in-place with the module(s) that use them.
 
 ## Prerequisites
-TODO
+- Install nix package manager
+- (optional) Install [Home Manager](https://github.com/nix-community/home-manager) for standalone
+    home usage
 
 ## Install Instructions
 TODO
 
-## About and Acknowlegements
-### Inspiration:
+## Acknowlegements
+### References
 - [Graham Chirstensen's Erase Your Darlings](https://grahamc.com/blog/erase-your-darlings/)
-- [Mike Royal's NixOS Guide](https://github.com/mikeroyal/NixOS-Guide)
+- [Mic92's dotfiles](https://github.com/mic92/dotfiles)
 - [misterio77's config](https://github.com/Misterio77/nix-config)
 
 
