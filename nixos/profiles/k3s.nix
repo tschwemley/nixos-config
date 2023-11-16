@@ -1,6 +1,5 @@
-{pkgs, diskName ? "/dev/vda", ...}: {
+{pkgs, ...}: {
   imports = [
-	  ../modules/disks/k3s.nix { inherit diskName; }
 	  ./server.nix
   ];
 }
