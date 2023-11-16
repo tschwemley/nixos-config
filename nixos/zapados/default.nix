@@ -9,13 +9,16 @@
     diskName = "/dev/vda";
     swapSize = "-6G";
   };
+   user = import ../modules/users/server.nix {
+	   inherit config;
+	   userName = hostName;
+   };
 in {
   imports = [
     diskConfig
     ../profiles/server.nix
     # ../services/k3s
     # ../services/keycloak.nix
-    # ../modules/users/k3s.nix
   ];
 
   boot = {
