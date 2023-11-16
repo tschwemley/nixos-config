@@ -1,9 +1,9 @@
 {
-  self,
+  inputs,
   pkgs,
   ...
 }: {
-  imports = [self.inputs.musnix];
+  imports = [inputs.musnix.nixosModules.musnix];
 
   environment.systemPackages = with pkgs; [
     pavucontrol
