@@ -66,10 +66,24 @@ in {
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
     age.keyFile = "/home/schwem/.config/sops/age/keys.txt";
 
+    # these are all user secrets. might be better to use home-manager but idgaf right now
     secrets = {
-      "bw_email" = {
-        mode = "0440";
+      "moltres_key" = {
+        key = "ssh_private_key";
         owner = "schwem";
+        path = "/home/schwem/.ssh/moltres";
+        sopsFile = ./../moltres/secrets.yaml;
+      };
+      "ssh_config" = {
+        mode = "0600";
+        owner = "schwem";
+        path = "/home/schwem/.ssh/config";
+      };
+      "zapados_key" = {
+        key = "ssh_private_key";
+        owner = "schwem";
+        path = "/home/schwem/.ssh/zapados";
+        sopsFile = ./../zapados/secrets.yaml;
       };
     };
   };
