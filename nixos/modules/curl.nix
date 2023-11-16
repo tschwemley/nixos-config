@@ -1,5 +1,0 @@
-{
-	enviornment.systemPackages = [
-		curl
-	];
-}

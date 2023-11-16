@@ -1,6 +1,12 @@
-{ ... }: {
-	flake.nixosConfigurations = {
-		office = { imports = [ ./office.nix ]; };
-		k3s = { imports = [ ./k3s.nix ]; };
+{ self, inputs, config, lib, pkgs, utils, ... }:
+let
+	modules = self.nixosModules;
+in
+{
+	flake = {
+		nixosConfigurations = {
+			lux = import ./lux;
+			office = import ./office;
+		};
 	};
 }
