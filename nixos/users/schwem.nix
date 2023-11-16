@@ -1,4 +1,4 @@
-{homeConfigurations, lib, ...}: {
+{homeConfigurations, ...}: {
   users.users = {
     schwem = {
       isNormalUser = true;

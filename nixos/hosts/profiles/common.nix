@@ -6,11 +6,11 @@
 }: let
 in {
   imports = [
-    inputs.home-manager.nixosModule
     inputs.sops.nixosModules.sops
     inputs.disko.nixosModules.disko
-	../../users	
-	../../system/nix.nix
+    ../../system/nix.nix
+    ../../system/home-manager.nix
+    ../../users
   ];
 
   # basic tools I want available on every host and managed by the system

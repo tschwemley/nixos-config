@@ -5,12 +5,17 @@
   ...
 }: let
   mkSystem = systemString: configPath:
-    withSystem systemString ({system, ...}:
+    withSystem systemString ({
+      system,
+      pkgs,
+      ...
+    }:
       self.inputs.nixpkgs.lib.nixosSystem {
         inherit system;
 
         specialArgs = {
           inherit (self) inputs homeConfigurations;
+          inherit pkgs;
         };
 
         modules = [

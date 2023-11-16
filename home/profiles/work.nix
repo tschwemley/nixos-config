@@ -1,5 +1,5 @@
 {
-	imports = [
-		../programs/lazygit.nix
-	];
+  imports = [
+    ../programs/lazygit.nix
+  ];
 }

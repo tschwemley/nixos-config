@@ -1,6 +1,6 @@
-{...}:{
-	imports = [
-		./awesome.nix
-		./wayland.nix
-	];
+{...}: {
+  imports = [
+    ./awesome.nix
+    ./wayland.nix
+  ];
 }
