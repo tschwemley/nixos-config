@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  self,
+  pkgs,
+  ...
+}: {
+  imports = [self.inputs.musnix];
+
   environment.systemPackages = with pkgs; [
     pavucontrol
   ];
