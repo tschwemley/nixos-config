@@ -18,8 +18,8 @@ extractSshHostKeys() {
 	echo "Extracting and dumping ssh host keys"
 	sops -d --extract '["ssh_host_ed25519_key.pub"]' $secretsPath > "$extractPath/ssh_host_ed25519_key.pub"
 	sops -d --extract '["ssh_host_ed25519_key"]' $secretsPath > "$extractPath/ssh_host_ed25519_key"
-	sops -d --extract '["ssh_host_ed25519_key.pub"]' $secretsPath > "$extractPath/ssh_host_ed25519_key.pub"
-	sops -d --extract '["ssh_host_ed25519_key"]' $secretsPath > "$extractPath/ssh_host_ed25519_key"
+	sops -d --extract '["ssh_host_rsa_key.pub"]' $secretsPath > "$extractPath/ssh_host_rsa_key.pub"
+	sops -d --extract '["ssh_host_rsa_key"]' $secretsPath > "$extractPath/ssh_host_rsa_key"
 }
 
 extractWireguardPrivateKey() {
