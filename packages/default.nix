@@ -18,7 +18,12 @@
 
 			system.stateVersion = "23.05";
 		  }
-          ../nixos/modules/k3s/server.nix
+		  {
+			  imports = [
+				  ( inputs.nixpkgs.legacyPackages.x86_64-linux.path + "/nixos/modules/virtualisation/proxmox-lxc.nix" )
+				  ../nixos/modules/k3s/server.nix
+			  ];
+		  }
         ];
         format = "proxmox-lxc";
       };

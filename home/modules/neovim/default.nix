@@ -7,11 +7,14 @@
 		extraLuaPackages = [];
 		plugins = with pkgs.vimPlugins; [
 			gruvbox-material
-			packer-nvim # todo: packer might not be needed if I'm managing fully via nix
-			telescope-nvim
-			trouble-nvim
+			lualine-nvim
+			nnn-vim
+			nvim-cmp
 			nvim-dap
-			#nvim-tresitter
+			telescope-nvim
+			toggleterm-nvim
+			trouble-nvim
+			nvim-treesitter
 			vim-dadbod
 			vim-dadbod-ui
 			vim-dadbod-completion
