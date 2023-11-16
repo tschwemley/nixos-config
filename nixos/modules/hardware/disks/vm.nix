@@ -33,7 +33,6 @@
           "/rootfs" = {
             mountpoint = "/";
             mountOptions = ["compress=lzo"];
-            postCreateHook = "btrfs subvolume snapshot -r /mnt /mnt/root-blank";
           };
           "/home" = {
             mountpoint = "/home";
@@ -48,6 +47,7 @@
             mountOptions = ["compress=lzo" "noatime"];
           };
         };
+        postCreateHook = "btrfs subvolume snapshot /mnt /mnt/root-blank";
       };
     }
   ];
