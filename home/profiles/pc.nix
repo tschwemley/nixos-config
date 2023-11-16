@@ -5,6 +5,7 @@
     ../programs/discord.nix
     ../programs/firefox.nix
     ../programs/flameshot.nix
+    ../programs/godot.nix
     ../programs/reaper.nix
     ../programs/rbw.nix
     ../programs/rofi.nix

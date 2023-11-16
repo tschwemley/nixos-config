@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  home.programs = with pkgs; [godot_4];
+  home.packages = with pkgs; [godot_4];
 }
