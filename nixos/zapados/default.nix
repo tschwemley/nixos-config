@@ -21,6 +21,7 @@ in {
     impermanence
     user
     ../profiles/server.nix
+	./wireguard.nix
     # ../services/k3s
     # ../services/keycloak.nix
   ];
