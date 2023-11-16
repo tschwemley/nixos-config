@@ -10,8 +10,8 @@
     ../programs/slack.nix
     ../programs/sonic-pi.nix
     ../programs/tigervnc.nix
+    ../programs/wezterm
     ../programs/zk
-    ../terminals/wezterm.nix
     ../wayland/hyprland.nix
   ];
 

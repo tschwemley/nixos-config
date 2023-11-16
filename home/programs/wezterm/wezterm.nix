@@ -2,6 +2,6 @@
   programs.wezterm = {
     enable = true;
     enableZshIntegration = true;
-    extraConfig = lib.fileContents ../xdg-config/wezterm/wezterm.lua;
+    extraConfig = lib.fileContents ./wezterm.lua;
   };
 }
