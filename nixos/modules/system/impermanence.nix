@@ -18,12 +18,13 @@
 
       files =
         [
-		  "/var/run/secrets.d/
+		  "/var/run/secrets.d/age-keys.txt"
           "/etc/machine-id"
           "/etc/nix/id_rsa"
         ]
         ++ additionalFiles;
     };
+	
     "/home" = {
       directories = [
         "/home"
