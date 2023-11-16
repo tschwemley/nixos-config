@@ -10,7 +10,6 @@
     driSupport32Bit = true;
     extraPackages = with pkgs; [ 
       # amdvlkt 
-      mesa_23 
       rocm-opencl-icd
     ];
   };
