@@ -5,8 +5,8 @@
   ...
 }: let
   diskConfig = import ../../modules/disks/btrfs-ephemeral.nix {
-    diskName = "/dev/nvme0n1";
-    swapSize = "-37G"; #37G gets me close to ram +2gb and I don't wanna math right now
+    diskName = "/dev/nvme1n1";
+    swapSize = "-34Gib";
   };
   hardware = {
     imports = [
