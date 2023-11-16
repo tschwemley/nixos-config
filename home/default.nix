@@ -7,6 +7,8 @@ let
 			./modules/common.nix
 		] ++ extraMods;
 	};
+	
+	mkHomeModule = {};
 in
 {
   flake = {
