@@ -26,18 +26,20 @@
     peers = [
       {
         # articuno
-        AllowedIPs = ["10.0.0.1/32"];
+        AllowedIPs = ["10.0.0.1/24"];
         Endpoint = "wg.schwem.io:9918";
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       }
       {
         # moltres
         AllowedIPs = ["10.0.0.3/32"];
+        PersistentKeepalive = 25;
         PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
       }
       {
         #eevee
         AllowedIPs = ["10.0.0.4/32"];
+        PersistentKeepalive = 25;
         PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
       }
     ];
