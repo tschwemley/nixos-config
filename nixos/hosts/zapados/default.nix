@@ -71,16 +71,18 @@ in {
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
-    age.sshKeyPaths = [
-      "/persist/etc/ssh/ssh_host_ed25519_key"
-    ];
+    # age.sshKeyPaths = [
+    #   "/persist/etc/ssh/ssh_host_ed25519_key"
+    # ];
     age.keyFile = "/persist/.age-keys.txt";
 
     secrets = {
       root_password = {
+        mode = "0440";
         neededForUsers = true;
       };
       user_password = {
+        mode = "0440";
         neededForUsers = true;
       };
       systemd_networkd_10_ens3 = {
