@@ -1,2 +1,2 @@
-(include "./widget.yuck")
-(include "./window.yuck")
+(include "~/.config/eww/search/widget.yuck")
+(include "~/.config/eww/search/window.yuck")
