@@ -89,6 +89,11 @@ in {
         owner = "schwem";
         path = "/home/schwem/.ssh/github_key";
       };
+      "gh_work_key" = {
+        key = "gh_work_ssh_key";
+        owner = "schwem";
+        path = "/home/schwem/.ssh/github_work_key";
+      };
       "mac_key" = {
         key = "mac_ssh_key";
         owner = "schwem";
