@@ -85,7 +85,7 @@ in {
   # };
 
   # don't update this
-  system.stateVersion = "23.11";
+  system.stateVersion = "23.05";
   # systemd.network.enable = true;
   # services.resolved.enable = true;
 
