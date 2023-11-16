@@ -31,6 +31,8 @@ in {
     };
   };
 
+  isoImage.isoName = "nixos.iso";
+
   services.openssh = {
     enable = true;
     hostKeys = [

@@ -2,16 +2,15 @@
   pkgs,
   lib,
   ...
-}: 
-let
-	mkPlugin = pluginName: config: {
-		type = "lua";	
-		plugin = pkgs.vimPlugins.${pluginName};
-		inherit config;
-	};
-in
-{
+}: let
+  mkPlugin = pluginName: config: {
+    type = "lua";
+    plugin = pkgs.vimPlugins.${pluginName};
+    inherit config;
+  };
+in {
   imports = [
+    ./colors.nix
     ./completion.nix
     ./db.nix
     ./debugging.nix
