@@ -8,8 +8,6 @@
     ../services/dunst.nix
   ];
 
-  enviornment.systemPackages = with pkgs; [libsForQt5.qt5.qtwayland];
-
   wayland.windowManager.hyprland = let
     hyprlandPlugins = inputs.hyprland-plugins.packages.${pkgs.system};
   in {
