@@ -1,6 +1,6 @@
 {pkgs, ...}: let
   lsp-zero = with pkgs;
-    vimUtils.buildVimPluginFrom2Nix {
+    vimUtils.buildVimPlugin {
       pname = "lsp-zero.nvim";
       version = "3.x";
       src = fetchFromGitHub {
