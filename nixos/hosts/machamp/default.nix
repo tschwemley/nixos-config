@@ -22,11 +22,13 @@
       {
         # zapados
         AllowedIPs = ["10.0.0.2/32"];
+        PersistentKeepAlive = 25;
         PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
       }
       {
         # moltres
         AllowedIPs = ["10.0.0.3/32"];
+        PersistentKeepAlive = 25;
         PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
       }
     ];
