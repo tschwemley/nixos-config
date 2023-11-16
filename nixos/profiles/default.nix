@@ -2,8 +2,7 @@
   inputs,
   pkgs,
   ...
-}: let
-in {
+}: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
     inputs.sops.nixosModules.sops
@@ -28,4 +27,7 @@ in {
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+  home-manager.sharedModules = [
+    inputs.sops.homeManagerModule
+  ];
 }
