@@ -14,6 +14,7 @@
   k3s = import ../../profiles/k3s.nix {
     inherit inputs config lib nodeName pkgs useGrub;
     clusterInit = true;
+    enableImpermanence = false;
     nodeIP = wireguardIP;
     role = "server";
   };
