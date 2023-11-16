@@ -32,13 +32,10 @@ in {
       kernelModules = ["kvm-intel"];
     };
     supportedFilesystems = ["btrfs"];
-    loader = {
-      grub = {
-        efiSupport = true;
-        efiInstallAsRemovable = true;
-        devices = [diskName];
-      };
-    };
+    loader.systemd-boot = {
+		enable = true;
+		editor = false; # leaving true allows for root access to be gained via passing kernal param
+	};
   };
 
   services.openssh = {
