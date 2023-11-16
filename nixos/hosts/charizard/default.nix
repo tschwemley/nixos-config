@@ -114,7 +114,7 @@ in {
   };
 
   # TODO: pretty sure polkit is necessary for home-manager config of wayland; confirm
-  security.polkit.enable = true;
+  # security.polkit.enable = true;
 
   system.autoUpgrade.enable = true;
   # don't update this
