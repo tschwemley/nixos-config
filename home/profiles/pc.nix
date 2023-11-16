@@ -13,7 +13,6 @@
     ../programs/zk
     ../services/spotifyd.nix
     ../terminals/wezterm.nix
-    git
   ];
 
   # TODO: move this to system level or someplace more appropriate at a later date
