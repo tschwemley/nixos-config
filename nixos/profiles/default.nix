@@ -21,6 +21,7 @@
     git
     htop
     jq
+    lsof
     ripgrep
     rsync
     unzip
