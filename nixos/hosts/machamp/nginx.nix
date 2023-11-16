@@ -26,5 +26,5 @@
   networking.firewall.allowedTCPPorts = [80 443];
 
   security.acme.acceptTerms = true;
-  secruity.acme.defaults.email = "me@tylerschwemley.com";
+  security.acme.defaults.email = "me@tylerschwemley.com";
 }
