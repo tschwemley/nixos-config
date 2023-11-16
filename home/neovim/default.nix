@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-	comment = import ./plugins/comment.nix { inherit (pkgs) vimPlugins; };
+	plugins = import ./plugins { inherit (pkgs) vimPlugins; inherit (lib.types) submodule; };
 in
 {
   imports = [
@@ -17,11 +17,12 @@ in
   ];
 
   programs.neovim = {
+	  inherit plugins;
     enable = true;
     defaultEditor = lib.mkDefault true;
-	plugins = with lib.types.submobule; [
-		comment
-	];
+	# plugins = with lib.types.submobule; [
+	# 	comment
+	# ];
    #  plugins = with pkgs.vimPlugins; [
    #    # I don't know where to put these ones yet
 	  # comment
