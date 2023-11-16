@@ -2,7 +2,7 @@
   description = "Schwem's NixOS configuration and dotfiles";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
 
     disko = {
       url = "github:nix-community/disko";
