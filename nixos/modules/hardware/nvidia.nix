@@ -7,7 +7,7 @@
   # disable integrated graphics
   #boot.kernelParams = ["module_blacklist=i915"];
 
-  imports = [ inputs.nixos-hardware.common-gpu-nvidia-nonprime  ];
+  imports = [ inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime  ];
 
   hardware.nvidia = {
     open = false;
