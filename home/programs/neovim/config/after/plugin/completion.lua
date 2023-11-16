@@ -13,14 +13,10 @@ vim.api.nvim_create_autocmd("InsertEnter", {
    end
 })
 
+require('luasnip.loaders.from_vscode').lazy_load()
+
 -- Completion config
 cmp.setup({
-   mapping = {
-      -- enable super tab
-      ['<Tab>'] = cmp_action.luasnip_supertab(),
-      ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
-   },
-
    sources = {
       { name = 'buffer',  group_index = 3 },
       { name = 'copilot', group_index = 2 },
@@ -29,7 +25,9 @@ cmp.setup({
       { name = 'nvim_lua' },
       { name = 'path' },
    },
+   mapping = {
+      -- enable super tab
+      ['<Tab>'] = cmp_action.luasnip_supertab(),
+      ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+   },
 })
-
--- Snippet config
-require('luasnip.loaders.from_vscode').lazy_load({})
