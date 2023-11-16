@@ -18,7 +18,7 @@
     kubectl = "k3s kubectl";
   };
 
-  services.k3s.extraFlags = config.services.k3s.extraFlags + "--disable traefik --flannel-backend=wireguard-native --flannel-external-ip";
+  services.k3s.extraFlags = config.services.k3s.extraFlags + "";
 
   sops.secrets = {
     "schwem.io_github_key" = {

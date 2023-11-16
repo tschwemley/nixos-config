@@ -7,6 +7,11 @@
   role ? "agent",
   ...
 }: let
+  defaultFlags = "--node-ip ${nodeIP} --node-name ${nodeName} --node-external-ip ${nodeIP} --container-runtime-endpoint unix:///run/containerd/containerd.sock ";
+  extraFlags =
+    if role == "agent"
+    then defaultFlags
+    else defaultFlags + "--disable traefik --flannel-backend=wireguard-native --flannel-external-ip";
   serverAddr = "https://10.0.0.1:6443";
 in {
   imports =
@@ -29,9 +34,8 @@ in {
   networking.firewall.allowedTCPPorts = [10250];
 
   services.k3s = {
-    inherit role serverAddr;
+    inherit extraFlags role serverAddr;
     enable = true;
-    extraFlags = "--node-ip ${nodeIP} --node-name ${nodeName} --node-external-ip ${nodeIP} --container-runtime-endpoint unix:///run/containerd/containerd.sock ";
     tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
   };
 
