@@ -14,6 +14,7 @@ in {
     ../programs/realvnc.nix
     ../programs/rofi.nix
     ../programs/slack.nix
+    ../services/spotifyd.nix
     ../terminals/wezterm.nix
     git
   ];
