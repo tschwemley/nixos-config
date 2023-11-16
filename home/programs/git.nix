@@ -13,8 +13,8 @@ in {
   programs.git = {
     inherit aliases;
     enable = true;
-    userEmail = name;
-    userName = email;
+    userEmail = email;
+    userName = name;
     lfs.enable = true;
     extraConfig = {
       init.defaultBranch = "main";
