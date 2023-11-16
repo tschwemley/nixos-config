@@ -3,13 +3,13 @@
   config,
   lib,
   pkgs,
-  modulesPath,
   ...
 }: let
   diskName = "/dev/sda";
   nodeName = "moltres";
   wireguardIP = "10.0.0.3";
 
+  boot = import ../../modules/system/systemd-boot.nix;
   k3s = import ../../profiles/k3s.nix {
     inherit inputs config diskName lib nodeName pkgs;
     enableImpermanence = false;
@@ -45,9 +45,11 @@
   };
 in {
   imports = [
+    boot
     k3s
     user
     wireguard
+    ../../modules/system/systemd-boot.nix
   ];
 
   boot.loader.systemd-boot = {

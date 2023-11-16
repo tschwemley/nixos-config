@@ -12,6 +12,7 @@
     ];
   };
 
+  boot = import ../../modules/system/systemd-boot.nix;
   hardware = {
     imports = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
@@ -30,6 +31,7 @@
   };
 in {
   imports = [
+    boot
     diskConfig
     hardware
     ../../profiles/pc.nix
@@ -43,11 +45,6 @@ in {
     };
     kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = ["btrfs"];
-    loader.systemd-boot = {
-      enable = true;
-      editor = false; # leaving true allows for root access to be gained via passing kernel param
-      memtest86.enable = true;
-    };
   };
 
   services.openssh = {

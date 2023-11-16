@@ -5,10 +5,12 @@
   pkgs,
   ...
 }: let
+  diskName = "/dev/vda";
   nodeName = "articuno";
   useGrub = true;
   wireguardIP = "10.0.0.1";
 
+  boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
   k3s = import ../../profiles/k3s.nix {
     inherit inputs config lib nodeName pkgs useGrub;
     clusterInit = true;
@@ -47,6 +49,7 @@
   };
 in {
   imports = [
+    boot
     k3s
     user
     wireguard
@@ -58,13 +61,6 @@ in {
     };
     kernelModules = ["kvm-amd" "wireguard"];
     supportedFilesystems = ["btrfs"];
-    loader = {
-      grub = {
-        efiSupport = true;
-        efiInstallAsRemovable = true;
-        devices = ["/dev/vda"];
-      };
-    };
   };
 
   networking.dhcpcd.enable = false;

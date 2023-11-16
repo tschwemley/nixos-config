@@ -3,13 +3,13 @@
   config,
   lib,
   pkgs,
-  modulesPath,
   ...
 }: let
   diskName = "/dev/sda";
   nodeName = "zapados";
   wireguardIP = "10.0.0.2";
 
+  boot = import ../../modules/system/systemd-boot.nix;
   k3s = import ../../profiles/k3s.nix {
     inherit inputs config diskName lib nodeName pkgs;
     enableImpermanence = false;
@@ -46,15 +46,12 @@
   };
 in {
   imports = [
+    boot
     k3s
     user
     wireguard
+    ../../modules/system/systemd-boot.nix
   ];
-
-  boot.loader.systemd-boot = {
-    enable = true;
-    editor = false; # leaving true allows for root access to be gained via passing kernal param
-  };
 
   # TODO: change this for all hosts soon
   services.getty.autologinUser = "root";
