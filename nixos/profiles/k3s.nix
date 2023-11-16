@@ -3,15 +3,16 @@
   config,
   lib,
   pkgs,
+  nodeIP,
+  nodeName,
   clusterInit ? false,
   diskName ? "/dev/vda",
   enableImpermanence ? true,
-  nodeIP,
-  nodeName,
   role ? "agent",
+  useGrub ? false,
   ...
 }: let
-  disk = import ../modules/hardware/disks/k3s.nix {inherit diskName;};
+  disk = import ../modules/hardware/disks/k3s.nix {inherit diskName useGrub;};
   impermanence =
     if enableImpermanence
     then

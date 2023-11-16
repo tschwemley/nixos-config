@@ -1,4 +1,8 @@
-{diskName, ...}: {
+{
+  diskName,
+  useGrub ? false,
+  ...
+}: {
   disko = {
     devices = {
       disk = {
@@ -9,12 +13,16 @@
             type = "table";
             format = "gpt";
             partitions = [
-              {
-                name = "boot";
-                start = "0";
-                end = "1M";
-                flags = ["bios_grub"];
-              }
+              (
+                if useGrub
+                then {
+                  name = "boot";
+                  start = "0";
+                  end = "1M";
+                  flags = ["bios_grub"];
+                }
+                else {}
+              )
               {
                 name = "ESP";
                 start = "1MiB";
