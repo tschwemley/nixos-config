@@ -25,6 +25,7 @@ in {
 
     plugins = with pkgs.vimPlugins; [
       lsp-zero
+      lspsaga-nvim
       nvim-lspconfig
     ];
   };

@@ -23,13 +23,26 @@ lsp.on_attach(function(client, bufnr)
    })
 end)
 
+-- listen for code actions
+-- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+--    pattern = { "*", },
+--    callback = function()
+--       local params = vim.lsp.util.make_range_params()
+--       params.context = vim.lsp.diagnostic.get_line_diagnostics()
+--       vim.lsp.buf_request(0, 'textDocument/codeAction', params, function(err, result, ctx, config)
+--          -- do something with the result
+--          print(result)
+--       end)
+--    end
+-- })
+
 whichKey.register({
    l = {
       name = 'LSP',
       c = { '<cmd>Telescope lsp_document_symbols ignore_symbols=class,function,method,property,variable<cr>',
          'List Constants',
          { buffer = true } },
-      -- r = { '<cmd>lua vim.lua.lsp.buf.rename<cr>', 'Rename', { buffer = true } },
+      r = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'Rename', { buffer = true } },
       R = { '<cmd>Telescope lsp_references<cr>', 'List References', { buffer = true } },
       m = { '<cmd>Telescope lsp_document_symbols ignore_symbols=constant,class,property,variable<cr>', 'List Methods',
          { buffer = true } },
@@ -57,6 +70,8 @@ require('lsp-zero').configure('nil_ls', {
 })
 
 lsp.setup()
+
+require('lspsaga').setup({})
 
 vim.diagnostic.config({
    virtual_text = true,
