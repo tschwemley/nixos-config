@@ -58,6 +58,11 @@ in {
 
   # TODO: might be needed for proxmox to configure networking
   #services.cloud-init.network.enable = true;
+	
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    age.keyFile = "/persist/.age-keys.txt";
+	};
 
   # don't update this
   system.stateVersion = "23.05";
