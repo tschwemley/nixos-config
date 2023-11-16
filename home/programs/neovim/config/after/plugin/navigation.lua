@@ -12,7 +12,8 @@ ufo.setup({
       if filetype == 'norg' then
          return ''
       else
-      return { 'treesitter', 'indent' }
+         return { 'treesitter', 'indent' }
+      end
    end
 })
 
