@@ -26,7 +26,7 @@
       peers = [
         {
           #moltres
-          publicKey = "SHsUHFVnJEez4bZQHPRKXBqmijOb7W7mf8x75KXqQh8=";
+          publicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
           allowedIPs = ["10.1.1.2/32"];
         }
       ];
