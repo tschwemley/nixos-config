@@ -6,7 +6,6 @@
         modules = [
           # you can include your own nixos configuration here, i.e.
           # ./configuration.nix
-		  self.nixosModules
 		  inputs.home-manager.nixosModule {
 			home-manager.useGlobalPkgs = true;						
 		    home-manager.useUserPackages = true;						
@@ -16,6 +15,8 @@
 				isSystemUser = true;
 				group  = "k3s";
 			};
+
+			system.stateVersion = "23.05";
 		  }
           ../nixos/modules/k3s/server.nix
         ];
