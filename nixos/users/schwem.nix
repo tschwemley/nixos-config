@@ -7,8 +7,7 @@
     };
   };
 
-  home.stateVersion = "23.05";
-  home-manager.users.schwem = (import ../../home/profiles/pc.nix {});
+  home-manager.users.schwem = homeConfigurations.schwem;
   # home-manager.users.schwem = {
   #   imports = [
   #    (homeConfigurations.pc

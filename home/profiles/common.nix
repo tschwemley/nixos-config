@@ -1,5 +1,4 @@
-{...}: let
-in {
+{
   imports = [
     ../neovim
 	../programs/bat.nix
