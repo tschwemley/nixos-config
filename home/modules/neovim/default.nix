@@ -5,6 +5,7 @@
 		defaultEditor = true;
 		extraLuaConfig = ''
 			require "modules.colorschemes"	
+			-- require "modules.keymap"	
 			require "modules.lsp"	
 			require "modules.options"	
 		'';
@@ -12,11 +13,11 @@
 		plugins = with pkgs.vimPlugins; [
 			gruvbox-material
 			lsp-zero-nvim
+			luasnip
 			lualine-nvim
-			mason-nvim
 			nnn-vim
-			nvim-cmp
 			nvim-dap
+			nvim-luadev
 			nvim-lspconfig
 			telescope-nvim
 			toggleterm-nvim
@@ -26,6 +27,13 @@
 			vim-dadbod-ui
 			vim-dadbod-completion
 			which-key-nvim
+
+			# completion plugins
+			nvim-cmp
+			cmp_luasnip
+			cmp-nvim-lsp
+			cmp-nvim-lua
+
 		];
 		withNodeJs = true;
 		withPython3 = true;
