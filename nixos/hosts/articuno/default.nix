@@ -159,6 +159,18 @@ in {
         # you will probably also want, otherwise *everything* will be built from scratch
         useSubstitutes = true;
       };
+
+      networking = {
+        firewall = {
+          enable = true;
+          allowedTCPPorts = [3000];
+        };
+        # Use systemd-resolved inside the container
+        useHostResolvConf = lib.mkForce false;
+      };
+
+      services.resolved.enable = true;
+      system.stateVersion = "23.11";
     };
   };
 }
