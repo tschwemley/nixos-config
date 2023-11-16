@@ -26,19 +26,21 @@
     peers = [
       {
         # articuno
-        PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
         AllowedIPs = ["10.0.0.1/32"];
         Endpoint = "wg.schwem.io:9918";
+        PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       }
       {
         # moltres
-        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
         AllowedIPs = ["10.0.0.3/32"];
+        Gateway = "10.0.0.1";
+        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
       }
       {
         #eevee
-        PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
         AllowedIPs = ["10.0.0.4/32"];
+        Gateway = "10.0.0.1";
+        PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
       }
     ];
   };
