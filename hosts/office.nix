@@ -1,4 +1,4 @@
-	{ ... }: {
+	{ lib, modulesPath, ... }: {
 	  imports =
 		[ 
 			# This is generated from calling nixos-generate-config

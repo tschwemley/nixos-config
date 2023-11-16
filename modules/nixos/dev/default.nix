@@ -1,0 +1,3 @@
+{ ... }: {
+	direnv = import ./direnv.nix;
+}

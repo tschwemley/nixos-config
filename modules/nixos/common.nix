@@ -2,7 +2,7 @@
 
 {
 	imports = [
-		./direnv.nix
+		./dev/direnv.nix
 		./disks.nix
 		./nix.nix
 	];
