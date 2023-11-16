@@ -1,4 +1,15 @@
-{pkgs, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  clusterInit,
+  nodeIP,
+  role ? "agent",
+  ...
+}: let
+  defaultFlags = "--node-ip ${nodeIP} --node-external-ip ${nodeIP} --container-runtime-endpoint unix:///run/containerd/containerd.sock";
+  serverFlags = "--disable traefik --flannel-backend=wireguard-native --flannel-external-ip";
+in {
   environment.systemPackages = with pkgs; [
     (writeShellScriptBin "k3s-reset-node" (builtins.readFile ./k3s-reset-node))
     k9s
@@ -7,14 +18,24 @@
   # 51820 and 51821 for wg backend
   networking.firewall.allowedUDPPorts = [51820 51821];
   # 10250 for kubelet metrics
-  networking.firewall.allowedTCPPorts = [10250];
+  networking.firewall.allowedTCPPorts = [10250 (lib.mkIf clusterInit 6443)];
 
   programs.zsh.shellAliases = {
     ctr = "k3s ctr";
     kubectl = "k3s kubectl";
   };
 
-  services.k3s.enable = true;
+  services.k3s = {
+    inherit clusterInit role;
+    enable = true;
+    serverAddr =
+      if !clusterInit
+      then "https://10.0.0.1:6443"
+      else "";
+    tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
+    extraFlags = lib.mkMerge defaultFlags (lib.mkIf role == "server" serverFlags);
+  };
+
   sops.secrets.k3s-server-token.sopsFile = ./secrets.yaml;
   systemd.services = {
     k3s = {
