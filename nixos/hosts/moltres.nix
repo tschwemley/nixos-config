@@ -61,7 +61,7 @@ in {
     users = {
 		root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAl9LJZ1yKITrHoPGRnqX5FvCmGcE7/a10BwDX52tUgU"];
 	
-		k3s.passwordFile = config.sops.secrets.k3s_user_password.path;
+		k3s.passwordFile = sops.secrets.k3s_user_password.path;
 	};
   };
 }
