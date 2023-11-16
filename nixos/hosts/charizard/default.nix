@@ -83,6 +83,12 @@ in {
         path = "/home/schwem/.ssh/eevee";
         sopsFile = ./../eevee/secrets.yaml;
       };
+      "flareon_key" = {
+        key = "ssh_private_key";
+        owner = "schwem";
+        path = "/home/schwem/.ssh/flareon";
+        sopsFile = ./../flareon/secrets.yaml;
+      };
       "gh_key" = {
         key = "gh_ssh_key";
         owner = "schwem";
