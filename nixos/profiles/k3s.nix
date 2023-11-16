@@ -48,10 +48,6 @@ in {
   # These are the sops secrets required by every k3s node
   sops = {
     secrets = {
-      root_password = {
-        mode = "0440";
-        neededForUsers = true;
-      };
       wireguard_private = {
         mode = "0644";
         path = "/persist/wireguard/private";

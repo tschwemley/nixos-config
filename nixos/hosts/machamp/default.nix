@@ -1,9 +1,4 @@
-{
-  inputs,
-  config,
-  modulesPath,
-  ...
-}: let
+{config, ...}: let
   diskName = "/dev/sda";
   hostName = "machamp";
   wireguardIP = "10.0.0.99";
@@ -46,6 +41,7 @@ in {
   };
 
   networking.hostName = hostName;
+
   # this fixes a 'restricted url' issue when building host configs
   nix.extraOptions = ''
     allowed-uris = https://git.sr.ht/
