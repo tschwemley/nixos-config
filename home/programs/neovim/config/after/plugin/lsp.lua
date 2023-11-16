@@ -8,7 +8,11 @@ local whichKey = require('which-key')
 
 lsp.on_attach(function(client, bufnr)
    lsp.default_keymaps({ buffer = bufnr })
-   lsp.buffer_autoformat()
+   -- Don't autoformat for php
+   if (client ~= 'intelephense')
+   then
+      lsp.buffer_autoformat()
+   end
 
    whichKey.register({
       g = {
@@ -17,28 +21,6 @@ lsp.on_attach(function(client, bufnr)
          D = { vim.lsp.buf.declaration, 'Go To Declaration', { buffer = true } },
       },
    })
-
-   -- Format on save (changed lines only)
-   local augroup_id = vim.api.nvim_create_augroup(
-      "FormatModificationsDocumentFormattingGroup",
-      { clear = false }
-   )
-   vim.api.nvim_clear_autocmds({ group = augroup_id, buffer = bufnr })
-
-   if (client ~= 'nil_ls' and client ~= 'yamlls')
-   then
-      vim.api.nvim_create_autocmd(
-         { "BufWritePre" },
-         {
-            group = augroup_id,
-            buffer = bufnr,
-            callback = function()
-               local lsp_format_modifications = require "lsp-format-modifications"
-               lsp_format_modifications.format_modifications(client, bufnr)
-            end,
-         }
-      )
-   end
 end)
 
 whichKey.register({

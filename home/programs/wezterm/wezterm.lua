@@ -1,8 +1,8 @@
-local wezterm = require "wezterm"
+local wezterm = require 'wezterm'
 local config = {
-   audible_bell = "Disabled",
-   color_scheme = "Gruvbox dark, medium (base16)",
-   font = wezterm.font("Hasklig"),
+   audible_bell = 'Disabled',
+   color_scheme = 'Gruvbox dark, medium (base16)',
+   font = wezterm.font('Hasklig'),
    font_size = 20,
    keys = {
       {

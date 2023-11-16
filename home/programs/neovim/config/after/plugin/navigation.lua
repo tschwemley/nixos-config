@@ -2,7 +2,7 @@ local wk = require('which-key')
 
 require('bufferline').setup()
 require('lualine').setup()
--- require('ufo').setup()
+require('ufo').setup()
 
 wk.register({
    b = {
