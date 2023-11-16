@@ -1,6 +1,5 @@
 {
   diskName,
-  swapSize,
   ...
 }: {
   disko = {
@@ -21,8 +20,8 @@
               }
               {
                 name = "ESP";
-                start = "1MiB";
-                end = "128MiB";
+                start = "1M";
+                end = "512M";
                 bootable = true;
                 content = {
                   type = "filesystem";
@@ -32,8 +31,8 @@
               }
               {
                 name = "root";
-                start = "128MiB";
-                end = swapSize;
+                start = "512M";
+                end = "100%";
                 part-type = "primary";
                 content = {
                   type = "btrfs";
@@ -41,30 +40,24 @@
                   subvolumes = {
                     "/rootfs" = {
                       mountpoint = "/";
-                      mountOptions = ["compress=lzo"];
+                      mountOptions = ["compress=zstd"];
                     };
                     "/home" = {
                       mountOptions = [];
                     };
                     "/nix" = {
-                      mountOptions = ["compress=lzo" "noatime"];
+                      mountOptions = ["compress=zstd" "noatime"];
                     };
                     "/persist" = {
-                      mountOptions = ["compress=lzo" "noatime"];
+                      mountOptions = ["compress=zstd" "noatime"];
+                    };
+                    "/swap" = {
+                      mountOptions = ["noatime" "nodatacow"];
                     };
                   };
                 };
               }
-              {
-                name = "swap";
-                start = swapSize;
-                end = "100%";
-                # part-type = "primary";
-                content = {
-                  type = "swap";
-                  randomEncryption = true;
-                };
-              }
+              
             ];
           };
         };
@@ -72,7 +65,7 @@
     };
   };
 
-  fileSystems."/".neededForBoot = true;
+  #fileSystems."/".neededForBoot = true;
   fileSystems."/home".neededForBoot = true;
   fileSystems."/persist".neededForBoot = true;
 }
