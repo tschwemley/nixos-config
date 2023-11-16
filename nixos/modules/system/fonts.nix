@@ -4,9 +4,9 @@
   ];
 
   fonts = {
-#TODO: this option was renamed from enableDefaultFonts on 07/24/23. Now is a good time to decide
-# if I want to keep it or not
-#enableDefaultPackages = true;
+    #TODO: this option was renamed from enableDefaultFonts on 07/24/23. Now is a good time to decide
+    # if I want to keep it or not
+    #enableDefaultPackages = true;
 
     packages = with pkgs; [
       # NOTE: Some fonts may break colour emojis in Chrome

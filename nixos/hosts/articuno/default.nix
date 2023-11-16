@@ -15,7 +15,8 @@
   };
 in {
   imports = [
-    (modulesPath + "/profiles/qemu-guest.nix")
+#(modulesPath + "/profiles/qemu-guest.nix")
+    (modulesPath + "/virtualisation/proxmox-image.nix")
     impermanence
     user
     ../../profiles/default.nix
@@ -24,13 +25,13 @@ in {
     # ../../profiles/k3s.nix
   ];
 
-  boot = {
-    # supportedFilesystems = ["btrfs"];
-    loader = {
-	  systemd-boot.enable = true;
-	  efi.canTouchEfiVariables = true;
-    };
-  };
+  # boot = {
+  #   # supportedFilesystems = ["btrfs"];
+  #   loader = {
+  #     systemd-boot.enable = true;
+  #     efi.canTouchEfiVariables = true;
+  #   };
+  # };
 
   networking = {
     inherit hostName;
