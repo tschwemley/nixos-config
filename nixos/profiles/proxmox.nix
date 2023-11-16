@@ -12,4 +12,7 @@
     inherit bios cores memory;
     name = config.networking.hostName;
   };
+  
+  # allow the vm to have it's network access set up immediately
+  services.cloud-init.network.enable = true;
 }

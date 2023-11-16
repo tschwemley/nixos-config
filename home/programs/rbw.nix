@@ -5,5 +5,4 @@
     rbw
     pinentry
   ];
-
 }

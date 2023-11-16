@@ -50,7 +50,6 @@ in {
     dhcpcd.enable = false;
   };
 
-  services.cloud-init.networking.enable = true;
   services.getty.autologinUser = "root";
 
   services.openssh = {
