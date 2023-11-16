@@ -28,6 +28,7 @@
         # articuno
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
         AllowedIPs = ["10.0.0.1/32"];
+	    Endpoint = "wg.schwem.io:9918";
       }
       {
         # moltres
