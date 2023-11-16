@@ -11,6 +11,11 @@
     settings = {
       "$mod" = "SUPER";
 
+      monitor = [
+        "HDMI-A-2,3840x2160,0x0,1"
+        "DP-2,2560x2880@60,3840x0,1"
+      ];
+
       bind = [
         "$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"
       ];
