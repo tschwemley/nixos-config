@@ -46,10 +46,28 @@ in {
   };
 
   services.getty.autologinUser = "root";
+  
+  services.openssh = {
+    enable = true;
+    # PasswordAuthentication = false;
+    # KbdInteractiveAuthentication = false;
+    hostKeys = [
+      {
+        bits = 4096;
+        path = "/etc/ssh/ssh_host_rsa_key";
+        type = "rsa";
+      }
+      {
+        path = "/etc/ssh/ssh_host_ed25519_key";
+        type = "ed25519";
+      }
+    ];
+  };
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+    age.keyFile = "/persist/.age-keys.txt";
 
     # Specify machine secrets
     secrets = {
