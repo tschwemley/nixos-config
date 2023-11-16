@@ -79,8 +79,10 @@ in {
         neededForUsers = true;
       };
       wireguard_private = {
-		# mode = "0644";
+		mode = "0660";
         path = "/persist/wireguard/private";
+		owner = config.users.users.systemd-network;
+		group = config.users.users.systemd-network.group;
         reloadUnits = ["systemd-networkd" "systemd-resolved"];
       };
       wireguard_public = {
