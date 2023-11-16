@@ -2,7 +2,6 @@
   nix.settings = {
     auto-optimise-store = true;
     experimental-features = ["nix-command" "flakes"];
-    # extra-sandbox-paths = ["/etc/skopeo/auth.json=/etc/nix/skopeo/auth.json"];
     substituters = [
       "https://cache.nixos.org"
       "https://hyprland.cachix.org"
