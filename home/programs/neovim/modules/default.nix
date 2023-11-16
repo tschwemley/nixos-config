@@ -8,8 +8,9 @@
     ./git.nix
     ./languages.nix
     ./lsp.nix
-    ./treesitter.nix
     ./navigation.nix
+    ./treesitter.nix
+    ./utils.nix
   ];
 
   # plugins that don't (yet) fit into a module are defined here
