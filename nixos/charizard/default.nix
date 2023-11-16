@@ -44,11 +44,11 @@ in {
     hostKeys = [
       {
         bits = 4096;
-        path = "/etc/ssh/ssh_host_rsa_key";
+        path = "/persist/etc/ssh/ssh_host_rsa_key";
         type = "rsa";
       }
       {
-        path = "/etc/ssh/ssh_host_ed25519_key";
+        path = "/persist/etc/ssh/ssh_host_ed25519_key";
         type = "ed25519";
       }
     ];
@@ -64,10 +64,7 @@ in {
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
-    age.sshKeyPaths = [
-		"/etc/ssh/ssh_host_ed25519_key"
-		"/persist/etc/ssh/ssh_host_ed25519_key"
-	];
+    age.sshKeyPaths = ["/persist/etc/ssh/ssh_host_ed25519_key"];
     age.keyFile = "/persist/.age-keys.txt";
 
     # Specify machine secrets
