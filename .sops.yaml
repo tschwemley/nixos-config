@@ -28,13 +28,18 @@ creation_rules:
       - age:
         - *personal
         - *eevee
+          
+  - path_regex: nixos/hosts/machamp/secrets.yaml
+    key_groups:
+      - age:
+        - *personal
+        # - *machamp
 
   - path_regex: nixos/hosts/moltres/secrets.yaml
     key_groups:
       - age:
         - *personal
         # - *moltres
-          
           
   - path_regex: nixos/hosts/zapados/secrets.yaml
     key_groups:
