@@ -83,7 +83,7 @@
 					imports = [./nixos/modules/virtualisation/proxmox-image.nix];
 				};
 			};
-		}
+		};
       };
 
       # # TODO: move this somewhere
