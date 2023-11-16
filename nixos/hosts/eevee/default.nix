@@ -12,7 +12,7 @@
 
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
   k3s = import ../../profiles/k3s.nix {
-    inherit inputs config lib nodeName pkgs useGrub;
+    inherit inputs config diskName lib nodeName pkgs useGrub;
     nodeIP = wireguardIP;
     role = "agent";
   };
