@@ -9,8 +9,13 @@
   ];
 
   home.packages = with pkgs; [
-    hyprpaper
-    hyprpicker
+    clipman
+    grim # grab images
+    hyprpaper # wallpaper
+    hyprpicker #color picker
+    libsForQt5.qt5.qtwayland
+    qt6.qtwayland
+    slurp # select a region (used in conjunction w/ grim)
   ];
 
   wayland.windowManager.hyprland = {
@@ -28,6 +33,12 @@
         "$mod, p, exec, ${pkgs.rofi}/bin/rofi -show drun"
       ];
 
+      env = [
+        # toolkit-specific scale
+        "GDK_SCALE,2"
+        "XCURSOR_SIZE,32"
+      ];
+
       exec-once = [
         "hyprpaper"
       ];
@@ -38,12 +49,16 @@
       ];
 
       workspace = [
-        # "name:start, monitor:DP-2, default: true"
-        # "name:code, monitor:DP-2"
-        # "name:start, monitor:HDMI-1, default: true"
-        # "name:code, monitor:HDMI-1"
+        # "name:start, monitor:HDMI-A-2, default: true"
       ];
     };
+
+    extraConfig = ''
+      # unscale XWayland
+      xwayland {
+        force_zero_scaling = true
+      }
+    '';
   };
 
   xdg.configFile."hypr/hyprpaper.conf".text = ''
