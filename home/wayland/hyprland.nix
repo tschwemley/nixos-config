@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   # {pkgs, ...}: let
   #   hyprbars = let
   #     hyprland = pkgs.hyprland;
@@ -53,6 +57,7 @@
     '';
 
     plugins = [
+      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
       # hyprbars
     ];
 
