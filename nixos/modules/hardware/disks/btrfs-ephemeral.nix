@@ -40,16 +40,16 @@
                   subvolumes = {
                     "/rootfs" = {
                       mountpoint = "/";
-                      mountOptions = ["compress=zstd"];
+                      mountOptions = ["default" "compress=zstd"];
                     };
                     "/home" = {
-                      mountOptions = [];
+                      mountOptions = ["default" "compress=zstd"];
                     };
                     "/nix" = {
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = ["default" "compress=zstd" "noatime"];
                     };
                     "/persist" = {
-                      mountOptions = ["compress=zstd" "noatime"];
+                      mountOptions = ["default" "compress=zstd" "noatime"];
                     };
                     "/swap" = {
                       mountOptions = ["noatime" "nodatacow"];
@@ -57,7 +57,6 @@
                   };
                 };
               }
-              
             ];
           };
         };
@@ -65,7 +64,7 @@
     };
   };
 
-  #fileSystems."/".neededForBoot = true;
+  fileSystems."/".neededForBoot = true;
   fileSystems."/home".neededForBoot = true;
   fileSystems."/persist".neededForBoot = true;
 }
