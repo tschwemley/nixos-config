@@ -1,5 +1,6 @@
 keys:
   - &personal age1rl4wtr4hj2mxp2rcdk2kuahtqmfx7e5meadsukxljl0l054eccksus4s2n
+  # - &charizard age
   - &moltres age1tc6r7z28g2zpnwmu2j9wxrpsn74mr9kl4a63r82u7xlywx9dma2qpparlf
 
 creation_rules:
@@ -7,6 +8,12 @@ creation_rules:
     key_groups:
       - age:
         - *personal
+          
+  - path_regex: secrets/charizard.yaml
+    key_groups:
+      - age:
+        - *personal
+        # - *charizard
           
   - path_regex: secrets/moltres.yaml
     key_groups:

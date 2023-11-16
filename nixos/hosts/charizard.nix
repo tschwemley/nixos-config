@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   lib,
   ...
 }: let
@@ -38,11 +39,24 @@ in {
   };
 
   services.getty.autologinUser = "schwem";
+  
+  sops = {
+    defaultSopsFile = ../../secrets/moltres.yaml;
+    age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+
+    # Specify machine secrets
+    secrets = {
+	  schwem_user_password = {
+		 neededForUsers = true; 
+	  };
+    };
+  };
 
   # don't update this
   system.stateVersion = "23.11";
 
   users = {
     mutableUsers = false;
+	users.schwem.passwordFile = config.sops.secrets.schwem_user_password.path;
   };
 }
