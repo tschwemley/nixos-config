@@ -71,16 +71,19 @@
           ];
         };
 
-        packages.installer = nixos-generators.nixosGenerate {
-          inherit system;
-          modules = [
-            # ./nixos/modules/system/nix.nix
-            # ./nixos/profiles/default.nix
-          ];
-          format = "install-iso";
-        };
-
-        formatter = pkgs.alejandra;
+		#TODO: make this generic for k3s nodes
+        # packages.k3s-node = nixos-generators.nixosGenerate {
+        packages.zapados = nixos-generators.nixosGenerate {
+			customFormats = {
+				inherit system;
+				modules = [
+					./nixos/hosts/zapados	
+				];
+				"vma" = {
+					imports = [./nixos/modules/virtualisation/proxmox-image.nix];
+				};
+			};
+		}
       };
 
       # # TODO: move this somewhere
