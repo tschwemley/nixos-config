@@ -11,7 +11,8 @@
     nixos-generators.url = "github:nix-community/nixos-generators";
 	nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
 
-	nixos-hardware.url = "github:nixos/nixos-hardware";
+	nixos-hardware.url = "github:nixos/nixos-hardware/master";
+
     #disko.url = "github:nix-community/disko";
     #disko.inputs.nixpkgs.follows = "nixpkgs";
   };

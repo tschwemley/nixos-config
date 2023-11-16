@@ -1,6 +1,6 @@
 db_file="/nix/var/nix/db/db.sqlite"
 backup_db_file="/nix/var/nix/db/db_backup_$(date +%Y%m%d%H%M%S).sqlite"
-max_retries=100
+max_retries=10000
 retry_count=0
 
 # Create a backup of the SQLite database file
