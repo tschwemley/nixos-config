@@ -91,7 +91,7 @@ in {
     };
   };
 
-  system.autoUpgrade = true;
+  system.autoUpgrade.enable = true;
   # don't update this
   system.stateVersion = "23.05";
 
