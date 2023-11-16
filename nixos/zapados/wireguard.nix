@@ -1,5 +1,5 @@
 {config, ...}: {
-  # boot.extraModulePackages = [config.boot.kernelPackages.wireguard];
+  boot.extraModulePackages = [config.boot.kernelPackages.wireguard];
   networking.firewall.allowedUDPPorts = [51820];
   systemd.network = {
     enable = true;
