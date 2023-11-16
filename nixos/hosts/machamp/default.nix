@@ -39,12 +39,9 @@ in {
     };
     kernelModules = ["kvm-amd" "wireguard"];
     supportedFilesystems = ["btrfs"];
-    loader = {
-      grub = {
-        efiSupport = true;
-        efiInstallAsRemovable = true;
-        devices = ["/dev/sda"];
-      };
+    loader.systemd-boot = {
+      enable = true;
+      editor = false; # leaving true allows for root access to be gained via passing kernal param
     };
   };
 
