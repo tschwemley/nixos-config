@@ -27,26 +27,38 @@
             {
               name = "main";
               start = "512M";
-              end = "100%";
+              end = "-2G";
+			  part-type = "primary";
 			  content = {
                   type = "btrfs"; 
                   extraArgs = [ "-f" ];  
                   subvolumes = {                
-                    "/" = {
-                      mountOptions = [ "compress=ztsd" ];
+                    "/rootfs" = {
+					  mountpoint = "/";
+                      mountOptions = [ "compress=lzo" ];
                     };  
                     "/nix" = {
-                      mountOptions = [ "compress=ztsd" "noatime" ];
+                      mountOptions = [ "compress=lzo" "noatime" ];
 					};  
                     "/persist" = {
-                      mountOptions = [ "compress=ztsd" ];
+                      mountOptions = [ "compress=lzo" ];
 					};  
                     "/swap" = {
-                      mountOptions = [ "compress=ztsd" "noatime" ];
+                      mountOptions = [ "compress=lzo" "noatime" ];
 					};  
                   };  
 				};
             }  
+			{
+				name = "swap";
+				start = "-2G";
+				end = "100%";
+				part-type = "primary";
+				content = {
+					type = "swap";
+					randomEncryption = true;
+				};
+			}
           ];
         };
       };
@@ -59,7 +71,7 @@
 				extraArgs = [ "-f" ];
 				subvolumes = {
 					"/storage" = {
-						mountOptions = [ "compress=ztsd" ];
+						mountOptions = [ "compress=lzo" ];
 					};
 				};
 			};

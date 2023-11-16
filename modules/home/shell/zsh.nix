@@ -8,7 +8,7 @@
 		history = {
 		  extended = true; # store timestamps w/ history
 		  size = 10000;
-		  path = "${config.xdg.dataHome}/zsh/history";
+		  # path = "${config.xdg.dataHome}/zsh/history";
 		};
 		#shellAliases = shellAliases;
 	};

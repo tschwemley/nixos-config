@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
 	programs.neovim = {
 		enable = true;
@@ -43,9 +43,9 @@
 		vimdiffAlias = true;
 	};
 
-      xdg.configFile = {
-        "nvim/lua".source = ./lua;
-      	#"nvim/init.lua".source = ./lua/init.lua;
-        #"nvim/parser".source = "${parserDir}";
-      };
+	xdg.configFile = {
+		"nvim/lua".source = ./lua;
+		#"nvim/init.lua".source = ./lua/init.lua;
+		#"nvim/parser".source = "${parserDir}";
+	};
 }
