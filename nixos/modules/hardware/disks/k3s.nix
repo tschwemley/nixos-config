@@ -1,4 +1,4 @@
-{diskName, ...}: {
+{diskName, lib, ...}: {
   disko = {
     devices = {
       disk = {
@@ -61,6 +61,9 @@
     };
   };
 
-  fileSystems."/".neededForBoot = true;
+  fileSystems."/" = {
+    neededForBoot = true;
+    type = lib.mkDefault "btrfs";
+  };
   fileSystems."/persist".neededForBoot = true;
 }
