@@ -7,6 +7,8 @@
     k9s
   ];
 
+  virtualisation.containerd.enable = true;
+
   systemd.services.k3s = {
     wants = ["containerd.service"];
     after = ["containerd.service"];
