@@ -5,7 +5,6 @@
 }: {
   imports = [
     ./.
-    inputs.nixos-hardware.nixosModules.common-pc-ssd
     ../modules/hardware/audio.nix
     ../modules/programs/barrier.nix
     ../modules/services/mullvad.nix

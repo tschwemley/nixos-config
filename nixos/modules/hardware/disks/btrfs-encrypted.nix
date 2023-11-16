@@ -33,19 +33,19 @@
                   subvolumes = {
                     "rootfs" = {
                       mountpoint = "/";
-                      mountOptions = ["defaults" "compress=zstd" "ssd" "noatime"];
+                      mountOptions = ["defaults" "compress=zstd" "noatime"];
                     };
                     "home" = {
                       mountpoint = "/home";
-                      mountOptions = ["defaults" "autodefrag" "compress=zstd" "noatime" "ssd"];
+                      mountOptions = ["defaults" "compress=zstd" "noatime"];
                     };
                     "nix" = {
                       mountpoint = "/nix";
-                      mountOptions = ["defaults" "compress=zstd" "noatime" "ssd"];
+                      mountOptions = ["defaults" "compress=zstd" "noatime"];
                     };
                     "persist" = {
                       mountpoint = "/persist";
-                      mountOptions = ["defaults" "compress=zstd" "noatime" "ssd"];
+                      mountOptions = ["defaults" "compress=zstd" "noatime"];
                     };
                     "games" = {
                       mountpoint = "/games";
