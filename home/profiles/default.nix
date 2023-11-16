@@ -7,7 +7,7 @@
     ../programs/tmux.nix
   ];
 
-  home.sharedModules = [
+  home-manager.sharedModules = [
     ../shell
   ];
 
