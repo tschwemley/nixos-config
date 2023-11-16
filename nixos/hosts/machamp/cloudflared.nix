@@ -8,8 +8,7 @@
         default = "http_status:404";
         ingress = {
           "build.schwem.io" = {
-            hostname = "build.schwem.io";
-            service = "localhost:3000";
+            service = "http://localhost:3000";
           };
         };
       };
