@@ -8,6 +8,7 @@ in {
       p = "~/projects";
       n = "~/nixos-config";
     };
+    extraPackages = with pkgs; [imv];
     plugins = {
       src = "${pkgs.nnn.src}/plugins";
       mappings = {
