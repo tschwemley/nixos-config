@@ -4,17 +4,25 @@
   lib,
   ...
 }: let
+  hostName = "zapados";
   diskConfig = import ../modules/disks/btrfs-ephemeral.nix {
     diskName = "/dev/vda";
-    swapSize = "-4G";
+    swapSize = "-6G";
+  };
+  impermanence = import ../modules/system/impermanence.nix {inherit inputs;};
+  user = import ../modules/users/server.nix {
+    inherit config;
+    userName = hostName;
   };
 in {
   imports = [
     diskConfig
+    impermanence
+    user
     ../profiles/server.nix
+	./wireguard.nix
     # ../services/k3s
     # ../services/keycloak.nix
-    ../modules/users/k3s.nix
   ];
 
   boot = {
@@ -33,11 +41,10 @@ in {
   };
 
   networking = {
-    hostName = "moltres";
-    dhcpcd.enable = false;
+    inherit hostName;
+    useDHCP = lib.mkDefault true;
   };
 
-  # services.getty.autologinUser = "k3s";
   services.getty.autologinUser = "root";
 
   sops = {
@@ -46,7 +53,7 @@ in {
 
     # Specify machine secrets
     secrets = {
-      k3s_user_password = {
+      user_password = {
         neededForUsers = true;
       };
     };
@@ -55,14 +62,11 @@ in {
   # don't update this
   system.stateVersion = "23.11";
 
-  systemd.network.enable = true;
-  services.resolved.enable = true;
-
   users = {
     mutableUsers = false;
     users = {
       root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAl9LJZ1yKITrHoPGRnqX5FvCmGcE7/a10BwDX52tUgU"];
-      k3s.passwordFile = config.sops.secrets.k3s_user_password.path;
+      ${hostName}.passwordFile = config.sops.secrets.user_password.path;
     };
   };
 }
