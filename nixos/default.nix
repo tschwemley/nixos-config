@@ -12,7 +12,7 @@
 						home-manager.useUserPackages = true;						
 						home-manager.users.schwem = self.homeConfigurations.personal;
 					}
-					./modules/fonts.nix
+					./modules/common.nix
 					./modules/nvidia.nix
 					./modules/xsession.nix
 					./modules/pc
