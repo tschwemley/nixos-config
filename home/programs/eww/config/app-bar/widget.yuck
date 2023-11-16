@@ -1,7 +1,0 @@
-(defwidget app-bar [] 
-		(box :class "dockbox"
-			(box :orientation "h" :spacing 15 :valign "center" :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
-				(button :style "background-image: url('/home/schwem/.config/eww/app-bar/terminal.svg');" :class "appicon" :onclick "exec wezterm")
-				(button :style "background-image: url('/home/schwem/.config/eww/app-bar/brave.svg');" :class "appicon" :onclick "exec brave")
-				(button :style "background-image: url('/home/schwem/.config/eww/app-bar/steam.svg');" :class "appicon" :onclick "exec steam")
-				(button :style "background-image: url('/home/schwem/.config/eww/app-bar/mail.svg');" :class "appicon" :onclick "exec brave --new-tab 'https://protonmail.com'"))))

@@ -1,12 +1,14 @@
-(defwidget bar []
+(defwidget clock[]
+  (box :class "clock"
+       :orientation "h"
+       :halign "end"
+       EWW_TIME))
+
+(defwidget bar[]
   (box :class "bar"
        :orientation "h"
-       (workspace)
-       ;; (right)
-       ;; (center)
-       ;; (left)
-       ))
-
+       (clock)))
+a
 (defwindow bar
   :monitor 1
   :geometry (geometry :x "0%"
@@ -16,4 +18,4 @@
                       :anchor "top center")
   :stacking "fg"
   :windowtype "dock"
-  (bar))
+q(bar))

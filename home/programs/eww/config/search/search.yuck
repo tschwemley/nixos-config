@@ -1,4 +1,0 @@
-(defpoll WINDOW_COUNT :interval "1s" `hyprctrl clients | rg Window | wc -l`)
-
-(include "/home/schwem/.config/eww/search/widget.yuck")
-(include "/home/schwem/.config/eww/search/window.yuck")
