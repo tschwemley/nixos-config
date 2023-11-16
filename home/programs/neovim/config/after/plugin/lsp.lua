@@ -8,7 +8,7 @@ local whichKey = require('which-key')
 
 lsp.on_attach(function(client, bufnr)
    lsp.default_keymaps({ buffer = bufnr })
-   -- lsp.buffer_autoformat()
+   lsp.buffer_autoformat()
 
    whichKey.register({
       g = {
