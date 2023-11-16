@@ -66,7 +66,7 @@
       imports = [
         ./home
         ./nixos
-        ./packages
+#./packages
         ./shells
       ];
     };
