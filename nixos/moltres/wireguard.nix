@@ -4,7 +4,7 @@
     wg0 = {
       ips = ["10.1.1.1.2/24"];
       listenPort = 51820;
-      privateKeyFile = "/persist/wirgeguard/private";
+      privateKeyFile = "/persist/wireguard/private";
 
       peers = [
         {
