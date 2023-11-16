@@ -43,9 +43,6 @@
                       mountpoint = "/";
                       mountOptions = ["compress=lzo"];
                     };
-                    "/home" = {
-                      mountOptions = ["compress=lzo"];
-                    };
                     "/nix" = {
                       mountOptions = ["compress=lzo" "noatime"];
                     };
@@ -72,6 +69,5 @@
     };
   };
 
-  fileSystems."/home".neededForBoot = true;
   fileSystems."/persist".neededForBoot = true;
 }
