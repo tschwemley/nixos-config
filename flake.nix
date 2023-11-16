@@ -2,18 +2,25 @@
   description = "Schwem's NixOS configuration and dotfiles";
 
   inputs = {
-    # Principle inputs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+		url = "github:nix-community/home-manager";
+		inputs.nixpkgs.follows = "nixpkgs";
+	};
+
+	nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
     self,
     home-manager,
     flake-parts,
+	nixos-generators,
     ...
   }:
     flake-parts.lib.mkFlake { inherit inputs; } {
@@ -42,6 +49,7 @@
       imports = [
         ./home
         ./nixos
+        ./packages
       ];
 	};
 }

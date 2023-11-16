@@ -3,9 +3,14 @@
 {
 	flake = {
 		homeConfigurations = {
-			#k3s = mkHomeConfiguration "k3s" [];
+			k3s = {
+				imports = [
+					./modules/common.nix
+					./modules/git.nix
+				];
+			};
 
-			personal = {
+ 			personal = {
 				imports = [
 					./modules/common.nix
 					./modules/git.nix
