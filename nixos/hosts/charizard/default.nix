@@ -74,6 +74,8 @@ in {
   # don't update this
   system.stateVersion = "23.11";
 
+  time.timeZone = "America/Detroit";
+
   users = {
     mutableUsers = true; # allow mutable users on non-servers
     # users.schwem.passwordFile = config.sops.secrets.schwem_user_password.path;
