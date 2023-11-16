@@ -1,6 +1,7 @@
 {
   imports = [
     ../programs/bat.nix
+    ../programs/lazygit.nix
     ../programs/neovim
     ../programs/nnn.nix
     ../programs/ripgrep.nix
