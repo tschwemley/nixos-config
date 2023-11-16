@@ -80,8 +80,11 @@
 				./nixos/hosts/zapados	
 			];
 			customFormats = {
+				# "vma" = {...}: {
 				"vma" = {
 					imports = [./nixos/modules/virtualisation/proxmox-image.nix];
+					formatAttr = "VMA";
+					fileExtension = ".vma.zst";
 				};
 			};
 			format = "vma";
