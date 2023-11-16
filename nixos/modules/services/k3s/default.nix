@@ -1,65 +1,38 @@
 {
+  config,
+  lib,
   pkgs,
-  clusterInit,
   nodeIP,
   nodeName,
   role ? "agent",
   ...
 }: let
-  defaultFlags = "--node-ip ${nodeIP} --node-name ${nodeName} --node-external-ip ${nodeIP} --container-runtime-endpoint unix:///run/containerd/containerd.sock ";
-  serverFlags = "--disable traefik --flannel-backend=wireguard-native --flannel-external-ip";
-
-  extraFlags =
-    defaultFlags
-    + (
-      if role == "server"
-      then serverFlags
-      else ""
-    );
-  serverAddr =
-    if !clusterInit
-    then "https://10.0.0.1:6443"
-    else "";
+  serverAddr = "https://10.0.0.1:6443";
 in {
+  imports =
+    if role == "server"
+    then [./server.nix]
+    else [];
+
   environment.sessionVariables = {
     KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
   };
 
   environment.systemPackages = with pkgs; [
     (writeShellScriptBin "k3s-reset-node" (builtins.readFile ./k3s-reset-node))
-    # kubernetes-helm
     k9s
   ];
 
-  # TODO: optionize firewall
-  # 51820 and 51821 for wg backend
+  # required for wg flannel
   networking.firewall.allowedUDPPorts = [51820 51821];
-  # 2379/2389 embedded etcd; 6443 for api server; 10250 for kubelet metrics
-  networking.firewall.allowedTCPPorts = [
-    2379
-    2380
-    6443
-    10250
-  ];
+  # 10250 for kubelet metrics
+  networking.firewall.allowedTCPPorts = [10250];
 
-  programs.zsh.shellAliases = {
-    ctr = "k3s ctr";
-    kubectl = "k3s kubectl";
-  };
-
-  /*
-  TODO: fix the k3s issue with not starting that is being caused by the upstream bug in k3s
-        see:
-          1. https://github.com/k3s-io/k3s/issues/8293
-          2. https://github.com/NixOS/nixpkgs/issues/263580
-
-        in the meantime use 1.25 if necessary
-  */
   services.k3s = {
-    inherit clusterInit extraFlags role serverAddr;
+    inherit role serverAddr;
     enable = true;
-    package = pkgs.k3s_1_27;
-    tokenFile = "/var/lib/rancher/k3s/server/token";
+    extraFlags = "--node-ip ${nodeIP} --node-name ${nodeName} --node-external-ip ${nodeIP} --container-runtime-endpoint unix:///run/containerd/containerd.sock ";
+    tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
   };
 
   sops.secrets = {
@@ -67,11 +40,8 @@ in {
       sopsFile = ./secrets.yaml;
       path = "/var/lib/rancher/k3s/server/token";
     };
-    "schwem.io_github_key" = {
-      sopsFile = ./secrets.yaml;
-      path = "/root/.ssh/schwem.io-git";
-    };
   };
+
   systemd.services = {
     k3s = {
       requires = ["containerd.service" "run-secrets.d.mount" "systemd-networkd.service"];

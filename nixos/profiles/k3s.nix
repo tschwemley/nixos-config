@@ -1,37 +1,22 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
   nodeIP,
   nodeName,
-  clusterInit ? false,
   diskName ? "/dev/vda",
-  enableImpermanence ? true,
   extraKernelModules ? [],
   role ? "agent",
   useGrub ? false,
   ...
 }: let
   disk = import ../modules/hardware/disks/vm.nix {inherit diskName useGrub;};
-  impermanence =
-    if enableImpermanence
-    then
-      import ../modules/system/impermanence.nix {
-        inherit inputs;
-        additionalDirs =
-          if nodeName == "eevee"
-          then ["/etc/systemd/network"]
-          else [];
-      }
-    else {};
   k3s = import ../modules/services/k3s {
-    inherit config lib pkgs clusterInit nodeIP nodeName role;
+    inherit config lib pkgs nodeIP nodeName role;
   };
 in {
   imports = [
     disk
-    impermanence
     k3s
     ./server.nix
   ];

@@ -11,8 +11,7 @@
 
   boot = import ../../modules/system/systemd-boot.nix;
   k3s = import ../../profiles/k3s.nix {
-    inherit inputs config diskName lib nodeName pkgs;
-    enableImpermanence = false;
+    inherit config diskName lib nodeName pkgs;
     nodeIP = wireguardIP;
     role = "server";
   };
