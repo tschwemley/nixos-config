@@ -14,6 +14,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland.url = "github:hyprwm/Hyprland";
+
     nix-on-droid = {
       url = "github:t184256/nix-on-droid";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -65,6 +67,7 @@
 
       imports = [
         ./home
+        ./hydra-jobs
         ./nixos
         #./packages
         ./shells
