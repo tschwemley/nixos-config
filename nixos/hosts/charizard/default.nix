@@ -14,7 +14,7 @@
 
   hardware = {
     imports = [
-      inputs.nixos-hardware.nixosModules.common-cpu-intel
+      inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
       inputs.nixos-hardware.nixosModules.common-pc
       inputs.nixos-hardware.nixosModules.common-pc-ssd
       ../../modules/hardware/nvidia.nix
@@ -31,8 +31,9 @@ in {
   boot = {
     initrd = {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod"];
-      kernelModules = ["kvm-intel"];
+      kernelModules = ["kvm-intel" "nvidia_x11"];
     };
+    kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = ["btrfs"];
     loader.systemd-boot = {
       enable = true;
