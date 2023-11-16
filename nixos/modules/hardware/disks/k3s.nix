@@ -61,10 +61,12 @@
     };
   };
 
+  boot.supportedFileSystems = ["btrfs"];
   fileSystems."/" = {
-    device = lib.mkDefault "/dev/vda3";
+    device = lib.mkForce "/dev/vda3";
     neededForBoot = true;
-    fsType = (lib.mkDefault "btrfs");
+    fsType = lib.mkForce "btrfs";
   };
+  fileSystems."/boot".device = lib.mkForce "/dev/vda2";
   fileSystems."/persist".neededForBoot = true;
 }
