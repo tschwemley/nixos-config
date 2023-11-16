@@ -47,4 +47,3 @@ vim.o.timeoutlen = 300
 -- TODO: consider switching to one of the plugins or writing my own func to only show when char
 -- reaches column limit
 vim.o.colorcolumn = "100"
-

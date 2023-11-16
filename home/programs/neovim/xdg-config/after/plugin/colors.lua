@@ -1,8 +1,4 @@
-local Colorschemes = {
-	--change_colorscheme = function(new)
-		--colorschemes[new]()
-	--end
-
+Colorschemes = {
 	gruvbox_material = function()
 		vim.o.termguicolors = true
 		vim.o.background = "dark"
