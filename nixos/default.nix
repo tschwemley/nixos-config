@@ -25,6 +25,7 @@
 in {
   flake = {
     nixosConfigurations = {
+      articuno = mkSystem "x86_64-linux" ./hosts/articuno;
       charizard = mkSystem "x86_64-linux" ./hosts/charizard;
       ditto = mkSystem "x86_64-linux" ./hosts/ditto;
       moltres = mkSystem "x86_64-linux" ./hosts/moltres;
