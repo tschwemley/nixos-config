@@ -7,7 +7,8 @@
 
   services.k3s = {
 	  role = "agent";
-	  tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
+		# TODO: I don't think token file is needed
+	  #tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
 	  serverAddr = lib.mkDefault "10.0.0.1:6443";
 	  # TODO: make this a passable argument or option value
 	  # services.k3s.extraFlags = "--node-ip ${config.networking.wireguardIp} --container-runtime-endpoint unix:///run/containerd/containerd.sock";
