@@ -10,7 +10,12 @@
     };
 
     flake-parts.url = "github:hercules-ci/flake-parts";
-    home-manager.url = "github:nix-community/home-manager";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     impermanence.url = "github:nix-community/impermanence/master";
     musnix.url = "github:musnix/musnix";
 
@@ -20,13 +25,10 @@
     };
 
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
-
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     sops.url = "github:Mic92/sops-nix";
   };
 
@@ -36,7 +38,6 @@
     flake-parts,
     home-manager,
     nixos-hardware,
-    nixos-generators,
     nixpkgs,
     sops,
     ...

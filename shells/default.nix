@@ -6,7 +6,6 @@
   }: {
     devShells.default = pkgs.mkShell {
       buildInputs = with pkgs; [
-        self.inputs.nixos-generators.packages.${system}.nixos-generate
         age
         manix
         nix-prefetch-scripts
