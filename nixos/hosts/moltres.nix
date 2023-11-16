@@ -51,7 +51,7 @@ in {
   # don't update this
   system.stateVersion = "23.11";
 
-  systemd.networkd.enable = true;
+  systemd.network.enable = true;
 
   users = {
     mutableUsers = false;
