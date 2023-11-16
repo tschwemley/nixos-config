@@ -33,9 +33,7 @@
           "/rootfs" = {
             mountpoint = "/";
             mountOptions = ["compress=lzo"];
-            postCreateHook = ''
-              btrfs subvolume snapshot -r /mnt/root /mnt/root-blank
-            '';
+            postCreateHook = "btrfs subvolume snapshot -r /mnt /mnt/root-blank";
           };
           "/home" = {
             mountpoint = "/home";
