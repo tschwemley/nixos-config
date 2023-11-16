@@ -1,5 +1,5 @@
 let
-  publicKey = "DXGnAkpq/sM4Dw6vl26gmdggE8ItGi9H/61GQ8nWR14=";
+  publicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
 in {
   networking.firewall.allowedUDPPorts = [51820];
   networking.wireguard.interfaces = {

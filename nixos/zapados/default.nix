@@ -78,6 +78,14 @@ in {
       user_password = {
         neededForUsers = true;
       };
+	  wireguard_private = {
+		  mode = "0600";
+		  path = "/persist/wireguard/private";
+	  };
+	  wireguard_public = { #this doesn't need to be a secret but it's convenient
+		mode = "0644";
+		path = "/persist/wireguard/public";
+	  };
     };
   };
 
