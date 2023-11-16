@@ -30,7 +30,7 @@ lsp.on_attach(function(client, bufnr)
             'List Variables',
             { buffer = true } },
       },
-   }, { prfeix = '<leader>' })
+   }, { prefix = '<leader>' })
 end)
 
 -- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md for naming
