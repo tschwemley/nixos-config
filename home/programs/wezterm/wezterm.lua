@@ -6,7 +6,7 @@ local config = {
    font = wezterm.font('Hasklig'),
    font_size = 20,
    ssh_domains = wezterm.default_ssh_domains(),
-   term = "wezterm",
+   term = "xterm-256color",
 }
 
 for _, dom in ipairs(config.ssh_domains) do
