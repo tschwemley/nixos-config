@@ -9,14 +9,12 @@
             type = "table";
             format = "gpt";
             partitions = [
-              /*
-                 {
+              {
                 name = "boot";
                 start = "0";
                 end = "1M";
                 flags = ["bios_grub"];
               }
-              */
               {
                 name = "ESP";
                 start = "1MiB";
