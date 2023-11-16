@@ -6,6 +6,7 @@
       lualine-nvim
 
       nnn-vim
+      telescope-nvim
     ];
     extraLuaConfig = "require 'schwem.navigation'";
   };

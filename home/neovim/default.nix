@@ -22,21 +22,18 @@ in
   programs.neovim = {
     enable = true;
     defaultEditor = lib.mkDefault true;
-    extraLuaConfig = ''
-      require "schwem.colorschemes"
-      require "schwem.keymap"
-      require "schwem.helpers"
-      require "schwem.options"
-      require "schwem.plugins"
-    '';
+    # extraLuaConfig = ''
+    #   require "schwem.keymap"
+    #   require "schwem.helpers"
+    #   require "schwem.options"
+    #   require "schwem.plugins"
+    # '';
     extraLuaPackages = [];
     plugins = with pkgs.vimPlugins; [
       # I don't know where to put these ones yet
-	  mkPlugin "comment-nvim" "require('Comment').setup()"
-      # comment-nvim
+      comment-nvim
       nvim-luadev
       nvim-treesitter
-      telescope-nvim
       toggleterm-nvim
       which-key-nvim
 
