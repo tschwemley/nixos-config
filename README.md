@@ -15,7 +15,8 @@ Oh and declarative system configurations across multiple machines or something.
 `flake.nix` - entry point
 #`apps/` 
 `home/`		- home configurations via home-manager
-`modules/`	- Reusable pieces of configuration modularized by scope.
+`modules/`	- There are many opinionated approaches to modulization in the nix ecosystem. In my case
+			  modules are simply reusable pieces of configuration.
 `hosts/`	- host configurations via nixos
 `overlays/` - overlays/overrides for particularly packages
 `pkgs/`
