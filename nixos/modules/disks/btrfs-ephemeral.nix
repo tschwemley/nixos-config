@@ -39,9 +39,9 @@
                   type = "btrfs";
                   extraArgs = ["-f"];
                   subvolumes = {
-					"/rootfs" = {
-						mountOptions = [ mountpoint="/" ];
-					};
+					# "/rootfs" = {
+					# 	mountOptions = [ mountpoint="/" ];
+					# };
                     "/home" = {
                       mountOptions = ["compress=lzo"];
                     };

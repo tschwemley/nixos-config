@@ -3,20 +3,26 @@
   lib,
   ...
 }: 
+let
+	diskConfig = {
+		imports = [
+			  ../modules/disks/root-ephemeral.nix
+			(import ../modules/disks/btrfs-ephemeral.nix {
+			  diskName = "/dev/vda";
+			  swapSize = "2G";
+			})
+			(import ../modules/disks/btrfs-block-storage.nix {diskName = "/dev/sda";})
+		];
+	};
+in
 {
   imports =
     [
-		self.inputs.disko.nixosModules.disko
+	  diskConfig
       ../modules/k3s
       ../modules/services/keycloak.nix
       ../modules/server.nix
       ../modules/users/k3s.nix
-	  ../modules/disks/root-ephemeral.nix
-		# (import ../modules/disks/btrfs-ephemeral.nix {
-		#   diskName = "/dev/vda";
-		#   swapSize = "2G";
-		# })
-		# (import ../modules/disks/btrfs-block-storage.nix {diskName = "/dev/sda";})
     ];
 
   boot = {
