@@ -47,10 +47,10 @@
                       mountpoint = "/persist";
                       mountOptions = ["defaults" "autodefrag" "compress=zstd" "noatime"];
                     };
-                    "games" = {
-                      mountpoint = "/games";
-                      mountOptions = ["defaults" "autodefrag" "autodefrag" "compress=zstd" "lazytime" "nofail" "noatime" "x-systemd.growfs" "space_cache=v2"];
-                    };
+                    # "games" = {
+                    #   mountpoint = "/games";
+                    #   mountOptions = ["defaults" "autodefrag" "autodefrag" "compress=zstd" "lazytime" "nofail" "noatime" "x-systemd.growfs" "space_cache=v2"];
+                    # };
                   };
                 };
               };
@@ -62,5 +62,5 @@
   };
 
   fileSystems."/home".neededForBoot = true;
-  #fileSystems."/persist".neededForBoot = true;
+  fileSystems."/persist".neededForBoot = true;
 }
