@@ -12,7 +12,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     wireplumber.enable = true;
-    # If you want to use JACK applications, uncomment this
     # TODO: determine if needed for live-audio e.g. sonic pi or reaper
     jack.enable = true;
   };
@@ -25,6 +24,15 @@
   # SBC-XQ provides better sound quality for audio listening. see:
   # https://www.guyrutenberg.com/2021/03/11/replacing-pulseaudio-with-pipewire/
   environment.etc = {
+    # "pipewire/pipewire.conf.d/92-low-latency.conf".text = ''
+    #   context.properties = {
+    #     default.clock.rate = 48000
+    #     default.clock.quantum = 32
+    #     default.clock.min-quantum = 32
+    #     default.clock.max-quantum = 32
+    #   }
+    # '';
+
     "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
       bluez_monitor.properties = {
         ["bluez5.enable-sbc-xq"] = true,
