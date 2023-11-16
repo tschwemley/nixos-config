@@ -1,4 +1,5 @@
 local lsp = require('lsp-zero').preset({})
+local which-key = require('which-key')
 
 lsp.on_attach(function(client, bufnr)
    lsp.default_keymaps({ buffer = bufnr })

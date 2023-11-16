@@ -26,12 +26,8 @@ extractSshHostKeys() {
 }
 
 extractWireguardPrivateKey() {
-	if [ -n "$2" ]
-	then
-		path="$2"
-	else
-		path="/persist/wireguard/private"
-	fi
+	extractPath="/persist/wireguard/private" 
+	if [ "$2" != "" ]; then extractPath="$2"; fi
 	secretsPath=./nixos/hosts/$1/secrets.yaml
 	sops -d --extract '["wireguard_private"]' $secretsPath > $path 
 }
