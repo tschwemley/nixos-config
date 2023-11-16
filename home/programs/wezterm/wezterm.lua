@@ -1,5 +1,5 @@
 local wezterm = require "wezterm"
-return {
+local config = {
    audible_bell = "Disabled",
    color_scheme = "Gruvbox dark, medium (base16)",
    font = wezterm.font("Hasklig"),
@@ -17,4 +17,11 @@ return {
       },
    },
    enable_wayland = false,
+   ssh_domains = wezterm.default_ssh_domains(),
 }
+
+for _, dom in ipairs(config.ssh_domains) do
+   dom.assume_shell = 'Posix'
+end
+
+return config
