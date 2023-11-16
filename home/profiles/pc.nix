@@ -8,6 +8,7 @@ in {
     ./.
     ../programs/brave.nix
     ../programs/discord.nix
+    ../programs/firefox.nix
     ../programs/reaper.nix
     ../programs/rbw.nix
     ../programs/realvnc.nix
