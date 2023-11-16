@@ -1,4 +1,5 @@
 # TODO: this is just the default config for now. Customze this as needed
+{
  services.fail2ban = {
     enable = true;
     maxretry = 5; # Observe 5 violations before banning an IP
@@ -28,3 +29,4 @@
       '';
     };
   };
+}
