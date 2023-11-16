@@ -22,6 +22,7 @@
     htop
     jq
     ripgrep
+    rsync
     unzip
     wget
   ];
