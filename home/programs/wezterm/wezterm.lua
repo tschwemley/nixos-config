@@ -17,11 +17,4 @@ return {
       },
    },
    enable_wayland = false,
-   ssh_domain = {
-      {
-         name = "dev",
-         remote_address = 'dev',
-         username = 'tschwemley',
-      },
-   },
 }
