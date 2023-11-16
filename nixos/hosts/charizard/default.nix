@@ -104,6 +104,12 @@ in {
       "openweather_api_key" = {
         key = "openweather_api_key";
         owner = "schwem";
+        path = "/home/schwem/.config/.openweather-api-key";
+      };
+      "openweather_city_id" = {
+        key = "openweather_city_id";
+        owner = "schwem";
+        path = "/home/schwem/.config/.openweather-city-id";
       };
       "ssh_config" = {
         mode = "0600";
