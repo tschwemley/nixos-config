@@ -8,7 +8,6 @@
   hostName = "articuno";
 
   impermanence = import ../../modules/system/impermanence.nix {inherit inputs;};
-
   # user = import ../../modules/users/server.nix {
   #   inherit config;
   #   userName = hostName;
@@ -16,9 +15,9 @@
 in {
   imports = [
     (modulesPath + "/virtualisation/proxmox-image.nix")
-#impermanence
+    #impermanence
     # user
-#../../profiles/default.nix
+    ../../profiles/default.nix
     # ./wireguard.nix
     # ../../modules/services/k3s/server.nix
     # ../../profiles/k3s.nix
