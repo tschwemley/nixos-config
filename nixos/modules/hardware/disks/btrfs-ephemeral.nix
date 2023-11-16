@@ -1,9 +1,10 @@
-{diskName, ...}: {
+# {diskName, ...}: {
+{...}: {
   disko.devices = {
     disk = {
-      "${diskName}" = {
+      nvme1n1 = {
         type = "disk";
-        device = "/dev/${diskName}";
+        device = "/dev/nvme1n1";
         content = {
           type = "gpt";
           partitions = {
