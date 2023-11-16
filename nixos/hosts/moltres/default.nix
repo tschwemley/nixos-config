@@ -4,13 +4,16 @@
   lib,
   ...
 }: let
-  hostName = "zapados";
-  diskConfig = import ../modules/disks/btrfs-ephemeral.nix {
+  hostName = "moltres";
+  diskConfig = import ../../modules/disks/btrfs-ephemeral.nix {
     diskName = "/dev/vda";
-    swapSize = "-6G";
+    swapSize = "-4G";
   };
-  impermanence = import ../modules/system/impermanence.nix {inherit inputs;};
-  user = import ../modules/users/server.nix {
+  impermanence = import ../../modules/system/impermanence.nix {
+    inherit inputs;
+    additionalDirs = ["/etc/systemd/network"];
+  };
+  user = import ../../modules/users/server.nix {
     inherit config;
     userName = hostName;
   };
@@ -19,17 +22,17 @@ in {
     diskConfig
     impermanence
     user
+    ../../profiles/server.nix
     ./wireguard.nix
-    ../profiles/server.nix
-    ../modules/services/k3s/server.nix
-    # ../modules/services/keycloak.nix
+    ../../modules/services/k3s/agent.nix
+    # ../../modules/services/keycloak.nix
   ];
 
   boot = {
     initrd = {
       availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
     };
-    kernelModules = ["kvm-amd" "wireguard"];
+    kernelModules = ["kvm-amd"];
     supportedFilesystems = ["btrfs"];
     loader = {
       grub = {
@@ -40,6 +43,7 @@ in {
     };
   };
 
+  # moltres has issues with DHCP so disable and use systemd-networkd instead
   networking = {
     inherit hostName;
     dhcpcd.enable = false;
@@ -49,6 +53,8 @@ in {
 
   services.openssh = {
     enable = true;
+    # PasswordAuthentication = false;
+    # KbdInteractiveAuthentication = false;
     hostKeys = [
       {
         bits = 4096;
@@ -64,11 +70,10 @@ in {
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
-    age.sshKeyPaths = [
-      "/persist/etc/ssh/ssh_host_ed25519_key"
-    ];
+    age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
     age.keyFile = "/persist/.age-keys.txt";
 
+    # Specify machine secrets
     secrets = {
       root_password = {
         neededForUsers = true;
@@ -93,6 +98,8 @@ in {
 
   # don't update this
   system.stateVersion = "23.11";
+
+  # enable systemd-networkd for this machine
   systemd.network.enable = true;
   services.resolved.enable = true;
 

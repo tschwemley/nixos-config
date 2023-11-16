@@ -7,14 +7,14 @@
   hardware = {
     imports = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel
-      ../modules/hardware/nvidia.nix
-      ../modules/hardware/opengl.nix
+      ../../modules/hardware/nvidia.nix
+      ../../modules/hardware/opengl.nix
     ];
   };
 in {
   imports = [
     hardware
-    ../profiles/pc.nix
+    ../../profiles/pc.nix
   ];
 
   boot = {
