@@ -17,7 +17,7 @@
   home-manager.users.schwem = {
     imports = [
       # homeConfigurations.schwem.activation-script
-      ../../../home/profiles/pc.nix
+      ../../../home/profiles/pc-gui.nix
     ];
   };
 }

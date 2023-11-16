@@ -15,7 +15,7 @@ in {
     };
     initExtra = ''
       . ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh
-      export PATH=${config.home.profileDirectory}/bin
+      export PATH=$PATH:${config.home.profileDirectory}/bin
     '';
   };
 }
