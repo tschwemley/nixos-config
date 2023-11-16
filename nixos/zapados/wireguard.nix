@@ -2,6 +2,7 @@
   # boot.extraModulePackages = [config.boot.kernelPackages.wireguard];
   networking.firewall.allowedUDPPorts = [51820];
   networking.firewall.enable = true;
+  systemd.services.network.serviceConfig.SupplementaryGroups = [config.users.groups.keys.name];
   systemd.network = {
     enable = true;
     netdevs = {
