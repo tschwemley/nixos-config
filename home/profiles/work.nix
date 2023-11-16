@@ -26,5 +26,8 @@ in {
     packages = with pkgs; [
       mysql
     ];
+    sessionVariables = {
+      TERM = "xterm-256colors";
+    };
   };
 }
