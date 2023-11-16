@@ -6,6 +6,7 @@
   }: {
     packages = {
       bambuStudio = pkgs.stdenv.mkDerivation rec {
+        builder = "${pkgs.bash}/bin/bash";
         pname = "bambu-studio";
         version = "01.07.04.52";
         src = pkgs.fetchFromGitHub {
