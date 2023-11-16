@@ -20,6 +20,7 @@ in {
       "20-wg0" = {
         inherit wireguardPeers;
         netdevConfig = {
+          KeepAliveSec = 25;
           Kind = "wireguard";
           Name = "wg0";
           MTUBytes = "1430";
