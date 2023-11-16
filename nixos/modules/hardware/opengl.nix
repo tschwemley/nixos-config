@@ -1,4 +1,11 @@
-# this config is here primarily to enable video acceleration
+{
+  hardware.opengl.enable = true;
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  };
+}
+# TODO: remove below if no issues
+/*
 {pkgs, ...}: {
   nixpkgs.config.packageOverrides = pkgs: {
     vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
@@ -16,6 +23,7 @@
 
   # TODO: remove if unneeded
   environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "i965";
+    LIBVA_DRIVER_NAME = "iHD";
   };
 }
+*/
