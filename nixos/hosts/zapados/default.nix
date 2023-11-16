@@ -46,7 +46,7 @@
   };
 in {
   imports = [
-    k3s
+    # k3s
     user
     wireguard
   ];
