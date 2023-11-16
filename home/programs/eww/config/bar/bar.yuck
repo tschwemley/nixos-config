@@ -1,16 +1,9 @@
-(defwidget clock[]
-  (box :class "clock"
-       :orientation "h"
-       :halign "end"
-       EWW_TIME))
+(include "/home/schwem/.config/eww/bar/widgets/time-and-date.yuck")
+(include "/home/schwem/.config/eww/bar/style.scss")
 
-(defwidget bar[]
-  (box :class "bar"
-       :orientation "h"
-       (clock)))
-a
 (defwindow bar
   :monitor 1
+  :exclusive true
   :geometry (geometry :x "0%"
                       :y "9px"
                       :width "98%"
@@ -18,4 +11,4 @@ a
                       :anchor "top center")
   :stacking "fg"
   :windowtype "dock"
-q(bar))
+(bar))
