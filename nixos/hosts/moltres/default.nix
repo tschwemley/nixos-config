@@ -93,7 +93,7 @@ in {
   };
 
   # don't update this
-  system.stateVersion = "23.11";
+  system.stateVersion = "23.05";
 
   # enable systemd-networkd for this machine
   systemd.network.enable = true;
