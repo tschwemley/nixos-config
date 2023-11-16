@@ -1,6 +1,9 @@
 {pkgs, ...}: let
   plugins = [];
 in {
+  home.sessionVariables = {
+    NNN_FIFO = "/tmp/nnn.fifo";
+  };
   programs.nnn = {
     enable = true;
     bookmarks = {
