@@ -7,7 +7,7 @@
   role ? "agent",
   ...
 }: let
-  defaultFlags = "--node-ip ${nodeIP} --node-external-ip ${nodeIP} --container-runtime-endpoint unix:///run/containerd/containerd.sock";
+  defaultFlags = "--node-ip ${nodeIP} --node-external-ip ${nodeIP} --container-runtime-endpoint unix:///run/containerd/containerd.sock ";
   serverFlags = "--disable traefik --flannel-backend=wireguard-native --flannel-external-ip";
 in {
   environment.systemPackages = with pkgs; [
@@ -17,7 +17,7 @@ in {
 
   # 51820 and 51821 for wg backend
   networking.firewall.allowedUDPPorts = [51820 51821];
-  # 10250 for kubelet metrics
+  # 6443 for api server; 10250 for kubelet metrics
   networking.firewall.allowedTCPPorts = [10250 (lib.mkIf clusterInit 6443)];
 
   programs.zsh.shellAliases = {
