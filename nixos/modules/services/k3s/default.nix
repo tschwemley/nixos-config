@@ -10,14 +10,21 @@
   networking.firewall.allowedTCPPorts = [10250];
 
   programs.zsh.shellAliases = {
+    ctr = "k3s ctr";
     kubectl = "k3s kubectl";
   };
 
   services.k3s.enable = true;
   sops.secrets.k3s-server-token.sopsFile = ./secrets.yaml;
-  systemd.services.k3s = {
-    wants = ["containerd.service"];
-    after = ["containerd.service" "firewall.service"];
+  systemd.services = {
+	  k3s = {
+		wants = ["containerd.service" "run-secrets.d.mount" "systemd-networkd"];
+		after = ["containerd.service" "firewall.service" "run-secrets.d.mount" "systemd-networkd"];
+	  };
+	  systemd-networkd = {
+		requires = ["run-secrets.d.mount"];
+		after = ["run-secrets.d.mount"];
+	  };
   };
 
   virtualisation.containerd = {
