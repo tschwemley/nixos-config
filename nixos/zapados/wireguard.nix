@@ -28,14 +28,14 @@
       };
     };
     networks = {
-		"20-wg0" = {
-      # See also man systemd.network
-      matchConfig.Name = "wg0";
-      address = [
-        "10.0.0.1/24"
-      ];
-      DHCP = "no";
+      "20-wg0" = {
+        # See also man systemd.network
+        matchConfig.Name = "wg0";
+        address = [
+          "10.0.0.1/24"
+        ];
+        DHCP = "no";
+      };
     };
-  };
   };
 }

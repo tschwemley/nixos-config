@@ -27,12 +27,14 @@
         ];
       };
     };
-    networks.wg0 = {
-      matchConfig.Name = "wg0";
-      # IP addresses the client interface will have
-      address = [
-        "10.0.0.2/24"
-      ];
+    networks = {
+      "20-wg0" = {
+        matchConfig.Name = "wg0";
+        # IP addresses the client interface will have
+        address = [
+          "10.0.0.2/24"
+        ];
+      };
     };
   };
 }
