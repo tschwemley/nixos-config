@@ -55,7 +55,6 @@
 
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            #alejandra
             nixos-generators
             pkgs.sops
             ssh-to-age
