@@ -1,4 +1,4 @@
 {pkgs, ...}: {
-  services.mullvad.enable = true;
+  services.mullvad-vpn.enable = true;
   environment.systemPackages = with pkgs; [mullvad-closest];
 }
