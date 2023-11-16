@@ -66,11 +66,11 @@
       };
 
       imports = [
-        ./devShells
         ./home
         ./nixos
         ./nixos/containers
         ./packages
+        ./shells
       ];
     };
 }
