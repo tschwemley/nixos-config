@@ -20,6 +20,7 @@ in {
     ../programs/sonic-pi.nix
     ../programs/spotify.nix
     ../programs/tigervnc.nix
+    ../programs/unity.nix
     ../programs/vlc.nix
     ../programs/zoom.nix
     ../wayland/hyprland.nix
