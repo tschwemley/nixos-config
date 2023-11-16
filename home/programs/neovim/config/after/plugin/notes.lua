@@ -1,11 +1,16 @@
 require('neorg').setup {
    load = {
       ['core.defaults'] = {},
-      ['core.ui.calendar'] = {},
       ['core.concealer'] = {},
       ['core.dirman'] = {
-         notes = '~/notes',
+         config = {
+            workspaces = {
+               notes = '~/notes',
+            },
+         }
       },
+      ['core.tempus'] = {},
+      ['core.ui.calendar'] = {},
    }
 }
 

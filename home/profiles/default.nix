@@ -1,4 +1,4 @@
-let
+{...}: let
   git = import ../programs/git.nix {
     name = "Tyler Schwemley";
     email = "tjschwem@gmail.com";
