@@ -38,6 +38,7 @@ in {
     loader.systemd-boot = {
       enable = true;
       editor = false; # leaving true allows for root access to be gained via passing kernal param
+      memtest86.enable = true;
     };
   };
 
