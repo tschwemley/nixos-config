@@ -2,7 +2,6 @@ local wk = require('which-key')
 
 require("bufferline").setup()
 require("lualine").setup()
-require("nnn").setup()
 
 wk.register({
   c = {":close<cr>", "Close File" },
