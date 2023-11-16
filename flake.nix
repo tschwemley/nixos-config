@@ -13,8 +13,8 @@
 
 	nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
-    #disko.url = "github:nix-community/disko";
-    #disko.inputs.nixpkgs.follows = "nixpkgs";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
@@ -50,7 +50,8 @@
 
       imports = [
         ./home
-        ./nixos
+		./hosts
+        #./nixos
         ./packages
       ];
 	};
