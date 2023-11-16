@@ -1,0 +1,3 @@
+{
+  "nixconf" = "cd ~/nixos-config";
+}
