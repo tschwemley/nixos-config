@@ -9,18 +9,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
+
+    impermanence.url = "github:nix-community/impermanence/master";
 
     nix-on-droid = {
       url = "github:t184256/nix-on-droid";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -29,9 +34,6 @@
 
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
 
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    impermanence.url = "github:nix-community/impermanence/master";
-    nixos-hardware.url = "github:nixos/nixos-hardware/master";
     sops.url = "github:Mic92/sops-nix";
   };
 
