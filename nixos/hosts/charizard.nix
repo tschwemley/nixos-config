@@ -9,7 +9,7 @@
   };
 in {
   imports = [
-    (import ../hardware/disks/btrfs-ephemeral.nix {inherit diskName swapSize;})
+	diskConfig
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
     ./profiles/pc.nix

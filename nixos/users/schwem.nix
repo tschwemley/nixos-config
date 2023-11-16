@@ -3,7 +3,7 @@
     schwem = {
       isNormalUser = true;
       extraGroups = ["wheel" "networkmanager"];
-      openssh.authorizedKeys.keys = [builtins.readFile ../../secrets/keys/charizard.pub];
+      openssh.authorizedKeys.keys = [(builtins.readFile ../../secrets/keys/charizard.pub)];
     };
   };
 
