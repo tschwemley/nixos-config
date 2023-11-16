@@ -9,7 +9,7 @@
     diskName = "/dev/vda";
     swapSize = "-6G";
   };
-  impermanence = import ../modules/system/impermanence.nix { inherit inputs; };
+  impermanence = import ../modules/system/impermanence.nix {inherit inputs;};
   user = import ../modules/users/server.nix {
     inherit config;
     userName = hostName;
@@ -17,9 +17,10 @@
 in {
   imports = [
     diskConfig
-	impermanence
+    impermanence
     user
     ../profiles/server.nix
+    ../modules/networking/wireguard
     # ../services/k3s
     # ../services/keycloak.nix
   ];
@@ -41,15 +42,15 @@ in {
 
   networking = {
     inherit hostName;
-    dhcpcd.enable = false;
+    useDHCP = lib.mkDefault true;
   };
 
   services.getty.autologinUser = "root";
-  
+
   services.openssh = {
     enable = true;
-    PasswordAuthentication = false;
-    KbdInteractiveAuthentication = false;
+    # PasswordAuthentication = false;
+    # KbdInteractiveAuthentication = false;
     hostKeys = [
       {
         bits = 4096;
@@ -66,8 +67,8 @@ in {
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.sshKeyPaths = [
-		"/persist/etc/ssh/ssh_host_ed25519_key"
-	];
+      "/persist/etc/ssh/ssh_host_ed25519_key"
+    ];
     age.keyFile = "/persist/.age-keys.txt";
 
     secrets = {
@@ -77,20 +78,11 @@ in {
       user_password = {
         neededForUsers = true;
       };
-      # static ip config via systemd.networkd is stored via sops and symlinked to appropriate directory
-      systemd_networkd_10_ens3 = {
-        mode = "0644";
-        path = "/etc/systemd/network/10-ens3.network";
-        restartUnits = ["systemd-networkd" "systemd-resolved"];
-      };
     };
   };
 
   # don't update this
   system.stateVersion = "23.11";
-
-  systemd.network.enable = true;
-  services.resolved.enable = true;
 
   users = {
     mutableUsers = false;

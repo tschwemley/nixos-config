@@ -49,12 +49,6 @@ in {
       k3s_user_password = {
         neededForUsers = true;
       };
-      # static ip config via systemd.networkd is stored via sops and symlinked to appropriate directory
-      systemd_networkd_10_ens3 = {
-        mode = "0644";
-        path = "/etc/systemd/network/10-ens3.network";
-        restartUnits = ["systemd-networkd" "systemd-resolved"];
-      };
     };
   };
 

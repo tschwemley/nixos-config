@@ -52,9 +52,9 @@
                     "/persist" = {
                       mountOptions = ["compress=lzo" "noatime"];
                     };
-					"/swap" = {
-						mountOptions = [ "noatime" ];
-					};
+                    "/swap" = {
+                      mountOptions = ["noatime"];
+                    };
                   };
                 };
               }
