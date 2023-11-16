@@ -23,6 +23,6 @@ in {
       ./profiles/pc.nix
     ];
     "work@mac" = mkHome "aarch64-darwin" [./profiles/work.nix];
-    # "work@dev" = mkHome "x86_64-linux" [ ./profiles/work.nix ];
+    "work@dev" = mkHome "x86_64-linux" [./profiles/work.nix];
   };
 }
