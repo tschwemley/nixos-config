@@ -15,7 +15,7 @@
   # make stuff work on wayland
   home.sessionVariables = {
     GDK_BACKEND = "wayland,x11";
-    GDK_SCALE = 2;
+    GDK_SCALE = 1.25;
     QT_QPA_PLATFORM = "wayland;xcb";
     SDL_VIDEODRIVER = "wayland";
     XCURSOR_SIZE = 32;
