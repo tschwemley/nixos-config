@@ -3,10 +3,6 @@
   lib,
   ...
 }: {
-  imports = [
-	  ./lsp.nix
-  ];
-
   programs.neovim = {
     enable = true;
     defaultEditor = lib.mkDefault true;
@@ -14,7 +10,6 @@
       require "schwem.colorschemes"
       require "schwem.keymap"
       require "schwem.helpers"
-      --require "schwem.lsp"
       require "schwem.options"
       require "schwem.plugins"
     '';
@@ -42,11 +37,6 @@
       cmp-nvim-lua
       luasnip
 
-      # d b rockin dat dadbod
-      vim-dadbod
-      vim-dadbod-ui
-      vim-dadbod-completion
-
       # pretty things
       gruvbox-material
     ];
@@ -60,4 +50,11 @@
     "nvim/lua".source = ../xdg-config/nvim/lua;
     "nvim/ftplugin".source = ../xdg-config/nvim/ftplugin;
   };
+  
+  # import at the end so extraLuaConfig in this file loads first in case there are any dependencies
+  imports = [
+	  ./db.nix
+	  ./lsp.nix
+  ];
+
 }
