@@ -1,4 +1,4 @@
-{...}: {
+{config, ...}: {
   programs.zsh = {
     autocd = true;
     enable = true;
