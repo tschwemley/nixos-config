@@ -17,7 +17,7 @@ in {
       expireDuplicatesFirst = true;
       extended = true;
     };
-    shellInit = ''
+    initExtra = ''
       . ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh
     '';
   };
