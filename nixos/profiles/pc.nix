@@ -17,6 +17,9 @@
     ../modules/wayland
   ];
 
+  documentation.dev.enable = true;
+  environment.systemPackages = with pkgs; [man-pages man-pages-posix];
+
   # on my personal machines I don't want to be prompted for my pw
   security.sudo.wheelNeedsPassword = false;
 }
