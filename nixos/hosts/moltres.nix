@@ -44,7 +44,7 @@ in {
       systemd_networkd = {
         path = "/etc/systemd/network/10-ens3.network";
       };
-	  user_password = {
+	  k3s_user_password = {
 		 neededForUsers = true; 
 	  };
     };
