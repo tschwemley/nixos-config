@@ -10,4 +10,16 @@ end)
 local nixServer = 'nil_ls' -- nixd (not formatting properly I think)
 lsp.setup_servers({ 'gopls', 'intelephense', 'lua_ls', nixServer, 'tsserver', 'yamlls' })
 
+require('lspconfig').nil_ls.setup {
+   -- autostart = true,
+   -- capabilities = caps,
+   settings = {
+      ['nil'] = {
+         formatting = {
+            command = { "nixpkgs-fmt" },
+         },
+      },
+   },
+}
+
 lsp.setup()
