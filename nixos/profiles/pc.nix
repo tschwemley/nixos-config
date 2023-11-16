@@ -8,10 +8,10 @@
     ../modules/hardware/audio.nix
     ../modules/programs/barrier.nix
     ../modules/services/mullvad.nix
-    #../modules/programs/steam.nix
-    ../modules/services/flatpak.nix
+    ../modules/programs/steam.nix
     ../modules/services/xserver.nix
     ../modules/system/fonts.nix
+    ../modules/system/xdg.nix
     ../modules/users/schwem.nix
   ];
 
