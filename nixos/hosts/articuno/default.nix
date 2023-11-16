@@ -23,16 +23,19 @@
     inherit config;
     ip = wireguardIP;
     peers = [
-      { # zapados
+      {
+        # zapados
         PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
         AllowedIPs = ["10.0.0.2/32"];
       }
-      { # moltres
-        
+      {
+        # moltres
+
         PublicKey = "uIrOynrMnIpY//v+1WLsTD//swl0Y4J/an0/gllWpz4=";
         AllowedIPs = ["10.0.0.3/32"];
       }
-      { #eevee
+      {
+        #eevee
         PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
         AllowedIPs = ["10.0.0.4/32"];
       }
