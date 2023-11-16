@@ -52,15 +52,13 @@
 
       perSystem = {
         config,
+        inputs',
         pkgs,
         system,
         ...
       }: {
         # makes pkgs available to all perSystem functions
-        _module.args.pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
+        _module.args.pkgs = inputs'.nixpkgs.legacyPackages;
 
         formatter = pkgs.alejandra;
       };
