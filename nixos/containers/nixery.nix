@@ -1,10 +1,13 @@
-{ nixery-pkgs, nix, pkgs, ... }:
-
-let
+{
+  nixery-pkgs,
+  nix,
+  pkgs,
+  ...
+}: let
   description = "Nixery";
   storagePath = "/var/lib/nixery";
 
-  nixery = nixery-pkgs.nixery.overrideAttrs(old: {
+  nixery = nixery-pkgs.nixery.overrideAttrs (old: {
     # Drop the nix-1p documentation page as it doesn't build in pure evaluation.
     postInstall = ''
       wrapProgram $out/bin/server \
@@ -12,11 +15,10 @@ let
         --prefix PATH : ${nix}/bin
     '';
   });
-in
-{
+in {
   systemd.services.nixery = {
     inherit description;
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = ["multi-user.target"];
 
     serviceConfig = {
       DynamicUser = true;
