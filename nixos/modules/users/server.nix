@@ -1,6 +1,7 @@
 {
   config,
   userName ? "server",
+  userSSHKey ? "",
   ...
 }: {
   imports = [./.];
@@ -10,6 +11,7 @@
       isNormalUser = true;
       home = "/home/${userName}";
       extraGroups = ["wheel" "k3s"];
+      openssh.authorizedKeys.keys = [userSSHKey];
     };
   };
 
