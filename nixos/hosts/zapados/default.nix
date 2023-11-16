@@ -47,17 +47,17 @@ in {
     user
     wireguard
   ];
-  
-		boot.loader.systemd-boot = {
-			enable = true;
-			editor = false; # leaving true allows for root access to be gained via passing kernal param
-		};
+
+  boot.loader.systemd-boot = {
+    enable = true;
+    editor = false; # leaving true allows for root access to be gained via passing kernal param
+  };
 
   # TODO: change this for all hosts soon
   services.getty.autologinUser = "root";
 
   # TODO: might be needed for proxmox to configure networking
-	#services.cloud-init.network.enable = true;
+  #services.cloud-init.network.enable = true;
 
   # don't update this
   system.stateVersion = "23.05";

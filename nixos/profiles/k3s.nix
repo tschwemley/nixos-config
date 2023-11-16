@@ -11,7 +11,7 @@
   role ? "agent",
   ...
 }: let
-  disk = import ../modules/hardware/disks/k3s.nix { inherit diskName; }; 
+  disk = import ../modules/hardware/disks/k3s.nix {inherit diskName;};
   impermanence =
     if enableImpermanence
     then
@@ -20,18 +20,19 @@
         additionalFiles = [
           "/var/lib/rancher/k3s/server/token"
         ];
-      };
+      }
+    else {};
   k3s = import ../modules/services/k3s {
     inherit config lib pkgs clusterInit nodeIP nodeName role;
   };
 in {
   imports = [
-	disk
+    disk
     impermanence
     k3s
     ./server.nix
   ];
-  
+
   boot = {
     initrd = {
       availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
@@ -62,7 +63,7 @@ in {
       };
     };
   };
- 
+
   systemd.network.enable = true;
   services.resolved.enable = true;
 }
