@@ -10,7 +10,7 @@
         inherit system;
 
         specialArgs = {
-          inherit (self) inputs homeConfigurations;
+          inherit (self) inputs;
         };
 
         modules = [

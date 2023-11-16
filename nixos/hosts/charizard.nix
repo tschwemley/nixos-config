@@ -10,7 +10,7 @@ in {
     (import ../hardware/disks/btrfs-ephemeral.nix {inherit diskName swapSize;})
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-gpu-nvidia
-    ../pc.nix
+    ./profiles/pc.nix
     #    ../users/desktop.nix
   ];
 
