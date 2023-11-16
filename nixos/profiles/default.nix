@@ -27,7 +27,4 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.sharedModules = [
-    inputs.sops.homeManagerModule
-  ];
 }

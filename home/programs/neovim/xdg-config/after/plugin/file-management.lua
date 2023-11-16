@@ -10,7 +10,7 @@ wk.register({
       d = {':bd<cr>', 'Delete Buffer'},
       j = {':BufferLinePick<cr>', 'Jump to a Buffer'},
       l = {':Telescope buffers<cr>', 'List Buffers (Telescope)'},
-      n = {':bp<cr>', 'Next Buffer'},
+      n = {':bn<cr>', 'Next Buffer'},
    },
    c = {':close<cr>', 'Close File' },
    e = {'<cmd>NnnExplorer<cr>', 'Explore Files'},
