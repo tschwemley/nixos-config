@@ -1,7 +1,7 @@
 { disks ? [ "/dev/vda" ], ... }: {
 	disko.devices = {
 		disk = {
-			vdb = {
+			vda = {
 				type = "disk";
 				device = builtins.elemAt disks 0;
 				content = {
@@ -32,6 +32,9 @@
 										mountpoint = "/";
 									};
 									"/home" = {
+										mountOptions = [ "compress=zstd" "noatime" "ssd" ];
+									};
+									"/persist" = {
 										mountOptions = [ "compress=zstd" "noatime" "ssd" ];
 									};
 									"/nix" = {
