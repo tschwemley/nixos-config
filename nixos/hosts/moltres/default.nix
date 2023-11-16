@@ -23,7 +23,7 @@
     peers = [
       {
         # articuno
-        AllowedIPs = ["10.0.0.1/32" "10.0.0.2/32" "10.0.0.5/32" "10.0.0.99/32"];
+        AllowedIPs = ["10.0.0.1/32" "10.0.0.2/32" "10.0.0.5/32" "10.0.0.90/32"];
         Endpoint = "wg.schwem.io:9918";
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       }
@@ -45,7 +45,7 @@
       }
       {
         #machamp
-        AllowedIPs = ["10.0.0.99/32"];
+        AllowedIPs = ["10.0.0.90/32"];
         PersistentKeepalive = 25;
         PublicKey = "tetndLcx82SrEVzR0hjoqASdQPEjdb5nZHXizL82vUI=";
       }
@@ -59,11 +59,6 @@ in {
     wireguard
     ../../modules/system/systemd-boot.nix
   ];
-
-  boot.loader.systemd-boot = {
-    enable = true;
-    editor = false; # leaving true allows for root access to be gained via passing kernal param
-  };
 
   sops = {
     defaultSopsFile = ./secrets.yaml;

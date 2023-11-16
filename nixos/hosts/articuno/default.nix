@@ -11,7 +11,7 @@
   wireguardIP = "10.0.0.1";
 
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
-  k3r = import ../../profiles/k3s.nix {
+  k3s = import ../../profiles/k3s.nix {
     inherit inputs config lib nodeName pkgs useGrub;
     clusterInit = true;
     enableImpermanence = false;
@@ -48,7 +48,7 @@
       }
       {
         #machamp
-        AllowedIPs = ["10.0.0.99/32"];
+        AllowedIPs = ["10.0.0.90/32"];
         PublicKey = "tetndLcx82SrEVzR0hjoqASdQPEjdb5nZHXizL82vUI=";
       }
     ];
