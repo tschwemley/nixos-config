@@ -48,7 +48,7 @@ in {
   imports = [
     k3s
     user
-    ./wireguard.nix
+    wireguard
   ];
 
   # boot = {
