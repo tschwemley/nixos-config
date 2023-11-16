@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  diskName = "/dev/vda";
+  diskName = "/dev/sda";
   nodeName = "flareon";
   wireguardIP = "10.0.0.5";
 
