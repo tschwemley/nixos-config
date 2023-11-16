@@ -14,14 +14,12 @@ in
 {
 	flake = {
 		nixosConfigurations = {
-			# office = mkSystem "office" [];
 			office = inputs.nixpkgs.lib.nixosSystem {
-				# inherit ({ system.stateVersion = "23.05"; });
-				
 				system = "x86_64-linux";
 				modules = [
-					# { system.stateVersion = "23.05"; }
-					./generated/office.nix
+					./office
+					self.nixosModules.home-manager
+					self.homeConfigurations.personal
 				];
 			};
 			

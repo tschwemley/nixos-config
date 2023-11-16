@@ -34,10 +34,6 @@
         };
 
         formatter = pkgs.alejandra;
-
-        # config.pkgs = pkgs;
-  #       _module.pkgs = inputs.nixpkgs;
-		# _module.args = { inherit pkgs config lib utils; };
       };
 
       # modules = [./modules];
