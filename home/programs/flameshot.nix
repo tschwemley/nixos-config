@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  home.packges = with pkgs; [flameshot];
+  home.packages = with pkgs; [flameshot];
 }
