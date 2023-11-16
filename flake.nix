@@ -71,50 +71,9 @@
           ];
         };
 
-		#TODO: make this generic for k3s nodes
-        # packages.k3s-node = nixos-generators.nixosGenerate {
-        packages.zapados = nixos-generators.nixosGenerate {
-			# inherit system;
-			system = "x86_64-linux";
-			modules = [
-				./nixos/hosts/zapados	
-			];
-			customFormats = {
-				# "vma" = {...}: {
-				"vma" = {
-					imports = [./nixos/modules/virtualisation/proxmox-image.nix];
-					formatAttr = "VMA";
-					fileExtension = ".vma.zst";
-				};
-			};
-			format = "vma";
-		};
+        formatter = pkgs.alejandra;
       };
 
-      # # TODO: move this somewhere
-      #  packages.x86_64-linux = {
-      #  nixnixnix = nixos-generators.nixosGenerate {
-      # system = "x86_64-linux";
-      # modules = [
-      #    # inputs.disko.nixosModules.disko
-      #   # ./nixos/modules/system/nix.nix
-      # ];
-      # format = "install-iso";
-      #
-      # # optional arguments:
-      # # explicit nixpkgs and lib:
-      # # pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      # # lib = nixpkgs.legacyPackages.x86_64-linux.lib;
-      # # additional arguments to pass to modules:
-      # # specialArgs = { myExtraArg = "foobar"; };
-      #
-      # # you can also define your own custom formats
-      # # customFormats = { "myFormat" = <myFormatModule>; ... };
-      # # format = "myFormat";
-      #  };
-      #  };
-      #
-      # Import flake attrs
       imports = [
         ./home
         ./nixos

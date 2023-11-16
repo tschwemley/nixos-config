@@ -1,5 +1,6 @@
 # TODO: 
 - Rewrite this
+- Switch to terraform for infra (like vm config)
 
 ## Features
 - uses nix flakes
@@ -28,4 +29,5 @@ TODO
 - [Graham Chirstensen's Erase Your Darlings](https://grahamc.com/blog/erase-your-darlings/)
 - [Mike Royal's NixOS Guide](https://github.com/mikeroyal/NixOS-Guide)
 - [misterio77's config](https://github.com/Misterio77/nix-config)
+
 

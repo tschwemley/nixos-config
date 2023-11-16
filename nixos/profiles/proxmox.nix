@@ -14,13 +14,13 @@
     inherit bios cores diskSize memory;
     name = config.networking.hostName;
   };
-  
-	fileSystems."/" = {
-	  device = lib.mkForce "/dev/sda3";
-	  autoResize = true;
-	  fsType = lib.mkForce "btrfs";
-	};
-	fileSystems."/boot".device = lib.mkForce "/dev/sda2";
+
+  fileSystems."/" = {
+    device = lib.mkForce "/dev/sda3";
+    autoResize = true;
+    fsType = lib.mkForce "btrfs";
+  };
+  fileSystems."/boot".device = lib.mkForce "/dev/sda2";
 
   # allow the vm to have it's network access set up immediately
   services.cloud-init.network.enable = true;
