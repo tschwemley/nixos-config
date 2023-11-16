@@ -23,15 +23,17 @@
     '';
     extraLuaPackages = [];
     plugins = with pkgs.vimPlugins; [
-      # call the doctor, we diagnosing shit
-      trouble-nvim
 
+	  # I don't know where to put these ones yet
       comment-nvim
       nvim-luadev
       nvim-treesitter
       telescope-nvim
       toggleterm-nvim
       which-key-nvim
+	  
+      # call the doctor, we diagnosing shit
+      trouble-nvim
 
       # pretty things
       gruvbox-material
