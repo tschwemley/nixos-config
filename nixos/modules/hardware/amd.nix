@@ -1,7 +1,5 @@
 { pkgs, ... }: {
-  # boot.initrd.kernelModules = ["amdgpu"];
   services.xserver.videoDrivers = ["modesetting"];
-
   environment.variables.AMD_VULKANICD = "RADV";
 
   hardware.opengl = {
