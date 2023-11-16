@@ -1,6 +1,6 @@
 {
   diskName,
-  swapSize ? "-2G",
+  swapSize,
   ...
 }: {
   disko = {
@@ -21,8 +21,8 @@
               }
               {
                 name = "ESP";
-                start = "1M";
-                end = "512M";
+                start = "1MiB";
+                end = "128MiB";
                 bootable = true;
                 content = {
                   type = "filesystem";
@@ -32,9 +32,9 @@
               }
               {
                 name = "root";
-                start = "512M";
-                end = "100%";
-                part-type = "primary";
+                start = "128MiB";
+                end = swapSize;
+                # part-type = "primary";
                 content = {
                   type = "btrfs";
                   extraArgs = ["-f"];
@@ -59,7 +59,7 @@
                 name = "swap";
                 start = swapSize;
                 end = "100%";
-                part-type = "primary";
+                # part-type = "primary";
                 content = {
                   type = "swap";
                   randomEncryption = true;

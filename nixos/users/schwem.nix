@@ -8,6 +8,6 @@
   };
 
   home-manager.users.schwem.imports = [
-	../../home/profiles/pc.nix
+    ../../home/profiles/pc.nix
   ];
 }
