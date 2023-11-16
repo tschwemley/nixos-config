@@ -39,6 +39,7 @@
     home-manager,
     nixos-hardware,
     nixpkgs,
+    nix-on-droid,
     sops,
     ...
   }:
@@ -65,6 +66,7 @@
 
       imports = [
         ./apps
+        ./droid
         ./home
         ./hydra
         ./nixos
