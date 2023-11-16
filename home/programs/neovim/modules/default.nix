@@ -1,4 +1,14 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }: 
+let
+	moduleArgs = {
+		_module.args = {
+			inherit (pkgs) vimPlugins;
+			inherit (lib.types) submodule;
+		};
+	};
+in
+{
+	inherit moduleArgs;
 	imports = [
 		./colors.nix
 		./completion.nix
