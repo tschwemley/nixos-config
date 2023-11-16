@@ -14,6 +14,10 @@
     ../modules/users/schwem.nix
   ];
 
+  # on my personal machines I don't want to be prompted for my pw
+  security.sudo.wheelNeedsPassword = false;
+
+
   /*
     TODO: make this specific to Charizard if works - testing a fix for Brave having SIGSEGV that
           may be related to not being able to find a libva driver. If confirmed working then move
