@@ -1,19 +1,19 @@
 {
-  inputs,
+  self,
   withSystem,
   pkgs,
   ...
 }: let
-  mkSystem = configPath: systemString:
+  mkSystem = systemString: configPath:
     withSystem systemString ({system, ...}:
-      inputs.nixpkgs.lib.nixosSystem {
+      self.inputs.nixpkgs.lib.nixosSystem {
         inherit system;
 
-        # specialArgs = {
-        #   inherit inputs;
-        # };
+        specialArgs = {
+          inherit (self) inputs homeConfigurations;
+        };
+
         modules = [
-          {_module.args.inputs = inputs;}
           ./common.nix
           configPath
         ];
@@ -21,8 +21,8 @@
 in {
   flake = {
     nixosConfigurations = {
-      charizard = mkSystem ./hosts/charizard "x86_64-linux";
-      moltres = mkSystem ./hosts/moltres "x86_64-linux";
+      charizard = mkSystem "x86_64-linux" ./hosts/charizard.nix;
+      moltres = mkSystem "x86_64-linux" ./hosts/moltres.nix;
     };
   };
 }
