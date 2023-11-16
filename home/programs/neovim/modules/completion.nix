@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   programs.neovim = {
     plugins = with pkgs.vimPlugins; [
-      copilot-cmp
-      copilot-lua
+      # copilot-cmp
+      # copilot-lua
       cmp-buffer
       cmp_luasnip
       cmp-nvim-lsp

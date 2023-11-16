@@ -25,17 +25,20 @@ lsp.on_attach(function(client, bufnr)
    )
    vim.api.nvim_clear_autocmds({ group = augroup_id, buffer = bufnr })
 
-   vim.api.nvim_create_autocmd(
-      { "BufWritePre" },
-      {
-         group = augroup_id,
-         buffer = bufnr,
-         callback = function()
-            local lsp_format_modifications = require "lsp-format-modifications"
-            lsp_format_modifications.format_modifications(client, bufnr)
-         end,
-      }
-   )
+   if (client ~= 'nil_ls' and client ~= 'yamlls')
+   then
+      vim.api.nvim_create_autocmd(
+         { "BufWritePre" },
+         {
+            group = augroup_id,
+            buffer = bufnr,
+            callback = function()
+               local lsp_format_modifications = require "lsp-format-modifications"
+               lsp_format_modifications.format_modifications(client, bufnr)
+            end,
+         }
+      )
+   end
 end)
 
 whichKey.register({
