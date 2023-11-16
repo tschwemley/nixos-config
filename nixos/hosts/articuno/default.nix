@@ -38,6 +38,12 @@
         PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
       }
       {
+        #flareon
+        AllowedIPs = ["10.0.0.5/32"];
+        PersistentKeepalive = 25;
+        PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
+      }
+      {
         #machamp
         AllowedIPs = ["10.0.0.99/32"];
         PublicKey = "tetndLcx82SrEVzR0hjoqASdQPEjdb5nZHXizL82vUI=";
@@ -61,7 +67,6 @@ in {
   };
 
   networking.dhcpcd.enable = false;
-  services.getty.autologinUser = "root";
 
   services.openssh = {
     enable = true;

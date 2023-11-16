@@ -39,6 +39,12 @@
         PersistentKeepalive = 25;
         PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
       }
+      {
+        #flareon
+        AllowedIPs = ["10.0.0.5/32"];
+        PersistentKeepalive = 25;
+        PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
+      }
     ];
   };
 in {
@@ -49,12 +55,6 @@ in {
     wireguard
     ../../modules/system/systemd-boot.nix
   ];
-
-  # TODO: change this for all hosts soon
-  services.getty.autologinUser = "root";
-
-  # TODO: might be needed for proxmox to configure networking
-  #services.cloud-init.network.enable = true;
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
