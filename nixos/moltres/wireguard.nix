@@ -1,5 +1,5 @@
 {config, ...}: {
-  networking.firewall.allowedUDPPorts = [51820];
+  networking.firewall.allowedUDPPorts = [9918];
   networking.firewall.enable = true;
   # this gives networkd appropriate perms to read the secret
   systemd.services.networkd.serviceConfig.SupplementaryGroups = [config.users.groups.keys.name];
@@ -21,7 +21,7 @@
             wireguardPeerConfig = {
               PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
               AllowedIPs = ["10.0.0.1/32"];
-              Endpoint = "wg.schwem.io:51820";
+              Endpoint = "wg.schwem.io:9918";
             };
           }
         ];
