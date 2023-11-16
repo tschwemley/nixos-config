@@ -1,9 +1,8 @@
-require('toggleterm').setup({})
---    direction = 'float',
---    open_mapping = [[<C-\>]],
---    insert_mappings = true,
---    terminal_mappings = true,
--- })
+require('toggleterm').setup({
+   open_mapping = [[<C-\>]],
+   insert_mappings = true,
+   terminal_mappings = true,
+})
 
 require('which-key').register({
    t = {
