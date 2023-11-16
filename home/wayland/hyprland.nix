@@ -63,6 +63,9 @@
 
       exec-once = [
         "hyprpaper"
+        "xrandr --output DP-2 --auto"
+        "xrandr --output HDMI-A-2 --auto"
+        "xrandr --output HDMI-A-2 --primary"
       ];
 
       monitor = [
@@ -72,15 +75,11 @@
 
       workspace = [
         "HDMI-A-2,1"
-        "HDMI-A-2,3"
-        "HDMI-A-2,5"
-        "HDMI-A-2,7"
-        "HDMI-A-2,9"
         "DP-2,2"
+        "HDMI-A-2,3"
         "DP-2,4"
+        "HDMI-A-2,5"
         "DP-2,6"
-        "DP-2,8"
-        "DP-2,10"
       ];
     };
 
