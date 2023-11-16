@@ -24,8 +24,8 @@ in {
     user
     ../profiles/server.nix
     ./wireguard.nix
-    ../services/k3s/agent.nix
-    # ../services/keycloak.nix
+    ../modules/services/k3s/agent.nix
+    # ../modules/services/keycloak.nix
   ];
 
   boot = {
