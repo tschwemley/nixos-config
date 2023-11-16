@@ -79,7 +79,7 @@ in {
         neededForUsers = true;
       };
       wireguard_private = {
-        mode = "0600";
+        mode = "0644";
         path = "/persist/wireguard/private";
       };
       wireguard_public = {
