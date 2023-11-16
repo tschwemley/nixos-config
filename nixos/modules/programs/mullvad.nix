@@ -1,3 +1,3 @@
 { pkgs, ... }: {
-  enviornment.systemPackages = with pkgs; [mullvad-vpn mullvad-closest];
+  environment.systemPackages = with pkgs; [mullvad-vpn mullvad-closest];
                }
