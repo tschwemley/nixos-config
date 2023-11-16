@@ -16,7 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland.url = "github:hyprwm/Hyprland";
 
     impermanence.url = "github:nix-community/impermanence/master";
 
@@ -42,7 +42,7 @@
     disko,
     flake-parts,
     home-manager,
-    hyprland,
+    # hyprland,
     nixos-hardware,
     nixos-generators,
     nixpkgs,

@@ -3,7 +3,7 @@
   homeConfigurations,
   ...
 }: let
-  defaultSopsFile = config.sops.defaultSopsFile;
+  # defaultSopsFile = config.sops.defaultSopsFile;
 in {
   imports = [
     ./.
@@ -18,6 +18,7 @@ in {
 
   home-manager.users.schwem = {
     imports = [
+      # homeConfigurations.schwem.activation-script
       ../../../home/profiles/pc.nix
     ];
   };
