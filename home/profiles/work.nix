@@ -27,7 +27,7 @@ in {
       mysql
     ];
     sessionVariables = {
-      TERM = "xterm-256colors";
+      TERM = "xterm-256color";
     };
   };
 }
