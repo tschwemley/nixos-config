@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     gamescope
   ];
   programs.steam = {
