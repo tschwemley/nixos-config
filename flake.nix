@@ -66,10 +66,10 @@
       };
 
       imports = [
+        ./apps
         ./home
-        ./hydra-jobs
+        ./hydra
         ./nixos
-        #./packages
         ./shells
       ];
     };
