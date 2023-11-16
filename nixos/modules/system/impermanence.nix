@@ -18,7 +18,7 @@
       files =
         [
           # "/var/run/secrets.d/age-keys.txt"
-          "/etc/machine-id"
+          # "/etc/machine-id"
         ]
         ++ additionalFiles;
     };
