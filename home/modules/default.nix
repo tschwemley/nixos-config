@@ -14,5 +14,6 @@
 	];
 	
 	# common options/programs to all home configurations
-	home.stateVersion = "22.11";
+	#home.stateVersion = "22.11";
+	home.stateVersion = "23.05";
 }
