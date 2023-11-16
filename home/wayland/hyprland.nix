@@ -17,7 +17,7 @@
     # '';
 
     plugins = [
-      "$HOME/.config/hypr/libhyprbars.so"
+      "/home/schwem/.config/hypr/libhyprbars.so"
     ];
 
     settings = {
