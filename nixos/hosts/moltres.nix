@@ -45,6 +45,7 @@ in {
     secrets = {
       systemd_networkd = {
         path = "/etc/systemd/network/10-ens3.network";
+		mode = "0644";
       };
 	  k3s_user_password = {
 		 neededForUsers = true; 
@@ -55,12 +56,13 @@ in {
   # don't update this
   system.stateVersion = "23.11";
 
-  systemd = {
-	  network.enable = true;
-		services.networkd = {
-			serviceConfig.SupplementaryGroups = [ config.users.groups.keys.name ];
-		};
-  };
+  systemd.networkd.enable = true;
+  # systemd = {
+	 #  network.enable = true;
+		# services.networkd = {
+		# 	serviceConfig.SupplementaryGroups = [ config.users.groups.keys.name ];
+		# };
+  # };
 
   users = {
     mutableUsers = false;
