@@ -7,7 +7,7 @@
         owner = "OscarCreator";
         repo = "rsync.nvim";
         rev = "bc5789e73083692af2a21c72216d0b5985b929e3";
-        sha256 = "sha256-nJ0w4SO616RRUbFky+SH2deGh1uuIzF03QmlqdoIgxY=";
+        sha256 = "sha256-4wGHDBOmBJEDR0qXpkj3mzlKsD+ScRj/KmsnET8tmEc=";
       };
     };
 in {
