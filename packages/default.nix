@@ -1,6 +1,6 @@
 { ... }: {
   perSystem = { pkgs, ... }: {
-    bambuStudio = pkgs.appImageTools.wrapType2 {
+    bambuStudio = pkgs.appimageTools.wrapType2 {
       name = "bambu-studio";
       src = builtins.fetchurl {
         url = "https://github.com/bambulab/BambuStudio/releases/download/v01.07.04.52/Bambu_Studio_linux_ubuntu-v01.07.04.52.AppImage";
