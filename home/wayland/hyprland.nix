@@ -8,8 +8,8 @@
       src = pkgs.fetchFromGitHub {
         owner = "hyprwm";
         repo = "hyprland-plugins";
-        rev = "f9578d28d272fb61753417e175b0fcd5bedc1443";
-        sha256 = "sha256-TYsRfn8LLNPNQ0B4LgrGQmXZJrdAtwttRZSxLp1yqVc=";
+        rev = "e35ec9a2a79200a94b34817921e31c48546b4c2f";
+        sha256 = "sha256-xgHcT6oLAfai2/8HwDAuIpIvEG8Sjx6Y8XPr/j1VtLY=";
       };
       sourceRoot = "source/hyprbars";
 

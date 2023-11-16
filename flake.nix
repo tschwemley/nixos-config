@@ -20,6 +20,8 @@
 
     impermanence.url = "github:nix-community/impermanence/master";
 
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
     nix-on-droid = {
       url = "github:t184256/nix-on-droid";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,7 +44,6 @@
     disko,
     flake-parts,
     home-manager,
-    # hyprland,
     nixos-hardware,
     nixos-generators,
     nixpkgs,
@@ -65,6 +66,9 @@
         _module.args.pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          overlays = [
+            inputs.neovim-nightly-overlay.overlay
+          ];
         };
 
         formatter = pkgs.alejandra;
