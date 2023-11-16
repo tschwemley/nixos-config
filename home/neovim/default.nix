@@ -2,18 +2,13 @@
   pkgs,
   lib,
   ...
-}: let
-  mkPlugin = pluginName: config: {
-    type = "lua";
-    plugin = pkgs.vimPlugins.${pluginName};
-    inherit config;
-  };
-in {
+}: {
   imports = [
     ./colors.nix
     ./completion.nix
     ./db.nix
     ./debugging.nix
+    ./formatters-parsers.nix
     ./lsp.nix
     ./navigation.nix
   ];
@@ -32,15 +27,11 @@ in {
       # I don't know where to put these ones yet
       comment-nvim
       nvim-luadev
-      nvim-treesitter
       toggleterm-nvim
       which-key-nvim
 
       # call the doctor, we diagnosing shit
       trouble-nvim
-
-      # pretty things
-      gruvbox-material
     ];
     withPython3 = true;
     withNodeJs = true;

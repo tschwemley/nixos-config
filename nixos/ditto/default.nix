@@ -31,7 +31,7 @@ in {
     };
   };
 
-  isoImage.isoName = "nixos.iso";
+  # isoImage.isoName = lib.mkDefault "nixos.iso";
 
   services.openssh = {
     enable = true;
