@@ -1,6 +1,4 @@
-local wk = require('which-key')
-
-wk.register({
+require('which-key').register({
 	f = {'<cmd>Telescope find_files<cr>', 'Find Files',},
 	s = {
 		name = 'Search...',
