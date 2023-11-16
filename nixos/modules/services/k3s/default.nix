@@ -58,7 +58,7 @@ in {
       sopsFile = ./secrets.yaml;
       path = "/var/lib/rancher/k3s/server/token";
     };
-    schwem.io_github_key = {
+    "schwem.io_github_key" = {
       sopsFile = ./secrets.yaml;
       path = "/root/.ssh/schwem.io-git";
     };
