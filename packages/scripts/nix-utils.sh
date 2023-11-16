@@ -26,11 +26,11 @@ extractWireguardPrivateKey() {
 
 [ $# -lt 1 ] && printHelp
 
-if [[ $1 -eq "extract-host-keys" ]]
+if [[ "$1" == "extract-host-keys" ]]
 then
 	[ $# -lt 2 ] || [ ! -f nixos/hosts/$2/secrets.yaml ] && echo "Incorrect number of args or file does not exist" && printHelp
 	extractSshHostKeys
-elif [[ $1 -eq "extract-wg-private" ]]
+elif [[ "$1" == "extract-wg-private" ]]
 then
 	[ $# -lt 2 ] || [ ! -f nixos/hosts/$2/secrets.yaml ] && echo "Incorrect number of args or file does not exist" && printHelp
 	extractWireguardPrivateKey
