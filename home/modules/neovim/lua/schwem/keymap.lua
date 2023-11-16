@@ -1,15 +1,40 @@
 local wk = require("which-key")
 
--- Completion
+-- 
+-- NORMAL MODE
+--
+
+-- <leader>* keybindings:
 wk.register({
-	l = {
-		name = "LSP",
-		d = { "<cmd>Telescope lsp_definition<cr>", "Go To/Show Definition(s)" },
-		i = { "<cmd>Telescope lsp_implementations<cr>", "Go To/Show Implementation(s)" },
-		r = { "<cmd>Telescope lsp_references<cr>", "List References" },
+	"<leader>" = { 
+		e = { "<cmd>NnnExplorer<cr>", "Explore Files" },
+
+		f = {
+			name = "Find",
+			f = { "<cmd>Telescope find_files<cr>", "Find Files" },
+			t = { "<cmd>Telescope live_grep<cr>", "Find Implementations" },
+			w = { "<cmd>Telescope grep_string<cr>", "Find Visual/Word Under Cursor" }
+		},
+
+		l = {
+			name = "LSP",
+			d = { "<cmd>Telescope lsp_definitions<cr>", "Find Definitions" },
+			i = { "<cmd>Telescope lsp_implementations<cr>", "Find Implementations" },
+			r = { "<cmd>Telescope lsp_references<cr>", "Find References" }
+		},
+
+		w = { ":w!<cr>", "Save" },
 	},
-}, { prefix = "<leader>" })
+}, { mode = "n" })
+
+-- 
+-- TERMINAL MODE
+--
+
+
+
+-- Ctrl-* keybindings:
 
 --
--- see: :h which-key - or - https://github.com/folke/which-key.nvim
+-- see: :h which-key - OR - https://github.com/folke/which-key.nvim
 -- 

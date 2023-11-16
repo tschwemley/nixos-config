@@ -8,6 +8,7 @@
 			require "schwem.keymap"	
 			require "schwem.lsp"	
 			require "schwem.options"	
+			require "schwem.plugins"	
 		'';
 		extraLuaPackages = [];
 		plugins = with pkgs.vimPlugins; [
