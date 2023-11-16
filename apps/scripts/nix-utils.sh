@@ -35,7 +35,7 @@ extractWireguardPrivateKey() {
 initializeDisk () {
 	echo $#
 	[ $# -ne 2 ] && echo "arg count"
-	echo "nix run --experimental-features 'nix-command flakes' github:nix-community/disko -- -m disko --arg diskName '\"$2\"' nixos/modules/hardware/disks/$1.nix"
+	nix run --experimental-features 'nix-command flakes' github:nix-community/disko -- -m disko --arg diskName '\"$2\"' nixos/modules/hardware/disks/$1.nix
 }
 
 [ $# -lt 1 ] && printHelp
