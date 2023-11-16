@@ -53,11 +53,6 @@ in {
 
   networking.hostName = hostName;
 
-  sops = {
-    defaultSopsFile = ./secrets.yaml;
-    age.keyFile = "/persist/.age-keys.txt";
-  };
-
   # TODO: change this for all hosts soon
   services.getty.autologinUser = "root";
 
