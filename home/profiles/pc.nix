@@ -6,6 +6,7 @@ let
 in {
   imports = [
     ./.
+    ../programs/brave.nix
     ../programs/discord.nix
     ../programs/lazygit.nix
     ../programs/reaper.nix
@@ -13,4 +14,9 @@ in {
     ../terminals/wezterm.nix
     git
   ];
+
+  # TODO: move this to system level or someplace more appropriate at a later date
+  xdg.configFile = {
+    "awesome".source = ../xdg-config/awesome;
+  };
 }

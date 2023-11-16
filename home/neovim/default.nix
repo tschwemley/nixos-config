@@ -2,7 +2,10 @@
   pkgs,
   lib,
   ...
-}: {
+}: 
+let
+in
+{
   programs.neovim = {
     enable = true;
     defaultEditor = lib.mkDefault true;
@@ -16,6 +19,7 @@
     '';
     extraLuaPackages = [];
     plugins = with pkgs.vimPlugins; [
+      bufferline-nvim
       comment-nvim
       lsp-zero-nvim
       luasnip
@@ -42,8 +46,8 @@
       cmp-nvim-lsp
       cmp-nvim-lua
     ];
-    withNodeJs = true;
     withPython3 = true;
+    withNodeJs = true;
     vimAlias = true;
     vimdiffAlias = true;
   };
