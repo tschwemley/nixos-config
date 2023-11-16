@@ -39,8 +39,6 @@ in {
 
   services.openssh = {
     enable = true;
-    PasswordAuthentication = false;
-    KbdInteractiveAuthentication = false;
     hostKeys = [
       {
         bits = 4096;
@@ -64,7 +62,7 @@ in {
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
-    age.sshKeyPaths = ["/persist/etc/ssh/ssh_host_ed25519_key"];
+    age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
     age.keyFile = "/persist/.age-keys.txt";
 
     # Specify machine secrets
@@ -79,7 +77,7 @@ in {
   system.stateVersion = "23.11";
 
   users = {
-    mutableUsers = false;
+    mutableUsers = true; # allow mutable users on non-servers
     users.schwem.passwordFile = config.sops.secrets.schwem_user_password.path;
   };
 }
