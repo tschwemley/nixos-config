@@ -1,15 +1,15 @@
-{ pkgs, ...}: {
+{pkgs, ...}: {
   # enable NAT
   networking.nat.enable = true;
   networking.nat.externalInterface = "ens3";
-  networking.nat.internalInterfaces = [ "wg0" ];
+  networking.nat.internalInterfaces = ["wg0"];
   networking.firewall = {
-    allowedUDPPorts = [ 51820 ];
+    allowedUDPPorts = [51820];
   };
 
   networking.wireguard.interfaces = {
     wg0 = {
-      ips = [ "10.1.1.1/24" ];
+      ips = ["10.1.1.1/24"];
 
       # The port that WireGuard listens to. Must be accessible by the client.
       listenPort = 51820;
@@ -28,14 +28,11 @@
       privateKeyFile = "/persist/wireguard/private";
 
       peers = [
-        # { 
-        #   publicKey = "{client public key}";
-        #   allowedIPs = [ "10.1.1.2/32" ];
-        # }
-        # { 
-        #   publicKey = "{john doe's public key}";
-        #   allowedIPs = [ "10.1.1.3/32" ];
-        # }
+        {
+          #moltres
+          publicKey = "SHsUHFVnJEez4bZQHPRKXBqmijOb7W7mf8x75KXqQh8=";
+          allowedIPs = ["10.1.1.2/32"];
+        }
       ];
     };
   };
