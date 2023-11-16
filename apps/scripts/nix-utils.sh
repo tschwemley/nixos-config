@@ -12,6 +12,7 @@ extractSshDir() {
 }
 
 extractSshHostKeys() {
+	[[! -e "$2" ]] && mkdir -p $2
 	secretsPath=./nixos/hosts/$1/secrets.yaml
 	extractPath="/etc/ssh" 
 	if [ "$2" != "" ]; then extractPath="$2"; fi
@@ -24,6 +25,7 @@ extractSshHostKeys() {
 }
 
 extractWireguardPrivateKey() {
+	[[! -e "$2" ]] && mkdir -p $2
 	extractPath="/persist/wireguard/private" 
 	if [ "$2" != "" ]; then extractPath="$2"; fi
 	secretsPath=./nixos/hosts/$1/secrets.yaml
@@ -65,7 +67,6 @@ case $1 in
 		;;
 
 	"post-install" )
-		[[! -e "$3" ]] && mkdir -p $3
 		extractSshHostKeys $2 $3
 		extractWireguardPrivateKey $2 $3
 		;;
