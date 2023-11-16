@@ -4,7 +4,7 @@
   ...
 }: let
   mkHome = system: user: profile:
-    withSystem system ({pkgs, ...}:
+    withSystem system ({lib, pkgs, ...}:
       inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
