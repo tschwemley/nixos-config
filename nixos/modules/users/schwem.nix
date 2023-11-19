@@ -1,8 +1,4 @@
-{
-  config,
-  # homeConfigurations,
-  ...
-}: {
+{config, ...}: {
   imports = [
     ./.
   ];
@@ -14,10 +10,5 @@
     };
   };
 
-  home-manager.users.schwem = {
-    imports = [
-      # homeConfigurations.schwem.activation-script
-      ../../../home/profiles/pc-gui.nix
-    ];
-  };
+  home-manager.users.schwem = import ../../../home/profiles/pc-gui.nix;
 }
