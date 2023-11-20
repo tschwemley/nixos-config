@@ -49,11 +49,11 @@ in {
   systemd.services = {
     k3s = {
       requires = ["containerd.service" "run-secrets.d.mount" "systemd-networkd.service"];
-      after = ["containerd.service" "firewall.service" "run-secrets.d.mount" "systemd-networkd.service"];
+      after = ["containerd.service" "firewall.service" "sops-nix.service" "systemd-networkd.service"];
     };
     systemd-networkd = {
-      requires = ["run-secrets.d.mount"];
-      after = ["run-secrets.d.mount"];
+      requires = ["sops-nix.service"];
+      after = ["sops-nix.service"];
     };
   };
 
