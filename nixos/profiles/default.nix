@@ -19,13 +19,16 @@
   environment.systemPackages = with pkgs; [
     curl
     git
+    gnupg
     htop
     jq
     lsof
+    pinentry
     ripgrep
     rsync
     unzip
     wget
+    zip
   ];
 
   home-manager = {

@@ -1,0 +1,11 @@
+(include "/home/schwem/.config/eww/bar/power/power.yuck")
+(defwindow bar
+  :monitor 1
+  :geometry (geometry :x "0%"
+                      :y "9px"
+                      :width "98%"
+                      :height "30px"
+                      :anchor "top center")
+  :stacking "fg"
+  :windowtype "dock"
+  (power))
