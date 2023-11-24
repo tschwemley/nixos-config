@@ -57,8 +57,9 @@ in {
 
   # eevee has issues with DHCP so disable and use systemd-networkd instead
   networking = {
-    hostName = nodeName;
     dhcpcd.enable = false;
+    hostName = nodeName;
+    firewall.allowedUDPPorts = [52000];
   };
 
   #TODO: change this on all servers
@@ -82,6 +83,13 @@ in {
       wireguard_private = {
         mode = "0644";
         path = "/persist/wireguard/private";
+        owner = config.users.users.systemd-network.name;
+        group = config.users.users.systemd-network.group;
+        restartUnits = ["systemd-networkd" "systemd-resolved"];
+      };
+
+      wireguard_vpn = {
+        path = "/persist/wireguard/vpn.conf";
         owner = config.users.users.systemd-network.name;
         group = config.users.users.systemd-network.group;
         restartUnits = ["systemd-networkd" "systemd-resolved"];
