@@ -7,6 +7,7 @@ in {
   imports = [
     git
     ./.
+    ../programs/buku.nix
     ../programs/github.nix
     ../programs/glow.nix
     # BUG: currently failing tests upstream
