@@ -17,6 +17,7 @@
         f = "finder";
         p = "preview-tui";
         v = "imgview";
+        x = "togglex";
       };
     };
 in {
