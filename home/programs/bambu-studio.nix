@@ -9,9 +9,26 @@
       with pkgs; [
         glib
         glib-networking
+        gst_all_1.gst-plugins-bad
         webkitgtk
       ];
   };
 in {
   home.packages = [bambuStudio];
+  xdg.desktopEntries.bambuStudio = {
+    categories = ["Graphics" "3DGraphics" "Engineering"];
+    exec = "bambu-studio %F";
+    genericName = "3D Printing Software";
+    icon = "BambuStudio";
+    mimeType = [
+      "model/stl"
+      "application/vnd.ms-3mfdocument"
+      "application/prs.wavefront-obj"
+      "application/x-amf"
+    ];
+    name = "Bambu Studio";
+    startupNotify = false;
+    terminal = false;
+    type = "Application";
+  };
 }
