@@ -7,6 +7,7 @@
         imv
         ffmpeg
         ffmpegthumbnailer
+        xdragon
       ];
   plugins =
     if pkgs.system == "aarch64-darwin"
@@ -14,6 +15,7 @@
     else {
       src = "${pkgs.nnn.src}/plugins";
       mappings = {
+        d = "dragdrop";
         f = "finder";
         p = "preview-tui";
         v = "imgview";

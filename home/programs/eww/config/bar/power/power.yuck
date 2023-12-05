@@ -1,9 +1,0 @@
-(defwidget power[]
-  (eventbox :onhover 'echo "nyx"'
-            :onhoverlost 'echo "sneaks"'
-            (image :path "/home/schwem/.config/eww/bar/power/power.svg"
-                   :image-width 32
-                   :image-height 32)
-            )
-  )
-

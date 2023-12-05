@@ -56,8 +56,8 @@
 
         "alt, tab, layoutmsg, cyclenext"
         "alt shift, tab, layoutmsg, cycleprev"
-        "$mod, h, layoutmsg, swapnext"
-        "$mod, l, layoutmsg, swapprev"
+        "$mod, l, layoutmsg, swapnext"
+        "$mod, h, layoutmsg, swapprev"
         "$mod shift, h, movewindow, mon:1"
         "$mod shift, l, movewindow, mon:0"
         "$mod, w, killactive"
