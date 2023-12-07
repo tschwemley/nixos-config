@@ -26,6 +26,7 @@ in {
   environment.systemPackages = with pkgs; [
     (writeShellScriptBin "k3s-reset-node" (builtins.readFile ./k3s-reset-node))
     k9s
+    kubevirt
   ];
 
   # required for wg flannel
