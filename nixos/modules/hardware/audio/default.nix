@@ -9,10 +9,6 @@
     ./scarlett8i6.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    pavucontrol
-  ];
-
   hardware.bluetooth.enable = true;
   musnix.enable = true;
 

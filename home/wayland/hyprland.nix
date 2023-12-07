@@ -64,6 +64,7 @@
       ];
 
       exec-once = [
+        # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "hyprpaper"
         "xrandr --output DP-2 --auto"
         "xrandr --output HDMI-A-2 --auto"

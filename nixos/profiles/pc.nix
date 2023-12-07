@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./.
-    ../modules/hardware/audio.nix
+    ../modules/hardware/audio
     ../modules/programs/barrier.nix
     ../modules/programs/steam.nix
     ../modules/services/mullvad.nix
