@@ -1,14 +1,4 @@
 {
-  inputs,
-  pkgs,
-  ...
-}: {
-  imports = [inputs.musnix.nixosModules.musnix];
-
-  environment.systemPackages = with pkgs; [
-    pavucontrol
-  ];
-
   # The mSBC codec provides slightly better sound quality in calls than regular HFP/HSP, while the
   # SBC-XQ provides better sound quality for audio listening. see:
   # https://www.guyrutenberg.com/2021/03/11/replacing-pulseaudio-with-pipewire/
@@ -32,22 +22,17 @@
     '';
   };
 
-  musnix.enable = true;
-
-  hardware.bluetooth.enable = true;
-  # enables blueman-applet and blueman-manager for gui (can also connect via cli bluetoothctl)
-  #services.blueman.enable = true;
-
+  # Enables the RealtimeKit system service, which hands out realtime scheduling priority to user
+  # processes on demand. For example, the PulseAudio server uses this to acquire realtime priority.
   security.rtkit.enable = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
+    jack.enable = true;
     pulse.enable = true;
     wireplumber.enable = true;
     # TODO: determine if needed for live-audio e.g. sonic pi or reaper
-    jack.enable = true;
   };
-
-  sound.enable = true;
 }
