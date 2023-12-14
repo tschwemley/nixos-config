@@ -30,6 +30,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops.url = "github:Mic92/sops-nix";
+
+    # TODO: consider moving this into it's own config w/ other hyprland items in the future
+    hyprland.url = "github:hyprwm/Hyprland";
+    split-monitor-workspaces = {
+      url = "github:Duckonaut/split-monitor-workspaces";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
   outputs = inputs @ {

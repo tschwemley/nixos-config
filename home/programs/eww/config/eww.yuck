@@ -1,1 +1,3 @@
+(deflisten  workspaces  `scripts/hyprland workspaces`)
+
 (include "./desktops/topbar.yuck")

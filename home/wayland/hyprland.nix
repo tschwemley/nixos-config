@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: let
+  inherit (inputs.split-monitor-workspaces.packages.${pkgs.system}) split-monitor-workspaces;
+in {
   imports = [
     ../programs/eww
     ../services/dunst.nix
@@ -6,10 +12,12 @@
 
   home.packages = with pkgs; [
     clipman
-    grim # grab images
+    # grim # grab images
+    # grimblast # grab images
     hyprpaper # wallpaper
     hyprpicker #color picker
-    slurp # select a region (used in conjunction w/ grim)
+    hyprshot #screenshot
+    # slurp # select a region (used in conjunction w/ grim)
   ];
 
   # make stuff work on wayland
@@ -36,6 +44,12 @@
         orientation = right
       }
 
+      # plugin {
+      #   split-monitor-workspaces {
+      #       count = 5
+      #   }
+      # }
+
       # unscale XWayland
       xwayland {
         force_zero_scaling = true
@@ -43,8 +57,7 @@
     '';
 
     plugins = [
-      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-      # hyprbars
+      split-monitor-workspaces
     ];
 
     settings = {
@@ -61,6 +74,12 @@
         "$mod shift, h, movewindow, mon:1"
         "$mod shift, l, movewindow, mon:0"
         "$mod, w, killactive"
+
+        # "$mod, 1, split-workspace, 1"
+        # "$mod, 2, split-workspace, 2"
+        # "$mod, 3, split-workspace, 3"
+        # "$mod, 4, split-workspace, 4"
+        # "$mod, 5, split-workspace, 5"
       ];
 
       exec-once = [
@@ -76,14 +95,14 @@
         "DP-2,2560x2880@60,3840x0,1"
       ];
 
-      workspace = [
-        "HDMI-A-2,1"
-        "DP-2,2"
-        "HDMI-A-2,3"
-        "DP-2,4"
-        "HDMI-A-2,5"
-        "DP-2,6"
-      ];
+      # workspace = [
+      #   "HDMI-A-2,1"
+      #   "DP-2,2"
+      #   "HDMI-A-2,3"
+      #   "DP-2,4"
+      #   "HDMI-A-2,5"
+      #   "DP-2,6"
+      # ];
     };
 
     systemd.enable = true;
