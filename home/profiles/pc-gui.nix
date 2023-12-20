@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./pc.nix
+    ../programs/ags
     ../programs/bambu-studio.nix
     ../programs/brave.nix
     ../programs/discord.nix
@@ -13,7 +14,7 @@
     ../programs/rbw.nix
     ../programs/rofi.nix
     ../programs/rustdesk.nix
-    ../programs/nzbget.nix
+    ../programs/sabnzbd.nix
     ../programs/slack.nix
     ../programs/sonic-pi.nix
     ../programs/spotify.nix
