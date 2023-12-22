@@ -6,7 +6,7 @@
   inherit (inputs.split-monitor-workspaces.packages.${pkgs.system}) split-monitor-workspaces;
 in {
   imports = [
-    ../programs/eww
+    ../programs/ags
     ../services/dunst.nix
   ];
 

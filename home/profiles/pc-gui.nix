@@ -1,7 +1,6 @@
 {...}: {
   imports = [
     ./pc.nix
-    ../programs/ags
     ../programs/bambu-studio.nix
     ../programs/brave.nix
     ../programs/discord.nix
