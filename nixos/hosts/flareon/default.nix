@@ -61,7 +61,7 @@ in {
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
-    age.keyFile = "/persist/.age-keys.txt";
+    age.keyFile = "/root/.config/sops/age/keys.txt";
   };
 
   systemd.network.enable = true;

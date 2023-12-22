@@ -81,7 +81,7 @@ in {
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
-    age.keyFile = "/persist/.age-keys.txt";
+    age.keyFile = "/root/.config/sops/age/keys.txt";
 
     secrets = {
       systemd_networkd_10_ens3 = {
