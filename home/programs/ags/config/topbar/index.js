@@ -34,9 +34,9 @@ const TopBar = ({ monitor } = {}) => Widget.Window({
 	anchor: ['top', 'left', 'right'],
 	exclusivity: 'exclusive',
 	child: Widget.CenterBox({
-		startWidget: Left(),
-		centerWidget: Center(),
-		endWidget: Right(),
+		startWidget: Left,
+		centerWidget: Center,
+		endWidget: Right,
 	}),
 });
 
