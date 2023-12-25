@@ -88,12 +88,12 @@ in {
         restartUnits = ["systemd-networkd" "systemd-resolved"];
       };
 
-      wireguard_vpn = {
-        path = "/persist/wireguard/vpn.conf";
-        owner = config.users.users.systemd-network.name;
-        group = config.users.users.systemd-network.group;
-        restartUnits = ["systemd-networkd" "systemd-resolved"];
-      };
+      # wireguard_vpn = {
+      #   path = "/persist/wireguard/vpn.conf";
+      #   owner = config.users.users.systemd-network.name;
+      #   group = config.users.users.systemd-network.group;
+      #   restartUnits = ["systemd-networkd" "systemd-resolved"];
+      # };
     };
   };
 

@@ -1,3 +1,6 @@
+import Clock from './widgets/clock.js';
+import SysTray from './widgets/systray.js';
+import Volume from './widgets/volume.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 
 const Left = Widget.Box({
@@ -8,22 +11,11 @@ const Center = Widget.Box({
 	children: [],
 });
 
-const Clock = () => Widget.Label({
-	className: 'clock',
-	connections: [
-		// this is bad practice, since exec() will block the main event loop
-		// in the case of a simple date its not really a problem
-		[1000, self => self.label = exec('date "+%H:%M:%S %b %e."')],
-
-		// this is what you should do
-		[1000, self => execAsync(['date', '+%H:%M:%S %b %e.'])
-			.then(date => self.label = date).catch(console.error)],
-	],
-});
-
 const Right = Widget.Box({
 	children: [
+		Volume(),
 		Clock(),
+		SysTray(),
 	],
 });
 
