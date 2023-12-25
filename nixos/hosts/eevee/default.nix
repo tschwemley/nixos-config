@@ -59,7 +59,7 @@ in {
   networking = {
     dhcpcd.enable = false;
     hostName = nodeName;
-    firewall.allowedUDPPorts = [52000];
+    firewall.allowedUDPPorts = [51900 52000];
   };
 
   #TODO: change this on all servers
