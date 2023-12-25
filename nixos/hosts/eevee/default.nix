@@ -60,7 +60,7 @@ in {
     dhcpcd.enable = false;
     hostName = nodeName;
     firewall.allowedUDPPorts = [52000];
-    wg-quick.interfaces.vpn.configFile = "/etc/wireguard/vpn.conf";
+    # wg-quick.interfaces.vpn.configFile = "/etc/wireguard/vpn.conf";
   };
 
   #TODO: change this on all servers
