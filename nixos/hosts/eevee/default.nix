@@ -44,7 +44,7 @@ in {
     boot
     k3s
     user
-    wireguard
+    # wireguard
   ];
 
   boot = {
