@@ -59,7 +59,8 @@ in {
   networking = {
     dhcpcd.enable = false;
     hostName = nodeName;
-    firewall.allowedUDPPorts = [51900 52000];
+    firewall.allowedUDPPorts = [52000];
+    wg-quick.interfaces.vpn.configFile = "/etc/wireguard/vpn.conf";
   };
 
   #TODO: change this on all servers
@@ -81,19 +82,20 @@ in {
         restartUnits = ["systemd-networkd" "systemd-resolved"];
       };
       wireguard_private = {
-        mode = "0644";
-        path = "/persist/wireguard/private";
-        owner = config.users.users.systemd-network.name;
         group = config.users.users.systemd-network.group;
+        mode = "0644";
+        owner = config.users.users.systemd-network.name;
+        path = "/persist/wireguard/private";
         restartUnits = ["systemd-networkd" "systemd-resolved"];
       };
 
-      # wireguard_vpn = {
-      #   path = "/persist/wireguard/vpn.conf";
-      #   owner = config.users.users.systemd-network.name;
-      #   group = config.users.users.systemd-network.group;
-      #   restartUnits = ["systemd-networkd" "systemd-resolved"];
-      # };
+      vpn_wg_quick = {
+        group = config.users.users.systemd-network.group;
+        mode = "0444";
+        owner = config.users.users.systemd-network.name;
+        path = "/etc/wireguard/vpn.conf";
+        restartUnits = ["systemd-networkd" "systemd-resolved"];
+      };
     };
   };
 
