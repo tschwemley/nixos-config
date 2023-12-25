@@ -89,7 +89,7 @@ in {
         restartUnits = ["systemd-networkd" "systemd-resolved"];
       };
 
-      vpn_wg_quick = {
+      wg_quick_vpn = {
         group = config.users.users.systemd-network.group;
         mode = "0444";
         owner = config.users.users.systemd-network.name;
