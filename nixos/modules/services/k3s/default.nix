@@ -27,6 +27,7 @@ in {
     (writeShellScriptBin "k3s-reset-node" (builtins.readFile ./k3s-reset-node))
     k9s
     kubevirt
+    openiscsi
   ];
 
   # required for wg flannel
