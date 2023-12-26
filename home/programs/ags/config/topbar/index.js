@@ -1,14 +1,20 @@
 import Clock from './widgets/clock.js';
+import ClientTitle from './widgets/clienttitle.js';
+import Media from './widgets/media.js';
 import SysTray from './widgets/systray.js';
 import Volume from './widgets/volume.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
+import Workspaces from './widgets/workspaces.js';
 
 const Left = Widget.Box({
-	children: [],
+	children: [
+		Workspaces(),
+		ClientTitle(),
+	],
 });
 
 const Center = Widget.Box({
-	children: [],
+	children: [Media(),],
 });
 
 const Right = Widget.Box({
