@@ -7,8 +7,16 @@ const Media = () => Widget.Button({
 	on_scroll_up: () => Mpris.getPlayer('')?.next(),
 	on_scroll_down: () => Mpris.getPlayer('')?.previous(),
 	child: Widget.Label('-').hook(Mpris, self => {
-		if (Mpris.players[0]) {
-			const { track_artists, track_title } = Mpris.players[0];
+		const players = [];
+		for (let player of Mpris.players) {
+			if (player.play_back_status != 'Stopped') {
+				players.push(player);
+			}
+		}
+
+		if (players.length > 0) {
+			// TODO: make this smarter instead of choosing from first found player
+			const { track_artists, track_title } = players[0];
 			self.label = `${track_artists.join(', ')} - ${track_title}`;
 		} else {
 			self.label = 'Nothing is playing';

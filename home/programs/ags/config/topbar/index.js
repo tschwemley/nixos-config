@@ -11,13 +11,17 @@ const Left = Widget.Box({
 		Workspaces(),
 		ClientTitle(),
 	],
+	spacing: 8,
 });
 
 const Center = Widget.Box({
 	children: [Media(),],
+	spacing: 8,
 });
 
 const Right = Widget.Box({
+	hpack: 'end',
+	spacing: 8,
 	children: [
 		Volume(),
 		Clock(),

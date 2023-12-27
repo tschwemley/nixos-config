@@ -2,6 +2,7 @@
   imports = [
     inputs.sops.homeManagerModule
     ../programs/bat.nix
+    ../programs/navi.nix
     ../programs/neovim
     ../programs/nnn.nix
     ../programs/ripgrep.nix
