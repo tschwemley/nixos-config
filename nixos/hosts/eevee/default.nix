@@ -65,7 +65,8 @@ in {
   networking = {
     dhcpcd.enable = false;
     hostName = nodeName;
-    firewall.allowedUDPPorts = [52000];
+    firewall.allowedTCPPorts = [51413];
+    firewall.allowedUDPPorts = [51413];
     # wg-quick.interfaces.vpn.configFile = "/etc/wireguard/vpn.conf";
   };
 
