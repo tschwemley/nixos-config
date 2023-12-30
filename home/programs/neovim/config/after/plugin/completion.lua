@@ -19,8 +19,6 @@ vim.api.nvim_create_autocmd("InsertEnter", {
    end
 })
 
-require('luasnip.loaders.from_vscode').lazy_load()
-
 -- Completion config
 cmp.setup({
    sources = {
