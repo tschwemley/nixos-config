@@ -67,7 +67,7 @@ in {
     hostName = nodeName;
     firewall.allowedTCPPorts = [51413];
     firewall.allowedUDPPorts = [51413];
-    # wg-quick.interfaces.vpn.configFile = "/etc/wireguard/vpn.conf";
+    wg-quick.interfaces.vpn.configFile = "/etc/wireguard/vpn.conf";
   };
 
   #TODO: change this on all servers
