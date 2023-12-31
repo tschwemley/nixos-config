@@ -8,7 +8,6 @@
       nnn-vim
       nvim-ufo
       telescope-nvim
-      vim-tmux-navigator
     ];
   };
 }

@@ -11,6 +11,18 @@
       };
       meta.homepage = "https://github.com/VonHeikemen/lsp-zero.nvim/";
     };
+  yaml-companion = with pkgs;
+    vimUtils.buildVimPlugin {
+      pname = "yaml-companion.nvim";
+      version = "2023-03-03";
+      src = fetchFromGitHub {
+        owner = "someone-stole-my-name";
+        repo = "yaml-companion.nvim";
+        rev = "4de1e1546abc461f62dee02fcac6a02debd6eb9e";
+        sha256 = "sha256-BmX7hyiIMQfcoUl09Y794HrSDq+cj93T+Z5u3e5wqLc=";
+      };
+      meta.homepage = "https://github.com/someone-stole-my-name/yaml-companion.nvim";
+    };
 in {
   programs.neovim = {
     extraPackages = with pkgs; [
@@ -27,6 +39,7 @@ in {
       lsp-zero
       lspsaga-nvim
       nvim-lspconfig
+      yaml-companion
     ];
   };
 }

@@ -68,3 +68,9 @@ require('lspsaga').setup({})
 vim.diagnostic.config({
    virtual_text = true,
 })
+
+-- yaml companion
+-- TODO: move this out somewhere else
+local yaml_companion_cfg = require("yaml-companion").setup({})
+require("lspconfig")["yamlls"].setup(yaml_companion_cfg)
+require("telescope").load_extension("yaml_schema")

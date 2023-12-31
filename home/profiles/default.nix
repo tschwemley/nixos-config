@@ -6,7 +6,6 @@
     ../programs/neovim
     ../programs/nnn.nix
     ../programs/ripgrep.nix
-    ../programs/tmux.nix
     ../programs/wcalc.nix
     ../programs/wezterm
     ../shell

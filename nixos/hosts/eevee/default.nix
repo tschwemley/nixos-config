@@ -23,7 +23,7 @@
     peers = [
       {
         # articuno
-        AllowedIPs = ["10.0.0.1/32" "10.0.0.2/32" "10.0.0.3/32"];
+        AllowedIPs = ["10.0.0.1/32" "10.0.0.2/32" "10.0.0.3/32" "10.0.0.5/32"];
         Endpoint = "wg.schwem.io:9918";
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       }
@@ -36,6 +36,12 @@
         # moltres
         AllowedIPs = ["10.0.0.3/32"];
         PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
+      }
+      {
+        #flareon
+        AllowedIPs = ["10.0.0.5/32"];
+        PersistentKeepalive = 25;
+        PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
       }
     ];
   };
@@ -59,7 +65,8 @@ in {
   networking = {
     dhcpcd.enable = false;
     hostName = nodeName;
-    firewall.allowedUDPPorts = [52000];
+    firewall.allowedTCPPorts = [51413];
+    firewall.allowedUDPPorts = [51413];
     # wg-quick.interfaces.vpn.configFile = "/etc/wireguard/vpn.conf";
   };
 
@@ -89,13 +96,13 @@ in {
         restartUnits = ["systemd-networkd" "systemd-resolved"];
       };
 
-      # wg_quick_vpn = {
-      #   group = config.users.users.systemd-network.group;
-      #   mode = "0444";
-      #   owner = config.users.users.systemd-network.name;
-      #   path = "/etc/wireguard/vpn.conf";
-      #   restartUnits = ["systemd-networkd" "systemd-resolved"];
-      # };
+      wg_quick_vpn = {
+        group = config.users.users.systemd-network.group;
+        mode = "0444";
+        owner = config.users.users.systemd-network.name;
+        path = "/etc/wireguard/vpn.conf";
+        restartUnits = ["systemd-networkd" "systemd-resolved"];
+      };
     };
   };
 
