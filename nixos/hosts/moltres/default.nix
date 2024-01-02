@@ -9,7 +9,6 @@
   wireguardIP = "10.0.0.3";
 
   boot = import ../../modules/system/systemd-boot.nix;
-  blockStorage = import ../../modules/hardware/disks/block-storage.nix;
   k3s = import ../../profiles/k3s.nix {
     inherit config diskName lib nodeName pkgs;
     nodeIP = wireguardIP;
@@ -53,7 +52,6 @@
   };
 in {
   imports = [
-    blockStorage
     boot
     k3s
     user
