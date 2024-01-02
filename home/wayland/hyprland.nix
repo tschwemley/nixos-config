@@ -56,9 +56,9 @@ in {
       }
     '';
 
-    plugins = [
-      split-monitor-workspaces
-    ];
+    # plugins = [
+    #   split-monitor-workspaces
+    # ];
 
     settings = {
       "$mod" = "SUPER";
