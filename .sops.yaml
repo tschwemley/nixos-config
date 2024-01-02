@@ -70,6 +70,7 @@ creation_rules:
           - *articuno
           - *eevee
           - *flareon
+          - *jolteon
           - *machamp
           - *moltres
           - *zapados

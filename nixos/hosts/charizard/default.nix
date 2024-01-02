@@ -111,7 +111,7 @@ in {
         path = "/home/schwem/.ssh/mac_ssh_key";
       };
       "moltres_key" = {
-        key = "ssh_private_key";
+        key = "user_ssh_key";
         owner = "schwem";
         path = "/home/schwem/.ssh/moltres";
         sopsFile = ./../moltres/secrets.yaml;
