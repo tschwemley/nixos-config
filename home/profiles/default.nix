@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    # inputs.sops.homeManagerModule
     ../programs/bat.nix
     ../programs/neovim
     ../programs/nnn.nix
