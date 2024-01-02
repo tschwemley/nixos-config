@@ -8,7 +8,7 @@
   nodeName = "moltres";
   wireguardIP = "10.0.0.3";
 
-  boot = import ../../modules/system/systemd-boot.nix;
+  boot = import ../../modules/system/grub-boot.nix;
   k3s = import ../../profiles/k3s.nix {
     inherit config diskName lib nodeName pkgs;
     nodeIP = wireguardIP;
