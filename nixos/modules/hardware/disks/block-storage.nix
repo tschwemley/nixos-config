@@ -29,9 +29,9 @@
           };
         };
       };
-
-      boot.supportedFilesystems = ["btrfs"];
-      fileSystems."/storage".neededForBoot = true;
     };
   };
+
+  boot.supportedFilesystems = ["btrfs"];
+  fileSystems."/storage".neededForBoot = true;
 }
