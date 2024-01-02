@@ -11,7 +11,7 @@
             partitions = [
               {
                 name = "root";
-                start = "0MiB";
+                # start = "0MiB";
                 end = "100%";
                 # part-type = "primary";
                 content = {
