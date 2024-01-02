@@ -1,6 +1,4 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [skopeo];
-
   # server has some additional port requirements:
   # 2379/2389 embedded etcd; 6443 for api server
   networking.firewall.allowedTCPPorts = [
