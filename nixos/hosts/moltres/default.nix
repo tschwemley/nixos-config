@@ -57,7 +57,7 @@ in {
     wireguard
   ];
 
-  filesystems."/storage" = {
+  fileSystems."/storage" = {
     device = "/dev/sda1";
     fsType = "btrfs";
     neededForBoot = true;
