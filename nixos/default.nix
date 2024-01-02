@@ -27,6 +27,7 @@ in {
     charizard = mkSystem "x86_64-linux" ./hosts/charizard;
     eevee = mkSystem "x86_64-linux" ./hosts/eevee;
     flareon = mkSystem "x86_64-linux" ./hosts/flareon;
+    jolteon = mkSystem "x86_64-linux" ./hosts/jolteon;
     machamp = mkSystem "x86_64-linux" ./hosts/machamp;
     moltres = mkSystem "x86_64-linux" ./hosts/moltres;
     zapados = mkSystem "x86_64-linux" ./hosts/zapados;
