@@ -19,7 +19,7 @@
                   extraArgs = ["-f"];
                   subvolumes = {
                     "storage" = {
-                      mountpoint = "/mnt/storage";
+                      mountpoint = "/storage";
                       mountOptions = ["compress=lzo"];
                     };
                   };
