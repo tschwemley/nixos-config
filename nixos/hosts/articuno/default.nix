@@ -12,8 +12,7 @@
 
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
   k3s = import ../../profiles/k3s.nix {
-    inherit inputs config lib nodeName pkgs useGrub;
-    enableImpermanence = false;
+    inherit config lib nodeName pkgs useGrub;
     extraKernelModules = ["kvm-amd"];
     nodeIP = wireguardIP;
     role = "server";

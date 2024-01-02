@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -6,11 +7,13 @@
 }: let
   diskName = "/dev/vda";
   nodeName = "moltres";
+  useGrub = true;
   wireguardIP = "10.0.0.3";
 
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
   k3s = import ../../profiles/k3s.nix {
-    inherit config diskName lib nodeName pkgs;
+    inherit config lib nodeName pkgs useGrub;
+    extraKernelModules = ["kvm-amd"];
     nodeIP = wireguardIP;
     role = "server";
   };
