@@ -90,7 +90,7 @@ in {
         sopsFile = ./../flareon/secrets.yaml;
       };
       "jolteon_key" = {
-        key = "ssh_private_key";
+        key = "user_ssh_key";
         owner = "schwem";
         path = "/home/schwem/.ssh/jolteon";
         sopsFile = ./../jolteon/secrets.yaml;
