@@ -29,11 +29,6 @@
         PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
       }
       {
-        # moltres
-        AllowedIPs = ["10.0.0.3/32"];
-        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
-      }
-      {
         #eevee
         AllowedIPs = ["10.0.0.4/32"];
         PersistentKeepalive = 25;
@@ -46,10 +41,10 @@
         PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
       }
       {
-        #jolteon
+        # jolteon
         AllowedIPs = ["10.0.0.6/32"];
         PersistentKeepalive = 25;
-        PublicKey = "";
+        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
       }
       {
         #machamp
