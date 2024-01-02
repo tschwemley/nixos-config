@@ -11,7 +11,7 @@
   extraFlags =
     if role == "agent"
     then defaultFlags
-    else defaultFlags + "--disable traefik --flannel-backend=wireguard-native --flannel-external-ip";
+    else defaultFlags + "--disable traefik --flannel-backend=wireguard-native --flannel-external-ip --datastore-endpoint=postgres://postgres@10.0.0.1:5432/kubernetes";
   serverAddr = "https://10.0.0.1:6443";
 in {
   imports =
@@ -25,6 +25,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     (writeShellScriptBin "k3s-reset-node" (builtins.readFile ./k3s-reset-node))
+    etcd
     k9s
     kubevirt
     openiscsi

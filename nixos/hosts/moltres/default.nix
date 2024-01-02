@@ -8,7 +8,7 @@
   nodeName = "moltres";
   wireguardIP = "10.0.0.3";
 
-  boot = import ../../modules/system/systemd-boot.nix;
+  boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
   k3s = import ../../profiles/k3s.nix {
     inherit config diskName lib nodeName pkgs;
     nodeIP = wireguardIP;
@@ -22,7 +22,6 @@
       {
         # articuno
         AllowedIPs = ["10.0.0.1/32" "10.0.0.2/32" "10.0.0.4/32" "10.0.0.5/32" "10.0.0.90/32"];
-        # AllowedIPs = ["10.0.0.1/32" "10.0.0.2/32" "10.0.0.5/32" "10.0.0.90/32"];
         Endpoint = "wg.schwem.io:9918";
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       }
@@ -56,8 +55,14 @@ in {
     k3s
     user
     wireguard
-    ../../modules/system/systemd-boot.nix
   ];
+
+  filesystems."/storage" = {
+    device = "/dev/sda1";
+    fsType = "btrfs";
+    neededForBoot = true;
+    options = ["compress=lzo"];
+  };
 
   sops = {
     defaultSopsFile = ./secrets.yaml;

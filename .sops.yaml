@@ -4,65 +4,73 @@ keys:
   - &charizard age1yhsl8v77jja50pgtg6yklddfe2uprs7y2l8lx6595e3sntjj3gjq98he3a
   - &eevee age19tr69celsjf9c4ld8ur49tnxcgg2z676mkm0rdfvhdajg96dkp5qtufu4x
   - &flareon age1l844clz38nt5mq6kg5m0wl64p398dn0j3hm5jzy8ag0d302q5awqep73jx
+  - &jolteon age13qley8lnkqspu8yda95vqsvkrnfjmpm6m7e8um9gtm3yd8a4c34spzfx79
   - &machamp age1k5e5uk0897ne5lrvmhhgn6am5cr32l2w7aa4ldapncwluv0rqekspj8w97
-  - &moltres age13qley8lnkqspu8yda95vqsvkrnfjmpm6m7e8um9gtm3yd8a4c34spzfx79
+  - &moltres age1p6ta8m3xng6l73pvff5f4txvrhlpslcuty60tf0ngafw0jru0fnsnrzaxw
   - &zapados age1z37rwn90f923pdhjtcsw2r8a48hwsuh73xjswjj8z7qr3kp3aeyqdamr5f
 
 creation_rules:
   - path_regex: home/profiles/secrets.yaml
     key_groups:
       - age:
-        - *personal
+          - *personal
 
   - path_regex: nixos/hosts/articuno/secrets.yaml
     key_groups:
       - age:
-        - *personal
-        - *articuno
+          - *personal
+          - *articuno
 
   - path_regex: nixos/hosts/charizard/secrets.yaml
     key_groups:
       - age:
-        - *personal
-        - *charizard
-          
+          - *personal
+          - *charizard
+
   - path_regex: nixos/hosts/eevee/secrets.yaml
     key_groups:
       - age:
-        - *personal
-        - *eevee
+          - *personal
+          - *eevee
 
   - path_regex: nixos/hosts/flareon/secrets.yaml
     key_groups:
       - age:
-        - *personal
-        - *flareon
-          
+          - *personal
+          - *flareon
+
+  - path_regex: nixos/hosts/jolteon/secrets.yaml
+    key_groups:
+      - age:
+          - *personal
+          - *jolteon
+
   - path_regex: nixos/hosts/machamp/secrets.yaml
     key_groups:
       - age:
-        - *personal
-        - *machamp
+          - *personal
+          - *machamp
 
   - path_regex: nixos/hosts/moltres/secrets.yaml
     key_groups:
       - age:
-        - *personal
-        - *moltres
-          
+          - *personal
+          - *moltres
+
   - path_regex: nixos/hosts/zapados/secrets.yaml
     key_groups:
       - age:
-        - *personal
-        - *zapados
+          - *personal
+          - *zapados
 
   - path_regex: nixos/modules/services/k3s/secrets.yaml
     key_groups:
       - age:
-        - *personal
-        - *articuno
-        - *eevee
-        - *flareon
-        - *machamp
-        - *moltres
-        - *zapados
+          - *personal
+          - *articuno
+          - *eevee
+          - *flareon
+          - *jolteon
+          - *machamp
+          - *moltres
+          - *zapados

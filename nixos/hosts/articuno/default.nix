@@ -13,7 +13,6 @@
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
   k3s = import ../../profiles/k3s.nix {
     inherit inputs config lib nodeName pkgs useGrub;
-    clusterInit = true;
     enableImpermanence = false;
     extraKernelModules = ["kvm-amd"];
     nodeIP = wireguardIP;
@@ -32,7 +31,7 @@
       {
         # moltres
         AllowedIPs = ["10.0.0.3/32"];
-        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
+        PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
       }
       {
         #eevee
@@ -45,6 +44,12 @@
         AllowedIPs = ["10.0.0.5/32"];
         PersistentKeepalive = 25;
         PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
+      }
+      {
+        # jolteon
+        AllowedIPs = ["10.0.0.6/32"];
+        PersistentKeepalive = 25;
+        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
       }
       {
         #machamp
@@ -60,6 +65,7 @@ in {
     k3s
     user
     wireguard
+    ../../modules/services/k3s/postgresql.nix
   ];
 
   networking.dhcpcd.enable = false;

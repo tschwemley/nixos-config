@@ -23,16 +23,14 @@
     peers = [
       {
         # articuno
-        AllowedIPs = ["10.0.0.1/32" "10.0.0.3/32" "10.0.0.4/32" "10.0.0.5/32" "10.0.0.90/32"];
-        # AllowedIPs = ["10.0.0.1/32" "10.0.0.3/32" "10.0.0.5/32" "10.0.0.90/32"];
+        AllowedIPs = ["10.0.0.1/32" "10.0.0.3/32" "10.0.0.4/32" "10.0.0.5/32" "10.0.0.6/32" "10.0.0.90/32"];
         Endpoint = "wg.schwem.io:9918";
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       }
       {
         # moltres
         AllowedIPs = ["10.0.0.3/32"];
-        PersistentKeepalive = 25;
-        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
+        PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
       }
       {
         #eevee
@@ -45,6 +43,12 @@
         AllowedIPs = ["10.0.0.5/32"];
         PersistentKeepalive = 25;
         PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
+      }
+      {
+        # jolteon
+        AllowedIPs = ["10.0.0.6/32"];
+        PersistentKeepalive = 25;
+        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
       }
       {
         #machamp

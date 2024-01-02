@@ -89,6 +89,12 @@ in {
         path = "/home/schwem/.ssh/flareon";
         sopsFile = ./../flareon/secrets.yaml;
       };
+      "jolteon_key" = {
+        key = "user_ssh_key";
+        owner = "schwem";
+        path = "/home/schwem/.ssh/jolteon";
+        sopsFile = ./../jolteon/secrets.yaml;
+      };
       "gh_key" = {
         key = "gh_ssh_key";
         owner = "schwem";
@@ -103,6 +109,12 @@ in {
         key = "mac_ssh_key";
         owner = "schwem";
         path = "/home/schwem/.ssh/mac_ssh_key";
+      };
+      "moltres_key" = {
+        key = "user_ssh_key";
+        owner = "schwem";
+        path = "/home/schwem/.ssh/moltres";
+        sopsFile = ./../moltres/secrets.yaml;
       };
       "openweather_api_key" = {
         key = "openweather_api_key";

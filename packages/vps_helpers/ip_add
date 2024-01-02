@@ -1,0 +1,8 @@
+ip addr add 127.0.0.1/24 dev ens3
+ip route add default via 127.0.0.1 dev ens3
+echo "nameserver 1.1.1.1" > /etc/resolv.conf
+nix-env -iA nixos.git
+cd /storage/repos/nixos-config
+git pull
+nix --experimental-features 'nix-command flakes' run github:nix-community/disko -- -m mount --arg diskName '"/dev/vda"' --arg useGrub true nixos/modules/hardware/disks/vm.nix
+

@@ -1,18 +1,16 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
   ...
 }: let
   diskName = "/dev/sda";
-  nodeName = "machamp";
-  wireguardIP = "10.0.0.90";
+  nodeName = "jolteon";
+  wireguardIP = "10.0.0.6";
 
   boot = import ../../modules/system/systemd-boot.nix;
   k3s = import ../../profiles/k3s.nix {
-    inherit inputs config diskName lib nodeName pkgs;
-    enableImpermanence = false;
+    inherit config diskName lib nodeName pkgs;
     nodeIP = wireguardIP;
     role = "agent";
   };
@@ -47,16 +45,6 @@ in {
     wireguard
   ];
 
-  networking.hostName = nodeName;
-
-  # this fixes a 'restricted url' issue when building host configs
-  nix.extraOptions = ''
-    allowed-uris = https://git.sr.ht/
-  '';
-
-  services.getty.autologinUser = "root";
-  services.openssh.enable = true;
-
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "/root/.config/sops/age/keys.txt";
@@ -64,7 +52,4 @@ in {
 
   # don't update this
   system.stateVersion = "23.05";
-
-  systemd.network.enable = true;
-  services.resolved.enable = true;
 }
