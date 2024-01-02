@@ -56,7 +56,6 @@ in {
     k3s
     user
     wireguard
-    ../../modules/system/systemd-boot.nix
   ];
 
   sops = {
