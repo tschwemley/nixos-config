@@ -13,7 +13,6 @@
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
   k3s = import ../../profiles/k3s.nix {
     inherit inputs config lib nodeName pkgs useGrub;
-    clusterInit = true;
     enableImpermanence = false;
     extraKernelModules = ["kvm-amd"];
     nodeIP = wireguardIP;
@@ -47,6 +46,12 @@
         PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
       }
       {
+        #jolteon
+        AllowedIPs = ["10.0.0.6/32"];
+        PersistentKeepalive = 25;
+        PublicKey = "";
+      }
+      {
         #machamp
         AllowedIPs = ["10.0.0.90/32"];
         PersistentKeepalive = 25;
@@ -60,44 +65,10 @@ in {
     k3s
     user
     wireguard
+    ../../modules/services/k3s/postgresql.nix
   ];
 
-  networking = {
-    dhcpcd.enable = false;
-    firewall.allowedTCPPorts = [5432];
-  };
-
-  services.postgresql = {
-    enable = true;
-    ensureDatabases = ["kubernetes"];
-    enableTCPIP = true;
-    port = 5432;
-    authentication = pkgs.lib.mkOverride 10 ''
-      #...
-      #type database DBuser origin-address auth-method
-      # ipv4
-      local sameuser  all     peer        map=superuser_map
-      host  all      all     127.0.0.1/32   trust
-      host  all      all     10.0.0.1/32   trust
-      host  all      all     10.0.0.2/32   trust
-      host  all      all     10.0.0.3/32   trust
-      # ipv6
-      host all       all     ::1/128        trust
-    '';
-
-    identMap = ''
-      # ArbitraryMapName systemUser DBUser
-         superuser_map      root      postgres
-         # Let other names login as themselves
-         superuser_map      /^(.*)$   \1
-    '';
-
-    # initialScript = pkgs.writeText "backend-initScript" ''
-    #   CREATE ROLE nixcloud WITH LOGIN PASSWORD 'nixcloud' CREATEDB;
-    #   CREATE DATABASE nixcloud;
-    #   GRANT ALL PRIVILEGES ON DATABASE nixcloud TO nixcloud;
-    # '';
-  };
+  networking.dhcpcd.enable = false;
 
   services.openssh = {
     enable = true;
