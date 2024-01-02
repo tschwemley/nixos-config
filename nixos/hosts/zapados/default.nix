@@ -23,10 +23,14 @@
     peers = [
       {
         # articuno
-        AllowedIPs = ["10.0.0.1/32" "10.0.0.3/32" "10.0.0.4/32" "10.0.0.5/32" "10.0.0.90/32"];
-        # AllowedIPs = ["10.0.0.1/32" "10.0.0.3/32" "10.0.0.5/32" "10.0.0.90/32"];
+        AllowedIPs = ["10.0.0.1/32" "10.0.0.3/32" "10.0.0.4/32" "10.0.0.5/32" "10.0.0.6/32" "10.0.0.90/32"];
         Endpoint = "wg.schwem.io:9918";
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
+      }
+      {
+        # moltres
+        AllowedIPs = ["10.0.0.3/32"];
+        PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
       }
       {
         #eevee

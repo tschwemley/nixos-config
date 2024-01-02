@@ -35,7 +35,7 @@
       {
         # moltres
         AllowedIPs = ["10.0.0.3/32"];
-        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
+        PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
       }
     ];
   };

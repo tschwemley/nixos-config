@@ -30,6 +30,11 @@
         AllowedIPs = ["10.0.0.2/32"];
         PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
       }
+      {
+        # moltres
+        AllowedIPs = ["10.0.0.3/32"];
+        PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
+      }
     ];
   };
 in {

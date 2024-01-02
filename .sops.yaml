@@ -6,6 +6,7 @@ keys:
   - &flareon age1l844clz38nt5mq6kg5m0wl64p398dn0j3hm5jzy8ag0d302q5awqep73jx
   - &jolteon age13qley8lnkqspu8yda95vqsvkrnfjmpm6m7e8um9gtm3yd8a4c34spzfx79
   - &machamp age1k5e5uk0897ne5lrvmhhgn6am5cr32l2w7aa4ldapncwluv0rqekspj8w97
+  - &moltres age1p6ta8m3xng6l73pvff5f4txvrhlpslcuty60tf0ngafw0jru0fnsnrzaxw
   - &zapados age1z37rwn90f923pdhjtcsw2r8a48hwsuh73xjswjj8z7qr3kp3aeyqdamr5f
 
 creation_rules:
@@ -54,7 +55,7 @@ creation_rules:
     key_groups:
       - age:
           - *personal
-        # - *moltres
+          - *moltres
 
   - path_regex: nixos/hosts/zapados/secrets.yaml
     key_groups:
@@ -70,5 +71,5 @@ creation_rules:
           - *eevee
           - *flareon
           - *machamp
-          # - *moltres
+          - *moltres
           - *zapados
