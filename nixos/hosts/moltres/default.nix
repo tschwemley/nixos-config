@@ -72,6 +72,14 @@ in {
     age.keyFile = "/root/.config/sops/age/keys.txt";
   };
 
+  secrets = {
+    systemd_networkd_10_ens3 = {
+      mode = "0444";
+      path = "/etc/systemd/network/10-ens3.network";
+      restartUnits = ["systemd-networkd" "systemd-resolved"];
+    };
+  };
+
   # don't update this
   system.stateVersion = "23.05";
 }
