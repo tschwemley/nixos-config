@@ -30,7 +30,6 @@ in {
   };
 
   networking.hostName = nodeName;
-  networking.dhcpcd.enable = false;
 
   # These are the sops secrets required by every k3s node
   sops = {
