@@ -41,15 +41,15 @@ in {
   services.k3s = {
     inherit extraFlags role serverAddr;
     enable = true;
-    # tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
+    tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
   };
 
-  # sops.secrets = {
-  #   k3s-server-token = {
-  #     sopsFile = ./secrets.yaml;
-  #     path = "/var/lib/rancher/k3s/server/token";
-  #   };
-  # };
+  sops.secrets = {
+    k3s-server-token = {
+      sopsFile = ./secrets.yaml;
+      path = "/var/lib/rancher/k3s/server/token";
+    };
+  };
 
   systemd.services = {
     k3s = {
