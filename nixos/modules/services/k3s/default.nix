@@ -41,7 +41,7 @@ in {
   services.k3s = {
     inherit extraFlags role serverAddr;
     enable = true;
-    tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
+    # tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
   };
 
   # sops.secrets = {
