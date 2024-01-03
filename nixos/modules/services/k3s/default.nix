@@ -34,7 +34,9 @@ in {
   # required for wg flannel
   networking.firewall.allowedUDPPorts = [51820 51821];
   # 10250 for kubelet metrics
-  networking.firewall.allowedTCPPorts = [2222 10250];
+  networking.firewall.allowedTCPPorts = [10250];
+  # 2222 for possible ssh proxy for sourcehut
+  # networking.firewall.allowedTCPPorts = [2222 10250];
 
   services.k3s = {
     inherit extraFlags role serverAddr;

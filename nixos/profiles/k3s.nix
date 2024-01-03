@@ -17,7 +17,7 @@
 in {
   imports = [
     disk
-    k3s
+    # k3s
     ./server.nix
   ];
 
