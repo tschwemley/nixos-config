@@ -1,4 +1,6 @@
-{...}: {
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [cmctl];
+
   networking.firewall.allowedTCPPorts = [
     6443 # api server
   ];
