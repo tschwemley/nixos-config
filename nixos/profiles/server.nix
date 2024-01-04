@@ -7,7 +7,7 @@
   imports = [
     ./.
     ../modules/services/fail2ban.nix
-    (../../modules/users/server.nix {inherit config;})
+    ../modules/users/server.nix
   ];
 
   environment.systemPackages = with pkgs; [
