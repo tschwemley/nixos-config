@@ -50,7 +50,7 @@ in {
       tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
     };
 
-    resolved.enabled = true;
+    resolved.enable = true;
   };
 
   sops.secrets = {
