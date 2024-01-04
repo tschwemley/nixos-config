@@ -8,19 +8,19 @@
   diskName = "/dev/vda";
   nodeName = "articuno";
   useGrub = true;
-  wireguardIP = "10.0.0.1";
+  nodeIP = "10.0.0.1";
 
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
-  k3s = import ../../profiles/k3s.nix {
-    inherit config lib nodeName pkgs useGrub;
-    extraKernelModules = ["kvm-amd"];
-    nodeIP = wireguardIP;
+  disk = import ../modules/hardware/disks/vm.nix {inherit diskName useGrub;};
+  k3s = import ../modules/services/k3s {
+    inherit config lib pkgs nodeIP nodeName;
     role = "server";
   };
+  profile = import ../../profiles/server.nix;
   user = import ../../modules/users/server.nix {inherit config;};
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
-    ip = wireguardIP;
+    ip = nodeIP;
     peers = [
       {
         # zapados
@@ -61,7 +61,9 @@
 in {
   imports = [
     boot
+    disk
     k3s
+    profile
     user
     wireguard
     ../../modules/services/k3s/postgresql.nix

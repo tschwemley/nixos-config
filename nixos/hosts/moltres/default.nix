@@ -11,11 +11,8 @@
   wireguardIP = "10.0.0.3";
 
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
-  k3s = import ../../profiles/k3s.nix {
-    inherit config lib nodeName pkgs useGrub;
-    extraKernelModules = ["kvm-amd"];
-    nodeIP = wireguardIP;
-    role = "server";
+  k3s = import ../modules/services/k3s {
+    inherit config lib pkgs nodeIP nodeName role;
   };
   user = import ../../modules/users/server.nix {inherit config;};
   wireguard = import ../../modules/networking/wireguard.nix {

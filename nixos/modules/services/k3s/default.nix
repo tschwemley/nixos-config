@@ -19,6 +19,14 @@ in {
     then [./server.nix]
     else [];
 
+  boot = {
+    initrd = {
+      availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
+    };
+    kernelModules = ["wireguard"];
+    supportedFilesystems = ["btrfs"];
+  };
+
   environment.sessionVariables = {
     KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
   };
@@ -32,11 +40,11 @@ in {
   ];
 
   # required for wg flannel
-  networking.firewall.allowedUDPPorts = [51820 51821];
-  # 10250 for kubelet metrics
-  networking.firewall.allowedTCPPorts = [10250];
-  # 2222 for possible ssh proxy for sourcehut
-  # networking.firewall.allowedTCPPorts = [2222 10250];
+  networking = {
+    firewall.allowedTCPPorts = [10250];
+    firewall.allowedUDPPorts = [51820 51821];
+    hostName = nodeName;
+  };
 
   services.k3s = {
     inherit extraFlags role serverAddr;
@@ -51,6 +59,7 @@ in {
     };
   };
 
+  # These are the sops secrets required by every k3s node
   systemd.services = {
     k3s = {
       requires = ["containerd.service" "run-secrets.d.mount" "systemd-networkd.service"];

@@ -16,5 +16,7 @@ in {
     # BUG: currently failing tests upstream
     # ../programs/visidata.nix
     ../programs/zk
+    ../shell/direnv.nix
+    ../shell/starship.nix
   ];
 }

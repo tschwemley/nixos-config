@@ -12,6 +12,18 @@ in {
   networking.firewall.enable = true;
   networking.firewall.allowedUDPPorts = [listenPort];
 
+  sops = {
+    secrets = {
+      wireguard_private = {
+        mode = "0400";
+        path = "/persist/wireguard/private";
+        owner = config.users.users.systemd-network.name;
+        group = config.users.users.systemd-network.group;
+        restartUnits = ["systemd-networkd" "systemd-resolved"];
+      };
+    };
+  };
+
   # this gives networkd appropriate perms to read the secret
   systemd.services.networkd.serviceConfig.SupplementaryGroups = [config.users.groups.keys.name];
 

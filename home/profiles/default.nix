@@ -7,7 +7,7 @@
     ../programs/ripgrep.nix
     ../programs/wcalc.nix
     ../programs/wezterm
-    ../shell
+    ../shell/zsh.nix
   ];
 
   nixpkgs = {
