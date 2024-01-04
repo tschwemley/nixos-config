@@ -43,10 +43,14 @@ in {
     hostName = nodeName;
   };
 
-  services.k3s = {
-    inherit extraFlags role serverAddr;
-    enable = true;
-    tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
+  services = {
+    k3s = {
+      inherit extraFlags role serverAddr;
+      enable = true;
+      tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
+    };
+
+    resolved.enabled = true;
   };
 
   sops.secrets = {

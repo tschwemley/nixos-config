@@ -57,9 +57,6 @@ in {
     age.keyFile = "/root/.config/sops/age/keys.txt";
   };
 
-  systemd.network.enable = true;
-  services.resolved.enable = true;
-
   # don't update this
   system.stateVersion = "23.05";
 }
