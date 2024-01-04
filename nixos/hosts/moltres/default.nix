@@ -11,8 +11,8 @@
   useGrub = true;
 
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
-  disk = import ../modules/hardware/disks/vm.nix {inherit diskName useGrub;};
-  k3s = import ../modules/services/k3s {
+  disk = import ../../modules/hardware/disks/vm.nix {inherit diskName useGrub;};
+  k3s = import ../../modules/services/k3s {
     inherit config lib pkgs nodeIP nodeName;
     role = "server";
   };
