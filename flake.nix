@@ -27,10 +27,6 @@
     };
 
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
-    nixpkgs-wayland = {
-      url = "github:nix-community/nixpkgs-wayland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     sops.url = "github:Mic92/sops-nix";
 
     # TODO: consider moving this into it's own config w/ other hyprland items in the future
