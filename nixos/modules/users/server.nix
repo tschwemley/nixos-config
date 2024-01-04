@@ -1,4 +1,4 @@
-{config}: {
+{config, ...}: {
   # don't import default since my servers are root-only headless (for now)
   home-manager.users.root.imports = [
     ../../../home/profiles/server.nix
