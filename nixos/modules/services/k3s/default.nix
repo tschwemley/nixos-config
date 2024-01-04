@@ -11,7 +11,7 @@
   extraFlags =
     if role == "agent"
     then defaultFlags
-    else defaultFlags + "--disable traefik --flannel-backend=wireguard-native --flannel-external-ip --datastore-endpoint=postgres://postgres@10.0.0.1:5432/kubernetes --tls-sans=10.0.0.1";
+    else defaultFlags + "--disable traefik --flannel-backend=wireguard-native --flannel-external-ip --datastore-endpoint=postgres://postgres@10.0.0.1:5432/kubernetes --tls-san=10.0.0.1 --tls-san=10.0.0.2 --tls-san=10.0.0.3";
   serverAddr = "https://10.0.0.1:6443";
 in {
   imports =
