@@ -6,18 +6,15 @@
 }: let
   diskName = "/dev/sda";
   nodeName = "jolteon";
-  wireguardIP = "10.0.0.6";
+  nodeIP = "10.0.0.6";
 
   boot = import ../../modules/system/systemd-boot.nix;
-  k3s = import ../../profiles/k3s.nix {
-    inherit config diskName lib nodeName pkgs;
-    nodeIP = wireguardIP;
-    role = "agent";
-  };
-  user = import ../../modules/users/server.nix {inherit config;};
+  disk = import ../../modules/hardware/disks/vm.nix {inherit diskName;};
+  k3s = import ../../modules/services/k3s {inherit config diskName lib nodeIP nodeName pkgs;};
+  profile = import ../../profiles/server.nix;
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
-    ip = wireguardIP;
+    ip = nodeIP;
     peers = [
       {
         # articuno
@@ -40,8 +37,9 @@
 in {
   imports = [
     boot
+    disk
     k3s
-    user
+    profile
     wireguard
   ];
 

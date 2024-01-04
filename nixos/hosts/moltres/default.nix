@@ -8,14 +8,12 @@
   diskName = "/dev/vda";
   nodeIP = "10.0.0.3";
   nodeName = "moltres";
+  role = "server";
   useGrub = true;
 
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
   disk = import ../../modules/hardware/disks/vm.nix {inherit diskName useGrub;};
-  k3s = import ../../modules/services/k3s {
-    inherit config lib pkgs nodeIP nodeName;
-    role = "server";
-  };
+  k3s = import ../../modules/services/k3s {inherit config lib pkgs nodeIP nodeName role;};
   profile = import ../../profiles/server.nix;
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
