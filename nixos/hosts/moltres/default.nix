@@ -57,7 +57,6 @@ in {
     disk
     k3s
     profile
-    user
     wireguard
   ];
 
