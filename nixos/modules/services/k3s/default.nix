@@ -57,14 +57,18 @@ in {
   };
 
   # These are the sops secrets required by every k3s node
-  systemd.services = {
-    k3s = {
-      requires = ["containerd.service" "run-secrets.d.mount" "systemd-networkd.service"];
-      after = ["containerd.service" "firewall.service" "run-secrets.d.mount" "systemd-networkd.service"];
-    };
-    systemd-networkd = {
-      requires = ["run-secrets.d.mount"];
-      after = ["run-secrets.d.mount"];
+  systemd = {
+    network.enable = true;
+
+    services = {
+      k3s = {
+        requires = ["containerd.service" "run-secrets.d.mount" "systemd-networkd.service"];
+        after = ["containerd.service" "firewall.service" "run-secrets.d.mount" "systemd-networkd.service"];
+      };
+      systemd-networkd = {
+        requires = ["run-secrets.d.mount"];
+        after = ["run-secrets.d.mount"];
+      };
     };
   };
 
