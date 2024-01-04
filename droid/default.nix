@@ -1,5 +1,5 @@
-{self, ...}: {
-  flake.nixOnDroidConfigurations.default = self.nix-on-droid.lib.nixOnDroidConfiguration {
+{inputs, ...}: {
+  flake.nixOnDroidConfigurations.default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
     modules = [
       {
         system.stateVersion = "23.05";
