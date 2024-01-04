@@ -33,9 +33,6 @@ in {
 
   environment.systemPackages = with pkgs; [
     (writeShellScriptBin "k3s-reset-node" (builtins.readFile ./k3s-reset-node))
-    etcd
-    k9s
-    kubevirt
     openiscsi
   ];
 

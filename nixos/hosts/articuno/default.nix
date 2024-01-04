@@ -17,7 +17,6 @@
     role = "server";
   };
   profile = import ../../profiles/server.nix;
-  user = import ../../modules/users/server.nix {inherit config;};
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
     ip = nodeIP;
@@ -69,6 +68,7 @@ in {
     ../../modules/services/k3s/postgresql.nix
   ];
 
+  environment.systemPackages = with pkgs; [k9s];
   networking.dhcpcd.enable = false;
 
   services.openssh = {

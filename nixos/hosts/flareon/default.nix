@@ -7,18 +7,15 @@
 }: let
   diskName = "/dev/sda";
   nodeName = "flareon";
-  wireguardIP = "10.0.0.5";
+  nodeIP = "10.0.0.5";
 
   boot = import ../../modules/system/systemd-boot.nix;
-  k3s = import ../../profiles/k3s.nix {
-    inherit inputs config diskName lib nodeName pkgs;
-    nodeIP = wireguardIP;
-    role = "agent";
-  };
-  user = import ../../modules/users/server.nix {inherit config;};
+  disk = import ../../modules/hardware/disks/vm.nix {inherit diskName;};
+  k3s = import ../../modules/services/k3s {inherit config lib pkgs nodeIP nodeName;};
+  profile = import ../../profiles/server.nix;
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
-    ip = wireguardIP;
+    ip = nodeIP;
     peers = [
       {
         # articuno
@@ -41,8 +38,9 @@
 in {
   imports = [
     boot
+    disk
     k3s
-    user
+    profile
     wireguard
   ];
 
