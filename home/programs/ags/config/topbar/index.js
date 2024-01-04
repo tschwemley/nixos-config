@@ -1,6 +1,7 @@
 import Clock from './widgets/clock.js';
 import ClientTitle from './widgets/clienttitle.js';
 import Media from './widgets/media.js';
+import Power from './widgets/power.js';
 import SysTray from './widgets/systray.js';
 import Volume from './widgets/volume.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
@@ -26,6 +27,7 @@ const Right = Widget.Box({
 		Volume(),
 		Clock(),
 		SysTray(),
+		Power,
 	],
 });
 
