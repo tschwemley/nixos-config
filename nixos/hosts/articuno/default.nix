@@ -6,9 +6,9 @@
   ...
 }: let
   diskName = "/dev/vda";
+  nodeIP = "10.0.0.1";
   nodeName = "articuno";
   useGrub = true;
-  nodeIP = "10.0.0.1";
 
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
   disk = import ../modules/hardware/disks/vm.nix {inherit diskName useGrub;};

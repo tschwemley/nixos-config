@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -6,6 +7,7 @@
   imports = [
     ./.
     ../modules/services/fail2ban.nix
+    (../../modules/users/server.nix {inherit config;})
   ];
 
   environment.systemPackages = with pkgs; [
