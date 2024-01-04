@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [cmctl];
+  environment.systemPackages = with pkgs; [cmctl kubectl-cnpg];
 
   networking.firewall.allowedTCPPorts = [
     6443 # api server

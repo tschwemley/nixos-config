@@ -8,18 +8,15 @@
   diskName = "/dev/vda";
   nodeName = "eevee";
   useGrub = true;
-  wireguardIP = "10.0.0.4";
+  nodeIP = "10.0.0.4";
 
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
-  k3s = import ../../profiles/k3s.nix {
-    inherit inputs config diskName lib nodeName pkgs useGrub;
-    nodeIP = wireguardIP;
-    role = "agent";
-  };
-  user = import ../../modules/users/server.nix {inherit config;};
+  disk = import ../../modules/hardware/disks/vm.nix {inherit diskName useGrub;};
+  k3s = import ../../modules/services/k3s {inherit config lib pkgs nodeIP nodeName;};
+  profile = import ../../profiles/server.nix;
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
-    ip = wireguardIP;
+    ip = nodeIP;
     peers = [
       {
         # articuno
@@ -42,18 +39,11 @@
 in {
   imports = [
     boot
+    disk
     k3s
-    user
+    profile
     wireguard
   ];
-
-  boot = {
-    initrd = {
-      availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
-    };
-    kernelModules = ["kvm-amd"];
-    supportedFilesystems = ["btrfs"];
-  };
 
   # eevee has issues with DHCP so disable and use systemd-networkd instead
   networking = {
@@ -74,19 +64,9 @@ in {
 
     # Specify machine secrets
     secrets = {
-      root_password = {
-        neededForUsers = true;
-      };
       systemd_networkd_10_ens3 = {
         mode = "0444";
         path = "/etc/systemd/network/10-ens3.network";
-        restartUnits = ["systemd-networkd" "systemd-resolved"];
-      };
-      wireguard_private = {
-        group = config.users.users.systemd-network.group;
-        mode = "0400";
-        owner = config.users.users.systemd-network.name;
-        path = "/persist/wireguard/private";
         restartUnits = ["systemd-networkd" "systemd-resolved"];
       };
 
@@ -99,9 +79,6 @@ in {
       };
     };
   };
-
-  systemd.network.enable = true;
-  services.resolved.enable = true;
 
   # don't update this
   system.stateVersion = "23.05";
