@@ -45,6 +45,13 @@ in {
     wireguard
   ];
 
+  fileSystems."/storage" = {
+    device = "/dev/sda1";
+    fsType = "btrfs";
+    neededForBoot = true;
+    options = ["compress=lzo"];
+  };
+
   # eevee has issues with DHCP so disable and use systemd-networkd instead
   networking = {
     dhcpcd.enable = false;
