@@ -10,6 +10,7 @@ in {
     ../programs/buku.nix
     ../programs/github.nix
     ../programs/glow.nix
+    ../programs/httpie.nix
     ../programs/taskwarrior.nix
     ../programs/wiki-tui.nix
     # BUG: currently failing tests upstream

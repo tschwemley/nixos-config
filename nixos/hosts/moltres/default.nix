@@ -1,16 +1,19 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
   ...
 }: let
-  diskName = "/dev/sda";
+  diskName = "/dev/vda";
   nodeName = "moltres";
+  useGrub = true;
   wireguardIP = "10.0.0.3";
 
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
   k3s = import ../../profiles/k3s.nix {
-    inherit config diskName lib nodeName pkgs;
+    inherit config lib nodeName pkgs useGrub;
+    extraKernelModules = ["kvm-amd"];
     nodeIP = wireguardIP;
     role = "server";
   };
@@ -57,7 +60,7 @@ in {
     wireguard
   ];
 
-  filesystems."/storage" = {
+  fileSystems."/storage" = {
     device = "/dev/sda1";
     fsType = "btrfs";
     neededForBoot = true;
@@ -67,6 +70,14 @@ in {
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "/root/.config/sops/age/keys.txt";
+
+    secrets = {
+      systemd_networkd_10_ens3 = {
+        mode = "0444";
+        path = "/etc/systemd/network/10-ens3.network";
+        restartUnits = ["systemd-networkd" "systemd-resolved"];
+      };
+    };
   };
 
   # don't update this

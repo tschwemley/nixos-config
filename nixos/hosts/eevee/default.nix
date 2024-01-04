@@ -78,13 +78,13 @@ in {
         neededForUsers = true;
       };
       systemd_networkd_10_ens3 = {
-        mode = "0644";
+        mode = "0444";
         path = "/etc/systemd/network/10-ens3.network";
         restartUnits = ["systemd-networkd" "systemd-resolved"];
       };
       wireguard_private = {
         group = config.users.users.systemd-network.group;
-        mode = "0644";
+        mode = "0400";
         owner = config.users.users.systemd-network.name;
         path = "/persist/wireguard/private";
         restartUnits = ["systemd-networkd" "systemd-resolved"];

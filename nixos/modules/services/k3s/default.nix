@@ -11,7 +11,7 @@
   extraFlags =
     if role == "agent"
     then defaultFlags
-    else defaultFlags + "--disable traefik --flannel-backend=wireguard-native --flannel-external-ip --datastore-endpoint=postgres://postgres@10.0.0.1:5432/kubernetes";
+    else defaultFlags + "--disable traefik --flannel-backend=wireguard-native --flannel-external-ip --datastore-endpoint=postgres://postgres@10.0.0.1:5432/kubernetes --tls-san=10.0.0.1 --tls-san=10.0.0.2 --tls-san=10.0.0.3";
   serverAddr = "https://10.0.0.1:6443";
 in {
   imports =
@@ -34,7 +34,9 @@ in {
   # required for wg flannel
   networking.firewall.allowedUDPPorts = [51820 51821];
   # 10250 for kubelet metrics
-  networking.firewall.allowedTCPPorts = [2222 10250];
+  networking.firewall.allowedTCPPorts = [10250];
+  # 2222 for possible ssh proxy for sourcehut
+  # networking.firewall.allowedTCPPorts = [2222 10250];
 
   services.k3s = {
     inherit extraFlags role serverAddr;

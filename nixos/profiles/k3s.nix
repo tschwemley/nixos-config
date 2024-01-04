@@ -35,7 +35,7 @@ in {
   sops = {
     secrets = {
       wireguard_private = {
-        mode = "0644";
+        mode = "0400";
         path = "/persist/wireguard/private";
         owner = config.users.users.systemd-network.name;
         group = config.users.users.systemd-network.group;
@@ -44,6 +44,9 @@ in {
     };
   };
 
+  services.resolved = {
+    enable = true;
+    fallbackDns = ["1.1.1.1" "1.0.0.1" "2006:4700:4700::1111" "2006:4700:4700::1001"];
+  };
   systemd.network.enable = true;
-  services.resolved.enable = true;
 }
