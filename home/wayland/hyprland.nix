@@ -56,9 +56,9 @@ in {
       }
     '';
 
-    # plugins = [
-    #   split-monitor-workspaces
-    # ];
+    plugins = [
+      # split-monitor-workspaces
+    ];
 
     settings = {
       "$mod" = "SUPER";
@@ -67,6 +67,16 @@ in {
         "$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"
         "$mod, p, exec, ${pkgs.rofi}/bin/rofi -show drun"
 
+        "$mod, 1, workspace, 1"
+        "$mod, 2, workspace, 2"
+        "$mod, 3, workspace, 3"
+        "$mod, 4, workspace, 4"
+
+        "$mod shift, 1, movetoworkspace, 1"
+        "$mod shift, 2, movetoworkspace, 2"
+        "$mod shift, 3, movetoworkspace, 3"
+        "$mod shift, 4, movetoworkspace, 4"
+
         "alt, tab, layoutmsg, cyclenext"
         "alt shift, tab, layoutmsg, cycleprev"
         "$mod, l, layoutmsg, swapnext"
@@ -74,12 +84,6 @@ in {
         "$mod shift, h, movewindow, mon:1"
         "$mod shift, l, movewindow, mon:0"
         "$mod, w, killactive"
-
-        # "$mod, 1, split-workspace, 1"
-        # "$mod, 2, split-workspace, 2"
-        # "$mod, 3, split-workspace, 3"
-        # "$mod, 4, split-workspace, 4"
-        # "$mod, 5, split-workspace, 5"
       ];
 
       exec-once = [
@@ -95,14 +99,12 @@ in {
         "DP-2,2560x2880@60,3840x0,1"
       ];
 
-      # workspace = [
-      #   "HDMI-A-2,1"
-      #   "DP-2,2"
-      #   "HDMI-A-2,3"
-      #   "DP-2,4"
-      #   "HDMI-A-2,5"
-      #   "DP-2,6"
-      # ];
+      workspace = [
+        "1, monitor:HDMI-A-2"
+        "2, monitor:DP-2"
+        "3, monitor:HDMI-A-2"
+        "4, monitor:DP-2"
+      ];
     };
 
     systemd.enable = true;

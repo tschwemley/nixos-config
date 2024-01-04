@@ -7,16 +7,19 @@ import Volume from './widgets/volume.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import Workspaces from './widgets/workspaces.js';
 
+/*
+* no spot yet: 
+* - Media()
+*/
 const Left = Widget.Box({
 	children: [
 		Workspaces(),
-		ClientTitle(),
 	],
 	spacing: 8,
 });
 
 const Center = Widget.Box({
-	children: [Media(),],
+	children: [ClientTitle(),],
 	spacing: 8,
 });
 

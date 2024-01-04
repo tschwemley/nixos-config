@@ -46,6 +46,7 @@
     nixpkgs,
     nix-on-droid,
     sops,
+    split-monitor-workspaces,
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
