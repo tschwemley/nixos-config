@@ -61,7 +61,6 @@ in {
     disk
     k3s
     profile
-    user
     wireguard
     ../../modules/services/k3s/postgresql.nix
   ];
