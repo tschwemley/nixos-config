@@ -10,7 +10,7 @@
 
   boot = import ../../modules/system/systemd-boot.nix;
   disk = import ../../modules/hardware/disks/vm.nix {inherit diskName;};
-  k3s = import ../../modules/services/k3s {inherit config diskName lib nodeIP nodeName pkgs;};
+  k3s = import ../../modules/services/k3s {inherit config lib pkgs nodeIP nodeName;};
   profile = import ../../profiles/server.nix;
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
