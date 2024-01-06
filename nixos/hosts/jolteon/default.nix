@@ -32,6 +32,18 @@
         AllowedIPs = ["10.0.0.3/32"];
         PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
       }
+      {
+        #eevee
+        AllowedIPs = ["10.0.0.4/32"];
+        PersistentKeepalive = 25;
+        PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
+      }
+      {
+        #flareon
+        AllowedIPs = ["10.0.0.5/32"];
+        PersistentKeepalive = 25;
+        PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
+      }
     ];
   };
 in {

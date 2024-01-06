@@ -5,9 +5,11 @@
     6443 # api server
   ];
 
-  programs.zsh.shellAliases = {
-    ctr = "k3s ctr";
-    kubectl = "k3s kubectl";
+  programs.zsh = {
+    shellAliases = {
+      ctr = "k3s ctr";
+      kubectl = "k3s kubectl";
+    };
   };
 
   sops.secrets = {
