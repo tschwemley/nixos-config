@@ -42,6 +42,12 @@
         PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
       }
       {
+        # jolteon
+        AllowedIPs = ["10.0.0.6/32"];
+        PersistentKeepalive = 25;
+        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
+      }
+      {
         #machamp
         AllowedIPs = ["10.0.0.90/32"];
         PersistentKeepalive = 25;

@@ -32,18 +32,18 @@
         AllowedIPs = ["10.0.0.3/32"];
         PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
       }
-      {
-        #eevee
-        AllowedIPs = ["10.0.0.4/32"];
-        PersistentKeepalive = 25;
-        PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
-      }
-      {
-        # jolteon
-        AllowedIPs = ["10.0.0.6/32"];
-        PersistentKeepalive = 25;
-        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
-      }
+      # {
+      #   #eevee
+      #   AllowedIPs = ["10.0.0.4/32"];
+      #   PersistentKeepalive = 25;
+      #   PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
+      # }
+      # {
+      #   # jolteon
+      #   AllowedIPs = ["10.0.0.6/32"];
+      #   PersistentKeepalive = 25;
+      #   PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
+      # }
     ];
   };
 in {
