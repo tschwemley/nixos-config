@@ -8,6 +8,7 @@
     ../programs/ripgrep.nix
     ../programs/wcalc.nix
     ../programs/wezterm
+    ../shell/direnv.nix
     ../shell/zsh.nix
   ];
 

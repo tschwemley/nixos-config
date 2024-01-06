@@ -13,7 +13,6 @@ in {
     ../programs/taskwarrior.nix
     ../programs/wiki-tui.nix
     ../programs/zk
-    ../shell/direnv.nix
     ../shell/starship.nix
   ];
 }
