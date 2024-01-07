@@ -3,6 +3,7 @@ import { execAsync } from 'resource:///com/github/Aylur/ags/utils.js';
 
 const Clock = () => Widget.Label({
 	className: 'clock',
+	css: 'color: black',
 	connections: [
 		// this is bad practice, since exec() will block the main event loop
 		// in the case of a simple date its not really a problem
