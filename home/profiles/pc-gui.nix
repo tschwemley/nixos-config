@@ -39,9 +39,4 @@
   #     path = "/home/schwem/.config/spotifyd/spotifyd.conf";
   #   };
   # };
-
-  # TODO: move this to system level or someplace more appropriate at a later date
-  xdg.configFile = {
-    "awesome/rc.lua".source = ../xdg-config/awesome/rc.lua;
-  };
 }
