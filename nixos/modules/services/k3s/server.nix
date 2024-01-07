@@ -6,9 +6,17 @@
       enable = true;
     };
 
-    xdg.dataFile = {
-      "k9s/clusters/default/default/config.yaml".source = ./k9s-cluster-config.yaml;
+    settings.k9s = {
+      namespace.favorites = [
+        "all"
+        "system"
+        "web"
+      ];
     };
+
+    # xdg.dataFile = {
+    #   "k9s/clusters/default/default/config.yaml".source = ./k9s-cluster-config.yaml;
+    # };
   };
 
   networking.firewall.allowedTCPPorts = [
