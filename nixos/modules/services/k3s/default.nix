@@ -36,10 +36,9 @@ in {
     openiscsi
   ];
 
-  # required for wg flannel
   networking = {
-    firewall.allowedTCPPorts = [10250];
-    firewall.allowedUDPPorts = [51820 51821];
+    firewall.allowedTCPPorts = [10250]; # metrics
+    firewall.allowedUDPPorts = [51820 51821]; # flannel wg ipv4/6
     hostName = nodeName;
   };
 

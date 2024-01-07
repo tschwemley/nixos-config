@@ -1,0 +1,17 @@
+k9s:
+  cluster: default
+  readOnly: false
+  namespace:
+    active: all
+    lockFavorites: false
+    favorites:
+      - all
+      - auth
+      - system
+      - web
+  view:
+    active: po
+  featureGates:
+    nodeShell: false
+  portForwardAddress: localhost
+  skin: gruvbox-dark
