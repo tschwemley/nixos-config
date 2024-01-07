@@ -26,6 +26,7 @@
     pinentry
     ripgrep
     rsync
+    seaweedfs
     unzip
     wget
     zip
