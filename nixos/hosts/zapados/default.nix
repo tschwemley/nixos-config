@@ -7,23 +7,21 @@
 }: let
   diskName = "/dev/sda";
   nodeName = "zapados";
-  wireguardIP = "10.0.0.2";
+  role = "server";
+  nodeIP = "10.0.0.2";
 
   boot = import ../../modules/system/systemd-boot.nix;
-  k3s = import ../../profiles/k3s.nix {
-    inherit inputs config diskName lib nodeName pkgs;
-    enableImpermanence = false;
-    nodeIP = wireguardIP;
-    role = "server";
-  };
-  user = import ../../modules/users/server.nix {inherit config;};
+  disk = import ../../modules/hardware/disks/vm.nix {inherit diskName;};
+  k3s = import ../../modules/services/k3s {inherit config lib pkgs nodeIP nodeName role;};
+  profile = import ../../profiles/server.nix;
   wireguard = import ../../modules/networking/wireguard.nix {
     inherit config;
-    ip = wireguardIP;
+    ip = nodeIP;
     peers = [
       {
         # articuno
-        AllowedIPs = ["10.0.0.1/32" "10.0.0.3/32" "10.0.0.4/32" "10.0.0.5/32" "10.0.0.6/32" "10.0.0.90/32"];
+        # AllowedIPs = ["10.0.0.1/32" "10.0.0.3/32" "10.0.0.4/32" "10.0.0.5/32" "10.0.0.6/32" "10.0.0.90/32"];
+        AllowedIPs = ["10.0.0.1/32"];
         Endpoint = "wg.schwem.io:9918";
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       }
@@ -61,8 +59,9 @@
 in {
   imports = [
     boot
+    disk
     k3s
-    user
+    profile
     wireguard
     ../../modules/system/systemd-boot.nix
   ];
