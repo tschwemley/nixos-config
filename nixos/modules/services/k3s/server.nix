@@ -4,14 +4,13 @@
   home-manager.users.root.config = {
     programs.k9s = {
       enable = true;
-    };
-
-    settings.k9s = {
-      namespace.favorites = [
-        "all"
-        "system"
-        "web"
-      ];
+      settings.k9s = {
+        namespace.favorites = [
+          "all"
+          "system"
+          "web"
+        ];
+      };
     };
 
     # xdg.dataFile = {
