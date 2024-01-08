@@ -2,7 +2,7 @@ svc-url() {
 	namespace=$1
 	serviceName=$2
 
-	kubectl get svc -n "$system $serviceName" -ojsonpath='{.spec.clusterIP}'
+	echo $(kubectl get svc -n "$namespace $serviceName" -ojsonpath='{.spec.clusterIP}')
 }
 
 wup() {
