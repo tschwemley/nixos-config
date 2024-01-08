@@ -36,6 +36,10 @@ in {
     openiscsi
   ];
 
+  home-manager.users.root.config = {
+    programs.zsh.initExtra = builtins.readFile ./k3s-aliases.sh;
+  };
+
   networking = {
     firewall.allowedTCPPorts = [10250]; # metrics
     firewall.allowedUDPPorts = [51820 51821]; # flannel wg ipv4/6
@@ -53,6 +57,11 @@ in {
   };
 
   sops.secrets = {
+    k3s-config = {
+      sopsFile = ./secrets.yaml;
+      path = "/etc/rancher/k3s/k3s.yaml";
+    };
+
     k3s-server-token = {
       sopsFile = ./secrets.yaml;
       path = "/var/lib/rancher/k3s/server/token";
