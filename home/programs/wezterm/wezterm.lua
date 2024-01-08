@@ -20,22 +20,22 @@ local config = {
       },
       {
          key = 'h',
-         mods = 'CTRL',
+         mods = 'CTRL|SHIFT',
          action = act.ActivatePaneDirection 'Left',
       },
       {
          key = 'l',
-         mods = 'CTRL',
+         mods = 'CTRL|SHIFT',
          action = act.ActivatePaneDirection 'Right',
       },
       {
          key = 'k',
-         mods = 'CTRL',
+         mods = 'CTRL|SHIFT',
          action = act.ActivatePaneDirection 'Up',
       },
       {
          key = 'j',
-         mods = 'CTRL',
+         mods = 'CTRL|SHIFT',
          action = act.ActivatePaneDirection 'Down',
       },
    },

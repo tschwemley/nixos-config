@@ -10,6 +10,7 @@ in {
     ../programs/buku.nix
     ../programs/glow.nix
     ../programs/httpie.nix
+    ../programs/mods.nix
     ../programs/taskwarrior.nix
     ../programs/wiki-tui.nix
     ../programs/zk
