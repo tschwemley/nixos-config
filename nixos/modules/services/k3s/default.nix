@@ -32,6 +32,7 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
+    (writeShellScriptBin "kg" (builtins.readFile ./kg))
     (writeShellScriptBin "k3s-reset-node" (builtins.readFile ./k3s-reset-node))
     openiscsi
   ];
