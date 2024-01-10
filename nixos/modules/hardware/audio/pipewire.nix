@@ -46,7 +46,7 @@
   #   '';
   # };
 
-  environment.systemPackages = with pkgs; [pwvucontrol];
+  environment.systemPackages = with pkgs; [pavucontrol];
 
   # Enables the RealtimeKit system service, which hands out realtime scheduling priority to user
   # processes on demand. For example, the PulseAudio server uses this to acquire realtime priority.
