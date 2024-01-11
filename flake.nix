@@ -65,6 +65,17 @@
         _module.args.pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
+
+          # overlays = [
+          #   (final: prev: {
+          #     llama-cpp = prev.llama-cpp.override {
+          #       cudaSupport = false;
+          #       openclSupport = true;
+          #       rocmSupport = true;
+          #       # stdenv = pkgs.gcc11Stdenv;
+          #     };
+          #   })
+          # ];
         };
 
         formatter = pkgs.alejandra;

@@ -1,0 +1,12 @@
+-- local ls = require("luasnip")
+--
+-- local s = ls.snippet
+-- local t = ls.text_node
+--
+-- return {
+--    s("pkg", {
+--       t("{pkgs, ...}: {"),
+--       t("  environment.systemPackages = with pkgs; [];"),
+--       t("}"),
+--    }),
+-- }

@@ -1,6 +1,11 @@
 {pkgs, ...}: {
   boot.initrd.kernelModules = ["amdgpu"];
-  environment.variables.AMD_VULKANICD = "RADV";
+
+  environment = {
+    systemPackages = with pkgs; [clblast];
+    variables.AMD_VULKANICD = "RADV";
+  };
+
   hardware.enableRedistributableFirmware = true;
 
   hardware.opengl = {
@@ -9,8 +14,9 @@
     driSupport32Bit = true;
     extraPackages = with pkgs; [
       amdvlk
-      # rocm-opencl-icd
-      # rocm-opencl-runtime
+      rocmPackages.clr
+      rocmPackages.hipblas
+      rocmPackages.rocblas
     ];
     extraPackages32 = with pkgs; [
       driversi686Linux.amdvlk
