@@ -1,9 +1,9 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [cmctl kubectl-cnpg];
 
-  home-manager.users.root.config = {
-    programs.k9s.enable = true;
-  };
+  # home-manager.users.root.config = {
+  #   # programs.k9s.enable = true;
+  # };
 
   networking.firewall.allowedTCPPorts = [
     6443 # api server
