@@ -2,16 +2,13 @@ k9s:
   cluster: default
   readOnly: false
   namespace:
-    active: all
+    active: default
     lockFavorites: false
     favorites:
-      - all
-      - auth
-      - system
-      - web
+    - all
+    - default
   view:
-    active: po
+    active: pod
   featureGates:
     nodeShell: false
   portForwardAddress: localhost
-  skin: gruvbox-dark
