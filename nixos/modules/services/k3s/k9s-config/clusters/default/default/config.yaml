@@ -5,8 +5,14 @@ k9s:
     active: default
     lockFavorites: false
     favorites:
-    - all
-    - default
+      - all
+      - arr
+      - auth
+      - ingress
+      - kube-system
+      - system
+      - swfs
+      - web
   view:
     active: pod
   featureGates:
