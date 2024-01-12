@@ -3,12 +3,11 @@
 
   home-manager.users.root.config = {
     programs.k9s.enable = true;
-  };
-
-  home.file."" = {
-    enable = true;
-    source = ./k9s-config/clusters;
-    target = ".local/share/k9s/clusters";
+    home.file.k9s-config = {
+      enable = true;
+      source = ./k9s-config/clusters;
+      target = ".local/share/k9s/clusters";
+    };
   };
 
   networking.firewall.allowedTCPPorts = [
