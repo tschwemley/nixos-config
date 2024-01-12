@@ -40,7 +40,7 @@ end
 lsp.on_attach(function(client, bufnr)
    lsp.default_keymaps({ buffer = bufnr })
    -- Don't autoformat for php
-   if (client ~= 'intelephense' and client ~= 'copilot')
+   if (client ~= 'intelephense')
    then
       lsp.buffer_autoformat()
    end

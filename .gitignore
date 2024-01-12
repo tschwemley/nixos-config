@@ -1,2 +1,4 @@
 .direnv/*
 ssh_host*
+result
+llama.log

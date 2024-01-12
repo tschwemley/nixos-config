@@ -7,23 +7,10 @@ local has_words_before = function()
    return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
 end
 
-vim.api.nvim_create_autocmd("InsertEnter", {
-   callback = function()
-      -- require('copilot').setup({
-      --    -- diabled on recommendation of coilot-cmp see: https://github.com/zbirenbaum/copilot-cmp/
-      --    -- suggestion = { enabled = false },
-      --    -- panel = { enabled = false },
-      -- })
-      -- TODO: probably don't want this permanently disabled but for now it's annoying as fuck
-      -- require('copilot_cmp').setup()
-   end
-})
-
 -- Completion config
 cmp.setup({
    sources = {
       { name = 'buffer' },
-      -- { name = 'copilot' },
       { name = 'luasnip' },
       { name = 'nvim_lsp' },
       { name = 'nvim_lua' },
