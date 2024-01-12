@@ -2,7 +2,11 @@
   boot.initrd.kernelModules = ["amdgpu"];
 
   environment = {
-    systemPackages = with pkgs; [clblast];
+    systemPackages = with pkgs; [
+      clblast
+      clinfo
+    ];
+
     variables.AMD_VULKANICD = "RADV";
   };
 
@@ -15,8 +19,8 @@
     extraPackages = with pkgs; [
       amdvlk
       rocmPackages.clr
-      rocmPackages.hipblas
-      rocmPackages.rocblas
+      # rocmPackages.hipblas
+      # rocmPackages.rocblas
     ];
     extraPackages32 = with pkgs; [
       driversi686Linux.amdvlk
@@ -25,7 +29,7 @@
 
   services.xserver.videoDrivers = ["modesetting"];
 
-  systemd.tmpfiles.rules = [
-    # "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
-  ];
+  # systemd.tmpfiles.rules = [
+  #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
+  # ];
 }

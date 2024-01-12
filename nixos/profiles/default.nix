@@ -17,16 +17,18 @@
 
   # basic tools I want available on every host and managed by the system
   environment.systemPackages = with pkgs; [
+    age
+    btop
     curl
     git
     gnupg
-    htop
     jq
     lsof
     pinentry
     ripgrep
     rsync
     seaweedfs
+    sops
     unzip
     wget
     zip
