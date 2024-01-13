@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ../programs/bat.nix
+    ../programs/btop.nix
     ../programs/fzf.nix
     ../programs/navi.nix
     ../programs/neovim

@@ -35,6 +35,8 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
+
+    llama-cpp.url = "github:ggerganov/llama.cpp";
   };
 
   outputs = inputs @ {
@@ -42,6 +44,7 @@
     disko,
     flake-parts,
     home-manager,
+    llama-cpp,
     nixos-hardware,
     nixpkgs,
     nix-on-droid,
@@ -56,6 +59,8 @@
       ];
 
       perSystem = {
+        self',
+        inputs',
         config,
         pkgs,
         system,
@@ -66,16 +71,36 @@
           inherit system;
           config.allowUnfree = true;
 
-          #   overlays = [
-          #     (final: prev: {
-          #       llama-cpp = prev.llama-cpp.override {
-          #         cudaSupport = false;
-          #         openclSupport = true;
-          #         rocmSupport = true;
-          #         # stdenv = pkgs.gcc11Stdenv;
-          #       };
-          #     })
-          #   ];
+          overlays = [
+            # (final: prev: {
+            #   # llama-cpp = inputs.llama-cpp.packages.${system}.opencl;
+            #   # llama-cpp = prev.llama-cpp.override {
+            #   #   blasSupport = false;
+            #   #   # clblast = pkgs.clblast;
+            #   #   cudaSupport = false;
+            #   #   openclSupport = true;
+            #   #   rocmSupport = true;
+            #   #   stdenv = pkgs.gcc11Stdenv;
+            #   #   # rocmPackages = pkgs.rocmPackages;
+            #   #   # stdenv = pkgs.gcc11Stdenv;
+            #   # };
+            # })
+            # (final: prev: {
+            #   ollama =
+            #     (prev.ollama.override {
+            #       llama-cpp = inputs.llama-cpp.packages.${system}.opencl;
+            #     })
+            #     .overrideAttrs (attrs: {
+            #       buildGoModule.tags = ["opencl"];
+            #     });
+            # })
+            (final: prev: {
+              llama-cpp = inputs'.llama-cpp.packages.rocm;
+            })
+            (final: prev: {
+              ollama = self'.packages.ollama;
+            })
+          ];
         };
 
         formatter = pkgs.alejandra;
@@ -87,6 +112,7 @@
         ./home
         ./hydra
         ./nixos
+        ./overlays
         ./packages
         ./shells
         ./templates
