@@ -18,7 +18,7 @@
   # basic tools I want available on every host and managed by the system
   environment.systemPackages = with pkgs; [
     age
-    btop
+    amdgpu_top
     curl
     git
     gnupg
