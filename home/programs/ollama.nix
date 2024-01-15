@@ -1,8 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    ollama
-    whisper-ctranslate2
+    # ollama
+    oterm
   ];
-
-  programs.zsh.shellAliases.whisper = "whisper-ctranslate2";
 }

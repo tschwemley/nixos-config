@@ -6,6 +6,7 @@
     ../modules/programs/steam.nix
     ../modules/services/mullvad.nix
     ../modules/services/gnome.nix
+    ../modules/services/ollama.nix
     ../modules/services/xserver.nix
     ../modules/system/fonts.nix
     ../modules/system/gamemode.nix
