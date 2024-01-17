@@ -17,7 +17,7 @@
     role = "agent";
   };
   user = import ../../modules/users/server.nix {inherit config;};
-  wireguard = import ../../modules/networking/wireguard.nix {
+  wireguard = import ../../network/wireguard.nix {
     inherit config;
     ip = wireguardIP;
     peers = [

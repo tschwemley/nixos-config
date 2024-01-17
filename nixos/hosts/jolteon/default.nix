@@ -12,7 +12,7 @@
   disk = import ../../modules/hardware/disks/vm.nix {inherit diskName;};
   k3s = import ../../modules/services/k3s {inherit config lib pkgs nodeIP nodeName;};
   profile = import ../../profiles/server.nix;
-  wireguard = import ../../modules/networking/wireguard.nix {
+  wireguard = import ../../network/wireguard.nix {
     inherit config;
     ip = nodeIP;
     peers = [
