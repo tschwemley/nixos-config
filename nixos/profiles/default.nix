@@ -22,6 +22,7 @@
     curl
     git
     gnupg
+    go
     jq
     lsof
     pinentry
