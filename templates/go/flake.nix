@@ -4,14 +4,12 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    sops.url = "github:Mic92/sops-nix";
   };
 
   outputs = inputs @ {
     self,
     flake-parts,
     nixpkgs,
-    sops,
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
@@ -37,11 +35,9 @@
 
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            age
             delve
             go
             gopls
-            pkgs.sops
           ];
         };
       };
