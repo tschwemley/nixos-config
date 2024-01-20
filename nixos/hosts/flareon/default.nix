@@ -4,16 +4,18 @@
   pkgs,
   ...
 }: let
-  diskName = "/dev/sda";
   nodeName = "flareon";
   nodeIP = "10.0.0.5";
 
   boot = import ../../modules/system/systemd-boot.nix;
+  rootDisk = import ../../hardware/disks/ephemeral-root.nix {diskName = "/dev/sda";};
+  storageDisk = import ../../hardware/disks/block-storage.nix {diskName = "/dev/sdb";};
+
   # disk = import ../../modules/hardware/disks/vm.nix {inherit diskName;};
-  disk = import ./disk.nix {
-    mainDiskName = diskName;
-    storageDiskName = "/dev/sdb";
-  };
+  # disk = import ./disk.nix {
+  #   mainDiskName = diskName;
+  #   storageDiskName = "/dev/sdb";
+  # };
   k3s = import ../../modules/services/k3s {inherit config lib pkgs nodeIP nodeName;};
   profile = import ../../profiles/server.nix;
   wireguard = import ../../network/wireguard.nix {
@@ -53,7 +55,8 @@
 in {
   imports = [
     boot
-    disk
+    rootDisk
+    storageDisk
     k3s
     profile
     wireguard
