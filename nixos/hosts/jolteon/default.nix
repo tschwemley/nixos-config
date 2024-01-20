@@ -9,7 +9,10 @@
   nodeIP = "10.0.0.6";
 
   boot = import ../../modules/system/systemd-boot.nix;
-  disk = import ../../modules/hardware/disks/vm.nix {inherit diskName;};
+  disk = import ./disk.nix {
+    mainDiskName = diskName;
+    storageDiskName = "/dev/sdb";
+  };
   k3s = import ../../modules/services/k3s {inherit config lib pkgs nodeIP nodeName;};
   profile = import ../../profiles/server.nix;
   wireguard = import ../../network/wireguard.nix {
