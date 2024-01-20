@@ -63,7 +63,13 @@ require('lsp-zero').configure('nil_ls', {
 
 lsp.setup()
 
-require('lspsaga').setup({})
+-- TODO: not sure I like this plugin - documentation is lacking and customisability isn't to the
+-- level that I would like it to be
+require('lspsaga').setup({
+   lightbulb = {
+      enable_in_insert = false
+   },
+})
 
 vim.diagnostic.config({
    virtual_text = true,

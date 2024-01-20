@@ -10,7 +10,7 @@ keys:
   - &zapados age1z37rwn90f923pdhjtcsw2r8a48hwsuh73xjswjj8z7qr3kp3aeyqdamr5f
 
 creation_rules:
-  - path_regex: home/profiles/secrets.yaml
+  - path_regex: home/secrets.yaml
     key_groups:
       - age:
           - *personal
