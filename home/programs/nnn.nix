@@ -30,6 +30,8 @@ in {
     inherit extraPackages plugins;
     enable = true;
     bookmarks = {
+    bookmarks = {
+      "3" = "~/Downloads/3d-prints/";
       D = "~/Downloads";
       p = "~/projects";
       n = "~/nixos-config";

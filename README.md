@@ -26,9 +26,7 @@ home directory. Xdg config files live in-place with the module(s) that use them.
 TODO
 
 ## Acknowlegements
-### References
-- [Graham Chirstensen's Erase Your Darlings](https://grahamc.com/blog/erase-your-darlings/)
-- [Mic92's dotfiles](https://github.com/mic92/dotfiles)
-- [misterio77's config](https://github.com/Misterio77/nix-config)
-
-
+### Inspiration
+- [fufexan/dotfiles](https://github.com/fufexan/dotfiles)
+- [mic92/dotfiles](https://github.com/mic92/dotfiles)
+- [mistero77/nix-config](https://github.com/Misterio77/nix-config)

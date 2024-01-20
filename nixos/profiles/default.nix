@@ -13,6 +13,7 @@
     ../modules/services/openssh.nix
     ../modules/system/nix.nix
     ../modules/users
+    ../programs
   ];
 
   # basic tools I want available on every host and managed by the system
