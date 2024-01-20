@@ -106,5 +106,5 @@ in {
   boot.supportedFilesystems = ["btrfs"];
   fileSystems."/".neededForBoot = true;
   fileSystems."/persist".neededForBoot = true;
-  fileSystems."/storage".neededForBoot = true;
+  # fileSystems."/storage".neededForBoot = true;
 }
