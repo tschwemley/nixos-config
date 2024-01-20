@@ -70,7 +70,7 @@
         extraArgs = ["-f"];
         subvolumes = {
           "/storage" = {
-            mountpoint = "/";
+            mountpoint = "/storage";
             mountOptions = ["compress=lzo"];
           };
         };
