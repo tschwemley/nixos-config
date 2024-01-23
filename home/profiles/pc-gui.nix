@@ -16,7 +16,7 @@
     ../programs/sabnzbd.nix
     ../programs/slack.nix
     ../programs/sonic-pi.nix
-    ../programs/spotify.nix
+    # ../programs/spotify.nix
     ../programs/tigervnc.nix
     ../programs/unity.nix
     ../programs/vlc.nix

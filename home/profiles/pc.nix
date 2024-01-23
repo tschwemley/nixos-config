@@ -15,6 +15,7 @@ in {
     ../programs/taskwarrior.nix
     ../programs/wiki-tui.nix
     ../programs/zk
+    ../services/spotifyd.nix
     ../shell/starship.nix
   ];
 }
