@@ -1,17 +1,15 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
   ...
 }: let
-  diskName = "/dev/sda";
   nodeName = "zapados";
   role = "server";
   nodeIP = "10.0.0.2";
 
   boot = import ../../modules/system/systemd-boot.nix;
-  disk = import ../../modules/hardware/disks/vm.nix {inherit diskName;};
+  disk = (import ../../hardware/disks).proxmox;
   k3s = import ../../modules/services/k3s {inherit config lib pkgs nodeIP nodeName role;};
   profile = import ../../profiles/server.nix;
   wireguard = import ../../network/wireguard.nix {
