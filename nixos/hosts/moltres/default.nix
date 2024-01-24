@@ -33,6 +33,7 @@
       {
         #eevee
         AllowedIPs = ["10.0.0.4/32"];
+        PersistentKeepalive = 25;
         PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
       }
       {
