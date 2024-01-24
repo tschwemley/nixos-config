@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
@@ -62,7 +61,7 @@ in {
     profile
     wireguard
     ../../modules/services/k3s/postgresql.nix
-    ../../services/seaweedfs/master.nix
+    # ../../services/seaweedfs/master.nix
   ];
 
   networking.dhcpcd.enable = false;
