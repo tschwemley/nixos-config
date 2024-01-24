@@ -7,11 +7,10 @@
 }: let
   diskName = "/dev/vda";
   nodeName = "eevee";
-  useGrub = true;
   nodeIP = "10.0.0.4";
 
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
-  disk = import ../../modules/hardware/disks/vm.nix {inherit diskName useGrub;};
+  disk = (import ../../hardware/disks).buyvmWithStorage;
   k3s = import ../../modules/services/k3s {inherit config lib pkgs nodeIP nodeName;};
   profile = import ../../profiles/server.nix;
   wireguard = import ../../network/wireguard.nix {
@@ -20,7 +19,7 @@
     peers = [
       {
         # articuno
-        AllowedIPs = ["10.0.0.1/32" "10.0.0.2/32" "10.0.0.3/32"];
+        AllowedIPs = ["10.0.0.1/32" "10.0.0.2/32" "10.0.0.3/32" "10.0.0.5/32" "10.0.0.6/32"];
         Endpoint = "wg.schwem.io:9918";
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       }
@@ -34,6 +33,18 @@
         AllowedIPs = ["10.0.0.3/32"];
         PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
       }
+      {
+        #flareon
+        AllowedIPs = ["10.0.0.5/32"];
+        PersistentKeepalive = 25;
+        PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
+      }
+      {
+        # jolteon
+        AllowedIPs = ["10.0.0.6/32"];
+        PersistentKeepalive = 25;
+        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
+      }
     ];
   };
 in {
@@ -44,13 +55,6 @@ in {
     profile
     wireguard
   ];
-
-  fileSystems."/storage" = {
-    device = "/dev/sda1";
-    fsType = "btrfs";
-    neededForBoot = true;
-    options = ["compress=lzo"];
-  };
 
   # eevee has issues with DHCP so disable and use systemd-networkd instead
   networking = {
