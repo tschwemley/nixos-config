@@ -12,5 +12,11 @@
     ../shell/zsh.nix
   ];
 
-  home.stateVersion = "23.11";
+  home = {
+    homeDirectory = "/home/droid";
+    username = "droid";
+    stateVersion = "23.11";
+  };
+
+  programs.home-manager.enable = true;
 }
