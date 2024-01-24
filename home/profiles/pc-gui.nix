@@ -14,6 +14,7 @@
     ../programs/rofi.nix
     ../programs/rustdesk.nix
     ../programs/sabnzbd.nix
+    ../programs/silly-tavern.nix
     ../programs/slack.nix
     ../programs/sonic-pi.nix
     # ../programs/spotify.nix

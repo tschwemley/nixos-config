@@ -71,29 +71,8 @@
           inherit system;
           config.allowUnfree = true;
 
+          # TODO: move this to overlays/
           overlays = [
-            # (final: prev: {
-            #   # llama-cpp = inputs.llama-cpp.packages.${system}.opencl;
-            #   # llama-cpp = prev.llama-cpp.override {
-            #   #   blasSupport = false;
-            #   #   # clblast = pkgs.clblast;
-            #   #   cudaSupport = false;
-            #   #   openclSupport = true;
-            #   #   rocmSupport = true;
-            #   #   stdenv = pkgs.gcc11Stdenv;
-            #   #   # rocmPackages = pkgs.rocmPackages;
-            #   #   # stdenv = pkgs.gcc11Stdenv;
-            #   # };
-            # })
-            # (final: prev: {
-            #   ollama =
-            #     (prev.ollama.override {
-            #       llama-cpp = inputs.llama-cpp.packages.${system}.opencl;
-            #     })
-            #     .overrideAttrs (attrs: {
-            #       buildGoModule.tags = ["opencl"];
-            #     });
-            # })
             (final: prev: {
               llama-cpp = inputs'.llama-cpp.packages.rocm;
             })
