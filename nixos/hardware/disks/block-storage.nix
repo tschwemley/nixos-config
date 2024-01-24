@@ -1,7 +1,4 @@
-{
-  diskName,
-  useGrub ? false,
-}: let
+{diskName}: let
   partitions = [
     {
       name = "storage";

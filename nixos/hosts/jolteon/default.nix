@@ -4,15 +4,11 @@
   pkgs,
   ...
 }: let
-  diskName = "/dev/sda";
   nodeName = "jolteon";
   nodeIP = "10.0.0.6";
 
   boot = import ../../modules/system/systemd-boot.nix;
-  disk = import ./disk.nix {
-    mainDiskName = diskName;
-    storageDiskName = "/dev/sdb";
-  };
+  disk = (import ../../hardware/disks).proxmox;
   k3s = import ../../modules/services/k3s {inherit config lib pkgs nodeIP nodeName;};
   profile = import ../../profiles/server.nix;
   wireguard = import ../../network/wireguard.nix {

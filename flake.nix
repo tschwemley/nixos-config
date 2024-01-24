@@ -79,6 +79,9 @@
             (final: prev: {
               ollama = self'.packages.ollama;
             })
+            (self: super: {
+              silly-tavern = self'.packages.silly-tavern;
+            })
           ];
         };
 

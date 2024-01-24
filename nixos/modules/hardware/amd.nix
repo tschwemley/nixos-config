@@ -5,6 +5,7 @@
     systemPackages = with pkgs; [
       clblast
       clinfo
+      rocmPackages.rocm-smi
     ];
 
     sessionVariables = {
@@ -21,12 +22,11 @@
     driSupport = true;
     driSupport32Bit = true;
     extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-      # amdvlk
-      rocmPackages.rocm-smi
       rocmPackages.clr
+      rocmPackages.clr.icd
       rocmPackages.hipblas
       rocmPackages.rocblas
+      # amdvlk
     ];
     extraPackages32 = with pkgs; [
       driversi686Linux.amdvlk
@@ -34,8 +34,4 @@
   };
 
   services.xserver.videoDrivers = ["modesetting"];
-
-  # systemd.tmpfiles.rules = [
-  #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.hip}"
-  # ];
 }

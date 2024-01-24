@@ -9,10 +9,9 @@
   nodeIP = "10.0.0.1";
   nodeName = "articuno";
   role = "server";
-  useGrub = true;
 
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
-  disk = import ../../modules/hardware/disks/vm.nix {inherit diskName useGrub;};
+  disk = (import ../../hardware/disks).buyvm;
   k3s = import ../../modules/services/k3s {inherit config lib pkgs nodeIP nodeName role;};
   profile = import ../../profiles/server.nix;
   wireguard = import ../../network/wireguard.nix {
@@ -63,9 +62,9 @@ in {
     profile
     wireguard
     ../../modules/services/k3s/postgresql.nix
+    ../../services/seaweedfs/master.nix
   ];
 
-  # environment.systemPackages = with pkgs; [k9s];
   networking.dhcpcd.enable = false;
 
   services.openssh = {
