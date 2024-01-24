@@ -12,12 +12,5 @@
     ../shell/zsh.nix
   ];
 
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = pkg: true;
-    };
-  };
-
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.11";
 }
