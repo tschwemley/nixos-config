@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
@@ -62,10 +61,9 @@ in {
     hostName = nodeName;
     firewall.allowedTCPPorts = [51413];
     firewall.allowedUDPPorts = [51413];
-    # wg-quick.interfaces.vpn.configFile = "/etc/wireguard/vpn.conf";
   };
 
-  #TODO: change this on all servers
+  # TODO: change this on all servers
   services.getty.autologinUser = "root";
 
   sops = {
@@ -78,14 +76,6 @@ in {
       systemd_networkd_10_ens3 = {
         mode = "0444";
         path = "/etc/systemd/network/10-ens3.network";
-        restartUnits = ["systemd-networkd" "systemd-resolved"];
-      };
-
-      wg_quick_vpn = {
-        group = config.users.users.systemd-network.group;
-        mode = "0444";
-        owner = config.users.users.systemd-network.name;
-        path = "/etc/wireguard/vpn.conf";
         restartUnits = ["systemd-networkd" "systemd-resolved"];
       };
     };

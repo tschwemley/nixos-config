@@ -9,7 +9,6 @@
   nodeIP = "10.0.0.3";
   nodeName = "moltres";
   role = "server";
-  useGrub = true;
 
   boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
   disk = (import ../../hardware/disks).buyvmWithStorage;
