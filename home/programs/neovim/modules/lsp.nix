@@ -36,6 +36,7 @@ in {
     ];
 
     plugins = with pkgs.vimPlugins; [
+      coc-haxe
       lsp-zero
       lspsaga-nvim
       nvim-lspconfig

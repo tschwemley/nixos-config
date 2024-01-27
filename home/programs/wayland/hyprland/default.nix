@@ -2,12 +2,16 @@
   inputs,
   pkgs,
   ...
-}: let
-  inherit (inputs.split-monitor-workspaces.packages.${pkgs.system}) split-monitor-workspaces;
-in {
+}:
+#let
+# inherit (inputs.split-monitor-workspaces.packages.${pkgs.system}) split-monitor-workspaces;
+#in {
+{
+  # ../../../programs/ags
+  # ../../../services/dunst.nix
   imports = [
-    ../programs/ags
-    ../services/dunst.nix
+    ./binds.nix
+    ./rules.nix
   ];
 
   home.packages = with pkgs; [
@@ -61,31 +65,6 @@ in {
     ];
 
     settings = {
-      "$mod" = "SUPER";
-
-      bind = [
-        "$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"
-        "$mod, p, exec, ${pkgs.rofi}/bin/rofi -show drun"
-
-        "$mod, 1, workspace, 1"
-        "$mod, 2, workspace, 2"
-        "$mod, 3, workspace, 3"
-        "$mod, 4, workspace, 4"
-
-        "$mod shift, 1, movetoworkspace, 1"
-        "$mod shift, 2, movetoworkspace, 2"
-        "$mod shift, 3, movetoworkspace, 3"
-        "$mod shift, 4, movetoworkspace, 4"
-
-        "alt, tab, layoutmsg, cyclenext"
-        "alt shift, tab, layoutmsg, cycleprev"
-        "$mod, l, layoutmsg, swapnext"
-        "$mod, h, layoutmsg, swapprev"
-        "$mod shift, h, movewindow, mon:1"
-        "$mod shift, l, movewindow, mon:0"
-        "$mod, w, killactive"
-      ];
-
       exec-once = [
         # "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "hyprpaper"

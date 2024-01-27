@@ -7,6 +7,5 @@
   ];
 
   musnix.enable = true;
-
   sound.enable = true;
 }

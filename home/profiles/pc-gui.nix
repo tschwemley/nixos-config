@@ -21,8 +21,8 @@
     ../programs/tigervnc.nix
     ../programs/unity.nix
     ../programs/vlc.nix
+    ../programs/wayland/hyprland.nix
     ../programs/zoom.nix
-    ../wayland/hyprland.nix
   ];
 
   home = {

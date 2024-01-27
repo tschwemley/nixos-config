@@ -4,39 +4,51 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/master";
 
-    ags.url = "github:Aylur/ags";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    ags = {
+      url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flake-parts.url = "github:hercules-ci/flake-parts";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    impermanence.url = "github:nix-community/impermanence/master";
-    musnix.url = "github:musnix/musnix";
+    hyprland.url = "github:hyprwm/Hyprland";
 
-    nix-on-droid = {
-      url = "github:t184256/nix-on-droid/release-23.05";
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    musnix.url = "github:musnix/musnix";
 
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     sops.url = "github:Mic92/sops-nix";
 
-    # TODO: consider moving this into it's own config w/ other hyprland items in the future
-    hyprland.url = "github:hyprwm/Hyprland";
-    split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     llama-cpp.url = "github:ggerganov/llama.cpp";
+
+    # TODO: evaluate these later
+    # impermanence.url = "github:nix-community/impermanence/master";
+    # split-monitor-workspaces = {
+    #   url = "github:Duckonaut/split-monitor-workspaces";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
   };
 
   outputs = inputs @ {
@@ -47,9 +59,7 @@
     llama-cpp,
     nixos-hardware,
     nixpkgs,
-    nix-on-droid,
     sops,
-    split-monitor-workspaces,
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
@@ -76,12 +86,6 @@
             (final: prev: {
               llama-cpp = inputs'.llama-cpp.packages.rocm;
             })
-            (final: prev: {
-              ollama = self'.packages.ollama;
-            })
-            (self: super: {
-              silly-tavern = self'.packages.silly-tavern;
-            })
           ];
         };
 
@@ -90,7 +94,6 @@
 
       imports = [
         ./apps
-        ./droid
         ./home
         ./hydra
         ./nixos

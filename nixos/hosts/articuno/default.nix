@@ -9,9 +9,9 @@
   nodeName = "articuno";
   role = "server";
 
-  boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
+  boot = import ../../system/grub-boot.nix {inherit diskName;};
   disk = (import ../../hardware/disks).buyvm;
-  k3s = import ../../modules/services/k3s {inherit config lib pkgs nodeIP nodeName role;};
+  k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName role;};
   profile = import ../../profiles/server.nix;
   wireguard = import ../../network/wireguard.nix {
     inherit config;
@@ -60,7 +60,7 @@ in {
     k3s
     profile
     wireguard
-    ../../modules/services/k3s/postgresql.nix
+    ../../services/k3s/postgresql.nix
     # ../../services/seaweedfs/master.nix
   ];
 

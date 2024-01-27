@@ -16,6 +16,7 @@ in {
     ../programs/wiki-tui.nix
     ../programs/zk
     ../services/spotifyd.nix
+    ../shell/direnv.nix
     ../shell/starship.nix
   ];
 }

@@ -5,15 +5,14 @@
   ...
 }: {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
     inputs.sops.nixosModules.sops
     inputs.disko.nixosModules.disko
-    ../modules/programs/thefuck.nix
-    ../modules/programs/zsh.nix
-    ../modules/services/openssh.nix
-    ../modules/system/nix.nix
+    ../network
+    ../programs/home-manager.nix
+    ../programs/zsh.nix
+    ../services/openssh.nix
+    ../system/nix.nix
     ../modules/users
-    ../programs
   ];
 
   # basic tools I want available on every host and managed by the system

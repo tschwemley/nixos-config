@@ -1,11 +1,15 @@
+local parser_config = require 'nvim-treesitter.parsers'.get_parser_configs()
+local parser_install_dir = '~/.local/share/nvim/site/parser'
+
 require 'nvim-treesitter.configs'.setup {
+   parser_install_dir = parser_install_dir,
+
    -- A list of parser names, or "all" (the five listed parsers should always be installed)
    -- TODO: delete this once confirming changes work via nix
-   -- ensure_installed = { "go", "lua", "markdown", "nix", "php"},
+   -- ensure_installed = { "go", "haxe", "lua", "markdown", "nix", "php" },
 
    --TODO: add this if necessary in nixos (I assume nix adds the proper path(s) to the RTP)
    ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-   -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
 
    highlight = {
       enable = true,
@@ -19,4 +23,13 @@ require 'nvim-treesitter.configs'.setup {
          end
       end,
    },
+}
+
+vim.opt.runtimepath:append(parser_install_dir)
+parser_config.haxe = {
+   install_info = {
+      url = '~/.local/share/nvim/site/parser/haxe',
+      files = { 'src/parser.c' },
+   },
+   filetype = 'haxe',
 }

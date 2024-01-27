@@ -7,9 +7,9 @@
   nodeName = "jolteon";
   nodeIP = "10.0.0.6";
 
-  boot = import ../../modules/system/systemd-boot.nix;
+  boot = import ../../system/systemd-boot.nix;
   disk = (import ../../hardware/disks).proxmox;
-  k3s = import ../../modules/services/k3s {inherit config lib pkgs nodeIP nodeName;};
+  k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName;};
   profile = import ../../profiles/server.nix;
   wireguard = import ../../network/wireguard.nix {
     inherit config;

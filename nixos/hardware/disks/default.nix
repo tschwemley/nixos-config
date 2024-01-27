@@ -18,6 +18,11 @@ in rec {
       (storage "/dev/sda")
     ];
   };
+  charizard = {
+    imports = [
+      (import ./btrfs-encrypted.nix {diskName = "nvme1n1";})
+    ];
+  };
   proxmox = {
     imports = [
       (root "/dev/sda")

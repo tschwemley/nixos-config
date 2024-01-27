@@ -78,5 +78,9 @@ vim.diagnostic.config({
 -- yaml companion
 -- TODO: move this out somewhere else
 local yaml_companion_cfg = require("yaml-companion").setup({})
-require("lspconfig")["yamlls"].setup(yaml_companion_cfg)
+local lspconfig = require("lspconfig")
+lspconfig["yamlls"].setup(yaml_companion_cfg)
+lspconfig.haxe_language_server.setup({
+   cmd = { "node", "/home/schwem/haxe-server.js" },
+})
 require("telescope").load_extension("yaml_schema")

@@ -8,9 +8,9 @@
   nodeName = "eevee";
   nodeIP = "10.0.0.4";
 
-  boot = import ../../modules/system/grub-boot.nix {inherit diskName;};
+  boot = import ../../system/grub-boot.nix {inherit diskName;};
   disk = (import ../../hardware/disks).buyvmWithStorage;
-  k3s = import ../../modules/services/k3s {inherit config lib pkgs nodeIP nodeName;};
+  k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName;};
   profile = import ../../profiles/server.nix;
   wireguard = import ../../network/wireguard.nix {
     inherit config;

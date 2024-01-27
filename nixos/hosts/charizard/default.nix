@@ -4,29 +4,24 @@
   pkgs,
   ...
 }: let
-  diskName = "nvme1n1";
-  diskConfig = {
-    imports = [
-      (import ../../modules/hardware/disks/btrfs-encrypted.nix {inherit diskName;})
-    ];
-  };
-
-  boot = import ../../modules/system/systemd-boot.nix;
+  boot = import ../../system/systemd-boot.nix;
+  disk = (import ../../hardware/disks).charizard;
   hardware = {
     imports = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
       inputs.nixos-hardware.nixosModules.common-pc
       inputs.nixos-hardware.nixosModules.common-pc-ssd
-      ../../modules/hardware/amd.nix
+      ../../hardware/amd.nix
     ];
   };
+  user = (import ../../system/users.nix).schwem;
 in {
   imports = [
     boot
-    diskConfig
+    disk
     hardware
+    user
     ../../profiles/pc.nix
-    ../../modules/users/schwem.nix
   ];
 
   boot = {
@@ -36,21 +31,6 @@ in {
     };
     kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = ["btrfs"];
-  };
-
-  services.openssh = {
-    enable = true;
-    hostKeys = [
-      {
-        bits = 4096;
-        path = "/etc/ssh/ssh_host_rsa_key";
-        type = "rsa";
-      }
-      {
-        path = "/etc/ssh/ssh_host_ed25519_key";
-        type = "ed25519";
-      }
-    ];
   };
 
   networking = {

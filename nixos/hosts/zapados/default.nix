@@ -8,9 +8,9 @@
   role = "server";
   nodeIP = "10.0.0.2";
 
-  boot = import ../../modules/system/systemd-boot.nix;
+  boot = import ../../system/systemd-boot.nix;
   disk = (import ../../hardware/disks).proxmox;
-  k3s = import ../../modules/services/k3s {inherit config lib pkgs nodeIP nodeName role;};
+  k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName role;};
   profile = import ../../profiles/server.nix;
   wireguard = import ../../network/wireguard.nix {
     inherit config;
@@ -60,7 +60,7 @@ in {
     k3s
     profile
     wireguard
-    ../../modules/system/systemd-boot.nix
+    ../../system/systemd-boot.nix
   ];
 
   sops = {

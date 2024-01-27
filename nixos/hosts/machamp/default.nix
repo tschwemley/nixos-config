@@ -9,7 +9,7 @@
   nodeName = "machamp";
   wireguardIP = "10.0.0.90";
 
-  boot = import ../../modules/system/systemd-boot.nix;
+  boot = import ../../system/systemd-boot.nix;
   k3s = import ../../profiles/k3s.nix {
     inherit inputs config diskName lib nodeName pkgs;
     enableImpermanence = false;
