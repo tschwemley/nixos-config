@@ -2,13 +2,16 @@
   config,
   ip,
   peers,
-  endpoint ? "",
-  gateway ? ["10.0.0.1"],
+  pkgs,
   listenPort ? 9918,
   ...
 }: let
   wireguardPeers = builtins.map (peer: {wireguardPeerConfig = peer;}) peers;
 in {
+  environment.systemPackages = with pkgs; [
+    wireguard-tools
+  ];
+
   networking.firewall.enable = true;
   networking.firewall.allowedUDPPorts = [listenPort];
 
