@@ -1,10 +1,11 @@
 {
   inputs,
+  config,
   lib,
   pkgs,
   ...
 }: let
-  boot = import ../../system/systemd-boot.nix;
+  boot = import ../../system/boot.nix {useGrub = false;};
   disk = (import ../../hardware/disks).charizard;
   hardware = {
     imports = [
@@ -14,7 +15,7 @@
       ../../hardware/amd.nix
     ];
   };
-  user = (import ../../system/users.nix).schwem;
+  user = (import ../../system/users.nix {inherit config pkgs;}).schwem;
 in {
   imports = [
     boot

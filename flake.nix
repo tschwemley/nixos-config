@@ -93,9 +93,7 @@
       };
 
       imports = [
-        ./apps
         ./home
-        ./hydra
         ./nixos
         ./overlays
         ./packages

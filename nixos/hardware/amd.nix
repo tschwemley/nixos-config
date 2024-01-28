@@ -3,6 +3,7 @@
 
   environment = {
     systemPackages = with pkgs; [
+      amdgpu_top
       clblast
       clinfo
       rocmPackages.rocm-smi

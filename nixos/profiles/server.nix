@@ -1,13 +1,11 @@
 {
-  config,
   lib,
   pkgs,
   ...
 }: {
   imports = [
     ./.
-    ../modules/services/fail2ban.nix
-    ../modules/users/server.nix
+    ../services/fail2ban.nix
   ];
 
   environment.systemPackages = with pkgs; [

@@ -37,9 +37,9 @@ in {
     openiscsi
   ];
 
-  home-manager.users.root.config = {
-    programs.zsh.initExtra = builtins.readFile ./k3s-aliases.sh;
-  };
+  # home-manager.users.root.config = {
+  #   programs.zsh.initExtra = builtins.readFile ./k3s-aliases.sh;
+  # };
 
   networking = {
     firewall.allowedTCPPorts = [10250]; # metrics

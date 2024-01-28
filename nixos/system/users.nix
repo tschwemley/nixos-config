@@ -15,5 +15,7 @@
     ];
   };
 in {
-  users.users = {inherit schwem;};
+  schwem = {
+    users.users = {inherit schwem;};
+  };
 }

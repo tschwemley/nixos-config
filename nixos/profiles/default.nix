@@ -10,15 +10,12 @@
     ../network
     ../programs/home-manager.nix
     ../programs/zsh.nix
-    ../services/openssh.nix
     ../system/nix.nix
-    ../modules/users
   ];
 
   # basic tools I want available on every host and managed by the system
   environment.systemPackages = with pkgs; [
     age
-    amdgpu_top
     curl
     git
     gnupg
@@ -35,13 +32,5 @@
     zip
   ];
 
-  home-manager = {
-    extraSpecialArgs = {
-      inherit inputs;
-    };
-    useGlobalPkgs = true;
-    useUserPackages = true;
-  };
-
-  nixpkgs.config.allowUnfree = lib.mkDefault true;
+  # nixpkgs.config.allowUnfree = lib.mkDefault true;
 }
