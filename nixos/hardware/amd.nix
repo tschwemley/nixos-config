@@ -7,10 +7,10 @@
       clblast
       clinfo
       rocmPackages.rocm-smi
+      pciutils
     ];
 
     sessionVariables = {
-      # AMD_VULKANICD = "RADV";
       CLBlast_DIR = "${pkgs.clblast.outPath}/lib/cmake/CLBlast";
       ROCM_PATH = "/opt/rocm";
     };

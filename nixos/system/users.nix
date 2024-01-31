@@ -1,4 +1,5 @@
 {
+  self,
   config,
   pkgs,
   ...
@@ -17,5 +18,6 @@
 in {
   schwem = {
     users.users = {inherit schwem;};
+    home-manager.users.schwem.imports = [../../home/profiles/pc-gui.nix];
   };
 }

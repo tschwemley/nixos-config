@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   config,
   lib,
@@ -13,9 +14,10 @@
       inputs.nixos-hardware.nixosModules.common-pc
       inputs.nixos-hardware.nixosModules.common-pc-ssd
       ../../hardware/amd.nix
+      ../../hardware/audio
     ];
   };
-  user = (import ../../system/users.nix {inherit config pkgs;}).schwem;
+  user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
 in {
   imports = [
     boot
