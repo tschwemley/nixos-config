@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  imports = [./pc.nix];
+  imports = [./.];
   home = {
     homeDirectory = "/home/tschwemley";
     packages = with pkgs; [

@@ -1,6 +1,8 @@
 {
   wayland.windowManager.hyprland.settings = {
     layerrule = [];
-    windowrulev2 = [];
+    windowrulev2 = [
+      "float, title:^(Steam)$"
+    ];
   };
 }

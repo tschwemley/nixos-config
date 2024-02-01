@@ -13,15 +13,13 @@
               _module.args = {
                 inherit inputs system;
               };
+              home.stateVersion = "23.05";
             }
           ]
           ++ extraModules;
       });
 in {
   flake.homeConfigurations = {
-    schwem = mkHome "x86_64-linux" [
-      ./profiles/pc-gui.nix
-    ];
     wsl = mkHome "x86_64-linux" [
       ./profiles/wsl.nix
     ];
