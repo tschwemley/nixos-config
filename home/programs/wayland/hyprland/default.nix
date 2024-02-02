@@ -25,16 +25,6 @@
   ];
 
   # make stuff work on wayland
-  home.sessionVariables = {
-    GDK_BACKEND = "wayland,x11";
-    GDK_SCALE = 1.25;
-    QT_QPA_PLATFORM = "wayland;xcb";
-    SDL_VIDEODRIVER = "wayland";
-    XCURSOR_SIZE = 32;
-    XDG_CURRENT_DESKTOP = "sway";
-    XDG_SESSION_TYPE = "wayland";
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -86,7 +76,13 @@
       ];
     };
 
-    systemd.enable = true;
+    systemd = {
+      variables = ["--all"];
+      extraCommands = [
+        "systemctl --user stop graphical-session.target"
+        "systemctl --user start hyprland-session.target"
+      ];
+    };
   };
 
   xdg.configFile."hypr/hyprpaper.conf".text = ''

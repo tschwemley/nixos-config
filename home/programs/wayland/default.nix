@@ -22,10 +22,14 @@
     wlr-randr
   ];
 
-  # make stuff work on wayland
   home.sessionVariables = {
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";
+    # TODO: remove or evaluate the tradeoffs of switching over to this. NOTE: it might be necessary
+    # for some applications not using system implemenation of Qt (zoom is one of these)
+    # QT_QPA_PLATFORM = "wayland;xcb";
+    # SDL_VIDEODRIVER = "wayland;xcb";
+    # see: https://wiki.archlinux.org/title/Wayland#GUI_libraries
   };
 }

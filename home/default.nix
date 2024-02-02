@@ -13,7 +13,6 @@
               _module.args = {
                 inherit inputs system;
               };
-              home.stateVersion = "23.05";
             }
           ]
           ++ extraModules;
@@ -23,7 +22,5 @@ in {
     wsl = mkHome "x86_64-linux" [
       ./profiles/wsl.nix
     ];
-    "work@mac" = mkHome "aarch64-darwin" [./profiles/work.nix];
-    "work@dev" = mkHome "x86_64-linux" [./profiles/work.nix];
   };
 }

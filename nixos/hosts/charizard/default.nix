@@ -6,7 +6,7 @@
   pkgs,
   ...
 }: let
-  boot = import ../../system/boot.nix {useGrub = false;};
+  boot = (import ../../system/boot.nix).systemd;
   disk = (import ../../hardware/disks).charizard;
   hardware = {
     imports = [

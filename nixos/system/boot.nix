@@ -1,23 +1,22 @@
 {
-  diskName ? "",
-  useGrub ? false,
-  ...
-}: {
-  boot = let
-    loader =
-      if useGrub
-      then {
-        grub = {
-          efiSupport = true;
-          efiInstallAsRemovable = true;
-          devices = [diskName];
-        };
-      }
-      else {
-        systemd-boot = {
-          enable = true;
-          editor = false; # leaving true allows for root access to be gained via passing kernel param
-        };
+  grub = diskName: {
+    boot.loader.grub = {
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+      devices = [diskName];
+    };
+  };
+
+  systemd = {
+    boot = {
+      initrd = {
+        systemd.enable = true;
       };
-  in {inherit loader;};
+
+      loader.systemd-boot = {
+        enable = true;
+        editor = false; # leaving true allows for root access to be gained via passing kernel param
+      };
+    };
+  };
 }

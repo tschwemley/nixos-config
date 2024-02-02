@@ -15,6 +15,7 @@
     ../services/gnome.nix
     ../services/ollama.nix
     ../system/fonts.nix
+    ../system/greetd.nix
     ../virtualisation/podman.nix
   ];
 
