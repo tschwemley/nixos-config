@@ -23,11 +23,12 @@ in rec {
       cert = null;
       key = null;
 
+      dataDir = "/var/lib/syncthing";
+
       # opens TCP/UDP 22000 for transfers and UDP 21027 for discovery
       openDefaultPorts = true;
 
       # relay = {};
-
       settings = {
         devices = {};
         #folders = {};
@@ -36,26 +37,26 @@ in rec {
         };
       };
     };
+  };
 
-    systemd.services.syncthing-discovery = lib.mkIf enableDiscovery {
-      enable = true;
-      serviceConfig = {
-        Type = "simple";
-        User = "root";
-        Group = "root";
+  systemd.services.syncthing-discovery = lib.mkIf enableDiscovery {
+    enable = true;
+    serviceConfig = {
+      Type = "simple";
+      User = "root";
+      Group = "root";
 
-        ExecStart = "${pkgs.syncthing-discovery}/bin/stdiscosrv -http";
-        WorkingDirectory = "${services.syncthing.dataDir}/.discovery";
-        StateDirectory = "seaweedfs";
-        SyslogIdentifier = "stdiscosrv";
-      };
-
-      unitConfig = {
-        After = "network.target";
-        Description = "Syncthing discovery service";
-      };
-
-      wantedBy = ["multi-user.target"];
+      ExecStart = "${pkgs.syncthing-discovery}/bin/stdiscosrv -http";
+      WorkingDirectory = "${services.syncthing.dataDir}/.discovery";
+      StateDirectory = "seaweedfs";
+      SyslogIdentifier = "stdiscosrv";
     };
+
+    unitConfig = {
+      After = "network.target";
+      Description = "Syncthing discovery service";
+    };
+
+    wantedBy = ["multi-user.target"];
   };
 }

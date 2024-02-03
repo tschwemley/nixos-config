@@ -10,12 +10,16 @@
   nodeName = "moltres";
   role = "server";
 
-  boot = import ../../system/grub-boot.nix {inherit diskName;};
+  boot = (import ../../system/boot.nix).grub;
   disk = (import ../../hardware/disks).buyvmWithStorage;
   k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName role;};
   profile = import ../../profiles/server.nix;
+  syncthing = import ../../services/syncthing.nix {
+    inherit lib pkgs;
+    enableDiscovery = true;
+  };
   wireguard = import ../../network/wireguard.nix {
-    inherit config;
+    inherit config pkgs;
     ip = nodeIP;
     peers = [
       {
@@ -61,8 +65,8 @@ in {
     disk
     k3s
     profile
+    syncthing
     wireguard
-    (../../services/syncthing.nix {enableDiscovery = true;})
   ];
 
   fileSystems."/storage" = {
