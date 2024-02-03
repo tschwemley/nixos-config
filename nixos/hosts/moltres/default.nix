@@ -62,6 +62,7 @@ in {
     k3s
     profile
     wireguard
+    (../../services/syncthing.nix {enableDiscovery = true;})
   ];
 
   fileSystems."/storage" = {

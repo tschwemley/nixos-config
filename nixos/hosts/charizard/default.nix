@@ -25,6 +25,8 @@ in {
     hardware
     user
     ../../profiles/pc.nix
+    # TODO: move syncthing somewhere else
+    ../../services/syncthing.nix
   ];
 
   boot = {
