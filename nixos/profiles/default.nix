@@ -31,5 +31,8 @@
     zip
   ];
 
+  # set up root to have default home items
+  root.home-manager.users.root.imports = [../../home/profiles];
+
   # nixpkgs.config.allowUnfree = lib.mkDefault true;
 }
