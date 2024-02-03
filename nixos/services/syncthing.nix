@@ -47,8 +47,8 @@ in rec {
       Group = "root";
 
       ExecStart = "${pkgs.syncthing-discovery}/bin/stdiscosrv -http";
-      WorkingDirectory = "${services.syncthing.dataDir}/.discovery";
-      StateDirectory = "seaweedfs";
+      WorkingDirectory = "${services.syncthing.dataDir}";
+      StateDirectory = ".discovery";
       SyslogIdentifier = "stdiscosrv";
     };
 
