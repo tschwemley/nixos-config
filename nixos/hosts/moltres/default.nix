@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
@@ -65,7 +64,7 @@ in {
     disk
     k3s
     profile
-    syncthing
+    # syncthing
     wireguard
   ];
 
