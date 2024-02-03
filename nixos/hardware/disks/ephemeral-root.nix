@@ -1,6 +1,7 @@
 {
   diskName,
   useGrub ? false,
+  ...
 }: let
   grubPartitions =
     if useGrub
