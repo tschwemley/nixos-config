@@ -10,7 +10,8 @@
   role = "server";
 
   boot = (import ../../system/boot.nix).grub diskName;
-  disk = (import ../../hardware/disks).buyvmWithStorage;
+  disk = (import ../../hardware/disks).buyvm;
+  # disk = (import ../../hardware/disks).buyvmWithStorage;
   k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName role;};
   profile = import ../../profiles/server.nix;
   syncthing = import ../../services/syncthing.nix {
