@@ -68,12 +68,12 @@ in {
     wireguard
   ];
 
-  fileSystems."/storage" = {
-    device = "/dev/sda1";
-    fsType = "btrfs";
-    neededForBoot = true;
-    options = ["compress=lzo"];
-  };
+  # fileSystems."/storage" = {
+  #   device = "/dev/sda1";
+  #   fsType = "btrfs";
+  #   neededForBoot = false;
+  #   options = ["compress=lzo"];
+  # };
 
   services.resolved.extraConfig = "DNS=1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001";
 
