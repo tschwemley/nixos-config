@@ -1,7 +1,9 @@
 {...}: {
   perSystem = {
-    pkgs,
+    config,
     lib,
+    options,
+    pkgs,
     ...
   }: {
     packages = {

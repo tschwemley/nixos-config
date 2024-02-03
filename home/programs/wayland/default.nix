@@ -1,8 +1,4 @@
-{
-  pkgs,
-  self,
-  ...
-}:
+{pkgs, ...}:
 # Wayland config
 {
   imports = [

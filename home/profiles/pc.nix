@@ -17,9 +17,10 @@ in {
     ../programs/rofi.nix
     ../programs/slack.nix
     ../programs/sonic-pi.nix
+    ../programs/syncthing-tray.nix
     ../programs/taskwarrior.nix
     ../programs/vlc.nix
-    ../programs/wayland/hyprland
+    ../programs/wayland
     ../programs/wiki-tui.nix
     ../programs/tigervnc.nix
     ../programs/zoom.nix

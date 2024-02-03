@@ -4,14 +4,15 @@
   environment = {
     systemPackages = with pkgs; [
       amdgpu_top
-      clblast
-      clinfo
+      # clblast
+      # clinfo
       rocmPackages.rocm-smi
+      rocmPackages.rocm-runtime
       pciutils
     ];
 
     sessionVariables = {
-      CLBlast_DIR = "${pkgs.clblast.outPath}/lib/cmake/CLBlast";
+      # CLBlast_DIR = "${pkgs.clblast.outPath}/lib/cmake/CLBlast";
       ROCM_PATH = "/opt/rocm";
     };
   };
