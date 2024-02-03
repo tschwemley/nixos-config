@@ -32,6 +32,8 @@ in {
     bookmarks = {
       "3" = "~/Downloads/3d-prints/";
       D = "~/Downloads";
+      a = "~/projects/ai";
+      h = "~/projects/hir/casino_server";
       p = "~/projects";
       n = "~/nixos-config";
     };
