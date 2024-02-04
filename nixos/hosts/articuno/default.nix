@@ -9,15 +9,12 @@
   nodeName = "articuno";
   role = "server";
 
-  boot = import ../../system/boot.nix {
-    inherit diskName;
-    useGrub = true;
-  };
+  boot = (import ../../system/boot.nix).grub diskName;
   disk = (import ../../hardware/disks).buyvm;
   k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName role;};
   profile = import ../../profiles/server.nix;
   wireguard = import ../../network/wireguard.nix {
-    inherit config;
+    inherit config pkgs;
     ip = nodeIP;
     peers = [
       {
@@ -64,25 +61,9 @@ in {
     profile
     wireguard
     ../../services/k3s/postgresql.nix
-    # ../../services/seaweedfs/master.nix
   ];
 
   networking.dhcpcd.enable = false;
-
-  services.openssh = {
-    enable = true;
-    hostKeys = [
-      {
-        bits = 4096;
-        path = "/etc/ssh/ssh_host_rsa_key";
-        type = "rsa";
-      }
-      {
-        path = "/etc/ssh/ssh_host_ed25519_key";
-        type = "ed25519";
-      }
-    ];
-  };
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
