@@ -36,14 +36,14 @@ in {
       # opens TCP/UDP 22000 for transfers and UDP 21027 for discovery
       openDefaultPorts = true;
 
-      # relay = {};
       settings = {
         inherit devices;
         #folders = {};
         options = {
-          relayEnabled = false;
           globalAnnounceEnabled = false;
           localAnnounceEnabled = false;
+          natEnabled = false;
+          relaysEnabled = false;
           urAccepted = -1; # don't allow usage data reporting
         };
       };
