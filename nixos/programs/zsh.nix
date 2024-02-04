@@ -3,9 +3,6 @@
   environment.pathsToLink = ["/share/zsh"];
 
   programs = {
-    # TODO: needed?
-    # less.enable = true;
-
     zsh = {
       enable = true;
       autosuggestions.enable = true;
@@ -19,6 +16,6 @@
     };
   };
 
-  # TODO: needed?
-  # users.defaultUserShell = pkgs.zsh;
+  # make zsh default for all users
+  users.defaultUserShell = pkgs.zsh;
 }
