@@ -10,7 +10,6 @@
   role = "server";
 
   boot = (import ../../system/boot.nix).grub diskName;
-  # disk = (import ../../hardware/disks).buyvm;
   disk = (import ../../hardware/disks).buyvmWithStorage;
   k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName role;};
   profile = import ../../profiles/server.nix;
@@ -68,13 +67,6 @@ in {
     syncthing
     wireguard
   ];
-
-  # fileSystems."/storage" = {
-  #   device = "/dev/sda1";
-  #   fsType = "btrfs";
-  #   neededForBoot = false;
-  #   options = ["compress=lzo"];
-  # };
 
   services.resolved.extraConfig = "DNS=1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001";
 

@@ -12,6 +12,10 @@
   disk = (import ../../hardware/disks).buyvmWithStorage;
   k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName;};
   profile = import ../../profiles/server.nix;
+  syncthing = import ../../services/syncthing.nix {
+    inherit lib pkgs;
+    enableDiscovery = true;
+  };
   wireguard = import ../../network/wireguard.nix {
     inherit config;
     ip = nodeIP;
@@ -52,6 +56,7 @@ in {
     disk
     k3s
     profile
+    syncthing
     wireguard
   ];
 
