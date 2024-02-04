@@ -2,7 +2,7 @@
   services.openssh = {
     enable = true;
     settings = {
-      GatewayPorts = "yes";
+      # GatewayPorts = "yes";
       PermitRootLogin = "yes";
       UseDns = true;
     };
