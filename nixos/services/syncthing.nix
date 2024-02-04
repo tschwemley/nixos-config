@@ -8,9 +8,15 @@
       id = "7VRFMPP-LVHA2JL-UY43A5S-4OORFB4-VSW3HQS-TX2L74G-2XNQ2MM-E77I7QO";
     };
     eevee = {
+      addresses = [
+        "tcp://10.0.0.3:22000"
+      ];
       id = "WB2XRA4-56MQBYX-YESWUVZ-IQOKSMS-RVAIBFM-ICWMMYC-BIKYAIW-IPNDNAY";
     };
     moltres = {
+      addresses = [
+        "tcp://10.0.0.4:22000"
+      ];
       id = "BGTTFO3-3BWN3QE-I5NXYJT-34MNN3X-QXRB22Z-GIZYIFS-SKZ2J3W-ZXKACQE";
     };
   };
@@ -22,8 +28,8 @@ in {
 
       # TODO: fill out if necessary
       # tls
-      cert = null;
-      key = null;
+      # cert = null;
+      # key = null;
 
       dataDir = "/var/lib/syncthing";
 
@@ -32,11 +38,12 @@ in {
 
       # relay = {};
       settings = {
-        devices = {};
+        inherit devices;
         #folders = {};
         options = {
+          relayEnabled = false;
           globalAnnounceEnabled = false;
-          localAnnounceEnabled = true;
+          localAnnounceEnabled = false;
           urAccepted = -1; # don't allow usage data reporting
         };
       };
