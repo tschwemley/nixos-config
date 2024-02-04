@@ -1,11 +1,15 @@
 {
   inputs,
+  config,
   pkgs,
   ...
-}: {
+}: let
+  rootUser = (import ../system/users.nix {inherit config pkgs;}).root;
+in {
   imports = [
     inputs.sops.nixosModules.sops
     inputs.disko.nixosModules.disko
+    rootUser
     ../network
     ../programs/home-manager.nix
     ../programs/zsh.nix
@@ -30,9 +34,4 @@
     wget
     zip
   ];
-
-  # set up root to have default home items
-  home-manager.users.root.imports = [../../home/profiles];
-
-  # nixpkgs.config.allowUnfree = lib.mkDefault true;
 }

@@ -37,25 +37,4 @@ in {
       };
     };
   };
-
-  # systemd.services.syncthing-discovery = lib.mkIf enableDiscovery {
-  #   enable = true;
-  #   serviceConfig = {
-  #     Type = "simple";
-  #     User = "root";
-  #     Group = "root";
-  #
-  #     ExecStart = "${pkgs.syncthing-discovery}/bin/stdiscosrv -http";
-  #     WorkingDirectory = "${services.syncthing.dataDir}";
-  #     StateDirectory = ".discovery";
-  #     SyslogIdentifier = "stdiscosrv";
-  #   };
-  #
-  #   unitConfig = {
-  #     After = "network.target";
-  #     Description = "Syncthing discovery service";
-  #   };
-  #
-  #   wantedBy = ["multi-user.target"];
-  # };
 }
