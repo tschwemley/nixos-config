@@ -7,8 +7,11 @@
     charizard = {
       id = "7VRFMPP-LVHA2JL-UY43A5S-4OORFB4-VSW3HQS-TX2L74G-2XNQ2MM-E77I7QO";
     };
+    eevee = {
+      id = "WB2XRA4-56MQBYX-YESWUVZ-IQOKSMS-RVAIBFM-ICWMMYC-BIKYAIW-IPNDNAY";
+    };
     moltres = {
-      id = "7VRFMPP-LVHA2JL-UY43A5S-4OORFB4-VSW3HQS-TX2L74G-2XNQ2MM-E77I7QO";
+      id = "BGTTFO3-3BWN3QE-I5NXYJT-34MNN3X-QXRB22Z-GIZYIFS-SKZ2J3W-ZXKACQE";
     };
   };
 in {
@@ -32,6 +35,8 @@ in {
         devices = {};
         #folders = {};
         options = {
+          globalAnnounceEnabled = false;
+          localAnnounceEnabled = true;
           urAccepted = -1; # don't allow usage data reporting
         };
       };
