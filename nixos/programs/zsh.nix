@@ -8,10 +8,6 @@
       autosuggestions.enable = true;
       syntaxHighlighting = {
         enable = true;
-        # TODO: not sure if I want to keep the coloring
-        patterns = {"rm -rf *" = "fg=black,bg=red";};
-        styles = {"alias" = "fg=magenta";};
-        highlighters = ["main" "brackets" "pattern"];
       };
     };
   };

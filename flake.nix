@@ -85,6 +85,13 @@
           overlays = [
             (final: prev: {
               llama-cpp = inputs'.llama-cpp.packages.rocm;
+              ollama = prev.ollama.overrideAttrs {
+                postPatch = ''
+                  substituteInPlace llm/llama.go \
+                    --subst-var-by llamaCppServer "${llama-cpp}/bin/llama-server"
+                  substituteInPlace server/routes_test.go --replace "0.0.0" "${final.ollama.version}"
+                '';
+              };
             })
           ];
         };
