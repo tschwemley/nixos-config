@@ -87,8 +87,6 @@ in {
           urAccepted = -1; # don't allow usage data reporting
         };
       };
-
-      user = "root";
     };
   };
 }
