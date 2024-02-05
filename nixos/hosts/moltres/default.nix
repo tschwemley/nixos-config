@@ -13,10 +13,7 @@
   disk = (import ../../hardware/disks).buyvmWithStorage;
   k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName role;};
   profile = import ../../profiles/server.nix;
-  syncthing = import ../../services/syncthing.nix {
-    inherit lib pkgs;
-    enableDiscovery = true;
-  };
+  syncthing = import ../../services/syncthing.nix;
   wireguard = import ../../network/wireguard.nix {
     inherit config pkgs;
     ip = nodeIP;

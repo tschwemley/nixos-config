@@ -7,12 +7,13 @@
   nodeName = "jolteon";
   nodeIP = "10.0.0.6";
 
-  boot = import ../../system/systemd-boot.nix;
+  boot = (import ../../system/boot.nix).systemd;
   disk = (import ../../hardware/disks).proxmox;
   k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName;};
   profile = import ../../profiles/server.nix;
+  syncthing = import ../../services/syncthing.nix;
   wireguard = import ../../network/wireguard.nix {
-    inherit config;
+    inherit config pkgs;
     ip = nodeIP;
     peers = [
       {
@@ -51,6 +52,7 @@ in {
     disk
     k3s
     profile
+    syncthing
     wireguard
   ];
 
