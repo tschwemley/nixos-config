@@ -8,12 +8,13 @@
   role = "server";
   nodeIP = "10.0.0.2";
 
-  boot = import ../../system/systemd-boot.nix;
+  boot = (import ../../system/boot.nix).systemd;
   disk = (import ../../hardware/disks).proxmox;
   k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName role;};
   profile = import ../../profiles/server.nix;
+  syncthing = import ../../services/syncthing.nix;
   wireguard = import ../../network/wireguard.nix {
-    inherit config;
+    inherit config pkgs;
     ip = nodeIP;
     peers = [
       {
@@ -59,8 +60,8 @@ in {
     disk
     k3s
     profile
+    syncthing
     wireguard
-    ../../system/systemd-boot.nix
   ];
 
   sops = {
