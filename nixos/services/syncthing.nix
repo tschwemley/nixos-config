@@ -1,4 +1,4 @@
-let
+{pkgs, ...}: let
   devices = {
     # charizard = {
     #   id = "7VRFMPP-LVHA2JL-UY43A5S-4OORFB4-VSW3HQS-TX2L74G-2XNQ2MM-E77I7QO";
@@ -62,6 +62,7 @@ let
     };
   };
 in {
+  environment.systemPackages = with pkgs; [syncthing];
   # see: https://search.nixos.org/options?channel=23.11&show=services.syncthing.settings.options&from=0&size=50&sort=relevance&type=packages&query=syncthing
   services = {
     syncthing = {

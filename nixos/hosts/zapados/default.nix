@@ -12,7 +12,7 @@
   disk = (import ../../hardware/disks).proxmox;
   k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName role;};
   profile = import ../../profiles/server.nix;
-  syncthing = import ../../services/syncthing.nix;
+  syncthing = import ../../services/syncthing.nix {inherit pkgs;};
   wireguard = import ../../network/wireguard.nix {
     inherit config pkgs;
     ip = nodeIP;
