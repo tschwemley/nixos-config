@@ -36,12 +36,11 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    llama-cpp.url = "github:ggerganov/llama.cpp";
     musnix.url = "github:musnix/musnix";
-
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     sops.url = "github:Mic92/sops-nix";
-
-    llama-cpp.url = "github:ggerganov/llama.cpp";
 
     # TODO: evaluate these later
     # impermanence.url = "github:nix-community/impermanence/master";
@@ -81,9 +80,13 @@
           inherit system;
           config.allowUnfree = true;
 
-          # TODO: move this to overlays/
+          # TODO: move this to overlays/ ?
           overlays = [
-            (final: prev: {
+            inputs.neovim-nightly-overlay.overlay
+            (final: prev: rec {
+              aseprite =
+                prev.aseprite.overrideAttrs {
+                };
               llama-cpp = inputs'.llama-cpp.packages.rocm;
               ollama = prev.ollama.overrideAttrs {
                 postPatch = ''
