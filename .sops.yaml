@@ -63,6 +63,11 @@ creation_rules:
           - *personal
           - *zapados
 
+  - path_regex: nixos/services/netmaker/secrets.yaml
+    key_groups:
+      - age:
+          - *articuno
+
   # - path_regex: nixos/modules/services/k3s/secrets.yaml
   - path_regex: nixos/modules/**/secrets.yaml
     key_groups:
