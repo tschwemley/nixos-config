@@ -13,6 +13,9 @@
   disk = (import ../../hardware/disks).buyvm;
   k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName role;};
   # netmaker = import ../../services/netmaker {inherit lib pkgs;};
+  services = [
+    ../../services/caddy
+  ];
   profile = import ../../profiles/server.nix;
   wireguard = import ../../network/wireguard.nix {
     inherit config pkgs;
@@ -55,15 +58,17 @@
     ];
   };
 in {
-  imports = [
-    boot
-    disk
-    k3s
-    # netmaker
-    profile
-    wireguard
-    ../../services/k3s/postgresql.nix
-  ];
+  imports =
+    [
+      boot
+      disk
+      k3s
+      # netmaker
+      profile
+      wireguard
+      ../../services/k3s/postgresql.nix
+    ]
+    ++ services;
 
   environment.systemPackages = with pkgs; [k9s];
   networking.dhcpcd.enable = false;
