@@ -29,8 +29,25 @@
 
   # services.netclient.enable = true;
 
-  services.mosquitto = {
+  services.mosquitto = let
+    address = "127.0.0.1";
+    settings = {
+      allow_anonymous = false;
+      # protocol = "websocket";
+    };
+    users.root.hashedPasswordFile = ./mosquitto-pw;
+  in {
     enable = true;
-    includeDirs = [./.];
+    # includeDirs = [./.];
+    listeners = [
+      {
+        inherit address settings users;
+        port = 1883;
+      }
+      {
+        inherit address settings users;
+        port = 8883;
+      }
+    ];
   };
 }
