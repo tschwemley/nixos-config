@@ -13,7 +13,7 @@
 
     sessionVariables = {
       # CLBlast_DIR = "${pkgs.clblast.outPath}/lib/cmake/CLBlast";
-      ROCM_PATH = "/opt/rocm";
+      # ROCM_PATH = "/opt/rocm";
     };
   };
 
