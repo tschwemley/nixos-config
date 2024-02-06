@@ -40,7 +40,7 @@
       User = "root";
       Group = "root";
 
-      ExecStart = "${lib.getExe pkgs.netMaker} -c /var/lib/netmaker/netmaker.yaml";
+      ExecStart = "${lib.getExe pkgs.netmaker} -c /var/lib/netmaker/netmaker.yaml";
       Restart = "on-failure";
       WorkingDirectory = "/var/lib/netmaker";
       StateDirectory = "netmaker";
