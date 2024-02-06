@@ -30,7 +30,7 @@
   # services.netclient.enable = true;
 
   services.mosquitto = let
-    address = "127.0.0.1";
+    # address = "127.0.0.1";
     settings = {
       allow_anonymous = false;
       # protocol = "websocket";
@@ -41,11 +41,11 @@
     # includeDirs = [./.];
     listeners = [
       {
-        inherit address settings users;
+        inherit settings users;
         port = 1883;
       }
       {
-        inherit address settings users;
+        inherit settings users;
         port = 8883;
       }
     ];
