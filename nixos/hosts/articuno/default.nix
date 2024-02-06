@@ -12,7 +12,7 @@
   boot = (import ../../system/boot.nix).grub diskName;
   disk = (import ../../hardware/disks).buyvm;
   k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName role;};
-  netmaker = import ../../services/netmaker {inherit lib pkgs;};
+  # netmaker = import ../../services/netmaker {inherit lib pkgs;};
   profile = import ../../profiles/server.nix;
   wireguard = import ../../network/wireguard.nix {
     inherit config pkgs;
@@ -59,7 +59,7 @@ in {
     boot
     disk
     k3s
-    netmaker
+    # netmaker
     profile
     wireguard
     ../../services/k3s/postgresql.nix
