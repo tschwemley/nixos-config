@@ -65,6 +65,7 @@ in {
     ../../services/k3s/postgresql.nix
   ];
 
+  environment.systemPackages = with pkgs; [k9s];
   networking.dhcpcd.enable = false;
 
   sops = {
