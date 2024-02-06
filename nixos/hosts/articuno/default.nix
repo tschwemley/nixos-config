@@ -14,6 +14,7 @@
   k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName role;};
   # netmaker = import ../../services/netmaker {inherit lib pkgs;};
   services = [
+    ../../services/netmaker
     ../../services/caddy
   ];
   profile = import ../../profiles/server.nix;
@@ -63,7 +64,6 @@ in {
       boot
       disk
       k3s
-      # netmaker
       profile
       wireguard
       ../../services/k3s/postgresql.nix
