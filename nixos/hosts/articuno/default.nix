@@ -59,16 +59,15 @@
     ];
   };
 in {
-  imports =
-    [
-      boot
-      disk
-      k3s
-      profile
-      wireguard
-      ../../services/k3s/postgresql.nix
-    ]
-    ++ services;
+  imports = [
+    boot
+    disk
+    k3s
+    profile
+    wireguard
+    ../../services/k3s/postgresql.nix
+  ];
+  # ++ services;
 
   environment.systemPackages = with pkgs; [k9s];
   networking.dhcpcd.enable = false;
