@@ -1,5 +1,9 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [netmaker netclient];
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  # environment.systemPackages = with pkgs; [netmaker netclient];
 
   # for message broker
   networking.firewall.allowedTCPPorts = [1883 8083 8883];
@@ -24,8 +28,28 @@
   # [Install]
   # WantedBy=multi-user.target
   #
-  # systemd.services.netmaker = {
-  # };
+  sops.secrets.netmaker-config = {
+    sopsFile = ./secrets.yaml;
+    path = "/var/lib/netmaker/netmaker.yaml";
+  };
+
+  systemd.services.netmaker = {
+    enable = true;
+    serviceConfig = {
+      Type = "simple";
+      User = "root";
+      Group = "root";
+
+      ExecStart = "${lib.getExe pkgs.netMaker} -c /var/lib/netmaker/netmaker.yaml";
+      Restart = "on-failure";
+      WorkingDirectory = "/var/lib/netmaker";
+      StateDirectory = "netmaker";
+    };
+
+    description = "Netmaker";
+    after = ["network.target"];
+    wantedBy = ["multi-user.target"];
+  };
 
   # services.netclient.enable = true;
 
