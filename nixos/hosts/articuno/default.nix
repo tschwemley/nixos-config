@@ -75,7 +75,6 @@ in {
   # networking.dhcpcd.enable = false;
 
   networking = {
-    domain = "10.0.0.1";
     hostName = "articuno";
   };
 
