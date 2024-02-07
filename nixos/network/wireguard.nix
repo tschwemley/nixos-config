@@ -44,11 +44,13 @@ in {
 
     firewall = {
       allowedTCPPorts = [51820];
+      allowedUDPPorts = [51820];
       trustedInterfaces = ["wg0"];
     };
 
     wireguard.interfaces.wg0 = {
       ips = ["${host.address}/24"];
+      listenPort = 51820;
       privateKeyFile = config.sops.secrets.wireguard_private.path;
     };
   };
