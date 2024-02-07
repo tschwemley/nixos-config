@@ -14,6 +14,7 @@
   k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName role;};
   # netmaker = import ../../services/netmaker {inherit lib pkgs;};
   services = [
+    ../../network/wireguard.nix
     ../../services/netmaker
     ../../services/caddy
   ];
@@ -59,18 +60,24 @@
     ];
   };
 in {
-  imports = [
-    boot
-    disk
-    k3s
-    profile
-    wireguard
-    ../../services/k3s/postgresql.nix
-  ];
-  # ++ services;
+  imports =
+    [
+      boot
+      disk
+      k3s
+      profile
+      wireguard
+      ../../services/k3s/postgresql.nix
+    ]
+    ++ services;
 
   environment.systemPackages = with pkgs; [k9s];
-  networking.dhcpcd.enable = false;
+  # networking.dhcpcd.enable = false;
+
+  networking = {
+    domain = "10.0.0.1";
+    hostName = "articuno";
+  };
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
