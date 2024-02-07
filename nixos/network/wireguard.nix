@@ -43,7 +43,6 @@ in {
     useDHCP = false;
 
     firewall = {
-      allowedTCPPorts = [51820];
       allowedUDPPorts = [51820];
       trustedInterfaces = ["wg0"];
     };

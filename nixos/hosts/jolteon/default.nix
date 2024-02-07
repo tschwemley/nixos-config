@@ -22,7 +22,10 @@ in {
     ]
     ++ services;
 
-  networking.hostName = "jolteon";
+  networking = {
+    hostName = "jolteon";
+    useDHCP = lib.mkDefault true;
+  };
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
