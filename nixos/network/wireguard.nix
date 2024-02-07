@@ -14,26 +14,26 @@
       endpoint = "articuno.schwem.io";
       pubkey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
     };
-    zapados = {
-      address = "10.0.0.2";
-      pubkey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
-    };
-    moltres = {
-      address = "10.0.0.3";
-      endpoint = "moltres.schwem.io";
-      pubkey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
-    };
-    eevee = {
-      address = "10.0.0.4";
-      pubkey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
-    };
-    flareon = {
-      address = "10.0.0.5";
-      pubkey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
-    };
+    # zapados = {
+    #   address = "10.0.0.2";
+    #   pubkey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
+    # };
+    # moltres = {
+    #   address = "10.0.0.3";
+    #   endpoint = "moltres.schwem.io";
+    #   pubkey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
+    # };
+    # eevee = {
+    #   address = "10.0.0.4";
+    #   pubkey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
+    # };
+    # flareon = {
+    #   address = "10.0.0.5";
+    #   pubkey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
+    # };
     jolteon = {
       address = "10.0.0.6";
-      pubkey = "";
+      pubkey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
     };
   };
 
