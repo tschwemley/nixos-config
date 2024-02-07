@@ -49,6 +49,7 @@ in {
 
     wireguard.interfaces.wg0 = {
       ips = ["${host.address}/24"];
+      privateKeyFile = config.sops.secrets.wireguard_private.path;
     };
   };
 
@@ -63,8 +64,17 @@ in {
     };
   };
 
-  sops.secrets.gossipSecretFile = {
-    sopsFile = ./secrets.yaml;
+  sops.secrets = {
+    gossipSecretFile = {
+      sopsFile = ./secrets.yaml;
+    };
+    wireguard_private = {
+      mode = "0400";
+      path = "/persist/secrets/wireguard-private";
+      owner = config.users.users.systemd-network.name;
+      group = config.users.users.systemd-network.group;
+      restartUnits = ["systemd-networkd" "systemd-resolved"];
+    };
   };
 
   # environment.systemPackages = with pkgs; [
