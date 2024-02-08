@@ -47,7 +47,7 @@ in {
     useDHCP = false;
 
     firewall = {
-      allowedUDPPorts = [host];
+      allowedUDPPorts = [port];
       trustedInterfaces = ["wg0"];
     };
 
