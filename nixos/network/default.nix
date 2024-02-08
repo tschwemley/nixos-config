@@ -8,5 +8,5 @@
     };
   };
 
-  systemd.network.enable = true;
+  # systemd.network.enable = true;
 }
