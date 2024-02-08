@@ -7,4 +7,6 @@
       UseDns = true;
     };
   };
+
+  systemd.network.enable = true;
 }
