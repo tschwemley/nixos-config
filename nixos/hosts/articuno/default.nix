@@ -4,9 +4,7 @@
   pkgs,
   ...
 }: let
-  diskName = "/dev/vda";
-
-  boot = (import ../../system/boot.nix).grub diskName;
+  boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvm;
   # k3s = import ../../services/k3s {inherit config lib pkgs nodeIP nodeName role;};
   # netmaker = import ../../services/netmaker {inherit lib pkgs;};
