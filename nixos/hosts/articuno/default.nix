@@ -27,22 +27,11 @@ in {
 
   boot.initrd.availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
   environment.systemPackages = with pkgs; [k9s];
-
-  # networking.dhcpcd.enable = false;
-
   networking.hostName = "articuno";
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "/root/.config/sops/age/keys.txt";
-
-    secrets = {
-      systemd_networkd_10_ens3 = {
-        mode = "0644";
-        path = "/etc/systemd/network/10-ens3.network";
-        restartUnits = ["systemd-networkd" "systemd-resolved"];
-      };
-    };
   };
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
