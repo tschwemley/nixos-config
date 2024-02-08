@@ -25,7 +25,6 @@ in {
 
   networking = {
     hostName = "jolteon";
-    dhcpcd.enable = lib.mkDefault true;
     useDHCP = lib.mkDefault true;
   };
 

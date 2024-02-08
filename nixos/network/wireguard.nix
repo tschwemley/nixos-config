@@ -38,20 +38,24 @@
   };
 
   host = wgHostInfo.${config.networking.hostName};
+  port = 51820;
 in {
+  systemd.network.enable = true;
+  # services.resolved.enable = true;
+
   networking = {
     useDHCP = false;
 
     firewall = {
-      allowedUDPPorts = [51820];
+      allowedUDPPorts = [host];
       trustedInterfaces = ["wg0"];
     };
 
-    wireguard.interfaces.wg0 = {
-      ips = ["${host.address}/24"];
-      listenPort = 51820;
-      privateKeyFile = config.sops.secrets.wireguard_private.path;
-    };
+    # wireguard.interfaces.wg0 = {
+    #   ips = ["${host.address}/24"];
+    #   listenPort = 51820;
+    #   privateKeyFile = config.sops.secrets.wireguard_private.path;
+    # };
   };
 
   services.wgautomesh = {
@@ -76,6 +80,33 @@ in {
       group = config.users.users.systemd-network.group;
       restartUnits = ["systemd-networkd" "systemd-resolved"];
     };
+  };
+
+  systemd.network = {
+    netdevs = {
+      "20-wg0" = {
+        netdevConfig = {
+          Kind = "wireguard";
+          Name = "wg0";
+          MTUBytes = "1430";
+        };
+        # See also man systemd.netdev (also contains info on the permissions of the key files)
+        wireguardConfig = {
+          PrivateKeyFile = config.sops.secrets.wireguard_private.path;
+          ListenPort = port;
+        };
+      };
+    };
+    # networks = {
+    #   "20-wg0" = {
+    #     # inherit gateway;
+    #     matchConfig.Name = "wg0";
+    #     # IP addresses the client interface will have
+    #     address = [
+    #       "${ip}/24"
+    #     ];
+    #   };
+    # };
   };
 
   # environment.systemPackages = with pkgs; [
