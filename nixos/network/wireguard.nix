@@ -40,9 +40,6 @@
   host = wgHostInfo.${config.networking.hostName};
   port = 51820;
 in {
-  systemd.network.enable = true;
-  # services.resolved.enable = true;
-
   networking = {
     useDHCP = false;
 

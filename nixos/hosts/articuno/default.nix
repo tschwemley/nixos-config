@@ -27,11 +27,22 @@ in {
 
   boot.initrd.availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
   environment.systemPackages = with pkgs; [k9s];
-  networking.hostName = "articuno";
+
+  networking = {
+    defaultDevice = "ens3";
+    hostName = "articuno";
+    ipv4 = {
+      address = "198.98.62.194/24";
+      gateway = "198.98.62.1";
+    };
+  };
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "/root/.config/sops/age/keys.txt";
+    secrets = {
+      public_ip = {};
+    };
   };
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
