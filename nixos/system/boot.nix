@@ -1,14 +1,21 @@
-{
+let
+  kernelModules = ["wireguard"];
+  supportedFilesystems = ["btrfs"];
+in {
   grub = diskName: {
-    boot.loader.grub = {
-      efiSupport = true;
-      efiInstallAsRemovable = true;
-      devices = [diskName];
+    boot = {
+      inherit kernelModules supportedFilesystems;
+      loader.grub = {
+        efiSupport = true;
+        efiInstallAsRemovable = true;
+        devices = [diskName];
+      };
     };
   };
 
   systemd = {
     boot = {
+      inherit kernelModules supportedFilesystems;
       initrd = {
         systemd.enable = true;
       };

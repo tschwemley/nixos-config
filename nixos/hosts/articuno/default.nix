@@ -28,7 +28,9 @@ in {
     ]
     ++ services;
 
+  boot.initrd.availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
   environment.systemPackages = with pkgs; [k9s];
+
   # networking.dhcpcd.enable = false;
 
   networking.hostName = "articuno";
