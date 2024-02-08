@@ -122,9 +122,12 @@ in {
   # TODO: pretty sure polkit is necessary for home-manager config of wayland; confirm
   # security.polkit.enable = true;
 
-  system.autoUpgrade.enable = true;
-  # don't update this
-  system.stateVersion = "23.05";
+  system = {
+    autoUpgrade.enable = true;
+
+    # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
+    stateVersion = "23.05";
+  };
 
   time.timeZone = "America/Detroit";
 
