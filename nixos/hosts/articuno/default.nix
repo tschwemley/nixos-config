@@ -10,7 +10,6 @@
   # netmaker = import ../../services/netmaker {inherit lib pkgs;};
   services = [
     ../../network/wireguard.nix
-    ../../services/netmaker
     ../../services/caddy
   ];
   profile = import ../../profiles/server.nix;

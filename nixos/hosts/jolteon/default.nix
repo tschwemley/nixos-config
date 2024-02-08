@@ -9,7 +9,6 @@
   profile = import ../../profiles/server.nix;
   services = [
     ../../network/wireguard.nix
-    ../../services/netmaker
     ../../services/caddy
     ../../services/syncthing.nix
   ];
@@ -26,7 +25,7 @@ in {
 
   networking = {
     hostName = "jolteon";
-    useDHCP = lib.mkDefault true;
+    # useDHCP = lib.mkDefault true;
   };
 
   sops = {
