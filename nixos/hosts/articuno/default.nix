@@ -7,7 +7,7 @@
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvm;
   services = [
-    ../../network/wireguard.nix
+    # ../../network/wireguard.nix
     ../../services/caddy
   ];
   profile = import ../../profiles/server.nix;
@@ -23,6 +23,7 @@ in {
 
   boot.initrd.availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
   environment.systemPackages = with pkgs; [k9s];
+  networking.hostName = "articuno";
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
