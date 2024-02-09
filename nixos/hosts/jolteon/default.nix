@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+let
   boot = (import ../../system/boot.nix).systemd;
   disk = (import ../../hardware/disks).proxmox;
   profile = import ../../profiles/server.nix;
@@ -25,7 +20,7 @@ in {
 
   networking = {
     hostName = "jolteon";
-    useDHCP = lib.mkDefault true;
+    # useDHCP = lib.mkDefault true;
   };
 
   sops = {

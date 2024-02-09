@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvm;
   services = [

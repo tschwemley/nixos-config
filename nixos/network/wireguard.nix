@@ -11,26 +11,38 @@
       ip = "10.0.0.1";
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/32"];
-        Endpoint = "articuno.schwem.io:${ListenPort}";
+        Endpoint = "articuno.schwem.io:${toString ListenPort}";
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       };
     };
-    # zapados = {
-    #   AllowedIPs = ["10.0.0.2/32"];
-    #   PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
+    # zapados = rec {
+    #   ip = "10.0.0.2";
+    #   wireguardPeerConfig = {
+    #     AllowedIPs = ["${ip}/32"];
+    #     PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
+    #   };
     # };
-    # moltres = {
-    #   AllowedIPs = ["10.0.0.3/32"];
-    #   Endpoint = "moltres.schwem.io";
-    #   PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
+    moltres = rec {
+      ip = "10.0.0.3";
+      wireguardPeerConfig = {
+        AllowedIPs = ["${ip}/32"];
+        Endpoint = "moltres.schwem.io:${toString ListenPort}";
+        PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
+      };
+    };
+    # eevee = rec {
+    #   ip = "10.0.0.4";
+    #   wireguardPeerConfig = {
+    #     AllowedIPs = ["${ip}/32"];
+    #     PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
+    #   };
     # };
-    # eevee = {
-    #   AllowedIPs = ["10.0.0.4/32"];
-    #   PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
-    # };
-    # flareon = {
-    #   AllowedIPs = ["10.0.0.5/32"];
-    #   PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
+    # flareon = rec {
+    #   ip = "10.0.0.5";
+    #   wireguardPeerConfig = {
+    #     AllowedIPs = ["${ip}/32"];
+    #     PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
+    #   };
     # };
     jolteon = rec {
       ip = "10.0.0.6";
@@ -40,8 +52,11 @@
       };
     };
     # charizard = {
-    #   address = "10.0.0.xx";
-    #   pubkey = "";
+    #   ip = "10.0.0.x";
+    #   wireguardPeerConfig = {
+    #     address = "10.0.0.x";
+    #     pubkey = "xxxxxxxx";
+    #   };
     # };
   };
   host = wgHostInfo.${config.networking.hostName};
@@ -100,5 +115,6 @@ in {
         ];
       };
     };
+    #test
   };
 }
