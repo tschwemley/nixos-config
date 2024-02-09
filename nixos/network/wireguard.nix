@@ -11,7 +11,7 @@
     articuno = rec {
       ip = "10.0.0.1";
       wireguardPeerConfig = {
-        AllowedIPs = ["${ip}/32"];
+        AllowedIPs = ["${ip}/28"];
         Endpoint = "articuno.schwem.io:${toString ListenPort}";
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       };
@@ -27,7 +27,7 @@
     moltres = rec {
       ip = "10.0.0.3";
       wireguardPeerConfig = {
-        AllowedIPs = ["${ip}/32"];
+        AllowedIPs = ["${ip}/28"];
         Endpoint = "moltres.schwem.io:${toString ListenPort}";
         PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
       };
