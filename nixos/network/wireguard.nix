@@ -5,7 +5,8 @@
   ...
 }: let
   ListenPort = 51820;
-  dns = ["10.0.0.1" "10.0.0.3"];
+  # dns = ["10.0.0.1" "10.0.0.3"];
+  dns = ["10.0.0.1"];
 
   wgHostInfo = {
     articuno = rec {
@@ -28,7 +29,8 @@
     moltres = rec {
       ip = "10.0.0.3";
       wireguardPeerConfig = {
-        AllowedIPs = ["${ip}/32" "10.0.0.1/32" "10.0.0.2/32" "10.0.0.4/32" "10.0.0.5/32" "10.0.0.6/32"];
+        AllowedIPs = ["${ip}/32"];
+        # AllowedIPs = ["${ip}/32" "10.0.0.1/32" "10.0.0.2/32" "10.0.0.4/32" "10.0.0.5/32" "10.0.0.6/32"];
         Endpoint = "moltres.schwem.io:${toString ListenPort}";
         PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
       };
