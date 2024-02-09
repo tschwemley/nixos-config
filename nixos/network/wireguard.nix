@@ -45,10 +45,10 @@
       };
     };
     flareon = rec {
-      inherit dns;
+      # inherit dns;
       ip = "10.0.0.5";
       wireguardPeerConfig = {
-        AllowedIPs = ["${ip}/32"];
+        AllowedIPs = ["${ip}/32" "10.0.0.1/24"];
         PersistentKeepalive = 25;
         PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
       };
