@@ -11,7 +11,7 @@
     articuno = rec {
       ip = "10.0.0.1";
       wireguardPeerConfig = {
-        AllowedIPs = ["${ip}/28"];
+        AllowedIPs = ["${ip}/32" "10.0.0.2/32" "10.0.0.3/32" "10.0.0.4/32" "10.0.0.5/32" "10.0.0.6/32"];
         Endpoint = "articuno.schwem.io:${toString ListenPort}";
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       };
@@ -21,13 +21,14 @@
       ip = "10.0.0.2";
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/32"];
+        PersistentKeepalive = 25;
         PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
       };
     };
     moltres = rec {
       ip = "10.0.0.3";
       wireguardPeerConfig = {
-        AllowedIPs = ["${ip}/28"];
+        AllowedIPs = ["${ip}/32" "10.0.0.1/32" "10.0.0.2/32" "10.0.0.4/32" "10.0.0.5/32" "10.0.0.6/32"];
         Endpoint = "moltres.schwem.io:${toString ListenPort}";
         PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
       };
@@ -37,6 +38,7 @@
       ip = "10.0.0.4";
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/32"];
+        PersistentKeepalive = 25;
         PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
       };
     };
@@ -45,6 +47,7 @@
       ip = "10.0.0.5";
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/32"];
+        PersistentKeepalive = 25;
         PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
       };
     };
@@ -53,6 +56,7 @@
       ip = "10.0.0.6";
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/32"];
+        PersistentKeepalive = 25;
         PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
       };
     };
