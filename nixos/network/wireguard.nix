@@ -15,13 +15,13 @@
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       };
     };
-    # zapados = rec {
-    #   ip = "10.0.0.2";
-    #   wireguardPeerConfig = {
-    #     AllowedIPs = ["${ip}/32"];
-    #     PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
-    #   };
-    # };
+    zapados = rec {
+      ip = "10.0.0.2";
+      wireguardPeerConfig = {
+        AllowedIPs = ["${ip}/32"];
+        PublicKey = "Q1+mLYcJfyU6CtlMxJbAYdBck2v/9VMGBu/33+opokU=";
+      };
+    };
     moltres = rec {
       ip = "10.0.0.3";
       wireguardPeerConfig = {
@@ -30,20 +30,20 @@
         PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
       };
     };
-    # eevee = rec {
-    #   ip = "10.0.0.4";
-    #   wireguardPeerConfig = {
-    #     AllowedIPs = ["${ip}/32"];
-    #     PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
-    #   };
-    # };
-    # flareon = rec {
-    #   ip = "10.0.0.5";
-    #   wireguardPeerConfig = {
-    #     AllowedIPs = ["${ip}/32"];
-    #     PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
-    #   };
-    # };
+    eevee = rec {
+      ip = "10.0.0.4";
+      wireguardPeerConfig = {
+        AllowedIPs = ["${ip}/32"];
+        PublicKey = "6xPGijlkm3yDDLEy1vAWilcnvUcKxODy7oXT7YCwJj4=";
+      };
+    };
+    flareon = rec {
+      ip = "10.0.0.5";
+      wireguardPeerConfig = {
+        AllowedIPs = ["${ip}/32"];
+        PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
+      };
+    };
     jolteon = rec {
       ip = "10.0.0.6";
       wireguardPeerConfig = {
