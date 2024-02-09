@@ -7,11 +7,8 @@
   ListenPort = 51820;
 
   wgHostInfo = {
-    # charizard = {
-    #   address = "10.0.0.xx";
-    #   pubkey = "";
-    # };
     articuno = {
+      ip = "10.0.0.1";
       AllowedIPs = ["10.0.0.1/32"];
       Endpoint = "articuno.schwem.io:${ListenPort}";
       PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
@@ -34,11 +31,16 @@
     #   PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
     # };
     jolteon = {
+      ip = "10.0.0.6";
       AllowedIPs = ["10.0.0.6/32"];
       PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
     };
+    # charizard = {
+    #   address = "10.0.0.xx";
+    #   pubkey = "";
+    # };
   };
-  # host = wgHostInfo.${config.networking.hostName};
+  host = wgHostInfo.${config.networking.hostName};
   wireguardPeers = pkgs.lib.mapAttrsToList (_: value: value) (
     removeAttrs wgHostInfo [config.networking.hostName]
   );
@@ -85,15 +87,14 @@ in {
       };
     };
 
-    # networks = {
-    #   "20-wg0" = {
-    #     # inherit gateway;
-    #     matchConfig.Name = "wg0";
-    #     # IP addresses the client interface will have
-    #     address = [
-    #       "${ip}/24"
-    #     ];
-    #   };
-    # };
+    networks = {
+      "20-wg0" = {
+        name = "wg0";
+        # IP addresses the client interface will have
+        address = [
+          "${host.ip}/24"
+        ];
+      };
+    };
   };
 }
