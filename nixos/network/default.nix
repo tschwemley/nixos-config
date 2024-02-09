@@ -19,6 +19,8 @@
   #   };
   # };
 
+  systemd.network.enable = true;
+
   # config = {
   services.openssh = {
     enable = true;
