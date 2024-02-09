@@ -1,9 +1,11 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: let
   ListenPort = 51820;
+  dns = ["10.0.0.1" "10.0.0.3"];
 
   wgHostInfo = {
     articuno = rec {
@@ -15,6 +17,7 @@
       };
     };
     zapados = rec {
+      inherit dns;
       ip = "10.0.0.2";
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/32"];
@@ -30,6 +33,7 @@
       };
     };
     eevee = rec {
+      inherit dns;
       ip = "10.0.0.4";
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/32"];
@@ -37,6 +41,7 @@
       };
     };
     flareon = rec {
+      inherit dns;
       ip = "10.0.0.5";
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/32"];
@@ -44,6 +49,7 @@
       };
     };
     jolteon = rec {
+      inherit dns;
       ip = "10.0.0.6";
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/32"];
@@ -109,6 +115,7 @@ in {
         address = [
           "${host.ip}/24"
         ];
+        dns = lib.mkIf (host ? dns) host.dns;
       };
     };
   };
