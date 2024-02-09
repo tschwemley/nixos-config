@@ -7,11 +7,13 @@
   ListenPort = 51820;
 
   wgHostInfo = {
-    articuno = {
+    articuno = rec {
       ip = "10.0.0.1";
-      AllowedIPs = ["10.0.0.1/32"];
-      Endpoint = "articuno.schwem.io:${ListenPort}";
-      PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
+      wireguardPeerConfig = {
+        AllowedIPs = ["${ip}/32"];
+        Endpoint = "articuno.schwem.io:${ListenPort}";
+        PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
+      };
     };
     # zapados = {
     #   AllowedIPs = ["10.0.0.2/32"];
@@ -30,10 +32,12 @@
     #   AllowedIPs = ["10.0.0.5/32"];
     #   PublicKey = "3g+cRzwGUcm+0N/WQlPgBYDcq/IQaA/N2UqMyNn1QWw=";
     # };
-    jolteon = {
+    jolteon = rec {
       ip = "10.0.0.6";
-      AllowedIPs = ["10.0.0.6/32"];
-      PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
+      wireguardPeerConfig = {
+        AllowedIPs = ["${ip}/32"];
+        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
+      };
     };
     # charizard = {
     #   address = "10.0.0.xx";
@@ -41,9 +45,9 @@
     # };
   };
   host = wgHostInfo.${config.networking.hostName};
-  wireguardPeers = pkgs.lib.mapAttrsToList (_: value: value) (
-    removeAttrs wgHostInfo [config.networking.hostName]
-  );
+  wireguardPeers = pkgs.lib.mapAttrsToList (_: value: {
+    inherit (value) wireguardPeerConfig;
+  }) (removeAttrs wgHostInfo [config.networking.hostName]);
 in {
   environment.systemPackages = with pkgs; [
     wireguard-tools
