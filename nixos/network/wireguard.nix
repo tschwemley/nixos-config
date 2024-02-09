@@ -4,7 +4,8 @@
   pkgs,
   ...
 }: let
-  ListenPort = 51820;
+  ListenPort = 2082;
+  # ListenPort = 51820;
 
   wgHostInfo = {
     articuno = rec {
