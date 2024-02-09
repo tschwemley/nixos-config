@@ -1,5 +1,4 @@
 {
-  # self,
   config,
   pkgs,
   ...
@@ -76,9 +75,6 @@ in {
   };
 
   sops.secrets = {
-    gossipSecretFile = {
-      sopsFile = ./secrets.yaml;
-    };
     wireguard_private = {
       mode = "0400";
       path = "/persist/secrets/wireguard-private";
@@ -115,6 +111,5 @@ in {
         ];
       };
     };
-    #test
   };
 }

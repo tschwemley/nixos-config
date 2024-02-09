@@ -1,12 +1,12 @@
 let
   boot = (import ../../system/boot.nix).systemd;
   disk = (import ../../hardware/disks).proxmox;
+  profile = import ../../profiles/server.nix;
   services = [
     ../../network
     ../../network/wireguard.nix
     ../../services/syncthing.nix
   ];
-  profile = import ../../profiles/server.nix;
 in {
   imports =
     [
