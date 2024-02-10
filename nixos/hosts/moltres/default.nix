@@ -2,9 +2,9 @@ let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvmWithStorage;
   services = [
-    ../../network
-    ../../network/wireguard.nix
-    ../../services/caddy
+    ../../network/netbird.nix
+    # ../../network/wireguard.nix
+    # ../../services/caddy
     ../../services/syncthing.nix
   ];
   profile = import ../../profiles/buyvm.nix;

@@ -2,7 +2,7 @@
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvm;
   services = [
-    ../../network/wireguard.nix
+    # ../../network/wireguard.nix
     ../../network/netbird.nix
     ../../services/caddy
   ];
