@@ -6,20 +6,28 @@
 }: let
   ListenPort = 51820;
   # dns = ["10.0.0.1" "10.0.0.3"];
-  dns = ["10.0.0.1"];
+  # dns = ["10.0.0.1"];
 
   wgHostInfo = {
     articuno = rec {
       ip = "10.0.0.1";
+      networkConfig = {
+        IPForward = true;
+        IPMasquerade = "ipv4";
+        IPv6AcceptRA = false;
+      };
       wireguardPeerConfig = {
-        AllowedIPs = ["${ip}/32" "10.0.0.2/32" "10.0.0.3/32" "10.0.0.4/32" "10.0.0.5/32" "10.0.0.6/32"];
+        AllowedIPs = ["${ip}/29"];
         Endpoint = "articuno.schwem.io:${toString ListenPort}";
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       };
     };
     zapados = rec {
-      inherit dns;
+      # inherit dns;
       ip = "10.0.0.2";
+      networkConfig = {
+        IPv6AcceptRA = false;
+      };
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/32"];
         PersistentKeepalive = 25;
@@ -28,16 +36,24 @@
     };
     moltres = rec {
       ip = "10.0.0.3";
+      networkConfig = {
+        IPForward = true;
+        IPMasquerade = "ipv4";
+        IPv6AcceptRA = false;
+      };
       wireguardPeerConfig = {
-        AllowedIPs = ["${ip}/32"];
+        AllowedIPs = ["${ip}/29"];
         # AllowedIPs = ["${ip}/32" "10.0.0.1/32" "10.0.0.2/32" "10.0.0.4/32" "10.0.0.5/32" "10.0.0.6/32"];
         Endpoint = "moltres.schwem.io:${toString ListenPort}";
         PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
       };
     };
     eevee = rec {
-      inherit dns;
+      # inherit dns;
       ip = "10.0.0.4";
+      networkConfig = {
+        IPv6AcceptRA = false;
+      };
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/32"];
         PersistentKeepalive = 25;
@@ -47,6 +63,9 @@
     flareon = rec {
       # inherit dns;
       ip = "10.0.0.5";
+      networkConfig = {
+        IPv6AcceptRA = false;
+      };
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/32" "10.0.0.1/24"];
         PersistentKeepalive = 25;
@@ -54,8 +73,11 @@
       };
     };
     jolteon = rec {
-      inherit dns;
+      # inherit dns;
       ip = "10.0.0.6";
+      networkConfig = {
+        IPv6AcceptRA = false;
+      };
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/32"];
         PersistentKeepalive = 25;
@@ -114,15 +136,16 @@ in {
       };
     };
 
-    networks = {
-      "20-wg0" = {
-        name = "wg0";
-        # IP addresses the client interface will have
-        address = [
-          "${host.ip}/24"
-        ];
-        dns = lib.mkIf (host ? dns) host.dns;
-      };
+    networks.wg0 = {
+      inherit (host) networkConfig;
+      address = [
+        # "${host.ip}/24"
+        "${host.ip}/29"
+      ];
+      dns = lib.mkIf (host ? dns) host.dns;
+      DHCP = "no";
+      name = "wg0";
+      gateway = ["10.0.0.1" "10.0.0.3"];
     };
   };
 }

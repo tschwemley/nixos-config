@@ -1,13 +1,13 @@
 let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvmWithStorage;
+  profile = import ../../profiles/buyvm.nix;
   services = [
     ../../network
     ../../network/wireguard.nix
     ../../services/caddy
     ../../services/syncthing.nix
   ];
-  profile = import ../../profiles/server.nix;
 in {
   imports =
     [

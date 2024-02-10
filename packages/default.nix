@@ -1,5 +1,6 @@
 {...}: {
   perSystem = {
+    self',
     config,
     lib,
     options,
@@ -10,17 +11,20 @@
       build-host = pkgs.writeScriptBin "build-host" ''
         #!/usr/bin/env sh
         HOST=$1
-        nix build .#nixosConfigurations.$HOST.config.system.build.toplevel -o $HOST
-        nix-copy-closure --to $HOST $HOST
 
-        # cleanup after
-        rm $HOST
+        if [ $HOST = "servers" ] ; then
+          ${./scripts/build-servers.sh}
+        else
+          nix build .#nixosConfigurations.$HOST.config.system.build.toplevel -o $HOST
+          nix-copy-closure --to $HOST $HOST
+          rm $HOST
+        fi
       '';
       prefetch-url-sha256 = pkgs.writeScriptBin "prefetch-url-sha256" ''
         hash=$(nix-prefetch-url "$1")
         nix hash to-sri --type sha256 $hash
       '';
-      silly-tavern = pkgs.callPackage ./silly-tavern.nix {};
+      # silly-tavern = pkgs.callPackage ./silly-tavern.nix {};
       # haxe-language-server = (pkgs.callPackage ../home/programs/neovim/modules/lsp/haxe-language-server {}).package;
       # haxe-language-server = let
       #   npmDeps = (pkgs.callPackage ../home/programs/neovim/modules/lsp/haxe-language-server {}).nodeDependencies;
