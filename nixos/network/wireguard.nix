@@ -15,7 +15,7 @@
         # IPv6AcceptRA = false;
       };
       wireguardPeerConfig = {
-        AllowedIPs = ["10.0.0.0/29"];
+        AllowedIPs = ["${ip}/29"];
         Endpoint = "articuno.schwem.io:${toString ListenPort}";
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       };
@@ -39,7 +39,7 @@
         IPv6AcceptRA = false;
       };
       wireguardPeerConfig = {
-        AllowedIPs = ["10.0.0.0/29"];
+        AllowedIPs = ["${ip}/29"];
         # AllowedIPs = ["${ip}/32" "10.0.0.1/32" "10.0.0.2/32" "10.0.0.4/32" "10.0.0.5/32" "10.0.0.6/32"];
         Endpoint = "moltres.schwem.io:${toString ListenPort}";
         PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
