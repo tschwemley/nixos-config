@@ -15,7 +15,7 @@
         # IPv6AcceptRA = false;
       };
       wireguardPeerConfig = {
-        AllowedIPs = ["${ip}/29"];
+        AllowedIPs = ["${ip}/28"];
         Endpoint = "articuno.schwem.io:${toString ListenPort}";
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       };
@@ -39,7 +39,7 @@
         IPv6AcceptRA = false;
       };
       wireguardPeerConfig = {
-        AllowedIPs = ["${ip}/29"];
+        AllowedIPs = ["${ip}/28"];
         # AllowedIPs = ["${ip}/32" "10.0.0.1/32" "10.0.0.2/32" "10.0.0.4/32" "10.0.0.5/32" "10.0.0.6/32"];
         Endpoint = "moltres.schwem.io:${toString ListenPort}";
         PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
@@ -78,7 +78,7 @@
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/32"];
         PersistentKeepalive = 25;
-        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus29Bg8MbIKkk=";
+        PublicKey = "FT9Gnx4Ond9RRRvEkVmabRkF6Cjlzaus28Bg8MbIKkk=";
       };
     };
     # charizard = {
@@ -131,12 +131,12 @@ in {
 
     networks."20-wg0" = {
       address = [
-        "10.0.0.1/29"
+        "${host.ip}/28"
       ];
       # dns = lib.mkIf (host ? dns) host.dns;
       DHCP = "no";
       name = "wg0";
-      networkConfig = lib.mkIf (host ? networkConfig) host.networkConfig;
+      # networkConfig = lib.mkIf (host ? networkConfig) host.networkConfig;
       # routeConfig.gateway = lib.mkIf (hostName == "articuno" && hostName != "moltres") ["10.0.0.1" "10.0.0.3"];
     };
   };
