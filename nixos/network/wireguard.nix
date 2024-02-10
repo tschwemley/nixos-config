@@ -92,10 +92,11 @@
     #   };
     # };
   };
-  host = wgHostInfo.${config.networking.hostName};
+  hostName = config.networking.hostName;
+  host = wgHostInfo.${hostName};
   wireguardPeers = pkgs.lib.mapAttrsToList (_: value: {
     inherit (value) wireguardPeerConfig;
-  }) (removeAttrs wgHostInfo [config.networking.hostName]);
+  }) (removeAttrs wgHostInfo [hostName]);
 in {
   environment.systemPackages = with pkgs; [
     wireguard-tools
@@ -142,10 +143,10 @@ in {
         # "${host.ip}/24"
         "${host.ip}/29"
       ];
-      dns = lib.mkIf (host ? dns) host.dns;
+      # dns = lib.mkIf (host ? dns) host.dns;
       DHCP = "no";
       name = "wg0";
-      gateway = ["10.0.0.1" "10.0.0.3"];
+      gateway = lib.mkIf (hostName == "articuno" && hostName != "moltres") ["10.0.0.1" "10.0.0.3"];
     };
   };
 }
