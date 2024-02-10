@@ -16,7 +16,7 @@
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/28"];
         Endpoint = "articuno.schwem.io:${toString ListenPort}";
-        # PersistentKeepalive = 25;
+        PersistentKeepalive = 25;
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       };
     };
@@ -41,12 +41,11 @@
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/32"];
         Endpoint = "moltres.schwem.io:${toString ListenPort}";
-        # PersistentKeepalive = 25;
+        PersistentKeepalive = 25;
         PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
       };
     };
     eevee = rec {
-      # inherit dns;
       ip = "10.0.0.4";
       # networkConfig = {
       #   IPv6AcceptRA = false;
@@ -58,7 +57,6 @@
       };
     };
     flareon = rec {
-      # inherit dns;
       ip = "10.0.0.5";
       # networkConfig = {
       #   IPv6AcceptRA = false;
@@ -70,7 +68,6 @@
       };
     };
     jolteon = rec {
-      # inherit dns;
       ip = "10.0.0.6";
       # networkConfig = {
       #   IPv6AcceptRA = false;
