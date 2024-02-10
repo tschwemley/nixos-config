@@ -137,7 +137,7 @@ in {
       DHCP = "no";
       name = "wg0";
       networkConfig = lib.mkIf (host ? networkConfig) host.networkConfig;
-      routeConfig.gateway = lib.mkIf (hostName == "articuno" && hostName != "moltres") ["10.0.0.1" "10.0.0.3"];
+      # routeConfig.gateway = lib.mkIf (hostName == "articuno" && hostName != "moltres") ["10.0.0.1" "10.0.0.3"];
     };
   };
 }
