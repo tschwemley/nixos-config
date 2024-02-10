@@ -36,7 +36,7 @@
       networkConfig = {
         IPForward = true;
         IPMasquerade = "ipv4";
-        IPv6AcceptRA = false;
+        # IPv6AcceptRA = false;
       };
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/28"];
