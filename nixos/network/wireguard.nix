@@ -39,7 +39,7 @@
         # IPv6AcceptRA = false;
       };
       wireguardPeerConfig = {
-        AllowedIPs = ["${ip}/28"];
+        AllowedIPs = ["${ip}/32"];
         Endpoint = "moltres.schwem.io:${toString ListenPort}";
         # PersistentKeepalive = 25;
         PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
