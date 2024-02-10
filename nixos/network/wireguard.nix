@@ -16,7 +16,7 @@
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/28"];
         Endpoint = "articuno.schwem.io:${toString ListenPort}";
-        PersistentKeepalive = 25;
+        # PersistentKeepalive = 25;
         PublicKey = "1YcCJFA6eAskLk0/XpBYwdqbBdHgNRaW06ZdkJs8e1s=";
       };
     };
@@ -41,7 +41,7 @@
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/28"];
         Endpoint = "moltres.schwem.io:${toString ListenPort}";
-        PersistentKeepalive = 25;
+        # PersistentKeepalive = 25;
         PublicKey = "reQIKAlaJvkqkASpM0xxntIcoB8S5ImXw500m1sRs0Q=";
       };
     };
