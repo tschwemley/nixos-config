@@ -2,9 +2,11 @@
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvm;
   services = [
-    # ../../network/wireguard.nix
     ../../network/netbird.nix
+  ];
+  webServices = [
     ../../services/caddy
+    ../../services/searxng
   ];
   profile = import ../../profiles/buyvm.nix;
 in {
@@ -15,7 +17,8 @@ in {
       profile
       # ../../services/k3s/postgresql.nix
     ]
-    ++ services;
+    ++ services
+    ++ webServices;
 
   environment.systemPackages = with pkgs; [k9s];
   networking.hostName = "articuno";
