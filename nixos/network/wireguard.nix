@@ -33,11 +33,11 @@
     };
     moltres = rec {
       ip = "10.0.0.3";
-      networkConfig = {
-        IPForward = true;
-        IPMasquerade = "ipv4";
-        # IPv6AcceptRA = false;
-      };
+      # networkConfig = {
+      #   IPForward = true;
+      #   IPMasquerade = "ipv4";
+      #   # IPv6AcceptRA = false;
+      # };
       wireguardPeerConfig = {
         AllowedIPs = ["${ip}/32"];
         Endpoint = "moltres.schwem.io:${toString ListenPort}";
