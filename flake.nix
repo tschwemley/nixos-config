@@ -84,9 +84,6 @@
           overlays = [
             inputs.neovim-nightly-overlay.overlay
             (final: prev: rec {
-              aseprite =
-                prev.aseprite.overrideAttrs {
-                };
               llama-cpp = inputs'.llama-cpp.packages.rocm;
               ollama = prev.ollama.overrideAttrs {
                 postPatch = ''

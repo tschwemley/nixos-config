@@ -19,5 +19,6 @@
     };
   };
 
+  systemd.network.enable = true;
   time.timeZone = lib.mkDefault "UTC";
 }
