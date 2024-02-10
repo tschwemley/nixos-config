@@ -19,11 +19,14 @@
   };
   user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
 in {
+  environment.systemPackages = [pkgs.netbird-ui];
+
   imports = [
     boot
     disk
     hardware
     user
+    ../../network/netbird.nix
     ../../profiles/pc.nix
     # TODO: move syncthing somewhere else
     ../../services/syncthing.nix
