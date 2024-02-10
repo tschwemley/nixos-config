@@ -131,7 +131,7 @@ in {
 
     networks."20-wg0" = {
       address = [
-        "10.0.0.0/29"
+        "10.0.0.1/29"
       ];
       # dns = lib.mkIf (host ? dns) host.dns;
       DHCP = "no";
