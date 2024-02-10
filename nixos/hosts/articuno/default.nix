@@ -5,18 +5,17 @@
     ../../network/wireguard.nix
     ../../services/caddy
   ];
-  profile = import ../../profiles/server.nix;
+  profile = import ../../profiles/buyvm.nix;
 in {
   imports =
     [
       boot
       disk
       profile
-      ../../services/k3s/postgresql.nix
+      # ../../services/k3s/postgresql.nix
     ]
     ++ services;
 
-  boot.initrd.availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
   environment.systemPackages = with pkgs; [k9s];
   networking.hostName = "articuno";
 
