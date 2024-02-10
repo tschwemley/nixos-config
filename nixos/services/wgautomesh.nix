@@ -1,5 +1,0 @@
-{
-  services.wgautomesh = {
-    enable = true;
-  };
-}

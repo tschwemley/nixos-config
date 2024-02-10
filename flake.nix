@@ -102,7 +102,6 @@
       imports = [
         ./home
         ./nixos
-        ./overlays
         ./packages
         ./shells
         ./templates
