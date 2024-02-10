@@ -3,6 +3,7 @@
   disk = (import ../../hardware/disks).buyvm;
   services = [
     ../../network/wireguard.nix
+    ../../network/netbird.nix
     ../../services/caddy
   ];
   profile = import ../../profiles/buyvm.nix;

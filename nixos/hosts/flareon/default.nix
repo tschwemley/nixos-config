@@ -3,7 +3,7 @@ let
   disk = (import ../../hardware/disks).proxmox;
   profile = import ../../profiles/server.nix;
   services = [
-    ../../network
+    ../../network/netbird.nix
     ../../network/wireguard.nix
     ../../services/syncthing.nix
   ];

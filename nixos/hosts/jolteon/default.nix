@@ -3,10 +3,8 @@ let
   disk = (import ../../hardware/disks).proxmox;
   profile = import ../../profiles/server.nix;
   services = [
-    ../../network
-    ../../network/wireguard.nix
-    ../../services/caddy
     ../../services/syncthing.nix
+    ../../network/wireguard.nix
   ];
 in {
   imports =
@@ -19,10 +17,7 @@ in {
 
   boot.initrd.availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
 
-  networking = {
-    hostName = "jolteon";
-    # useDHCP = lib.mkDefault true;
-  };
+  networking.hostName = "jolteon";
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
