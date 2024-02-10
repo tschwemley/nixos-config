@@ -1,9 +1,0 @@
-server:
-  server: "127.0.0.1"
-  broker: wss://broker.127.0.0.1
-  apiport: "8081"
-  apiconn: "api.127.0.0.1:443"
-  masterkey: "<SECRET_KEY>"
-  mqpassword: "<YOUR_PASSWORD>"
-  mqusername: "root"
-  serverbrokerendpoint: "ws://mq:1883"
