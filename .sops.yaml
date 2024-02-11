@@ -74,7 +74,6 @@ creation_rules:
           - *personal
           - *articuno
 
-  # - path_regex: nixos/modules/services/k3s/secrets.yaml
   - path_regex: nixos/(modules|network|services)/.*/secrets.yaml
     key_groups:
       - age:
@@ -83,6 +82,5 @@ creation_rules:
           - *eevee
           - *flareon
           - *jolteon
-          - *machamp
           - *moltres
           - *zapados

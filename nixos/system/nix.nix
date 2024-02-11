@@ -6,6 +6,7 @@
     settings = {
       auto-optimise-store = true;
       experimental-features = ["nix-command" "flakes"];
+      sandbox = "relaxed";
       substituters = [
         # "https://cache.nixos.org?priority=10"
         "https://hyprland.cachix.org"
