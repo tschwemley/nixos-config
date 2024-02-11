@@ -24,7 +24,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
@@ -36,11 +39,27 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    llama-cpp.url = "github:ggerganov/llama.cpp";
-    musnix.url = "github:musnix/musnix";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    llama-cpp = {
+      url = "github:ggerganov/llama.cpp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    musnix = {
+      url = "github:musnix/musnix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
-    sops.url = "github:Mic92/sops-nix";
+
+    sops = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # TODO: evaluate these later
     # impermanence.url = "github:nix-community/impermanence/master";
