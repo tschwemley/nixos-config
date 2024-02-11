@@ -1,0 +1,5 @@
+{
+  services.zitadel = {
+    enable = true;
+  };
+}
