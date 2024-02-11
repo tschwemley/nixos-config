@@ -7,6 +7,7 @@
   webServices = [
     ../../services/nginx.nix
     ../../services/searxng
+    ../../services/zitadel
   ];
   profile = import ../../profiles/buyvm.nix;
 in {
