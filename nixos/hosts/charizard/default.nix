@@ -17,6 +17,7 @@
       ../../hardware/audio
     ];
   };
+
   user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
 in {
   environment.systemPackages = [pkgs.netbird-ui];
@@ -30,6 +31,8 @@ in {
     ../../profiles/pc.nix
     # TODO: move syncthing somewhere else
     ../../services/syncthing.nix
+    ../../services/caddy
+    ../../services/searxng
   ];
 
   boot = {

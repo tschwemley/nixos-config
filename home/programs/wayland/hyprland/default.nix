@@ -10,17 +10,20 @@
   # ../../../programs/ags
   # ../../../services/dunst.nix
   imports = [
+    inputs.hyprland.homeManagerModules.default
     ./binds.nix
     ./rules.nix
   ];
 
   home.packages = with pkgs; [
-    clipman
+    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+    # clipman
     # grim # grab images
     # grimblast # grab images
     hyprpaper # wallpaper
     hyprpicker #color picker
-    hyprshot #screenshot
+
+    # hyprshot #screenshot
     # slurp # select a region (used in conjunction w/ grim)
   ];
 

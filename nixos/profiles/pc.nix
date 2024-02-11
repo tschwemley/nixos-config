@@ -2,8 +2,7 @@
   imports = [
     ./.
     # TODO: evaluate if I need to use this
-    # ../programs/gamemode.nix
-    # TODO: uncomment this at some point
+    ../programs/gamemode.nix
     ../programs/hyprland.nix
     ../programs/man.nix
     ../programs/qt.nix
