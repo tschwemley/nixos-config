@@ -31,8 +31,6 @@ in {
     ../../profiles/pc.nix
     # TODO: move syncthing somewhere else
     ../../services/syncthing.nix
-    ../../services/caddy
-    ../../services/searxng
   ];
 
   boot = {
