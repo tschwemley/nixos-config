@@ -24,6 +24,7 @@
         hash=$(nix-prefetch-url "$1")
         nix hash to-sri --type sha256 $hash
       '';
+      zitadel = pkgs.callPackage (import ./zitadel) {};
       # silly-tavern = pkgs.callPackage ./silly-tavern.nix {};
       # haxe-language-server = (pkgs.callPackage ../home/programs/neovim/modules/lsp/haxe-language-server {}).package;
       # haxe-language-server = let
