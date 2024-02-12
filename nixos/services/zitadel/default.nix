@@ -1,4 +1,4 @@
-{config, ...}: {
+{config, ...}: rec {
   imports = [./virtualhost.nix];
 
   services.zitadel = {
@@ -8,5 +8,7 @@
 
   sops.secrets.masterKey = {
     sopsFile = ./secrets.yaml;
+    owner = services.zitadel.user;
+    group = services.zitadel.group;
   };
 }
