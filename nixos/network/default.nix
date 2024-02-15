@@ -1,4 +1,5 @@
 {
+  networking.useNetworkd = true;
   services.openssh = {
     enable = true;
     settings = {
