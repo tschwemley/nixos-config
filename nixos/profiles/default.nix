@@ -14,6 +14,7 @@ in {
     ../programs/home-manager.nix
     ../programs/zsh.nix
     ../system/nix.nix
+    ../virtualisation
   ];
 
   # basic tools I want available on every host and managed by the system
