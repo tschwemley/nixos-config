@@ -3,11 +3,10 @@
   disk = (import ../../hardware/disks).buyvm;
   services = [
     # ../../network/netbird.nix
-  ];
-  webServices = [
     ../../services/nginx.nix
-    ../../services/searxng
-    ../../services/zitadel
+  ];
+  virtualHosts = [
+    ./virtualhosts/searxng.nix
   ];
   profile = import ../../profiles/buyvm.nix;
 in {
@@ -18,7 +17,8 @@ in {
       profile
     ]
     ++ services
-    ++ webServices;
+    ++ webServices
+    ++ virtualHosts;
 
   environment.systemPackages = with pkgs; [k9s];
   networking.hostName = "articuno";

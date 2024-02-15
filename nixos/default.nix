@@ -1,5 +1,5 @@
 {
-  self,
+  inputs,
   withSystem,
   ...
 }: let
@@ -9,13 +9,10 @@
       pkgs,
       ...
     }:
-      self.inputs.nixpkgs.lib.nixosSystem {
+      inputs.nixpkgs.lib.nixosSystem {
         inherit system;
 
-        specialArgs = {
-          inherit (self) inputs;
-          inherit pkgs;
-        };
+        specialArgs = {inherit inputs pkgs;};
 
         modules = [
           configPath
