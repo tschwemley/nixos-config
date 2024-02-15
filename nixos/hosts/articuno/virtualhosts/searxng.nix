@@ -1,6 +1,6 @@
 let 
   # TODO: get this in a smarter way
-  ip = "10.233.1.4";
+  ip = "10.233.2.2";
 in {
   services.nginx.virtualHosts."search.schwem.io" = {
     forceSSL = true;

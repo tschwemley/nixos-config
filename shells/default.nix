@@ -1,5 +1,6 @@
-{self, ...}: {
+{...}: {
   perSystem = {
+    self',
     pkgs,
     system,
     ...
@@ -10,6 +11,7 @@
         manix
         nix-prefetch-scripts
         pkgs.sops
+        self'.packages.build-host
         sqlite # this is for if the nix-store fucks me for the Nth time
         ssh-to-age
         wireguard-tools
