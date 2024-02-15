@@ -1,3 +1,3 @@
 {
-  programs.enable.extra-container = true;
+  programs.extra-container.enable = true;
 }
