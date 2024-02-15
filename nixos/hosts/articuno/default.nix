@@ -22,6 +22,11 @@ in {
   environment.systemPackages = with pkgs; [k9s];
   networking.hostName = "articuno";
 
+  #TODO: move this somehwhere more appropriate
+  networking.nat.enable = true;
+  networking.nat.internalInterfaces = ["ve-searxng"];
+  networking.nat.externalInterface = "ens3";
+
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "/root/.config/sops/age/keys.txt";
