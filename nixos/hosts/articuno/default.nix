@@ -6,6 +6,7 @@
     ../../services/nginx.nix
   ];
   virtualHosts = [
+    ./virtualhosts/keycloak.nix
     ./virtualhosts/searxng.nix
   ];
   profile = import ../../profiles/buyvm.nix;
