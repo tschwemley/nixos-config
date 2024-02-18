@@ -6,19 +6,22 @@ in {
   services.nginx.virtualHosts."auth.schwem.io" = {
     forceSSL = true;
     enableACME = true;
-    locations =
-      map (path: {
-        ${path} = {
-          proxyPass = "http://${ip}:${port}/${path}";
-        };
-      }) [
-        "js"
-        "realms"
-        "resources"
-        "robots.txt"
-      ];
-    # locations."/" = {
-    #   proxyPass = "http://${ip}:80/";
-    # };
+    locations = {
+      "/admin" = {
+        proxyPass = "http://${ip}:${port}/admin";
+      };
+      "/js" = {
+        proxyPass = "http://${ip}:${port}/js";
+      };
+      "/realms" = {
+        proxyPass = "http://${ip}:${port}/realms";
+      };
+      "/resources" = {
+        proxyPass = "http://${ip}:${port}/resources";
+      };
+      "/robots.txt" = {
+        proxyPass = "http://${ip}:${port}/robots.txt";
+      };
+    };
   };
 }
