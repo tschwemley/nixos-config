@@ -2,8 +2,8 @@
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvm;
   services = [
-    ../../network/netbird
     ../../services/coturn
+    ../../services/netbird
     ../../services/nginx.nix
   ];
   virtualHosts = [
