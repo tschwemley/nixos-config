@@ -3,7 +3,6 @@
 in {
   systemd.services.netbird-signal = {
     description = "NetBird signal service";
-    before = "netbird-management.service";
     serviceConfig = {
       ExecStart = "${pkgs.netbird}/bin/netbird-signal service run";
       Restart = "always";

@@ -3,11 +3,10 @@
 in {
   systemd.services.netbird-management = {
     description = "NetBird management server";
-    documentation = "https://netbird.io/docs";
-    after = "network-online.target syslog.target";
-    wants = "network-online.target";
+    after = ["network-online.target" "syslog.target"];
+    wants = ["network-online.target"];
     serviceConfig = {
-      ExecStart = "${pkgs.netbird}/bin/netbird-mgmt management run --config ${sops.templates.netbirdMgmtConfig.path}";
+      ExecStart = "${pkgs.netbird}/bin/netbird-mgmt management run --config ${config.sops.templates.netbirdMgmtConfig.path}";
       Restart = "on-failure";
       CacheDirectory = stateDir;
       LogDirectory = stateDir;
@@ -16,7 +15,7 @@ in {
       StateDirectoryMode = "0700";
       WorkingDirectory = "/var/lib/${stateDir}";
     };
-    wantedBy = "multi-user.target";
+    wantedBy = ["multi-user.target"];
   };
 }
     # Type = "simple"
