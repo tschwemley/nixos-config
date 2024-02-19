@@ -6,7 +6,7 @@ let
     # ../../network/wireguard.nix
     # ../../services/syncthing.nix
   ];
-  profile = import ../../profiles/server.nix;
+  profile = import ../../profiles/buyvm.nix;
 in {
   imports =
     [
