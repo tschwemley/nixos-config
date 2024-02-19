@@ -9,15 +9,15 @@ in
   sops.templates.netbirdMgmtConfig.content = builtins.toJSON {
     Signal = {
       Proto = "http";
-      URI = "netbird.schwem.io:$NETBIRD_SIGNAL_PORT";
-      Username = "";
-      Password = null;
+      URI = "netbird.schwem.io:10000";
+      # Username = "";
+      # Password = null;
     };
-    Datadir = "";
-    DataStoreEncryptionKey = "$NETBIRD_DATASTORE_ENC_KEY";
-    StoreConfig = {
-      Engine = "$NETBIRD_STORE_CONFIG_ENGINE";
-    };
+    # Datadir = "";
+    # DataStoreEncryptionKey = "$NETBIRD_DATASTORE_ENC_KEY";
+    # StoreConfig = {
+    #   Engine = "$NETBIRD_STORE_CONFIG_ENGINE";
+    # };
     HttpConfig = {
       Address = "0.0.0.0:$NETBIRD_MGMT_API_PORT";
       AuthAudience = "netbird-client";
