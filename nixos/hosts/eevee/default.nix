@@ -3,8 +3,8 @@ let
   disk = (import ../../hardware/disks).buyvmWithStorage;
   services = [
     ../../network
-    ../../network/wireguard.nix
-    ../../services/syncthing.nix
+    # ../../network/wireguard.nix
+    # ../../services/syncthing.nix
   ];
   profile = import ../../profiles/server.nix;
 in {
