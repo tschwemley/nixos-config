@@ -3,6 +3,7 @@
   disk = (import ../../hardware/disks).buyvm;
   services = [
     # ../../network/netbird.nix
+    ../../services/coturn
     ../../services/nginx.nix
   ];
   virtualHosts = [
