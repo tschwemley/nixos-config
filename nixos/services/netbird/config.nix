@@ -36,7 +36,7 @@ in
         ClientSecret = config.sops.placeholder.netbirdBackendSecret;
         GrantType = "client_credentials";
         # Issuer = "$NETBIRD_AUTH_AUTHORITY";
-        # TokenEndpoint = "$NETBIRD_AUTH_TOKEN_ENDPOINT";
+        TokenEndpoint = "https://auth.schwem.io/realms/netbird/protocol/openid-connect/token";
       };
       # ExtraConfig = "$NETBIRD_IDP_MGMT_EXTRA_CONFIG";
       # Auth0ClientCredentials = null;
