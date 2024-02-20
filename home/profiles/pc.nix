@@ -7,7 +7,7 @@ in {
   imports = [
     git
     ./.
-    ../programs/aseprite.nix
+    # ../programs/aseprite.nix
     ../programs/bambu-studio.nix
     ../programs/brave.nix
     ../programs/firefox.nix

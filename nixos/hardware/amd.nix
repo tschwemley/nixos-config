@@ -35,5 +35,6 @@
     ];
   };
 
+  nixpkgs.config.rocmSupport = true;
   services.xserver.videoDrivers = ["modesetting"];
 }
