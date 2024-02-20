@@ -34,7 +34,6 @@
       ports = [
         "127.0.0.1:8180:80"
       ];
-      cmd = ["--letsencrypt-domain=" "--log-file" "console"];
     };
 
     netbird-signal = {
@@ -45,6 +44,7 @@
       ports = [
         "127.0.0.1:10000:80"
       ];
+      cmd = ["--letsencrypt-domain=" "--log-file" "console"];
     };
 
     netbird-management = {
