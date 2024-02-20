@@ -34,7 +34,7 @@
       ports = [
         "127.0.0.1:8180:80"
       ];
-      command = ["--letsencrypt-domain=" "--log-file" "console"];
+      cmd = ["--letsencrypt-domain=" "--log-file" "console"];
     };
 
     netbird-signal = {
@@ -65,7 +65,7 @@
         "/var/lib/netbird:/var/lib/netbird"
         "${config.sops.templates.netbirdMgmtConfig.path}:/etc/netbird/management.json"
       ];
-      dependsOn = "netbird-dashboard";
+      dependsOn = ["netbird-dashboard"];
     };
   };
 }
