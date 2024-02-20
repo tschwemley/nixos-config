@@ -49,7 +49,7 @@
         "Issuer" = "https://auth.schwem.io/realms/netbird";
         "TokenEndpoint" = "https://auth.schwem.io/realms/netbird/protocol/openid-connect/token";
         "ClientID" = "netbird-backend";
-        "ClientSecret" = config.sops.secrets.netbirdBackendSecret;
+        "ClientSecret" = config.sops.placeholder.netbirdBackendSecret;
         "GrantType" = "client_credentials";
       };
       ExtraConfig = {
