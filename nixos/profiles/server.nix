@@ -2,6 +2,7 @@
   imports = [
     ./.
     ../services/fail2ban.nix
+    ../virtualisation/podman.nix
   ];
 
   # disable man pages on servers

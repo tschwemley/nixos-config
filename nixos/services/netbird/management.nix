@@ -1,4 +1,10 @@
-{config, pkgs, ...}: let
+{
+  config,
+  pkgs,
+  utils,
+  ...
+}: let
+  port = "8880";
   stateDir = "netbird";
 in {
   systemd.services.netbird-management = {
@@ -6,7 +12,13 @@ in {
     after = ["network-online.target" "syslog.target"];
     wants = ["network-online.target"];
     serviceConfig = {
-      ExecStart = "${pkgs.netbird}/bin/netbird-mgmt management run --config ${config.sops.templates.netbirdMgmtConfig.path}";
+      ExecStart = utils.escapeSystemdExecArgs [
+        "${pkgs.netbird}/bin/netbird-mgmt"
+        "management"
+        "run"
+        "--config=${config.sops.templates.netbirdMgmtConfig.path}"
+        "--port=${port}"
+      ];
       Restart = "on-failure";
       CacheDirectory = stateDir;
       LogDirectory = stateDir;
@@ -18,33 +30,34 @@ in {
     wantedBy = ["multi-user.target"];
   };
 }
-    # Type = "simple"
-    # EnvironmentFile = "-/etc/default/netbird-management"
-    # ExecStart = "/usr/bin/netbird-mgmt management $FLAGS"
-    # Restart = "on-failure"
-    # RestartSec = 5
-    # TimeoutStopSec = 10
-    # CacheDirectory = "netbird"
-    # ConfigurationDirectory = "netbird"
-    # LogDirectory = "netbird"
-    # RuntimeDirectory = "netbird"
-    # StateDirectory = "netbird"
-    #
-    ## sandboxing
-    # LockPersonality = "yes"
-    # MemoryDenyWriteExecute = "yes"
-    # NoNewPrivileges = "yes"
-    # PrivateMounts = "yes"
-    # PrivateTmp = "yes"
-    # ProtectClock = "yes"
-    # ProtectControlGroups = "yes"
-    # ProtectHome = "yes"
-    # ProtectHostname = "yes"
-    # ProtectKernelLogs = "yes"
-    # ProtectKernelModules = "yes"
-    # ProtectKernelTunables = "yes"
-    # ProtectSystem = "yes"
-    # RemoveIPC = "yes"
-    # RestrictNamespaces = "yes"
-    # RestrictRealtime = "yes"
-    # RestrictSUIDSGID = "yes"
+# Type = "simple"
+# EnvironmentFile = "-/etc/default/netbird-management"
+# ExecStart = "/usr/bin/netbird-mgmt management $FLAGS"
+# Restart = "on-failure"
+# RestartSec = 5
+# TimeoutStopSec = 10
+# CacheDirectory = "netbird"
+# ConfigurationDirectory = "netbird"
+# LogDirectory = "netbird"
+# RuntimeDirectory = "netbird"
+# StateDirectory = "netbird"
+#
+## sandboxing
+# LockPersonality = "yes"
+# MemoryDenyWriteExecute = "yes"
+# NoNewPrivileges = "yes"
+# PrivateMounts = "yes"
+# PrivateTmp = "yes"
+# ProtectClock = "yes"
+# ProtectControlGroups = "yes"
+# ProtectHome = "yes"
+# ProtectHostname = "yes"
+# ProtectKernelLogs = "yes"
+# ProtectKernelModules = "yes"
+# ProtectKernelTunables = "yes"
+# ProtectSystem = "yes"
+# RemoveIPC = "yes"
+# RestrictNamespaces = "yes"
+# RestrictRealtime = "yes"
+# RestrictSUIDSGID = "yes"
+

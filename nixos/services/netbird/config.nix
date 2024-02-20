@@ -1,7 +1,8 @@
-{config, ...}: let 
-  turnDomain = "localhost"; 
-in
-{
+{config, ...}: let
+  apiPort = "8881";
+  signalPort = "10000";
+  turnDomain = "localhost";
+in {
   sops.secrets.netbirdBackendSecret = {
     sopsFile = ./secrets.yaml;
   };
@@ -9,7 +10,7 @@ in
   sops.templates.netbirdMgmtConfig.content = builtins.toJSON {
     Signal = {
       Proto = "http";
-      URI = "netbird.schwem.io:10000";
+      URI = "netbird.schwem.io:${signalPort}";
       # Username = "";
       # Password = null;
     };
@@ -19,7 +20,7 @@ in
     #   Engine = "$NETBIRD_STORE_CONFIG_ENGINE";
     # };
     HttpConfig = {
-      Address = "0.0.0.0:$NETBIRD_MGMT_API_PORT";
+      Address = "0.0.0.0:${apiPort}";
       AuthAudience = "netbird-client";
       OIDCConfigEndpoint = "https://auth.schwem.io/realms/netbird/.well-known/openid-configuration";
       # AuthIssuer = "$NETBIRD_AUTH_AUTHORITY";
@@ -38,7 +39,9 @@ in
         # Issuer = "$NETBIRD_AUTH_AUTHORITY";
         TokenEndpoint = "https://auth.schwem.io/realms/netbird/protocol/openid-connect/token";
       };
-      # ExtraConfig = "$NETBIRD_IDP_MGMT_EXTRA_CONFIG";
+      ExtraConfig = {
+        AdminEndpoint = "https://auth.schwem.io/admin/realms/netbird";
+      };
       # Auth0ClientCredentials = null;
       # AzureClientCredentials = null;
       # KeycloakClientCredentials = null;
