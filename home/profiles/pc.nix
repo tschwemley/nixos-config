@@ -8,12 +8,13 @@ in {
     git
     ./.
     # ../programs/aseprite.nix
+    ../programs/ags
     ../programs/bambu-studio.nix
     ../programs/brave.nix
     ../programs/firefox.nix
     ../programs/glow.nix
     ../programs/godot.nix
-    ../programs/ollama.nix
+    # ../programs/ollama.nix
     ../programs/rofi.nix
     ../programs/slack.nix
     ../programs/sonic-pi.nix

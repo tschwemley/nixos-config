@@ -7,8 +7,8 @@
     pkgs,
     ...
   }: {
-    packages = {
-      build-host = pkgs.writeScriptBin "build-host" ''
+    packages = with pkgs; {
+      build-host = writeScriptBin "build-host" ''
         #!/usr/bin/env sh
         HOST=$1
 
@@ -20,36 +20,22 @@
           rm $HOST
         fi
       '';
-      prefetch-url-sha256 = pkgs.writeScriptBin "prefetch-url-sha256" ''
+      prefetch-url-sha256 = writeScriptBin "prefetch-url-sha256" ''
         hash=$(nix-prefetch-url "$1")
         nix hash to-sri --type sha256 $hash
       '';
-      # silly-tavern = pkgs.callPackage ./silly-tavern.nix {};
-      # haxe-language-server = (pkgs.callPackage ../home/programs/neovim/modules/lsp/haxe-language-server {}).package;
-      # haxe-language-server = let
-      #   npmDeps = (pkgs.callPackage ../home/programs/neovim/modules/lsp/haxe-language-server {}).nodeDependencies;
-      # in
-      #   with pkgs;
-      #     stdenv.mkDerivation {
-      #       name = "haxe-language-server";
-      #       src = fetchFromGitHub {
-      #         owner = "vshaxe";
-      #         repo = "haxe-language-server";
-      #         rev = "10bf162b4448c00146a384e39bc8d09b23c1f434";
-      #         hash = "sha256-+Hv8Svmc8FHGHo9ejhnzCYOloYwDH1YT3MpA7hx+sQ0=";
-      #       };
-      #       buildInputs = [haxe neko nodejs];
-      #       buildPhase = ''
-      #         ln -s ${npmDeps}/lib/node_modules ./node_modules
-      #         export PATH="${npmDeps}/bin:$PATH"
-      #       '';
-      #
-      #       installPhase = ''
-      #         mkdir $out
-      #         cp -r $src $out
-      #         npm exec -- lix run vshaxe-build -t language-server
-      #       '';
-      #     };
+      haxe-language-server = buildNpmPackage {
+        pname = "haxe-language-server";
+        version = "0.0";
+        src = fetchFromGitHub {
+          owner = "vshaxe";
+          repo = "haxe-language-server";
+          rev = "master";
+          hash = "sha256-7wF4y+jL9cp7sTolV40lzW8swuXjHUzcSaXTH7Xatd4=";
+        };
+
+        npmDepsHash = "sha256-P0gIO5xmAvHfQftiPHxayhNuyFhlSBAfVGLfKUcFnok=";
+      };
     };
   };
 }

@@ -3,6 +3,7 @@
     plugins = with pkgs.vimPlugins; [
       neorg
       neorg-telescope
+      venn-nvim
     ];
   };
 }
