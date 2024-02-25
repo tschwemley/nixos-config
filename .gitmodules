@@ -1,3 +1,0 @@
-[submodule "virtualisation/containers"]
-	path = virtualisation/containers
-	url = gh:tschwemley/nix-containers
