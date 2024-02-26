@@ -1,13 +1,14 @@
 let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvmWithStorage;
+  profile = import ../../profiles/buyvm.nix;
   services = [
     ../../network/netbird.nix
-    # ../../network/wireguard.nix
-    # ../../services/caddy
-    ../../services/syncthing.nix
+    ../../services/nginx.nix
   ];
-  profile = import ../../profiles/buyvm.nix;
+  virtualHosts = [
+    ../../virtualisation/containers/nixos/searxng/virtualhost.nix
+  ];
 in {
   imports =
     [
@@ -15,10 +16,11 @@ in {
       disk
       profile
     ]
-    ++ services;
+    ++ services
+    ++ virtualHosts;
 
   networking.hostName = "moltres";
-  services.resolved.extraConfig = "DNS=1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001";
+  # services.resolved.extraConfig = "DNS=1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001";
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
