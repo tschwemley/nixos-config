@@ -1,6 +1,7 @@
 {config, ...}: {
   imports = [
     ./management.nix
+    ./virtualhost.nix
   ];
 
   sops.secrets.netbirdBackendSecret = {
