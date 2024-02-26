@@ -1,18 +1,22 @@
-{pkgs, ...}: let
+let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvm;
+  profile = import ../../profiles/buyvm.nix;
+  containers = [
+    ../../virtualisation/containers/oci/netbird
+  ];
   services = [
     ../../network/netbird.nix
     ../../services/coturn
     ../../services/nginx.nix
   ];
+  # TODO: eventually I think I'll move to full declarative containers instead of configuring via
+  # extra-container. Until then keeping the virtualHosts declarations here makes sense.
   virtualHosts = [
-    ../../virtualisation/containers/oci/netbird/virtualhost.nix
     ../../virtualisation/containers/nixos/invidious/virtualhost.nix
     ../../virtualisation/containers/nixos/keycloak/virtualhost.nix
     ../../virtualisation/containers/nixos/searxng/virtualhost.nix
   ];
-  profile = import ../../profiles/buyvm.nix;
 in {
   imports =
     [
@@ -20,16 +24,11 @@ in {
       disk
       profile
     ]
+    ++ containers
     ++ services
     ++ virtualHosts;
 
-  environment.systemPackages = with pkgs; [k9s];
   networking.hostName = "articuno";
-
-  #TODO: move this somehwhere more appropriate
-  networking.nat.enable = true;
-  networking.nat.internalInterfaces = ["ve-searxng"];
-  networking.nat.externalInterface = "ens3";
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
