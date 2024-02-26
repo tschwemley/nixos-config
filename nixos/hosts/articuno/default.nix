@@ -2,13 +2,15 @@
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvm;
   services = [
+    ../../network/netbird.nix
     ../../services/coturn
-    ../../services/netbird
     ../../services/nginx.nix
   ];
   virtualHosts = [
-    ./virtualhosts/keycloak.nix
-    ./virtualhosts/searxng.nix
+    ../../virtualisation/containers/oci/netbird/virtualhost.nix
+    ../../virtualisation/containers/nixos/invidious/virtualhost.nix
+    ../../virtualisation/containers/nixos/keycloak/virtualhost.nix
+    ../../virtualisation/containers/nixos/searxng/virtualhost.nix
   ];
   profile = import ../../profiles/buyvm.nix;
 in {
