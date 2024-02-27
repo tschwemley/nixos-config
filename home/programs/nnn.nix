@@ -4,7 +4,7 @@
     then []
     else
       with pkgs; [
-        imv
+        catimg
         ffmpeg
         ffmpegthumbnailer
         xdragon
