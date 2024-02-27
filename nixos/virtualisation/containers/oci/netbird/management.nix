@@ -23,8 +23,8 @@
     };
     Signal = {
       Proto = "http";
-      # URI = "netbird.schwem.io";
-      URI = "0.0.0.0:10000";
+      URI = "netbird.schwem.io";
+      # URI = "0.0.0.0:10000";
       Username = "";
       Password = null;
     };
