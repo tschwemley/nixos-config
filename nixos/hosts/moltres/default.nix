@@ -4,10 +4,10 @@ let
   profile = import ../../profiles/buyvm.nix;
   services = [
     ../../network/netbird.nix
-    ../../services/nginx.nix
+    # ../../services/nginx.nix
   ];
   virtualHosts = [
-    ../../virtualisation/containers/nixos/searxng/virtualhost.nix
+    # ../../virtualisation/containers/nixos/searxng/virtualhost.nix
   ];
 in {
   imports =
