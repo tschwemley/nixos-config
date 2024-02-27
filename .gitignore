@@ -1,4 +1,14 @@
+# environment
 .direnv/*
-ssh_host*
+
+# build/script outputs
+articuno
+zapados
+moltres
+eevee
+flareon
+jolteon
 result
-llama.log
+ssh_host*
+
+# llama.log
