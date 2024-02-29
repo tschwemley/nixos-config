@@ -2,13 +2,13 @@
 .direnv/*
 
 # build/script outputs
-articuno
-zapados
-moltres
-eevee
-flareon
-jolteon
-result
+./articuno
+./zapados
+./moltres
+./eevee
+./flareon
+./jolteon
+./result
 ssh_host*
 
 # llama.log

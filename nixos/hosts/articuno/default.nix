@@ -6,8 +6,7 @@ let
     ../../virtualisation/containers/oci/netbird
   ];
   services = [
-    ../../network/netbird.nix
-    ../../services/coturn
+    ../../network/tailscale.nix
     ../../services/nginx.nix
   ];
   # TODO: eventually I think I'll move to full declarative containers instead of configuring via
