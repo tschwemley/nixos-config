@@ -14,8 +14,8 @@
 
     # network
     privateNetwork = true;
-    hostAddress = "10.1.1.1";
-    localAddress = "10.1.1.2";
+    hostAddress = "10.10.1.1";
+    localAddress = "10.10.1.2";
     hostAddress6 = "fc00::1";
     localAddress6 = "fc00::2";
 
