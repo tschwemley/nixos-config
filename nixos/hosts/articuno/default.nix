@@ -2,14 +2,12 @@ let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvm;
   profile = import ../../profiles/buyvm.nix;
-  containers = [
-    ../../virtualisation/containers/oci/netbird
-  ];
   services = [
+    # TODO: service declarations below here make sense to move to appropriate profile(s)
     ../../network/tailscale.nix
     ../../services/nginx.nix
   ];
-  # TODO: eventually I think I'll move to full declarative containers instead of configuring via
+  # NOTE: eventually I think I'll move to full declarative containers instead of configuring via
   # extra-container. Until then keeping the virtualHosts declarations here makes sense.
   virtualHosts = [
     ../../virtualisation/containers/nixos/invidious/virtualhost.nix
@@ -23,7 +21,6 @@ in {
       disk
       profile
     ]
-    ++ containers
     ++ services
     ++ virtualHosts;
 
