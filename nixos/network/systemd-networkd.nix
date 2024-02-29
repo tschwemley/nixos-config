@@ -1,4 +1,6 @@
 {config, ...}: {
+  networking.dhcpcd.enable = false;
+  networking.useDHCP = false;
   systemd.network.enable = true;
   sops.secrets = {
     publicIP = {};
