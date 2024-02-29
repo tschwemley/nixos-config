@@ -8,6 +8,6 @@
       UseDns = true;
     };
   };
-  # TODO: fix this
+
   systemd.network.wait-online.enable = false;
 }
