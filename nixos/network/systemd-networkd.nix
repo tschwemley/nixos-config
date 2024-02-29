@@ -5,7 +5,7 @@
     gateway = {};
   };
 
-  sops.templates."10-primary" = {
+  sops.templates."10-primary.network" = {
     group = config.users.users.systemd-network.group;
     owner = config.users.users.systemd-network.name;
 
