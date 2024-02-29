@@ -6,6 +6,12 @@
   };
 
   sops.templates."10-primary" = {
+    group = config.users.users.systemd-network.group;
+    owner = config.users.users.systemd-network.name;
+
+    mode = "0444";
+    path = "/etc/systemd/network/10-primary.network";
+
     content = ''
       [Match]
       Name=ens3
@@ -18,8 +24,5 @@
       Destination=0.0.0.0/0
       Gateway=${config.sops.placeholder.gateway}
     '';
-    owner = config.users.users.systemd-network.name;
-    group = config.users.users.systemd-network.group;
-    path = "/etc/systemd/network/10-primary";
   };
 }
