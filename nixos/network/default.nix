@@ -1,5 +1,4 @@
 {
-  networking.useNetworkd = true;
   services.openssh = {
     enable = true;
     settings = {
@@ -8,6 +7,4 @@
       UseDns = true;
     };
   };
-
-  systemd.network.wait-online.enable = false;
 }

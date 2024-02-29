@@ -1,6 +1,7 @@
 {lib, ...}: {
   imports = [
     ./.
+    ../network/systemd-networkd.nix
     ../services/fail2ban.nix
     ../virtualisation/podman.nix
   ];

@@ -1,30 +1,40 @@
 {config, ...}: {
-  networking.dhcpcd.enable = false;
-  networking.useDHCP = false;
-  systemd.network.enable = true;
-  sops.secrets = {
-    publicIP = {};
-    gateway = {};
+  networking = {
+    dhcpcd.enable = false;
+    useDHCP = false;
+    useNetworkd = true;
   };
 
-  sops.templates."10-primary.network" = {
-    group = config.users.users.systemd-network.group;
-    owner = config.users.users.systemd-network.name;
+  systemd.network = {
+    enable = true;
+    wait-online.enable = false; # TODO: fix this?
+  };
 
-    mode = "0444";
-    path = "/etc/systemd/network/10-primary.network";
+  sops = {
+    secrets = {
+      publicIP = {};
+      gateway = {};
+    };
 
-    content = ''
-      [Match]
-      Name=ens3
+    templates."10-primary.network" = {
+      group = config.users.users.systemd-network.group;
+      owner = config.users.users.systemd-network.name;
 
-      [Network]
-      Address=${config.sops.placeholder.publicIP}/24
-      DNS=1.1.1.1 1.0.0.1
+      mode = "0444";
+      path = "/etc/systemd/network/10-primary.network";
 
-      [Route]
-      Destination=0.0.0.0/0
-      Gateway=${config.sops.placeholder.gateway}
-    '';
+      content = ''
+        [Match]
+        Name=ens3
+
+        [Network]
+        Address=${config.sops.placeholder.publicIP}/24
+        DNS=1.1.1.1 1.0.0.1
+
+        [Route]
+        Destination=0.0.0.0/0
+        Gateway=${config.sops.placeholder.gateway}
+      '';
+    };
   };
 }

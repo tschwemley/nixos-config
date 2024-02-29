@@ -8,7 +8,7 @@ let
   ];
   services = [
     # TODO: service declarations below here make sense to move to appropriate profile(s)
-    # ../../network/tailscale.nix
+    ../../network/tailscale.nix
     ../../services/nginx.nix
   ];
 in {
@@ -17,8 +17,6 @@ in {
       boot
       disk
       profile
-      # TODO: clean up after testing
-      ../../network/systemd-networkd.nix
     ]
     ++ containers
     ++ services;
