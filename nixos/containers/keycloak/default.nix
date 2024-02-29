@@ -1,4 +1,5 @@
 {config, ...}: {
+  imports = [./virtualhost.nix];
   sops.secrets.db_password = {
     sopsFile = ./secrets.yaml;
     mode = "0444";
