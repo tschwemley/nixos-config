@@ -1,5 +1,4 @@
 let
-  # TODO: get this in a smarter way
   ip = "10.10.2.2";
 in {
   services.nginx.virtualHosts."search.schwem.io" = {

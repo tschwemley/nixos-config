@@ -4,18 +4,12 @@ let
   profile = import ../../profiles/buyvm.nix;
   containers = [
     ../../containers/keycloak
+    ../../containers/searxng
   ];
   services = [
     # TODO: service declarations below here make sense to move to appropriate profile(s)
     # ../../network/tailscale.nix
     ../../services/nginx.nix
-  ];
-  # NOTE: eventually I think I'll move to full declarative containers instead of configuring via
-  # extra-container. Until then keeping the virtualHosts declarations here makes sense.
-  virtualHosts = [
-    ../../virtualisation/containers/nixos/invidious/virtualhost.nix
-    # ../../virtualisation/containers/nixos/keycloak/virtualhost.nix
-    ../../virtualisation/containers/nixos/searxng/virtualhost.nix
   ];
 in {
   imports =
@@ -27,8 +21,7 @@ in {
       ../../network/systemd-networkd.nix
     ]
     ++ containers
-    ++ services
-    ++ virtualHosts;
+    ++ services;
 
   # TODO: move this out after testing
   networking.nat = {
