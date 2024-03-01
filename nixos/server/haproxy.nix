@@ -13,8 +13,8 @@ in {
 
       backend servers
         mode http
-        server articuno articuno:8080
-        server moltres moltres:8080
+        server articuno articuno:8080 send-proxy-v2
+        server moltres moltres:8080 send-proxy-v2
     '';
   };
 
