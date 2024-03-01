@@ -1,6 +1,6 @@
 let
-  baseCert = "/var/lib/acme/schwem.io/cert.pem";
-  wildcardCert = "/var/lib/acme/schwem.io-wildcard/cert.pem";
+  baseCert = "/var/lib/acme/schwem.io/full.pem";
+  wildcardCert = "/var/lib/acme/schwem.io-wildcard/full.pem";
 in {
   services.haproxy = {
     enable = true;
