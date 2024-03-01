@@ -17,4 +17,6 @@ in {
         server moltres moltres:8080
     '';
   };
+
+  users.users.haproxy.extraGroups = ["acme"];
 }
