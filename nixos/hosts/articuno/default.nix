@@ -2,7 +2,8 @@ let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvm;
   profile = import ../../profiles/buyvm.nix;
-  containers = [
+  server = [
+    ../../server/acme
     ../../containers/keycloak
     ../../containers/searxng
   ];
@@ -18,7 +19,7 @@ in {
       disk
       profile
     ]
-    ++ containers
+    ++ server
     ++ services;
 
   # TODO: move this out after testing

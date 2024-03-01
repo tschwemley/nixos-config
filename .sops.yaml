@@ -62,10 +62,16 @@ creation_rules:
       - age:
           - *containers
 
-  - path_regex: ^(./)?nixos/(modules|network|services)/(.*/)?secrets.yaml
+  - path_regex: ^(./)?nixos/containers/.*/secrets.yaml
+    key_groups:
+      - age:
+          - *containers
+
+  - path_regex: ^(./)?nixos/(containers|modules|network|services|server)/(.*/)?secrets.yaml
     key_groups:
       - age:
           - *personal
+          - *containers
           - *articuno
           - *eevee
           - *flareon
