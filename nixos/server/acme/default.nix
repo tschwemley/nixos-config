@@ -20,8 +20,8 @@
   };
 
   sops.secrets.cloudflareApiZoneKey = {
-    group = config.config.users.acme.group;
-    owner = config.config.users.acme.name;
+    group = config.users.users.acme.group;
+    owner = config.users.users.acme.name;
     sopsFile = ./secrets.yaml;
   };
 }
