@@ -3,9 +3,10 @@ let
   disk = (import ../../hardware/disks).buyvm;
   profile = import ../../profiles/buyvm.nix;
   server = [
-    ../../server/acme
     ../../containers/keycloak
     ../../containers/searxng
+    ../../server/acme
+    ../../server/haproxy.nix
   ];
   services = [
     # TODO: service declarations below here make sense to move to appropriate profile(s)

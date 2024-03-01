@@ -3,8 +3,6 @@
   port = "80";
 in {
   services.nginx.virtualHosts."auth.schwem.io" = {
-    forceSSL = true;
-    enableACME = true;
     locations = {
       "/admin" = {
         proxyPass = "http://${ip}:${port}/admin";

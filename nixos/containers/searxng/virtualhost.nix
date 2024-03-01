@@ -1,11 +1,10 @@
 let
   ip = "10.10.2.2";
+  port = "8080";
 in {
   services.nginx.virtualHosts."search.schwem.io" = {
-    forceSSL = true;
-    enableACME = true;
     locations."/" = {
-      proxyPass = "http://${ip}:8080";
+      proxyPass = "http://${ip}:${port}";
       proxyWebsockets = true;
     };
   };
