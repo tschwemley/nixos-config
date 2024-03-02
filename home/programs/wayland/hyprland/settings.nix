@@ -20,8 +20,9 @@
     };
 
     monitor = [
-      "HDMI-A-2,3840x2160@120,0x0,1"
-      "DP-2,2560x2880@60,3840x0,1"
+      "HDMI-A-2,3840x2160@120,0x0,1" # LG C2
+      "DP-2,2560x2880@60,3840x0,1" # LG Dual Up
+      "HDMI-A-1,1920x1080@60,3840x2880,1" # Huion Kamvas
     ];
 
     workspace = [
@@ -29,6 +30,7 @@
       "2, monitor:HDMI-A-2"
       "3, monitor:DP-2"
       "4, monitor:DP-2"
+      "5, monitor:HDMI-A-1"
     ];
   };
 }

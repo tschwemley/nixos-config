@@ -9,7 +9,7 @@ end
 require('which-key').register({
    J = {
       name = 'JSON',
-      P = { prettifyJSON(), 'Prettify' },
-      M = { minifyJSON(), 'Minify' },
+      p = { prettifyJSON, 'Prettify' },
+      m = { minifyJSON, 'Minify' },
    },
 }, { prefix = '<leader>' })

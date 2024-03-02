@@ -18,6 +18,7 @@
 
   home.packages = with pkgs; [
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+
     # clipman
     # grim # grab images
     # grimblast # grab images
