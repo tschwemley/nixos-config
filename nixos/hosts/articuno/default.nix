@@ -11,7 +11,7 @@ let
   services = [
     # TODO: service declarations below here make sense to move to appropriate profile(s)
     ../../network/tailscale.nix
-    ../../services/nginx.nix
+    ../../server/nginx.nix
   ];
 in {
   imports =

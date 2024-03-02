@@ -1,5 +1,6 @@
 {config, ...}: {
   imports = [./virtualhost.nix];
+
   sops.secrets.db_password = {
     sopsFile = ./secrets.yaml;
     mode = "0444";
@@ -25,12 +26,12 @@
         database.passwordFile = "/run/secrets/db_password";
         settings = {
           hostname = "auth.schwem.io";
-          # hostname-strict-backchannel = true;
+          # this is important to prevent endless loading admin page
+          hostname-admin-url = "https://auth.schwem.io";
           proxy = "edge";
         };
+
         # initialAdminPassword = "e6Wcm0RrtegMEHl"; # change on first login
-        # sslCertificate = "/run/keys/ssl_cert";
-        # sslCertificateKey = "/run/keys/ssl_key";
       };
 
       networking = {
@@ -38,6 +39,7 @@
           enable = true;
           allowedTCPPorts = [80];
         };
+
         # Use systemd-resolved inside the container
         # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
         useHostResolvConf = lib.mkForce false;
