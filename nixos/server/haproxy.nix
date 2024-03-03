@@ -16,6 +16,13 @@ in {
         timeout http-request 10s
         option forwardfor
         option http-server-close
+        default_backend servers
+
+      frontend db
+        mode tcp
+        bind *:3306
+        bind *:4567
+        # default_backend servers
 
       frontend www
         bind *:80
@@ -26,7 +33,7 @@ in {
         http-request set-header X-Forwarded-Port %[dst_port]
         http-request set-header X-Forwarded-Proto https
         http-request set-header X-Forwarded-Real-IP %[src]
-        default_backend servers
+        # default_backend servers
 
       backend servers
         http-request set-header X-Forwarded-Proto https
