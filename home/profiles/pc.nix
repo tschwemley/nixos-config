@@ -14,11 +14,12 @@ in {
     ../programs/firefox.nix
     ../programs/glow.nix
     ../programs/godot.nix
+    # TODO: fix ollama on 24.05
     # ../programs/ollama.nix
     ../programs/rofi.nix
     ../programs/slack.nix
-    ../programs/sonic-pi.nix
-    # ../programs/syncthing-tray.nix
+    # TODO: wait for upstream fix or write overlay
+    # ../programs/sonic-pi.nix
     ../programs/taskwarrior.nix
     ../programs/vlc.nix
     ../programs/wayland

@@ -13,10 +13,19 @@
 
     # network
     privateNetwork = true;
+
     hostAddress = "10.90.1.1";
-    localAddress = "10.90.1.2";
     hostAddress6 = "fc00::5";
+    localAddress = "10.90.1.2";
     localAddress6 = "fc00::6";
+
+    forwardPorts = [
+      {
+        protocol = "tcp";
+        containerPort = 3306;
+        hostPort = 3306;
+      }
+    ];
 
     config = {lib, ...}: {
       services.mysql = {

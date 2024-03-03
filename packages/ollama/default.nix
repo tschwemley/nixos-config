@@ -26,8 +26,6 @@ in
     ];
 
     postPatch = ''
-      # substituteInPlace llm/llama.go \
-      #   --subst-var-by llamaCppServer "${llama-cpp}/bin/llama-cpp-server"
       substituteInPlace llm/llama.go \
         --subst-var-by llamaCppServer "${llama-cpp}/bin/llama-server"
       substituteInPlace server/routes_test.go --replace "0.0.0" "${version}"

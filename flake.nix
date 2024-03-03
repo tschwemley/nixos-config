@@ -110,7 +110,6 @@
                   substituteInPlace server/routes_test.go --replace "0.0.0" "${final.ollama.version}"
                 '';
               };
-              zitadel = self'.packages.zitadel;
             })
           ];
         };
