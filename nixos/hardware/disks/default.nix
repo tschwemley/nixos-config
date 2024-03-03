@@ -10,6 +10,7 @@ in rec {
   buyvm = {
     imports = [
       (rootWithGrub "/dev/vda")
+      (import ./swap.nix)
     ];
   };
   buyvmWithStorage = {
