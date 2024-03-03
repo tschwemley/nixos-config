@@ -19,11 +19,12 @@ in {
         default_backend servers
 
       # listen galera <addr>
-      # listen galera
-      #   mode tcp
-      #   bind *:3306
-      #   bind *:4567
-      #   server articuno
+      listen galera
+        mode tcp
+        bind *:3306
+        option tcpka
+        # option mysql-check user haproxy
+        server articuno articuno.wyvern-map.ts.net:3306 check
 
       frontend www
         bind *:80
