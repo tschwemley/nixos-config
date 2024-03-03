@@ -3,9 +3,7 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ./virtualhost.nix
-  ];
+  networking.firewall.allowedTCPPorts = [3306];
 
   containers.mysql = {
     autoStart = true;
