@@ -4,6 +4,7 @@ let
   profile = import ../../profiles/buyvm.nix;
   server = [
     ../../containers/keycloak
+    ../../containers/mysql
     ../../containers/searxng
     ../../server/acme
     ../../server/haproxy.nix

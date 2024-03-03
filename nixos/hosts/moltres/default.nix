@@ -2,7 +2,10 @@ let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvmWithStorage;
   profile = import ../../profiles/buyvm.nix;
-  containers = [];
+  containers = [
+    ../../containers/mysql
+    ../../containers/searxng
+  ];
   services = [
     # TODO: service declarations below here make sense to move to appropriate profile(s)
     ../../network/tailscale.nix

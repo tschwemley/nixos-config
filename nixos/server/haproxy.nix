@@ -18,11 +18,12 @@ in {
         option http-server-close
         default_backend servers
 
-      frontend db
-        mode tcp
-        bind *:3306
-        bind *:4567
-        # default_backend servers
+      # listen galera <addr>
+      # listen galera
+      #   mode tcp
+      #   bind *:3306
+      #   bind *:4567
+      #   server articuno
 
       frontend www
         bind *:80
