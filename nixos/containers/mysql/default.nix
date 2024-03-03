@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  # networking.firewall.allowedTCPPorts = [3306 4567];
+  networking.firewall.allowedTCPPorts = [3306];
   containers.mysql = {
     autoStart = true;
 
