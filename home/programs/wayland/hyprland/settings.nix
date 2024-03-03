@@ -25,6 +25,10 @@
       "HDMI-A-1,1920x1080@60,3840x2880,1" # Huion Kamvas
     ];
 
+    xwayland = {
+      force_zero_scaling = true;
+    };
+
     workspace = [
       "1, monitor:HDMI-A-2"
       "2, monitor:HDMI-A-2"
