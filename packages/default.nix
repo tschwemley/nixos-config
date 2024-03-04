@@ -24,18 +24,6 @@
         hash=$(nix-prefetch-url "$1")
         nix hash to-sri --type sha256 $hash
       '';
-      haxe-language-server = buildNpmPackage {
-        pname = "haxe-language-server";
-        version = "0.0";
-        src = fetchFromGitHub {
-          owner = "vshaxe";
-          repo = "haxe-language-server";
-          rev = "master";
-          hash = "sha256-7wF4y+jL9cp7sTolV40lzW8swuXjHUzcSaXTH7Xatd4=";
-        };
-
-        npmDepsHash = "sha256-P0gIO5xmAvHfQftiPHxayhNuyFhlSBAfVGLfKUcFnok=";
-      };
     };
   };
 }
