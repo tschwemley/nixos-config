@@ -1,6 +1,21 @@
 {
-  services.libreddit = {
-    enable = true;
-    openFirewall = true; # listens on 8080 by default
+  imports = [./virtualhost.nix];
+
+  containers.libreddit = {
+    autoStart = true;
+
+    # network
+    privateNetwork = true;
+    hostAddress = "10.10.3.1";
+    localAddress = "10.10.3.2";
+    hostAddress6 = "fc00::7";
+    localAddress6 = "fc00::8";
+
+    config = {lib, ...}: {
+      services.libreddit = {
+        enable = true;
+        openFirewall = true; # listens on 8080 by default
+      };
+    };
   };
 }
