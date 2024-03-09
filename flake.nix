@@ -39,10 +39,10 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    llama-cpp = {
-      url = "github:ggerganov/llama.cpp";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # llama-cpp = {
+    #   url = "github:ggerganov/llama.cpp";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     musnix = {
       url = "github:musnix/musnix";
@@ -74,7 +74,6 @@
     disko,
     flake-parts,
     home-manager,
-    llama-cpp,
     nixos-hardware,
     nixpkgs,
     sops,
@@ -102,14 +101,14 @@
           overlays = [
             inputs.neovim-nightly-overlay.overlay
             (final: prev: rec {
-              llama-cpp = inputs'.llama-cpp.packages.rocm;
-              ollama = prev.ollama.overrideAttrs {
-                postPatch = ''
-                  substituteInPlace llm/llama.go \
-                    --subst-var-by llamaCppServer "${llama-cpp}/bin/llama-server"
-                  substituteInPlace server/routes_test.go --replace "0.0.0" "${final.ollama.version}"
-                '';
-              };
+              # llama-cpp = inputs'.llama-cpp.packages.rocm;
+              # ollama = prev.ollama.overrideAttrs {
+              #   postPatch = ''
+              #     substituteInPlace llm/llama.go \
+              #       --subst-var-by llamaCppServer "${llama-cpp}/bin/llama-server"
+              #     substituteInPlace server/routes_test.go --replace "0.0.0" "${final.ollama.version}"
+              #   '';
+              # };
             })
           ];
         };

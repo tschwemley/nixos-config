@@ -16,15 +16,13 @@ in {
         timeout http-request 10s
         option forwardfor
         option http-server-close
-        default_backend servers
 
-      # listen galera <addr>
-      listen galera
-        mode tcp
-        bind *:3306
-        option tcpka
-        # option mysql-check user haproxy
-        server articuno articuno.wyvern-map.ts.net:3306 check
+      # listen mysql
+      #   mode tcp
+      #   bind *:3306
+      #   option tcpka
+      #   option mysql-check user haproxy
+      #   server articuno 10.90. check
 
       frontend www
         bind *:80
@@ -35,7 +33,7 @@ in {
         http-request set-header X-Forwarded-Port %[dst_port]
         http-request set-header X-Forwarded-Proto https
         http-request set-header X-Forwarded-Real-IP %[src]
-        # default_backend servers
+        default_backend servers
 
       backend servers
         http-request set-header X-Forwarded-Proto https
