@@ -17,15 +17,15 @@ in {
         option forwardfor
         option http-server-close
 
-      listen galera-cluster
-        bind *:3306
-        # balance roundrobin
-        mode tcp
-        option tcpka
-        option mysql-check
-        server articuno articuno.wyvern-map.ts.net:3306 check port 3306 inter 2000 rise 2 fall 3
-        server moltres moltres.wyvern-map.ts.net:3306 check port 3306 inter 2000 rise 2 fall 3
-        default-server init-addr none
+      # listen galera-cluster
+      #   bind *:3306
+      #   # balance roundrobin
+      #   mode tcp
+      #   option tcpka
+      #   option mysql-check
+      #   server articuno articuno.wyvern-map.ts.net:3306 check port 3306 inter 2000 rise 2 fall 3
+      #   server moltres moltres.wyvern-map.ts.net:3306 check port 3306 inter 2000 rise 2 fall 3
+      #   default-server init-addr none
 
       # listen galera-replication
       #   bind *:4567
