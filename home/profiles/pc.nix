@@ -14,8 +14,7 @@ in {
     ../programs/firefox.nix
     ../programs/glow.nix
     ../programs/godot.nix
-    # TODO: fix ollama on 24.05
-    # ../programs/ollama.nix
+    ../programs/ollama.nix
     ../programs/rofi.nix
     ../programs/slack.nix
     # TODO: wait for upstream fix or write overlay
