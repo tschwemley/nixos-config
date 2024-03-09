@@ -1,8 +1,8 @@
-{
+{config, ...}: {
   # networking.firewall.allowedTCPPorts = [3306];
 
   containers.mysql = let
-    hostName = networking.hostName;
+    hostName = config.networking.hostName;
   in {
     autoStart = true;
 
