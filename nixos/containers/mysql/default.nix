@@ -6,30 +6,26 @@
   in {
     autoStart = true;
 
-    # bindMounts."/run/secrets/searxng" = {
-    #   hostPath = config.sops.secrets.searxng.path;
-    # };
-
     # network
-    privateNetwork = true;
-
-    hostAddress = "10.90.1.1";
-    hostAddress6 = "fc00::5";
-    localAddress = "10.90.1.2";
-    localAddress6 = "fc00::6";
-
-    forwardPorts = [
-      {
-        protocol = "tcp";
-        containerPort = 3306;
-        hostPort = 3306;
-      }
-      {
-        protocol = "tcp";
-        containerPort = 4567;
-        hostPort = 4567;
-      }
-    ];
+    # privateNetwork = true;
+    #
+    # hostAddress = "10.90.1.1";
+    # hostAddress6 = "fc00::5";
+    # localAddress = "10.90.1.2";
+    # localAddress6 = "fc00::6";
+    #
+    # forwardPorts = [
+    #   {
+    #     protocol = "tcp";
+    #     containerPort = 3306;
+    #     hostPort = 3306;
+    #   }
+    #   {
+    #     protocol = "tcp";
+    #     containerPort = 4567;
+    #     hostPort = 4567;
+    #   }
+    # ];
 
     config = {
       lib,
