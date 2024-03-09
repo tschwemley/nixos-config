@@ -1,4 +1,4 @@
-{config, ...}: let
+let
   baseCert = "/var/lib/acme/schwem.io/full.pem";
   wildcardCert = "/var/lib/acme/schwem.io-wildcard/full.pem";
 in {
@@ -51,12 +51,6 @@ in {
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
         #server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
     '';
-  };
-
-  sops.secrets.haproxy_mysql_password = {
-    sopsFile = ./secrets.yaml;
-    group = config.users.users.haproxy.name;
-    owner = config.users.users.haproxy.group;
   };
 
   users.users.haproxy.extraGroups = ["acme"];
