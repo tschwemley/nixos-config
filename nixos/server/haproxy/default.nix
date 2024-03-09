@@ -27,14 +27,14 @@ in {
         server moltres moltres.wyvern-map.ts.net:3306 check port 3306 inter 2000 rise 2 fall 3
         default-server init-addr none
 
-      listen galera-replication
-        bind *:4567
-        # balance roundrobin
-        mode tcp
-        option tcpka
-        # option mysql-check user haproxy
-        server articuno articuno.wyvern-map.ts.net:4567 check
-        server moltres moltres.wyvern-map.ts.net:4567 check
+      # listen galera-replication
+      #   bind *:4567
+      #   # balance roundrobin
+      #   mode tcp
+      #   option tcpka
+      #   # option mysql-check user haproxy
+      #   server articuno articuno.wyvern-map.ts.net:4567 check
+      #   server moltres moltres.wyvern-map.ts.net:4567 check
 
       frontend www
         bind *:80
