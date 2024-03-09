@@ -1,5 +1,5 @@
 {config, ...}: {
-  # networking.firewall.allowedTCPPorts = [3306];
+  networking.firewall.allowedTCPPorts = [3306 4567];
 
   containers.mysql = let
     hostName = config.networking.hostName;
