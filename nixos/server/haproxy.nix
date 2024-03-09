@@ -34,7 +34,7 @@ in {
         mode tcp
         option tcpka
         # option mysql-check user haproxy
-        server articuno articuno-wyvern-map.ts.net:4567 check
+        server articuno articuno.wyvern-map.ts.net:4567 check
 
 
 
