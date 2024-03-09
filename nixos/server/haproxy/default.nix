@@ -34,6 +34,7 @@ in {
         option tcpka
         # option mysql-check user haproxy
         server articuno articuno.wyvern-map.ts.net:4567 check
+        server moltres moltres.wyvern-map.ts.net:4567 check
 
       frontend www
         bind *:80
