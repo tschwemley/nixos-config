@@ -1,7 +1,7 @@
 {
   imports = [./virtualhost.nix];
 
-  containers.libreddit = {
+  virtualisation.oci-containers.containers.redlib = {
     autoStart = true;
 
     # network
