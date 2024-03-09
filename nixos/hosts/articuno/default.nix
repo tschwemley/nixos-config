@@ -8,12 +8,12 @@ let
     ../../containers/mysql
     ../../containers/searxng
     ../../server/acme
-    ../../server/haproxy.nix
+    ../../server/haproxy
+    ../../server/nginx.nix
   ];
   services = [
     # TODO: service declarations below here make sense to move to appropriate profile(s)
     ../../network/tailscale.nix
-    ../../server/nginx.nix
   ];
 in {
   imports =
