@@ -3,11 +3,11 @@
     ./settings.nix
     ./virtualhost.nix
   ];
-
-  sops.secrets.searxng = {
-    mode = "0444";
-    sopsFile = ./secrets.yaml;
-  };
+  #
+  # sops.secrets.searxng = {
+  #   mode = "0444";
+  #   sopsFile = ./secrets.yaml;
+  # };
 
   containers.searxng = {
     autoStart = true;
