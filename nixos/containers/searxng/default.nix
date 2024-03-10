@@ -3,16 +3,11 @@
     ./settings.nix
     ./virtualhost.nix
   ];
-  #
-  # sops.secrets.searxng = {
-  #   mode = "0444";
-  #   sopsFile = ./secrets.yaml;
-  # };
 
   containers.searxng = {
     autoStart = true;
 
-    bindMounts."/run/secrets/searxng" = {
+    bindMounts."/run/secrets/searxng_settings.yaml" = {
       # hostPath = config.sops.secrets.searxng.path;
       hostPath = config.sops.templates."searxng_settings.yaml".path;
     };
@@ -29,7 +24,7 @@
         enable = true;
         redisCreateLocally = true;
         runInUwsgi = true;
-        settingsFile = config.sops.templates."searxng_settings.yaml".path;
+        settingsFile = "/run/secrets/searxng_settings.yaml";
       };
 
       networking = {
