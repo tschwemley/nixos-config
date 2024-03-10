@@ -32,7 +32,11 @@
       pkgs,
       ...
     }: {
+      # makes logging etc. function properly when needing to root-login
+      enviornment.variables = {TERM = "xterm";};
+
       networking.firewall.allowedTCPPorts = [3306 4567 4568 4444];
+
       services.mysql = {
         enable = true;
         package = pkgs.mariadb;
