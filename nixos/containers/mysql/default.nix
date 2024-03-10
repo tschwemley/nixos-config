@@ -1,6 +1,11 @@
 {config, ...}: {
   networking.firewall.allowedTCPPorts = [3306 4567 4568 4444];
 
+  # create the directory for /var/lib/mysql on the host
+  systemd.tmpfiles.settings."10-containers"."/var/lib/mysql" = {
+    d = {mode = "1755";};
+  };
+
   containers.mysql = let
     hostName = config.networking.hostName;
   in {
