@@ -13,7 +13,8 @@
     autoStart = true;
 
     bindMounts."/run/secrets/searxng" = {
-      hostPath = config.sops.secrets.searxng.path;
+      # hostPath = config.sops.secrets.searxng.path;
+      hostPath = config.sops.templates."searxng_settings.yaml".path;
     };
 
     # network
