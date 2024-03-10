@@ -9,7 +9,7 @@ in {
 
   networking.firewall = {
     allowedTCPPorts = [3306 4567 4568 4444];
-    allowedUDPPorts = [3306 4567 4568 4444];
+    allowedUDPPorts = [4567];
   };
 
   services.mysql = {
@@ -28,8 +28,8 @@ in {
         wsrep_cluster_name = "galera";
         wsrep_node_address = "${hostName}.wyvern-map.ts.net";
         wsrep_node_name = hostName;
-        # wsrep_sst_method = method;
-        # wsrep_sst_auth = "check_repl:check_pass";
+        wsrep_sst_method = "mariabackup";
+        wsrep_sst_auth = "check_repl:check_pass";
         binlog_format = "ROW";
         enforce_storage_engine = "InnoDB";
         innodb_autoinc_lock_mode = "2";

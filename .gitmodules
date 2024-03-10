@@ -1,0 +1,3 @@
+[submodule "nixos/containers/private-containers"]
+	path = nixos/containers/private-containers
+	url = gh:tschwemley/private-containers

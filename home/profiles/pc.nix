@@ -23,7 +23,7 @@ in {
     ../programs/vlc.nix
     ../programs/wayland
     ../programs/wiki-tui.nix
-    ../programs/tigervnc.nix
+    ../programs/turbovnc.nix
     ../programs/zoom.nix
     ../services/spotifyd.nix
   ];

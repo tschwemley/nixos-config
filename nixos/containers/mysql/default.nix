@@ -3,7 +3,7 @@
 
   # create the directory for /var/lib/mysql on the host
   systemd.tmpfiles.settings."10-containers"."/var/lib/mysql" = {
-    d = {mode = "1775";};
+    d = {mode = "1755";};
   };
 
   containers.mysql = let
