@@ -1,5 +1,5 @@
 {
-  containers.searxng = {
+  containers.cockroachdb = {
     autoStart = true;
 
     # network
