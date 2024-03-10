@@ -14,6 +14,7 @@
 
       services.cockroachdb = {
         enable = true;
+        certsDir = "/var/lib/acme/cockroach.schwem.io";
         locality = "country=us,region=us-east,datacenter=ny";
         openPorts = true;
       };

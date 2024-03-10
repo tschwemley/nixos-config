@@ -2,6 +2,7 @@
   security.acme = {
     acceptTerms = true;
     certs = {
+      "cockroach.schwem.io" = {};
       "schwem.io" = {};
       "schwem.io-wildcard" = {domain = "*.schwem.io";};
     };
