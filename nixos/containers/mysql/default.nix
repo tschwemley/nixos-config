@@ -6,6 +6,10 @@
   in {
     autoStart = true;
 
+    bindMounts."/var/lib/mysql" = {
+      hostPath = "/var/lib/mysql";
+    };
+
     # network
     # privateNetwork = true;
     #
