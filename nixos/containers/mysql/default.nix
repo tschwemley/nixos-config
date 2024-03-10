@@ -13,6 +13,7 @@
 
     bindMounts."/var/lib/mysql" = {
       hostPath = "/var/lib/mysql";
+      isReadOnly = false;
     };
 
     # network
