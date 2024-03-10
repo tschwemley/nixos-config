@@ -2,14 +2,15 @@ let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvmWithStorage;
   profile = import ../../profiles/buyvm.nix;
-  containers = [
-    ../../containers/mysql
+  server = [
+    # ../../containers/mysql
     ../../containers/searxng
+    ../../server/mysql.nix
+    ../../server/nginx.nix
   ];
   services = [
     # TODO: service declarations below here make sense to move to appropriate profile(s)
     ../../network/tailscale.nix
-    # ../../services/nginx.nix
   ];
 in {
   imports =
@@ -18,7 +19,7 @@ in {
       disk
       profile
     ]
-    ++ containers
+    ++ server
     ++ services;
 
   networking.hostName = "moltres";
