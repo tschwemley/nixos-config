@@ -20,6 +20,8 @@
     localAddress6 = "fc00::4";
 
     config = {lib, ...}: {
+      imports = [../.];
+
       services.searx = {
         enable = true;
         redisCreateLocally = true;
@@ -27,17 +29,12 @@
         settingsFile = "/run/secrets/searxng_settings.yaml";
       };
 
-      networking = {
-        firewall = {
-          enable = true;
-          allowedTCPPorts = [8080];
-        };
-        # Use systemd-resolved inside the container
-        # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
-        useHostResolvConf = lib.mkForce false;
+      networking.firewall = {
+        enable = true;
+        allowedTCPPorts = [8080];
       };
-
-      services.resolved.enable = true;
+      # Use systemd-resolved inside the container
+      # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
     };
   };
 }

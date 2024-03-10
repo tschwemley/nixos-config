@@ -1,34 +1,8 @@
-{
-  inputs,
-  withSystem,
-  ...
-}: let
-  mkContainer = name:
-    withSystem "x86_64-linux" ({
-      system,
-      pkgs,
-      ...
-    }:
-      inputs.nixpkgs.lib.nixosSystem {
-        inherit system;
+{lib, ...}: {
+  environment.variables = "xterm";
+  networking.useHostResolvConf = lib.mkForce false;
 
-        specialArgs = {inherit inputs pkgs;};
-
-        modules = [
-          {
-            boot.isContainer = true;
-            imports = [
-              inputs.sops.nixosModules.sops
-            ];
-            sops.age.keyFile = /root/.config/sops/age/keys.txt;
-            system.stateVersion = "23.11";
-          }
-          ./${name}
-        ];
-      });
-in {
-  flake.nixosConfigurations = {
-    keycloak = mkContainer "keycloak";
-    searxng = mkContainer "searxng";
-  };
+  # Use systemd-resolved inside the container
+  # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
+  services.resolved.enable = true;
 }
