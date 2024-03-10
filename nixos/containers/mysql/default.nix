@@ -43,7 +43,10 @@
       ...
     }: {
       # makes logging etc. function properly when needing to root-login
-      environment.variables = {TERM = "xterm";};
+      environment = {
+        systemPackages = with pkgs; [mariadb-galera];
+        variables = {TERM = "xterm";};
+      };
 
       networking.firewall.allowedTCPPorts = [3306 4567 4568 4444];
 

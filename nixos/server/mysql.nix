@@ -5,6 +5,8 @@
 }: let
   hostName = config.networking.hostName;
 in {
+  environment.systemPackages = with pkgs; [mariadb-galera];
+
   networking.firewall.allowedTCPPorts = [3306 4567 4568 4444];
 
   services.mysql = {
