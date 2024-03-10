@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  hostName = config.hostName;
+  hostName = config.networking.hostName;
 in {
   networking.firewall.allowedTCPPorts = [3306 4567 4568 4444];
 
