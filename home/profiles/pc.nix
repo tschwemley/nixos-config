@@ -22,6 +22,7 @@ in {
     ../programs/taskwarrior.nix
     ../programs/vlc.nix
     ../programs/wayland
+    ../programs/wcalc.nix
     ../programs/wiki-tui.nix
     ../programs/turbovnc.nix
     ../programs/zoom.nix
