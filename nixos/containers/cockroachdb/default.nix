@@ -12,6 +12,8 @@
     config = {lib, ...}: {
       imports = [../.];
 
+      nixpkgs.config.allowUnfree = true;
+
       services.cockroachdb = {
         enable = true;
         certsDir = "/var/lib/acme/cockroach.schwem.io";

@@ -1,5 +1,6 @@
 import App from 'resource:///com/github/Aylur/ags/app.js';
 import Variable from 'resource:///com/github/Aylur/ags/variable.js';
+import Helpers from '../../helpers.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 
 const iconPath = `${App.configDir}/topbar/icons`;
@@ -33,12 +34,13 @@ const variables = {
 };
 
 const { cpu, disk, ram, } = variables;
-const cpuProgress = Widget.CircularProgress({
-	child: Widget.Icon({
-		icon: `${iconPath}/cpu.svg`,
-	}),
-	value: cpu.bind(),
-});
+
+const blue = '#3475AB';
+const green = '#4B8B3B';
+const red = '#D13438';
+const orange = '#D18E16';
+
+const cpuProgress = Helpers.IconText('cpu.svg', `${cpu.value}%`, green);
 
 const ramProgress = Widget.CircularProgress({
 	child: Widget.Icon({

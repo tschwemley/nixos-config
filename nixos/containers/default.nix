@@ -1,5 +1,8 @@
 {lib, ...}: {
-  environment.variables = "xterm";
+  environment.variables = {
+    TERM = "xterm";
+  };
+
   networking.useHostResolvConf = lib.mkForce false;
 
   # Use systemd-resolved inside the container
