@@ -1,5 +1,8 @@
 {config, ...}: {
-  imports = [./virtualhost.nix];
+  imports = [
+    ./settings.nix
+    ./virtualhost.nix
+  ];
 
   sops.secrets.searxng = {
     mode = "0444";
@@ -25,7 +28,7 @@
         enable = true;
         redisCreateLocally = true;
         runInUwsgi = true;
-        settingsFile = "/run/secrets/searxng";
+        settingsFile = config.sops.templates."searxng_settings.yaml".path;
       };
 
       networking = {
