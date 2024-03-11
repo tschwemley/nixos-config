@@ -33,8 +33,6 @@
         enable = true;
         allowedTCPPorts = [8080];
       };
-      # Use systemd-resolved inside the container
-      # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
     };
   };
 }

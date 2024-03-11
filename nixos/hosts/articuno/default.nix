@@ -5,10 +5,10 @@ let
   server = [
     ../../containers/keycloak
     ../../containers/redlib
-    ../../containers/mysql
     ../../containers/searxng
     ../../server/acme
     ../../server/haproxy
+    ../../server/mysql
     ../../server/nginx.nix
   ];
   services = [
