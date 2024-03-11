@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./.
     ../network/systemd-networkd.nix
@@ -8,6 +12,8 @@
 
   # disable man pages on servers
   documentation.man.enable = false;
+
+  environment.systemPackages = with pkgs; [postgresql_16];
 
   services.getty.autologinUser = "root";
 
