@@ -19,7 +19,16 @@
 
       services.postgresql = {
         enable = true;
-        package = pkgs.postgresql_16;
+        package = pkgs.postgresql_15;
+        ensureUsers = [
+          {
+            name = "root";
+            ensureClauses = {
+              login = true;
+              superuser = true;
+            };
+          }
+        ];
       };
 
       networking.firewall = {
