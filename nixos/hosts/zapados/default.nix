@@ -15,6 +15,7 @@ in {
     ++ server;
 
   boot.initrd.availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
+  ethDev = "ens18";
   networking.hostName = "zapados";
 
   sops = {
