@@ -15,6 +15,12 @@
     }: {
       imports = [../.];
 
+      services.cockroachdb = {
+        enable = true;
+        insecure = true;
+        openPorts = true;
+      };
+
       services.postgresql = {
         enable = true;
         package = pkgs.posgresql_16;
