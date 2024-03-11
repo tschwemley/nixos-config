@@ -8,7 +8,7 @@ let
     ../../containers/searxng
     ../../server/acme
     ../../server/haproxy
-    ../../server/mysql
+    ../../server/mysql.nix
     ../../server/nginx.nix
   ];
   services = [
