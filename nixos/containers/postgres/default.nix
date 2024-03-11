@@ -1,5 +1,5 @@
 {
-  containers.searxng = {
+  containers.postgresql = {
     autoStart = true;
 
     privateNetwork = true;
@@ -15,15 +15,11 @@
     }: {
       imports = [../.];
 
-      services.cockroachdb = {
-        enable = true;
-        insecure = true;
-        openPorts = true;
-      };
+      nixpkgs.config.allowUnfree = true;
 
       services.postgresql = {
         enable = true;
-        package = pkgs.posgresql_16;
+        package = pkgs.postgresql_16;
       };
 
       networking.firewall = {
