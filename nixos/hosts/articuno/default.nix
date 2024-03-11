@@ -5,7 +5,7 @@ let
   server = [
     ../../containers/keycloak
     ../../containers/redlib
-    ../../containers/mysql
+    ../../containers/postgres
     ../../containers/searxng
     ../../server/acme
     ../../server/haproxy
