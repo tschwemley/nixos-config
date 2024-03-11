@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: let
@@ -25,7 +26,8 @@ in {
         performance_schema = false;
       };
 
-      galera = {
+      # disable galera for right now
+      galera = lib.mkIf false {
         wsrep_on = true;
         wsrep_retry_autocommit = 3;
         wsrep_provider = "${pkgs.mariadb-galera}/lib/galera/libgalera_smm.so";

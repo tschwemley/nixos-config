@@ -4,7 +4,6 @@ let
   profile = import ../../profiles/buyvm.nix;
   server = [
     ../../containers/searxng
-    ../../server/mysql.nix
     ../../server/nginx.nix
   ];
   services = [
