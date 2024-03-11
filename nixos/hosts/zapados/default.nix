@@ -2,8 +2,8 @@ let
   boot = (import ../../system/boot.nix).systemd;
   disk = (import ../../hardware/disks).proxmox;
   profile = import ../../profiles/server.nix;
-  services = [
-    # ../../network/wireguard.nix
+  server = [
+    ../../server/nginx.nix
   ];
 in {
   imports =
@@ -12,7 +12,7 @@ in {
       disk
       profile
     ]
-    ++ services;
+    ++ server;
 
   boot.initrd.availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
   networking.hostName = "zapados";

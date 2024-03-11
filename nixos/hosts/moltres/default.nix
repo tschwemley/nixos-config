@@ -6,10 +6,6 @@ let
     ../../containers/searxng
     ../../server/nginx.nix
   ];
-  services = [
-    # TODO: service declarations below here make sense to move to appropriate profile(s)
-    ../../network/tailscale.nix
-  ];
 in {
   imports =
     [
@@ -17,8 +13,7 @@ in {
       disk
       profile
     ]
-    ++ server
-    ++ services;
+    ++ server;
 
   networking.hostName = "moltres";
 

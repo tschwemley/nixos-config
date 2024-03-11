@@ -11,10 +11,6 @@ let
     ../../server/mysql.nix
     ../../server/nginx.nix
   ];
-  services = [
-    # TODO: service declarations below here make sense to move to appropriate profile(s)
-    ../../network/tailscale.nix
-  ];
 in {
   imports =
     [
@@ -22,8 +18,7 @@ in {
       disk
       profile
     ]
-    ++ server
-    ++ services;
+    ++ server;
 
   # TODO: move this out after testing
   networking.nat = {
