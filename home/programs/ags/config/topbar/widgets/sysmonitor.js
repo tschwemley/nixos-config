@@ -8,10 +8,14 @@ const divide = ([total, free]) => free / total;
 
 const variables = {
 	cpu: Variable(0, {
-		poll: [2000, 'top -b -n 1', out => divide([100, out.split('\n')
+		// poll: [2000, 'top -b -n 1', out => divide([100, out.split('\n')
+		// 	.find(line => line.includes('Cpu(s)'))
+		// 	.split(/\s+/)[1]
+		// 	.replace(',', '.')])],
+		poll: [2000, 'top -b -n 1', out => out.split('\n')
 			.find(line => line.includes('Cpu(s)'))
 			.split(/\s+/)[1]
-			.replace(',', '.')])],
+			.replace(',', '.')],
 	}),
 
 	ram: Variable(0, {
@@ -40,28 +44,28 @@ const green = '#4B8B3B';
 const red = '#D13438';
 const orange = '#D18E16';
 
-const cpuProgress = Helpers.IconText('cpu.svg', `${cpu.value}%`, green);
+const cpuProgress = Helpers.IconText('cpu', cpu.bind().as(v => `${v}%`), green);
 
-const ramProgress = Widget.CircularProgress({
-	child: Widget.Icon({
-		icon: `${iconPath}/ram1.svg`,
-	}),
-	value: ram.bind()
-});
-
-const diskProgress = Widget.CircularProgress({
-	child: Widget.Icon({
-		icon: `${iconPath}/ram1.svg`,
-	}),
-	value: disk.bind()
-});
+// const ramProgress = Widget.CircularProgress({
+// 	child: Widget.Icon({
+// 		icon: `${iconPath}/ram1.svg`,
+// 	}),
+// 	value: ram.bind()
+// });
+//
+// const diskProgress = Widget.CircularProgress({
+// 	child: Widget.Icon({
+// 		icon: `${iconPath}/ram1.svg`,
+// 	}),
+// 	value: disk.bind()
+// });
 
 const SysMonitor = () => Widget.Box({
 	css: 'color: black;',
 	children: [
 		cpuProgress,
-		ramProgress,
-		diskProgress,
+		// ramProgress,
+		// diskProgress,
 	],
 });
 

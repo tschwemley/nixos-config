@@ -10,7 +10,8 @@ export default {
 		const w = Widget.Box({
 			css: `color: ${color}`,
 			children: [
-				Widget.Icon({ icon: `${iconPath}/${icon}` }),
+				// Widget.Icon({ icon: icon, css: `color: ${color}` }),
+				Widget.Icon({ icon: icon }),
 				Widget.Label({ label: text })
 			],
 		});
