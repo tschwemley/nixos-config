@@ -24,6 +24,9 @@
         hash=$(nix-prefetch-url "$1")
         nix hash to-sri --type sha256 $hash
       '';
+      systemd2nix = writeScriptBin "systemd2nix" ''
+        nix run github:DavHau/systemd2nix < $1
+      '';
     };
   };
 }
