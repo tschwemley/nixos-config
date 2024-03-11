@@ -3,9 +3,8 @@ let
   disk = (import ../../hardware/disks).buyvmWithStorage;
   profile = import ../../profiles/buyvm.nix;
   server = [
-    # ../../containers/mysql
+    ../../containers/mysql
     ../../containers/searxng
-    ../../server/mysql.nix
     ../../server/nginx.nix
   ];
   services = [
