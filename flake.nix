@@ -39,11 +39,6 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    # llama-cpp = {
-    #   url = "github:ggerganov/llama.cpp";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     musnix = {
       url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -100,16 +95,16 @@
           # TODO: move this to overlays/ ?
           overlays = [
             inputs.neovim-nightly-overlay.overlay
-            (final: prev: rec {
-              # llama-cpp = inputs'.llama-cpp.packages.rocm;
-              # ollama = prev.ollama.overrideAttrs {
-              #   postPatch = ''
-              #     substituteInPlace llm/llama.go \
-              #       --subst-var-by llamaCppServer "${llama-cpp}/bin/llama-server"
-              #     substituteInPlace server/routes_test.go --replace "0.0.0" "${final.ollama.version}"
-              #   '';
-              # };
-            })
+            # (final: prev: rec {
+            # llama-cpp = inputs'.llama-cpp.packages.rocm;
+            # ollama = prev.ollama.overrideAttrs {
+            #   postPatch = ''
+            #     substituteInPlace llm/llama.go \
+            #       --subst-var-by llamaCppServer "${llama-cpp}/bin/llama-server"
+            #     substituteInPlace server/routes_test.go --replace "0.0.0" "${final.ollama.version}"
+            #   '';
+            # };
+            # })
           ];
         };
 
