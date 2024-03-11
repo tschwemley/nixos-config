@@ -6,7 +6,7 @@
   hostName = config.networking.hostName;
 in {
   networking.firewall.allowedTCPPorts = [3306 4567 4568 4444];
-  networkign.firewall.allowedUDPPorts = [4444];
+  networking.firewall.allowedUDPPorts = [4444];
   services.mysql = {
     enable = true;
     package = pkgs.mariadb;
