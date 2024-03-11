@@ -27,7 +27,9 @@ in {
     }: {
       imports = [../.];
 
-      environment.systemPackage = with pkgs; [cockroachdb];
+      environment.systemPackages = with pkgs; [cockroachdb];
+
+      nixpkgs.config.allowUnfree = true;
 
       services.ntp = {
         enable = true;
