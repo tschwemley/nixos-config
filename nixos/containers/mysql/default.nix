@@ -53,7 +53,7 @@
       services.mysql = {
         enable = true;
         package = pkgs.mariadb;
-        # group = "root";
+        group = "root";
         settings = {
           mysqld = {
             bind_address = "0.0.0.0";
@@ -74,7 +74,7 @@
             innodb_autoinc_lock_mode = "2";
           };
         };
-        # user = "root";
+        user = "root";
       };
     };
   };
