@@ -64,7 +64,8 @@ in {
           StateDirectory = "/var/lib/cockroach";
           WorkingDirectory = "/var/lib/cockroach";
           ExecStart = lib.concatStringsSep " " [
-            "${pkgs.cockroachdb-bin}/bin/cockroach cockroachdb start"
+            "${pkgs.cockroachdb-bin}/bin/cockroach"
+            "start"
             "--certs-dir=certs"
             "--advertise-addr=${hostName}.wyvern-map.ts.net"
             "--join=articuno.wyvern-map.ts.net,zapados.wyvern-map.ts.net,moltres.wyvern-map.ts.net"
