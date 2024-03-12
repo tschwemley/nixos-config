@@ -83,7 +83,10 @@ in {
           };
         };
 
-        tmpfiles.rules = ["d /var/lib/cockroach 1775 cockroach cockroach"];
+        tmpfiles.rules = [
+          "d /var/lib/cockroach 1755 cockroach cockroach"
+          "d /var/lib/cockroach/certs 1444 cockroach cockroach"
+        ];
       };
 
       networking.firewall = {
