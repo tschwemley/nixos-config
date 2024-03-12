@@ -3,8 +3,9 @@ let
   disk = (import ../../hardware/disks).buyvmWithStorage;
   profile = import ../../profiles/buyvm.nix;
   server = [
-    ../../containers/cockroachdb
+    # ../../containers/cockroachdb
     ../../containers/searxng
+    ../../server/cockroachdb
     ../../server/nginx.nix
   ];
 in {

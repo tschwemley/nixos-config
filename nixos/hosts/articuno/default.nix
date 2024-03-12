@@ -3,11 +3,12 @@ let
   disk = (import ../../hardware/disks).buyvm;
   profile = import ../../profiles/buyvm.nix;
   server = [
-    ../../containers/cockroachdb
+    # ../../containers/cockroachdb
     ../../containers/keycloak
     ../../containers/redlib
     ../../containers/searxng
     ../../server/acme
+    ../../server/cockroachdb
     ../../server/haproxy
     ../../server/mysql.nix
     ../../server/nginx.nix
