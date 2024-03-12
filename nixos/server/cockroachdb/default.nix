@@ -100,7 +100,7 @@ in {
       gid = 200;
       members = [config.users.users.cockroach.name];
     };
-    config.users.cockroach = {
+    users.cockroach = {
       group = config.users.groups.cockroach.name;
       isSystemUser = true;
       name = "cockroach";
