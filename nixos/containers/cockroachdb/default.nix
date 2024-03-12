@@ -1,6 +1,20 @@
 {config, ...}: let
   hostName = config.networking.hostName;
+  # we want the user to be shared between the host and contianer with the same uid/gid to ensure
+  # proper perms on bind mounts
+  users = {
+    groups.cockroach = {
+      gid = 1100;
+    };
+    users.cockroach = {
+      group = "cockroach";
+      isNormalUser = true;
+      uid = 1100;
+    };
+  };
 in {
+  inherit users;
+
   # imports = [
   #   ./settings.nix
   #   ./virtualhost.nix
@@ -33,6 +47,8 @@ in {
       pkgs,
       ...
     }: {
+      inherit users;
+
       imports = [../.];
 
       environment.systemPackages = with pkgs; [cockroachdb-bin];
@@ -59,7 +75,6 @@ in {
           wantedBy = [
             "default.target"
           ];
-          environment = {};
           serviceConfig = {
             Type = "notify";
             StateDirectory = "/var/lib/cockroach";
@@ -92,14 +107,6 @@ in {
       networking.firewall = {
         enable = true;
         allowedTCPPorts = [8080 26257];
-      };
-
-      users = {
-        groups.cockroach = {};
-        users.cockroach = {
-          group = "cockroach";
-          isNormalUser = true;
-        };
       };
     };
   };
