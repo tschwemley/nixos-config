@@ -106,4 +106,8 @@ in {
       path = "/run/secrets/cockroach_certs/${hostName}.key";
     };
   };
+
+  systemd.tmpfiles.rules = [
+    "/run/secrets/cockroach_certs 0444 root root"
+  ];
 }
