@@ -1,15 +1,16 @@
 {config, ...}: let
   hostName = config.networking.hostName;
-  # we want the user to be shared between the host and contianer with the same uid/gid to ensure
-  # proper perms on bind mounts
   users = {
     groups.cockroach = {
-      gid = 1100;
+      name = "cockroach";
+      gid = 200;
+      members = [users.users.cockroach.name];
     };
     users.cockroach = {
-      group = "cockroach";
-      isNormalUser = true;
-      uid = 1100;
+      group = users.groups.cockroach.name;
+      isSystemUser = true;
+      name = "cockroach";
+      uid = 201;
     };
   };
 in {
@@ -24,13 +25,13 @@ in {
     autoStart = true;
 
     bindMounts = {
-      "/var/lib/cockroach/certs/ca.crt" = {
+      "/certs/ca.crt" = {
         hostPath = "/run/secrets/ca.crt";
       };
-      "/var/lib/cockroach/certs/node.crt" = {
+      "/certs/node.crt" = {
         hostPath = "/run/secrets/${hostName}.crt";
       };
-      "/var/lib/cockroach/certs/node.key" = {
+      "/certs/node.key" = {
         hostPath = "/run/secrets/${hostName}.key";
       };
     };
@@ -45,6 +46,7 @@ in {
     config = {
       lib,
       pkgs,
+      utils,
       ...
     }: {
       inherit users;
@@ -66,42 +68,38 @@ in {
       };
 
       systemd = {
-        services.cockroachdb = {
+        services.cockroach = {
           enable = true;
           description = "Cockroach Database cluster node";
-          requires = [
-            "network.target"
-          ];
-          wantedBy = [
-            "default.target"
-          ];
+
+          requires = ["network.target"];
+          wantedBy = ["multi-user.target"];
+
+          unitConfig.RequiresMountsFor = "/var/lib/cockroachdb /certs";
+
           serviceConfig = {
             Type = "notify";
-            StateDirectory = "/var/lib/cockroach";
+            StateDirectory = "cockroach";
+            StateDirectoryMode = "0700";
             WorkingDirectory = "/var/lib/cockroach";
-            ExecStart = lib.concatStringsSep " " [
+            ExecStart = utils.escapeSystemdExecArgs [
               "${pkgs.cockroachdb-bin}/bin/cockroach"
               "start"
-              "--certs-dir=/var/lib/cockroach/certs"
+              "--certs-dir=/certs"
               "--advertise-addr=${hostName}.wyvern-map.ts.net"
               "--join=articuno.wyvern-map.ts.net,zapados.wyvern-map.ts.net,moltres.wyvern-map.ts.net"
               "--cache=.25"
               "--max-sql-memory=.25"
             ];
-            TimeoutStopSec = "300";
+            TimeoutStopSec = 60;
             Restart = "always";
-            RestartSec = "10";
+            RestartSec = 10;
             StandardOutput = "syslog";
             StandardError = "syslog";
             SyslogIdentifier = "cockroach";
             User = config.users.users.cockroach.name;
           };
         };
-
-        tmpfiles.rules = [
-          "d /var/lib/cockroach 1755 cockroach cockroach"
-          "d /var/lib/cockroach/certs 1755 cockroach cockroach"
-        ];
       };
 
       networking.firewall = {
@@ -114,38 +112,38 @@ in {
   sops.secrets = {
     "ca.crt" = {
       sopsFile = ./secrets.yaml;
-      group = config.users.users.cockroach.group;
+      group = "cockroach";
       mode = "0400";
       path = "/run/secrets/cockroach_certs/ca.crt";
-      owner = config.users.users.cockroach.name;
+      owner = "cockroach";
     };
     "client.root.crt" = {
       sopsFile = ./secrets.yaml;
-      group = config.users.users.cockroach.group;
+      group = "cockroach";
       mode = "0400";
       path = "/run/secrets/cockroach_certs/client.root.crt";
-      owner = config.users.users.cockroach.name;
+      owner = "cockroach";
     };
     "client.root.key" = {
       sopsFile = ./secrets.yaml;
-      group = config.users.users.cockroach.group;
+      group = "cockroach";
       mode = "0400";
       path = "/run/secrets/cockroach_certs/client.root.key";
-      owner = config.users.users.cockroach.name;
+      owner = "cockroach";
     };
     "${hostName}.crt" = {
       sopsFile = ./secrets.yaml;
-      group = config.users.users.cockroach.group;
+      group = "cockroach";
       mode = "0400";
       path = "/run/secrets/cockroach_certs/${hostName}.crt";
-      owner = config.users.users.cockroach.name;
+      owner = "cockroach";
     };
     "${hostName}.key" = {
       sopsFile = ./secrets.yaml;
-      group = config.users.users.cockroach.group;
+      group = "cockroach";
       mode = "0400";
       path = "/run/secrets/cockroach_certs/${hostName}.key";
-      owner = config.users.users.cockroach.name;
+      owner = "cockroach";
     };
   };
 }
