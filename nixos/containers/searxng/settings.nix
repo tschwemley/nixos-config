@@ -56,7 +56,7 @@
           - name: wallhaven
             engine: wallhaven
             api_key: ${config.sops.placeholder.wallhaven_api_key}
-            safesearch_map: 0
+            safesearch_map: "0"
             shortcut: wh
 
           - name: wikibooks
