@@ -105,7 +105,7 @@ in {
     };
   };
 
-  networking.firewall.allowedTCPPorts = [26257];
+  # networking.firewall.allowedTCPPorts = [26257];
 
   sops.secrets = {
     "ca.crt" = {
