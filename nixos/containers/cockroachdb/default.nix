@@ -9,8 +9,16 @@ in {
   containers.cockroachdb = {
     autoStart = true;
 
-    bindMounts."/certs" = {
-      hostPath = "/run/secrets/cockroach_certs";
+    bindMounts = {
+      "/certs/ca.crt" = {
+        hostPath = "/run/secrets/ca.crt";
+      };
+      "/certs/${hostName}.crt" = {
+        hostPath = "/run/secrets/${hostName}.crt";
+      };
+      "/certs/${hostName}.key" = {
+        hostPath = "/run/secrets/${hostName}.key";
+      };
     };
 
     # network
@@ -106,8 +114,4 @@ in {
       path = "/run/secrets/cockroach_certs/${hostName}.key";
     };
   };
-
-  systemd.tmpfiles.rules = [
-    "/run/secrets/cockroach_certs 0444 root root"
-  ];
 }
