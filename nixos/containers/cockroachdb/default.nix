@@ -94,13 +94,13 @@ in {
             StandardOutput = "syslog";
             StandardError = "syslog";
             SyslogIdentifier = "cockroach";
-            User = "cockroach";
+            User = config.users.users.cockroach.name;
           };
         };
 
         tmpfiles.rules = [
           "d /var/lib/cockroach 1755 cockroach cockroach"
-          "d /var/lib/cockroach/certs 1444 cockroach cockroach"
+          "d /var/lib/cockroach/certs 1755 cockroach cockroach"
         ];
       };
 
