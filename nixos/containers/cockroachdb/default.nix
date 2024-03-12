@@ -27,7 +27,7 @@ in {
     }: {
       imports = [../.];
 
-      environment.systemPackages = with pkgs; [cockroachdb];
+      environment.systemPackages = with pkgs; [cockroachdb-bin];
 
       nixpkgs.config.allowUnfree = true;
 
