@@ -64,7 +64,7 @@ in {
           StateDirectory = "/var/lib/cockroach";
           WorkingDirectory = "/var/lib/cockroach";
           ExecStart = lib.concatStringsSep " " [
-            "cockroachdb start"
+            "${pkgs.cockroachdb-bin}/bin/cockroach cockroachdb start"
             "--certs-dir=certs"
             "--advertise-addr=${hostName}.wyvern-map.ts.net"
             "--join=articuno.wyvern-map.ts.net,zapados.wyvern-map.ts.net,moltres.wyvern-map.ts.net"
@@ -81,10 +81,10 @@ in {
         };
       };
 
-      # networking.firewall = {
-      #   enable = true;
-      #   allowedTCPPorts = [26257];
-      # };
+      networking.firewall = {
+        enable = true;
+        allowedTCPPorts = [8080 26257];
+      };
     };
   };
 
