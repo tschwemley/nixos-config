@@ -39,8 +39,6 @@ in {
     localAddress6 = "fc00::91";
     forwardPorts = [{hostPort = 26257;}];
 
-    networking.firewall.allowedTCPPorts = [26257];
-
     config = {
       lib,
       pkgs,
@@ -106,6 +104,8 @@ in {
       };
     };
   };
+
+  networking.firewall.allowedTCPPorts = [26257];
 
   sops.secrets = {
     "ca.crt" = {
