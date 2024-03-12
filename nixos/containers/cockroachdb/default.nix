@@ -27,10 +27,10 @@ in {
       "/var/lib/cockroach/certs/ca.crt" = {
         hostPath = "/run/secrets/ca.crt";
       };
-      "/var/lib/cockroach/certs/${hostName}.crt" = {
+      "/var/lib/cockroach/certs/node.crt" = {
         hostPath = "/run/secrets/${hostName}.crt";
       };
-      "/var/lib/cockroach/certs/${hostName}.key" = {
+      "/var/lib/cockroach/certs/node.key" = {
         hostPath = "/run/secrets/${hostName}.key";
       };
     };
