@@ -16,11 +16,6 @@
 in {
   inherit users;
 
-  # imports = [
-  #   ./settings.nix
-  #   ./virtualhost.nix
-  # ];
-
   containers.cockroachdb = {
     autoStart = true;
 
@@ -42,6 +37,7 @@ in {
     localAddress = "10.90.1.2";
     hostAddress6 = "fc00::90";
     localAddress6 = "fc00::91";
+    forwardPorts = [{hostPort = 26257;}];
 
     config = {
       lib,
