@@ -8,11 +8,10 @@ const helpers = {
 
 	Text: (text, color = 'black') => Widget.Label({ label: text, css: `color: ${color}`, }),
 
-	IconText: (icon, text, color = 'black') => {
+	IconText: (icon, text, color = '#fff', size = 28) => {
 		const w = Widget.Box({
-			css: `color: ${color}`,
 			children: [
-				Widget.Icon({ icon: icon }),
+				Widget.Icon({ icon: icon, css: `color: ${color}`, size }),
 				Widget.Label({ label: text })
 			],
 		});

@@ -2,6 +2,10 @@
 	font-family: "Fira Code";
 }
 
+label {
+	color: #ffffff;
+}
+
 .bar {
 	/* background: #FFF7EB; */
 	background: #1F1F1F;
