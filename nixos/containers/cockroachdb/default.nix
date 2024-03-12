@@ -49,37 +49,41 @@ in {
         ];
       };
 
-      systemd.services.cockroachdb = {
-        enable = true;
-        description = "Cockroach Database cluster node";
-        requires = [
-          "network.target"
-        ];
-        wantedBy = [
-          "default.target"
-        ];
-        environment = {};
-        serviceConfig = {
-          Type = "notify";
-          StateDirectory = "/var/lib/cockroach";
-          WorkingDirectory = "/var/lib/cockroach";
-          ExecStart = lib.concatStringsSep " " [
-            "${pkgs.cockroachdb-bin}/bin/cockroach"
-            "start"
-            "--certs-dir=certs"
-            "--advertise-addr=${hostName}.wyvern-map.ts.net"
-            "--join=articuno.wyvern-map.ts.net,zapados.wyvern-map.ts.net,moltres.wyvern-map.ts.net"
-            "--cache=.25"
-            "--max-sql-memory=.25"
+      systemd = {
+        services.cockroachdb = {
+          enable = true;
+          description = "Cockroach Database cluster node";
+          requires = [
+            "network.target"
           ];
-          TimeoutStopSec = "300";
-          Restart = "always";
-          RestartSec = "10";
-          StandardOutput = "syslog";
-          StandardError = "syslog";
-          SyslogIdentifier = "cockroach";
-          User = "cockroach";
+          wantedBy = [
+            "default.target"
+          ];
+          environment = {};
+          serviceConfig = {
+            Type = "notify";
+            StateDirectory = "/var/lib/cockroach";
+            WorkingDirectory = "/var/lib/cockroach";
+            ExecStart = lib.concatStringsSep " " [
+              "${pkgs.cockroachdb-bin}/bin/cockroach"
+              "start"
+              "--certs-dir=certs"
+              "--advertise-addr=${hostName}.wyvern-map.ts.net"
+              "--join=articuno.wyvern-map.ts.net,zapados.wyvern-map.ts.net,moltres.wyvern-map.ts.net"
+              "--cache=.25"
+              "--max-sql-memory=.25"
+            ];
+            TimeoutStopSec = "300";
+            Restart = "always";
+            RestartSec = "10";
+            StandardOutput = "syslog";
+            StandardError = "syslog";
+            SyslogIdentifier = "cockroach";
+            User = "cockroach";
+          };
         };
+
+        tmpfiles.rules = ["d /var/lib/cockroach 1775 cockroach cockroach"];
       };
 
       networking.firewall = {
