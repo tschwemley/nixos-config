@@ -10,13 +10,13 @@ in {
     autoStart = true;
 
     bindMounts = {
-      "/certs/ca.crt" = {
+      "/var/lib/cockroach/certs/ca.crt" = {
         hostPath = "/run/secrets/ca.crt";
       };
-      "/certs/${hostName}.crt" = {
+      "/var/lib/cockroach/certs/${hostName}.crt" = {
         hostPath = "/run/secrets/${hostName}.crt";
       };
-      "/certs/${hostName}.key" = {
+      "/var/lib/cockroach/certs/${hostName}.key" = {
         hostPath = "/run/secrets/${hostName}.key";
       };
     };
@@ -61,10 +61,11 @@ in {
         environment = {};
         serviceConfig = {
           Type = "notify";
+          StateDirectory = "/var/lib/cockroach";
           WorkingDirectory = "/var/lib/cockroach";
           ExecStart = lib.concatStringsSep " " [
             "cockroachdb start"
-            "--certs-dir=/certs"
+            "--certs-dir=certs"
             "--advertise-addr=${hostName}.wyvern-map.ts.net"
             "--join=articuno.wyvern-map.ts.net,zapados.wyvern-map.ts.net,moltres.wyvern-map.ts.net"
             "--cache=.25"
