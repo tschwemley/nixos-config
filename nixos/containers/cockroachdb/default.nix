@@ -87,7 +87,10 @@ in {
         allowedTCPPorts = [8080 26257];
       };
 
-      users.users.cockroach.group = "cockroach";
+      users.users.cockroach = {
+        group = "cockroach";
+        isNormalUser = true;
+      };
     };
   };
 
