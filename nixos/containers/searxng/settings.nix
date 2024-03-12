@@ -55,7 +55,7 @@
 
           - name: wallhaven
             engine: wallhaven
-            api_key: ${config.sops.placeholder.wall_haven_api_key}
+            api_key: ${config.sops.placeholder.wallhaven_api_key}
             shortcut: wh
 
           - name: wikibooks
