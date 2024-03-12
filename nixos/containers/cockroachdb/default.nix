@@ -114,28 +114,38 @@ in {
   sops.secrets = {
     "ca.crt" = {
       sopsFile = ./secrets.yaml;
+      group = config.users.users.cockroach.group;
       mode = "0444";
       path = "/run/secrets/cockroach_certs/ca.crt";
+      owner = config.users.users.cockroach.name;
     };
     "client.root.crt" = {
       sopsFile = ./secrets.yaml;
+      group = config.users.users.cockroach.group;
       mode = "0444";
       path = "/run/secrets/cockroach_certs/client.root.crt";
+      owner = config.users.users.cockroach.name;
     };
     "client.root.key" = {
       sopsFile = ./secrets.yaml;
+      group = config.users.users.cockroach.group;
       mode = "0444";
       path = "/run/secrets/cockroach_certs/client.root.key";
+      owner = config.users.users.cockroach.name;
     };
     "${hostName}.crt" = {
       sopsFile = ./secrets.yaml;
+      group = config.users.users.cockroach.group;
       mode = "0444";
       path = "/run/secrets/cockroach_certs/${hostName}.crt";
+      owner = config.users.users.cockroach.name;
     };
     "${hostName}.key" = {
       sopsFile = ./secrets.yaml;
+      group = config.users.users.cockroach.group;
       mode = "0444";
       path = "/run/secrets/cockroach_certs/${hostName}.key";
+      owner = config.users.users.cockroach.name;
     };
   };
 }
