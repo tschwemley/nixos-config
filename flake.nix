@@ -95,15 +95,8 @@
           # TODO: move this to overlays/ ?
           overlays = [
             inputs.neovim-nightly-overlay.overlay
-            # (final: prev: rec {
-            # llama-cpp = inputs'.llama-cpp.packages.rocm;
-            # ollama = prev.ollama.overrideAttrs {
-            #   postPatch = ''
-            #     substituteInPlace llm/llama.go \
-            #       --subst-var-by llamaCppServer "${llama-cpp}/bin/llama-server"
-            #     substituteInPlace server/routes_test.go --replace "0.0.0" "${final.ollama.version}"
-            #   '';
-            # };
+            # (final: prev: {
+            #   cockroachdb-bin = prev.cockroachdb-bin.overrideAttrs {version = "v23.2.2";};
             # })
           ];
         };
