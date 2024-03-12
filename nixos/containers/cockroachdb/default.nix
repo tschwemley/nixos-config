@@ -82,7 +82,7 @@ in {
             ExecStart = lib.concatStringsSep " " [
               "${pkgs.cockroachdb-bin}/bin/cockroach"
               "start"
-              "--certs-dir=certs"
+              "--certs-dir=/var/lib/cockroach/certs"
               "--advertise-addr=${hostName}.wyvern-map.ts.net"
               "--join=articuno.wyvern-map.ts.net,zapados.wyvern-map.ts.net,moltres.wyvern-map.ts.net"
               "--cache=.25"
