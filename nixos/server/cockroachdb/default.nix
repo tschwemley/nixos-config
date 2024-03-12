@@ -82,14 +82,14 @@ in {
       sopsFile = ./secrets.yaml;
       group = "cockroach";
       mode = "0400";
-      path = "/var/lib/cockroach/certs/${hostName}.crt";
+      path = "/var/lib/cockroach/certs/node.crt";
       owner = "cockroach";
     };
     "${hostName}.key" = {
       sopsFile = ./secrets.yaml;
       group = "cockroach";
       mode = "0400";
-      path = "/var/lib/cockroach/certs/${hostName}.key";
+      path = "/var/lib/cockroach/certs/node.key";
       owner = "cockroach";
     };
   };
