@@ -40,7 +40,7 @@ in {
 
         acl domain_search hdr(host) -i search.schwem.io
 
-        use_server articuno moltres if domain_search
+        use-server articuno moltres if domain_search
 
         default_backend servers
 
