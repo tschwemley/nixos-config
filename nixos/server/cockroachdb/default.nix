@@ -36,8 +36,8 @@ in {
         ExecStart = utils.escapeSystemdExecArgs [
           "${pkgs.cockroachdb-bin}/bin/cockroach"
           "start"
-          "--advertise-addr=${hostName}.wyvern-map.ts.net"
-          "--http-addr=:26258"
+          "--advertise-addr=${hostName}.wyvern-map.ts.net:26258"
+          "--http-addr=:26880"
           "--join=articuno.wyvern-map.ts.net,zapados.wyvern-map.ts.net,moltres.wyvern-map.ts.net"
           "--certs-dir=certs"
           "--cache=.25"
@@ -54,7 +54,7 @@ in {
     };
   };
 
-  networking.firewall.allowedTCPPorts = [26257 26258];
+  networking.firewall.allowedTCPPorts = [26257 26258 26880];
 
   sops.secrets = {
     "ca.crt" = {
