@@ -5,8 +5,9 @@
 }: {
   imports = [
     ./.
-    ../network/tailscale.nix
+    ../network/containers.nix
     ../network/systemd-networkd.nix
+    ../network/tailscale.nix
     ../services/fail2ban.nix
     ../virtualisation/podman.nix
   ];

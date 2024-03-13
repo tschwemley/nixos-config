@@ -22,15 +22,6 @@ in {
     ]
     ++ server;
 
-  # TODO: move this out after testing
-  networking.nat = {
-    enable = true;
-    internalInterfaces = ["ve-+"];
-    externalInterface = "ens3";
-    # Lazy IPv6 connectivity for the container
-    enableIPv6 = true;
-  };
-
   networking.hostName = "articuno";
 
   sops = {
