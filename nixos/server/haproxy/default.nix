@@ -20,7 +20,7 @@ in {
       listen psql
         bind :26257
         mode tcp
-        balance leastconn
+        balance roundrobin
         option clitcpka
         option httpchk GET /health?ready=1
         server articuno articuno.wyvern-map.ts.net:26258 check port 26880
@@ -30,12 +30,18 @@ in {
       frontend www
         bind *:80
         bind *:443 ssl crt ${wildcardCert} crt ${baseCert}
+
         http-request redirect scheme https unless { ssl_fc }
         http-request set-header X-Forwarded-Host %[req.hdr(Host)]
         http-request set-header X-Forwarded-For %[src]
         http-request set-header X-Forwarded-Port %[dst_port]
         http-request set-header X-Forwarded-Proto https
         http-request set-header X-Forwarded-Real-IP %[src]
+
+        acl domain_search hdr(host) -i search.schwem.io
+
+        use_server articuno moltres if domain_search
+
         default_backend servers
 
       backend servers
