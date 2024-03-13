@@ -40,9 +40,13 @@ in {
 
         acl domain_search hdr(host) -i search.schwem.io
 
-        use-server articuno moltres if domain_search
-
+        use_backend searxng if domain_search
         default_backend servers
+
+      backend searxng
+        http-request set-header X-Forwarded-Proto https
+        server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
+        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
       backend servers
         http-request set-header X-Forwarded-Proto https
