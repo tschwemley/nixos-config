@@ -10,31 +10,22 @@ in {
       defaults
         log global
         mode http
-        timeout client 10s
-        timeout connect 5s
-        timeout server 10s
+        timeout client 30s
+        timeout connect 10s
+        timeout server 30s
         timeout http-request 10s
         option forwardfor
         option http-server-close
 
-      # listen galera-cluster
-      #   bind *:3306
-      #   # balance roundrobin
-      #   mode tcp
-      #   option tcpka
-      #   option mysql-check
-      #   server articuno articuno.wyvern-map.ts.net:3306 check port 3306 inter 2000 rise 2 fall 3
-      #   server moltres moltres.wyvern-map.ts.net:3306 check port 3306 inter 2000 rise 2 fall 3
-      #   default-server init-addr none
-
-      # listen galera-replication
-      #   bind *:4567
-      #   # balance roundrobin
-      #   mode tcp
-      #   option tcpka
-      #   # option mysql-check user haproxy
-      #   server articuno articuno.wyvern-map.ts.net:4567 check
-      #   server moltres moltres.wyvern-map.ts.net:4567 check
+      listen psql
+        bind :26257
+        mode tcp
+        balance leastconn
+        option clitcpka
+        option httpchk GET /health?ready=1
+        server articuno articuno.wyvern-map.ts.net:26257 check port 26258
+        server zapados zapados.wyvern-map.ts.net:26257 check port 26258
+        server moltres moltres.wyvern-map.ts.net:26257 check port 26258
 
       frontend www
         bind *:80
