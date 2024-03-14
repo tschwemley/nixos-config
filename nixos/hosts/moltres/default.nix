@@ -4,8 +4,7 @@ let
   profile = import ../../profiles/buyvm.nix;
   server = [
     ../../containers/searxng
-    # ../../server/cockroachdb
-    ../../server/mysql.nix
+    ../../server/cockroachdb
     ../../server/nginx.nix
   ];
 in {

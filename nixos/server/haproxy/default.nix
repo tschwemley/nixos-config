@@ -18,7 +18,7 @@ in {
         option http-server-close
 
       listen psql
-        bind :26257
+        bind :26257 ssl crt ${wildcardCert} crt ${baseCert}
         mode tcp
         balance roundrobin
         option clitcpka

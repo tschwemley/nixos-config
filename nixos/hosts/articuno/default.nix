@@ -7,9 +7,8 @@ let
     ../../containers/redlib
     ../../containers/searxng
     ../../server/acme
-    # ../../server/cockroachdb
+    ../../server/cockroachdb
     ../../server/haproxy
-    ../../server/mysql.nix
     ../../server/nginx.nix
   ];
 in {
