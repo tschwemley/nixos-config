@@ -39,7 +39,7 @@ in {
           "--advertise-addr=${hostName}.wyvern-map.ts.net:26257"
           "--http-port=26080"
           "--port=26258"
-          "--join=articuno.wyvern-map.ts.net,zapados.wyvern-map.ts.net,moltres.wyvern-map.ts.net"
+          "--join=articuno.wyvern-map.ts.net:26258,zapados.wyvern-map.ts.net:26258,moltres.wyvern-map.ts.net:26258"
           "--certs-dir=certs"
           "--cache=.25"
           "--max-sql-memory=.25"
