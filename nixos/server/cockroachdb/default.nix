@@ -37,7 +37,8 @@ in {
           "${pkgs.cockroachdb-bin}/bin/cockroach"
           "start"
           "--advertise-addr=${hostName}.wyvern-map.ts.net:26257"
-          "--http-addr=${hostName}.wyvern-map.ts.net:26880"
+          "--http-port=26080"
+          "--port=26258"
           "--join=articuno.wyvern-map.ts.net,zapados.wyvern-map.ts.net,moltres.wyvern-map.ts.net"
           "--certs-dir=certs"
           "--cache=.25"
@@ -54,7 +55,7 @@ in {
     };
   };
 
-  networking.firewall.allowedTCPPorts = [26257 26258 26880];
+  networking.firewall.allowedTCPPorts = [26257 26258 26080];
 
   sops.secrets = {
     "ca.crt" = {
