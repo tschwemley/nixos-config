@@ -14,7 +14,6 @@ in {
     ../programs/firefox.nix
     ../programs/glow.nix
     ../programs/godot.nix
-    ../programs/kdeconnect.nix
     ../programs/ollama.nix
     ../programs/rofi.nix
     ../programs/slack.nix
@@ -27,6 +26,7 @@ in {
     ../programs/wiki-tui.nix
     ../programs/turbovnc.nix
     ../programs/zoom.nix
+    ../services/kdeconnect.nix
     # ../services/spotifyd.nix
   ];
 
