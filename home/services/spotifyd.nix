@@ -3,10 +3,6 @@
   config,
   ...
 }: {
-  home.packages = with pkgs; [
-    spotify-tui
-  ];
-
   services.spotifyd = let
     sopsFile = "${config.home.homeDirectory}/nixos-config/home/secrets.yaml";
   in {
