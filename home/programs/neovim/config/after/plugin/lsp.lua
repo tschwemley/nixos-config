@@ -49,7 +49,7 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 -- see: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md for naming
-lsp.setup_servers({ 'gopls', 'haxe_language_server', 'intelephense', 'lua_ls', 'tsserver', 'yamlls' })
+lsp.setup_servers({ 'gopls', 'intelephense', 'lua_ls', 'tsserver', 'yamlls' })
 
 require('lsp-zero').configure('nil_ls', {
    settings = {
@@ -81,6 +81,9 @@ local yaml_companion_cfg = require("yaml-companion").setup({})
 local lspconfig = require("lspconfig")
 lspconfig["yamlls"].setup(yaml_companion_cfg)
 lspconfig.haxe_language_server.setup({
-   cmd = { "node", "/home/schwem/haxe-server.js" },
+   cmd = { "node", "/home/schwem/.config/language-servers/haxe-server.js" },
+   init_options = {
+      displayArguments = { "build.hxml" }
+   },
 })
 require("telescope").load_extension("yaml_schema")

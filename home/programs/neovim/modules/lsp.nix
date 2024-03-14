@@ -28,6 +28,7 @@ in {
     extraPackages = with pkgs; [
       alejandra
       gopls
+      haxe
       lua-language-server
       nil
       nodePackages.intelephense
@@ -36,11 +37,14 @@ in {
     ];
 
     plugins = with pkgs.vimPlugins; [
-      coc-haxe
       lsp-zero
       lspsaga-nvim
       nvim-lspconfig
       yaml-companion
     ];
+  };
+
+  xdg.configFile."language-servers/haxe-server.js" = {
+    source = "${pkgs.vimPlugins.coc-haxe.outPath}/bin/server.js";
   };
 }
