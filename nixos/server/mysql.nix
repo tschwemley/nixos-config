@@ -26,8 +26,9 @@ in {
         performance_schema = false;
       };
 
-      # disable galera for right now
-      galera = lib.mkIf false {
+      # # disable galera for right now
+      # galera = lib.mkIf false {
+      galera = {
         wsrep_on = true;
         wsrep_retry_autocommit = 3;
         wsrep_provider = "${pkgs.mariadb-galera}/lib/galera/libgalera_smm.so";
