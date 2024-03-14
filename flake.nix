@@ -94,7 +94,7 @@
 
           # TODO: move this to overlays/ ?
           overlays = [
-            inputs.neovim-nightly-overlay.overlay
+            #inputs.neovim-nightly-overlay.overlay
             # (final: prev: {
             #   cockroachdb-bin = prev.cockroachdb-bin.overrideAttrs {version = "v23.2.2";};
             # })
