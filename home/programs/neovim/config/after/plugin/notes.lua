@@ -20,7 +20,8 @@ require('neorg').setup {
       },
       ["core.integrations.telescope"] = {},
       ["core.export"] = {},
-      ["core.ui.calendar"] = {},
+      -- TODO: re-enable when back on nvim >= 0.10.0
+      -- ["core.ui.calendar"] = {},
    }
 }
 

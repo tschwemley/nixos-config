@@ -71,19 +71,13 @@ require('lspsaga').setup({
    },
 })
 
-vim.diagnostic.config({
-   virtual_text = true,
-})
-
--- yaml companion
--- TODO: move this out somewhere else
-local yaml_companion_cfg = require("yaml-companion").setup({})
-local lspconfig = require("lspconfig")
-lspconfig["yamlls"].setup(yaml_companion_cfg)
-lspconfig.haxe_language_server.setup({
+require('lspconfig').haxe_language_server.setup({
    cmd = { "node", "/home/schwem/.config/language-servers/haxe-server.js" },
    init_options = {
       displayArguments = { "build.hxml" }
    },
 })
-require("telescope").load_extension("yaml_schema")
+
+vim.diagnostic.config({
+   virtual_text = true,
+})
