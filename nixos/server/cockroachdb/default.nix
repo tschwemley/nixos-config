@@ -39,7 +39,7 @@ in {
           "${pkgs.cockroachdb-bin}/bin/cockroach"
           "start"
           "--listen-addr=${hostName}.wyvern-map.ts.net:26257"
-          "--http-port=26080"
+          "--http-listen-addr=127.0.0.1:26080"
           "--port=26257"
           "--join=articuno.wyvern-map.ts.net:26257,zapados.wyvern-map.ts.net:26257,moltres.wyvern-map.ts.net:26257"
           "--certs-dir=certs"
