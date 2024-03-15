@@ -1,0 +1,19 @@
+@document.meta
+title: Packaging
+category: Nix
+@end
+
+* Trivial Builders
+* Fetchers
+** fetchurl and fetchzip
+   @code nix
+   fetchurl {
+     url = "http://www.example.org/hello-1.0.tar.gz";
+     hash = "sha256-lTeyxzJNQeMdu1IVdovNMtgn77jRIhSybLdMbTkf2Ww=";
+   };
+   @end
+
+   Main difference is fetchurl stores unaltered; fetchzip will decompress archive.
+   NOTE: fetchzip can also be used with tarballs (but can only be used with archives)
+
+
