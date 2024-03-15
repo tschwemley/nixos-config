@@ -1,4 +1,4 @@
-{config, ...}: let
+let
   baseCert = "/var/lib/acme/schwem.io/full.pem";
   wildcardCert = "/var/lib/acme/schwem.io-wildcard/full.pem";
 in {
@@ -23,9 +23,9 @@ in {
         balance roundrobin
         option clitcpka
         option httpchk GET /health?ready=1
-        server articuno articuno.wyvern-map.ts.net:26257 check port 26080
-        server zapados zapados.wyvern-map.ts.net:26257 check port 26080
-        server moltres moltres.wyvern-map.ts.net:26257 check port 26080
+        server articuno articuno.wyvern-map.ts.net:26257 check port 26080 ssl verify none
+        server zapados zapados.wyvern-map.ts.net:26257 check port 26080 ssl verify none
+        server moltres moltres.wyvern-map.ts.net:26257 check port 26080 ssl verify none
 
       frontend www
         bind *:80
@@ -49,7 +49,8 @@ in {
       backend cockroach_web
         http-request set-header X-Forwarded-Proto https
         balance leastconn
-        server articuno articuno.wyvern-map.ts.net:26080 ssl crt /var/lib/haproxy/cockroach-client.pem verify none
+        # server articuno articuno.wyvern-map.ts.net:26080 ssl crt /var/lib/haproxy/cockroach-client.pem verify none
+        server articuno articuno.wyvern-map.ts.net:26080 ssl verify none
         # server zapados zapados.wyvern-map.ts.net:26080 check send-proxy
         # server moltres moltres.wyvern-map.ts.net:26080 check send-proxy
 
@@ -67,7 +68,7 @@ in {
   };
 
   sops.secrets = {
-    "client.pem" = {
+    "cockroach-client.pem" = {
       sopsFile = ../cockroachdb/secrets.yaml;
       group = "haproxy";
       mode = "0400";
