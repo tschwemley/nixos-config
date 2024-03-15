@@ -18,14 +18,14 @@ in {
         option http-server-close
 
       listen psql
-        bind :26257 ssl crt ${wildcardCert} crt ${baseCert}
+        bind :5432
         mode tcp
         balance roundrobin
         option clitcpka
         option httpchk GET /health?ready=1
-        server articuno articuno.wyvern-map.ts.net:26258 check port 26080
-        server zapados zapados.wyvern-map.ts.net:26258 check port 26080
-        server moltres moltres.wyvern-map.ts.net:26258 check port 26080
+        server articuno articuno.wyvern-map.ts.net:26257 check port 26080
+        server zapados zapados.wyvern-map.ts.net:26257 check port 26080
+        server moltres moltres.wyvern-map.ts.net:26257 check port 26080
 
       frontend www
         bind *:80

@@ -38,7 +38,7 @@ in {
         ExecStart = utils.escapeSystemdExecArgs [
           "${pkgs.cockroachdb-bin}/bin/cockroach"
           "start"
-          "--advertise-addr=${hostName}.wyvern-map.ts.net:26257"
+          "--listen-addr=${hostName}.wyvern-map.ts.net:26257"
           "--http-port=26080"
           "--port=26257"
           "--join=articuno.wyvern-map.ts.net:26257,zapados.wyvern-map.ts.net:26257,moltres.wyvern-map.ts.net:26257"
