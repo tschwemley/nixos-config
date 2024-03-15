@@ -6,8 +6,8 @@ in {
 
     enable = true;
     autocd = true;
+    autosuggestions.enable = true;
     defaultKeymap = "emacs";
-    enableAutosuggestions = true;
     enableCompletion = true;
     history = {
       expireDuplicatesFirst = true;
