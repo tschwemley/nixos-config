@@ -41,13 +41,13 @@ in {
           "--accept-sql-without-tls"
           "--cache=.25"
           "--certs-dir=certs"
-          # "--http-addr=${hostName}.wyvern-map.ts.net:26080"
+          "--http-addr=${hostName}.wyvern-map.ts.net:26080"
           "--http-port=26080"
           "--join=articuno.wyvern-map.ts.net:26257,zapados.wyvern-map.ts.net:26257,moltres.wyvern-map.ts.net:26257"
           "--listen-addr=${hostName}.wyvern-map.ts.net:26257"
           "--max-sql-memory=.25"
           "--port=26257"
-          "--unencrypted-localhost-http"
+          # "--unencrypted-localhost-http"
         ];
         TimeoutStopSec = 60;
         Restart = "always";
