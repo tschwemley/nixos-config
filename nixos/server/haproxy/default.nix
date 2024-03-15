@@ -48,11 +48,10 @@ in {
 
       backend cockroach_web
         http-request set-header X-Forwarded-Proto http
-        ssl crt /var/lib/cockroach/certs/client.pem
         balance leastconn
-        server articuno articuno.wyvern-map.ts.net:26080 check send-proxy
-        server zapados zapados.wyvern-map.ts.net:26080 check send-proxy
-        server moltres moltres.wyvern-map.ts.net:26080 check send-proxy
+        server articuno articuno.wyvern-map.ts.net:26080 check send-proxy ssl crt /var/lib/haproxy/cockroach-client.pem verify none
+        # server zapados zapados.wyvern-map.ts.net:26080 check send-proxy
+        # server moltres moltres.wyvern-map.ts.net:26080 check send-proxy
 
       backend searxng
         http-request set-header X-Forwarded-Proto https
