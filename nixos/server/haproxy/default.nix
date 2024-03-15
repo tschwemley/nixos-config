@@ -1,4 +1,4 @@
-let
+{config, ...}: let
   baseCert = "/var/lib/acme/schwem.io/full.pem";
   wildcardCert = "/var/lib/acme/schwem.io-wildcard/full.pem";
 in {
@@ -64,6 +64,16 @@ in {
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
         #server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
     '';
+  };
+
+  sops.secrets = {
+    "client.pem" = {
+      sopsFile = ../cockroachdb/secrets.yaml;
+      group = "haproxy";
+      mode = "0400";
+      path = "/var/lib/haproxy/cockroach-client.pem";
+      owner = "haproxy";
+    };
   };
 
   users.users.haproxy.extraGroups = ["acme"];
