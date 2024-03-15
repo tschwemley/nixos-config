@@ -32,9 +32,25 @@ in {
 
       serviceConfig = {
         Type = "notify";
+        # Fixes an error where openldap attempts to notify from a thread
+        # outside the main process:
+        #   Got notification message from PID 6378, but reception only permitted for main PID 6377
+        NotifyAccess = "all";
+
+        WorkingDirectory = "/var/lib/cockroach";
         StateDirectory = "cockroach";
         StateDirectoryMode = "0700";
-        WorkingDirectory = "/var/lib/cockroach";
+
+        StandardOutput = "syslog";
+        StandardError = "syslog";
+        SyslogIdentifier = "cockroach";
+
+        Restart = "always";
+        RestartSec = 10;
+        TimeoutStopSec = 60;
+
+        User = config.users.users.cockroach.name;
+
         ExecStart = utils.escapeSystemdExecArgs [
           "${pkgs.cockroachdb-bin}/bin/cockroach"
           "start"
@@ -47,20 +63,12 @@ in {
           "--listen-addr=${hostName}.wyvern-map.ts.net:26257"
           "--max-sql-memory=.25"
           "--port=26257"
-          # "--unencrypted-localhost-http"
         ];
-        TimeoutStopSec = 60;
-        Restart = "always";
-        RestartSec = 10;
-        StandardOutput = "syslog";
-        StandardError = "syslog";
-        SyslogIdentifier = "cockroach";
-        User = config.users.users.cockroach.name;
       };
     };
   };
 
-  networking.firewall.allowedTCPPorts = [26257 26258 26080];
+  networking.firewall.allowedTCPPorts = [26257 26080];
 
   sops.secrets = {
     "ca.crt" = {
