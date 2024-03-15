@@ -38,10 +38,19 @@ in {
         http-request set-header X-Forwarded-Proto https
         http-request set-header X-Forwarded-Real-IP %[src]
 
+        acl domain_db hdr(host) -i db.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
 
+        use_backend cockroach_web if domain_db
         use_backend searxng if domain_search
+
         default_backend servers
+
+      backend cockroach_web
+        balance leastconn
+        server articuno articuno.wyvern-map.ts.net:26080 check send-proxy
+        server zapados zapados.wyvern-map.ts.net:26080 check send-proxy
+        server moltres moltres.wyvern-map.ts.net:26080 check send-proxy
 
       backend searxng
         http-request set-header X-Forwarded-Proto https
