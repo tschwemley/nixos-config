@@ -47,7 +47,7 @@ in {
         default_backend servers
 
       backend cockroach_web
-        http-request set-header X-Forwarded-Proto https
+        http-request set-header X-Forwarded-Proto http
         # ssl crt /root/.config/cockroachdb/client.root.crt
         balance leastconn
         server articuno articuno.wyvern-map.ts.net:26080 check send-proxy
