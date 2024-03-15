@@ -88,6 +88,7 @@ in {
       sopsFile = ./secrets.yaml;
       group = "haproxy";
       mode = "0400";
+      path = "/var/lib/cockroach/certs/client.pem";
       owner = "haproxy";
     };
     "${hostName}.crt" = {
