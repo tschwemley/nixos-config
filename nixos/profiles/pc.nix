@@ -4,6 +4,7 @@
     # TODO: evaluate if I need to use this
     ../programs/gamemode.nix
     ../programs/hyprland.nix
+    ../programs/kdeconnect.nix
     ../programs/man.nix
     ../programs/qt.nix
     ../programs/steam.nix

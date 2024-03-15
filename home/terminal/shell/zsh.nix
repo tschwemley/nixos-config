@@ -6,7 +6,7 @@ in {
 
     enable = true;
     autocd = true;
-    autosuggestions.enable = true;
+    autosuggestion.enable = true;
     defaultKeymap = "emacs";
     enableCompletion = true;
     history = {
