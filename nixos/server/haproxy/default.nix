@@ -18,8 +18,7 @@ in {
         option http-server-close
 
       listen psql
-        # bind :5432
-        bind :26257
+        bind :5432
         mode tcp
 
         retries 2
