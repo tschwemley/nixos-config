@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs.neovim = {
     extraPackages = with pkgs; [
-      alejandra
+      # alejandra
       gopls
       haxe
       lua-language-server

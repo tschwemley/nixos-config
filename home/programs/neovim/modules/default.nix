@@ -20,4 +20,9 @@
     toggleterm-nvim
     which-key-nvim
   ];
+
+  # TODO: this is a wip towards simplifying the config
+  # programs.neovim.plugins = [
+  #   (import ../plugins/lsp-plugin.nix {inherit (pkgs) vimPlugins;})
+  # ];
 }

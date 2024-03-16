@@ -1,6 +1,7 @@
 {vimPlugins}:
 with vimPlugins; {
   plugin = nvim-lspconfig;
+  type = "lua";
   config =
     /*
     lua
