@@ -27,6 +27,7 @@ in {
     ../programs/wiki-tui.nix
     ../programs/turbovnc.nix
     ../programs/zoom.nix
+    ../services/kdeconnect.nix
     # ../services/spotifyd.nix
   ];
 

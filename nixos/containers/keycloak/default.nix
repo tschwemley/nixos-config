@@ -22,8 +22,6 @@
     hostAddress6 = "fc00::1";
     localAddress6 = "fc00::2";
 
-    forwardPorts = [{ hostPort = 5432; }];
-
     config = {lib, ...}: {
       imports = [../.];
 
