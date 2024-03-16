@@ -1,0 +1,2 @@
+* Reactivity
+  `bind()` is used to pass info to constructor that sets up a listener. Alternatively a hook can be setup.

@@ -1,0 +1,15 @@
+@document.meta
+@end
+
+* Disaster Recovery
+** Remove Dead Node
+   @code bash
+   # check staus: (is_live = false for dead node)
+   cockroach node status --decommission --certs-dir=certs --host={address of any live node}
+
+   # decomission
+   cockroach node decommission {id of dead node} --certs-dir=certs --host={address of any live node}
+
+   # confirm decomissioning
+   cockroach node status --decommission --certs-dir=certs --host={address of any live node}
+   @end
