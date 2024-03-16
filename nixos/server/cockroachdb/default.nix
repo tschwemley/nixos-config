@@ -69,7 +69,7 @@ in {
   };
 
   # networking.firewall.allowedTCPPorts = [5432 26257 26258 26080];
-  networking.firewall.allowedTCPPorts = [26257 26080];
+  networking.firewall.allowedTCPPorts = [5432 26257 26080];
 
   sops.secrets = {
     "ca.crt" = {
