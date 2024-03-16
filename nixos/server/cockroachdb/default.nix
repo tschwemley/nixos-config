@@ -68,8 +68,9 @@ in {
     };
   };
 
-  # networking.firewall.allowedTCPPorts = [5432 26257 26258 26080];
-  networking.firewall.allowedTCPPorts = [5432 26257 26080];
+  # NOTE: open 5432 if necesseary to connect from outside of tailscale network at some point
+  # networking.firewall.allowedTCPPorts = [5432 26257 26080];
+  networking.firewall.allowedTCPPorts = [26257 26080];
 
   sops.secrets = {
     "ca.crt" = {
