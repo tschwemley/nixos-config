@@ -3,7 +3,6 @@ let
   disk = (import ../../hardware/disks).proxmox;
   profile = import ../../profiles/server.nix;
   server = [
-    # ../../containers/cockroachdb
     ../../server/cockroachdb
     ../../server/nginx.nix
   ];
