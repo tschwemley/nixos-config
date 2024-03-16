@@ -1,4 +1,4 @@
-{config, ...}: {
+{config, pkgs, ...}: {
   imports = [./virtualhost.nix];
 
   sops.secrets.db_password = {
@@ -24,6 +24,8 @@
 
     config = {lib, ...}: {
       imports = [../.];
+
+      environment.systemPackages = [pkgs.postgresql];
 
       networking.firewall.allowedTCPPorts = [80];
 
