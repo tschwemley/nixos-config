@@ -61,14 +61,14 @@ in {
           "--join=articuno.wyvern-map.ts.net:26257,zapados.wyvern-map.ts.net:26257,moltres.wyvern-map.ts.net:26257"
           "--listen-addr=${hostName}.wyvern-map.ts.net:26257"
           "--max-sql-memory=.25"
-          "--sql-addr=${hostName}.wyvern-map.ts.net:5432"
+          "--sql-addr=${hostName}.wyvern-map.ts.net:26258"
           "--port=26257"
         ];
       };
     };
   };
 
-  networking.firewall.allowedTCPPorts = [5432 26257 26080];
+  networking.firewall.allowedTCPPorts = [5432 26257 26258 26080];
 
   sops.secrets = {
     "ca.crt" = {

@@ -23,9 +23,9 @@ in {
         balance roundrobin
         option clitcpka
         option httpchk GET /health?ready=1
-        server articuno articuno.wyvern-map.ts.net:26257 check port 26080 ssl verify none
-        server zapados zapados.wyvern-map.ts.net:26257 check port 26080 ssl verify none
-        server moltres moltres.wyvern-map.ts.net:26257 check port 26080 ssl verify none
+        server articuno articuno.wyvern-map.ts.net:26258 check port 26080 ssl verify none
+        server zapados zapados.wyvern-map.ts.net:26258 check port 26080 ssl verify none
+        server moltres moltres.wyvern-map.ts.net:26258 check port 26080 ssl verify none
 
       frontend www
         bind *:80
