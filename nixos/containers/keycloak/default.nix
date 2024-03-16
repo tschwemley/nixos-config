@@ -27,7 +27,7 @@
     config = {lib, ...}: {
       imports = [../.];
 
-      environment.systemPackages = [pkgs.postgresql];
+      environment.systemPackages = [ pkgs.busybox pkgs.postgresql];
 
       networking.firewall.allowedTCPPorts = [80];
 
