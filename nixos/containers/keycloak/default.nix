@@ -47,9 +47,10 @@
           # this is important to prevent endless loading admin page
           hostname-admin-url = "https://auth.schwem.io";
           proxy = "edge";
+          transaction-xa-enable = false;
         };
 
-        # initialAdminPassword = "e6Wcm0RrtegMEHl"; # change on first login
+        # initialAdminPassword = "<set_to_rand_string>"; # change on first login
       };
     };
   };
