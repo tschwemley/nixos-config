@@ -9,12 +9,15 @@ while [[ $# -gt 0 ]]; do
 		-p | --profile)
 			if [[ $2 == "buyvm" ]] ; then
 				diskName="/dev/vda"	
+				useGrub=true
 			elif [[ $2 == "buyvmWithStorage" ]] ; then
 				diskName="/dev/vda"	
 				storageDisk="/dev/sda"
+				useGrub=true
 			elif [[ $2 == "proxmox" ]] ; then
 				diskName="/dev/sda"	
 				storageDiskName="/dev/sdb"
+				useGrub=false
 			else 
 				echo "invalid profile"
 				exit 1
@@ -24,20 +27,23 @@ while [[ $# -gt 0 ]]; do
 	shift
 done
 
-[[ -z "$mode" || -z "$diskName" ]] && echo "both [-m | --mode] and [-p | --profile] must be passed in and valid" && exit 1
+if [[ -z "$mode" || -z "$diskName" || -z "$useGrub"]] ; then
+	echo "both [-m | --mode] and [-p | --profile] must be passed in and valid" 
+	exit 1
+fi
 
 
 fPrefix="${SCRIPT_DIR}/../../nixos/hardware/disks"
 rootFile="${fPrefix}/ephemeral-root.nix"
 storageFile="${fPrefix}/block-storage.nix"
 
-nix run \ --experimental-features 'nix-command flakes' github:nix-community/disko -- \
+nix --experimental-features 'nix-command flakes' run github:nix-community/disko -- \
 	-m $mode \
 	--arg diskName '"$diskName"' \
 	$rootFile
 
 if [[ ! -z "$storageDisk" ]] ; then 
-	nix run \ --experimental-features 'nix-command flakes' github:nix-community/disko -- \
+	nix --experimental-features 'nix-command flakes' run github:nix-community/disko -- \
 		-m $mode \
 		--arg diskName '"$storageDiskName"' \
 		$storageFile
