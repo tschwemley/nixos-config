@@ -27,7 +27,7 @@ while [[ $# -gt 0 ]]; do
 	shift
 done
 
-if [[ -z "$mode" || -z "$diskName" || -z "$useGrub"]] ; then
+if [[ -z "$mode" || -z "$diskName" || -z "$useGrub" ]] ; then
 	echo "both [-m | --mode] and [-p | --profile] must be passed in and valid" 
 	exit 1
 fi

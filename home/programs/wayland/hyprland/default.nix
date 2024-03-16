@@ -12,6 +12,7 @@
   imports = [
     inputs.hyprland.homeManagerModules.default
     ./binds.nix
+    ./hyprpaper.nix
     ./rules.nix
     ./settings.nix
   ];
@@ -20,13 +21,7 @@
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
 
     # clipman
-    # grim # grab images
-    # grimblast # grab images
-    hyprpaper # wallpaper
     hyprpicker #color picker
-
-    # hyprshot #screenshot
-    # slurp # select a region (used in conjunction w/ grim)
   ];
 
   # make stuff work on wayland
@@ -59,11 +54,4 @@
       ];
     };
   };
-
-  xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload=/home/schwem/.config/hypr/dual-bg.jpg
-    preload=/home/schwem/.config/hypr/lg-bg.jpg
-    wallpaper=DP-2,/home/schwem/.config/hypr/dual-bg.jpg
-    wallpaper=HDMI-A-2,/home/schwem/.config/hypr/lg-bg.jpg
-  '';
 }
