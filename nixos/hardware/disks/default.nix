@@ -28,6 +28,7 @@ in rec {
     imports = [
       (root "/dev/sda")
       (storage "/dev/sdb")
+      (import ./swap.nix)
     ];
   };
 }
