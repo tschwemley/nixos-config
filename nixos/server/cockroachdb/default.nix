@@ -61,6 +61,7 @@ in {
           "--join=articuno.wyvern-map.ts.net:26257,zapados.wyvern-map.ts.net:26257,moltres.wyvern-map.ts.net:26257"
           "--listen-addr=${hostName}.wyvern-map.ts.net:26257"
           "--max-sql-memory=.25"
+          "--sql-addr=${hostName}.wyvern-map.ts.net:5432"
           "--port=26257"
         ];
       };
