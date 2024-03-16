@@ -1,6 +1,8 @@
 {config, pkgs, ...}: {
   imports = [./virtualhost.nix];
 
+  networking.firewall.trustedInterfaces = ["ve-keycloak"];
+
   sops.secrets.db_password = {
     sopsFile = ./secrets.yaml;
     mode = "0444";
