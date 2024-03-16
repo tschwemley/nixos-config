@@ -54,7 +54,7 @@ initializeDisk () {
 
 case $1 in
 	"extract-ssh-keys" | "extract-ssh")
-		extractSshDir $2
+		extractSshDir $2 $3
 		;;
 
 	"gen-keys" )
