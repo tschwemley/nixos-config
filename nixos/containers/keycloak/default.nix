@@ -20,10 +20,26 @@
     hostAddress6 = "fc00::1";
     localAddress6 = "fc00::2";
 
+    forwardPorts = [{ hostPort = 5432; }];
+
     config = {lib, ...}: {
+      imports = [../.];
+
+      networking.firewall.allowedTCPPorts = [80];
+
       services.keycloak = {
         enable = true;
-        database.passwordFile = "/run/secrets/db_password";
+
+        database = {
+          host = "10.10.1.1";
+          passwordFile = "/run/secrets/db_password";
+          port = 5432;
+          name = "keycloak";
+          type = "postgresql";
+          username = "keycloak";
+          useSSL = false;
+        };
+
         settings = {
           hostname = "auth.schwem.io";
           # this is important to prevent endless loading admin page
@@ -33,19 +49,6 @@
 
         # initialAdminPassword = "e6Wcm0RrtegMEHl"; # change on first login
       };
-
-      networking = {
-        firewall = {
-          enable = true;
-          allowedTCPPorts = [80];
-        };
-
-        # Use systemd-resolved inside the container
-        # Workaround for bug https://github.com/NixOS/nixpkgs/issues/162686
-        useHostResolvConf = lib.mkForce false;
-      };
-
-      services.resolved.enable = true;
     };
   };
 }
