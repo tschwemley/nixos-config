@@ -48,3 +48,16 @@ if [[ ! -z "$storageDisk" ]] ; then
 		--arg diskName '"$storageDiskName"' \
 		$storageFile
 fi
+
+
+# nix --experimental-features 'nix-command flakes' run github:nix-community/disko -- \
+# 	-m disko \
+# 	--arg diskName '"/dev/sda"' \
+# 	--arg useGrub false \
+# 	./nixos/hardware/disks/ephemeral-root.nix
+
+# nix --experimental-features 'nix-command flakes' run github:nix-community/disko -- \
+# 	-m disko \
+# 	--arg diskName '"/dev/sda"' \
+# 	--arg useGrub false \
+# 	./nixos/hardware/disks/ephemeral-root.nix
