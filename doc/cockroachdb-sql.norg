@@ -1,0 +1,7 @@
+@document.meta
+@end
+
+* Create User
+  @code sql
+  CREATE USER new_user WITH [LOGIN PASSWORD password] [ROLES...]
+  @end

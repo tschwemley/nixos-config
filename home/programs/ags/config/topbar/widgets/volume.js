@@ -1,11 +1,12 @@
 import Audio from 'resource:///com/github/Aylur/ags/service/audio.js';
+import Colors from '../../colors.js';
 import Variable from 'resource:///com/github/Aylur/ags/variable.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 
 const lastVolume = Variable(1);
 
 const volumeIndicator = Widget.Stack({
-	css: "color: black;",
+	css: `color: ${Colors.blue};`,
 	items: [
 		// tuples of [string, Widget]
 		['101', Widget.Icon('audio-volume-overamplified-symbolic')],

@@ -1,16 +1,15 @@
 import Clock from './widgets/clock.js';
 import ClientTitle from './widgets/clienttitle.js';
 // import Media from './widgets/media.js';
-import Power from './widgets/power.js';
+// import Power from './widgets/power.js';
 import SysMonitor from './widgets/sysmonitor.js';
 import SysTray from './widgets/systray.js';
 import Volume from './widgets/volume.js';
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import Workspaces from './widgets/workspaces.js';
 
 /*
-* no spot yet: 
-* - Media()
+	* TODO:
+	* no spot yet: Media()
 */
 const Left = Widget.Box({
 	children: [
@@ -32,7 +31,7 @@ const Right = Widget.Box({
 		Volume(),
 		Clock(),
 		SysTray(),
-		Power,
+		// Power,
 	],
 });
 
