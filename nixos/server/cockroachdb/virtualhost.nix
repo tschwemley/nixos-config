@@ -4,7 +4,7 @@
 in {
   services.nginx = {
     upstreams.cockroach-web.servers = {
-      "https://${config.networking.hostName}.wyvern-map.ts.net:26080" = {};
+      "${config.networking.hostName}.wyvern-map.ts.net:26080" = {};
     };
 
     virtualHosts."db.schwem.io" = {
