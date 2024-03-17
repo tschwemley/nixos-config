@@ -6,6 +6,9 @@ in {
     virtualHosts."monitor.schwem.io" = {
       locations."/" = {
         proxyPass = "http://${ip}:${port}";
+        extraConfig = ''
+          auth_request https://auth.schwem.io/oauth2/auth?allowed_groups=role:admin
+        '';
       };
     };
   };
