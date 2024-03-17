@@ -54,10 +54,12 @@ in {
 
       backend cockroach_web
         http-request set-header X-Forwarded-Proto https
+        option httpchk GET /health?ready=1
         balance leastconn
-        server articuno articuno.wyvern-map.ts.net:26080 ssl verify none
-        # server zapados zapados.wyvern-map.ts.net:26080 check send-proxy
-        # server moltres moltres.wyvern-map.ts.net:26080 check send-proxy
+
+        server articuno articuno.wyvern-map.ts.net:8080 ssl verify none
+        server zapados zapados.wyvern-map.ts.net:8080 ssl verify none
+        server moltres moltres.wyvern-map.ts.net:8080 ssl verify none
 
       backend searxng
         http-request set-header X-Forwarded-Proto https
