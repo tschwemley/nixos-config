@@ -10,7 +10,7 @@
       enabledCollectors = ["systemd"];
     };
 
-    scrpeConfigs = [
+    scrapeConfigs = [
       {
         job_name = config.networking.hostName;
         static_configs = [
