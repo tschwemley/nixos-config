@@ -1,4 +1,4 @@
-{config, pkgs, ...}: {
+{config, ...}: {
   imports = [./virtualhost.nix];
 
   networking.firewall.trustedInterfaces = ["ve-keycloak"];
@@ -24,8 +24,6 @@
 
     config = {lib, ...}: {
       imports = [../.];
-
-      environment.systemPackages = [ pkgs.busybox pkgs.postgresql];
 
       networking.firewall.allowedTCPPorts = [80];
 

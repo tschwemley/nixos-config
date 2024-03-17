@@ -3,10 +3,8 @@
   port = "26080";
 in {
   services.nginx.virtualHosts."db.schwem.io" = {
-    # sslCertificate = "/root/.config/cockroachdb/client.root.crt";
-    # sslCertificateKey = "/root/.config/cockroachdb/client.root.key";
     locations."/" = {
-      proxyPass = "http://${ip}:${port}";
+      proxyPass = "https://${ip}:${port}";
       proxyWebsockets = true;
     };
   };
