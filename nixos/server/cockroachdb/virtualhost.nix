@@ -4,7 +4,7 @@
 in {
   services.nginx = {
     upstreams.cockroach-web.servers = {
-      "${config.networking.hostName}:26080" = {};
+      "https://${config.networking.hostName}:26080" = {};
     };
 
     virtualHosts."db.schwem.io" = {
