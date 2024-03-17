@@ -5,7 +5,7 @@ in {
   services.nginx.virtualHosts."db.schwem.io" = {
     locations."/" = {
       proxyPass = "https://${ip}:${port}";
-      proxyWebsockets = true;
+      # proxyWebsockets = true;
     };
   };
 }
