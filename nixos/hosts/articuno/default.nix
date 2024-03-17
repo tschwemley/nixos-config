@@ -10,6 +10,7 @@ let
     ../../server/cockroachdb
     ../../server/haproxy
     ../../server/nginx.nix
+    ../../server/oauth2-proxy
   ];
 in {
   imports =
