@@ -11,9 +11,7 @@
       # these are the virtual hosts protected by oauth2-proxy
       virtualHosts = [];
     };
-    proxy = {
-      provider = "keycloak-oidc";
-    };
+    provider = "keycloak-oidc";
     reverseProxy = true;
   };
 }
