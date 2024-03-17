@@ -10,7 +10,7 @@
     # NOTE: this contains all the config that doesn't have a baked in nix config option
     keyFile = config.sops.templates."oauth2_proxy_env".path;
 
-    nginx.virtualhosts = [
+    nginx.virtualHosts = [
       "auth.schwem.io"
     ];
 
