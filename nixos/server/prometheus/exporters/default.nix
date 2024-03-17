@@ -1,5 +1,5 @@
-{
-  exporters = [
-    (import ./node.nix)
-  ];
+let
+  node = import ./node.nix;
+in {
+  inherit node;
 }

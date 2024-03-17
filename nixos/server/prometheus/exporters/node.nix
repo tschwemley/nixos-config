@@ -1,6 +1,4 @@
 {
-  node = {
-    enable = true;
-    port = 9100;
-  };
+  enable = true;
+  port = 9100;
 }

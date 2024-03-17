@@ -1,9 +1,6 @@
 {
-  services.prometheus = let
-    exporters = import ./exporters;
-  in {
-    inherit exporters;
-
+  services.prometheus = {
     enable = true;
+    exporters = import ./exporters;
   };
 }
