@@ -1,7 +1,22 @@
-{
+{config, ...}: {
   imports = [./virtualhost.nix];
   services.prometheus = {
     enable = true;
-    exporters = import ./exporters;
+
+    # By default setup the node-exporter and it's scraper. Definitions for other services will be
+    # in their respective files and/or dirs
+    exporters.node = {
+      enable = true;
+      enabledCollectors = ["systemd"];
+    };
+
+    scrpeConfigs = [
+      {
+        job_name = config.networking.hostName;
+        static_configs = [
+          {targets = "127.0.0.1:${toString config.services.prometheus.exporters.node.port}";}
+        ];
+      }
+    ];
   };
 }
