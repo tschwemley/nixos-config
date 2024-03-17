@@ -9,7 +9,7 @@ let
     ../../server/acme
     ../../server/cockroachdb
     ../../server/haproxy
-    ../../server/nginx.nix
+    ../../server/nginx
     ../../server/oauth2-proxy
   ];
 in {

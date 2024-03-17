@@ -6,7 +6,6 @@ in {
     virtualHosts."db.schwem.io" = {
       locations."/" = {
         proxyPass = "https://${ip}:${port}";
-        # proxyWebsockets = true;
       };
     };
   };

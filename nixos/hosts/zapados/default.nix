@@ -4,7 +4,7 @@ let
   profile = import ../../profiles/server.nix;
   server = [
     ../../server/cockroachdb
-    ../../server/nginx.nix
+    ../../server/nginx
   ];
 in {
   imports =

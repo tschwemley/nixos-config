@@ -3,7 +3,7 @@ let
   disk = (import ../../hardware/disks).buyvmWithStorage;
   profile = import ../../profiles/buyvm.nix;
   server = [
-    ../../server/nginx.nix
+    ../../server/nginx
   ];
 in {
   imports =
