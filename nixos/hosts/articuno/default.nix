@@ -9,6 +9,7 @@ let
     ../../server/acme
     ../../server/cockroachdb
     ../../server/haproxy
+    ../../server/monitoring
     ../../server/nginx
     ../../server/oauth2-proxy
     ../../server/prometheus
