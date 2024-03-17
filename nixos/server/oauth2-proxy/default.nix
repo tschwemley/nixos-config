@@ -4,6 +4,7 @@
   services.oauth2_proxy = {
     enable = true;
     clientID = "oauth2-proxy";
+    email.domains = "*";
     keyFile = config.sops.templates."oauth2_proxy_env".path;
     # loginURL = "https://schwem.io/oauth/authorize";
     nginx = {
