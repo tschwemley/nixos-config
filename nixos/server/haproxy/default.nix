@@ -60,9 +60,9 @@ in {
         # server articuno articuno.wyvern-map.ts.net:8080
         # server zapados zapados.wyvern-map.ts.net:8080
         # server moltres moltres.wyvern-map.ts.net:8080
-        server articuno articuno.wyvern-map.ts.net:8080 ssl verify none
-        server zapados zapados.wyvern-map.ts.net:8080 ssl verify none
-        server moltres moltres.wyvern-map.ts.net:8080 ssl verify none
+        server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
+        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
+        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
       backend searxng
         http-request set-header X-Forwarded-Proto https
