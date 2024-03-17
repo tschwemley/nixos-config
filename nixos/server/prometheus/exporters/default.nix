@@ -1,0 +1,5 @@
+{
+  exporters = [
+    (import ./node.nix)
+  ];
+}
