@@ -1,4 +1,4 @@
-{config, ...}: let
+let
   ip = "10.10.1.2";
   port = "80";
 in {
@@ -6,7 +6,6 @@ in {
     locations = {
       "/admin" = {
         proxyPass = "http://${ip}:${port}/admin";
-        extraConfig = config.sops.templates.nginx_allow_secure.content;
       };
       "/js" = {
         proxyPass = "http://${ip}:${port}/js";
