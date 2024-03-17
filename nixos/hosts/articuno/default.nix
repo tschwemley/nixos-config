@@ -12,7 +12,6 @@ let
     ../../server/monitoring
     ../../server/nginx
     ../../server/oauth2-proxy
-    ../../server/prometheus
   ];
 in {
   imports =
