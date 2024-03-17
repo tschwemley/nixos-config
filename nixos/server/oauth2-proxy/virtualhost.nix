@@ -3,7 +3,7 @@ let
   port = "4180";
   proxyPass = "${ip}:${port}";
 in {
-  services.nginx.virtualHosts."auth.schwem.io" = {
+  services.nginx.virtualHosts."oauth.schwem.io" = {
     locations = {
       "/".extraConfig = ''
         auth_request /oauth2/auth;
