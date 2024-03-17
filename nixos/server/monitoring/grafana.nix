@@ -1,6 +1,6 @@
 # TODO: setup w/ cockroachdb. By default it's using sqlite
 {
-  service.grafana = {
+  services.grafana = {
     enable = true;
   };
 }
