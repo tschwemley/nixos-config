@@ -10,8 +10,11 @@
     # NOTE: this contains all the config that doesn't have a baked in nix config option
     keyFile = config.sops.templates."oauth2_proxy_env".path;
 
+    nginx.virtualhosts = [
+      "auth.schwem.io"
+    ];
+
     # these are the virtual hosts protected by oauth2-proxy
-    nginx.virtualHosts = [];
     provider = "keycloak-oidc";
     reverseProxy = true;
   };
