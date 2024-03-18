@@ -44,11 +44,13 @@ in {
         http-request set-header X-Forwarded-Proto https
         http-request set-header X-Forwarded-Real-IP %[src]
 
+        acl domain_cyberchef hdr(host) -i cyberchef.schwem.io
         acl domain_db hdr(host) -i db.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
         acl domain_stash hdr(host) -i stash.schwem.io
 
         use_backend cockroach_web if domain_db
+        use_backend cyberchef if domain_cyberchef
         use_backend searxng if domain_search
         use_backend stash if domain_stash
 
@@ -61,6 +63,10 @@ in {
 
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
         server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
+        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
+
+      backend cyberchef
+        http-request set-header X-Forwarded-Proto https
         server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
       backend searxng
