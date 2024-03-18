@@ -25,6 +25,14 @@
     age.keyFile = "/root/.config/sops/age/keys.txt";
 
     secrets = {
+      container_deploy_key = {
+        sopsFile = ../containers/secrets.yaml;
+        path = "/root/.ssh/container_deploy_key";
+      };
+      ssh_config = {
+        sopsFile = ../server/secrets.yaml;
+        path = "/root/.ssh/config";
+      };
       root_password = {
         mode = "0440";
         neededForUsers = true;
