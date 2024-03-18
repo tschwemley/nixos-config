@@ -2,7 +2,9 @@ let
   boot = (import ../../system/boot.nix).systemd;
   disk = (import ../../hardware/disks).proxmox;
   profile = import ../../profiles/proxmox.nix;
-  server = [];
+  server = [
+    ../../server/nginx/vhosts/stash.nix
+  ];
 in {
   imports =
     [

@@ -5,7 +5,6 @@ let
   server = [
     ../../containers/searxng
     ../../server/cockroachdb
-    ../../server/nginx/vhosts/stash.nix
   ];
 in {
   imports =

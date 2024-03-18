@@ -76,7 +76,7 @@ in {
 
       backend stash
         http-request set-header X-Forwarded-Proto https
-        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
+        server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
     '';
   };
 
