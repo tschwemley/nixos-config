@@ -1,5 +1,4 @@
 {config, ...}: {
-  imports = [./node-exporter.nix];
   services.prometheus = {
     enable = true;
 

@@ -1,11 +1,8 @@
 let
   boot = (import ../../system/boot.nix).systemd;
   disk = (import ../../hardware/disks).proxmox;
-  profile = import ../../profiles/server.nix;
-  services = [
-    ../../network/wireguard.nix
-    ../../services/syncthing.nix
-  ];
+  profile = import ../../profiles/proxmox.nix;
+  server = [];
 in {
   imports =
     [
@@ -13,15 +10,10 @@ in {
       disk
       profile
     ]
-    ++ services;
-  boot.initrd.availableKernelModules = ["ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" "virtio_blk"];
+    ++ server;
 
   networking.hostName = "flareon";
-
-  sops = {
-    defaultSopsFile = ./secrets.yaml;
-    age.keyFile = "/root/.config/sops/age/keys.txt";
-  };
+  sops.defaultSopsFile = ./secrets.yaml;
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
   system.stateVersion = "23.05";

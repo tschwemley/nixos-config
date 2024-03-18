@@ -10,7 +10,6 @@ let
     ../../server/cockroachdb
     ../../server/haproxy
     ../../server/monitoring
-    ../../server/nginx
     ../../server/oauth2-proxy
   ];
 in {

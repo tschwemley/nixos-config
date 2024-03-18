@@ -8,6 +8,8 @@
     ../network/containers.nix
     ../network/systemd-networkd.nix
     ../network/tailscale.nix
+    ../server/monitoring/prometheus/node-exporter.nix
+    ../server/nginx
     ../services/fail2ban.nix
     ../virtualisation/podman.nix
   ];
@@ -21,6 +23,8 @@
 
   # make sure every user config has a root_password setup in secrets
   sops = {
+    age.keyFile = "/root/.config/sops/age/keys.txt";
+
     secrets = {
       root_password = {
         mode = "0440";
