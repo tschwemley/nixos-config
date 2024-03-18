@@ -1,7 +1,7 @@
 {
   imports = [
     ./grafana.nix
-    ./prometheus.nix
+    ./prometheus
     ./virtualhost.nix
   ];
 }
