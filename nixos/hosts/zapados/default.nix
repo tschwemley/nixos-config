@@ -3,6 +3,7 @@ let
   disk = (import ../../hardware/disks).proxmox;
   profile = import ../../profiles/proxmox.nix;
   server = [
+    ../../containers/redlib
     ../../server/cockroachdb
     ../../server/monitoring/prometheus/node-exporter.nix
     ../../server/nginx

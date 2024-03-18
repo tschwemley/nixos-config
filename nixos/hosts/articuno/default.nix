@@ -4,7 +4,6 @@ let
   profile = import ../../profiles/buyvm.nix;
   server = [
     ../../containers/keycloak
-    ../../containers/redlib
     ../../containers/searxng
     ../../server/acme
     ../../server/cockroachdb
