@@ -17,7 +17,6 @@
     ../system/fonts.nix
     ../system/greetd.nix
     ../system/security.nix
-    ../virtualisation/podman.nix
   ];
 
   programs = {

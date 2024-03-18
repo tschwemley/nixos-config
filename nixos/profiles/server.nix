@@ -11,7 +11,6 @@
     ../server/monitoring/prometheus/node-exporter.nix
     ../server/nginx
     ../services/fail2ban.nix
-    ../virtualisation/podman.nix
   ];
 
   # disable man pages on servers

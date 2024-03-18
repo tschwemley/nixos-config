@@ -1,17 +1,24 @@
-{config, ...}: {
+{config, ...}: let
+  mkNodeExporterScrapeConfig = name: {
+    job_name = "${name}";
+    static_configs = [
+      {
+        targets = ["${name}:${toString config.services.prometheus.exporters.node.port}"];
+      }
+    ];
+  };
+in {
   services.prometheus = {
     enable = true;
 
+    # TODO: make this not shit
     scrapeConfigs = [
-      {
-        # TODO: make this into a loop of server system configs
-        job_name = "articuno";
-        static_configs = [
-          {
-            targets = ["articuno:${toString config.services.prometheus.exporters.node.port}"];
-          }
-        ];
-      }
+      (mkNodeExporterScrapeConfig "articuno")
+      (mkNodeExporterScrapeConfig "zapados")
+      (mkNodeExporterScrapeConfig "moltres")
+      (mkNodeExporterScrapeConfig "eevee")
+      (mkNodeExporterScrapeConfig "flareon")
+      (mkNodeExporterScrapeConfig "jolteon")
     ];
   };
 }
