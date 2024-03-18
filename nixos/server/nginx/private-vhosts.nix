@@ -1,5 +1,7 @@
 {config, ...}: {
-  services.nginx.appendConfig = config.sops.templates.private_vhosts;
+  services.nginx.appendConfig = ''
+    ${config.sops.templates.private_vhosts.content}
+  '';
 
   sops.secrets.private_vhosts.sopsFile = ./secrets.yaml;
 
