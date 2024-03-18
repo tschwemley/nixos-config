@@ -5,7 +5,6 @@ let
   server = [
     ../../containers/searxng
     ../../server/cockroachdb
-    ../../server/static/cyberchef.nix
   ];
 in {
   imports =

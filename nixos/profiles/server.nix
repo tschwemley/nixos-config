@@ -10,6 +10,7 @@
     ../network/tailscale.nix
     ../server/monitoring/prometheus/node-exporter.nix
     ../server/nginx
+    ../server/static
     ../services/fail2ban.nix
   ];
 
