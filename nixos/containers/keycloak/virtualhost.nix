@@ -7,7 +7,7 @@ in {
       "/admin" = {
         proxyPass = "http://${ip}:${port}/admin";
         extraConfig = ''
-          include ${config.sops.templates.nginx_allow_secure.path}
+          include ${config.sops.templates.nginx_allow_secure.path};
         '';
       };
       "/js" = {
