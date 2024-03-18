@@ -5,6 +5,7 @@ let
   server = [
     ../../containers/searxng
     ../../server/cockroachdb
+    ../../server/nginx/private-vhosts.nix
   ];
 in {
   imports =

@@ -46,9 +46,11 @@ in {
 
         acl domain_db hdr(host) -i db.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
+        acl domain_stash hdr(host) -i stash.schwem.io
 
         use_backend cockroach_web if domain_db
         use_backend searxng if domain_search
+        use_backend stash if domain_stash
 
         default_backend servers
 
@@ -57,9 +59,6 @@ in {
         # option httpchk GET /health?ready=1
         balance leastconn
 
-        # server articuno articuno.wyvern-map.ts.net:8080
-        # server zapados zapados.wyvern-map.ts.net:8080
-        # server moltres moltres.wyvern-map.ts.net:8080
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
         server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
         server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
@@ -74,6 +73,10 @@ in {
         http-request set-header X-Forwarded-Proto https
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
         #server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
+
+      backend stash
+        http-request set-header X-Forwarded-Proto https
+        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
     '';
   };
 
