@@ -1,5 +1,5 @@
 {config, ...}: let
-  ip = "10.10.1.2";
+  ip = config.containers.keycloak.localAddress;
   port = "80";
 in {
   services.nginx.virtualHosts."auth.schwem.io" = {
