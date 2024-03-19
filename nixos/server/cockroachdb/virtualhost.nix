@@ -6,6 +6,9 @@ in {
     virtualHosts."db.schwem.io" = {
       locations."/" = {
         proxyPass = "https://${ip}:${port}";
+        extraConfig = ''
+          include ${config.sops.templates.nginx_allow_secure.path};
+        '';
       };
     };
   };

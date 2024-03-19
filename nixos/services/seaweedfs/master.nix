@@ -26,6 +26,7 @@ in {
         "-ip=${ip}"
         "-ip.bind=${bindIP}"
         "-mdir=master"
+        "-volumePreallocate"
         "-volumeSizeLimitMB=8192"
       ];
       WorkingDirectory = "/var/lib/seaweedfs";
