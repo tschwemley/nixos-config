@@ -26,7 +26,7 @@ in {
       User = "root";
       Group = "root";
 
-      ExecStartPre = "mkdir -p /storage/seaweedfs/${hostName} && ${pkgs.coreutils}/bin/sleep 30";
+      # ExecStartPre = "${pkgs.coreutils}/bin/sleep 30";
 
       ExecStart = utils.escapeSystemdExecArgs [
         "${pkgs.seaweedfs}/bin/weed"
