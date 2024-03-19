@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  utils,
-  ...
-}: let
+let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvmWithStorage;
   profile = import ../../profiles/buyvm.nix;
@@ -12,6 +7,7 @@
     ../../containers/searxng
     ../../server/cockroachdb
     ../../services/seaweedfs/master.nix
+    ../../services/seaweedfs/filer.nix
     ../../services/seaweedfs/volume.nix
   ];
 in {
