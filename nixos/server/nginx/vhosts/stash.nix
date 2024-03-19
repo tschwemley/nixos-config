@@ -6,6 +6,7 @@ in {
     locations = {
       "/" = {
         proxyPass = "http://${ip}:${port}";
+        proxyWebsockets = true;
         extraConfig = ''
           include ${config.sops.templates.nginx_allow_secure.path};
         '';
