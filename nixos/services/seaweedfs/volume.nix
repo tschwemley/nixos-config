@@ -25,13 +25,16 @@ in {
       Type = "simple";
       User = "root";
       Group = "root";
-      ExecStartPre = "${pkgs.coreutils}/bin/sleep 30";
 
+      # create the required dir for the volumes if it doesn't exist yet
+      preStart = "mkdir -p /storage/seaweedfs/${hostName}";
+
+      ExecStartPre = "${pkgs.coreutils}/bin/sleep 30";
       ExecStart = utils.escapeSystemdExecArgs [
         "${pkgs.seaweedfs}/bin/weed"
         "volume"
         "-dataCenter=${hostName}"
-        "-dir=/storage/seaweedfs/${config.networking.hostName}"
+        "-dir=/storage/seaweedfs/${hostName}"
         "-ip=${ip}"
         "-ip.bind=${bindIP}"
         "-max=75" # gets us to 600GB of a 1TB block
