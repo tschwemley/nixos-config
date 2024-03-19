@@ -1,12 +1,12 @@
 {
-  dataCenter,
-  rack,
   config,
   pkgs,
   utils,
   ...
 }: let
-  ip = "${config.networking.hostName}";
+  hostName = config.networking.hostName;
+
+  ip = "${hostName}";
   bindIP = "127.0.0.1";
   port = "9334";
   grpcPort = "9335";
@@ -30,7 +30,7 @@ in {
       ExecStart = utils.escapeSystemdExecArgs [
         "${pkgs.seaweedfs}/bin/weed"
         "volume"
-        "-dataCenter=${dataCenter}"
+        "-dataCenter=${hostName}"
         "-dir=/storage/seaweedfs/${config.networking.hostName}"
         "-ip=${ip}"
         "-ip.bind=${bindIP}"
@@ -38,7 +38,7 @@ in {
         "-mserver=moltres:9333"
         "-port=${port}"
         "-port.grpc=${grpcPort}"
-        "-rack=${rack}"
+        "-rack=${hostName}"
       ];
 
       WorkingDirectory = "/var/lib/seaweedfs";

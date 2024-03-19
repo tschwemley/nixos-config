@@ -1,4 +1,9 @@
-let
+{
+  config,
+  pkgs,
+  utils,
+  ...
+}: let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvmWithStorage;
   profile = import ../../profiles/buyvm.nix;
@@ -6,12 +11,8 @@ let
     ../../containers/redlib
     ../../containers/searxng
     ../../server/cockroachdb
-    (import ../../services/seaweedfs {
-      dataCenter = "miami";
-      rack = "moltres";
-      # withMaster = true;
-      # withFiler = true;
-    })
+    ../../services/seaweedfs/master.nix
+    ../../services/seaweedfs/volume.nix
   ];
 in {
   imports =
