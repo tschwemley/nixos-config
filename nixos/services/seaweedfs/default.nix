@@ -1,4 +1,6 @@
 {
+  dataCenter,
+  rack,
   withMaster ? false,
   withFiler ? false,
   ...
@@ -12,7 +14,8 @@
     if withFiler
     then ./filer.nix
     else {};
-  volumeImport = ./volume.nix;
+
+  volumeImport = ./volume.nix {inherit dataCenter rack;};
 in {
   imports = [
     filerImport

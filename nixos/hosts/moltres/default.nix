@@ -6,7 +6,12 @@ let
     ../../containers/redlib
     ../../containers/searxng
     ../../server/cockroachdb
-    (import ../../services/seaweedfs {})
+    (import ../../services/seaweedfs {
+      dataCenter = "miami";
+      rack = "moltres";
+      # withMaster = true;
+      # withFiler = true;
+    })
   ];
 in {
   imports =

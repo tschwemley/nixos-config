@@ -1,8 +1,12 @@
 {
   config,
   pkgs,
+  utils,
   ...
-}: {
+}: let
+  ip = "${config.networking.hostName}";
+  bindIP = "127.0.0.1";
+in {
   systemd.services.seaweedfs-master = {
     after = [
       "network.target"
@@ -16,7 +20,14 @@
       Type = "simple";
       User = "root";
       Group = "root";
-      ExecStart = "${pkgs.seaweedfs}/bin/weed master -ip=${config}";
+      ExecStart = utils.escapeSystemdExecArgs [
+        "${pkgs.seaweedfs}/bin/weed"
+        "master"
+        "-ip=${ip}"
+        "-ip.bind=${bindIP}"
+        "-mdir=master"
+        "-volumeSizeLimitMB=8192"
+      ];
       WorkingDirectory = "/var/lib/seaweedfs";
       SyslogIdentifier = "seaweedfs-master";
     };
