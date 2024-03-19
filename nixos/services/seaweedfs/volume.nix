@@ -25,7 +25,7 @@ in {
       Type = "simple";
       User = "root";
       Group = "root";
-      ExecStartPre = "sleep 30";
+      ExecStartPre = "${pkgs.coreutils}/bin/sleep 30";
 
       ExecStart = utils.escapeSystemdExecArgs [
         "${pkgs.seaweedfs}/bin/weed"
