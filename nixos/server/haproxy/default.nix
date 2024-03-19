@@ -78,11 +78,11 @@ in {
 
       backend static
         http-request set-header X-Forwarded-Proto https
-        server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
-        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
+        # server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
+        # server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
         server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
-        server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
-        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
+        # server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
+        # server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
       backend stash
         http-request set-header X-Forwarded-Proto https
