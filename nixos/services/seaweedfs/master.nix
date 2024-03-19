@@ -4,23 +4,21 @@
   ...
 }: {
   systemd.services.seaweedfs-master = {
-    enable = true;
+    after = [
+      "network.target"
+    ];
+    description = "SeaweedFS Server";
+    wantedBy = [
+      "multi-user.target"
+    ];
+    environment = {};
     serviceConfig = {
       Type = "simple";
       User = "root";
       Group = "root";
-
-      ExecStart = "${pkgs.seaweedfs}/bin/weed master -ip=${config.nodeIP}";
+      ExecStart = "${pkgs.seaweedfs}/bin/weed master -ip=${config}";
       WorkingDirectory = "/var/lib/seaweedfs";
-      StateDirectory = "seaweedfs";
       SyslogIdentifier = "seaweedfs-master";
     };
-
-    unitConfig = {
-      After = "network.target";
-      Description = "SeaweedFS Server";
-    };
-
-    wantedBy = ["multi-user.target"];
   };
 }

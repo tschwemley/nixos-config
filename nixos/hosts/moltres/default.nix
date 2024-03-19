@@ -6,6 +6,7 @@ let
     ../../containers/redlib
     ../../containers/searxng
     ../../server/cockroachdb
+    (import ../../services/seaweedfs {})
   ];
 in {
   imports =

@@ -1,30 +1,22 @@
 {
-  config,
-  pkgs,
+  withMaster ? false,
+  withFiler ? false,
   ...
 }: let
-  mkSeaweedService = type: {
-    systemd.services."seaweedfs-${type}" = {
-      enable = true;
-      serviceConfig = {
-        Type = "simple";
-        User = "root";
-        Group = "root";
+  masterImport =
+    if withMaster
+    then ./master.nix
+    else {};
 
-        ExecStart = "${pkgs.seaweedfs}/bin/weed ${type} -ip=${config.nodeIP}";
-        WorkingDirectory = "/var/lib/seaweedfs";
-        StateDirectory = "seaweedfs";
-        SyslogIdentifier = "seaweedfs-master";
-      };
-
-      unitConfig = {
-        After = "network.target";
-        Description = "SeaweedFS Server";
-      };
-
-      wantedBy = ["multi-user.target"];
-    };
-  };
+  filerImport =
+    if withFiler
+    then ./filer.nix
+    else {};
+  volumeImport = ./volume.nix;
 in {
-  master = mkSeaweedService "master";
+  imports = [
+    filerImport
+    masterImport
+    volumeImport
+  ];
 }
