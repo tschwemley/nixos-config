@@ -1,22 +1,21 @@
-{config, ...}: let
-  hostName = config.networking.hostName;
+let
   tailnetUrl = "wyvern-map.ts.net";
 in {
   services.nginx.virtualHosts."files.schwem.io" = {
-    # filer
+    # master
     locations."/" = {
-      proxyPass = "http://${hostName}.${tailnetUrl}:9336";
+      proxyPass = "http://moltres.${tailnetUrl}:9333";
       proxyWebsockets = true;
     };
 
-    # volumes
-    locations."/jolteon" = {
-      proxyPass = "http://jolteon.${tailnetUrl}:9334/ui";
+    # filers
+    locations."/lake" = {
+      proxyPass = "http://jolteon.${tailnetUrl}:9336";
       proxyWebsockets = true;
     };
 
     locations."/moltres" = {
-      proxyPass = "http://moltres.${tailnetUrl}:9334/ui";
+      proxyPass = "http://moltres.${tailnetUrl}:9336";
       proxyWebsockets = true;
     };
   };
