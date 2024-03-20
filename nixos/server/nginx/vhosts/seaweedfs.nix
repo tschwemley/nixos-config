@@ -14,7 +14,7 @@ in {
 
     # volume
     locations."${hostName}/ui" = {
-      proxyPass = "http://${hostName}.${tailnetUrl}:9334/ui/";
+      proxyPass = "http://${hostName}.${tailnetUrl}:9334/ui/index.html";
       proxyWebsockets = true;
       extraConfig = ''
         include ${config.sops.templates.nginx_allow_secure.path};
