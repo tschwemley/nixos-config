@@ -1,16 +1,5 @@
 * {
+	background: #222720;
+	color: white;
 	font-family: "Fira Code";
-}
-
-label {
-	color: white;
-}
-
-.bar {
-	/* background: #FFF7EB; */
-	background: #1F1F1F;
-}
-
-.client-title {
-	color: white;
 }
