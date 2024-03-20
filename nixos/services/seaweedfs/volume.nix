@@ -53,7 +53,7 @@ in {
         "-mserver=${master}"
         "-port=${port}"
         "-port.grpc=${grpcPort}"
-        "-publicUrl=\"files.schwem.io/${hostName}\""
+        "-publicUrl=files.schwem.io/${hostName}"
         "-rack=${hostName}"
       ];
 
