@@ -17,6 +17,10 @@
     then "lake"
     else hostName;
 in {
+  # include the network here since a volume will be on all servers running a filer or master in my
+  # configuration
+  imports = [../../network/seaweedfs.nix];
+
   systemd.services.seaweedfs-volume = {
     after = [
       "network.target"

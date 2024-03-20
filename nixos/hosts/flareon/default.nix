@@ -4,6 +4,7 @@ let
   profile = import ../../profiles/proxmox.nix;
   server = [
     ../../server/nginx/vhosts/stash.nix
+    ../../services/seaweedfs/volume.nix
   ];
 in {
   imports =
