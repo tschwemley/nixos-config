@@ -5,7 +5,8 @@
   ...
 }: let
   ip = "${config.networking.hostName}.wyvern-map.ts.net";
-  bindIP = "127.0.0.1";
+  # bindIP = "127.0.0.1";
+  bindIP = ip;
 in {
   systemd.services.seaweedfs-master = {
     after = [

@@ -6,7 +6,8 @@
 }: let
   hostName = config.networking.hostName;
 
-  bindIP = "127.0.0.1";
+  # bindIP = "127.0.0.1";
+  bindIP = ip;
   ip = "${hostName}.wyvern-map.ts.net";
   master = "moltres.wyvern-map.ts.net:9333";
   port = "9336";
