@@ -71,7 +71,7 @@ in {
 
       backend files
         http-request set-header X-Forwarded-Proto https
-        server moltres moltres:9336
+        server moltres moltres.wyvern-map.ts.net:9336
 
       backend monitor
         http-request set-header X-Forwarded-Proto https
@@ -88,6 +88,10 @@ in {
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
         server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
+      backend stash
+        http-request set-header X-Forwarded-Proto https
+        server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
+
       backend static
         http-request set-header X-Forwarded-Proto https
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
@@ -95,10 +99,6 @@ in {
         server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
         # server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
         # server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
-
-      backend stash
-        http-request set-header X-Forwarded-Proto https
-        server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
     '';
   };
 

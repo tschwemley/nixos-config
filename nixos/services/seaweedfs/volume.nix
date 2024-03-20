@@ -6,8 +6,9 @@
 }: let
   hostName = config.networking.hostName;
 
-  ip = "${hostName}";
   bindIP = "127.0.0.1";
+  ip = "${hostName}.wyvern-map.ts.net";
+  master = "moltres.wyvern-map.ts.net:9333";
   port = "9334";
   grpcPort = "9335";
 in {
@@ -36,7 +37,7 @@ in {
         "-ip=${ip}"
         "-ip.bind=${bindIP}"
         "-max=75" # gets us to 600GB of a 1TB block
-        "-mserver=moltres:9333"
+        "-mserver=${master}"
         "-port=${port}"
         "-port.grpc=${grpcPort}"
         "-rack=${hostName}"

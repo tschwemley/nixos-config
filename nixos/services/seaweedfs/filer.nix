@@ -5,8 +5,10 @@
   ...
 }: let
   hostName = config.networking.hostName;
-  ip = "${hostName}";
+
   bindIP = "127.0.0.1";
+  ip = "${hostName}.wyvern-map.ts.net";
+  master = "moltres.wyvern-map.ts.net:9333";
   port = "9336";
   grpcPort = "9337";
 in {
@@ -35,7 +37,7 @@ in {
         "-dataCenter=${hostName}"
         "-ip=${ip}"
         "-ip.bind=${bindIP}"
-        "-master=moltres:9333"
+        "-master=${master}"
         "-maxMB=64"
         "-port=${port}"
         "-port.grpc=${grpcPort}"

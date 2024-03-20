@@ -2,7 +2,10 @@ let
   boot = (import ../../system/boot.nix).systemd;
   disk = (import ../../hardware/disks).proxmox;
   profile = import ../../profiles/proxmox.nix;
-  server = [];
+  server = [
+    ../../services/seaweedfs/filer.nix
+    ../../services/seaweedfs/volume.nix
+  ];
 in {
   imports =
     [
