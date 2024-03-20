@@ -4,6 +4,7 @@ let
   profile = import ../../profiles/proxmox.nix;
   server = [
     ../../containers/redlib
+    ../../services/seaweedfs/volume.nix
     ../../server/cockroachdb
     ../../server/monitoring/prometheus/node-exporter.nix
     ../../server/nginx

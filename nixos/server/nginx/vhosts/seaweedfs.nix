@@ -22,7 +22,7 @@ in {
     };
 
     # filers
-    locations."lake" = {
+    locations."/lake/" = {
       proxyPass = "http://jolteon.${tailnetUrl}:9336";
       proxyWebsockets = true;
       extraConfig = ''
@@ -30,7 +30,7 @@ in {
       '';
     };
 
-    locations."moltres" = {
+    locations."/moltres/" = {
       proxyPass = "http://moltres.${tailnetUrl}:9336";
       proxyWebsockets = true;
       extraConfig = ''
