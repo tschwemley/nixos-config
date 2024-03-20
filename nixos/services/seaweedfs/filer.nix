@@ -11,6 +11,11 @@
   master = "moltres.wyvern-map.ts.net:9333";
   port = "9336";
   grpcPort = "9337";
+
+  dataCenter =
+    if builtins.elem hostName []
+    then "lake"
+    else hostName;
 in {
   sops.secrets."filer.toml" = {
     sopsFile = ./secrets.yaml;
@@ -34,7 +39,7 @@ in {
       ExecStart = utils.escapeSystemdExecArgs [
         "${pkgs.seaweedfs}/bin/weed"
         "filer"
-        "-dataCenter=${hostName}"
+        "-dataCenter=${dataCenter}"
         "-ip=${ip}"
         "-ip.bind=${bindIP}"
         "-master=${master}"

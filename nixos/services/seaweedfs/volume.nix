@@ -11,6 +11,11 @@
   master = "moltres.wyvern-map.ts.net:9333";
   port = "9334";
   grpcPort = "9335";
+
+  dataCenter =
+    if builtins.elem hostName []
+    then "lake"
+    else hostName;
 in {
   systemd.services.seaweedfs-volume = {
     after = [
@@ -32,7 +37,7 @@ in {
       ExecStart = utils.escapeSystemdExecArgs [
         "${pkgs.seaweedfs}/bin/weed"
         "volume"
-        "-dataCenter=${hostName}"
+        "-dataCenter=${dataCenter}"
         "-dir=/storage/seaweedfs/${hostName}"
         "-ip=${ip}"
         "-ip.bind=${bindIP}"

@@ -25,9 +25,11 @@ in {
     disk
     hardware
     user
+    ../../network/containers.nix
     ../../profiles/pc.nix
-    # TODO: move syncthing somewhere else
-    ../../services/syncthing.nix
+
+    # TODO: move syncthing somewhere else or remove
+    # ../../services/syncthing.nix
   ];
 
   boot = {
