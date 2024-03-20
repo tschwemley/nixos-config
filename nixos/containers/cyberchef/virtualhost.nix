@@ -5,7 +5,6 @@ in {
   services.nginx.virtualHosts."cyberchef.schwem.io" = {
     locations."/" = {
       proxyPass = "http://${ip}:${port}";
-      # proxyWebsockets = true;
     };
   };
 }
