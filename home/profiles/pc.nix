@@ -11,6 +11,7 @@ in {
     ../programs/ags
     ../programs/bambu-studio.nix
     ../programs/brave.nix
+    ../programs/cad.nix
     ../programs/firefox.nix
     ../programs/glow.nix
     ../programs/godot.nix
