@@ -20,7 +20,10 @@
 in {
   # include the network here since a volume will be on all servers running a filer or master in my
   # configuration
-  imports = [../../network/seaweedfs.nix];
+  imports = [
+    ../../network/seaweedfs.nix
+    ../../server/nginx/vhosts/seaweedfs.nix
+  ];
 
   systemd.services.seaweedfs-volume = {
     after = [
