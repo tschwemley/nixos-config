@@ -5,7 +5,7 @@ in {
   services.nginx.virtualHosts."files.schwem.io" = {
     # filer
     locations."/" = {
-      proxyPass = "http://${hostName}:9336";
+      proxyPass = "http://${hostName}.${tailnetUrl}:9336";
       proxyWebsockets = true;
     };
 
