@@ -75,7 +75,7 @@ in {
 
       backend monitor
         http-request set-header X-Forwarded-Proto https
-        server articuno articuno:8080 check send-proxy
+        server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
 
       backend reddit
         http-request set-header X-Forwarded-Proto https
