@@ -14,7 +14,7 @@ in {
 
     # volume
     locations."/${hostName}/ui/index.html" = {
-      proxyPass = "http://${hostName}.${tailnetUrl}:9334/index.html";
+      proxyPass = "http://${hostName}.${tailnetUrl}:9334/ui/index.html";
       proxyWebsockets = true;
       extraConfig = ''
         include ${config.sops.templates.nginx_allow_secure.path};
@@ -22,7 +22,7 @@ in {
     };
 
     # filers
-    locations."/lake" = {
+    locations."lake" = {
       proxyPass = "http://jolteon.${tailnetUrl}:9336";
       proxyWebsockets = true;
       extraConfig = ''
@@ -30,7 +30,7 @@ in {
       '';
     };
 
-    locations."/moltres" = {
+    locations."moltres" = {
       proxyPass = "http://moltres.${tailnetUrl}:9336";
       proxyWebsockets = true;
       extraConfig = ''
