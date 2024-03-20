@@ -2,7 +2,10 @@ let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvmWithStorage;
   profile = import ../../profiles/buyvm.nix;
-  server = [];
+  server = [
+    ../../services/seaweedfs/filer.nix
+    ../../services/seaweedfs/volume.nix
+  ];
 in {
   imports =
     [
