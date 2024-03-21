@@ -1,4 +1,4 @@
-let
+{lib, ...}: let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvmWithStorage;
   profile = import ../../profiles/buyvm.nix;
@@ -19,6 +19,9 @@ in {
 
   # TODO: change this on all servers
   services.getty.autologinUser = "root";
+
+  # eevee uses a private instance of nginx
+  services.nginx.enable = lib.mkDefault false;
 
   sops = {
     defaultSopsFile = ./secrets.yaml;

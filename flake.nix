@@ -52,14 +52,6 @@
 
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
-    private = {
-      url = "git+ssh://git@github.com/tschwemley/private-containers?ref=main";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
     sops = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
