@@ -52,6 +52,14 @@
 
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
+    private = {
+      url = "git+ssh://git@github.com/tschwemley/private-containers?ref=main";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
     sops = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -97,7 +105,6 @@
           overlays = [
             inputs.neovim-nightly-overlay.overlay
             (final: prev: {
-              # ollama = inputs'.nixpkgs-stable.legacyPacakges.${system}.ollama;
               ollama = inputs'.nixpkgs-stable.legacyPackages.ollama;
             })
           ];
