@@ -3,7 +3,7 @@
 in {
   services.nginx.virtualHosts."arr.schwem.io" = {
     locations = {
-      "^~ /radarr " = {
+      "/radarr " = {
         proxyPass = "http://${ip}:7878";
         proxyWebsockets = true;
         extraConfig = ''
