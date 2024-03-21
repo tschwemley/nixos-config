@@ -3,6 +3,7 @@
   disk = (import ../../hardware/disks).buyvmWithStorage;
   profile = import ../../profiles/buyvm.nix;
   server = [
+    ../../server/nginx/vhosts/arr.nix
     ../../services/seaweedfs/filer.nix
     ../../services/seaweedfs/volume.nix
   ];
