@@ -45,9 +45,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-private = {
+      url = "git+ssh://git@github.com/tschwemley/nix-private.git";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
