@@ -20,9 +20,6 @@ in {
   # TODO: change this on all servers
   services.getty.autologinUser = "root";
 
-  # eevee uses a private instance of nginx
-  services.nginx.enable = lib.mkDefault false;
-
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "/root/.config/sops/age/keys.txt";
