@@ -1,8 +1,9 @@
-let
+{inputs, ...}: let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
   disk = (import ../../hardware/disks).buyvmWithStorage;
   profile = import ../../profiles/buyvm.nix;
   server = [
+    "${inputs.nix-private.outPath}/containers/invidious"
     ../../containers/redlib
     ../../containers/searxng
     ../../server/cockroachdb

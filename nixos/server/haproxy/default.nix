@@ -14,8 +14,6 @@ in {
         timeout connect 10s
         timeout server 30s
         timeout http-request 10s
-        option forwardfor
-        option http-server-close
 
       listen psql
         bind :5432
@@ -37,6 +35,10 @@ in {
         bind *:80
         bind *:443 ssl crt ${wildcardCert} crt ${baseCert}
 
+        option forwarded
+        option forwardfor
+        option http-server-close
+
         http-request redirect scheme https unless { ssl_fc }
         http-request set-header X-Forwarded-Host %[req.hdr(Host)]
         http-request set-header X-Forwarded-For %[src]
@@ -51,6 +53,7 @@ in {
         acl domain_reddit hdr(host) -i reddit.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
         acl domain_stash hdr(host) -i stash.schwem.io
+        acl domain_yt hdr(host) -i yt.schwem.io
 
         use_backend arr if domain_arr
         use_backend cockroach_web if domain_db
@@ -59,6 +62,7 @@ in {
         use_backend reddit if domain_reddit
         use_backend searxng if domain_search
         use_backend stash if domain_stash
+        use_backend yt if domain_yt
 
         default_backend static
 
@@ -108,6 +112,10 @@ in {
         server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
         # server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
         # server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
+
+      backend yt
+        http-request set-header X-Forwarded-Proto https
+        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
     '';
   };
 
