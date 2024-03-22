@@ -4,7 +4,7 @@
 
     bind = [
       "$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"
-      "$mod, p, exec, ${pkgs.rofi}/bin/rofi -show drun"
+      # "$mod, p, exec, ags -t applauncher"
 
       "$mod, 1, workspace, 1"
       "$mod, 2, workspace, 2"
