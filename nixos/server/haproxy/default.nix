@@ -115,7 +115,7 @@ in {
 
       backend yt
         http-request set-header X-Forwarded-Proto https
-        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
+        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
     '';
   };
 
