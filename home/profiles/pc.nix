@@ -19,7 +19,7 @@ in {
     ../programs/slack.nix
     ../programs/spotify.nix
     # TODO: wait for upstream fix or write overlay
-    # ../programs/sonic-pi.nix
+    ../programs/sonic-pi.nix
     ../programs/taskwarrior.nix
     ../programs/vlc.nix
     ../programs/wayland
