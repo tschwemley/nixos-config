@@ -1,3 +1,5 @@
+import { WINDOW_NAME } from './window.js';
+
 /** @param {import('resource:///com/github/Aylur/ags/service/applications.js').Application} app */
 const appItem = app => Widget.Button({
 	on_clicked: () => {

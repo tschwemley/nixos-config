@@ -1,3 +1,5 @@
+import { WINDOW_NAME } from './window.js';
+
 const spacing = 12;
 
 const searchBox = applications => Widget.Entry({

@@ -1,10 +1,12 @@
-import appList from './list.js';
 import appItem from './item.js';
+import appList from './list.js';
 import searchBox from './search-box.js';
+
+import { WINDOW_NAME } from './window.js';
 
 const { query } = await Service.import("applications")
 
-const launcher = ({ windowName, width = 500, height = 500, spacing = 12 }) => {
+const launcher = ({ width = 500, height = 500, spacing = 12 }) => {
 	// list of application buttons
 	let applications = query("").map(appItem)
 
@@ -20,12 +22,12 @@ const launcher = ({ windowName, width = 500, height = 500, spacing = 12 }) => {
 			list
 		],
 		setup: self => self.hook(App, (_, windowName, visible) => {
-			if (windowName !== windowName)
+			if (windowName !== WINDOW_NAME)
 				return
 
 			// when the applauncher shows up
 			if (visible) {
-				list.repopulate();
+				appList.child.children = query("").map(appItem);
 				search.text = "";
 				search.grab_focus();
 			}

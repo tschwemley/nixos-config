@@ -1,6 +1,6 @@
 import launcher from './launcher.js';
 
-const WINDOW_NAME = 'applauncher';
+export const WINDOW_NAME = 'applauncher';
 
 // there needs to be only one instance
 export const AppLauncher = Widget.Window({
@@ -11,7 +11,6 @@ export const AppLauncher = Widget.Window({
 	visible: false,
 	keymode: "exclusive",
 	child: launcher({
-		windowName: WINDOW_NAME,
 		width: 500,
 		height: 500,
 		spacing: 12,

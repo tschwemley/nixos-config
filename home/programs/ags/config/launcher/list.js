@@ -17,10 +17,5 @@ const appList = applications => Widget.Scrollable({
 	child: list(applications),
 });
 
-appList.repopulate = () => {
-	applications = query("").map(appItem)
-	self.child = applications
-};
-
 
 export default appList;
