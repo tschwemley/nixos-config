@@ -8,9 +8,9 @@ in {
         proxyPass = "http://${ip}:${port}";
         proxyWebsockets = true;
         extraConfig = ''
-          auth_request https://auth.schwem.io/oauth2/start?rd=https%3A%2F%2Fmonitor.schwem.io&allowed_groups=role:admin;
-          auth_request_set $cookie $upstream_http_set_cookie;
-          add_header Set-Cookie $cookie;
+          # auth_request https://auth.schwem.io/oauth2/start?rd=https%3A%2F%2Fmonitor.schwem.io&allowed_groups=role:admin;
+          # auth_request_set $cookie $upstream_http_set_cookie;
+          # add_header Set-Cookie $cookie;
 
           include ${config.sops.templates.nginx_allow_secure.path};
         '';
