@@ -46,6 +46,7 @@ in {
         http-request set-header X-Forwarded-Proto https
         http-request set-header X-Forwarded-Real-IP %[src]
 
+        acl domain_auth hdr(host) -i auth.schwem.io
         acl domain_arr hdr(host) -i arr.schwem.io
         acl domain_db hdr(host) -i db.schwem.io
         acl domain_files hdr(host) -i files.schwem.io
@@ -55,6 +56,7 @@ in {
         acl domain_stash hdr(host) -i stash.schwem.io
         acl domain_yt hdr(host) -i yt.schwem.io
 
+        use_backend auth if domain_auth
         use_backend arr if domain_arr
         use_backend cockroach_web if domain_db
         use_backend files if domain_files
@@ -65,6 +67,9 @@ in {
         use_backend yt if domain_yt
 
         default_backend static
+
+      backend auth
+        server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
 
       backend arr
         server eevee eevee.wyvern-map.ts.net:8080 check send-proxy
