@@ -6,7 +6,8 @@ in {
     virtualHosts."monitor.schwem.io" = {
       locations."/" = {
         # proxyPass = "http://${ip}:${port}";
-        proxyPass = "https://auth.schwem.io/oauth/start?rd=http://${ip}:${port}&allowed_groups=role:admin";
+        # proxyPass = "https://auth.schwem.io/oauth/start?rd=http://${ip}:${port}&allowed_groups=role:admin";
+        proxyPass = "http://${ip}:4180?rd=http://${ip}:${port}&allowed_groups=role:admin";
         proxyWebsockets = true;
         extraConfig = ''
           # include ${config.sops.templates.nginx_allow_secure.path};
