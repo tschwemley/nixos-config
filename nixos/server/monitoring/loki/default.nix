@@ -1,0 +1,5 @@
+{
+  services.loki = {
+    enable = true;
+  };
+}
