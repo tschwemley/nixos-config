@@ -4,6 +4,7 @@
   profile = import ../../profiles/proxmox.nix;
   server = [
     "${inputs.nix-private.outPath}/containers/invidious"
+    ../../containers/jellyfin
     ../../services/seaweedfs/filer.nix
     ../../services/seaweedfs/volume.nix
   ];

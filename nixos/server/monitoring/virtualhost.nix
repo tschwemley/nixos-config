@@ -8,7 +8,7 @@ in {
         proxyPass = "http://${ip}:${port}";
         proxyWebsockets = true;
         extraConfig = ''
-          auth_request https://auth.schwem.io/oauth2/auth?allowed_groups=role:admin;
+          auth_request ${ip}:${port}?allowed_groups=role:admin;
           error_page 401 =403 ${ip}:${port}/oauth2/start?rd=https://monitor.schwem.io&allowed_groups=role:admin;
 
           auth_request_set $user   $upstream_http_x_auth_request_user;
