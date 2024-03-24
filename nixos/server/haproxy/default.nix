@@ -50,6 +50,7 @@ in {
         acl domain_arr hdr(host) -i arr.schwem.io
         acl domain_db hdr(host) -i db.schwem.io
         acl domain_files hdr(host) -i files.schwem.io
+        acl domain_jellyfin hdr(host) -i jellyfin.schwem.io
         acl domain_monitor hdr(host) -i monitor.schwem.io
         acl domain_reddit hdr(host) -i reddit.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
@@ -60,6 +61,7 @@ in {
         use_backend arr if domain_arr
         use_backend cockroach_web if domain_db
         use_backend files if domain_files
+        use_backend jellyfin if domain_jellyfin
         use_backend monitor if domain_monitor
         use_backend reddit if domain_reddit
         use_backend searxng if domain_search
@@ -90,6 +92,9 @@ in {
         server eevee eevee.wyvern-map.ts.net:8080 check send-proxy
         server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
         server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
+
+      backend jellyfin
+        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
       backend monitor
         http-request set-header X-Forwarded-Proto https
