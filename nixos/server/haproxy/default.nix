@@ -45,6 +45,8 @@ in {
         http-request set-header X-Forwarded-Port %[dst_port]
         http-request set-header X-Forwarded-Proto https
         http-request set-header X-Forwarded-Real-IP %[src]
+        http-request capture request header Authorization len 128
+        http-request capture request header Cookie len 128
 
         acl domain_auth hdr(host) -i auth.schwem.io
         acl domain_arr hdr(host) -i arr.schwem.io
