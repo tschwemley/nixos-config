@@ -5,27 +5,14 @@ in {
   services.nginx = {
     virtualHosts."monitor.schwem.io" = {
       locations."/" = {
-        proxyPass = "http://${ip}:${port}";
+        # proxyPass = "http://${ip}:${port}";
+        proxyPass = "https://auth.schwem.io/oauth/start?rd=http://${ip}:${port}&allowed_groups=role:admin";
         proxyWebsockets = true;
         extraConfig = ''
-          auth_request /sign-in;
-          error_page 401 =403 /sign-in;
-
           include ${config.sops.templates.nginx_allow_secure.path};
-        '';
-      };
-
-      locations."/auth" = {
-        proxyPass = "https://auth.schwem.io/oauth2/auth?allowed_groups=role:admin";
-        extraConfig = ''
-          internal;
-        '';
-      };
-
-      locations."/sign-in" = {
-        proxyPass = "https://auth.schwem.io/oauth2/start?rd=https://monitor.schwem.io&allowed_groups=role:admin";
-        extraConfig = ''
-          internal;
+          #   auth_request /sign-in;
+          #   error_page 401 =403 /sign-in;
+          #
         '';
       };
     };
