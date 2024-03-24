@@ -8,7 +8,7 @@ in {
         proxyPass = "http://${ip}:${port}";
         proxyWebsockets = true;
         extraConfig = ''
-          auth_request /auth;
+          auth_request /sign-in;
           error_page 401 =403 /sign-in;
 
           include ${config.sops.templates.nginx_allow_secure.path};
