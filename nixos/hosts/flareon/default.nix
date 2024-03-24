@@ -3,7 +3,8 @@
   disk = (import ../../hardware/disks).proxmox;
   profile = import ../../profiles/proxmox.nix;
   server = [
-    "${inputs.nix-private.outPath}/virtualhosts/stash.nix"
+    # "${inputs.nix-private.outPath}/virtualhosts/stash.nix"
+    "${inputs.nix-private.outPath}/containers/stash"
     ../../services/seaweedfs/volume.nix
   ];
 in {
