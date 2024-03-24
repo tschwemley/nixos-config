@@ -1,5 +1,5 @@
 {config, ...}: {
-  # imports = [./virtualhost.nix];
+  imports = [./virtualhost.nix];
 
   # sops.secrets.db_password = {
   #   sopsFile = ./secrets.yaml;
