@@ -1,7 +1,9 @@
 let
   ip = "127.0.0.1";
   port = "4180";
-  proxyPass = "http://${ip}:${port}";
+
+  backendUrl = "http://${ip}:${port}";
+  proxyPass = "${backendUrl}";
 in {
   services.nginx.virtualHosts."auth.schwem.io" = {
     locations = {
