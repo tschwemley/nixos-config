@@ -16,7 +16,7 @@ in {
         };
 
         "/auth" = {
-          proxyPass = "http://127.0.0.1:4180/oauth/start?rd=https://monitor.schwem.io&allowed_groups=role:admin";
+          proxyPass = "http://127.0.0.1:4180/oauth/start?rd=https%3A%2F%2Fmonitor.schwem.io&allowed_groups=role:admin";
         };
       };
     };
