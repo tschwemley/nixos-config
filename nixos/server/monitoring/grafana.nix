@@ -22,7 +22,7 @@
       };
 
       server = {
-        http_addr = "127.0.0.1";
+        http_addr = "monitor.schwem.io";
         http_port = 3000;
       };
     };
