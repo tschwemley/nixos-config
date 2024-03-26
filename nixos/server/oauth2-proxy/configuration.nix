@@ -17,6 +17,7 @@
     OAUTH2_PROXY_CLIENT_SECRET=${config.sops.placeholder.oauth2_proxy_client_secret}
     OAUTH2_PROXY_COOKIE_SECRET=${config.sops.placeholder.oauth2_proxy_cookie_secret}
 
-    OAUTH2_PROXY_WHITELIST_DOMAIN=monitor.schwem.io
+    OAUTH2_PROXY_SESSION_COOKIE_MINIMAL=true
+    OAUTH2_PROXY_WHITELIST_DOMAINS=*.schwem.io:*
   '';
 }

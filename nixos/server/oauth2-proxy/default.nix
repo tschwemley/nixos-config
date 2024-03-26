@@ -7,6 +7,7 @@
   services.oauth2_proxy = {
     enable = true;
     clientID = "oauth2-proxy";
+    cookie.domain = ".schwem.io";
     email.domains = ["*"];
     httpAddress = "http://127.0.0.1:4180";
 
