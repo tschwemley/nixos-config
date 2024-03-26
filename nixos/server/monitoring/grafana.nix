@@ -30,5 +30,7 @@
 
   sops.secrets.grafana_oauth_client_secret = {
     sopsFile = ./secrets.yaml;
+    group = config.users.users.grafana.group;
+    owner = config.users.users.grafana.name;
   };
 }
