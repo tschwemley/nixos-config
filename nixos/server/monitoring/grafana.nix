@@ -15,6 +15,7 @@
         login_attribute_path = "username";
         name_attribute_path = "full_name";
         role_attribute_path = "contains(roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor) && 'Editor'  || 'Viewer'";
+        role_attribute_strict = true;
         scopes = "openid email profile offline_access roles";
         signout_redirect_url = "https://auth.schwem.io/auth/realms/schwem-io/protocol/openid-connect/logout?post_logout_redirect_uri=https%3A%2F%2Fmonitor.schwem.io%2Flogin";
         token_url = "https://auth.schwem.io/realms/schwem-io/protocol/openid-connect/token";
