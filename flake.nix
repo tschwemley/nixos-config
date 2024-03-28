@@ -107,9 +107,9 @@
           # TODO: move this to overlays/ ?
           overlays = [
             inputs.neovim-nightly-overlay.overlay
-            (final: prev: {
-              ollama = inputs'.nixpkgs-stable.legacyPackages.ollama;
-            })
+            # (final: prev: {
+            #   ollama = inputs'.nixpkgs-stable.legacyPackages.ollama;
+            # })
           ];
         };
 
