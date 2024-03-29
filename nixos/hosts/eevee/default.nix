@@ -5,7 +5,8 @@
   profile = import ../../profiles/buyvm.nix;
   server = [
     "${inputs.nix-private.outPath}/containers/arr"
-    "${inputs.nix-private.outPath}/containers/p2p"
+    # TODO: debug why this is an issue
+    # "${inputs.nix-private.outPath}/containers/p2p"
     ../../services/seaweedfs/filer.nix
     ../../services/seaweedfs/volume.nix
   ];
