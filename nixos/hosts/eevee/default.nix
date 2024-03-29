@@ -1,6 +1,7 @@
 {inputs, ...}: let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
-  disk = (import ../../hardware/disks).buyvmWithStorage;
+  # disk = (import ../../hardware/disks).buyvmWithStorage;
+  disk = (import ../../hardware/disks).buyvm;
   profile = import ../../profiles/buyvm.nix;
   server = [
     # "${inputs.nix-private.outPath}/containers/arr"
