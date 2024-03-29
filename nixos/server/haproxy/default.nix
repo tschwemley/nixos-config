@@ -53,8 +53,10 @@ in {
         acl domain_jellyfin hdr(host) -i jellyfin.schwem.io
         acl domain_monitor hdr(host) -i monitor.schwem.io
         acl domain_reddit hdr(host) -i reddit.schwem.io
+        acl domain_sabnzbd hdr(host) -i sabnzbd.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
         acl domain_stash hdr(host) -i stash.schwem.io
+        acl domain_transmission hdr(host) -i transmission.schwem.io
         acl domain_yt hdr(host) -i yt.schwem.io
 
         use_backend auth if domain_auth
@@ -62,8 +64,9 @@ in {
         use_backend cockroach_web if domain_db
         use_backend files if domain_files
         use_backend jellyfin if domain_jellyfin
+        use_backend p2p if domain_sabnzbd
+        use_backend p2p if domain_transmission
         use_backend monitor if domain_monitor
-        use_backend p2p if domain_p2p
         use_backend reddit if domain_reddit
         use_backend searxng if domain_search
         use_backend stash if domain_stash
