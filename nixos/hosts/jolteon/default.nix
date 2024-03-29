@@ -3,9 +3,7 @@
   disk = (import ../../hardware/disks).proxmox;
   profile = import ../../profiles/proxmox.nix;
   server = [
-    "${inputs.nix-private.outPath}/containers/arr"
     "${inputs.nix-private.outPath}/containers/invidious"
-    "${inputs.nix-private.outPath}/containers/p2p"
     ../../containers/jellyfin
     ../../services/seaweedfs/filer.nix
     ../../services/seaweedfs/volume.nix
