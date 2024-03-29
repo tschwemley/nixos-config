@@ -3,8 +3,8 @@
   disk = (import ../../hardware/disks).buyvmWithStorage;
   profile = import ../../profiles/buyvm.nix;
   server = [
-    "${inputs.nix-private.outPath}/containers/arr"
-    "${inputs.nix-private.outPath}/containers/p2p"
+    # "${inputs.nix-private.outPath}/containers/arr"
+    # "${inputs.nix-private.outPath}/containers/p2p"
     ../../services/seaweedfs/filer.nix
     ../../services/seaweedfs/volume.nix
   ];
