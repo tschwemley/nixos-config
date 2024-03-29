@@ -15,6 +15,7 @@ in {
     ../programs/firefox.nix
     ../programs/glow.nix
     ../programs/ollama.nix
+    ../programs/rofi.nix
     ../programs/slack.nix
     ../programs/spotify.nix
     # TODO: wait for upstream fix or write overlay
