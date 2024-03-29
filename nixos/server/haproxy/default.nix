@@ -63,6 +63,7 @@ in {
         use_backend files if domain_files
         use_backend jellyfin if domain_jellyfin
         use_backend monitor if domain_monitor
+        use_backend p2p if domain_p2p
         use_backend reddit if domain_reddit
         use_backend searxng if domain_search
         use_backend stash if domain_stash
@@ -74,7 +75,7 @@ in {
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
 
       backend arr
-        server eevee eevee.wyvern-map.ts.net:8080 check send-proxy
+        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
       backend cockroach_web
         http-request set-header X-Forwarded-Proto https
@@ -99,6 +100,9 @@ in {
       backend monitor
         http-request set-header X-Forwarded-Proto https
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
+
+      backend p2p
+        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
       backend reddit
         http-request set-header X-Forwarded-Proto https
