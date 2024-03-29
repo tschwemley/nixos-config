@@ -78,7 +78,7 @@ in {
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
 
       backend arr
-        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
+        server eevee eevee.wyvern-map.ts.net:8080 check send-proxy
 
       backend cockroach_web
         http-request set-header X-Forwarded-Proto https
