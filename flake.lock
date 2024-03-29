@@ -233,11 +233,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1711644240,
-        "narHash": "sha256-QhaQ/wcCk6D5YyG85Bg6hON076mpcVKIfKrL/5iwdAE=",
+        "lastModified": 1711673030,
+        "narHash": "sha256-atpS9c2LR56DIURlDLmuKHGmVQj9Xky2aETGhdTwMKg=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "d8429eebc66e7091381502edc0fc7335790f62e4",
+        "rev": "fcd9d77b642c0cd45cae61cf10ed1924f2e7945b",
         "type": "github"
       },
       "original": {
@@ -394,11 +394,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1711582776,
-        "narHash": "sha256-9DqFz9h60TcXP0WufaF5OhLwLHr1T4O+eOarR7L0KXs=",
+        "lastModified": 1711669189,
+        "narHash": "sha256-VVRFhOKS/MmhV2u6av2e9Qzg4WE24vEmrW/JKed6tlo=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "4ee9e58056a9d17ce921d8cc6dfd6d3305a40f69",
+        "rev": "e2224a7933b6e30ab6efb0b7ad4e3f26da57c226",
         "type": "github"
       },
       "original": {
@@ -421,11 +421,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1711584342,
-        "narHash": "sha256-6DlqPl0LXTIYB186X4NttyOUwHB7aYRZVlAfrRKRBjM=",
+        "lastModified": 1711670984,
+        "narHash": "sha256-orA2u5/LqpdPCvYUZnQStarJjjRMylTDYS8JKf97ZfU=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "8f04299a6038a0b7256198d232912dc2d93f2cf8",
+        "rev": "6a5e80c188d3f3763a624df1610294b4a11764a0",
         "type": "github"
       },
       "original": {
@@ -445,11 +445,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1711648487,
-        "narHash": "sha256-Ig50hF7G5G7sO/yVukh6DWh+nU8Z+XCDp92VooTeqL0=",
+        "lastModified": 1711676953,
+        "narHash": "sha256-1ail6Bl4Oj0lRrBa3XucBeVscekrsodcp3LYXDsPW8A=",
         "ref": "refs/heads/main",
-        "rev": "d562d5249a24ce87ce900477fdc8ae5c2217f67b",
-        "revCount": 119,
+        "rev": "623f408e5bb86b70ed69440ce4525873c2190fc5",
+        "revCount": 120,
         "type": "git",
         "url": "ssh://git@github.com/tschwemley/nix-private.git"
       },
