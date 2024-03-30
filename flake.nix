@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -107,9 +107,9 @@
           # TODO: move this to overlays/ ?
           overlays = [
             inputs.neovim-nightly-overlay.overlay
-            (final: prev: {
-              ollama = inputs'.nixpkgs-stable.legacyPackages.ollama;
-            })
+            # (final: prev: {
+            #   ollama = inputs'.nixpkgs-stable.legacyPackages.ollama;
+            # })
           ];
         };
 
