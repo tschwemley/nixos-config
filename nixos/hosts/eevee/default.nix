@@ -6,7 +6,7 @@
   server = [
     "${inputs.nix-private.outPath}/containers/arr"
     # TODO: debug why this is an issue
-    # "${inputs.nix-private.outPath}/containers/p2p"
+    "${inputs.nix-private.outPath}/containers/p2p"
     ../../services/seaweedfs/filer.nix
     ../../services/seaweedfs/volume.nix
   ];
