@@ -12,6 +12,7 @@ in {
     ../programs/bambu-studio.nix
     ../programs/brave.nix
     ../programs/cad.nix
+    ../programs/cardinal.nix
     ../programs/firefox.nix
     ../programs/glow.nix
     ../programs/ollama.nix
