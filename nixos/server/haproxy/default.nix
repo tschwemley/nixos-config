@@ -55,6 +55,7 @@ in {
         acl domain_reddit hdr(host) -i reddit.schwem.io
         acl domain_p2p hdr(host) -i p2p.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
+        acl domain_stash hdr(host) -i stash.schwem.io
         acl domain_yt hdr(host) -i yt.schwem.io
 
         use_backend auth if domain_auth
