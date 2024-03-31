@@ -106,7 +106,7 @@ in {
 
       backend p2p
         http-request set-header X-Forwarded-Proto https
-        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
+        server eevee eevee.wyvern-map.ts.net:8080 check send-proxy
 
       backend reddit
         http-request set-header X-Forwarded-Proto https
