@@ -96,6 +96,7 @@ in {
         server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
 
       backend jellyfin
+        http-request set-header X-Forwarded-Proto https
         server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
       backend monitor
@@ -103,6 +104,7 @@ in {
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
 
       backend p2p
+        http-request set-header X-Forwarded-Proto https
         server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
       backend reddit
