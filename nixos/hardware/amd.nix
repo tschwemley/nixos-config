@@ -1,21 +1,16 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  rocmPkgs = with pkgs.rocmPackages; [
+    clr
+    clr.icd
+  ];
+  utilPkgs = with pkgs; [
+    amdgpu_top
+    pciutils
+  ];
+in {
   boot.initrd.kernelModules = ["amdgpu"];
 
-  environment = {
-    systemPackages = with pkgs; [
-      amdgpu_top
-      # clblast
-      # clinfo
-      rocmPackages.rocm-smi
-      rocmPackages.rocm-runtime
-      pciutils
-    ];
-
-    sessionVariables = {
-      # CLBlast_DIR = "${pkgs.clblast.outPath}/lib/cmake/CLBlast";
-      # ROCM_PATH = "/opt/rocm";
-    };
-  };
+  environment.systemPackages = utilPkgs;
 
   hardware.enableRedistributableFirmware = true;
 
@@ -23,16 +18,7 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
-    extraPackages = with pkgs; [
-      rocmPackages.clr
-      rocmPackages.clr.icd
-      rocmPackages.hipblas
-      rocmPackages.rocblas
-      # amdvlk
-    ];
-    extraPackages32 = with pkgs; [
-      driversi686Linux.amdvlk
-    ];
+    extraPackages = rocmPkgs;
   };
 
   nixpkgs.config.rocmSupport = true;
