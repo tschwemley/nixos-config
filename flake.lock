@@ -233,11 +233,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1711846225,
-        "narHash": "sha256-rc0chZyA/9LVQ/40VnYwy0u3CxDEY/UdjBOqTzBhxfY=",
+        "lastModified": 1711847666,
+        "narHash": "sha256-qIe1aJMtXAunGl5OrI2MTWo2SDNyDeucaoa+v/IiAwc=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "1cc9a44318e53a34f41cc36483502de985b88cf8",
+        "rev": "16a9c16d9f99bd8be9f1bb15442b001fdf2ea759",
         "type": "github"
       },
       "original": {
@@ -278,11 +278,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1711229082,
-        "narHash": "sha256-d7mJ3CVsEuCu+U3MDpoth+bBD/XVhho5gMrNWnETBI0=",
+        "lastModified": 1711847900,
+        "narHash": "sha256-7lnDcHDZooMw6kTUuJOOHGGd4/VMfBiAgA+xx9qXr0M=",
         "owner": "hyprwm",
         "repo": "hyprland-plugins",
-        "rev": "826d47b85566f2c928a4412adf5adc1f7b9e3773",
+        "rev": "e45066d0741a1a4b9298a4c5ec43a5e57b059a4e",
         "type": "github"
       },
       "original": {
@@ -445,11 +445,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1711847301,
-        "narHash": "sha256-HSkeZtZY6nVhJGtN2j42/YSYzdZnN6iEb4O6hkK0d2U=",
+        "lastModified": 1711848171,
+        "narHash": "sha256-IpH1Ec0YW3I9SUxMTYBJ+hNqZuFKDELSyyKMWxek3XY=",
         "ref": "refs/heads/main",
-        "rev": "0a3ecb83d5468c6fcc29ecc0a5e8b96d36f474e8",
-        "revCount": 153,
+        "rev": "f53145578ce807f84cd85afec3d79078c3d7451e",
+        "revCount": 154,
         "type": "git",
         "url": "ssh://git@github.com/tschwemley/nix-private.git"
       },

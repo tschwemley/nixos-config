@@ -8,6 +8,7 @@ let
     ../../server/cockroachdb
     ../../server/monitoring/prometheus/node-exporter.nix
     ../../server/nginx
+    ../../server/sourcehut
   ];
 in {
   imports =
