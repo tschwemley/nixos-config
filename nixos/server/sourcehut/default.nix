@@ -8,5 +8,11 @@
     pages.enable = true;
     paste.enable = true;
     todo.enable = true;
+
+    settings = {
+      "sr.ht" = {
+        global-domain = "srht.schwem.io";
+      };
+    };
   };
 }
