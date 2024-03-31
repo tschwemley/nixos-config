@@ -1,4 +1,7 @@
 {
+  services.nginx.virtualHosts = {
+    "git.srht.schwem.io".sslCertificate = "/var/lib/acme/srht.schwem.io-wildcard";
+  };
   services.sourcehut = {
     enable = true;
     git.enable = true;

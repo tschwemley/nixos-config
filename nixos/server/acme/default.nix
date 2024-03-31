@@ -4,6 +4,7 @@
     certs = {
       "schwem.io" = {};
       "schwem.io-wildcard" = {domain = "*.schwem.io";};
+      "srht.schwem.io-wildcard" = {domain = "*.srht.schwem.io";};
     };
     defaults = {
       credentialFiles = {
