@@ -14,7 +14,7 @@
     enable = true;
     kernel = {
       realtime = true;
-      packages = pkgs.linuxPacakges_latest_rt;
+      packages = pkgs.linuxPackages_latest_rt;
     };
   };
 
