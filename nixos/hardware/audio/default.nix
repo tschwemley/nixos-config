@@ -15,6 +15,7 @@
     kernel = {
       realtime = true;
       packages = pkgs.linuxPacakges_latest_rt;
+    };
   };
 
   environment.systemPackages = with pkgs; [
