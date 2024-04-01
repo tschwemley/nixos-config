@@ -11,9 +11,14 @@
     sopsFile = ./secrets.yaml;
   };
 
-  sops.templates.mullvad-post-start.content = ''
-    mullvad account login '${config.sops.placeholder.mullvad_account_number}'
-  '';
+  sops.templates.mullvad-post-start = {
+    mode = "0700";
+    content = ''
+      mullvad account login '${config.sops.placeholder.mullvad_account_number}'
+    '';
+  };
 
-  systemd.services.mullvad-vpn.postStart = config.sops.templates.mullvad-post-start.content;
+  systemd.services.mullvad-vpn.postStart = ''
+    ./${sops.templates.mullvad-post-start.path}
+  '';
 }
