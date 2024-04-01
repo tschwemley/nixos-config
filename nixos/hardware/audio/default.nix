@@ -12,10 +12,6 @@
 
   musnix = {
     enable = true;
-    kernel = {
-      realtime = true;
-      packages = pkgs.linuxPackages_latest_rt;
-    };
   };
 
   environment.systemPackages = with pkgs; [
