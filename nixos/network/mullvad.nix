@@ -18,7 +18,7 @@
     '';
   };
 
-  systemd.services.mullvad-daemon.postStart = config.sops.templates.mullvad-post-start.content;
+  # systemd.services.mullvad-daemon.postStart = config.sops.templates.mullvad-post-start.content;
   # systemd.services.mullvad-vpn.postStart = ''
   #   ./${config.sops.templates.mullvad-post-start.path}
   # '';
