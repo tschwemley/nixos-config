@@ -17,15 +17,20 @@
       ../../hardware/audio
     ];
   };
-
+  networking = {
+    imports = [
+      ../../network/containers.nix
+      (import ../../network/tailscale.nix {upFlags = ["--shields-up"];})
+    ];
+  };
   user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
 in {
   imports = [
     boot
     disk
     hardware
+    networking
     user
-    ../../network/containers.nix
     ../../profiles/pc.nix
 
     # TODO: move syncthing somewhere else or remove

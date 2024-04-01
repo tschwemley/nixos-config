@@ -3,6 +3,7 @@
   # disk = (import ../../hardware/disks).buyvmWithStorage;
   disk = (import ../../hardware/disks).buyvm;
   profile = import ../../profiles/buyvm.nix;
+  networking = import ../../network/tailscale.nix {upFlags = ["--exit-node-allow-lan-access"];};
   server = [
     "${inputs.nix-private.outPath}/containers/arr"
     # TODO: debug why this is an issue
@@ -15,6 +16,7 @@ in {
     [
       boot
       disk
+      networking
       profile
     ]
     ++ server;
