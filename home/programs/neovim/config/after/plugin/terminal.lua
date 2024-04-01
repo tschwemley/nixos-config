@@ -8,6 +8,8 @@ require('toggleterm').setup({
 require('which-key').register({
    t = {
       name = 'Terminal',
+      V = { '<cmd>ToggleTermSendVisualSelection<cr>', 'Send Selection to Terminal' },
+      c = { '<cmd>ToggleTermSendCurrentLine<cr>', 'Floating Terminal' },
       f = { '<cmd>ToggleTerm direction=float<cr>', 'Floating Terminal' },
       h = { '<cmd>ToggleTerm direction=horizontal<cr> size=10', 'Horizontal Terminal' },
       n = { '<cmd>TermExec direction=horizontal name="nix-repl" cmd="nix repl" <cr>', 'Nix REPL' },

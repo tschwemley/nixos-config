@@ -1,6 +1,6 @@
 ip addr add 127.0.0.1/24 dev ens3
 ip route add default via 127.0.0.1 dev ens3
-echo "nameserver 1.1.1.1" > /etc/resolv.conf
+echo "nameserver 194.242.2.2" > /etc/resolv.conf
 nix-env -iA nixos.git
 cd /storage/repos/nixos-config
 git pull
