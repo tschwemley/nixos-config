@@ -7,6 +7,7 @@
     "${inputs.nix-private.outPath}/containers/arr"
     # TODO: debug why this is an issue
     "${inputs.nix-private.outPath}/containers/p2p"
+    ../../network/mullvad.nix # TODO: probably should be somewhere other than "server"
     ../../services/seaweedfs/filer.nix
     ../../services/seaweedfs/volume.nix
   ];
