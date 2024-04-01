@@ -3,7 +3,6 @@
   # disk = (import ../../hardware/disks).buyvmWithStorage;
   disk = (import ../../hardware/disks).buyvm;
   profile = import ../../profiles/buyvm.nix;
-  networking = import ../../network/tailscale.nix {upFlags = ["--exit-node-allow-lan-access"];};
   server = [
     "${inputs.nix-private.outPath}/containers/arr"
     # TODO: debug why this is an issue
@@ -16,7 +15,6 @@ in {
     [
       boot
       disk
-      networking
       profile
     ]
     ++ server;
@@ -33,4 +31,8 @@ in {
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
   system.stateVersion = "23.05";
+  tailscaleUpFlags = [
+    "--exit-node=de-fra-wg-304.mullvad.ts.net"
+    "--exit-node-allow-lan-access"
+  ];
 }
