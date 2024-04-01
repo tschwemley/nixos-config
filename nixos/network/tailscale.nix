@@ -1,11 +1,9 @@
 {
-  networking.firewall = {
-    trustedInterfaces = ["tailscale0"];
-    # checkReversePath = "loose"; # set to connect to exit nodes
-  };
+  networking.firewall.trustedInterfaces = ["tailscale0"];
 
   services.tailscale = {
     enable = true;
     openFirewall = true;
+    useRoutingFeatures = "both"; # sets reverse path 'loose' + ip forwarding
   };
 }
