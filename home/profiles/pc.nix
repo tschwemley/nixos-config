@@ -15,6 +15,7 @@ in {
     ../programs/cardinal.nix
     ../programs/firefox.nix
     ../programs/glow.nix
+    ../programs/mullvad-browser.nix
     ../programs/ollama.nix
     ../programs/rofi.nix
     ../programs/slack.nix
