@@ -25,7 +25,7 @@ in {
     {
       destination = "10.10.80.4:8080";
       proto = "tcp";
-      sourcePort = "8180";
+      sourcePort = 8180;
     }
   ];
 
