@@ -41,7 +41,8 @@
 
           [Network]
           Address=${config.sops.placeholder.publicIP}/24
-          DNS=194.242.2.2
+          #DNS=194.242.2.2
+          DNS=1.1.1.1 1.0.0.1
 
           [Route]
           Destination=0.0.0.0/0
