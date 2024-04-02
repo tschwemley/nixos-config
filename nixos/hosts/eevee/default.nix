@@ -21,6 +21,14 @@ in {
 
   networking.hostName = "eevee";
 
+  networking.nat.forwardPorts = [
+    {
+      destination = "10.10.80.4:8080";
+      proto = "tcp";
+      sourcePort = "8180";
+    }
+  ];
+
   # TODO: change this on all servers
   services.getty.autologinUser = "root";
 
