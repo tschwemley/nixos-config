@@ -59,7 +59,10 @@ in {
     stateVersion = "23.05";
   };
 
-  tailscaleUpFlags = ["--shields-up"];
+  tailscaleUpFlags = [
+    "--exit-node=100.84.59.97"
+    "--shields-up"
+  ];
   time.timeZone = "America/Detroit";
 
   users.mutableUsers = true; # allow mutable users on non-servers
