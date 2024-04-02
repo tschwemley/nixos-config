@@ -1,7 +1,8 @@
 {config, ...}: {
   networking.nat = {
     enable = true;
-    internalInterfaces = ["ve-+" "veth0" "podman0"];
+    # internalInterfaces = ["ve-+" "veth0" "podman0"];
+    internalInterfaces = ["ve-+"];
     externalInterface =
       if (config ? ethDev)
       then config.ethDev
