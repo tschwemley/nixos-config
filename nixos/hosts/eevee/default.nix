@@ -32,7 +32,7 @@ in {
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
   system.stateVersion = "23.05";
   tailscaleUpFlags = [
-    # "--accept-routes"
+    "--accept-routes"
     "--exit-node=de-fra-wg-304.mullvad.ts.net"
     "--exit-node-allow-lan-access=true"
   ];
