@@ -42,6 +42,7 @@ in {
   system.stateVersion = "23.05";
   tailscaleUpFlags = [
     # "--accept-routes"
+    "--advertise-routes=10.10.0.0/24"
     "--exit-node=de-fra-wg-304.mullvad.ts.net"
     # "--exit-node-allow-lan-access=true"
   ];
