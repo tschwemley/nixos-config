@@ -10,7 +10,6 @@
     ../programs/steam.nix
     ../programs/wine.nix
     ../programs/xdg.nix
-    ../network/mullvad.nix
     ../services/dbus.nix
     ../services/gnome.nix
     ../services/ollama.nix
