@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-staging.url = "github:nixos/nixpkgs/staging-next";
     # nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     flake-parts = {
@@ -46,7 +47,7 @@
     };
 
     nix-private = {
-      url = "git+ssh://git@github.com/tschwemley/nix-private.git";
+      url = "git+ssh://git@github.com/tschwemley/nix-private.git?ref=extra-container";
       inputs = {
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";

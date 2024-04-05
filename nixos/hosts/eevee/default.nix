@@ -4,9 +4,9 @@
   disk = (import ../../hardware/disks).buyvm;
   profile = import ../../profiles/buyvm.nix;
   server = [
-    "${inputs.nix-private.outPath}/containers/arr"
-    # TODO: debug why this is an issue
-    "${inputs.nix-private.outPath}/containers/p2p"
+    # "${inputs.nix-private.outPath}/containers/arr"
+    # "${inputs.nix-private.outPath}/containers/p2p"
+    "${inputs.nix-private.outPath}/containers/arr/virtualhost.nix"
     ../../services/seaweedfs/filer.nix
     ../../services/seaweedfs/volume.nix
   ];
@@ -33,9 +33,9 @@ in {
   system.stateVersion = "23.05";
   tailscaleUpFlags = [
     # "--accept-routes"
-    "--advertise-routes=10.10.0.0/16"
+    # "--advertise-routes=10.10.0.0/16"
     # "--exit-node=de-fra-wg-304.mullvad.ts.net"
     "--exit-node=100.76.46.81"
-    "--exit-node-allow-lan-access=true"
+    # "--exit-node-allow-lan-access=true"
   ];
 }
