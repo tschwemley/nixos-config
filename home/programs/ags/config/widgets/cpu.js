@@ -13,6 +13,13 @@ const variables = {
 
 const { cpu } = variables;
 
-const cpuWidget = Helpers.IconText('cpu', cpu.bind().as(v => `${v}%`), Colors.green);
+// const cpuWidget = Helpers.IconText('cpu', cpu.bind().as(v => `${v}%`), Colors.green);
+const cpuWidget = Widget.Box({
+	children: [
+		Widget.Label({ css: `color: ${Colors.green}; font-weight: bold; margin-right: 5px;`, label: 'C:' }),
+		Widget.Label({ label: cpu.bind().as(v => `${v}%`) }),
+	],
+	css: 'margin-right: 15px',
+})
 
 export default cpuWidget;

@@ -14,6 +14,13 @@ const variables = {
 
 const { memory } = variables;
 
-const memoryWidget = Helpers.IconText('memory', memory.bind().as(v => `${v}%`), Colors.orange);
+// const memoryWidget = Helpers.IconText('memory', memory.bind().as(v => `${v}%`), Colors.orange);
+const memoryWidget = Widget.Box({
+	children: [
+		Widget.Label({ css: `color: ${Colors.orange}; font-weight: bold; margin-right: 5px;`, label: 'M:' }),
+		Widget.Label({ label: memory.bind().as(v => `${v}%`) }),
+	],
+	css: 'margin-right: 15px',
+})
 
 export default memoryWidget;

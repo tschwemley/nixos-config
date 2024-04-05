@@ -20,27 +20,27 @@
   home.packages = with pkgs; [
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
 
-    # clipman
-    hyprpicker #color picker
+    clipman
+    hyprpicker
   ];
 
   # make stuff work on wayland
   wayland.windowManager.hyprland = {
     enable = true;
 
-    # extraConfig = ''
-    #
-    #   # plugin {
-    #   #   split-monitor-workspaces {
-    #   #       count = 5
-    #   #   }
-    #   # }
-    #
-    #   # unscale XWayland
-    #   # xwayland {
-    #   #   force_zero_scaling = true
-    #   # }
-    # '';
+    extraConfig = ''
+
+      # plugin {
+      #   split-monitor-workspaces {
+      #       count = 5
+      #   }
+      # }
+
+      # unscale XWayland (this prevents lag in wezterm)
+      xwayland {
+        force_zero_scaling = true
+      }
+    '';
 
     plugins = [
       # split-monitor-workspaces
