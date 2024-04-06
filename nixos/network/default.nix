@@ -1,5 +1,5 @@
 {
-  # networking.nftables.enable = true;
+  networking.nftables.enable = true;
 
   # always use systemd-resolved
   services.resolved.enable = true;
