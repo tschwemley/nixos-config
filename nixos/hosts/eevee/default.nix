@@ -37,6 +37,5 @@ in {
     # "--exit-node=de-fra-wg-304.mullvad.ts.net"
     "--exit-node=100.76.46.81"
     "--exit-node-allow-lan-access=true"
-    "--snat-subnet-routes=false"
   ];
 }
