@@ -23,5 +23,7 @@
     };
 
     sops.secrets.tailscale_auth_key = {};
+
+    systemd.services.tailscaled-autoconnect.after = lib.mkDefault ["systemd-networkd" "tailscaled.service"];
   };
 }
