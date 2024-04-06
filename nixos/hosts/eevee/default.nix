@@ -31,11 +31,11 @@ in {
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
   system.stateVersion = "23.05";
-  # tailscaleUpFlags = [
-  #   # "--accept-routes"
-  #   "--advertise-routes=10.10.0.0/16"
-  #   # "--exit-node=de-fra-wg-304.mullvad.ts.net"
-  #   "--exit-node=100.76.46.81"
-  #   "--exit-node-allow-lan-access=true"
-  # ];
+  tailscaleUpFlags = [
+    # "--accept-routes"
+    # "--advertise-routes=10.10.0.0/16"
+    # "--exit-node=de-fra-wg-304.mullvad.ts.net"
+    "--exit-node=100.76.46.81"
+    # "--exit-node-allow-lan-access=true"
+  ];
 }
