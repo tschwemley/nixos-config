@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.tailscaleUpFlags = with lib;
@@ -11,6 +12,7 @@
     };
 
   config = {
+    environment.systemPackages = with pkgs; [ethtool];
     networking.firewall.trustedInterfaces = ["tailscale0"];
 
     services.tailscale = {
