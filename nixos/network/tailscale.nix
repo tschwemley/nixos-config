@@ -15,9 +15,9 @@
 
     services.tailscale = {
       enable = true;
-      authKeyFile = config.sops.secrets.tailscale_auth_key.path;
+      # authKeyFile = config.sops.secrets.tailscale_auth_key.path;
       openFirewall = true;
-      extraUpFlags = ["--ssh"] ++ config.tailscaleUpFlags;
+      # extraUpFlags = ["--ssh"] ++ config.tailscaleUpFlags;
       useRoutingFeatures = "both"; # sets reverse path 'loose' + ip forwarding
     };
 
