@@ -36,5 +36,6 @@ in {
     "--advertise-routes=10.10.80.0/24"
     "--exit-node=100.76.46.81"
     "--exit-node-allow-lan-access=true"
+    "--snat-subnet-routes=false"
   ];
 }
