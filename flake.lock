@@ -425,11 +425,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712467146,
-        "narHash": "sha256-YhVoOSTjwmK0f333y6wY8In3KKDmaVa2Km4dkiPH08A=",
+        "lastModified": 1712469237,
+        "narHash": "sha256-CbEk6+QC95Px80BmMOBK996kFCRrCQknrbZcCYqxfbU=",
         "ref": "refs/heads/main",
-        "rev": "add65c937d964574ae2b500b9e694203f7cbceef",
-        "revCount": 190,
+        "rev": "0c13c33f2b03f9d7068350cee54543808488fff3",
+        "revCount": 191,
         "type": "git",
         "url": "ssh://git@github.com/tschwemley/nix-private.git"
       },
