@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./modules
   ];
@@ -6,10 +10,11 @@
   programs.neovim = {
     enable = true;
     defaultEditor = lib.mkDefault true;
-    withPython3 = true;
-    withNodeJs = true;
+    extraLuaPackages = [pkgs.lua51Packages.lua-utils-nvim];
     vimAlias = true;
     vimdiffAlias = true;
+    withPython3 = true;
+    withNodeJs = true;
   };
 
   # link neovim config to $HOME/.config/nvim
