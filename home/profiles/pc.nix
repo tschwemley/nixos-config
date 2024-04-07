@@ -25,7 +25,7 @@ in {
     ../programs/vlc.nix
     ../programs/wayland
     ../programs/wcalc.nix
-    ../programs/turbovnc.nix
+    ../programs/tigervnc.nix
     ../programs/zoom.nix
     ../services/kdeconnect.nix
     # ../services/spotifyd.nix
