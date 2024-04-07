@@ -8,6 +8,7 @@
     domains = ["~."];
     fallbackDns = ["194.242.2.2"];
   };
+
   services.openssh = {
     enable = true;
     settings = {
