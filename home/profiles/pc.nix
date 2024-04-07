@@ -9,14 +9,12 @@ in {
     ./.
     # ../programs/aseprite.nix
     ../programs/ags
+    ../programs/ai
     ../programs/bambu-studio.nix
-    ../programs/brave.nix
+    ../programs/browsers
     ../programs/cad.nix
     ../programs/cardinal.nix
-    ../programs/firefox.nix
     ../programs/glow.nix
-    ../programs/mullvad-browser.nix
-    ../programs/ollama.nix
     ../programs/rofi.nix
     ../programs/slack.nix
     ../programs/spotify.nix
