@@ -4,9 +4,8 @@
   disk = (import ../../hardware/disks).buyvm;
   profile = import ../../profiles/buyvm.nix;
   server = [
-    # "${inputs.nix-private.outPath}/containers/arr"
+    "${inputs.nix-private.outPath}/containers/arr"
     "${inputs.nix-private.outPath}/containers/p2p"
-    # "${inputs.nix-private.outPath}/containers/arr/virtualhost.nix"
     ../../services/seaweedfs/filer.nix
     ../../services/seaweedfs/volume.nix
   ];
@@ -32,8 +31,8 @@ in {
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
   system.stateVersion = "23.05";
   tailscaleUpFlags = [
-    "--accept-routes"
-    "--advertise-routes=10.10.80.0/24"
+    # "--accept-routes"
+    # "--advertise-routes=10.10.80.0/24"
     "--exit-node=100.76.46.81"
     "--exit-node-allow-lan-access=true"
     # "--snat-subnet-routes=false"
