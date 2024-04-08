@@ -6,6 +6,7 @@
   server = [
     "${inputs.nix-private.outPath}/containers/arr"
     "${inputs.nix-private.outPath}/containers/p2p"
+    ../../containers/searxng
     ../../services/seaweedfs/filer.nix
     ../../services/seaweedfs/volume.nix
   ];
