@@ -6,7 +6,7 @@
     enable = true;
     dnsovertls = "opportunistic";
     domains = ["~."];
-    fallbackDns = ["194.242.2.2"];
+    fallbackDns = ["194.242.2.2" "2a07:e340::2"];
   };
 
   services.openssh = {
