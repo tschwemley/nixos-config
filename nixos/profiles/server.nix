@@ -7,7 +7,7 @@
     ./.
     ../network/containers.nix
     ../network/systemd-networkd.nix
-    # ../network/tailscale.nix
+    ../network/tailscale.nix
     ../server/monitoring/prometheus/node-exporter.nix
     ../server/nginx
     ../server/static
