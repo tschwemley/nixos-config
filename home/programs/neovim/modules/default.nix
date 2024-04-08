@@ -9,7 +9,7 @@
     ./languages.nix
     ./lsp.nix
     ./navigation.nix
-    ./notes.nix
+    # ./notes.nix
     ./treesitter.nix
     ./utils.nix
   ];

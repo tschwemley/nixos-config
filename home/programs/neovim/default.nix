@@ -10,7 +10,7 @@
   programs.neovim = {
     enable = true;
     defaultEditor = lib.mkDefault true;
-    extraLuaPackages = [pkgs.lua51Packages.lua-utils-nvim];
+    extraLuaPackages = ps: with ps; [lua-utils-nvim];
     vimAlias = true;
     vimdiffAlias = true;
     withPython3 = true;
