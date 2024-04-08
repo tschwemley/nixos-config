@@ -12,9 +12,11 @@
         done
       '';
     };
+
+  sonic-pi = import ./sonic-pi.nix {inherit jackWrap pkgs;};
 in {
   imports = [
     ./cardinal.nix
-    (./sonic-pi.nix {inherit jackWrap pkgs;})
+    sonic-pi
   ];
 }
