@@ -1,9 +1,9 @@
 {pkgs, ...}: {
-  programs.neovim = {
-    plugins = with pkgs.vimPlugins; [
-      neorg
-      # neorg-telescope
-      venn-nvim
-    ];
-  };
+  # programs.neovim = {
+  # plugins = with pkgs.vimPlugins; [
+  #   neorg
+  #   # neorg-telescope
+  #   venn-nvim
+  # ];
+  # };
 }
