@@ -17,6 +17,6 @@
 in {
   imports = [
     ./cardinal.nix
-    sonic-pi
+    # sonic-pi
   ];
 }

@@ -1,8 +1,10 @@
 {config, ...}: {
   networking = {
+    firewall.trustedInterfaces = ["veth0" "ve-*"];
+
     nat = {
       enable = true;
-      internalInterfaces = ["ve-*"];
+      internalInterfaces = ["ve-*" "ve-+"];
       externalInterface =
         if (config ? ethDev)
         then config.ethDev
