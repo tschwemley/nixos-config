@@ -17,7 +17,7 @@
       };
 
       "/sign-in" = {
-        proxyPass = "https://articuno:4180/oauth2/start?rd=https%3A%2F%jellyfin.schwem.io&allowed_groups=role:admin";
+        proxyPass = "http://articuno:4180/oauth2/start?rd=https%3A%2F%jellyfin.schwem.io&allowed_groups=role:admin";
       };
     };
   };
