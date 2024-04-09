@@ -6,7 +6,7 @@
         extraConfig = ''
           auth_request /auth;
           # error_page 401 403 =307 https://auth.schwem.io/oauth2/start?rd=https%3A%2F%2Fjellyfin.schwem.io&allowed_groups=role:admin;
-          error_page 401 403 /sign-in;
+          error_page 401 =403 /sign-in;
 
           # include ${config.sops.templates.nginx_allow_secure.path};
         '';
