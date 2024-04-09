@@ -10,11 +10,11 @@ in {
     # ../programs/aseprite.nix
     ../programs/ags
     ../programs/ai
-    ../programs/audio
     ../programs/bambu-studio.nix
     ../programs/browsers
     ../programs/cad.nix
     ../programs/glow.nix
+    ../programs/music
     ../programs/rofi.nix
     ../programs/slack.nix
     ../programs/spotify.nix
