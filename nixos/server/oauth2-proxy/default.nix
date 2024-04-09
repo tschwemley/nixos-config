@@ -4,6 +4,8 @@
     ./virtualhost.nix
   ];
 
+  networking.firewall.allowedTCPPorts = [4180];
+
   services.oauth2_proxy = {
     enable = true;
     clientID = "oauth2-proxy";

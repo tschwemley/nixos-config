@@ -14,7 +14,7 @@
       "/auth" = {
         # proxyPass = "http://articuno:4180/oauth2/auth?allowed_groups=role:admin";
         proxyPass = "https://auth.schwem.io/oauth2/auth?allowed_groups=role:admin";
-        extraConfig = "internal;";
+        # extraConfig = "internal;";
       };
 
       "/sign-in" = {
