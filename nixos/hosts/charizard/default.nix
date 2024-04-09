@@ -60,7 +60,6 @@ in {
   };
 
   tailscaleUpFlags = [
-    "--advertise-routes=192.168.1.0/24"
     "--exit-node=100.84.59.97"
     "--exit-node-allow-lan-access=true"
     "--shields-up"
