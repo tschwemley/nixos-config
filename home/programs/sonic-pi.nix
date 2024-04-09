@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    pipewire
     sonic-pi
     supercollider
   ];

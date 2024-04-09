@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   pkgs,
   ...
 }: {
@@ -10,33 +11,22 @@
     ./scarlett8i6.nix
   ];
 
-  musnix = {
-    enable = true;
-  };
-
   environment.systemPackages = with pkgs; [
     pavucontrol
-    qpwgraph
+    pamixer
+    pipewire.jack
   ];
 
-  # TODO: move this to own file when testing completed
-  # Enable sound with pipewire.
-  sound.enable = false;
+  hardware.pulseaudio.enable = lib.mkForce false;
+
+  musnix.enable = true;
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
     jack.enable = true;
   };
-
-  # services.jack = {
-  #   jackd.enable = true;
-  #   alsa.enable = false;
-  #   loopback = {
-  #     enable = true;
-  #   };
-  # };
 }
