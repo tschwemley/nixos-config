@@ -32,7 +32,7 @@ in {
   system.stateVersion = "23.05";
   tailscaleUpFlags = [
     # "--accept-routes"
-    # "--advertise-routes=10.10.80.0/24"
+    "--advertise-routes=10.250.0.0/24"
     "--exit-node=100.76.46.81"
     "--exit-node-allow-lan-access=true"
     # "--snat-subnet-routes=false"
