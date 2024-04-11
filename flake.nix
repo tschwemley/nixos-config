@@ -47,7 +47,6 @@
     };
 
     nix-private = {
-      # url = "git+ssh://git@github.com/tschwemley/nix-private.git?ref=extra-container";
       url = "git+ssh://git@github.com/tschwemley/nix-private.git";
       inputs = {
         flake-parts.follows = "flake-parts";
