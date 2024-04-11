@@ -21,6 +21,11 @@ in {
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1;
     "net.ipv6.all.forwarding" = 1;
+
+"net.ipv6.conf.all.accept_ra" = 0;
+  "net.ipv6.conf.all.autoconf" = 0;
+  "net.ipv6.conf.all.use_tempaddr" = 0;
+
     # On WAN, allow IPv6 autoconfiguration and tempory address use.
     "net.ipv6.conf.ens3.accept_ra" = 2;
     "net.ipv6.conf.ens3.autoconf" = 1;
