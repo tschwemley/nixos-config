@@ -4,7 +4,8 @@
 
     nat = {
       enable = true;
-      internalInterfaces = ["ve-*" "ve-+"];
+      # internalInterfaces = ["ve-*" "ve-+"];
+      internalInterfaces = ["ve-+"];
       externalInterface =
         if (config ? ethDev)
         then config.ethDev
@@ -13,6 +14,7 @@
       enableIPv6 = true;
     };
 
-    networkmanager.unmanaged = ["interface-name:ve-*"];
+    # networkmanager.unmanaged = ["interface-name:ve-*"];
+    networkmanager.unmanaged = ["interface-name:ve-+"];
   };
 }
