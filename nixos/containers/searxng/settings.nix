@@ -27,6 +27,8 @@
             secret_key: ${config.sops.placeholder.server_secret_key}
         ui:
             default_theme: simple
+            theme_args:
+              simple_style: dark
             infinite_scroll: true
       '';
   };
