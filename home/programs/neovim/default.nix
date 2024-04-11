@@ -11,7 +11,7 @@
     enable = true;
     defaultEditor = lib.mkDefault true;
     # extraLuaPackages = ps: with ps; [lua-utils-nvim];
-    plugins = import ./plugins pkgs.vimPlugins;
+    plugins = import ./plugins pkgs;
     vimAlias = true;
     vimdiffAlias = true;
     withPython3 = true;
@@ -19,7 +19,7 @@
   };
 
   # link neovim config to $HOME/.config/nvim
-  xdg.configFile = {
-    "nvim".source = ./config;
-  };
+  # xdg.configFile = {
+  #   "nvim".source = ./config;
+  # };
 }
