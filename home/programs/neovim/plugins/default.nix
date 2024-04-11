@@ -1,5 +1,10 @@
-pkgs: let
-  importPlugin = path: (import ./${path} pkgs);
-in [
-  (importPlugin "gruvbox-material.nix")
-]
+{pkgs, ...}: let
+	extraPackages = [];
+	plugins = (import ./colorscheme pkgs)
+		++ (import ./lsp pkgs)
+		++ (import ./treesitter pkgs); 
+in {
+	programs.neovim = {
+		inherit plugins;
+	};
+}

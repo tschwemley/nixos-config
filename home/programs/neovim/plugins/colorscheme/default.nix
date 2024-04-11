@@ -1,3 +1,5 @@
-pkgs: [
-  (import ./gruvbox-material.nix pkgs)
-]
+{pkgs, ...}: {
+	plugins = [
+		(import ./gruvbox-material.nix pkgs)
+	];
+}
