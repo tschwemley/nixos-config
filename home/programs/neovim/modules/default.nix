@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./colors.nix
     ./completion.nix
     ./db.nix
     ./debugging.nix
