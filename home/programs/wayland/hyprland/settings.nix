@@ -11,7 +11,8 @@
     ];
 
     general = {
-      layout = "master";
+      # layout = "master";
+      layout = "dwindle";
     };
 
     master = {
