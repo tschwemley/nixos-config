@@ -17,7 +17,6 @@ in {
     ../programs/music
     ../programs/rofi.nix
     ../programs/slack.nix
-    # TODO: wait for upstream fix or write overlay
     ../programs/taskwarrior.nix
     ../programs/vlc.nix
     ../programs/wayland
@@ -25,6 +24,7 @@ in {
     ../programs/tigervnc.nix
     ../programs/zoom.nix
     ../services/kdeconnect.nix
+    ../terminal/kitty
     # ../services/spotifyd.nix
   ];
 
