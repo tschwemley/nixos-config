@@ -199,11 +199,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1713561395,
-        "narHash": "sha256-jZSX8By3Ztd3ZShAIYYbKp0Z+ThIjZ+TfAxYdIiSKIc=",
+        "lastModified": 1713568129,
+        "narHash": "sha256-0PkS5bBIDPaQvbtbIz51uJdduH9QymqGYUuFbxBIp+Y=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "b52a49b4c4c344784b3085cb93d3882d3ce9b4bb",
+        "rev": "1ebc32f5f4b04c913fb6301b886e016afec4c20e",
         "type": "github"
       },
       "original": {
@@ -387,11 +387,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1713567972,
-        "narHash": "sha256-TXBOJBiv2jOKCuAiLOuQnIWzhTpKU3Yrn690y49/W3o=",
+        "lastModified": 1713568129,
+        "narHash": "sha256-EADD5Da0I0voHujnhr6Zfdnyc3f4EXF5kqzTIMxfnOg=",
         "ref": "refs/heads/main",
-        "rev": "bdc840e545b4f051bb2dd2e4bbcac55d42e8f184",
-        "revCount": 234,
+        "rev": "961e6ace726ad243862dfdd3e07dcae738507ba3",
+        "revCount": 235,
         "type": "git",
         "url": "ssh://git@github.com/tschwemley/nix-private.git"
       },
