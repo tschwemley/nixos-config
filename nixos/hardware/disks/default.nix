@@ -16,7 +16,7 @@ in rec {
   buyvmWithStorage = {
     imports = [
       buyvm
-      (storage "/dev/sda1")
+      (storage "/dev/sda")
     ];
   };
   charizard = {
