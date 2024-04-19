@@ -1,8 +1,3 @@
-vim.g.mapleader = " ";
-vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true })
-vim.api.nvim_set_keymap('c', 'jk', '<Esc>', { noremap = true })
-vim.api.nvim_set_keymap('v', 'jk', '<Esc>', { noremap = true })
-
 vim.o.grepprg = 'rg --vimgrep';
 vim.o.grepformat = '%f:%l:%m';
 
