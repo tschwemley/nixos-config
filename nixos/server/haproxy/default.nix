@@ -57,7 +57,7 @@ in {
         acl domain_p2p hdr(host) -i nzb.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
         acl domain_stash hdr(host) -i stash.schwem.io
-        acl domain_yt hdr(host) -i yt.schwem.io
+        # acl domain_yt hdr(host) -i yt.schwem.io
 
         use_backend auth if domain_auth
         use_backend arr if domain_arr
@@ -69,7 +69,7 @@ in {
         use_backend reddit if domain_reddit
         use_backend searxng if domain_search
         use_backend stash if domain_stash
-        use_backend yt if domain_yt
+        # use_backend yt if domain_yt
 
         default_backend static
 
