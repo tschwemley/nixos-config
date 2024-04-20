@@ -6,10 +6,12 @@ local function minifyJSON()
    vim.cmd("%!jq -r tostring");
 end
 
-require('which-key').register({
-   J = {
-      name = 'JSON',
-      p = { prettifyJSON, 'Prettify' },
-      m = { minifyJSON, 'Minify' },
-   },
-}, { prefix = '<leader>' })
+local function toggleFormat()
+   if vim.api.nvim_buf_line_count(0) == 1 then
+      prettifyJSON()
+   else
+      minifyJSON()
+   end
+end
+
+vim.keymap.set('n', '<leader>lf', toggleFormat, { buffer = true })
