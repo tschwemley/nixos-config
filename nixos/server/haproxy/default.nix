@@ -49,6 +49,7 @@ in {
         acl domain_auth hdr(host) -i auth.schwem.io
         acl domain_arr hdr(host) -i arr.schwem.io
         acl domain_db hdr(host) -i db.schwem.io
+        acl domain_draw hdr(host) -i draw.schwem.io
         acl domain_files hdr(host) -i files.schwem.io
         acl domain_jellyfin hdr(host) -i jellyfin.schwem.io
         acl domain_monitor hdr(host) -i monitor.schwem.io
@@ -62,6 +63,7 @@ in {
         use_backend auth if domain_auth
         use_backend arr if domain_arr
         use_backend cockroach_web if domain_db
+        use_backend draw if domain_draw
         use_backend files if domain_files
         use_backend jellyfin if domain_jellyfin
         use_backend p2p if domain_p2p
@@ -87,6 +89,10 @@ in {
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
         server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
         server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
+
+      backend draw
+        http-request set-header X-Forwarded-Proto https
+        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
       backend files
         http-request set-header X-Forwarded-Proto https
