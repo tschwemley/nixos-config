@@ -1,8 +1,9 @@
-let
+{inputs, ...}: let
   boot = (import ../../system/boot.nix).systemd;
   disk = (import ../../hardware/disks).proxmox;
   profile = import ../../profiles/proxmox.nix;
   server = [
+    "${inputs.nix-private.outPath}/containers/excalidraw"
     ../../containers/redlib
     ../../services/seaweedfs/volume.nix
     ../../server/cockroachdb
