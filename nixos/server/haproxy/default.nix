@@ -92,7 +92,7 @@ in {
 
       backend draw
         http-request set-header X-Forwarded-Proto https
-        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
+        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
 
       backend files
         http-request set-header X-Forwarded-Proto https
