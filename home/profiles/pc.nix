@@ -24,7 +24,6 @@ in {
     ../programs/tigervnc.nix
     ../programs/zoom.nix
     ../services/kdeconnect.nix
-    ../terminal/kitty
     # ../services/spotifyd.nix
   ];
 
