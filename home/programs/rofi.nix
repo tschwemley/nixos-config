@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   programs.rofi = {
     enable = true;
-    terminal = "${pkgs.wezterm}/bin/wezterm";
+    package = pkgs.rofi-wayland;
+    terminal = "${pkgs.kitty}/bin/kitty";
     theme = "gruvbox-dark";
   };
 }

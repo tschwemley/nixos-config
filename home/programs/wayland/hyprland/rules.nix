@@ -1,5 +1,4 @@
 let
-  rofiRules = ["stayfocused, title:^(rofi).*$"];
   steamRules = [
     "float, title:^(Steam)$"
     "float, title:^(Friends List)$"
@@ -10,6 +9,6 @@ let
 in {
   wayland.windowManager.hyprland.settings = {
     layerrule = [];
-    windowrulev2 = rofiRules ++ steamRules;
+    windowrulev2 = steamRules;
   };
 }
