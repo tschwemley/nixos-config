@@ -20,7 +20,6 @@
       authKeyFile = config.sops.secrets.tailscale_auth_key.path;
       openFirewall = true;
       extraUpFlags = ["--ssh"] ++ config.tailscaleUpFlags;
-      # extraUpFlags = ["--ssh"];
       useRoutingFeatures = "both"; # sets reverse path 'loose' + ip forwarding
     };
 
