@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-staging.url = "github:nixos/nixpkgs/staging-next";
     # nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     flake-parts = {
@@ -26,19 +25,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
     };
 
     musnix = {
@@ -54,11 +43,6 @@
       };
     };
 
-    # neovim = {
-    #   url = "~/projects/nix/neovim-config";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs = {
@@ -73,13 +57,6 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # TODO: evaluate these later
-    # impermanence.url = "github:nix-community/impermanence/master";
-    # split-monitor-workspaces = {
-    #   url = "github:Duckonaut/split-monitor-workspaces";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
   };
 
   outputs = inputs @ {

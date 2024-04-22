@@ -8,7 +8,7 @@
   home.packages = with pkgs; [
     cliphist
     grim
-    slurp
+    # slurp
 
     # utils
     # TODO: this looks kind of interesting... check to see if this is worth looking into copying
