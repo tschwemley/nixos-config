@@ -2,6 +2,7 @@
   imports = [
     ./colors
     ./completion
+    ./db
     ./debug
     ./diagnostics
     ./filetypes
