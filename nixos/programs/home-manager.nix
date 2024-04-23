@@ -4,7 +4,6 @@
     extraSpecialArgs = {
       inherit inputs;
     };
-    sharedModules = [inputs.sops.homeManagerModule];
     useGlobalPkgs = true;
   };
 }

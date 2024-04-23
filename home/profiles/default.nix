@@ -14,9 +14,4 @@
   ];
 
   home.stateVersion = "23.05";
-
-  sops = {
-    age.keyFile = /home/${config.home.username}/.config/sops/age/keys.txt;
-    defaultSopsFile = ../secrets.yaml;
-  };
 }
