@@ -30,4 +30,9 @@ in {
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
   system.stateVersion = "23.05";
+
+  tailscaleUpFlags = [
+    "--exit-node=100.76.46.81"
+    "--exit-node-allow-lan-access=true"
+  ];
 }
