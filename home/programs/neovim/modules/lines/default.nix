@@ -1,4 +1,4 @@
-{pkgs, ...}: let 
+{pkgs, ...}: let
   # NOTE: this wont be necessary once nixpkgs get an updated version of the bufferline-nvim plugin
   # (at least version 04-21-2024 [a6ad228f77c276a4324924a6899cbfad70541547])
   bufferline-nvim = pkgs.vimUtils.buildVimPlugin {
