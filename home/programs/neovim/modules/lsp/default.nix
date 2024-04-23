@@ -4,7 +4,9 @@
       gopls
       lua-language-server
       nixd
+      nodePackages.bash-language-server
       nodePackages.intelephense
+      sqls
     ];
 
     formatting = with pkgs; [

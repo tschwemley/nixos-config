@@ -10,7 +10,7 @@ local capabilities = vim.tbl_deep_extend(
    vim.lsp.protocol.make_client_capabilities(),
    cmp_lsp.default_capabilities())
 
-local servers = { 'gopls', 'intelephense', 'lua_ls', 'nixd', 'tsserver' }
+local servers = { 'bashls', 'gopls', 'intelephense', 'lua_ls', 'nixd', 'sqls', 'tsserver' }
 for _, lsp in ipairs(servers) do
    lspconfig[lsp].setup {
       capabilities = capabilities, -- this adds nvim-cmp capabilities to each lsp server in list
@@ -28,7 +28,3 @@ lspconfig.lua_ls.setup {
       }
    }
 }
-
----------------------------------------------------------------------------------------------------
---- Completion
----------------------------------------------------------------------------------------------------
