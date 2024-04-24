@@ -121,9 +121,9 @@ in {
 
       backend searxng
         http-request set-header X-Forwarded-Proto https
-        balance roundrobin
+        # balance roundrobin
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
-        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
+        # server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
       backend stash
         http-request set-header X-Forwarded-Proto https
