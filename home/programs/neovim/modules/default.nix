@@ -9,7 +9,7 @@
     ./lines
     ./lsp
     ./telescope
-    # ./terminal
+    ./terminal
     ./treesitter
     ./schwem
     ./utils
