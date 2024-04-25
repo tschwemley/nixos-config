@@ -6,7 +6,6 @@
       size = 18;
     };
     keybindings = {
-      "ctrl+alt+l" = "next_layout";
       "ctrl+h" = "kitten pass_keys.py bottom ctrl+h";
       "ctrl+l" = "kitten pass_keys.py left ctrl+l";
       "ctrl+k" = "kitten pass_keys.py top ctrl+k";
