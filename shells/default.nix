@@ -9,7 +9,8 @@
       buildInputs = with pkgs; [
         age
         manix
-        nix-prefetch-scripts
+        # BUG: issue with https://github.com/jelmer/dulwich/archive/refs/tags/0.22.1.tar.gz misisng
+        # nix-prefetch-scripts
         pkgs.sops
         self'.packages.build-host
         self'.packages.build-all-hosts

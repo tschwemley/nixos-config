@@ -3,7 +3,7 @@
     lsp = with pkgs; [
       gopls
       lua-language-server
-      nixd
+      nil
       nodePackages.bash-language-server
       nodePackages.intelephense
       sqls

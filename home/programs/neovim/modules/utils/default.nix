@@ -1,11 +1,11 @@
 {pkgs, ...}: let
   harpoon = pkgs.vimUtils.buildVimPlugin {
-    name = "neogit-nightly";
+    name = "harpoon";
     src = pkgs.fetchFromGitHub {
       owner = "ThePrimeagen";
       repo = "harpoon";
       rev = "harpoon2";
-      hash = "sha256-PwSckn4Mo0uaiUN/aiH7ic7W3QVUQ52j1BdVA1CWVbs=";
+      hash = "sha256-FZQH38E02HuRPIPAog/nWM55FuBxKp8AyrEldFkoLYk=";
     };
   };
   # NOTE: this is only necessary until official 0.10 support hits neogit master
