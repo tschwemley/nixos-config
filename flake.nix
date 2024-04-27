@@ -2,8 +2,8 @@
   description = "Schwem's NixOS configuration and dotfiles";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -90,10 +90,11 @@
           # TODO: move this to overlays/ ?
           overlays = [
             inputs.neovim-nightly-overlay.overlay
-            (final: prev: {
-              # ollama = inputs'.nixpkgs-stable.legacyPackages.ollama;
-              # xz = inputs'.nixpkgs-master.legacyPackages.xz;
-            })
+            # (final: prev: {
+            # cmake = inputs'.nixpkgs-master.legacyPackages.cmake;
+            # ollama = inputs'.nixpkgs-stable.legacyPackages.ollama;
+            # xz = inputs'.nixpkgs-master.legacyPackages.xz;
+            # })
           ];
         };
 
