@@ -17,8 +17,8 @@ vim.o.cindent = true
 -- always use unix line endings by default
 -- TODO: I think this is getting mixed up occasionally but I'm too lazy to fix right now so always
 -- unix LE until I can be assed to look into this some more vim.o.fileformats=unix,dos
-vim.g.fileformats = unix, dos
-vim.g.fileformat = unix
+vim.g.fileformats = 'unix, dos'
+vim.g.fileformat = 'unix'
 
 vim.o.wrap = false
 
@@ -51,9 +51,3 @@ vim.o.timeoutlen = 300
 -- TODO: consider switching to one of the plugins or writing my own func to only show when char
 -- reaches column limit
 vim.o.colorcolumn = "100"
-
--- folds
-vim.o.foldcolumn = '0' -- '0' -> no fold numbers in signcolumn
-vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true

@@ -17,8 +17,8 @@ vim.o.cindent = true
 -- always use unix line endings by default
 -- TODO: I think this is getting mixed up occasionally but I'm too lazy to fix right now so always
 -- unix LE until I can be assed to look into this some more vim.o.fileformats=unix,dos
-vim.g.fileformats = unix, dos
-vim.g.fileformat = unix
+vim.g.fileformats = 'unix,dos'
+vim.g.fileformat = 'unix'
 
 vim.o.wrap = false
 
@@ -39,18 +39,12 @@ vim.o.termguicolors = true
 -- min number of lines to always keep above and below cursor
 vim.o.scrolloff = 8
 
-vim.o.signcolumn = "yes"
 vim.o.cmdheight = 1
-
--- having longer update degrades user experience
-vim.o.updatetime = 50
-
+vim.o.colorcolumn = "120"
+vim.o.signcolumn = "yes"
 vim.o.timeout = true
 vim.o.timeoutlen = 300
-
--- TODO: consider switching to one of the plugins or writing my own func to only show when char
--- reaches column limit
-vim.o.colorcolumn = "100"
+vim.o.updatetime = 50
 
 -- folds
 vim.o.foldcolumn = '0' -- '0' -> no fold numbers in signcolumn

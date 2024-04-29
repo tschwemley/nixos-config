@@ -1,3 +1,5 @@
+local builtin = require('telescope.builtin')
+
 vim.api.nvim_create_autocmd('LspAttach', {
    group = vim.api.nvim_create_augroup('LspGroup', {}),
    callback = function(e)
@@ -11,11 +13,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, opts)
       vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, opts)
       vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, opts)
-      -- TODO: see if I like the rn option or if I go back to the [l]sp mnemonic
-      vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
 
       vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
       vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
       -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+
+      vim.keymap.set('n', '<leader>lm', builtin.lsp_document_symbols, opts)
    end,
 })

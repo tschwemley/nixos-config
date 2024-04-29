@@ -8,6 +8,7 @@
     ./filetypes
     ./lines
     ./lsp
+    ./notes
     ./telescope
     ./terminal
     ./treesitter

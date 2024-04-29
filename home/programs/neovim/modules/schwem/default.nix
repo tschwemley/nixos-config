@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{
+  imports = [./fun.nix];
+
   xdg.configFile = {
     # don't let hm manage my init.lua
     "nvim/init.lua".source = ./init.lua;
