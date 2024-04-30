@@ -2,7 +2,7 @@
   description = "Basic Go Application Template";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 

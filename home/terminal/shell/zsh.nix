@@ -7,6 +7,10 @@ in {
     enable = true;
     autocd = true;
     autosuggestion.enable = true;
+    completionInit = ''
+      autoload -U compinit; compinit
+      #source <(glow completion zsh); compdef _glow glow
+    '';
     defaultKeymap = "emacs";
     enableCompletion = true;
     history = {

@@ -1,14 +1,18 @@
-{pkgs, ...}: let
-  extraPackages =
-    if pkgs.system == "aarch64-darwin"
+{
+  lib,
+  pkgs,
+  ...
+}: let
+  extraPackages = with pkgs;
+    if system == "aarch64-darwin"
     then []
     else
-      with pkgs; [
-        catimg
-        ffmpeg
-        ffmpegthumbnailer
-        xdragon
-      ];
+    [
+      catimg
+      ffmpeg
+      ffmpegthumbnailer
+      xdragon
+    ];
   plugins =
     if pkgs.system == "aarch64-darwin"
     then {}
@@ -17,6 +21,7 @@
       mappings = {
         d = "dragdrop";
         f = "finder";
+        n = "nuke";
         p = "preview-tui";
         v = "imgview";
         x = "togglex";

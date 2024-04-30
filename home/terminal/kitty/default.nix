@@ -15,6 +15,7 @@
     settings = {
       allow_remote_control = "yes";
       enable_audio_bell = false;
+      enabled_layouts = "fat:bias=67;,tall,grid";
       listen_on = "unix:@kitty";
     };
     shellIntegration.enableFishIntegration = false;

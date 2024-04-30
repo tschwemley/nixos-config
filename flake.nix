@@ -2,7 +2,6 @@
   description = "Schwem's NixOS configuration and dotfiles";
 
   inputs = {
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/master";
 
     flake-parts = {
@@ -51,7 +50,15 @@
       };
     };
 
-    nixos-hardware.url = "github:nixos/nixos-hardware/master";
+    neorg-overlay = {
+      url = "github:nvim-neorg/nixpkgs-neorg-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-hardware = {
+      url = "github:nixos/nixos-hardware/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     sops = {
       url = "github:Mic92/sops-nix";
@@ -90,6 +97,7 @@
           # TODO: move this to overlays/ ?
           overlays = [
             inputs.neovim-nightly-overlay.overlay
+            inputs.neorg-overlay.overlays.default
             # (final: prev: {
             # cmake = inputs'.nixpkgs-master.legacyPackages.cmake;
             # ollama = inputs'.nixpkgs-stable.legacyPackages.ollama;

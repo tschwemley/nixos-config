@@ -1,42 +1,42 @@
 pkgs:
 with pkgs.vimPlugins;
-  nvim-treesitter.withPlugins (p: [
-    p.astro
-    p.awk
-    p.bash
-    p.cmake
-    # p.comment
-    p.css
-    p.csv
-    p.diff
-    p.go
-    p.gomod
-    p.gosum
-    p.html
-    p.http
-    p.ini
-    p.javascript
-    p.jq
-    p.json
-    p.jsonc
-    p.lua
-    p.luadoc
-    p.make
-    p.markdown
-    p.markdown_inline
-    p.nix
-    p.norg
-    p.php
-    p.python
-    p.sql
-    p.ssh_config
-    p.toml
-    p.tsx
-    p.typescript
-    p.vimdoc
-    p.xml
-    p.yaml
-    p.zig
+  nvim-treesitter.withPlugins (parser: [
+    parser.astro
+    parser.awk
+    parser.bash
+    parser.cmake
+    # parser.comment
+    parser.css
+    parser.csv
+    parser.diff
+    parser.go
+    parser.gomod
+    parser.gosum
+    parser.html
+    parser.http
+    parser.ini
+    parser.javascript
+    parser.jq
+    parser.json
+    parser.jsonc
+    parser.lua
+    parser.luadoc
+    parser.make
+    parser.markdown
+    parser.markdown_inline
+    parser.nix
+    parser.norg
+    parser.php
+    parser.python
+    parser.sql
+    parser.ssh_config
+    parser.toml
+    parser.tsx
+    parser.typescript
+    parser.vimdoc
+    parser.xml
+    parser.yaml
+    parser.zig
   ])
 # TODO: add haxe
 
