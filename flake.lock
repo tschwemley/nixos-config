@@ -394,11 +394,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714449387,
-        "narHash": "sha256-bzgw2+fNWmSxlmGCSr+kXILKphRfAMcAbZnnE+HPB0U=",
+        "lastModified": 1714503493,
+        "narHash": "sha256-k9sxkPfCzRmoSThYHsW4jfK2FF+JOz9czhLDFzu2yuA=",
         "ref": "refs/heads/main",
-        "rev": "e3c19d16d1472efc014a1d7205f78b5cd0f70985",
-        "revCount": 291,
+        "rev": "75da536777a89be68ee5e9573479fe226252771b",
+        "revCount": 292,
         "type": "git",
         "url": "ssh://git@github.com/tschwemley/nix-private.git"
       },
@@ -409,11 +409,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1714201532,
-        "narHash": "sha256-nk0W4rH7xYdDeS7k1SqqNtBaNrcgIBYNmOVc8P2puEY=",
+        "lastModified": 1714465198,
+        "narHash": "sha256-ySkEJvS0gPz2UhXm0H3P181T8fUxvDVcoUyGn0Kc5AI=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "53db5e1070d07e750030bf65f1b9963df8f0c678",
+        "rev": "68d680c1b7c0e67a9b2144d6776583ee83664ef4",
         "type": "github"
       },
       "original": {
@@ -473,11 +473,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1714445447,
-        "narHash": "sha256-PSrrk5DkWTJs5lDTAhB3ertrFewEffXslCNU231QuCE=",
+        "lastModified": 1714502962,
+        "narHash": "sha256-wOo8KrnPt+MiwrwpkwFLYBZtB+wlCdSFuUsoOsMeCd8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3e67815f4e9c5e6719379185c2a44a3edff16c98",
+        "rev": "c8fe141f109e16144e7423be26d8ff3557c39b95",
         "type": "github"
       },
       "original": {
