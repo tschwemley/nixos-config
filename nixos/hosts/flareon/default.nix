@@ -1,4 +1,4 @@
-{inputs, ...}: let
+{inputs, lib, ...}: let
   boot = (import ../../system/boot.nix).systemd;
   disk = (import ../../hardware/disks).proxmox;
   profile = import ../../profiles/proxmox.nix;
@@ -16,6 +16,7 @@ in {
     ++ server;
 
   networking.hostName = "flareon";
+  services.resolved.dnsovertls = lib.mkDefault "true";
   sops.defaultSopsFile = ./secrets.yaml;
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
