@@ -25,4 +25,6 @@
     group = "nginx";
     owner = "nginx";
   };
+
+  users.users.nginx.extraGroups = ["users"];
 }
