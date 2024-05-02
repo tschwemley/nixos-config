@@ -1,8 +1,4 @@
 {
-  inputs,
-  config,
-  ...
-}: {
   imports = [
     ../programs/bat.nix
     ../programs/btop.nix

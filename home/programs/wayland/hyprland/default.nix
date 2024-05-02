@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # ../../../programs/ags
   # ../../../services/dunst.nix
   imports = [
@@ -13,8 +9,7 @@
   ];
 
   home.packages = with pkgs; [
-    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-
+    grimblast
     hyprpicker
   ];
 
@@ -23,10 +18,10 @@
     enable = true;
 
     extraConfig = ''
-      # unscale XWayland (this prevents lag in wezterm)
-      xwayland {
-        force_zero_scaling = true
-      }
+      # # unscale XWayland (this prevents lag in wezterm)
+      # xwayland {
+      #   force_zero_scaling = true
+      # }
     '';
 
     plugins = [];

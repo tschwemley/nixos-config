@@ -25,6 +25,7 @@ in {
     neogit-nightly
     nnn-vim
     nvim-ufo
+    vim-surround
   ];
 
   xdg.configFile."nvim/after/plugin/harpoon.lua".source = ./harpoon.lua;

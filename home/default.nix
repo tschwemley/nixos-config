@@ -19,6 +19,9 @@
       });
 in {
   flake.homeConfigurations = {
+    work = mkHome "aarch64-darwin" [
+      ./profiles/work.nix
+    ];
     wsl = mkHome "x86_64-linux" [
       ./profiles/wsl.nix
     ];
