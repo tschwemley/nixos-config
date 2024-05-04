@@ -23,6 +23,8 @@
       "$mod shift, h, movewindow, mon:1"
       "$mod shift, l, movewindow, mon:0"
       "$mod, w, killactive"
+
+      # "$mod, z, easymotion, action:hyprctl dispatch focuswindow address:{}"
     ];
 
     # mouse binds

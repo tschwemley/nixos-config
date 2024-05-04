@@ -4,6 +4,7 @@
   imports = [
     ./binds.nix
     ./hyprpaper.nix
+    ./plugins.nix
     ./rules.nix
     ./settings.nix
   ];
@@ -24,7 +25,7 @@
       # }
     '';
 
-    plugins = [];
+    # plugins = [inputs.hyprland-easymotion];
 
     systemd = {
       variables = ["--all"];
