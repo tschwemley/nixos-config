@@ -57,7 +57,6 @@
 
     nixos-hardware = {
       url = "github:nixos/nixos-hardware/master";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     sops = {
@@ -99,6 +98,13 @@
           overlays = [
             inputs.neovim-nightly-overlay.overlay
             inputs.neorg-overlay.overlays.default
+            (final: prev: {
+             # hyprland = inputs.hyprland.nixosModule;
+              hyprland-easymotion = self'.packages.hyprland-easymotion;
+              # hyprland-easymotion = self'.packages.hyprland-easymotion.overrideAttrs {
+              #   hyprland = config.home-manager.users.schwem.wayland.windowManager.hyprland.package;
+              # };
+            })
             # (final: prev: {
             # cmake = inputs'.nixpkgs-master.legacyPackages.cmake;
             # ollama = inputs'.nixpkgs-stable.legacyPackages.ollama;

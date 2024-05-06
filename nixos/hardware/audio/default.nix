@@ -12,6 +12,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    alsa-utils
     pavucontrol
     pamixer
     pipewire.jack
