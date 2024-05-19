@@ -38,10 +38,20 @@ in {
   boot = {
     initrd = {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod"];
-      kernelModules = ["kvm-intel"];
+      kernelModules =
+        ["kvm-intel"];
+        # ++ [ # TODO: put these and the other passthrough/iommu in options in their own module
+        #     "vfio_pci"
+        #     "vfio"
+        #     "vfio_iommu_type1"
+        #     # "vfio_virqfd" # NOTE: this should now be folded into vfio. Remove if working okay
+        # ];
     };
     kernelPackages = pkgs.linuxPackages_latest;
-    supportedFilesystems = ["btrfs"];
+    # kernelParams = [
+    #   "intel_iommu=on"
+    #   # "iommu=pt" NOTE: append this if necessary to prevent device from being touched while passed thru
+    # ];
   };
 
   networking = {

@@ -1,110 +1,54 @@
-{
-  lib,
-  rustPlatform,
-  fetchFromGitHub,
-  substituteAll,
-  pkg-config,
-  alsa-lib,
-  brotli,
-  bzip2,
-  ffmpeg,
-  jack2,
-  lame,
-  libX11,
-  libXrandr,
-  libdrm,
-  libogg,
-  libpng,
-  libtheora,
-  libunwind,
-  libva,
-  libvdpau,
-  openssl,
-  soxr,
-  vulkan-headers,
-  vulkan-loader,
-  wayland-scanner,
-  x264,
-  xvidcore,
-}:
-
-rustPlatform.buildRustPackage rec {
-  pname = "alvr";
-  version = "20.7.1";
-
-  src = fetchFromGitHub {
-    owner = "alvr-org";
-    repo = "ALVR";
-    rev = "refs/tags/v${version}";
-    hash = "sha256-znIRSax4thuBIpxW8BNqJSUYgIeY8g06qA9P/i8awvQ=";
+{pkgs, ...}: let
+  # version = "20.8.1";
+  src = builtins.fetchTarball {
+    # url = "https://github.com/alvr-org/ALVR/releases/download/v${version}/alvr_streamer_linux.tar.gz";
+    # sha256 = "sha256:1xh7nhbng6mfsrskxk2k2443464vvwgilggywj293qfagh92kd7i";
+    url = "https://github.com/alvr-org/ALVR-nightly/releases/download/v21.0.0-dev00%2Bnightly.2024.05.05/alvr_streamer_linux.tar.gz";
+    sha256 = "sha256:03620kmfwhva69qa81pf6fp4n23ipcc51c3cbqkhm1n6gljdhr10";
   };
-
-  cargoLock = {
-    lockFile = ./Cargo.lock;
-    outputHashes = {
-      "openxr-0.17.1" = "sha256-fG/JEqQQwKP5aerANAt5OeYYDZxcvUKCCaVdWRqHBPU=";
-      "settings-schema-0.2.0" = "sha256-luEdAKDTq76dMeo5kA+QDTHpRMFUg3n0qvyQ7DkId0k=";
-    };
-  };
-
-  patches = [
-    (substituteAll {
-      src = ./fix-finding-libs.patch;
-      ffmpeg = lib.getDev ffmpeg;
-      x264 = lib.getDev x264;
-    })
-  ];
-
-  env.NIX_CFLAGS_COMPILE = toString [
-    "-lbrotlidec"
-    "-lbrotlicommon"
-    "-lpng"
-    "-lssl"
-    "-lcrypto"
-  ];
-
-  nativeBuildInputs = [
-    pkg-config
-    rustPlatform.bindgenHook
-  ];
-
-  buildInputs = [
-    alsa-lib
-    brotli
-    bzip2
-    ffmpeg
-    jack2
-    lame
-    libX11
-    libXrandr
-    libdrm
-    libogg
-    libpng
-    libtheora
-    libunwind
-    libva
-    libvdpau
-    openssl
-    soxr
-    vulkan-headers
-    vulkan-loader
-    x264
-    wayland-scanner
-    xvidcore
-  ];
-
-  postInstall = ''
-    install -Dm755 ${src}/alvr/xtask/resources/alvr.desktop $out/share/applications/alvr.desktop
-    install -Dm644 ${src}/resources/alvr.png $out/share/icons/hicolor/256x256/apps/alvr.png
-  '';
-
-  meta = with lib; {
-    description = "Stream VR games from your PC to your headset via Wi-Fi";
-    homepage = "https://github.com/alvr-org/ALVR/";
-    changelog = "https://github.com/alvr-org/ALVR/releases/tag/v${version}";
-    license = licenses.mit;
-    mainProgram = "alvr_dashboard";
-    maintainers = with maintainers; [ passivelemon ];
-    platforms = platforms.linux;
-  };
-}
+in
+  pkgs.buildFHSEnv {
+    name = "alvr_dashboard";
+    targetPkgs = pkgs:
+      with pkgs; [
+        alsa-lib
+        brotli
+        bzip2
+        ffmpeg
+        jack2
+        lame
+        xorg.libX11
+        xorg.libXrandr
+        libdrm
+        libogg
+        libpng
+        libtheora
+        libunwind
+        libva
+        libvdpau
+        libglvnd
+        openssl
+        pipewire
+        soxr
+        vulkan-headers
+        vulkan-loader
+        xvidcore
+        # libva
+        libxkbcommon
+        wayland
+        kdePackages.wayqt
+        # wayland-scanner
+        # kdePackages.wayland
+        # xwayland-run
+        # egl-wayland
+        # eglexternalplatform
+        # sbclPackages.cl-opengl
+      ];
+    extraInstallCommands = ''
+      cp -Pr ${src}/{lib64,libexec,licenses,share} $out
+      cp $out/bin/alvr_dashboard $out/bin/alvr
+    '';
+    runScript = ''
+      ${src}/bin/alvr_dashboard
+    '';
+  }
