@@ -6,6 +6,8 @@
       nil
       nodePackages.bash-language-server
       nodePackages.intelephense
+      # nodePackages.typescript-language-server
+      typescript
       sqls
     ];
 

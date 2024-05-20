@@ -1,2 +1,2 @@
 local minimove = require('mini.move')
-minimove.setup()
+minimove.setup({})

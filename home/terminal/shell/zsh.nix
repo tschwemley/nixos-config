@@ -18,8 +18,13 @@ in {
       extended = true;
     };
     initExtra = ''
-      . ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh
+      source ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh
       export PATH=$PATH:${config.home.profileDirectory}/bin
+
+      # additional funcs
+      func tbat() {
+        tail -f "$1" | bat --paging=never -l log
+      }
     '';
   };
 }
