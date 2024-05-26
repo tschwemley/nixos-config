@@ -25,6 +25,7 @@ in {
     neogit-nightly
     nnn-vim
     nvim-ufo
+    vim-abolish
     vim-surround
   ];
 

@@ -1,5 +1,5 @@
-vim.o.grepprg = 'rg --vimgrep';
-vim.o.grepformat = '%f:%l:%m';
+vim.o.grepprg = "rg --vimgrep"
+vim.o.grepformat = "%f:%l:%m"
 
 -- show relative numbers && curline
 vim.o.number = true
@@ -17,8 +17,8 @@ vim.o.cindent = true
 -- always use unix line endings by default
 -- TODO: I think this is getting mixed up occasionally but I'm too lazy to fix right now so always
 -- unix LE until I can be assed to look into this some more vim.o.fileformats=unix,dos
-vim.g.fileformats = 'unix, dos'
-vim.g.fileformat = 'unix'
+vim.g.fileformats = "unix, dos"
+vim.g.fileformat = "unix"
 
 vim.o.wrap = false
 

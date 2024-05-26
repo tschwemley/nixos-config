@@ -30,6 +30,7 @@ with pkgs.vimPlugins;
     parser.python
     parser.sql
     parser.ssh_config
+    parser.templ
     parser.toml
     parser.tsx
     parser.typescript
