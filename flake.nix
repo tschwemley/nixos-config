@@ -24,16 +24,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    musnix = {
-      url = "github:musnix/musnix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-private = {
       url = "git+ssh://git@github.com/tschwemley/nix-private.git";
       inputs = {
@@ -96,20 +86,18 @@
 
           # TODO: move this to overlays/ ?
           overlays = [
-            inputs.neovim-nightly-overlay.overlay
+            # inputs.neovim-nightly-overlay.overlay
             inputs.neorg-overlay.overlays.default
             (final: prev: {
-             # hyprland = inputs.hyprland.nixosModule;
-              hyprland-easymotion = self'.packages.hyprland-easymotion;
-              # hyprland-easymotion = self'.packages.hyprland-easymotion.overrideAttrs {
-              #   hyprland = config.home-manager.users.schwem.wayland.windowManager.hyprland.package;
-              # };
+              alvr = self'.packages.alvr-overlay;
+              hypreasymotion = self'.packages.hypreasymotion;
+              wivrn = self'.packages.wivrn;
+              vimPlugins = prev.vimPlugins // {
+                codecompanion = self'.packages.codecompanion;
+                harpoon = self'.packages.harpoon;
+                neogit-nightly = self'.packages.neogit-nightly;
+              };
             })
-            # (final: prev: {
-            # cmake = inputs'.nixpkgs-master.legacyPackages.cmake;
-            # ollama = inputs'.nixpkgs-stable.legacyPackages.ollama;
-            # xz = inputs'.nixpkgs-master.legacyPackages.xz;
-            # })
           ];
         };
 

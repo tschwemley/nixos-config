@@ -1,7 +1,8 @@
 pkgs: {
   hypreasymotion = with pkgs;
-    stdenv.mkDerivation {
-      name = "hyprEasymotion";
+    stdenv.mkDerivation rec {
+      name = "hypreasymotion";
+      pname = name;
 
       src = fetchFromGitHub {
         owner = "zakk4223";
@@ -11,16 +12,11 @@ pkgs: {
       };
 
       nativeBuildInputs = [
-        # cmake
         pkg-config
         hyprland
       ];
 
       buildInputs = [hyprland] ++ hyprland.buildInputs;
-
-      # cmakeFlags = [
-      #   "-INSTALL_LOCATION=$out/"
-      # ];
 
       buildPhase = ''
         make all
@@ -32,8 +28,9 @@ pkgs: {
       '';
     };
   hyprscroller = with pkgs;
-    stdenv.mkDerivation {
+    stdenv.mkDerivation rec {
       name = "hyprscroller";
+      pname = name;
 
       src = fetchFromGitHub {
         owner = "dawsers";
