@@ -1,4 +1,4 @@
-let
+{pkgs, ...}: let
   git = import ../programs/git.nix {
     name = "Tyler Schwemley";
     email = "tjschwem@gmail.com";
@@ -16,12 +16,14 @@ in {
     ../programs/glow.nix
     ../programs/music
     ../programs/rofi.nix
+    ../programs/rustdesk.nix
     ../programs/slack.nix
     ../programs/taskwarrior.nix
     ../programs/vlc.nix
     ../programs/wayland
     ../programs/wcalc.nix
     ../programs/tigervnc.nix
+    ../programs/vial.nix
     ../programs/zoom.nix
     ../services/kdeconnect.nix
     # ../services/spotifyd.nix

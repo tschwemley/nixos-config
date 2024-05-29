@@ -1,10 +1,13 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   # ../../../programs/ags
   # ../../../services/dunst.nix
   imports = [
     ./binds.nix
     ./hyprpaper.nix
-    ./plugins.nix
     ./rules.nix
     ./settings.nix
   ];
@@ -13,6 +16,15 @@
     grimblast
     hyprpicker
   ];
+
+  xdg.portal = let
+    hyprland = config.wayland.windowManager.hyprland.package;
+    xdph = pkgs.xdg-desktop-portal-hyprland.override {inherit hyprland;};
+  in {
+    configPackages = [hyprland];
+    extraPortals = [xdph pkgs.xdg-desktop-portal-gtk];
+    xdgOpenUsePortal = true;
+  };
 
   # make stuff work on wayland
   wayland.windowManager.hyprland = {
@@ -25,7 +37,11 @@
       # }
     '';
 
-    # plugins = [inputs.hyprland-easymotion];
+    # plugins = [
+    #   pkgs.hypreasymotion
+    #   # "/home/schwem/libhypreasymotion.so"
+    #   # "/home/schwem/libhyprscroller.so"
+    # ];
 
     systemd = {
       variables = ["--all"];
