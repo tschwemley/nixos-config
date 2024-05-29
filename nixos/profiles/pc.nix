@@ -1,9 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./.
-    # TODO: evaluate if I need to use this
     ../programs/gamemode.nix
-    ../programs/flatpak.nix
     ../programs/hyprland.nix
     ../programs/kdeconnect.nix
     ../programs/man.nix

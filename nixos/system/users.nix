@@ -9,8 +9,10 @@
     extraGroups = [
       "audio"
       "docker"
-      "wheel"
+      "gamemode"
       "networkmanager"
+      "plugdev"
+      "wheel"
       config.users.groups.keys.name
     ];
   };
@@ -23,6 +25,9 @@ in {
   };
   schwem = {
     users.users = {inherit schwem;};
-    home-manager.users.schwem.imports = [../../home/profiles/pc.nix];
+    home-manager.users.schwem = {
+      imports = [../../home/profiles/pc.nix];
+      systemd.user.settings.Manager.DefaultLimitNOFILE = "524288";
+    };
   };
 }

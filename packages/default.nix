@@ -6,8 +6,14 @@
     options,
     pkgs,
     ...
-  }: {
+  }: let
+    hyprlandPlugins = import ./hyprlandPlugins pkgs;
+    vimPlugins = import ./vimPlugins pkgs;
+  in {
     packages = with pkgs; {
+      inherit (hyprlandPlugins) hypreasymotion hyprscroller;
+      inherit (vimPlugins) codecompanion harpoon neogit-nightly;
+
       build-all-hosts = writeScriptBin "build-all-hosts" ''
         #!/usr/bin/env sh
         build-host articuno && build-host zapados && build-host moltres && build-host eevee \

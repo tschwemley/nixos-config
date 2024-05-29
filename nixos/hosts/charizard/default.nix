@@ -38,14 +38,13 @@ in {
   boot = {
     initrd = {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod"];
-      kernelModules =
-        ["kvm-intel"];
-        # ++ [ # TODO: put these and the other passthrough/iommu in options in their own module
-        #     "vfio_pci"
-        #     "vfio"
-        #     "vfio_iommu_type1"
-        #     # "vfio_virqfd" # NOTE: this should now be folded into vfio. Remove if working okay
-        # ];
+      kernelModules = ["kvm-intel"];
+      # ++ [ # TODO: put these and the other passthrough/iommu in options in their own module
+      #     "vfio_pci"
+      #     "vfio"
+      #     "vfio_iommu_type1"
+      #     # "vfio_virqfd" # NOTE: this should now be folded into vfio. Remove if working okay
+      # ];
     };
     kernelPackages = pkgs.linuxPackages_latest;
     # kernelParams = [
@@ -62,12 +61,8 @@ in {
 
   services.getty.autologinUser = "schwem";
 
-  system = {
-    autoUpgrade.enable = true;
-
-    # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
-    stateVersion = "23.05";
-  };
+  # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
+  system.stateVersion = "24.11";
 
   tailscaleUpFlags = [
     "--exit-node=100.84.59.97"

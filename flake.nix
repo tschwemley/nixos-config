@@ -84,19 +84,20 @@
           inherit system;
           config.allowUnfree = true;
 
-          # TODO: move this to overlays/ ?
+          # NOTE: might be a better spot for overlays long-term. I'm okay w/ here for now
           overlays = [
+            # TODO: uncomment in a few days to see if upstream issue sorted (05/22/24)
             # inputs.neovim-nightly-overlay.overlay
             inputs.neorg-overlay.overlays.default
             (final: prev: {
-              alvr = self'.packages.alvr-overlay;
               hypreasymotion = self'.packages.hypreasymotion;
-              wivrn = self'.packages.wivrn;
-              vimPlugins = prev.vimPlugins // {
-                codecompanion = self'.packages.codecompanion;
-                harpoon = self'.packages.harpoon;
-                neogit-nightly = self'.packages.neogit-nightly;
-              };
+              vimPlugins =
+                prev.vimPlugins
+                // {
+                  codecompanion = self'.packages.codecompanion;
+                  harpoon = self'.packages.harpoon;
+                  neogit-nightly = self'.packages.neogit-nightly;
+                };
             })
           ];
         };
