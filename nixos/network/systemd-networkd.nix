@@ -19,7 +19,7 @@
 
     systemd.network = {
       enable = true;
-      wait-online.enable = false; # TODO: fix this?
+      wait-online.enable = lib.mkDefault false; # TODO: fix this?
     };
 
     sops = {

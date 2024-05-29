@@ -1,26 +1,33 @@
-{pkgs, ...}: let
-  rocmPkgs = with pkgs.rocmPackages; [
-    clr
-    clr.icd
-  ];
-  utilPkgs = with pkgs; [
+{
+  inputs,
+  pkgs,
+  ...
+}:
+#let
+#   rocmPkgs = with pkgs.rocmPackages; [
+#     clr
+#     clr.icd
+#   ];
+#   utilPkgs = with pkgs; [
+#     amdgpu_top
+#     pciutils
+#   ];
+# in
+{
+  imports = [inputs.nixos-hardware.nixosModules.common-gpu-amd];
+
+  environment.systemPackages = with pkgs; [
     amdgpu_top
     pciutils
   ];
-in {
-  boot.initrd.kernelModules = ["amdgpu"];
 
-  environment.systemPackages = utilPkgs;
-
-  hardware.enableRedistributableFirmware = true;
-
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-    extraPackages = rocmPkgs;
+  hardware.amdgpu = {
+    loadInInitrd = true;
+    opencl = true;
   };
 
   nixpkgs.config.rocmSupport = true;
-  services.xserver.videoDrivers = ["modesetting"];
+
+  # this is necessary to load the amd driver in initrd (not included in nixos-hardware)
+  hardware.enableRedistributableFirmware = true;
 }

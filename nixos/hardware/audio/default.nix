@@ -1,11 +1,11 @@
 {
-  inputs,
+  # inputs,
   lib,
   pkgs,
   ...
 }: {
   imports = [
-    inputs.musnix.nixosModules.musnix
+    # inputs.musnix.nixosModules.musnix
     # ./bluetooth.nix
     # ./pipewire.nix
     ./scarlett8i6.nix
@@ -20,7 +20,7 @@
 
   hardware.pulseaudio.enable = lib.mkForce false;
 
-  musnix.enable = true;
+  # musnix.enable = true;
 
   security.rtkit.enable = true;
   services.pipewire = {
