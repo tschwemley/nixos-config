@@ -3,13 +3,14 @@
   pkgs,
   ...
 }: {
-  # ../../../programs/ags
-  # ../../../services/dunst.nix
   imports = [
     ./binds.nix
     ./hyprpaper.nix
     ./rules.nix
     ./settings.nix
+    # TODO: add these imports or put into own module/wayland module
+    # ../../../programs/ags
+    # ../../../services/dunst.nix
   ];
 
   home.packages = with pkgs; [

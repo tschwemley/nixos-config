@@ -1,12 +1,13 @@
 {pkgs, ...}: let
   packages = {
     lsp = with pkgs; [
+      dprint
       gopls
       lua-language-server
       nil
       nodePackages.bash-language-server
       nodePackages.intelephense
-      # nodePackages.typescript-language-server
+      nodePackages.typescript-language-server
       typescript
       sqls
     ];

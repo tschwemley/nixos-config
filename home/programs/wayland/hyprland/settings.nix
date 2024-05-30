@@ -4,6 +4,7 @@
 
     exec-once = [
       "hyprpaper"
+      # TODO: is xrandr necessary?
       "xrandr --output DP-1 --auto --primary"
       # "xrandr --output DP-2 --auto"
       # "xrandr --output HDMI-A-2 --auto"
@@ -11,12 +12,12 @@
     ];
 
     general = {
+      # layout = "dwindle";
+      layout = "master";
       # layout = "scroller";
-      # layout = "master";
-      layout = "dwindle";
     };
 
-    master = {
+    master = { # see: https://wiki.hyprland.org/Configuring/Master-Layout/
       new_is_master = false;
       orientation = "center";
     };
