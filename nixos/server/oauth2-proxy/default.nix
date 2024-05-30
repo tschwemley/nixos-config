@@ -6,7 +6,7 @@
 
   networking.firewall.allowedTCPPorts = [4180];
 
-  services.oauth2_proxy = {
+  services.oauth2-proxy = {
     enable = true;
     clientID = "oauth2-proxy";
     cookie.domain = ".schwem.io";
