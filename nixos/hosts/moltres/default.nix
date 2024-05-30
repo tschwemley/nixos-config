@@ -4,7 +4,7 @@
   disk = (import ../../hardware/disks).buyvm;
   profile = import ../../profiles/buyvm.nix;
   server = [
-    "${inputs.nix-private.outPath}/containers/invidious"
+#"${inputs.nix-private.outPath}/containers/invidious"
     ../../containers/redlib
     ../../containers/searxng
     ../../server/cockroachdb
