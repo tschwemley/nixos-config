@@ -2,6 +2,8 @@
   listenAddress = "127.0.0.1";
   port = "8180";
 in {
+  imports = [./virtualhost.nix];
+
   systemd.services.redlib = {
     after = [
       "network.service"
