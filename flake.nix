@@ -91,6 +91,7 @@
             inputs.neorg-overlay.overlays.default
             (final: prev: {
               hypreasymotion = self'.packages.hypreasymotion;
+              redlib = self'.packages.redlib;
               vimPlugins =
                 prev.vimPlugins
                 // {
