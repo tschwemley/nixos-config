@@ -12,10 +12,16 @@ in {
     wantedBy = [
       "default.target"
     ];
-    environment = {};
+    environment = {
+      REDLIB_DEFAULT_THEME = "gruvboxdark";
+      REDLIB_DEFAULT_SHOW_NSFW = "on";
+      REDLIB_DEFAULT_USE_HLS = "on";
+      REDLIB_DEFAULT_HIDE_HLS_NOTIFICATION = "on";
+      # see: https://github.com/redlib-org/redlib?tab=readme-ov-file#configuration
+    };
     serviceConfig = {
       DynamicUser = "yes";
-      EnvironmentFile = "-/etc/redlib.conf";
+      EnvironmentFile = "/etc/redlib.conf";
       ExecStart = "${pkgs.redlib} -a ${listenAddress} -p ${port}";
       DeviceAllow = "";
       LockPersonality = "yes";
