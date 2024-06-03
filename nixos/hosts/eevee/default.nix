@@ -6,8 +6,8 @@
   server = [
     # "${inputs.nix-private.outPath}/containers/arr"
     "${inputs.nix-private.outPath}/containers/p2p"
-    ../../services/seaweedfs/filer.nix
-    ../../services/seaweedfs/volume.nix
+    # ../../services/seaweedfs/filer.nix
+    # ../../services/seaweedfs/volume.nix
   ];
 in {
   imports =

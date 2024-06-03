@@ -4,8 +4,8 @@
   profile = import ../../profiles/proxmox.nix;
   server = [
     ../../containers/jellyfin
-    ../../services/seaweedfs/filer.nix
-    ../../services/seaweedfs/volume.nix
+    # ../../services/seaweedfs/filer.nix
+    # ../../services/seaweedfs/volume.nix
   ];
 in {
   imports =

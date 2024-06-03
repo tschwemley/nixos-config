@@ -5,7 +5,7 @@
   server = [
     "${inputs.nix-private.outPath}/containers/excalidraw"
     ../../containers/redlib
-    ../../services/seaweedfs/volume.nix
+    # ../../services/seaweedfs/volume.nix
     ../../server/cockroachdb
     ../../server/monitoring/prometheus/node-exporter.nix
     ../../server/nginx

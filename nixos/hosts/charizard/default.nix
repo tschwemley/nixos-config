@@ -65,9 +65,11 @@ in {
   system.stateVersion = "24.11";
 
   tailscaleUpFlags = [
+    "--allow-stateful-filtering"
     "--exit-node=100.84.59.97"
     "--exit-node-allow-lan-access=true"
     "--shields-up"
+    "--ssh"
   ];
   time.timeZone = "America/Detroit";
 

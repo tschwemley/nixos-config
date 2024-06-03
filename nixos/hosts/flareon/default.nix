@@ -4,7 +4,7 @@
   profile = import ../../profiles/proxmox.nix;
   server = [
     "${inputs.nix-private.outPath}/containers/stash"
-    ../../services/seaweedfs/volume.nix
+    # ../../services/seaweedfs/volume.nix
   ];
 in {
   imports =

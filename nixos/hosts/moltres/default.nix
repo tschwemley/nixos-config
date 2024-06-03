@@ -9,9 +9,9 @@
     ../../containers/searxng
     ../../server/cockroachdb
     ../../server/redlib
-    ../../services/seaweedfs/master.nix
-    ../../services/seaweedfs/filer.nix
-    ../../services/seaweedfs/volume.nix
+    # ../../services/seaweedfs/master.nix
+    # ../../services/seaweedfs/filer.nix
+    # ../../services/seaweedfs/volume.nix
   ];
 in {
   imports =
