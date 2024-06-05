@@ -8,15 +8,6 @@ pkgs: {
       hash = "sha256-Sd1Kl2kSW5mpmyLVfmEOP7MagiP5tqxtF0HJqvK97vY=";
     };
   };
-  harpoon = pkgs.vimUtils.buildVimPlugin {
-    name = "harpoon";
-    src = pkgs.fetchFromGitHub {
-      owner = "ThePrimeagen";
-      repo = "harpoon";
-      rev = "harpoon2";
-      hash = "sha256-FZQH38E02HuRPIPAog/nWM55FuBxKp8AyrEldFkoLYk=";
-    };
-  };
   # NOTE: this is only necessary until official 0.10 support hits neogit master
   neogit-nightly = pkgs.vimUtils.buildVimPlugin {
     name = "neogit-nightly";

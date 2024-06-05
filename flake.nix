@@ -96,7 +96,6 @@
                 prev.vimPlugins
                 // {
                   codecompanion = self'.packages.codecompanion;
-                  harpoon = self'.packages.harpoon;
                   neogit-nightly = self'.packages.neogit-nightly;
                 };
             })
