@@ -2,7 +2,7 @@
   description = "Schwem's NixOS configuration and dotfiles";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -45,10 +45,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-hardware = {
-      url = "github:nixos/nixos-hardware/master";
-    };
-
     sops = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -60,7 +56,6 @@
     disko,
     flake-parts,
     home-manager,
-    nixos-hardware,
     nixpkgs,
     sops,
     ...

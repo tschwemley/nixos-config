@@ -1,11 +1,14 @@
 {
   wayland.windowManager.hyprland.settings = {
-    env = ["QT_WAYLAND_DISABLE_WINDOWDECORATION,1"];
+    env = [
+      "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+      "WLR_NO_HARDWARE_CURSORS,1"
+    ];
 
     exec-once = [
       "hyprpaper"
       # TODO: is xrandr necessary?
-      "xrandr --output DP-1 --auto --primary"
+      #"xrandr --output DP-1 --auto --primary"
       # "xrandr --output DP-2 --auto"
       # "xrandr --output HDMI-A-2 --auto"
       # "xrandr --output HDMI-A-2 --primary"
@@ -17,7 +20,8 @@
       # layout = "scroller";
     };
 
-    master = { # see: https://wiki.hyprland.org/Configuring/Master-Layout/
+    master = {
+      # see: https://wiki.hyprland.org/Configuring/Master-Layout/
       new_is_master = false;
       orientation = "center";
     };

@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  wayland.windowManager.hyprland.plugins = with pkgs; [hyprlandPlugins.hy3];
   wayland.windowManager.hyprland.settings = {
     # extraConfig = ''
     #     plugin {

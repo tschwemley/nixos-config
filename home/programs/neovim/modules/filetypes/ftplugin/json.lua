@@ -14,4 +14,6 @@ local function toggleFormat()
    end
 end
 
-vim.keymap.set('n', '<leader>lf', toggleFormat, { buffer = true })
+vim.keymap.set('n', '<leader>lf', toggleFormat, { buffer = true, noremap = true })
+vim.keymap.set('n', '<leader>lm', minifyJSON, { buffer = true, noremap = true })
+vim.keymap.set('n', '<leader>lp', prettifyJSON, { buffer = true, noremap = true })

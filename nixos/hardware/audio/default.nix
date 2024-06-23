@@ -5,8 +5,7 @@
   ...
 }: {
   imports = [
-    # inputs.musnix.nixosModules.musnix
-    # ./bluetooth.nix
+    ./bluetooth.nix
     # ./pipewire.nix
     ./scarlett8i6.nix
   ];
@@ -20,14 +19,15 @@
 
   hardware.pulseaudio.enable = lib.mkForce false;
 
-  # musnix.enable = true;
-
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
+
+  services = {
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
   };
 }

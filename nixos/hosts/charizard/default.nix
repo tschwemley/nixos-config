@@ -1,6 +1,5 @@
 {
   self,
-  inputs,
   config,
   lib,
   pkgs,
@@ -10,10 +9,8 @@
   disk = (import ../../hardware/disks).charizard;
   hardware = {
     imports = [
-      inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
-      inputs.nixos-hardware.nixosModules.common-pc
-      inputs.nixos-hardware.nixosModules.common-pc-ssd
       ../../hardware/amd.nix
+      ../../hardware/intel.nix
       ../../hardware/audio
     ];
   };

@@ -28,7 +28,6 @@
 
     utility = [
       nvim-web-devicons
-      trouble-nvim
     ];
   };
 
@@ -44,6 +43,5 @@ in {
     "nvim/after/plugin/lsp/keymaps.lua".source = ./keymaps.lua;
     "nvim/after/plugin/lsp/lsp.lua".source = ./lsp.lua;
     "nvim/after/plugin/lsp/null_ls.lua".source = ./null_ls.lua;
-    "nvim/after/plugin/lsp/trouble.lua".source = ./trouble.lua;
   };
 }

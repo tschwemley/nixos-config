@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   programs.kitty = {
     enable = true;
     font = {
@@ -6,6 +6,7 @@
       size = 18;
     };
     keybindings = {
+      "ctrl+shift+enter" = "launch --cwd=current";
       "ctrl+shift+h" = "neighboring_window left";
       "ctrl+shift+l" = "neighboring_window right";
       "ctrl+shift+k" = "neighboring_window up";
@@ -15,7 +16,7 @@
     settings = {
       allow_remote_control = "yes";
       enable_audio_bell = false;
-      enabled_layouts = "fat:bias=67;,tall,grid";
+      enabled_layouts = "fat:bias=67;,tall:bias=65,grid";
       listen_on = "unix:@kitty";
     };
     shellIntegration.enableFishIntegration = false;
