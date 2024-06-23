@@ -58,6 +58,7 @@
       }
     ];
 in {
+  imports = [./common.nix];
   disko.devices.disk.main = {
     type = "disk";
     device = diskName;

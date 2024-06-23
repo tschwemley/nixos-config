@@ -1,4 +1,5 @@
 {diskName, ...}: {
+  imports = [./common.nix];
   disko.devices = {
     disk = {
       "${diskName}" = {
