@@ -39,5 +39,3 @@ with pkgs.vimPlugins;
     parser.yaml
     parser.zig
   ])
-# TODO: add haxe
-

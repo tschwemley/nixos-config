@@ -14,6 +14,7 @@ in {
     ../programs/browsers
     ../programs/cad.nix
     ../programs/glow.nix
+    ../programs/gtk.nix
     ../programs/music
     ../programs/rofi.nix
     ../programs/rustdesk.nix

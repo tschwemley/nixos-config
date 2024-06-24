@@ -3,6 +3,7 @@
     lsp = with pkgs; [
       dprint
       gopls
+      htmx-lsp
       lua-language-server
       nil
       nodePackages.bash-language-server
