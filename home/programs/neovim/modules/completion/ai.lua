@@ -5,24 +5,28 @@ local anthropic = require("codecompanion.adapters").use("anthropic", {
 	},
 })
 
-local ollama = require("codecompanion.adapters").use("ollama", {
-   schema = {
-      model = {
-         default = "deepseek-coder-v2",
-         -- default = "dolphin-llama3",
-      },
-   },
-})
+-- local ollama = require("codecompanion.adapters").use("ollama", {
+--    schema = {
+--       model = {
+--          default = "codeqwen",
+--          -- default = "deepseek-coder-v2",
+--          -- default = "dolphin-llama3",
+--       },
+--    },
+-- })
 
 codecompanion.setup({
 	adapters = {
 		anthropic = anthropic,
-		ollama = ollama,
+		-- ollama = ollama,
 	},
 	strategies = {
-		chat = "ollama",
-		inline = "ollama",
-		tool = "ollama",
+		chat = "anthropic",
+		inline = "anthropic",
+		tool = "anthropic",
+		-- chat = "ollama",
+		-- inline = "ollama",
+		-- tool = "ollama",
 	},
 })
 

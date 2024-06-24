@@ -2,7 +2,7 @@
   description = "Schwem's NixOS configuration and dotfiles";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -23,6 +23,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-hardware.url = "github:nixos/nixos-hardware/master"; 
 
     nix-private = {
       url = "git+ssh://git@github.com/tschwemley/nix-private.git";

@@ -9,7 +9,7 @@ in {
     ./.
     # ../programs/aseprite.nix
     ../programs/ags
-    ../programs/ai
+    # ../programs/ai
     ../programs/bambu-studio.nix
     ../programs/browsers
     ../programs/cad.nix

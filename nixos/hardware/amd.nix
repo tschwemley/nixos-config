@@ -1,5 +1,5 @@
 {
-  lib,
+  inputs,
   pkgs,
   ...
 }:
@@ -14,29 +14,20 @@
 #   ];
 # in
 {
-  #imports = [inputs.nixos-hardware.nixosModules.common-gpu-amd];
-  boot.initrd.kernelModules = ["amdgpu"];
+  imports = [inputs.nixos-hardware.nixosModules.common-gpu-amd];
 
   environment.systemPackages = with pkgs; [
     amdgpu_top
     pciutils
   ];
 
-  hardware = {
-    amdgpu = {
-      initrd.enable = true;
-      opencl.enable = true;
-    };
-
-    graphics = {
-      enable = lib.mkDefault true;
-      enable32Bit = lib.mkDefault true;
-    };
-
-    # this is necessary to load the amd driver in initrd
-    enableRedistributableFirmware = true;
+  hardware.amdgpu = {
+    loadInInitrd = true;
+    opencl = true;
   };
 
   nixpkgs.config.rocmSupport = true;
-  services.xserver.videoDrivers = lib.mkDefault [ "modesetting" ];
+
+  # this is necessary to load the amd driver in initrd (not included in nixos-hardware)
+  hardware.enableRedistributableFirmware = true;
 }
