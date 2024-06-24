@@ -12,7 +12,6 @@
     imports = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
       ../../hardware/amd.nix
-      ../../hardware/intel.nix
       ../../hardware/audio
     ];
   };
