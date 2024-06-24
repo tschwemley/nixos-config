@@ -23,7 +23,7 @@
 
   hardware.amdgpu = {
     loadInInitrd = true;
-    opencl = true;
+    opencl.enable = true;
   };
 
   nixpkgs.config.rocmSupport = true;

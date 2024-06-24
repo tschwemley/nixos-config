@@ -18,15 +18,6 @@
     hyprpicker
   ];
 
-  xdg.portal = let
-    hyprland = config.wayland.windowManager.hyprland.package;
-    xdph = pkgs.xdg-desktop-portal-hyprland.override {inherit hyprland;};
-  in {
-    configPackages = [hyprland];
-    extraPortals = [xdph pkgs.xdg-desktop-portal-gtk];
-    xdgOpenUsePortal = true;
-  };
-
   # make stuff work on wayland
   wayland.windowManager.hyprland = {
     enable = true;

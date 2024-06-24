@@ -36,7 +36,7 @@ in {
   boot = {
     initrd = {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod"];
-      kernelModules = ["kvm-intel"];
+      kernelModules = ["amdgpu" "kvm-intel"];
       # ++ [ # TODO: put these and the other passthrough/iommu in options in their own module
       #     "vfio_pci"
       #     "vfio"
@@ -60,7 +60,8 @@ in {
   services.getty.autologinUser = "schwem";
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
-  system.stateVersion = "24.11";
+  # system.stateVersion = "24.11";
+  system.stateVersion = "24.05";
 
   tailscaleUpFlags = [
     "--allow-stateful-filtering"
