@@ -37,18 +37,8 @@ in {
     initrd = {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod"];
       kernelModules = ["amdgpu" "kvm-intel"];
-      # ++ [ # TODO: put these and the other passthrough/iommu in options in their own module
-      #     "vfio_pci"
-      #     "vfio"
-      #     "vfio_iommu_type1"
-      #     # "vfio_virqfd" # NOTE: this should now be folded into vfio. Remove if working okay
-      # ];
     };
     kernelPackages = pkgs.linuxPackages_latest;
-    # kernelParams = [
-    #   "intel_iommu=on"
-    #   # "iommu=pt" NOTE: append this if necessary to prevent device from being touched while passed thru
-    # ];
   };
 
   networking = {
@@ -57,10 +47,12 @@ in {
     useDHCP = lib.mkDefault true;
   };
 
+  # TODO: import the flatpak.nix file if ultimately deciding to run flatpak
+  # services.flatpak.enable = true;
+
   services.getty.autologinUser = "schwem";
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
-  # system.stateVersion = "24.11";
   system.stateVersion = "24.05";
 
   tailscaleUpFlags = [

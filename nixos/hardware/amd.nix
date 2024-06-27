@@ -27,7 +27,4 @@
   };
 
   nixpkgs.config.rocmSupport = true;
-
-  # this is necessary to load the amd driver in initrd (not included in nixos-hardware)
-  hardware.enableRedistributableFirmware = true;
 }

@@ -3,8 +3,8 @@
     "$mod" = "SUPER";
 
     bind = [
-      "$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"
-      "$mod, p, exec, rofi -show drun"
+      "$mod, Return, exec, ${pkgs.kitty}/bin/kitty"
+      "$mod, p, exec, wofi --show drun"
 
       "$mod, 1, workspace, 1"
       "$mod, 2, workspace, 2"

@@ -29,10 +29,11 @@ in {
     pinentry
     ripgrep
     rsync
-    seaweedfs
     sops
     unzip
     wget
     zip
   ];
+
+  hardware.enableRedistributableFirmware = true;
 }

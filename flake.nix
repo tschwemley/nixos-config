@@ -24,7 +24,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-hardware.url = "github:nixos/nixos-hardware/master"; 
+    nixos-hardware.url = "github:nixos/nixos-hardware/master";
+
+    # TODO: still evaluating if I want to use flatpak or not remove or uncomment accordingly
+    # nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     nix-private = {
       url = "git+ssh://git@github.com/tschwemley/nix-private.git";

@@ -9,9 +9,16 @@
     ./rules.nix
     ./settings.nix
     # TODO: add these imports or put into own module/wayland module
-    # ../../../programs/ags
     # ../../../services/dunst.nix
   ];
+
+  xdg.portal = let
+    hyprland = config.wayland.windowManager.hyprland.package;
+    xdph = pkgs.xdg-desktop-portal-hyprland.override {inherit hyprland;};
+  in {
+    extraPortals = [xdph];
+    configPackages = [hyprland];
+  };
 
   home.packages = with pkgs; [
     grimblast
@@ -22,13 +29,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
-    extraConfig = ''
-      # # unscale XWayland (this prevents lag in wezterm)
-      # xwayland {
-      #   force_zero_scaling = true
-      # }
-    '';
-
     # plugins = [
     #   pkgs.hypreasymotion
     #   # "/home/schwem/libhypreasymotion.so"
@@ -37,7 +37,7 @@
 
     systemd = {
       variables = ["--all"];
-      extraCommands = [
+      extraCommands = [ # TODO: Idk if I actually need this...
         "systemctl --user stop graphical-session.target"
         "systemctl --user start hyprland-session.target"
       ];

@@ -2,11 +2,12 @@
   wayland.windowManager.hyprland.settings = {
     debug.disable_logs = false;
 
-    env = [
-      "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-      "KWIN_FORCE_SW_CURSOR,1"
-      "WLR_NO_HARDWARE_CURSORS,1"
-    ];
+    cursor = {
+      inactive_timeout = 4;
+      #min_refresh_rate = 120;
+      no_break_fs_vrr = true;
+      no_hardware_cursors = true;
+    };
 
     exec-once = [
       "hyprpaper"
@@ -18,9 +19,9 @@
       # layout = "scroller";
     };
 
-    master = {
-      # see: https://wiki.hyprland.org/Configuring/Master-Layout/
-      new_is_master = false;
+    master = { # for all options see: https://wiki.hyprland.org/Configuring/Master-Layout/
+      always_center_master = true;
+      new_status = "master"; # new window opens as "master","slave", or "inherit" from focused
       orientation = "center";
     };
 
@@ -28,17 +29,18 @@
       #TODO: validate I want to keep these settings... they're copy/pasted
       # disable auto polling for config file changes
       # disable_autoreload = true;
-      #
-      # force_default_wallpaper = 0;
+
+      # disable the stupid default anime background
+      force_default_wallpaper = 0;
 
       # disable dragging animation
       # animate_mouse_windowdragging = false;
 
-      # enable variable refresh rate (effective depending on hardware)
-      # vrr = 1;
-
       # we do, in fact, want direct scanout
-      # no_direct_scanout = false;
+      no_direct_scanout = false;
+
+      # enable variable refresh rate (effective depending on hardware)
+      vrr = 2;
     };
 
     monitor = [
@@ -60,12 +62,8 @@
     workspace = [
       "1, monitor:DP-1"
       "2, monitor:DP-1"
-      "3, onitor:DP-1"
+      "3, monitor:DP-1"
       "4, monitor:DP-1"
-      # "1, monitor:HDMI-A-2"
-      # "2, monitor:DP-2"
-      # "3, monitor:HDMI-A-2"
-      # "4, monitor:DP-2"
     ];
   };
 }
