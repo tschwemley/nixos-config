@@ -57,6 +57,7 @@
           chmod +x $out
         '';
       };
+      wl-ocr = pkgs.callPackage ./wl-ocr {};
     };
   };
 }

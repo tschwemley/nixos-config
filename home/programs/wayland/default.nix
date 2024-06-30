@@ -10,12 +10,11 @@
     packages = with pkgs; [
       cliphist
       grim
-      # slurp
+      slurp
 
       # utils
-      # TODO: this looks kind of interesting... check to see if this is worth looking into copying
-      # self.packages.${pkgs.system}.wl-ocr
       wl-clipboard
+      wl-ocr
       wlr-randr
       wf-recorder # records screen
       ydotool

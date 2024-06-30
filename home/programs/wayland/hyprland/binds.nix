@@ -3,6 +3,7 @@
     "$mod" = "SUPER";
 
     bind = [
+      # TODO: organize these better and add comments for sections
       "$mod, Return, exec, ${pkgs.kitty}/bin/kitty"
       "$mod, p, exec, wofi --show drun"
 
@@ -23,6 +24,8 @@
       "$mod shift, h, movewindow, mon:1"
       "$mod shift, l, movewindow, mon:0"
       "$mod, w, killactive"
+
+      "$mod, o, exec, wl-ocr"
 
       # "$mod, z, easymotion, action:hyprctl dispatch focuswindow address:{}"
     ];

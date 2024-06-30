@@ -95,6 +95,7 @@
                   codecompanion = self'.packages.codecompanion;
                   neogit-nightly = self'.packages.neogit-nightly;
                 };
+              wl-ocr = self'.packages.wl-ocr;
             })
           ];
         };
