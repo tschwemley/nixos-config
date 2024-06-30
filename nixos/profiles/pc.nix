@@ -18,7 +18,7 @@
     # ../programs/xdg.nix
     ../services/dbus.nix
     ../services/gnome.nix
-    ../services/ollama.nix
+    # ../services/ollama.nix
     ../system/fonts.nix
     ../system/greetd.nix
     ../system/security.nix

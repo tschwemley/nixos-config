@@ -47,9 +47,6 @@ in {
     useDHCP = lib.mkDefault true;
   };
 
-  # TODO: import the flatpak.nix file if ultimately deciding to run flatpak
-  # services.flatpak.enable = true;
-
   services.getty.autologinUser = "schwem";
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update

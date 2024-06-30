@@ -11,9 +11,12 @@
 
     exec-once = [
       "hyprpaper"
+      "ags"
+      # "waybar"
     ];
 
     general = {
+      gaps_out = 10;
       # layout = "dwindle";
       layout = "master";
       # layout = "scroller";
@@ -21,7 +24,6 @@
 
     master = { # for all options see: https://wiki.hyprland.org/Configuring/Master-Layout/
       always_center_master = true;
-      new_status = "master"; # new window opens as "master","slave", or "inherit" from focused
       orientation = "center";
     };
 
@@ -31,6 +33,7 @@
       # disable_autoreload = true;
 
       # disable the stupid default anime background
+      disable_hyprland_logo = true;
       force_default_wallpaper = 0;
 
       # disable dragging animation

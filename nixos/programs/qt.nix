@@ -1,3 +1,4 @@
+# TODO: cleanup
 {pkgs, ...}: {
   # environment.systemPackages = with pkgs; [
   #   # kdePackages.qtwayland

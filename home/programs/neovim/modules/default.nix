@@ -13,6 +13,7 @@
     ./terminal
     ./treesitter
     ./schwem
+    ./ui
     ./utils
   ];
 }

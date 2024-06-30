@@ -5,8 +5,4 @@
     # upower
     # vaapiVdpau
   ];
-
-  home.sessionVariables = {
-    NIXOS_OZONE_WL = "1"; # hints electron apps to use wayland
-  };
 }

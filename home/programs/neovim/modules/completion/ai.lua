@@ -5,23 +5,23 @@ local anthropic = require("codecompanion.adapters").use("anthropic", {
 	},
 })
 
-local ollama = require("codecompanion.adapters").use("ollama", {
-   schema = {
-      model = {
-         default = "codeqwen",
-      },
-   },
-})
+-- local ollama = require("codecompanion.adapters").use("ollama", {
+--    schema = {
+--       model = {
+--          default = "codeqwen",
+--       },
+--    },
+-- })
 
 codecompanion.setup({
 	adapters = {
 		anthropic = anthropic,
-		ollama = ollama,
+		-- ollama = ollama,
 	},
 	strategies = {
-		chat = "ollama",
-		inline = "ollama",
-		tool = "ollama",
+		chat = "anthropic",
+		inline = "anthropic",
+		tool = "anthropic",
 	},
 })
 
