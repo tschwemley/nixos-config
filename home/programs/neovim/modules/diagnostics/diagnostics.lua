@@ -12,6 +12,7 @@ telescope.setup {
   },
 }
 
+vim.keymap.set('n', '<leader>ta', '<cmd>Trouble<cr>', { noremap = true })
 vim.keymap.set('n', '<leader>td', '<cmd>TodoTrouble<cr>', { noremap = true })
-vim.keymap.set('n', '<leader>tl', '<cmd>Trouble qflist toggle<cr>', { noremap = true })
+vim.keymap.set('n', '<leader>tl', '<cmd>Trouble diagnostics toggle<cr>', { noremap = true })
 vim.keymap.set('n', '<leader>tq', '<cmd>Trouble qflist toggle<cr>', { noremap = true })
