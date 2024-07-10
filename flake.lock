@@ -312,11 +312,11 @@
         "norg-meta": "norg-meta"
       },
       "locked": {
-        "lastModified": 1720534387,
-        "narHash": "sha256-h33FU6PpYJ7mZOFRKmkDOjsDXxc8LqoDrF0wcc4RQLQ=",
+        "lastModified": 1720578710,
+        "narHash": "sha256-fWyaDs/FIQHFh4j2a9e7OODRa78ovAK7V0UnNWlA4kY=",
         "owner": "nvim-neorg",
         "repo": "nixpkgs-neorg-overlay",
-        "rev": "728814b778f87935883fa0c724b5cd77ab66d527",
+        "rev": "8f13f649b9ce4f5bcdebd14f0a0248ac4e3dba2d",
         "type": "github"
       },
       "original": {
@@ -473,11 +473,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1720571246,
-        "narHash": "sha256-nkUXwunTck+hNMt2wZuYRN+jf2ySRjKTzI0fo5TDH78=",
+        "lastModified": 1720585496,
+        "narHash": "sha256-UONPcQR2r0voopd6pcNFmUv7p4TJPeAXzwnqWmaPujw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "16e401f01842c5bb2499e78c1fe227f939c0c474",
+        "rev": "e01511309fe8b0432aa58a547365e51d5a3ecf85",
         "type": "github"
       },
       "original": {
