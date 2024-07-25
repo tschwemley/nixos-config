@@ -8,8 +8,8 @@
       ESP = {
         start = "1MiB";
         end = "128MiB";
-        # type = "EF00";
-        priority=1;
+        type = "EF00";
+        priority = 1;
         # bootable = true;
         content = {
           type = "filesystem";
@@ -18,9 +18,10 @@
         };
       };
       root = {
-        start = "128MiB";
-        end = "100%";
-        priority=2;
+        # start = "128MiB";
+        # end = "100%";
+        size = "100%";
+        priority = 2;
         content = {
           type = "btrfs";
           extraArgs = ["-f"];
