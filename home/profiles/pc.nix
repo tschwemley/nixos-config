@@ -1,5 +1,6 @@
 {pkgs, ...}: let
   git = import ../programs/git.nix {
+    inherit pkgs;
     name = "Tyler Schwemley";
     email = "tjschwem@gmail.com";
   };
@@ -7,21 +8,18 @@ in {
   imports = [
     git
     ./.
-    # ../programs/aseprite.nix
     ../programs/ags
-    # ../programs/ai
     ../programs/bambu-studio.nix
     ../programs/bitwarden.nix
     ../programs/browsers
-    ../programs/cad.nix
     ../programs/discord.nix
     ../programs/glow.nix
     ../programs/gtk.nix
     ../programs/khal.nix
+    ../programs/libreoffice.nix
     ../programs/music
-    ../programs/rustdesk.nix
+    ../programs/qt.nix
     ../programs/slack.nix
-    ../programs/taskwarrior.nix
     ../programs/vlc.nix
     ../programs/wayland
     ../programs/wcalc.nix
@@ -31,6 +29,12 @@ in {
     ../programs/zoom.nix
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
+
+    # ../programs/aseprite.nix
+    # ../programs/ai
+    # ../programs/cad.nix
+    # ../programs/rustdesk.nix
+    # ../programs/taskwarrior.nix
   ];
 
   home = {
