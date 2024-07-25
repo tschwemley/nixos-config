@@ -28,7 +28,7 @@ vim.o.backup = false
 vim.o.undodir = os.getenv("HOME") .. ".local/state/nvim/undo"
 
 -- search options
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 vim.o.incsearch = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -50,4 +50,4 @@ vim.o.timeoutlen = 300
 
 -- TODO: consider switching to one of the plugins or writing my own func to only show when char
 -- reaches column limit
-vim.o.colorcolumn = "100"
+vim.o.colorcolumn = "120"

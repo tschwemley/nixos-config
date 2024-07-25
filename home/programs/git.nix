@@ -1,4 +1,5 @@
 {
+  pkgs,
   name,
   email,
   ...
@@ -11,6 +12,7 @@
     s = "status";
   };
 in {
+  home.packages = with pkgs; [gh];
   programs.git = {
     inherit aliases;
     enable = true;

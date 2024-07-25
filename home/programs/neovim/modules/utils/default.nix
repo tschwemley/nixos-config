@@ -4,6 +4,7 @@
     mini-nvim
     neogit-nightly
     nnn-vim
+    nvim-spectre
     nvim-ufo
     refactoring-nvim
     vim-abolish
@@ -14,5 +15,6 @@
   xdg.configFile."nvim/after/plugin/neogit.lua".source = ./neogit.lua;
   xdg.configFile."nvim/after/plugin/nnn.lua".source = ./nnn.lua;
   xdg.configFile."nvim/after/plugin/refactoring.lua".source = ./refactoring.lua;
+  xdg.configFile."nvim/after/plugin/spectre.lua".source = ./spectre.lua;
   xdg.configFile."nvim/after/plugin/ufo.lua".source = ./ufo.lua;
 }

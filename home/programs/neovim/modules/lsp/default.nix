@@ -2,7 +2,6 @@
   packages = {
     lsp = with pkgs; [
       dprint
-      gopls
       htmx-lsp
       lua-language-server
       nil
@@ -15,7 +14,11 @@
 
     formatting = with pkgs; [
       alejandra
+      golangci-lint
+      golines
+      gopls
       gotools
+      revive # go linter
       stylua
     ];
   };
@@ -26,7 +29,6 @@
     ];
     lsp = [nvim-lspconfig];
     snippets = [luasnip];
-
     utility = [
       nvim-web-devicons
     ];
@@ -44,5 +46,7 @@ in {
     "nvim/after/plugin/lsp/keymaps.lua".source = ./keymaps.lua;
     "nvim/after/plugin/lsp/lsp.lua".source = ./lsp.lua;
     "nvim/after/plugin/lsp/null_ls.lua".source = ./null_ls.lua;
+
+    "nvim/after/plugin/lsp/languages/go.lua".source = ./languages/go.lua;
   };
 }

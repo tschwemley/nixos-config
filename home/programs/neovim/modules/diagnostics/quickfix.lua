@@ -8,13 +8,11 @@ local function remove_qf_item()
   vim.cmd('copen')
 end
 
--- Create a user command
-vim.api.nvim_create_user_command('RemoveQFItem', remove_qf_item, {})
-
 -- Use autocmd to map dd only in quickfix windows
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'qf',
   callback = function()
-    vim.api.nvim_buf_set_keymap(0, 'n', 'dd', ':RemoveQFItem<CR>', { noremap = true, silent = true })
+    vim.keymap.set('n', 'dd', remove_qf_item, { buffer = true })
+    vim.keymap.set('v', 'd', remove_qf_item, { buffer = true })
   end
 })

@@ -5,25 +5,26 @@ local anthropic = require("codecompanion.adapters").use("anthropic", {
 	},
 })
 
--- local ollama = require("codecompanion.adapters").use("ollama", {
---    schema = {
---       model = {
---          default = "codeqwen",
---       },
---    },
--- })
+local ollama = require("codecompanion.adapters").use("ollama", {
+   schema = {
+      model = {
+         default = "codestral",
+      },
+   },
+})
 
 codecompanion.setup({
 	adapters = {
 		anthropic = anthropic,
-		-- ollama = ollama,
+		ollama = ollama,
 	},
 	strategies = {
-		chat = "anthropic",
-		inline = "anthropic",
-		tool = "anthropic",
+		chat = "ollama",
+		inline = "ollama",
+		tool = "ollama",
 	},
 })
+
 
 vim.keymap.set('n', '<leader>ca', codecompanion.actions, { noremap = true })
 vim.keymap.set('n', '<leader>cc', codecompanion.chat, { noremap = true })
