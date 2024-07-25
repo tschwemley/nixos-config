@@ -16,7 +16,11 @@ while [[ $# -gt 0 ]]; do
 				useGrub=true
 			elif [[ $2 == "proxmox" ]] ; then
 				diskName="/dev/sda"	
-				storageDiskName="/dev/sdb"
+				storageDisk="/dev/sdb"
+				useGrub=false
+			elif [[ $2 == "proxmox-b" ]] ; then
+				diskName="/dev/sdb"	
+				storageDisk="/dev/sda"
 				useGrub=false
 			else 
 				echo "invalid profile"
@@ -32,21 +36,20 @@ if [[ -z "$mode" || -z "$diskName" || -z "$useGrub" ]] ; then
 	exit 1
 fi
 
-
 fPrefix="${SCRIPT_DIR}/../../nixos/hardware/disks"
 rootFile="${fPrefix}/ephemeral-root.nix"
 storageFile="${fPrefix}/block-storage.nix"
 
 nix --experimental-features 'nix-command flakes' run github:nix-community/disko -- \
-	-m $mode \
-	--arg diskName '"$diskName"' \
-	$rootFile
+	-m "$mode" \
+	--arg diskName "$diskName" \
+	"$rootFile"
 
-if [[ ! -z "$storageDisk" ]] ; then 
+if [[ -n "$storageDisk" ]] ; then 
 	nix --experimental-features 'nix-command flakes' run github:nix-community/disko -- \
-		-m $mode \
-		--arg diskName '"$storageDiskName"' \
-		$storageFile
+		-m "$mode" \
+		--arg diskName "$storageDisk" \
+		"$storageFile"
 fi
 
 
