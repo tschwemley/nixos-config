@@ -1,9 +1,9 @@
-{inputs, ...}: let
+let
   boot = (import ../../system/boot.nix).systemd;
   disk = (import ../../hardware/disks).proxmox;
   profile = import ../../profiles/proxmox.nix;
   server = [
-    ../../containers/jellyfin
+    ../../../containers/jellyfin
     # ../../services/seaweedfs/filer.nix
     # ../../services/seaweedfs/volume.nix
   ];

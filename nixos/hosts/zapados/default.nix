@@ -4,7 +4,7 @@
   profile = import ../../profiles/proxmox.nix;
   server = [
     "${inputs.nix-private.outPath}/containers/excalidraw"
-    ../../containers/redlib
+    ../../../containers/redlib
     # ../../services/seaweedfs/volume.nix
     ../../server/cockroachdb
     ../../server/monitoring/prometheus/node-exporter.nix

@@ -3,8 +3,8 @@ let
   disk = (import ../../hardware/disks).buyvm;
   profile = import ../../profiles/buyvm.nix;
   server = [
-    ../../containers/keycloak
-    ../../containers/searxng
+    ../../../containers/keycloak
+    ../../../containers/searxng
     ../../server/acme
     ../../server/cockroachdb
     ../../server/haproxy
