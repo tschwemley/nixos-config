@@ -27,7 +27,7 @@
 
     secrets = {
       container_deploy_key = {
-        sopsFile = ../../../containers/secrets.yaml;
+        sopsFile = ../../containers/secrets.yaml;
         path = "/root/.ssh/container_deploy_key";
       };
       ssh_config = {
