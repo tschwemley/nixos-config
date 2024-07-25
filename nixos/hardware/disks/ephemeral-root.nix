@@ -3,33 +3,20 @@
   useGrub ? false,
   ...
 }: let
-  grubPartitions =
-    if useGrub
-    then [
-      {
-        name = "boot";
-        start = "0";
-        end = "1M";
-        flags = ["bios_grub"];
-      }
-    ]
-    else [];
   partitions =
-    grubPartitions
-    ++ [
-      {
-        name = "ESP";
+    {
+      ESP = {
         start = "1MiB";
         end = "128MiB";
-        bootable = true;
+        type = "EF00";
+        # bootable = true;
         content = {
           type = "filesystem";
           format = "vfat";
           mountpoint = "/boot";
         };
-      }
-      {
-        name = "root";
+      };
+      root = {
         start = "128MiB";
         end = "100%";
         part-type = "primary";
@@ -55,8 +42,20 @@
             };
           };
         };
+      };
+    }
+    // (
+      if useGrub
+      then {
+        boot = {
+          start = "0";
+          end = "1M";
+          type = "EF02";
+          # flags = ["bios_grub"];
+        };
       }
-    ];
+      else {}
+    );
 in {
   imports = [./common.nix];
   disko.devices.disk.main = {
@@ -64,8 +63,8 @@ in {
     device = diskName;
     content = {
       inherit partitions;
-      type = "table";
-      format = "gpt";
+      type = "gpt";
+      # format = "gpt";
     };
   };
 }
