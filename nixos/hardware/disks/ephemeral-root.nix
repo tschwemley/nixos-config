@@ -10,7 +10,7 @@
         end = "128MiB";
         # type = "EF00";
         priority=1;
-        bootable = true;
+        # bootable = true;
         content = {
           type = "filesystem";
           format = "vfat";
