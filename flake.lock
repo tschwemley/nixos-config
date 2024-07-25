@@ -385,29 +385,6 @@
         "type": "github"
       }
     },
-    "nix-private": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1717993951,
-        "narHash": "sha256-yRYSUxQsyTM44OqOY2Y878djP3GxOHOoTvavbYB7Iyk=",
-        "ref": "refs/heads/main",
-        "rev": "f32e268b1448573ac761ab5cd56c5a4dc593a87d",
-        "revCount": 301,
-        "type": "git",
-        "url": "ssh://git@github.com/tschwemley/nix-private.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/tschwemley/nix-private.git"
-      }
-    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1721754224,
@@ -537,7 +514,6 @@
         "home-manager": "home-manager",
         "neorg-overlay": "neorg-overlay",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "nix-private": "nix-private",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
         "sops": "sops"

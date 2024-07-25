@@ -3,7 +3,7 @@
   disk = import ../../hardware/disks/ephemeral-root.nix { diskName = "/dev/sdb"; };
   profile = import ../../profiles/proxmox.nix;
   server = [
-    # "${inputs.nix-private.outPath}/containers/stash"
+    "${inputs.nix-private.outPath}/containers/stash"
     # ../../services/seaweedfs/volume.nix
   ];
 in {
