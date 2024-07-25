@@ -8,8 +8,9 @@
       ESP = {
         start = "1MiB";
         end = "128MiB";
-        type = "EF00";
-        # bootable = true;
+        # type = "EF00";
+        priority=1;
+        bootable = true;
         content = {
           type = "filesystem";
           format = "vfat";
@@ -19,7 +20,7 @@
       root = {
         start = "128MiB";
         end = "100%";
-        part-type = "primary";
+        priority=2;
         content = {
           type = "btrfs";
           extraArgs = ["-f"];
@@ -50,8 +51,8 @@
         boot = {
           start = "0";
           end = "1M";
-          type = "EF02";
-          # flags = ["bios_grub"];
+          # type = "EF02";
+          flags = ["bios_grub"];
         };
       }
       else {}
@@ -64,7 +65,6 @@ in {
     content = {
       inherit partitions;
       type = "gpt";
-      # format = "gpt";
     };
   };
 }
