@@ -52,8 +52,7 @@
         boot = {
           start = "0";
           end = "1M";
-          # type = "EF02";
-          flags = ["bios_grub"];
+          type = "EF02";
         };
       }
       else {}
