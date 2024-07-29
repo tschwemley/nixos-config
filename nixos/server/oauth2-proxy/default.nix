@@ -20,7 +20,7 @@
     nginx = {
       domain = "auth.schwem.io";
       # NOTE:this might need to be changed
-      proxy = config.services.oauth2_proxy.httpAddress;
+      proxy = config.services.oauth2-proxy.httpAddress;
       virtualHosts = [
         "monitor.schwem.io"
       ];
