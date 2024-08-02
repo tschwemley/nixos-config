@@ -12,11 +12,12 @@
       "ctrl+shift+k" = "neighboring_window up";
       "ctrl+shift+j" = "neighboring_window down";
       "ctrl+shift+alt+l" = "next_layout";
+      "ctrl+shift+," = "toggle_layout stack";
     };
     settings = {
       allow_remote_control = "yes";
       enable_audio_bell = false;
-      enabled_layouts = "tall:bias=65,fat:bias=67,grid";
+      enabled_layouts = "tall:bias=65,fat:bias=67,grid,stack";
       listen_on = "unix:@kitty";
     };
     shellIntegration.enableFishIntegration = false;
