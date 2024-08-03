@@ -9,6 +9,7 @@ in {
     git
     ./.
     ../programs/ags
+    ../programs/ai
     ../programs/bambu-studio.nix
     ../programs/bitwarden.nix
     ../programs/browsers
@@ -27,11 +28,11 @@ in {
     ../programs/vial.nix
     ../programs/wofi.nix
     ../programs/zoom.nix
+    ../terminal/xdg.nix
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
 
     # ../programs/aseprite.nix
-    # ../programs/ai
     # ../programs/cad.nix
     # ../programs/rustdesk.nix
     # ../programs/taskwarrior.nix

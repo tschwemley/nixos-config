@@ -47,7 +47,8 @@
     # // image
     # // video
     # // audio
-    browserTypes);
+    # // audio
+    // browserTypes);
 in {
   xdg = {
     enable = true;
