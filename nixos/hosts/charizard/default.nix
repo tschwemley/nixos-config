@@ -18,9 +18,12 @@
   networking = {
     imports = [
       ../../network/containers.nix
+      ../../network/systemd-networkd.nix
       ../../network/tailscale.nix
     ];
   };
+  ollama = import ../../../containers/ollama "/home/schwem/.ollama";
+  sillytavern = import ../../../containers/sillytavern "/home/schwem/.sillytavern";
   user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
 in {
   imports = [
@@ -28,6 +31,8 @@ in {
     disk
     hardware
     networking
+    ollama
+    sillytavern
     user
     ./secrets.nix
     ../../profiles/pc.nix
@@ -41,19 +46,24 @@ in {
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
+  ethDev = "enp6s0";
+
   networking = {
     hostName = "charizard";
-    networkmanager.enable = true;
-    useDHCP = lib.mkDefault true;
+    networkmanager.enable = false;
+    # useDHCP = lib.mkDefault true;
   };
 
   services.getty.autologinUser = "schwem";
+  services.resolved.dnsovertls = lib.mkDefault "true";
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
   system.stateVersion = "24.05";
 
+  # not necessary on charizard desktop config
+  # systemd.services.NetworkManager-wait-online.enable = false;
+
   tailscaleUpFlags = [
-    "--allow-stateful-filtering"
     "--exit-node=100.84.59.97"
     "--exit-node-allow-lan-access=true"
     "--shields-up"

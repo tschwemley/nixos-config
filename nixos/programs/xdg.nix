@@ -8,8 +8,6 @@
     };
 
     extraPortals = [
-      # TODO: hyprland desktop portal is a fork of this... may not be necessary here
-      # pkgs.xdg-desktop-portal-wlr
       pkgs.xdg-desktop-portal-gtk
     ];
   };

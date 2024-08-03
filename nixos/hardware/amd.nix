@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   pkgs,
   ...
 }:
@@ -22,9 +23,10 @@
   ];
 
   hardware.amdgpu = {
-    loadInInitrd = true;
+    initrd.enable = true;
     opencl.enable = true;
   };
 
   nixpkgs.config.rocmSupport = true;
+  services.xserver.videoDrivers = lib.mkDefault ["modesetting"];
 }

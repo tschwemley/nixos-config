@@ -9,6 +9,7 @@
 ./flareon
 ./jolteon
 ./result
+result
 ssh_host*
 
 # llama.log

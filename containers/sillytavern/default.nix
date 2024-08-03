@@ -11,8 +11,8 @@ hostPath: {
     ports = ["8000:8000"];
     volumes = [
       "${hostPath}/config:/home/node/app/config"
-      "${hostPath}/config:/home/node/app/data"
-      "${hostPath}/config:/home/node/app/plugins"
+      "${hostPath}/data:/home/node/app/data"
+      "${hostPath}/plugins:/home/node/app/plugins"
     ];
   };
 }
