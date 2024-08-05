@@ -1,17 +1,13 @@
 {inputs, ...}: let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
-  # disk = (import ../../hardware/disks).buyvmWithStorage;
-  disk = (import ../../hardware/disks).buyvm;
+  disk = (import ../../hardware/disks).buyvmWithStorage;
+  # disk = (import ../../hardware/disks).buyvm;
   profile = import ../../profiles/buyvm.nix;
   server = [
 #"${inputs.nix-private.outPath}/containers/invidious"
-#../../../containers/redlib
     ../../../containers/searxng
     ../../server/cockroachdb
     ../../server/redlib
-    # ../../services/seaweedfs/master.nix
-    # ../../services/seaweedfs/filer.nix
-    # ../../services/seaweedfs/volume.nix
   ];
 in {
   imports =
