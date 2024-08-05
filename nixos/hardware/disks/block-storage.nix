@@ -1,10 +1,7 @@
 {diskName, ...}: let
-  partitions = [
-    {
-      name = "storage";
-      start = "0";
-      end = "100%";
-      part-type = "primary";
+  partitions = {
+    storage = {
+      size = "100%";
       content = {
         type = "btrfs";
         extraArgs = ["-f"];
@@ -15,16 +12,15 @@
           };
         };
       };
-    }
-  ];
+    };
+  };
 in {
   disko.devices.disk.storage = {
     type = "disk";
     device = diskName;
     content = {
       inherit partitions;
-      type = "table";
-      format = "gpt";
+      type = "gpt";
     };
   };
 }
