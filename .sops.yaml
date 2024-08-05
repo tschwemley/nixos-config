@@ -58,7 +58,7 @@ creation_rules:
       - age:
           - *zapados
 
-  - path_regex: ^(./)?nixos/(containers|modules|network|services|server)/(.*/)?secrets.yaml
+  - path_regex: ^(./)?(nixos/)?(containers|modules|network|services|server)/(.*/)?secrets.yaml
     key_groups:
       - age:
           - *personal
