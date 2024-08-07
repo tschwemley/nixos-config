@@ -1,20 +1,17 @@
 {
   self,
-  #inputs,
+  inputs,
   config,
   lib,
   pkgs,
   ...
 }: let
   boot = (import ../../system/boot.nix).systemd;
-  disk = (import ../../hardware/disks).charizard;
+  disk = (import ../../hardware/disks).pikachu;
   hardware = {
     imports = [
       #TODO: remove this after ensuring laptop build has any required options that were defined here
-      #inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
-      #inputs.nixos-hardware.nixosModules.common-pc
-      #inputs.nixos-hardware.nixosModules.common-pc-ssd
-      ../../hardware/amd.nix
+      inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
       ../../hardware/audio
     ];
   };
