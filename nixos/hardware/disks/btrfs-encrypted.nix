@@ -1,4 +1,15 @@
-{diskName, ...}: {
+{
+  diskName,
+  luksName ? "crypted",
+  ...
+}:
+#let
+# luksName =
+#   if config.networking.hostname == "pikachu"
+#   then "pikachu-crypted"
+#   else "crypted";
+#in
+{
   imports = [./common.nix];
   disko.devices = {
     disk = {
@@ -26,7 +37,8 @@
               size = "100%";
               content = {
                 type = "luks";
-                name = "crypted";
+                # name = "crypted";
+                name = luksName;
                 extraOpenArgs = ["--allow-discards"];
                 content = {
                   type = "btrfs";

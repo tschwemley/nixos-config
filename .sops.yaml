@@ -8,6 +8,7 @@ keys:
   - &jolteon age13qley8lnkqspu8yda95vqsvkrnfjmpm6m7e8um9gtm3yd8a4c34spzfx79
   - &machamp age1k5e5uk0897ne5lrvmhhgn6am5cr32l2w7aa4ldapncwluv0rqekspj8w97
   - &moltres age1p6ta8m3xng6l73pvff5f4txvrhlpslcuty60tf0ngafw0jru0fnsnrzaxw
+  - &pikachu age1rvv0m2d5weqgnsf7cv7k2wv8rkgqd06pcmpf98j98m7mkf2a5gwsr2eqja
   - &zapados age1z37rwn90f923pdhjtcsw2r8a48hwsuh73xjswjj8z7qr3kp3aeyqdamr5f
 
 creation_rules:
@@ -52,6 +53,12 @@ creation_rules:
     key_groups:
       - age:
           - *moltres
+
+  - path_regex: nixos/hosts/pikachu/secrets.yaml
+    key_groups:
+      - age:
+          - *personal
+          - *pikachu
 
   - path_regex: nixos/hosts/zapados/secrets.yaml
     key_groups:

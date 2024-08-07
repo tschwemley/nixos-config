@@ -5,7 +5,7 @@ let
 in
   {hostname ? currentHostname}: rec {
     inherit flake;
-    inherit (flake.nixosConfigurations) charizard articuno zapados moltres eevee jolteon flareon;
+    inherit (flake.nixosConfigurations) charizard articuno zapados moltres eevee jolteon flareon pikachu;
     curSystem = flake.nixosConfigurations.${hostname};
     inherit (curSystem) pkgs lib;
   }

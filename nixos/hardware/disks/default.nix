@@ -26,7 +26,7 @@ in rec {
   };
   pikachu = {
     imports = [
-      (import ./btrfs-encrypted.nix {diskName = "sda";})
+      (import ./btrfs-encrypted.nix {diskName = "sda"; luksName = "pikachu-crypted";})
     ];
   };
   proxmox = {
