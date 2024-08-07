@@ -21,7 +21,7 @@ in {
   };
 
   gtk = {
-    inherit (themes.everforest) iconTheme theme;
+    # inherit (themes.everforest) iconTheme theme;
 
     enable = true;
 
@@ -44,12 +44,13 @@ in {
     # gruvbox-gtk-theme
     # https://github.com/matthewmx86/Redmond97
 
-    # theme = {
-    #   name = "Everforest-Dark-BL";
-    #   package = pkgs.everforest-gtk-theme;
-    #   # name = "adw-gtk3-dark";
-    #   # package = pkgs.adw-gtk3;
-    # };
+    theme = {
+      # name = "Everforest-Dark-BL";
+      # package = pkgs.everforest-gtk-theme;
+      name = "Gruvbox-Dark";
+      package = pkgs.gruvbox-gtk-theme;
+      # package = pkgs.gruvbox-dark-gtk;
+    };
     # iconTheme = {
     #   name = "Papirus";
     #   package = pkgs.papirus-icon-theme;

@@ -18,6 +18,7 @@
     then {}
     else {
       src = "${pkgs.nnn.src}/plugins";
+
       mappings = {
         d = "dragdrop";
         f = "finder";

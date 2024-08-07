@@ -24,6 +24,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+    };
+
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
     nix-private = {
@@ -81,12 +88,15 @@
           inherit system;
           config.allowUnfree = true;
 
-          # NOTE: might be a better spot for overlays long-term. I'm okay w/ here for now
+          # NOTE: there might be a better spot for overlays long-term. I'm okay w/ here for now
           overlays = [
-            # TODO: uncomment in a few days to see if upstream issue sorted (05/22/24)
-            # inputs.neovim-nightly-overlay.overlay
             inputs.neorg-overlay.overlays.default
             (final: prev: {
+              # TODO: decide if keeping brave overlay or removing
+              # brave =
+              #   prev.brave.override {
+              #       # commandLineArgs = "--remote-debugging-port=9222";
+              #   };
               hypreasymotion = self'.packages.hypreasymotion;
               redlib = self'.packages.redlib;
               vimPlugins =

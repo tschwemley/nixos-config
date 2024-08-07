@@ -1,9 +1,11 @@
 {
+  inputs, 
   config,
   pkgs,
   ...
 }: {
   imports = [
+    inputs.hyprland.homeManagerModules.default
     ./binds.nix
     ./hyprpaper.nix
     ./rules.nix
@@ -11,14 +13,6 @@
     # TODO: add these imports or put into own module/wayland module
     # ../../../services/dunst.nix
   ];
-
-  xdg.portal = let
-    hyprland = config.wayland.windowManager.hyprland.package;
-    xdph = pkgs.xdg-desktop-portal-hyprland.override {inherit hyprland;};
-  in {
-    extraPortals = [xdph];
-    configPackages = [hyprland];
-  };
 
   home.packages = with pkgs; [
     grimblast
@@ -43,4 +37,13 @@
       ];
     };
   };
+
+  xdg.portal = let
+    hyprland = config.wayland.windowManager.hyprland.package;
+    xdph = pkgs.xdg-desktop-portal-hyprland.override {inherit hyprland;};
+  in {
+    extraPortals = [xdph];
+    configPackages = [hyprland];
+  };
+
 }
