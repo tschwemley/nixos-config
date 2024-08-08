@@ -24,24 +24,12 @@ extractSshHostKeys() {
 	sops -d --extract '["ssh_host_rsa_key"]' $secretsPath > "$extractDir/ssh_host_rsa_key"
 }
 
-extractWireguardPrivateKey() {
-	extractDir="/persist/wireguard" 
-	if [ "$2" != "" ]; then extractDir="$2"; fi
-	[ ! -d "$extractDir" ] && mkdir -p $extractDir
-	secretsPath=./nixos/hosts/$1/secrets.yaml
-	sops -d --extract '["wireguard_private"]' $secretsPath > "$extractDir/private"
-}
-
-genSshKeys() {
+genHostSsh() {
 	# [ $# -ne 2 ] && echo "ERROR: Need to provide a host name. Usage: nix run .# <cmd> <host>" && exit
 	ssh-keygen -t ed25519 -f ./ssh_host_ed25519_key -q -N ""
 	ssh-keygen -t rsa -f ./ssh_host_rsa_key -q -N ""
 	ssh-keygen -t ed25519 -f ./auth_key -q -N ""
 	ssh-to-age -private-key -i ./ssh_host_ed25519_key > ./age.txt
-}
-
-genWgKeys() {
-	wg genkey | tee wg-private | wg pubkey > wg-public
 }
 
 initializeDisk () {
@@ -53,22 +41,43 @@ initializeDisk () {
 [ $# -lt 1 ] && printHelp
 
 case $1 in
-	"extract-ssh-keys" | "extract-ssh")
-		extractSshDir $2 $3
-		;;
+	"generate" | "gen")
 
-	"gen-keys" )
-		genSshKeys
-		genWgKeys
-		;;
+		case $2 in 
+			"host")
+				;;
+			*) 
+				printHelp
+				;;
+		esac
 
-	"init-disk" | "initialize-disk")
-		initializeDisk $2 $3
-		;;
+		case $3 in
+			"ssh" | "ssh-keys")
 
-	"post-install" )
-		extractSshHostKeys $2 $3
-		extractWireguardPrivateKey $2 $3
+				;;
+			*)
+				printHelp
+				;;
+		esac
 		;;
+	# "extract-ssh-keys" | "extract-ssh")
+	# 	extractSshDir $2 $3
+	# 	;;
+	#
+	# "gen-host-ssh" )
+	# 	genHostSsh
+	# 	;;
+	#
+	# "init-disk" | "initialize-disk")
+	# 	initializeDisk $2 $3
+	# 	;;
+	#
+	# "post-install" )
+	# 	extractSshHostKeys $2 $3
+	# 	extractWireguardPrivateKey $2 $3
+	# 	;;
+	*)
+		printHelp
+	;;
 esac
 

@@ -12,7 +12,7 @@
     imports = [
       #TODO: remove this after ensuring laptop build has any required options that were defined here
       inputs.nixos-hardware.nixosModules.common-cpu-intel
-      inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+      # inputs.nixos-hardware.nixosModules.common-gpu-nvidia
       ../../hardware/audio
     ];
   };
@@ -72,10 +72,15 @@ in {
   environment.systemPackages = with pkgs; [
     sof-firmware
   ];
+  hardware.opengl.enable = true;
+  hardware.opengl.extraPackages = with pkgs; [
+    vaapiVdpau
+  ];
   services.asusd.enable = true;
   services.hardware.bolt.enable = true;
   services.xserver.libinput = {
     enable = true;
     touchpad.tapping = false;
   };
+  services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
 }

@@ -14,6 +14,17 @@
       inherit (hyprlandPlugins) hypreasymotion hyprscroller;
       inherit (vimPlugins) codecompanion harpoon neogit-nightly;
 
+      bambu-studio = import ./bambu-studio.nix;
+      # bambu-studio = pkgs.bambu-studio.overrideAttrs rec {
+      #   version = "1.09.03.50";
+      #   src = fetchFromGitHub {
+      #     owner = "bambulab";
+      #     repo = "BambuStudio";
+      #     rev = "v${version}";
+      #     hash = "sha256-RBctBhKo7mjxsP7OJhGfoU1eIiGVuMiAqwwSU+gsMds=";
+      #   };
+      # };
+
       build-all-hosts = writeScriptBin "build-all-hosts" ''
         #!/usr/bin/env sh
         build-host articuno && build-host zapados && build-host moltres && build-host eevee \

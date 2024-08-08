@@ -1,4 +1,5 @@
 import * as widgets from './widgets.js';
+import SysMonitor from './widgets/sysmonitor.js';
 
 // layout of the bar
 function left() {
@@ -26,6 +27,7 @@ function right() {
     hpack: "end",
     spacing: 8,
     children: [
+      //SysMonitor(),
       widgets.Volume(),
       widgets.Clock(),
       widgets.SysTray(),
