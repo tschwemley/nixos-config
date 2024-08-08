@@ -39,9 +39,6 @@
       # disable dragging animation
       # animate_mouse_windowdragging = false;
 
-      # we do, in fact, want direct scanout
-      no_direct_scanout = false;
-
       # enable variable refresh rate (effective depending on hardware)
       vrr = 2;
     };
@@ -51,6 +48,10 @@
       # "DP-2,2560x2880@60,3840x0,1" # LG Dual Up
       "DP-1,5120x3440@240,0x0,1" # Odyssey g9
     ];
+
+    render = {
+      direct_scanout = true;
+    };
 
     plugin = {
       # easymotion = {
