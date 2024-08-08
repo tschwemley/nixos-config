@@ -11,7 +11,8 @@
   hardware = {
     imports = [
       #TODO: remove this after ensuring laptop build has any required options that were defined here
-      inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
+      inputs.nixos-hardware.nixosModules.common-cpu-intel
+      inputs.nixos-hardware.nixosModules.common-gpu-nvidia
       ../../hardware/audio
     ];
   };
@@ -38,7 +39,7 @@ in {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod"];
       kernelModules = ["kvm-intel"];
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_6_8;
     supportedFilesystems = ["btrfs"];
   };
 
@@ -66,4 +67,15 @@ in {
   time.timeZone = "America/Detroit";
 
   users.mutableUsers = true; # allow mutable users on non-servers
+
+  # laptop specific options
+  environment.systemPackages = with pkgs; [
+    sof-firmware
+  ];
+  services.asusd.enable = true;
+  services.hardware.bolt.enable = true;
+  services.xserver.libinput = {
+    enable = true;
+    touchpad.tapping = false;
+  };
 }
