@@ -70,7 +70,6 @@ in {
 
   # laptop specific options
   environment.systemPackages = with pkgs; [
-    nixosModules
     sof-firmware
   ];
   hardware.opengl.enable = true;
