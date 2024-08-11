@@ -1,22 +1,21 @@
 {inputs, ...}: let
   boot = (import ../../system/boot.nix).systemd;
-  # disk = (import ../../hardware/disks).buyvmWithStorage;
-  # disk = (import ../../hardware/disks).buyvm;
-  disk = import ./disk.nix "/dev/vda";
+  disks = [
+    (import ./disk.nix "/dev/vda")
+    (import ../../hardware/disks/block-storage.nix {diskName = "/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-18810";})
+  ];
   profile = import ../../profiles/buyvm.nix;
   server = [
     # "${inputs.nix-private.outPath}/containers/arr"
     "${inputs.nix-private.outPath}/containers/p2p"
-    # ../../services/seaweedfs/filer.nix
-    # ../../services/seaweedfs/volume.nix
   ];
 in {
   imports =
     [
       boot
-      disk
       profile
     ]
+    ++ disks
     ++ server;
 
   networking.hostName = "eevee";
