@@ -2,9 +2,7 @@ let
   boot = (import ../../system/boot.nix).systemd;
   disk = (import ../../hardware/disks).proxmox;
   profile = import ../../profiles/proxmox.nix;
-  server = [
-    ../../../containers/jellyfin
-  ];
+  server = [];
 in {
   imports =
     [
