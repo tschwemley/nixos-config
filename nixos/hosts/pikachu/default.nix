@@ -19,7 +19,7 @@
   networking = {
     imports = [
       ../../network/containers.nix
-      ../../network/tailscale.nix
+      # ../../network/tailscale.nix
     ];
   };
   user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
@@ -59,17 +59,18 @@ in {
     stateVersion = "24.05";
   };
 
-  tailscaleUpFlags = [
-    "--exit-node=100.84.59.97"
-    "--exit-node-allow-lan-access=true"
-    "--shields-up"
-  ];
+  # tailscaleUpFlags = [
+  #   "--exit-node=100.84.59.97"
+  #   "--exit-node-allow-lan-access=true"
+  #   "--shields-up"
+  # ];
   time.timeZone = "America/Detroit";
 
   users.mutableUsers = true; # allow mutable users on non-servers
 
   # laptop specific options
   environment.systemPackages = with pkgs; [
+    nixosModules
     sof-firmware
   ];
   hardware.opengl.enable = true;
