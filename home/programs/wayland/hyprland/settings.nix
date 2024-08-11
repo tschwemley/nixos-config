@@ -1,5 +1,14 @@
+{config, ...}: let
+  monitor = if config.networking.hostName == "charizard" then [
+      # "HDMI-A-2,3840x2160@120,0x0,1" # LG C2
+      # "DP-2,2560x2880@60,3840x0,1" # LG Dual Up
+      "DP-1,5120x3440@240,0x0,1" # Odyssey g9
+  ] else [];
+in 
 {
   wayland.windowManager.hyprland.settings = {
+    inherit monitor;
+
     debug.disable_logs = false;
 
     cursor = {
@@ -42,12 +51,6 @@
       # enable variable refresh rate (effective depending on hardware)
       vrr = 2;
     };
-
-    monitor = [
-      # "HDMI-A-2,3840x2160@120,0x0,1" # LG C2
-      # "DP-2,2560x2880@60,3840x0,1" # LG Dual Up
-      "DP-1,5120x3440@240,0x0,1" # Odyssey g9
-    ];
 
     render = {
       direct_scanout = true;
