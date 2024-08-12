@@ -1,5 +1,6 @@
-{
+storageDisk: {
   imports = [
+    (import ../hardware/disks/buyvm.nix storageDisk)
     ./server.nix
   ];
 
