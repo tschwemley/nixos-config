@@ -1,4 +1,4 @@
-{diskName, ...}: let
+diskName: let
   partitions = {
     storage = {
       size = "100%";
