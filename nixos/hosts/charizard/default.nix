@@ -43,7 +43,8 @@ in {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod"];
       kernelModules = ["amdgpu" "kvm-intel"];
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    # TODO: remove this or uncomment after I decide whether I want to be on the latest kernel or on LTS
+    # kernelPackages = pkgs.linuxPackages_latest;
   };
 
   ethDev = "enp6s0";
