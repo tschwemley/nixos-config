@@ -1,16 +1,9 @@
-{
-  diskName,
-  useGrub ? false,
-  ...
-}: let
+diskName: let
   partitions =
     {
       ESP = {
-        start = "1MiB";
-        end = "128MiB";
-        type = "EF00";
+        size = "128M";
         priority = 1;
-        # bootable = true;
         content = {
           type = "filesystem";
           format = "vfat";
@@ -45,18 +38,7 @@
           };
         };
       };
-    }
-    // (
-      if useGrub
-      then {
-        boot = {
-          start = "0";
-          end = "1M";
-          type = "EF02";
-        };
-      }
-      else {}
-    );
+    };
 in {
   imports = [./common.nix];
   disko.devices.disk.main = {
