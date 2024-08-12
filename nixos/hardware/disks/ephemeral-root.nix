@@ -2,8 +2,9 @@ diskName: let
   partitions =
     {
       ESP = {
-        size = "128M";
         priority = 1;
+        size = "128M";
+        type = "EF00";
         content = {
           type = "filesystem";
           format = "vfat";
