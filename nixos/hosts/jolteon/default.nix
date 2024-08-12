@@ -1,14 +1,11 @@
 let
   boot = (import ../../system/boot.nix).systemd;
-  # disk = (import ../../hardware/disks).proxmox;
-  # disk = import ../../hardware/disks/proxmox.nix;
   profile = import ../../profiles/proxmox.nix;
   server = [];
 in {
   imports =
     [
       boot
-      # disk
       profile
     ]
     ++ server;

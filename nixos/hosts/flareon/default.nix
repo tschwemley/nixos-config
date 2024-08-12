@@ -1,15 +1,11 @@
-{inputs, lib, ...}: let
+{lib, ...}: let
   boot = (import ../../system/boot.nix).systemd;
-  disk = import ../../hardware/disks/ephemeral-root.nix { diskName = "/dev/sdb"; };
   profile = import ../../profiles/proxmox.nix;
-  server = [
-    "${inputs.nix-private.outPath}/containers/stash"
-  ];
+  server = [];
 in {
   imports =
     [
       boot
-      disk
       profile
     ]
     ++ server;
