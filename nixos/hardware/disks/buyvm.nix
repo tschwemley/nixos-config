@@ -1,6 +1,8 @@
 storageDisk: let
   # root is always /dev/vda on the vm
-  root = import ./ephemeral-root.nix "/dev/vda";
+  partitions = import ./grub-partition.nix // import ./efi-partitions.nix;
+  root = import ./ephemeral-root.nix "/dev/vda" partitions;
+
   storage =
     if storageDisk != ""
     then import ./block-storage.nix storageDisk
