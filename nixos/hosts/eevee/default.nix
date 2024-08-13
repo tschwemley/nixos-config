@@ -1,5 +1,5 @@
 {inputs, ...}: let
-  boot = (import ../../system/boot.nix).systemd;
+  boot = (import ../../system/boot.nix).grub "/dev/vda";
   profile = (import ../../profiles/buyvm.nix "/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-18810");
   # server = [
   #   "${inputs.nix-private.outPath}/containers/p2p"
