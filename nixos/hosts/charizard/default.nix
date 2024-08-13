@@ -34,6 +34,7 @@ in {
     ollama
     sillytavern
     user
+    ../../services/samba.nix
     ./secrets.nix
     ../../profiles/pc.nix
   ];
