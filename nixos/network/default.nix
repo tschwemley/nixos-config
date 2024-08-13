@@ -1,5 +1,12 @@
 {
-  networking.nftables.enable = true;
+  networking = {
+    firewall = {
+      enable = true;
+      allowPing = true;
+    };
+
+    nftables.enable = true;
+  };
 
   # always use systemd-resolved
   services.resolved = {

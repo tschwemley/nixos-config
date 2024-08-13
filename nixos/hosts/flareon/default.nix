@@ -1,7 +1,9 @@
 {lib, ...}: let
   boot = (import ../../system/boot.nix).systemd;
   profile = import ../../profiles/proxmox.nix;
-  server = [];
+  server = [
+    ../../services/samba.nix
+  ];
 in {
   imports =
     [
