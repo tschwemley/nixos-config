@@ -1,6 +1,10 @@
-storageDisk: {
+storageDisk: let 
+  boot = (import ../../system/boot.nix).grub "/dev/vda";
+  disk = (import ../hardware/disks/buyvm.nix storageDisk);
+in {
   imports = [
-    (import ../hardware/disks/buyvm.nix storageDisk)
+    boot 
+    disk 
     ./server.nix
   ];
 

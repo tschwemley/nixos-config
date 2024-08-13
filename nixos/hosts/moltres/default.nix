@@ -1,10 +1,7 @@
-{inputs, ...}: let
+let
   boot = (import ../../system/boot.nix).grub "/dev/vda";
-  disk = (import ../../hardware/disks).buyvmWithStorage;
-  # disk = (import ../../hardware/disks).buyvm;
-  profile = import ../../profiles/buyvm.nix;
+  profile = (import ../../profiles/buyvm.nix "/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-25377");
   server = [
-#"${inputs.nix-private.outPath}/containers/invidious"
     ../../../containers/searxng
     ../../server/cockroachdb
     ../../server/redlib
@@ -13,7 +10,6 @@ in {
   imports =
     [
       boot
-      disk
       profile
     ]
     ++ server;
