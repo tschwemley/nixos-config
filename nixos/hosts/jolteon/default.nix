@@ -1,14 +1,7 @@
-let
-  boot = (import ../../system/boot.nix).systemd;
-  profile = import ../../profiles/proxmox.nix;
-  server = [];
-in {
-  imports =
-    [
-      boot
-      profile
-    ]
-    ++ server;
+{
+  imports = [
+    ../../profiles/proxmox.nix
+  ];
 
   networking.hostName = "jolteon";
   sops.defaultSopsFile = ./secrets.yaml;

@@ -1,4 +1,0 @@
-{
-  kernelModules = ["wireguard"];
-  supportedFilesystems = ["btrfs"];
-}

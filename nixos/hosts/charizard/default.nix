@@ -6,7 +6,6 @@
   pkgs,
   ...
 }: let
-  boot = (import ../../system/boot.nix).systemd;
   disk = (import ../../hardware/disks).charizard;
   hardware = {
     imports = [
@@ -27,15 +26,16 @@
   user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
 in {
   imports = [
-    boot
+    # boot
     disk
     hardware
     networking
     ollama
     sillytavern
     user
-    ../../services/samba.nix
     ./secrets.nix
+    ../../system/boot/systemd.nix
+    ../../services/samba.nix
     ../../profiles/pc.nix
   ];
 
