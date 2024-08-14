@@ -26,10 +26,10 @@ if [ ! -f "$SOPS_FILE" ]; then
 	sops --config .sops.yaml --add-age "$publicAge" --in-place --input-type yaml --output-type yaml -e "$SOPS_FILE"
 fi
 
-sops set nixos/hosts/pikachu/secrets.yaml '["ssh_host_ed25519_key.pub"]' "$(jq -R -s . < ./ssh_host_ed25519_key)"
-sops set nixos/hosts/pikachu/secrets.yaml '["ssh_host_ed25519_key"]' "$(jq -R -s . < ./ssh_host_ed25519_key)"
-sops set nixos/hosts/pikachu/secrets.yaml '["ssh_host_rsa_key.pub"]' "$(jq -R -s . < ./ssh_host_rsa_key)"
-sops set nixos/hosts/pikachu/secrets.yaml '["ssh_host_rsa_key"]' "$(jq -R -s . < ./ssh_host_rsa_key)"
+sops set "nixos/hosts/$HOST/secrets.yaml" '["ssh_host_ed25519_key.pub"]' "$(jq -R -s . < ./ssh_host_ed25519_key)"
+sops set "nixos/hosts/$HOST/secrets.yaml" '["ssh_host_ed25519_key"]' "$(jq -R -s . < ./ssh_host_ed25519_key)"
+sops set "nixos/hosts/$HOST/secrets.yaml" '["ssh_host_rsa_key.pub"]' "$(jq -R -s . < ./ssh_host_rsa_key)"
+sops set "nixos/hosts/$HOST/secrets.yaml" '["ssh_host_rsa_key"]' "$(jq -R -s . < ./ssh_host_rsa_key)"
 
 rm ssh_host_ed25519_key ssh_host_ed25519_key.pub ssh_host_rsa_key ssh_host_rsa_key.pub
 
