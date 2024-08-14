@@ -28,6 +28,7 @@ in {
     machamp = mkSystem "x86_64-linux" ./hosts/machamp;
     moltres = mkSystem "x86_64-linux" ./hosts/moltres;
     pikachu = mkSystem "x86_64-linux" ./hosts/pikachu;
+    tentacool = mkSystem "x86_64-linux" ./hosts/tentacool;
     zapados = mkSystem "x86_64-linux" ./hosts/zapados;
   };
 }
