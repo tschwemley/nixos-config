@@ -1,7 +1,8 @@
 let
-  boot = (import ../../system/boot.nix).grub "/dev/vda";
-  disk = (import ../../hardware/disks).buyvm;
-  profile = import ../../profiles/buyvm.nix;
+  # boot = (import ../../system/boot.nix).grub "/dev/vda";
+  # disk = (import ../../hardware/disks).buyvm;
+  # profile = import ../../profiles/buyvm.nix;
+  profile = (import ../../profiles/buyvm.nix "");
   server = [
     ../../../containers/keycloak
     ../../../containers/searxng
@@ -14,8 +15,6 @@ let
 in {
   imports =
     [
-      boot
-      disk
       profile
     ]
     ++ server;
