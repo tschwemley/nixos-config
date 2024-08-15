@@ -97,13 +97,6 @@
               #   prev.brave.override {
               #       # commandLineArgs = "--remote-debugging-port=9222";
               #   };
-              # keycloak = prev.keycloak.overrideAttrs (_: rec {
-              #   version = "24.0.5";
-              #   src = final.fetchzip {
-              #     url = "https://github.com/keycloak/keycloak/releases/download/${version}/keycloak-${version}.zip";
-              #     hash = "sha256-lf1miVEGQvPbmlOZMCXUyX/pKE+JoJFawhjVEPJDJ6s=";
-              #   };
-              # });
               hypreasymotion = self'.packages.hypreasymotion;
               redlib = self'.packages.redlib;
               vimPlugins =

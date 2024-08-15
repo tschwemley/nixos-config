@@ -11,7 +11,8 @@
   # always use systemd-resolved
   services.resolved = {
     enable = true;
-    dnsovertls = "opportunistic";
+    # dnsovertls = "opportunistic";
+    dnsovertls = "true";
     domains = ["~."];
     fallbackDns = ["194.242.2.2" "2a07:e340::2"];
   };
