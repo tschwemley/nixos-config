@@ -4,8 +4,8 @@
 
     nat = {
       enable = true;
-      # internalInterfaces = ["ve-*" "ve-+"];
-      internalInterfaces = ["ve-+"];
+      internalInterfaces = ["ve-*" "ve-+"];
+      # internalInterfaces = ["ve-+"];
       externalInterface =
         if (config ? ethDev)
         then config.ethDev
