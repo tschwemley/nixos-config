@@ -1,11 +1,9 @@
 {
-  inputs, 
-  config,
+  inputs,
   pkgs,
   ...
 }: {
   imports = [
-    inputs.hyprland.homeManagerModules.default
     ./binds.nix
     ./hyprpaper.nix
     ./rules.nix
@@ -23,6 +21,8 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
+    package = inputs.hyprland.packages.${pkgs.system}.default;
+
     # plugins = [
     #   pkgs.hypreasymotion
     #   # "/home/schwem/libhypreasymotion.so"
@@ -37,13 +37,4 @@
       ];
     };
   };
-
-  xdg.portal = let
-    hyprland = config.wayland.windowManager.hyprland.package;
-    xdph = pkgs.xdg-desktop-portal-hyprland.override {inherit hyprland;};
-  in {
-    extraPortals = [xdph];
-    configPackages = [hyprland];
-  };
-
 }

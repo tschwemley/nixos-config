@@ -46,10 +46,4 @@ in {
   # TODO: move all of the below out if keeping
   # Also sets org.freedesktop.appearance color-scheme
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-
-  # TODO: move out from this file
-  xdg.portal = {
-    enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
-  };
 }

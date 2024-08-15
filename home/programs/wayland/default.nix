@@ -40,7 +40,4 @@
       # see: https://wiki.archlinux.org/title/Wayland#GUI_libraries
     };
   };
-
-  # NOTE: not sure if this is needed any longer when using xdg-desktop-portal-hyprland
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-wlr];
 }
