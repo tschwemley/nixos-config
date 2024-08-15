@@ -1,10 +1,17 @@
-{lib, ...}: {
+{config, lib, ...}: {
   environment.variables = {
     TERM = "xterm";
   };
 
   networking = {
     firewall.enable = true;
+    nat = {
+      enable = true;
+      internalInterfaces = ["ve-+"];
+      externalInterface = config.ethDev;
+      # Lazy IPv6 connectivity for the container
+      enableIPv6 = true;
+    };
     nftables.enable = true;
     useHostResolvConf = lib.mkForce false;
   };
@@ -22,8 +29,6 @@
 
   system.stateVersion = "24.05";
 }
-
-
 /*
 {lib, ...}: {
   environment.variables = {
