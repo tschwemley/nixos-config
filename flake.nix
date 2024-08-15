@@ -98,6 +98,13 @@
               #       # commandLineArgs = "--remote-debugging-port=9222";
               #   };
               hypreasymotion = self'.packages.hypreasymotion;
+              keycloak = prev.keycloak.overrideAttrs (old: rec {
+                version = "24.05";
+                src = pkgs.fetchzip {
+                  url = "https://github.com/keycloak/keycloak/releases/download/${version}/keycloak-${version}.zip";
+                  hash = "sha256-DYuK1W8dXI/UUB+9HzMnjiJdpJulS3QuIpmr3AA4OLo=";
+                };
+              });
               redlib = self'.packages.redlib;
               vimPlugins =
                 prev.vimPlugins

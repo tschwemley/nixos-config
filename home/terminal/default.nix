@@ -2,6 +2,6 @@
   imports = [
     ./kitty
     ./shell
-    ./wezterm
+    # ./wezterm
   ];
 }

@@ -32,10 +32,10 @@
 
       networking.firewall.allowedTCPPorts = [80];
 
-      systemd.services.keycloak.script = ''
-        ${config.systemd.services.keycloak.script}
-        nyxx
-      '';
+      # systemd.services.keycloak.script = ''
+      #   ${config.systemd.services.keycloak.script}
+      #   nyxx
+      # '';
     };
   };
   # config.systemd.services.keycloak.script = (builtins.replaceStrings ["kc.sh --verbose start --optimized"] ["kc.sh --verbose start --optimized --spi-connections-jpa-legacy-migration-strategy=manual"] config.systemd.services.keycloak.script);
