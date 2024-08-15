@@ -13,7 +13,7 @@
   config = {
     networking = {
       dhcpcd.enable = false;
-      useDHCP = false;
+      useDHCP = lib.mkDefault false;
       useNetworkd = true;
     };
 

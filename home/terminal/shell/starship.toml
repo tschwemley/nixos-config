@@ -3,6 +3,7 @@
 format = """
 [](color_orange)\
 $os\
+$host\
 $username\
 [](bg:color_yellow fg:color_orange)\
 $directory\
