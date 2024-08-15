@@ -14,7 +14,6 @@
       enableIPv6 = true;
     };
 
-    # networkmanager.unmanaged = ["interface-name:ve-*"];
     networkmanager.unmanaged = ["interface-name:ve-+"];
   };
 }
