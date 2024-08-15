@@ -1,4 +1,12 @@
-{
+{pkgs, ...}: let
+    keycloakPkg = pkgs.keycloak.overrideAttrs (_: rec {
+      version = "24.0.5";
+      src = pkgs.fetchzip {
+        url = "https://github.com/keycloak/keycloak/releases/download/${version}/keycloak-${version}.zip";
+        hash = "sha256-lf1miVEGQvPbmlOZMCXUyX/pKE+JoJFawhjVEPJDJ6s=";
+      };
+    });
+in {
   services.keycloak = {
     enable = true;
 
@@ -11,6 +19,8 @@
       username = "keycloak";
       useSSL = false;
     };
+
+    package = keycloakPkg;
 
     settings = {
       hostname = "auth.schwem.io";
