@@ -27,7 +27,7 @@ in {
   system.stateVersion = "23.05";
 
   tailscaleUpFlags = [
-    "--exit-node=fr-par-wg-003.mullvad.ts.net"
+    "--exit-node=100.89.145.107"
     "--exit-node-allow-lan-access=true"
   ];
 }
