@@ -137,9 +137,9 @@ in {
         # server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
         # server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
 
-      backend yt
-        http-request set-header X-Forwarded-Proto https
-        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
+      # backend yt
+      #   http-request set-header X-Forwarded-Proto https
+      #   server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
     '';
   };
 
