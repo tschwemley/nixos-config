@@ -98,7 +98,6 @@
               #       # commandLineArgs = "--remote-debugging-port=9222";
               #   };
               hypreasymotion = self'.packages.hypreasymotion;
-              # redlib = self'.packages.redlib;
               vimPlugins =
                 prev.vimPlugins
                 // {

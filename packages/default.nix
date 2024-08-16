@@ -39,23 +39,6 @@
       systemd2nix = writeScriptBin "systemd2nix" ''
         nix run github:DavHau/systemd2nix < $1
       '';
-      redlib = pkgs.stdenv.mkDerivation rec {
-        name = "redlib";
-        version = "0.35.1";
-
-        src = fetchurl {
-          url = "https://github.com/redlib-org/redlib/releases/download/v${version}/redlib";
-          hash = "sha256-eVIiwKNo2JMxCZYYZSc3Ku3ygKNDz2mbPSzHU8WZETE=";
-        };
-
-        dontUnpack = true;
-        dontBuild = true;
-
-        installPhase = ''
-          cp $src $out
-          chmod +x $out
-        '';
-      };
       wl-ocr = pkgs.callPackage ./wl-ocr {};
     };
   };
