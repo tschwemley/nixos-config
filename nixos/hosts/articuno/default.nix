@@ -1,23 +1,17 @@
-let
-  # boot = (import ../../system/boot.nix).grub "/dev/vda";
-  # disk = (import ../../hardware/disks).buyvm;
-  # profile = import ../../profiles/buyvm.nix;
-  profile = (import ../../profiles/buyvm.nix "");
-  server = [
-    ../../../containers/keycloak
-    ../../../containers/searxng
-    ../../server/acme
-    ../../server/cockroachdb
-    ../../server/haproxy
-    ../../server/monitoring
-    ../../server/oauth2-proxy
-  ];
-in {
+{
   imports =
     [
-      profile
-    ]
-    ++ server;
+      (import ../../profiles/buyvm.nix "")
+
+      # server imports
+      ../../../containers/keycloak
+      ../../../containers/searxng
+      ../../server/acme
+      ../../server/cockroachdb
+      ../../server/haproxy
+      ../../server/monitoring
+      ../../server/oauth2-proxy
+    ];
 
   networking.hostName = "articuno";
 
@@ -28,6 +22,4 @@ in {
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
   system.stateVersion = "23.05";
-
-  # tailscaleUpFlags = [];
 }
