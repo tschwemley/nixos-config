@@ -8,6 +8,7 @@ HOST=$1
 
 ssh-keygen -t ed25519 -f ./ssh_host_ed25519_key -q -N ""
 ssh-keygen -t rsa -b 4096 -f ./ssh_host_rsa_key -q -N ""
+ssh-keygen -t ed25519 -f ./user_ssh_key -q -N ""
 
 privateAge=$(ssh-to-age -i ssh_host_ed25519_key -private-key)
 publicAge=$(ssh-to-age -i ssh_host_ed25519_key.pub)
@@ -30,8 +31,10 @@ sops set "nixos/hosts/$HOST/secrets.yaml" '["ssh_host_ed25519_key.pub"]' "$(jq -
 sops set "nixos/hosts/$HOST/secrets.yaml" '["ssh_host_ed25519_key"]' "$(jq -R -s . < ./ssh_host_ed25519_key)"
 sops set "nixos/hosts/$HOST/secrets.yaml" '["ssh_host_rsa_key.pub"]' "$(jq -R -s . < ./ssh_host_rsa_key)"
 sops set "nixos/hosts/$HOST/secrets.yaml" '["ssh_host_rsa_key"]' "$(jq -R -s . < ./ssh_host_rsa_key)"
+sops set "nixos/hosts/$HOST/secrets.yaml" '["user_ssh_key"]' "$(jq -R -s . < ./user_ssh_key)"
 
-rm ssh_host_ed25519_key ssh_host_ed25519_key.pub ssh_host_rsa_key ssh_host_rsa_key.pub
+mv user_ssh_key.pub "../../nixos/hosts/$HOST/ssh_key.pub"
+rm ssh_host_ed25519_key ssh_host_ed25519_key.pub ssh_host_rsa_key ssh_host_rsa_key.pub user_ssh_key
 
 echo "Successfully added ssh host keys to sops file for $HOST and generated age keys"
 echo "$HOST public age key: $publicAge"
