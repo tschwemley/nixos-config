@@ -26,7 +26,6 @@
   user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
 in {
   imports = [
-    # boot
     disk
     hardware
     networking

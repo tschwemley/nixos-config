@@ -6,7 +6,6 @@
   pkgs,
   ...
 }: let
-  boot = (import ../../system/boot.nix).systemd;
   disk = (import ../../hardware/disks).pikachu;
   hardware = {
     imports = [
@@ -28,12 +27,12 @@
   user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
 in {
   imports = [
-    boot
     disk
     hardware
     networking
     user
     ./secrets.nix
+    ../../system/boot/systemd.nix
     ../../profiles/pc.nix
   ];
 
@@ -42,7 +41,8 @@ in {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod"];
       kernelModules = ["kvm-intel"];
     };
-    kernelPackages = pkgs.linuxPackages_6_8;
+    # TODO: this might need to be latest for laptop config. not sure yet
+    # kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = ["btrfs"];
   };
 
