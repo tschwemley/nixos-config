@@ -7,7 +7,7 @@
     # these are all user secrets. might be better to use home-manager but idgaf right now
     secrets = {
       "articuno_key" = {
-        key = "ssh_private_key";
+        key = "user_ssh_key";
         owner = "schwem";
         path = "/home/schwem/.ssh/articuno";
         sopsFile = ./../articuno/secrets.yaml;
@@ -16,13 +16,13 @@
         owner = "schwem";
       };
       "eevee_key" = {
-        key = "ssh_private_key";
+        key = "user_ssh_key";
         owner = "schwem";
         path = "/home/schwem/.ssh/eevee";
         sopsFile = ./../eevee/secrets.yaml;
       };
       "flareon_key" = {
-        key = "ssh_private_key";
+        key = "user_ssh_key";
         owner = "schwem";
         path = "/home/schwem/.ssh/flareon";
         sopsFile = ./../flareon/secrets.yaml;
@@ -53,6 +53,18 @@
         owner = "schwem";
         path = "/home/schwem/.ssh/moltres";
         sopsFile = ./../moltres/secrets.yaml;
+      };
+      "pikachu_key" = {
+        key = "user_ssh_key";
+        owner = "schwem";
+        path = "/home/schwem/.ssh/pikachu";
+        sopsFile = ./../pikachu/secrets.yaml;
+      };
+      "tentacool_key" = {
+        key = "user_ssh_key";
+        owner = "schwem";
+        path = "/home/schwem/.ssh/tentacool";
+        sopsFile = ./../tentacool/secrets.yaml;
       };
       "openweather_api_key" = {
         key = "openweather_api_key";
