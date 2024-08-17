@@ -1,6 +1,5 @@
 {lib, ...}: let 
   partitions = import ../../hardware/disks/efi-partitions.nix;
-
   rootDisk = import ../../hardware/disks/ephemeral-root.nix "/dev/sda" partitions;
 in {
   imports = [

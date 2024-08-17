@@ -1,13 +1,13 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    jellyfin
-    jellyfin-ffmpeg
-    jellyfin-web
-  ];
-
+# {pkgs, ...}: {
+  # environment.systemPackages = with pkgs; [
+  #   jellyfin
+  #   jellyfin-ffmpeg
+  #   jellyfin-web
+  # ];
+{
   services.jellyfin = {
     enable = true;
-    jellyseer.enable = true;
+    jellyseerr.enable = true;
     openFirewall = true;
   };
 }
