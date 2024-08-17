@@ -2,6 +2,7 @@
   inputs,
   config,
   lib,
+  pkgs,
   ...
 }: let
   partitions = import ../../hardware/disks/efi-partitions.nix;
@@ -28,6 +29,8 @@ in {
     kernelParams = ["acpi_rev_override"];
     kernelModules = ["kvm-intel"];
   };
+
+  environment.systemPackages = with pkgs; [nv-codec-headers-12];
 
   hardware.nvidia.prime = {
     # Bus ID of the Intel GPU.
