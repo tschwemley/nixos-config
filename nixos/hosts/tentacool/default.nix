@@ -54,7 +54,8 @@ in {
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "/root/.config/sops/age/keys.txt";
-    secrets."wireless.env" = {};
+
+    secrets."wireless.env".sopsFile = ../../network/secrets.yaml;
 
     templates."20-wireless.network" = {
       group = config.users.users.systemd-network.group;
