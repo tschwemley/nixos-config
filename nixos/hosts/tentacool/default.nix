@@ -1,4 +1,4 @@
-{lib, ...}: let 
+let 
   partitions = import ../../hardware/disks/efi-partitions.nix;
   rootDisk = import ../../hardware/disks/ephemeral-root.nix "/dev/sda" partitions;
 in {
@@ -13,7 +13,6 @@ in {
 
   networking = {
     hostName = "tentacool";
-    useDHCP = lib.mkDefault true;
     wireless.enable = true;
   };
   sops.defaultSopsFile = ./secrets.yaml;
