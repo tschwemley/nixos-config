@@ -1,8 +1,8 @@
-{config, ...}: {
+{
   services.nginx.virtualHosts."jellyfin.schwem.io" = {
     locations = {
       "/" = {
-        proxyPass = "http://10.10.3.2:8096";
+        proxyPass = "http://127.0.0.1:8096";
         extraConfig = ''
           auth_request /auth;
           error_page 401 =403 /sign-in;
