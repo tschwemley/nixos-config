@@ -61,7 +61,7 @@ in {
       owner = config.users.users.systemd-network.name;
 
       mode = "0444";
-      path = "/etc/systemd/network/10-primary.network";
+      path = "/etc/systemd/network/20-primary.network";
 
       content = ''
         [Match]
