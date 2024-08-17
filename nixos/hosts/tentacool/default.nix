@@ -12,7 +12,7 @@ in {
     # hardware
     rootDisk
     inputs.nixos-hardware.nixosModules.common-cpu-intel
-    inputs.nixos-hardware.nixosModules.common-gpu-intel-kaby-lake
+    inputs.nixos-hardware.nixosModules.common-gpu-intel
     inputs.nixos-hardware.nixosModules.common-gpu-nvidia
     inputs.nixos-hardware.nixosModules.common-pc-laptop
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
@@ -35,14 +35,25 @@ in {
     nvidia-vaapi-driver
   ];
 
-  hardware.nvidia = {
-    modesetting.enable = true;
-    prime = {
-      # Bus ID of the Intel GPU.
-      intelBusId = "PCI:0:2:0";
 
-      # Bus ID of the NVIDIA GPU.
-      nvidiaBusId = "PCI:1:0:0";
+  hardware = {
+    opengl = {
+      enable = true;
+      extraPackages = with pkgs; [
+        vaapiVdpau
+        intel-compute-runtime
+        intel-media-sdk
+      ];
+    };
+    nvidia = {
+      modesetting.enable = true;
+      prime = {
+        # Bus ID of the Intel GPU.
+        intelBusId = "PCI:0:2:0";
+
+        # Bus ID of the NVIDIA GPU.
+        nvidiaBusId = "PCI:1:0:0";
+      };
     };
   };
 
@@ -56,6 +67,10 @@ in {
       };
       extraConfig = "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel";
     };
+  };
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
   };
 
   services.thermald.enable = lib.mkDefault true;
