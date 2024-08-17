@@ -30,14 +30,20 @@ in {
     kernelModules = ["kvm-intel"];
   };
 
-  environment.systemPackages = with pkgs; [nv-codec-headers-12];
+  environment.systemPackages = with pkgs; [
+    nv-codec-headers-12
+    nvidia-vaapi-driver
+  ];
 
-  hardware.nvidia.prime = {
-    # Bus ID of the Intel GPU.
-    intelBusId = "PCI:0:2:0";
+  hardware.nvidia = {
+    modesetting.enable = true;
+    prime = {
+      # Bus ID of the Intel GPU.
+      intelBusId = "PCI:0:2:0";
 
-    # Bus ID of the NVIDIA GPU.
-    nvidiaBusId = "PCI:1:0:0";
+      # Bus ID of the NVIDIA GPU.
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
 
   networking = {
