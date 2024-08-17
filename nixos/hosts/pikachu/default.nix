@@ -10,16 +10,19 @@
   disk = (import ../../hardware/disks).pikachu;
   hardware = {
     imports = [
-      #TODO: remove this after ensuring laptop build has any required options that were defined here
       inputs.nixos-hardware.nixosModules.common-cpu-intel
-      # inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+      inputs.nixos-hardware.nixosModules.common-gpu-intel
+      inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+      inputs.nixos-hardware.nixosModules.common-pc-laptop
+      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+      inputs.nixos-hardware.nixosModules.asus-battery
       ../../hardware/audio
     ];
   };
   networking = {
     imports = [
       ../../network/containers.nix
-      # ../../network/tailscale.nix
+      ../../network/tailscale.nix
     ];
   };
   user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
@@ -41,6 +44,17 @@ in {
     };
     kernelPackages = pkgs.linuxPackages_6_8;
     supportedFilesystems = ["btrfs"];
+  };
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    prime = {
+      # Bus ID of the Intel GPU.
+      intelBusId = "PCI:0:2:0";
+
+      # Bus ID of the NVIDIA GPU.
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
 
   networking = {
@@ -82,5 +96,5 @@ in {
     enable = true;
     touchpad.tapping = false;
   };
-  services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
+  services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
 }

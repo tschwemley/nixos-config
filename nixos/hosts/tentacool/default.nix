@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   lib,
   ...
 }: let
@@ -53,6 +54,28 @@ in {
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "/root/.config/sops/age/keys.txt";
+    secrets."wireless.env" = {};
+
+    templates."20-wireless.network" = {
+      group = config.users.users.systemd-network.group;
+      owner = config.users.users.systemd-network.name;
+
+      mode = "0444";
+      path = "/etc/systemd/network/10-primary.network";
+
+      content = ''
+        [Match]
+        Name=wlp3s0
+
+        [Network]
+        Address=${config.sops.placeholder.publicIP}/24
+        DNS=194.242.2.2 2a07:e340::2
+
+        [Route]
+        Destination=0.0.0.0/0
+        Gateway=${config.sops.placeholder.gateway}
+      '';
+    };
   };
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion/ when ready to update
