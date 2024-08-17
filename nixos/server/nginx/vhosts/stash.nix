@@ -9,7 +9,7 @@ in {
         proxyWebsockets = true;
         extraConfig = ''
           proxy_hide_header content-security-policy;
-          include ${config.sops.templates.nginx_allow_secure.path};
+          # include ${config.sops.templates.nginx_allow_secure.path};
         '';
       };
     };
