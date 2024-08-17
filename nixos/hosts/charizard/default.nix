@@ -51,8 +51,7 @@ in {
 
   networking = {
     hostName = "charizard";
-    networkmanager.enable = false;
-    # useDHCP = lib.mkDefault true;
+    wireless.enable = true;
   };
 
   services.getty.autologinUser = "schwem";
