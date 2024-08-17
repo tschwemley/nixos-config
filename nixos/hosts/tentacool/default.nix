@@ -3,7 +3,8 @@
   rootDisk = import ../../hardware/disks/ephemeral-root.nix "/dev/sda" partitions;
 in {
   imports = [
-    rootDisk # TODO: move this to hardware/disks after figuring out machine config
+    rootDisk
+    ../../system/boot/systemd.nix
     ../../profiles/server.nix
 
     # server imports
@@ -12,7 +13,6 @@ in {
 
   networking = {
     hostName = "tentacool";
-    networkmanager.enable = true;
     useDHCP = lib.mkDefault true;
     wireless.enable = true;
   };
