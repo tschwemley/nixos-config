@@ -18,7 +18,7 @@ in {
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
-    age.keyFile = /root/.config/sops/age/keys.txt;
+    age.keyFile = "/root/.config/sops/age/keys.txt";
   };
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion/ when ready to update
