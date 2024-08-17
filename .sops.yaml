@@ -81,4 +81,5 @@ creation_rules:
           - *flareon
           - *jolteon
           - *moltres
+          - *tentacool
           - *zapados
