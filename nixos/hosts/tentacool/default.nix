@@ -13,7 +13,13 @@ in {
 
   networking = {
     hostName = "tentacool";
-    wireless.enable = true;
+    wireless = {
+      enable = true;
+      environmentFile = "/run/secrets/wireless.env";
+      networks."Where the Wild Pings Are" = {
+        psk = "@PSK_HOME@"; 
+      };
+    };
   };
 
   sops = {
