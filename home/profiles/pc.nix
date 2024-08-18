@@ -23,6 +23,7 @@ in {
     ../programs/slack.nix
     ../programs/vlc.nix
     ../programs/wayland
+    ../programs/wayland/hyprland
     ../programs/wcalc.nix
     ../programs/tigervnc.nix
     ../programs/vial.nix

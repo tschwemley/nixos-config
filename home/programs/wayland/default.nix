@@ -1,11 +1,6 @@
 {pkgs, ...}:
 # Wayland config
 {
-  imports = [
-    ./hyprland
-    ./waybar.nix
-  ];
-
   home = {
     packages = with pkgs; [
       cliphist
@@ -34,8 +29,6 @@
       # make SDL2 applications use wayland
       SDL_VIDEODRIVER = "wayland";
 
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
       # see: https://wiki.archlinux.org/title/Wayland#GUI_libraries
     };

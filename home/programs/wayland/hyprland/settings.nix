@@ -1,18 +1,15 @@
-{
+{config, ...}: {
   wayland.windowManager.hyprland.settings = {
     debug.disable_logs = false;
 
     cursor = {
       inactive_timeout = 4;
-      #min_refresh_rate = 120;
       no_break_fs_vrr = true;
       no_hardware_cursors = true;
     };
 
     exec-once = [
-      "hyprpaper"
       "ags -c ~/nixos-config/home/programs/ags/config/config.js"
-      # "waybar"
     ];
 
     general = {
@@ -44,11 +41,7 @@
       vrr = 2;
     };
 
-    monitor = [
-      # "HDMI-A-2,3840x2160@120,0x0,1" # LG C2
-      # "DP-2,2560x2880@60,3840x0,1" # LG Dual Up
-      "DP-1,5120x3440@240,0x0,1" # Odyssey g9
-    ];
+    monitor = config.hyprland.monitors;
 
     render = {
       direct_scanout = true;
@@ -61,8 +54,6 @@
       #   textfont = "Hasklig";
       # };
     };
-
-    # xwayland.force_zero_scaling = true;
 
     workspace = [
       "1, monitor:DP-1"
