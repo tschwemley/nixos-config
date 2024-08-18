@@ -73,7 +73,10 @@ in {
     vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
   };
 
-  services.thermald.enable = lib.mkDefault true;
+  services = {
+    logind.lidSwitch = "ignore";
+    thermald.enable = lib.mkDefault true;
+  };
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
