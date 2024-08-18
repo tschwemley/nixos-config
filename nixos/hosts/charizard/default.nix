@@ -70,7 +70,6 @@ in {
 
   users.mutableUsers = true; # allow mutable users on non-servers
 
-  # home-manager.users.schwem.wayland.windowManager.hyprland.settings.monitor = lib.mkDefault [
   home-manager.users.schwem.hyprland.monitors = [
       # "HDMI-A-2,3840x2160@120,0x0,1" # LG C2
       # "DP-2,2560x2880@60,3840x0,1" # LG Dual Up
