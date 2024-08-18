@@ -47,30 +47,32 @@ in {
         http-request set-header X-Forwarded-Real-IP %[src]
 
         acl domain_auth hdr(host) -i auth.schwem.io
-        acl domain_arr hdr(host) -i arr.schwem.io
         acl domain_db hdr(host) -i db.schwem.io
         acl domain_draw hdr(host) -i draw.schwem.io
-        acl domain_files hdr(host) -i files.schwem.io
         acl domain_jellyfin hdr(host) -i jellyfin.schwem.io
         acl domain_monitor hdr(host) -i monitor.schwem.io
         acl domain_reddit hdr(host) -i reddit.schwem.io
-        acl domain_p2p hdr(host) -i bt.schwem.io
-        acl domain_p2p hdr(host) -i nzb.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
-        acl domain_stash hdr(host) -i stash.schwem.io
+
+        # acl domain_arr hdr(host) -i arr.schwem.io
+        # acl domain_files hdr(host) -i files.schwem.io
+        # acl domain_p2p hdr(host) -i bt.schwem.io
+        # acl domain_p2p hdr(host) -i nzb.schwem.io
+        # acl domain_stash hdr(host) -i stash.schwem.io
         # acl domain_yt hdr(host) -i yt.schwem.io
 
         use_backend auth if domain_auth
-        use_backend arr if domain_arr
         use_backend cockroach_web if domain_db
         use_backend draw if domain_draw
-        use_backend files if domain_files
         use_backend jellyfin if domain_jellyfin
-        use_backend p2p if domain_p2p
         use_backend monitor if domain_monitor
         use_backend reddit if domain_reddit
         use_backend searxng if domain_search
-        use_backend stash if domain_stash
+
+        # use_backend arr if domain_arr
+        # use_backend files if domain_files
+        # use_backend p2p if domain_p2p
+        # use_backend stash if domain_stash
         # use_backend yt if domain_yt
 
         default_backend static
@@ -78,8 +80,8 @@ in {
       backend auth
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
 
-      backend arr
-        server eevee eevee.wyvern-map.ts.net:8080 check send-proxy
+      # backend arr
+      #   server eevee eevee.wyvern-map.ts.net:8080 check send-proxy
 
       backend cockroach_web
         http-request set-header X-Forwarded-Proto https
@@ -94,25 +96,25 @@ in {
         http-request set-header X-Forwarded-Proto https
         server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
 
-      backend files
-        http-request set-header X-Forwarded-Proto https
-        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
-        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
-        server eevee eevee.wyvern-map.ts.net:8080 check send-proxy
-        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
-        server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
+      # backend files
+      #   http-request set-header X-Forwarded-Proto https
+      #   server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
+      #   server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
+      #   server eevee eevee.wyvern-map.ts.net:8080 check send-proxy
+      #   server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
+      #   server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
 
       backend jellyfin
         http-request set-header X-Forwarded-Proto https
-        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
+        server tentacool tentacool.wyvern-map.ts.net:8080 check send-proxy
 
       backend monitor
         http-request set-header X-Forwarded-Proto https
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
 
-      backend p2p
-        http-request set-header X-Forwarded-Proto https
-        server eevee eevee.wyvern-map.ts.net:8080 check send-proxy
+      # backend p2p
+      #   http-request set-header X-Forwarded-Proto https
+      #   server eevee eevee.wyvern-map.ts.net:8080 check send-proxy
 
       backend reddit
         http-request set-header X-Forwarded-Proto https
@@ -125,9 +127,9 @@ in {
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
         # server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
-      backend stash
-        http-request set-header X-Forwarded-Proto https
-        server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
+      # backend stash
+      #   http-request set-header X-Forwarded-Proto https
+      #   server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
 
       backend static
         http-request set-header X-Forwarded-Proto https

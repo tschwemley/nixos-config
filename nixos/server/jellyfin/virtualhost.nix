@@ -3,19 +3,6 @@
     locations = {
       "/" = {
         proxyPass = "http://127.0.0.1:8096";
-        extraConfig = ''
-          auth_request /auth;
-          error_page 401 =403 /sign-in;
-        '';
-      };
-
-      "/auth" = {
-        proxyPass = "http://articuno:4180/oauth2/auth?allowed_groups=role:admin";
-        extraConfig = "internal;";
-      };
-
-      "/sign-in" = {
-        proxyPass = "http://articuno:4180/oauth2/start?rd=https%3A%2F%jellyfin.schwem.io&allowed_groups=role:admin";
       };
     };
   };
