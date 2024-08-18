@@ -16,6 +16,7 @@ in {
     ../programs/discord.nix
     ../programs/glow.nix
     ../programs/gtk.nix
+    ../programs/jellyfin.nix
     ../programs/khal.nix
     ../programs/libreoffice.nix
     ../programs/music
