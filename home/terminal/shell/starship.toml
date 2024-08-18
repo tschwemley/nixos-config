@@ -3,6 +3,7 @@
 format = """
 [](color_orange)\
 $os\
+$hostname\
 $username\
 [](bg:color_yellow fg:color_orange)\
 $directory\
@@ -168,7 +169,7 @@ vimcmd_replace_symbol = '[](bold fg:color_purple)'
 vimcmd_visual_symbol = '[](bold fg:color_yellow)'
 
 [hostname]
-ssh_only = false
+ssh_only = true
 format = '[$ssh_symbol](bold blue) on [$hostname](bold red) '
 trim_at = '.companyname.com'
 disabled = false
