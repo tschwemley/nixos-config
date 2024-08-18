@@ -49,6 +49,23 @@ in {
 
   ethDev = "enp6s0";
 
+  home-manager.users.schwem.hyprland = {
+    monitors = {
+      primary = "DP-1";
+      config = [
+        # "HDMI-A-2,3840x2160@120,0x0,1" # LG C2
+        # "DP-2,2560x2880@60,3840x0,1" # LG Dual Up
+        "DP-1,5120x3440@240,0x0,1" # Odyssey g9
+      ];
+    };
+    workspaces = [
+      "1, monitor:DP-1"
+      "2, monitor:DP-1"
+      "3, monitor:DP-1"
+      "4, monitor:DP-1"
+    ];
+  };
+
   networking = {
     hostName = "charizard";
     wireless.enable = true;
@@ -69,10 +86,4 @@ in {
   time.timeZone = "America/Detroit";
 
   users.mutableUsers = true; # allow mutable users on non-servers
-
-  home-manager.users.schwem.hyprland.monitors = [
-      # "HDMI-A-2,3840x2160@120,0x0,1" # LG C2
-      # "DP-2,2560x2880@60,3840x0,1" # LG Dual Up
-      "DP-1,5120x3440@240,0x0,1" # Odyssey g9
-  ];
 }

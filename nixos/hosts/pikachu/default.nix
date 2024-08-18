@@ -82,10 +82,25 @@ in {
 
   users.mutableUsers = true; # allow mutable users on non-servers
 
-  home-manager.users.schwem.hyprland.monitors = lib.mkDefault [
-      "eDP-1,3840x2160@60,0x0,1"
-      "DP-1,3840x2160@120,0x2160,1"
-  ];
+  home-manager.users.schwem.hyprland = {
+    monitors = {
+      primary = "eDP-1";
+      config = [
+        "eDP-1,3840x2160@60,0x0,1"
+        "DP-1,3840x2160@120,0x2160,1"
+      ];
+    };
+    workspaces = [
+      "1, monitor:eDP-1"
+      "2, monitor:eDP-1"
+      "3, monitor:eDP-1"
+      "4, monitor:eDP-1"
+      "5, monitor:DP-1"
+      "6, monitor:DP-1"
+      "7, monitor:DP-1"
+      "8, monitor:DP-1"
+    ];
+  };
 
   # laptop specific options
   environment.systemPackages = with pkgs; [

@@ -22,7 +22,7 @@ in {
 
       input-field = [
         {
-          monitor = "DP-1";
+          monitor = config.hyprland.monitors.primary;
 
           size = "300, 50";
 

@@ -1,10 +1,11 @@
 {
   inputs,
-  lib,
   pkgs,
   ...
 }: {
   imports = [
+    ./options.nix
+
     ./binds.nix
     ./rules.nix
     ./settings.nix
@@ -16,43 +17,34 @@
     ../../../services/hyprpaper.nix
   ];
 
-  options.hyprland.monitors = with lib;
-    mkOption {
-      type = types.listOf types.str;
-      default = [];
-      description = "The monitor(s) to config for Hyprland";
-    };
+  home.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+  };
 
-  config = {
-    home.sessionVariables = {
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_DESKTOP = "Hyprland";
-    };
+  home.packages = with pkgs; [
+    grimblast
+    hyprpicker
+  ];
 
-    home.packages = with pkgs; [
-      grimblast
-      hyprpicker
-    ];
+  # make stuff work on wayland
+  wayland.windowManager.hyprland = {
+    enable = true;
 
-    # make stuff work on wayland
-    wayland.windowManager.hyprland = {
-      enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.default;
 
-      package = inputs.hyprland.packages.${pkgs.system}.default;
+    # plugins = [
+    #   pkgs.hypreasymotion
+    #   # "/home/schwem/libhypreasymotion.so"
+    #   # "/home/schwem/libhyprscroller.so"
+    # ];
 
-      # plugins = [
-      #   pkgs.hypreasymotion
-      #   # "/home/schwem/libhypreasymotion.so"
-      #   # "/home/schwem/libhyprscroller.so"
-      # ];
-
-      systemd = {
-        variables = ["--all"];
-        extraCommands = [
-          "systemctl --user stop graphical-session.target"
-          "systemctl --user start hyprland-session.target"
-        ];
-      };
+    systemd = {
+      variables = ["--all"];
+      extraCommands = [
+        "systemctl --user stop graphical-session.target"
+        "systemctl --user start hyprland-session.target"
+      ];
     };
   };
 }
