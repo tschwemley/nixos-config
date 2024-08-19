@@ -50,6 +50,7 @@ in {
         acl domain_db hdr(host) -i db.schwem.io
         acl domain_draw hdr(host) -i draw.schwem.io
         acl domain_jellyfin hdr(host) -i jellyfin.schwem.io
+        acl domain_jellyseerr hdr(host) -i jellyseerr.schwem.io
         acl domain_monitor hdr(host) -i monitor.schwem.io
         acl domain_reddit hdr(host) -i reddit.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
@@ -65,6 +66,7 @@ in {
         use_backend cockroach_web if domain_db
         use_backend draw if domain_draw
         use_backend jellyfin if domain_jellyfin
+        use_backend jellyseerr if domain_jellyseerr
         use_backend monitor if domain_monitor
         use_backend reddit if domain_reddit
         use_backend searxng if domain_search
@@ -105,6 +107,10 @@ in {
       #   server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
 
       backend jellyfin
+        http-request set-header X-Forwarded-Proto https
+        server tentacool tentacool.wyvern-map.ts.net:8080 check send-proxy
+
+      backend jellyseerr
         http-request set-header X-Forwarded-Proto https
         server tentacool tentacool.wyvern-map.ts.net:8080 check send-proxy
 
