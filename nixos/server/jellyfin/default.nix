@@ -7,9 +7,6 @@
     jellyfin-web
   ];
 
-  # open port for jellyseerr since openFirewall doesn't include it
-  # networking.firewall.allowedTCPPorts = [5055];
-
   services = {
     jellyfin = {
       enable = true;
