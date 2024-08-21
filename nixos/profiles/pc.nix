@@ -14,6 +14,7 @@
     ../programs/man.nix
     ../programs/steam.nix
     ../programs/wine.nix
+    ../programs/xdg.nix
     ../services/dbus.nix
     ../services/gnome.nix
     # ../services/ollama.nix

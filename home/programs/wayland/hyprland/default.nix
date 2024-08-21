@@ -10,10 +10,10 @@
     ./rules.nix
     ./settings.nix
 
-    ../hyprlock.nix
+    # ../hyprlock.nix
     # TODO: add these imports or put into own module/wayland module
     # ../../../services/dunst.nix
-    ../../../services/hypridle.nix
+    # ../../../services/hypridle.nix
     ../../../services/hyprpaper.nix
   ];
 

@@ -128,7 +128,7 @@
               #       # commandLineArgs = "--remote-debugging-port=9222";
               #   };
               hypreasymotion = self'.packages.hypreasymotion;
-              json2struct = self'.packages.json2struct;
+              json2go = self'.packages.json2go;
               vimPlugins =
                 prev.vimPlugins
                 // {
