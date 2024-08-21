@@ -21,6 +21,10 @@
       revive # go linter
       stylua
     ];
+
+    utils = with pkgs; [
+      json2struct
+    ];
   };
 
   plugins = with pkgs.vimPlugins; {
@@ -28,7 +32,6 @@
       none-ls-nvim
     ];
     lsp = [nvim-lspconfig];
-    snippets = [luasnip];
     utility = [
       nvim-web-devicons
     ];

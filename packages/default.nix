@@ -11,7 +11,7 @@
   in {
     packages = with pkgs; {
       inherit (hyprlandPlugins) hypreasymotion hyprscroller;
-      inherit (vimPlugins) codecompanion harpoon neogit-nightly;
+      inherit (vimPlugins) codecompanion neogit-nightly;
 
       build-all-hosts = writeScriptBin "build-all-hosts" ''
         #!/usr/bin/env sh
@@ -31,6 +31,7 @@
           rm $HOST
         fi
       '';
+      json2struct = pkgs.callPackage ./json2struct.nix {};
       prefetch-url-sha256 = writeScriptBin "prefetch-url-sha256" ''
         hash=$(nix-prefetch-url "$1")
         nix hash to-sri --type sha256 $hash

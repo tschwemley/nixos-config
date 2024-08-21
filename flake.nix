@@ -128,10 +128,12 @@
               #       # commandLineArgs = "--remote-debugging-port=9222";
               #   };
               hypreasymotion = self'.packages.hypreasymotion;
+              json2struct = self'.packages.json2struct;
               vimPlugins =
                 prev.vimPlugins
                 // {
                   codecompanion = self'.packages.codecompanion;
+                  guihua = self'.packages.guihua;
                   neogit-nightly = self'.packages.neogit-nightly;
                 };
               wl-ocr = self'.packages.wl-ocr;
