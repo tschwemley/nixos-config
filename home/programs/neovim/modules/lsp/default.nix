@@ -23,7 +23,7 @@
     ];
 
     utils = with pkgs; [
-      json2struct
+      json2go
     ];
   };
 

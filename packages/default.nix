@@ -31,7 +31,7 @@
           rm $HOST
         fi
       '';
-      json2struct = pkgs.callPackage ./json2struct.nix {};
+      json2go = pkgs.callPackage ./json2go.nix {};
       prefetch-url-sha256 = writeScriptBin "prefetch-url-sha256" ''
         hash=$(nix-prefetch-url "$1")
         nix hash to-sri --type sha256 $hash
