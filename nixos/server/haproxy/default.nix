@@ -49,6 +49,7 @@ in {
         acl domain_auth hdr(host) -i auth.schwem.io
         acl domain_db hdr(host) -i db.schwem.io
         acl domain_draw hdr(host) -i draw.schwem.io
+        acl domain_it-tools hdr(host) -i it-tools.schwem.io
         acl domain_jellyfin hdr(host) -i jellyfin.schwem.io
         acl domain_jellyseerr hdr(host) -i jellyseerr.schwem.io
         acl domain_monitor hdr(host) -i monitor.schwem.io
@@ -65,6 +66,7 @@ in {
         use_backend auth if domain_auth
         use_backend cockroach_web if domain_db
         use_backend draw if domain_draw
+        use_backend it-tools if domain_it-tools
         use_backend jellyfin if domain_jellyfin
         use_backend jellyseerr if domain_jellyseerr
         use_backend monitor if domain_monitor
@@ -95,6 +97,10 @@ in {
         server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
       backend draw
+        http-request set-header X-Forwarded-Proto https
+        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
+
+      backend it-tools
         http-request set-header X-Forwarded-Proto https
         server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
 

@@ -4,6 +4,7 @@
 
     # server imports
     ../../server/cockroachdb
+    ../../../containers/it-tools
   ];
 
   networking.hostName = "zapados";
