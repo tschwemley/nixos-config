@@ -79,7 +79,7 @@ in {
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
 
       backend git
-        server articuno articuno.wyvern-map.ts.net:23233 check
+        server zapados zapados.wyvern-map.ts.net:23233 check
 
       backend cockroach_web
         http-request set-header X-Forwarded-Proto https
