@@ -15,4 +15,6 @@
 
     jellyseerr.enable = true;
   };
+
+  users.users.jellyfin.extraGroups = ["users"];
 }
