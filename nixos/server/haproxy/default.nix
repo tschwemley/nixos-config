@@ -2,7 +2,7 @@ let
   baseCert = "/var/lib/acme/schwem.io/full.pem";
   wildcardCert = "/var/lib/acme/schwem.io-wildcard/full.pem";
 in {
-  networking.firewall.allowedTCPPorts = [80 443];
+  networking.firewall.allowedTCPPorts = [80 443 2222];
 
   services.haproxy = {
     enable = true;
@@ -31,6 +31,13 @@ in {
         server cockroach2 zapados.wyvern-map.ts.net:26257 check port 26080
         server cockroach3 moltres.wyvern-map.ts.net:26257 check port 26080
 
+      listen ssh
+        bind *:2222
+        mode tcp
+
+        acl git req_ssl_sni -i git.schwem.io
+        use_backend git if git
+
       frontend www
         bind *:80
         bind *:443 ssl crt ${wildcardCert} crt ${baseCert}
@@ -46,7 +53,7 @@ in {
         http-request set-header X-Forwarded-Proto https
         http-request set-header X-Forwarded-Real-IP %[src]
 
-        acl domain_auth hdr(host) -i auth.schwem.io
+        acl auth hdr(host) -i auth.schwem.io
         acl domain_db hdr(host) -i db.schwem.io
         acl domain_draw hdr(host) -i draw.schwem.io
         acl domain_it-tools hdr(host) -i it-tools.schwem.io
@@ -56,14 +63,7 @@ in {
         acl domain_reddit hdr(host) -i reddit.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
 
-        # acl domain_arr hdr(host) -i arr.schwem.io
-        # acl domain_files hdr(host) -i files.schwem.io
-        # acl domain_p2p hdr(host) -i bt.schwem.io
-        # acl domain_p2p hdr(host) -i nzb.schwem.io
-        # acl domain_stash hdr(host) -i stash.schwem.io
-        # acl domain_yt hdr(host) -i yt.schwem.io
-
-        use_backend auth if domain_auth
+        use_backend auth if auth
         use_backend cockroach_web if domain_db
         use_backend draw if domain_draw
         use_backend it-tools if domain_it-tools
@@ -73,19 +73,13 @@ in {
         use_backend reddit if domain_reddit
         use_backend searxng if domain_search
 
-        # use_backend arr if domain_arr
-        # use_backend files if domain_files
-        # use_backend p2p if domain_p2p
-        # use_backend stash if domain_stash
-        # use_backend yt if domain_yt
-
         default_backend static
 
       backend auth
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
 
-      # backend arr
-      #   server eevee eevee.wyvern-map.ts.net:8080 check send-proxy
+      backend git
+        server articuno articuno.wyvern-map.ts.net:23233 check
 
       backend cockroach_web
         http-request set-header X-Forwarded-Proto https
@@ -104,14 +98,6 @@ in {
         http-request set-header X-Forwarded-Proto https
         server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
 
-      # backend files
-      #   http-request set-header X-Forwarded-Proto https
-      #   server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
-      #   server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
-      #   server eevee eevee.wyvern-map.ts.net:8080 check send-proxy
-      #   server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
-      #   server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
-
       backend jellyfin
         http-request set-header X-Forwarded-Proto https
         server tentacool tentacool.wyvern-map.ts.net:8080 check send-proxy
@@ -123,10 +109,6 @@ in {
       backend monitor
         http-request set-header X-Forwarded-Proto https
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
-
-      # backend p2p
-      #   http-request set-header X-Forwarded-Proto https
-      #   server eevee eevee.wyvern-map.ts.net:8080 check send-proxy
 
       backend reddit
         http-request set-header X-Forwarded-Proto https
@@ -150,10 +132,6 @@ in {
         server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
         # server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
         # server flareon flareon.wyvern-map.ts.net:8080 check send-proxy
-
-      # backend yt
-      #   http-request set-header X-Forwarded-Proto https
-      #   server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
     '';
   };
 
