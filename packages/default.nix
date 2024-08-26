@@ -13,6 +13,7 @@
       inherit (hyprlandPlugins) hypreasymotion hyprscroller;
       inherit (vimPlugins) codecompanion neogit-nightly;
 
+      anonymous-overflow = pkgs.callPackage ./anonymousoverflow {};
       build-all-hosts = writeScriptBin "build-all-hosts" ''
         #!/usr/bin/env sh
         build-host articuno && build-host zapados && build-host moltres && build-host eevee \
