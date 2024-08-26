@@ -10,7 +10,7 @@ with pkgs.vimPlugins;
     parser.csv
     parser.diff
     parser.go
-    parser.gotempl
+    parser.gotmpl
     parser.gomod
     parser.gosum
     parser.html
