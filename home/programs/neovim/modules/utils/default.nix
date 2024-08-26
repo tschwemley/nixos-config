@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
     dressing-nvim
+    gitsigns-nvim
     mini-nvim
     neogit-nightly
     nnn-vim
@@ -12,7 +13,7 @@
   ];
 
   xdg.configFile."nvim/after/plugin/mini-clue.lua".source = ./mini-clue.lua;
-  xdg.configFile."nvim/after/plugin/neogit.lua".source = ./neogit.lua;
+  xdg.configFile."nvim/after/plugin/git.lua".source = ./git.lua;
   xdg.configFile."nvim/after/plugin/nnn.lua".source = ./nnn.lua;
   xdg.configFile."nvim/after/plugin/refactoring.lua".source = ./refactoring.lua;
   xdg.configFile."nvim/after/plugin/spectre.lua".source = ./spectre.lua;
