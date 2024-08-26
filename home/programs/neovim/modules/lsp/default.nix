@@ -4,6 +4,8 @@
       dprint
       htmx-lsp
       lua-language-server
+      golangci-lint-langserver
+      gopls
       nil
       nodePackages.bash-language-server
       nodePackages.intelephense
@@ -16,9 +18,7 @@
       alejandra
       golangci-lint
       golines
-      gopls
       gotools
-      revive # go linter
       stylua
     ];
 

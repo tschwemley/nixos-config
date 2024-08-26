@@ -10,6 +10,16 @@
         package = pkgs.everforest-gtk-theme;
       };
     };
+    gruvbox-dark = {
+      theme = {
+        name = "Gruvbox-Dark";
+        package = pkgs.gruvbox-gtk-theme;
+      };
+      iconTheme = {
+        name = "oomox-Gruvbox-Dark";
+        package = pkgs.gruvbox-gtk-theme;
+      };
+    };
   };
 in {
   home.pointerCursor = {
@@ -21,7 +31,7 @@ in {
   };
 
   gtk = {
-    # inherit (themes.everforest) iconTheme theme;
+    inherit (themes.gruvbox-dark) iconTheme theme;
 
     enable = true;
 
@@ -37,31 +47,5 @@ in {
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };
-
-    # possible themes:
-    # everforest-gtk-theme
-    # gruvbox-dark-gtk
-    # gruvbox-gtk-theme
-    # https://github.com/matthewmx86/Redmond97
-
-    theme = {
-      # name = "Everforest-Dark-BL";
-      # package = pkgs.everforest-gtk-theme;
-      name = "Gruvbox-Dark";
-      package = pkgs.gruvbox-gtk-theme;
-      # package = pkgs.gruvbox-dark-gtk;
-    };
-    # iconTheme = {
-    #   name = "Papirus";
-    #   package = pkgs.papirus-icon-theme;
-    # };
   };
-
-  # services.xsettingsd = {
-  #   enable = true;
-  #   settings = {
-  #     "Net/ThemeName" = "${gtk.theme.name}";
-  #     "Net/IconThemeName" = "${gtk.iconTheme.name}";
-  #   };
-  # };
 }
