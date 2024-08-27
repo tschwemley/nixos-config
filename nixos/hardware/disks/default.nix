@@ -28,7 +28,7 @@ in rec {
     imports = [
       (import ./btrfs-encrypted.nix {
         diskName = "nvme0n1";
-        luksName = "pikachu-crypted";
+        luksName = "pika-crypted";
       })
     ];
   };
