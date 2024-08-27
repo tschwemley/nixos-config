@@ -11,7 +11,7 @@
   in {
     packages = with pkgs; {
       inherit (hyprlandPlugins) hypreasymotion hyprscroller;
-      inherit (vimPlugins) codecompanion neogit-nightly;
+      inherit (vimPlugins) codecompanion;
 
       anonymous-overflow = pkgs.callPackage ./anonymousoverflow {};
       build-all-hosts = writeScriptBin "build-all-hosts" ''

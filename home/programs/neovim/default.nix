@@ -12,9 +12,4 @@
     withPython3 = false;
     withNodeJs = false;
   };
-
-  # link neovim config to $HOME/.config/nvim
-  # xdg.configFile = {
-  #   "nvim".source = ./config;
-  # };
 }

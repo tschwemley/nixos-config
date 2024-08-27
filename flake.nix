@@ -71,14 +71,6 @@
       };
     };
 
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
     neorg-overlay = {
       url = "github:nvim-neorg/nixpkgs-neorg-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -109,6 +101,7 @@
         self',
         inputs',
         config,
+        lib,
         pkgs,
         system,
         ...
@@ -120,13 +113,7 @@
 
           # NOTE: there might be a better spot for overlays long-term. I'm okay w/ here for now
           overlays = [
-            inputs.neorg-overlay.overlays.default
             (final: prev: {
-              # TODO: decide if keeping brave overlay or removing
-              # brave =
-              #   prev.brave.override {
-              #       # commandLineArgs = "--remote-debugging-port=9222";
-              #   };
               hypreasymotion = self'.packages.hypreasymotion;
               json2go = self'.packages.json2go;
               vimPlugins =
@@ -134,7 +121,6 @@
                 // {
                   codecompanion = self'.packages.codecompanion;
                   guihua = self'.packages.guihua;
-                  neogit-nightly = self'.packages.neogit-nightly;
                 };
               wl-ocr = self'.packages.wl-ocr;
             })

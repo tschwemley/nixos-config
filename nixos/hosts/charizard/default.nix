@@ -1,5 +1,4 @@
 {
-  self,
   inputs,
   config,
   lib,
@@ -23,7 +22,7 @@
   };
   ollama = import ../../../containers/ollama "/home/schwem/.ollama";
   sillytavern = import ../../../containers/sillytavern "/home/schwem/.sillytavern";
-  user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
+  user = (import ../../system/users.nix {inherit config pkgs;}).schwem;
 in {
   imports = [
     disk

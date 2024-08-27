@@ -3,12 +3,14 @@
     dressing-nvim
     gitsigns-nvim
     mini-nvim
-    neogit-nightly
     nnn-vim
     nvim-spectre
     nvim-ufo
+    #plenary-nvim
     refactoring-nvim
     vim-abolish
+    vim-fugitive
+    vim-speeddating
     vim-surround
   ];
 
