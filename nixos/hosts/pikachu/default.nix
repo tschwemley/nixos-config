@@ -47,7 +47,7 @@ in {
   };
 
   hardware.nvidia = {
-    modesetting.enable = true;
+    open = lib.mkDefault true;
     prime = {
       # Bus ID of the Intel GPU.
       intelBusId = "PCI:0:2:0";
