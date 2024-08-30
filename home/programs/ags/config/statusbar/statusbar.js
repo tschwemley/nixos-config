@@ -1,5 +1,6 @@
 import * as widgets from './widgets.js';
 import Battery from './widgets/battery.js';
+import NetworkIndicator from './widgets/network.js';
 //import SysMonitor from './widgets/sysmonitor.js';
 
 // layout of the bar
@@ -31,7 +32,8 @@ function right() {
       //SysMonitor(),
       widgets.Volume(),
       widgets.Clock(),
-      //Battery,
+      NetworkIndicator(),
+      Battery,
       widgets.SysTray(),
     ],
   })

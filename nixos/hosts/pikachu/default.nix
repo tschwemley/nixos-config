@@ -42,8 +42,19 @@ in {
       kernelModules = ["kvm-intel"];
     };
     # TODO: this might need to be latest for laptop config. not sure yet
-    # kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_6_10;
     supportedFilesystems = ["btrfs"];
+
+    blacklistedKernelModules = [
+      "snd_soc_avs"
+    ];
+
+    extraModprobeConfig = ''
+      #options snd-intel-dspcfg dsp_driver=3
+      options snd-intel-dspcfg dsp_driver=1
+      options snd_sof_pci ipc_type=1
+      options snd_sof_intel_hda_common sof_use_tplg_nhlt=1
+    '';
   };
 
   hardware.nvidia = {
@@ -73,11 +84,11 @@ in {
     stateVersion = "24.05";
   };
 
-  # tailscaleUpFlags = [
-  #   "--exit-node=100.84.59.97"
-  #   "--exit-node-allow-lan-access=true"
-  #   "--shields-up"
-  # ];
+  tailscaleUpFlags = [
+    "--exit-node=100.84.59.97"
+    "--exit-node-allow-lan-access=true"
+    "--shields-up"
+  ];
   time.timeZone = "America/Detroit";
 
   users.mutableUsers = true; # allow mutable users on non-servers
@@ -86,8 +97,8 @@ in {
     monitors = {
       primary = "eDP-1";
       config = [
-        "eDP-1,3840x2160@60,0x0,1"
-        "DP-1,3840x2160@120,0x2160,1"
+        "eDP-1,3840x2160@60,0x0,1.5"
+        "DP-1,3840x1100@120,0x1080,1.67"
       ];
     };
     workspaces = [
@@ -113,7 +124,7 @@ in {
 
   services.asusd.enable = true;
   services.hardware.bolt.enable = true;
-  services.xserver.libinput = {
+  services.libinput = {
     enable = true;
     touchpad.tapping = false;
   };

@@ -1,11 +1,18 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    alsa-utils
-    # pavucontrol
-    pwvucontrol
-    pamixer
-    pipewire.jack
-  ];
+  environment = {
+    # sessionVariables = {
+    #   SDL_AUDIODRIVER = "pipewire";
+    #   ALSOFT_DRIVERS = "pipewire";
+    # };
+
+    systemPackages = with pkgs; [
+      alsa-utils
+      pavucontrol
+      pwvucontrol
+      pamixer
+      pipewire.jack
+    ];
+  };
 
   hardware.pulseaudio.enable = false;
 

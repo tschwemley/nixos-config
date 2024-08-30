@@ -16,8 +16,8 @@
         package = pkgs.gruvbox-gtk-theme;
       };
       iconTheme = {
-        name = "oomox-Gruvbox-Dark";
-        package = pkgs.gruvbox-gtk-theme;
+        name = "oomox-gruvbox-dark";
+        package = pkgs.gruvbox-dark-icons-gtk;
       };
     };
   };
