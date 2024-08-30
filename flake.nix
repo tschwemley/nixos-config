@@ -83,12 +83,8 @@
   };
 
   outputs = inputs @ {
-    self,
-    disko,
     flake-parts,
-    home-manager,
     nixpkgs,
-    sops,
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
@@ -99,9 +95,7 @@
 
       perSystem = {
         self',
-        inputs',
         config,
-        lib,
         pkgs,
         system,
         ...
@@ -113,16 +107,13 @@
 
           # NOTE: there might be a better spot for overlays long-term. I'm okay w/ here for now
           overlays = [
-            (final: prev: {
-              hypreasymotion = self'.packages.hypreasymotion;
-              json2go = self'.packages.json2go;
+            (_: prev: {
+              inherit (self'.packages) hypreasymotion json2go wl-ocr;
               vimPlugins =
                 prev.vimPlugins
                 // {
-                  codecompanion = self'.packages.codecompanion;
-                  guihua = self'.packages.guihua;
+                  inherit (self'.packages) codecompanion;
                 };
-              wl-ocr = self'.packages.wl-ocr;
             })
           ];
         };
