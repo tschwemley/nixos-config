@@ -4,7 +4,6 @@
       dprint
       htmx-lsp
       lua-language-server
-      golangci-lint-langserver
       gopls
       nil
       nodePackages.bash-language-server
@@ -12,6 +11,12 @@
       nodePackages.typescript-language-server
       typescript
       sqls
+    ];
+
+    linters = with pkgs; [
+      deadnix
+      golangci-lint
+      statix
     ];
 
     formatting = with pkgs; [
@@ -48,8 +53,6 @@ in {
   xdg.configFile = {
     "nvim/after/plugin/lsp/keymaps.lua".source = ./keymaps.lua;
     "nvim/after/plugin/lsp/lsp.lua".source = ./lsp.lua;
-    "nvim/after/plugin/lsp/null_ls.lua".source = ./null_ls.lua;
-
-    "nvim/after/plugin/lsp/languages/go.lua".source = ./languages/go.lua;
+    "nvim/after/plugin/lsp/none_ls.lua".source = ./none_ls.lua;
   };
 }

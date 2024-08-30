@@ -11,7 +11,7 @@ local servers = {
    'bashls',
    'dprint',
    'gopls',
-   'golangci_lint_ls',
+   -- 'golangci_lint_ls',
    'htmx',
    'intelephense',
    'lua_ls',
@@ -28,7 +28,6 @@ for _, lsp in ipairs(servers) do
    })
 end
 
--- TODO: clean this up so the servers that need additional config are handled in a more robust way
 lspconfig.lua_ls.setup({
    capabilities = capabilities,
    settings = {
