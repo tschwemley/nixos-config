@@ -1,5 +1,7 @@
 import * as widgets from './widgets.js';
 import Battery from './widgets/battery.js';
+import ClientTitle from './widgets/client_title.js';
+import Media from './widgets/media.js';
 import NetworkIndicator from './widgets/network.js';
 //import SysMonitor from './widgets/sysmonitor.js';
 
@@ -17,8 +19,8 @@ function center() {
   return Widget.Box({
     spacing: 8,
     children: [
-      widgets.ClientTitle(),
-      widgets.Media(),
+      ClientTitle(),
+      Media(),
       widgets.Notification(),
     ],
   })
@@ -33,7 +35,7 @@ function right() {
       widgets.Volume(),
       widgets.Clock(),
       NetworkIndicator(),
-      Battery,
+      Battery(),
       widgets.SysTray(),
     ],
   })

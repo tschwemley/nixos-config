@@ -17,6 +17,7 @@
     ../programs/xdg.nix
     ../services/dbus.nix
     ../services/gnome.nix
+    ../services/upower.nix
     ../system/fonts.nix
     ../system/greetd.nix
     ../system/security.nix
