@@ -16,7 +16,6 @@
   networking = {
     imports = [
       ../../network/containers.nix
-      ../../network/systemd-networkd.nix
       ../../network/tailscale.nix
     ];
   };
@@ -33,7 +32,7 @@ in {
     user
     ./secrets.nix
     ../../system/boot/systemd.nix
-    ../../services/samba.nix
+    # ../../services/samba.nix
     ../../profiles/pc.nix
   ];
 
@@ -45,8 +44,6 @@ in {
     # TODO: remove this or uncomment after I decide whether I want to be on the latest kernel or on LTS
     # kernelPackages = pkgs.linuxPackages_latest;
   };
-
-  ethDev = "enp6s0";
 
   home-manager.users.schwem.hyprland = {
     monitors = {
@@ -67,6 +64,8 @@ in {
 
   networking = {
     hostName = "charizard";
+    networkmanager.enable = true;
+    useDHCP = lib.mkDefault true;
     wireless.enable = true;
   };
 

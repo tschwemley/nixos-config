@@ -1,6 +1,7 @@
 {
   imports = [
     ../../profiles/proxmox.nix
+    ../../services/nfs.nix
     ../../services/samba.nix
   ];
 
