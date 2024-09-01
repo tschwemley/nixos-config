@@ -50,22 +50,11 @@ in {
     ];
 
     extraModprobeConfig = ''
-      #options snd-intel-dspcfg dsp_driver=3
-      options snd-intel-dspcfg dsp_driver=1
+      # options snd-intel-dspcfg dsp_driver=1
+      options snd-intel-dspcfg dsp_driver=3
       options snd_sof_pci ipc_type=1
-      options snd_sof_intel_hda_common sof_use_tplg_nhlt=1
+      # options snd_sof_intel_hda_common sof_use_tplg_nhlt=1
     '';
-  };
-
-  hardware.nvidia = {
-    open = lib.mkDefault true;
-    prime = {
-      # Bus ID of the Intel GPU.
-      intelBusId = "PCI:0:2:0";
-
-      # Bus ID of the NVIDIA GPU.
-      nvidiaBusId = "PCI:1:0:0";
-    };
   };
 
   networking = {
@@ -74,8 +63,6 @@ in {
     useDHCP = lib.mkDefault true;
     wireless.enable = true;
   };
-
-  services.getty.autologinUser = "schwem";
 
   system = {
     autoUpgrade.enable = true;
@@ -117,16 +104,33 @@ in {
   environment.systemPackages = with pkgs; [
     sof-firmware
   ];
-  hardware.opengl.enable = true;
-  hardware.opengl.extraPackages = with pkgs; [
-    vaapiVdpau
-  ];
 
-  services.asusd.enable = true;
-  services.hardware.bolt.enable = true;
-  services.libinput = {
-    enable = true;
-    touchpad.tapping = false;
+  hardware = {
+    nvidia = {
+      open = lib.mkDefault true;
+      prime = {
+        # Bus ID of the Intel GPU.
+        intelBusId = "PCI:0:2:0";
+
+        # Bus ID of the NVIDIA GPU.
+        nvidiaBusId = "PCI:1:0:0";
+      };
+    };
+    opengl.enable = true;
+    opengl.extraPackages = with pkgs; [
+      vaapiVdpau
+    ];
   };
-  services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
+
+  services = {
+    getty.autologinUser = "schwem";
+
+    asusd.enable = true;
+    hardware.bolt.enable = true;
+    libinput = {
+      enable = true;
+      touchpad.tapping = false;
+    };
+    xserver.videoDrivers = lib.mkDefault ["nvidia"];
+  };
 }
