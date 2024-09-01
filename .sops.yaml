@@ -21,6 +21,7 @@ creation_rules:
   - path_regex: nixos/hosts/articuno/secrets.yaml
     key_groups:
       - age:
+          - *personal
           - *articuno
 
   - path_regex: nixos/hosts/charizard/secrets.yaml
@@ -32,26 +33,31 @@ creation_rules:
   - path_regex: nixos/hosts/eevee/secrets.yaml
     key_groups:
       - age:
+          - *personal
           - *eevee
 
   - path_regex: nixos/hosts/flareon/secrets.yaml
     key_groups:
       - age:
+          - *personal
           - *flareon
 
   - path_regex: nixos/hosts/jolteon/secrets.yaml
     key_groups:
       - age:
+          - *personal
           - *jolteon
 
   - path_regex: nixos/hosts/machamp/secrets.yaml
     key_groups:
       - age:
+          - *personal
           - *machamp
 
   - path_regex: nixos/hosts/moltres/secrets.yaml
     key_groups:
       - age:
+          - *personal
           - *moltres
 
   - path_regex: nixos/hosts/pikachu/secrets.yaml
@@ -63,11 +69,13 @@ creation_rules:
   - path_regex: nixos/hosts/tentacool/secrets.yaml
     key_groups:
       - age:
+          - *personal
           - *tentacool
 
   - path_regex: nixos/hosts/zapados/secrets.yaml
     key_groups:
       - age:
+          - *personal
           - *zapados
 
   - path_regex: ^(./)?(nixos/)?(containers|modules|network|services|server)/(.*/)?secrets.yaml
