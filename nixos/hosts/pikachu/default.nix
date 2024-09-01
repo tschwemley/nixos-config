@@ -5,8 +5,7 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   disk = (import ../../hardware/disks).pikachu;
   hardware = {
     imports = [
@@ -24,9 +23,8 @@ let
       ../../network/tailscale.nix
     ];
   };
-  user = (import ../../system/users.nix { inherit self config pkgs; }).schwem;
-in
-{
+  user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
+in {
   imports = [
     disk
     hardware
@@ -47,22 +45,33 @@ in
         "uas"
         "sd_mod"
       ];
-      kernelModules = [ "kvm-intel" ];
+      kernelModules = ["kvm-intel"];
     };
     # TODO: this might need to be latest for laptop config. not sure yet
     kernelPackages = pkgs.linuxPackages_6_10;
-    supportedFilesystems = [ "btrfs" ];
+    supportedFilesystems = ["btrfs"];
 
     blacklistedKernelModules = [
       "snd_soc_avs"
     ];
 
     extraModprobeConfig = ''
-      # options snd-intel-dspcfg dsp_driver=1
-      options snd-intel-dspcfg dsp_driver=3
+      #options snd-intel-dspcfg dsp_driver=3
+      options snd-intel-dspcfg dsp_driver=1
       options snd_sof_pci ipc_type=1
-      # options snd_sof_intel_hda_common sof_use_tplg_nhlt=1
+      options snd_sof_intel_hda_common sof_use_tplg_nhlt=1
     '';
+  };
+
+  hardware.nvidia = {
+    open = lib.mkDefault true;
+    prime = {
+      # Bus ID of the Intel GPU.
+      intelBusId = "PCI:0:2:0";
+
+      # Bus ID of the NVIDIA GPU.
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
 
   networking = {
@@ -124,10 +133,13 @@ in
         nvidiaBusId = "PCI:1:0:0";
       };
     };
-    opengl.enable = true;
-    opengl.extraPackages = with pkgs; [
-      vaapiVdpau
-    ];
+
+    opengl = {
+      enable = true;
+      opengl.extraPackages = with pkgs; [
+        vaapiVdpau
+      ];
+    };
   };
 
   services = {
@@ -137,6 +149,6 @@ in
       enable = true;
       touchpad.tapping = false;
     };
-    xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
+    xserver.videoDrivers = lib.mkDefault ["nvidia"];
   };
 }
