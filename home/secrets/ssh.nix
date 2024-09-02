@@ -42,6 +42,12 @@
       path = "/home/schwem/.ssh/mac_ssh_key";
       sopsFile = ./ssh.yaml;
     };
+    "media_key" = {
+      key = "media_ssh_key";
+      owner = "schwem";
+      path = "/home/schwem/.ssh/media";
+      sopsFile = ./ssh.yaml;
+    };
     "moltres_key" = {
       key = "user_ssh_key";
       owner = "schwem";
