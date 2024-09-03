@@ -8,7 +8,7 @@
   runDir = "/var/run/anonymous-overflow";
   stateDir = "/var/lib/anonymous-overflow";
 in {
-  imports = [./vhost.nix];
+  imports = [./virtualhost.nix];
 
   users.groups.anonymous-overflow = {};
   users.users.anonymous-overflow = {
