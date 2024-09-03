@@ -123,7 +123,7 @@
           ];
         };
 
-        formatter = pkgs.alejandra;
+        # formatter = pkgs.alejandra;
       };
 
       imports = [

@@ -8,5 +8,6 @@
 
   config.portMap = {
     anonymous-overflow = "8010";
+    libmedium = "7000";
   };
 }

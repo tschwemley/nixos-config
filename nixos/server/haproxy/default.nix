@@ -60,6 +60,7 @@ in {
         acl domain_it-tools hdr(host) -i it-tools.schwem.io
         acl domain_jellyfin hdr(host) -i jellyfin.schwem.io
         acl domain_jellyseerr hdr(host) -i jellyseerr.schwem.io
+        acl domain_medium hdr(host) -i medium.schwem.io
         acl domain_monitor hdr(host) -i monitor.schwem.io
         acl domain_reddit hdr(host) -i reddit.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
@@ -71,6 +72,7 @@ in {
         use_backend it-tools if domain_it-tools
         use_backend jellyfin if domain_jellyfin
         use_backend jellyseerr if domain_jellyseerr
+        use_backend medium if domain_medium
         use_backend monitor if domain_monitor
         use_backend reddit if domain_reddit
         use_backend searxng if domain_search
@@ -108,6 +110,10 @@ in {
       backend jellyseerr
         http-request set-header X-Forwarded-Proto https
         server tentacool tentacool.wyvern-map.ts.net:8080 check send-proxy
+
+      backend medium
+        http-request set-header X-Forwarded-Proto https
+        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
       backend monitor
         http-request set-header X-Forwarded-Proto https
