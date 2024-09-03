@@ -37,7 +37,6 @@
       # disable dragging animation
       # animate_mouse_windowdragging = false;
 
-      # enable variable refresh rate (effective depending on hardware)
       vrr = 2;
     };
 

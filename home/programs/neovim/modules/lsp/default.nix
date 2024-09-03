@@ -1,7 +1,6 @@
 {pkgs, ...}: let
   packages = {
     lsp = with pkgs; [
-      dprint
       htmx-lsp
       lua-language-server
       gopls
@@ -29,6 +28,7 @@
 
     utils = with pkgs; [
       json2go
+      taplo
     ];
   };
 

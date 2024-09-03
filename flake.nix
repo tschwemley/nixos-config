@@ -113,7 +113,7 @@
           # NOTE: there might be a better spot for overlays long-term. I'm okay w/ here for now
           overlays = [
             (_: prev: {
-              inherit (self'.packages) hypreasymotion json2go wl-ocr;
+              inherit (self'.packages) anonymous-overflow hypreasymotion json2go wl-ocr;
               vimPlugins =
                 prev.vimPlugins
                 // {

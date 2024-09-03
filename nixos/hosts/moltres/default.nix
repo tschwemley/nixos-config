@@ -1,12 +1,12 @@
 {
   imports = [
-      (import ../../profiles/buyvm.nix "/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-25377")
+    (import ../../profiles/buyvm.nix "/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-25377")
 
-      # server imports
-      ../../../containers/searxng
-      ../../server/cockroachdb
-      ../../server/redlib
-    ];
+    # server imports
+    ../../../containers/searxng
+    ../../server/cockroachdb
+    ../../server/redlib
+  ];
 
   networking.hostName = "moltres";
 

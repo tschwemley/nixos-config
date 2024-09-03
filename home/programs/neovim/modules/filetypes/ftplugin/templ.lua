@@ -1,1 +1,1 @@
-require('schwem.helpers').set_tabs(2)
+require("schwem.helpers").set_tabs(4)
