@@ -2,15 +2,23 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   pkg = pkgs.anonymous-overflow;
 
   runDir = "/var/run/anonymous-overflow";
   stateDir = "/var/lib/anonymous-overflow";
-in {
-  imports = [./virtualhost.nix];
+in
+{
+  services.nginx = {
+    virtualHosts."so.schwem.io" = {
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:${config.portMap.anonymous-overflow}";
+      };
+    };
+  };
 
-  users.groups.anonymous-overflow = {};
+  users.groups.anonymous-overflow = { };
   users.users.anonymous-overflow = {
     isSystemUser = true;
     group = "anonymous-overflow";
@@ -27,8 +35,8 @@ in {
 
   systemd.services.anonymous-overflow = {
     description = "Alternative front end for stack overflow";
-    wantedBy = ["multi-user.target"];
-    after = ["network.target"];
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
 
     environment = {
       APP_URL = "https://so.schwem.io";
@@ -36,7 +44,7 @@ in {
       PORT = config.portMap.anonymous-overflow;
     };
 
-    path = [pkg];
+    path = [ pkg ];
 
     serviceConfig = {
       Type = "simple";
@@ -51,8 +59,15 @@ in {
       ProtectKernelModules = true;
       ProtectKernelTunables = true;
       ProtectSystem = "strict";
-      ReadWritePaths = [runDir stateDir];
-      RestrictAddressFamilies = ["AF_UNIX" "AF_INET" "AF_INET6"];
+      ReadWritePaths = [
+        runDir
+        stateDir
+      ];
+      RestrictAddressFamilies = [
+        "AF_UNIX"
+        "AF_INET"
+        "AF_INET6"
+      ];
       RestrictNamespaces = true;
       RestrictRealtime = true;
       RestrictSUIDSGID = true;

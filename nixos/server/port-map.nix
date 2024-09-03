@@ -10,6 +10,7 @@
 
   config.portMap = {
     anonymous-overflow = "8010";
+    forgejo = "8020";
     # libmedium = "7000";
     scribe = "7000";
   };
