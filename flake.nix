@@ -81,50 +81,61 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    scribe = {
+      url = "sourcehut:~edwardloveall/scribe/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     sops = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs @ {
-    flake-parts,
-    nixpkgs,
-    ...
-  }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs =
+    inputs@{
+      flake-parts,
+      nixpkgs,
+      ...
+    }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "aarch64-darwin"
         "x86_64-linux"
       ];
 
-      perSystem = {
-        self',
-        config,
-        pkgs,
-        system,
-        ...
-      }: {
-        # makes pkgs available to all perSystem functions
-        _module.args.pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
+      perSystem =
+        {
+          self',
+          config,
+          pkgs,
+          system,
+          ...
+        }:
+        {
+          # makes pkgs available to all perSystem functions
+          _module.args.pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
 
-          # NOTE: there might be a better spot for overlays long-term. I'm okay w/ here for now
-          overlays = [
-            (_: prev: {
-              inherit (self'.packages) anonymous-overflow hypreasymotion json2go wl-ocr;
-              vimPlugins =
-                prev.vimPlugins
-                // {
+            # NOTE: there might be a better spot for overlays long-term. I'm okay w/ here for now
+            overlays = [
+              (_: prev: {
+                inherit (self'.packages)
+                  anonymous-overflow
+                  hypreasymotion
+                  json2go
+                  wl-ocr
+                  ;
+                vimPlugins = prev.vimPlugins // {
                   inherit (self'.packages) codecompanion;
                 };
-            })
-          ];
-        };
+              })
+            ];
+          };
 
-        # formatter = pkgs.alejandra;
-      };
+          # formatter = pkgs.alejandra;
+        };
 
       imports = [
         ./home

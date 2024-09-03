@@ -4,7 +4,8 @@
 
     # server
     ../../server/anonymous-overflow
-    ../../../containers/libmedium
+    ../../server/scribe
+    # ../../../containers/libmedium
   ];
 
   networking.hostName = "jolteon";

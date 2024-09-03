@@ -174,6 +174,21 @@
         "type": "github"
       }
     },
+    "flake-utils_4": {
+      "locked": {
+        "lastModified": 1631561581,
+        "narHash": "sha256-3VQMV5zvxaVLvqqUrNz3iJelLw30mIVSfZmAaauM3dA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "7e5bf3925f6fbdfaf50a2a7ca0be2879c4261d19",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -720,7 +735,30 @@
         "nix-private": "nix-private",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
+        "scribe": "scribe",
         "sops": "sops"
+      }
+    },
+    "scribe": {
+      "inputs": {
+        "flake-utils": "flake-utils_4",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1708785571,
+        "narHash": "sha256-s44+L6GSNHI4rBXiICyN64V1gT5WBIELNbR5R/2GH4A=",
+        "owner": "~edwardloveall",
+        "repo": "scribe",
+        "rev": "8dda4233ac3a817ccf29c3da3a8b25ddcdffa8ce",
+        "type": "sourcehut"
+      },
+      "original": {
+        "owner": "~edwardloveall",
+        "ref": "main",
+        "repo": "scribe",
+        "type": "sourcehut"
       }
     },
     "sops": {
