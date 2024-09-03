@@ -21,7 +21,7 @@
 
     lfs.enable = true;
 
-    settings = {
+    settings.server = {
       DOMAIN = "git.schwem.io";
       PORT = config.portMap.forgejo;
     };
