@@ -1,6 +1,9 @@
 {
   imports = [
     ../../profiles/proxmox.nix
+
+    # server
+    ../../server/anonymous-overflow
   ];
 
   networking.hostName = "jolteon";

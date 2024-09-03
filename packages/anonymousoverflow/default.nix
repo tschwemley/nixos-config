@@ -15,8 +15,18 @@ buildGoModule rec {
   };
 
   CGO_ENABLED = 0;
-
   vendorHash = "sha256-P3kUGFJhj/pTNeVTwtg4IqhoHBH9rROfkr+ZsrUtmdo=";
+
+  installPhase = ''
+    runHook preInstall
+
+    mkdir -p $out/{bin,share}
+    dir="$GOPATH/bin"
+    [ -e "$dir" ] && cp -r $dir/* $out/bin
+    cp -r $src/{public,templates} $out/share
+
+    runHook postInstall
+  '';
 
   meta = {
     description = "AnonymousOverflow allows you to view StackOverflow threads without the cluttered interface and exposing your IP address, browsing habits and other browser fingerprint data to StackOverflow.";

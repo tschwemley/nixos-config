@@ -1,26 +1,28 @@
 {
-  self,
-  lib,
+  config,
+  pkgs,
   ...
 }: let
-  pkg = self.packages.anonymous-overflow;
+  pkg = pkgs.anonymous-overflow;
 
   runDir = "/var/run/anonymous-overflow";
   stateDir = "/var/lib/anonymous-overflow";
-
-  jwtSecret = let
-    chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
-  in
-    builtins.genString (_: builtins.substring (lib.random 0 (builtins.stringLength chars - 1)) 1 chars) 32;
 in {
+  imports = [./vhost.nix];
+
+  users.groups.anonymous-overflow = {};
   users.users.anonymous-overflow = {
+    isSystemUser = true;
     group = "anonymous-overflow";
     description = "anonymous overflow service user";
     home = stateDir;
   };
 
   systemd.tmpfiles.rules = [
-    "d ${stateDir} 0755 chrony chrony - -"
+    "d ${runDir} 0750 anonymous-overflow anonymous-overflow - -"
+    "L ${runDir}/public - - - - ${pkg}/share/public"
+    "L ${runDir}/templates - - - - ${pkg}/share/templates"
+    "d ${stateDir} 0755 anonymous-overflow anonymous-overflow - -"
   ];
 
   systemd.services.anonymous-overflow = {
@@ -30,14 +32,15 @@ in {
 
     environment = {
       APP_URL = "https://so.schwem.io";
-      JWT_SIGNING_SECRET = jwtSecret;
+      JWT_SIGNING_SECRET = "thisisasecretchangeme";
+      PORT = config.portMap.anonymous-overflow;
     };
 
     path = [pkg];
 
     serviceConfig = {
       Type = "simple";
-      ExecStart = "${pkg}/anonymous-overflow";
+      ExecStart = "${pkg}/bin/anonymousoverflow";
 
       LockPersonality = true;
       NoNewPrivileges = true;
@@ -53,6 +56,7 @@ in {
       RestrictNamespaces = true;
       RestrictRealtime = true;
       RestrictSUIDSGID = true;
+      WorkingDirectory = runDir;
       # SystemCallFilter = "@system-service @clock";
 
       # KeyringMode = "private";

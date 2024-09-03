@@ -8,8 +8,10 @@
     ../network/containers.nix
     ../network/systemd-networkd.nix
     ../network/tailscale.nix
+    ../server/haproxy/options.nix
     ../server/monitoring/prometheus/node-exporter.nix
     ../server/nginx
+    ../server/port-map.nix
     ../server/static
     # ../services/fail2ban.nix
   ];
