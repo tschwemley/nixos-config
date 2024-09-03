@@ -17,7 +17,7 @@
   services.scribe = {
     enable = true;
     appDomain = "medium.schwem.io";
-    port = config.portMap.scribe;
+    port = 7000;
     environmentFile = config.sops.secrets.scribe-env.path;
   };
 
