@@ -15,7 +15,7 @@
       createDatabase = false;
       host = "db.schwem.io";
       name = "forgejo";
-      type = "postgresql";
+      type = "postgres";
       passwordFile = config.sops.secrets.forgejo_db_password.path;
     };
 
