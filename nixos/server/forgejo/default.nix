@@ -12,10 +12,6 @@
     enable = true;
 
     database = {
-      createDatabase = false;
-      host = "db.schwem.io";
-      name = "forgejo";
-      type = "postgres";
       passwordFile = config.sops.secrets.forgejo_db_password.path;
     };
 
@@ -29,5 +25,6 @@
 
   sops.secrets.forgejo_db_password = {
     sopsFile = ./secrets.yaml;
+    owner = "config.";
   };
 }
