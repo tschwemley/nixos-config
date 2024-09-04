@@ -4,6 +4,7 @@
     virtualHosts."git.schwem.io" = {
       locations."/" = {
         proxyPass = "http://127.0.0.1:${config.portMap.forgejo}";
+        extraConfig = "client_max_body_size 512M;";
       };
     };
   };
@@ -17,9 +18,15 @@
 
     lfs.enable = true;
 
-    settings.server = {
-      ROOT_URL = "https://git.schwem.io";
-      HTTP_PORT = lib.strings.toInt config.portMap.forgejo;
+    settings = {
+      server = {
+        ROOT_URL = "https://git.schwem.io";
+        HTTP_PORT = lib.strings.toInt config.portMap.forgejo;
+      };
+
+      service = {
+        DISABLE_REGISTRATION = true;
+      };
     };
   };
 
