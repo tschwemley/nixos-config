@@ -1,5 +1,12 @@
-{ config, lib, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  environment.systemPackages = [ pkgs.forgejo-cli ];
+
   services.nginx = {
     virtualHosts."git.schwem.io" = {
       locations."/" = {
