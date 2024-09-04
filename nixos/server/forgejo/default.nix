@@ -5,7 +5,7 @@
   ...
 }:
 {
-  environment.systemPackages = [ pkgs.forgejo-cli ];
+  environment.systemPackages = [ pkgs.forgejo ];
 
   services.nginx = {
     virtualHosts."git.schwem.io" = {
