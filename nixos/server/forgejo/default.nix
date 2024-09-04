@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   services.nginx = {
     virtualHosts."git.schwem.io" = {
@@ -19,7 +19,7 @@
 
     settings.server = {
       ROOT_URL = "https://git.schwem.io";
-      HTTP_PORT = config.portMap.forgejo;
+      HTTP_PORT = lib.strings.toInt config.portMap.forgejo;
     };
   };
 
