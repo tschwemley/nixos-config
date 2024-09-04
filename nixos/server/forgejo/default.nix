@@ -25,6 +25,5 @@
 
   sops.secrets.forgejo_db_password = {
     sopsFile = ./secrets.yaml;
-    owner = "config.";
   };
 }
