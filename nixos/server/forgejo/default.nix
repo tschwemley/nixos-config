@@ -18,8 +18,8 @@
     lfs.enable = true;
 
     settings.server = {
-      DOMAIN = "git.schwem.io";
-      PORT = config.portMap.forgejo;
+      ROOT_URL = "https://git.schwem.io";
+      HTTP_PORT = config.portMap.forgejo;
     };
   };
 
