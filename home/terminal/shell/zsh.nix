@@ -3,10 +3,6 @@ let
   shellAliases = import ./aliases;
 in
 {
-  home.sessionVariables = {
-    TERM = "xterm-kitty";
-  };
-
   programs.zsh = {
     inherit shellAliases;
 
