@@ -5,7 +5,10 @@
   ...
 }:
 {
-  environment.systemPackages = [ pkgs.forgejo ];
+  environment = {
+    systemPackages = [ pkgs.forgejo ];
+    shellAliases.forgejo = "sudo -u forgejo gitea";
+  };
 
   services.nginx = {
     virtualHosts."git.schwem.io" = {
@@ -37,7 +40,15 @@
     };
   };
 
-  sops.secrets.forgejo_db_password = {
-    sopsFile = ./secrets.yaml;
-  };
+  sops.secrets =
+    let
+      sopsConfig = {
+        sopsFile = ./secrets.yaml;
+      };
+    in
+    {
+      forgejo_db_password = sopsConfig;
+      forgejo_smtp_server = sopsConfig;
+      forgejo_smtp_token = sopsConfig;
+    };
 }
