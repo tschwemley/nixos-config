@@ -68,6 +68,7 @@ in
         acl domain_jellyseerr hdr(host) -i jellyseerr.schwem.io
         acl domain_medium hdr(host) -i medium.schwem.io
         acl domain_monitor hdr(host) -i monitor.schwem.io
+        acl domain_pinterest hdr(host) -i pinterest.schwem.io
         acl domain_reddit hdr(host) -i reddit.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
         acl domain_stackoverflow hdr(host) -i so.schwem.io
@@ -81,6 +82,7 @@ in
         use_backend jellyseerr if domain_jellyseerr
         use_backend medium if domain_medium
         use_backend monitor if domain_monitor
+        use_backend pinterest if domain_pinterest
         use_backend reddit if domain_reddit
         use_backend searxng if domain_search
         use_backend stackoverflow if domain_stackoverflow
@@ -126,6 +128,10 @@ in
       backend monitor
         http-request set-header X-Forwarded-Proto https
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
+
+      backend pinterest
+        http-request set-header X-Forwarded-Proto https
+        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
 
       backend reddit
         http-request set-header X-Forwarded-Proto https

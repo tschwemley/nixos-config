@@ -10,7 +10,9 @@
 
   config.portMap = {
     anonymous-overflow = "8010";
+    binternet = "8009";
     forgejo = "8020";
+    it-tools = "7001";
     # libmedium = "7000";
     scribe = "7000";
   };
