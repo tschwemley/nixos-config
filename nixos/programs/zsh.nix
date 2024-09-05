@@ -3,10 +3,6 @@
   # enable zsh autocompletion for system packages (systemd, etc)
   environment.pathsToLink = [ "/share/zsh" ];
 
-  home.sessionVariables = {
-    TERM = "xterm-kitty";
-  };
-
   programs = {
     zsh = {
       enable = true;

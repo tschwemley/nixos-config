@@ -1,6 +1,12 @@
-{config, ...}: let
+{ config, ... }:
+let
   shellAliases = import ./aliases;
-in {
+in
+{
+  home.sessionVariables = {
+    TERM = "xterm-kitty";
+  };
+
   programs.zsh = {
     inherit shellAliases;
 
