@@ -33,6 +33,7 @@ in
     ../programs/vial.nix
     ../programs/wofi.nix
     ../programs/zoom.nix
+    ../terminal/kitty
     ../terminal/xdg.nix
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
