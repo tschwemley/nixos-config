@@ -1,13 +1,15 @@
 let
   git = import ../programs/git.nix {
     name = "Tyler Schwemley";
-    email = "";
+    email = "tschwemley@zynga.com";
   };
-in {
+in
+{
   imports = [
     git
     ./.
     ../programs/glow.nix
+    ../programs/jira-cli.nix
     ../programs/wcalc.nix
   ];
 
