@@ -5,6 +5,9 @@
 ## Installing
 
 ## Installed Extensions
+### UI
+- [noice.nvim](https://github.com/folke/noice.nvim)
+- [nvim-notify](https://github.com/rcarriga/nvim-notify/)
 
 ### LSP
 #### Servers

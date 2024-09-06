@@ -16,6 +16,7 @@ let
     linters = with pkgs; [
       deadnix
       golangci-lint
+      prettierd
       statix
     ];
 
