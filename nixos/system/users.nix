@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   schwem = {
     isNormalUser = true;
     shell = pkgs.zsh;
@@ -12,21 +13,25 @@
       "gamemode"
       "networkmanager"
       "plugdev"
+      "podman"
       "wheel"
       config.users.groups.keys.name
     ];
   };
-in {
+in
+{
   root = {
     users.users.root.openssh.authorizedKeys.keys = [
       (builtins.readFile ../hosts/${config.networking.hostName}/ssh_key.pub)
     ];
-    home-manager.users.root.imports = [../../home/profiles];
+    home-manager.users.root.imports = [ ../../home/profiles ];
   };
   schwem = {
-    users.users = {inherit schwem;};
+    users.users = {
+      inherit schwem;
+    };
     home-manager.users.schwem = {
-      imports = [../../home/profiles/pc.nix];
+      imports = [ ../../home/profiles/pc.nix ];
       systemd.user.settings.Manager.DefaultLimitNOFILE = "524288";
     };
   };

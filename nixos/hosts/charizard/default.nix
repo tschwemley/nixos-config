@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   disk = (import ../../hardware/disks).charizard;
   hardware = {
     imports = [
@@ -20,15 +21,16 @@
     ];
   };
   ollama = import ../../../containers/ollama "/home/schwem/.ollama";
-  sillytavern = import ../../../containers/sillytavern "/home/schwem/.sillytavern";
-  user = (import ../../system/users.nix {inherit config pkgs;}).schwem;
-in {
+  openwebui = import ../../../containers/openwebui "/home/schwem/.openwebui";
+  user = (import ../../system/users.nix { inherit config pkgs; }).schwem;
+in
+{
   imports = [
     disk
     hardware
     networking
     ollama
-    sillytavern
+    openwebui
     user
     ./secrets.nix
     ../../system/boot/systemd.nix
@@ -38,8 +40,18 @@ in {
 
   boot = {
     initrd = {
-      availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod"];
-      kernelModules = ["amdgpu" "kvm-intel"];
+      availableKernelModules = [
+        "xhci_pci"
+        "ahci"
+        "nvme"
+        "usbhid"
+        "uas"
+        "sd_mod"
+      ];
+      kernelModules = [
+        "amdgpu"
+        "kvm-intel"
+      ];
     };
     # TODO: remove this or uncomment after I decide whether I want to be on the latest kernel or on LTS
     # kernelPackages = pkgs.linuxPackages_latest;

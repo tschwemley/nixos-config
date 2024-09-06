@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
 
@@ -36,6 +37,7 @@
       "$mod, w, killactive"
 
       "$mod, o, exec, wl-ocr"
+      "$mod $shift, s, exec, grimblast --notify copysave area"
 
       # "$mod, z, easymotion, action:hyprctl dispatch focuswindow address:{}"
     ];

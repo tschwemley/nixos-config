@@ -1,31 +1,30 @@
-local codecompanion = require('codecompanion')
+local codecompanion = require("codecompanion")
 local anthropic = require("codecompanion.adapters").use("anthropic", {
-	env = {
-		api_key = "cmd:sops -d --extract '[\"anthropic-api-key\"]' ~/nixos-config/home/secrets.yaml 2>/dev/null",
-	},
+   env = {
+      api_key = "cmd:sops -d --extract '[\"anthropic-api-key\"]' ~/nixos-config/home/secrets/secrets.yaml 2>/dev/null",
+   },
 })
 
 local ollama = require("codecompanion.adapters").use("ollama", {
    schema = {
       model = {
-         default = "codestral",
+         default = "codestral:22b-v0.1-q8_0",
       },
    },
 })
 
 codecompanion.setup({
-	adapters = {
-		anthropic = anthropic,
-		ollama = ollama,
-	},
-	strategies = {
-		chat = "ollama",
-		inline = "ollama",
-		tool = "ollama",
-	},
+   adapters = {
+      anthropic = anthropic,
+      ollama = ollama,
+   },
+   strategies = {
+      chat = "ollama",
+      inline = "ollama",
+      tool = "ollama",
+   },
 })
 
-
-vim.keymap.set('n', '<leader>ca', codecompanion.actions, { noremap = true })
-vim.keymap.set('n', '<leader>cc', codecompanion.chat, { noremap = true })
-vim.keymap.set('n', '<leader>ct', codecompanion.toggle, { noremap = true })
+vim.keymap.set("n", "<leader>ca", codecompanion.actions, { noremap = true })
+vim.keymap.set("n", "<leader>cc", codecompanion.chat, { noremap = true })
+vim.keymap.set("n", "<leader>ct", codecompanion.toggle, { noremap = true })

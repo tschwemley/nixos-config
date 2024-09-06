@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   packages = {
     lsp = with pkgs; [
       htmx-lsp
@@ -19,10 +20,11 @@
     ];
 
     formatting = with pkgs; [
-      alejandra
+      # alejandra
       golangci-lint
       golines
       gotools
+      nixfmt-rfc-style
       stylua
     ];
 
@@ -36,7 +38,7 @@
     formatting = [
       none-ls-nvim
     ];
-    lsp = [nvim-lspconfig];
+    lsp = [ nvim-lspconfig ];
     utility = [
       nvim-web-devicons
     ];
@@ -44,7 +46,8 @@
 
   # TODO: make this an extension of lib at the flake level
   flatten = attrset: builtins.concatLists (builtins.attrValues attrset);
-in {
+in
+{
   programs.neovim = {
     extraPackages = flatten packages;
     plugins = flatten plugins;
