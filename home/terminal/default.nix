@@ -1,6 +1,6 @@
 {
   imports = [
-    # ./kitty
+    ./kitty
     ./shell
     # ./wezterm
   ];
