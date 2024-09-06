@@ -7,8 +7,13 @@ hostPath: {
   virtualisation.oci-containers.containers.ollama = {
     autoStart = true;
     image = "ollama/ollama:rocm";
-    extraOptions = ["--device=/dev/kfd" "--device=/dev/dri" "--network=host"];
-    ports = ["127.0.0.1:11434:11434"];
-    volumes = ["${hostPath}:/root/.ollama"];
+    extraOptions = [
+      "--device=/dev/kfd"
+      "--device=/dev/dri"
+      "--network=host"
+      "--pull=always"
+    ];
+    ports = [ "127.0.0.1:11434:11434" ];
+    volumes = [ "${hostPath}:/root/.ollama" ];
   };
 }

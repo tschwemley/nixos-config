@@ -13,6 +13,7 @@
     binternet = "8009";
     forgejo = "8020";
     it-tools = "7001";
+    rimgo = "8030";
     # libmedium = "7000";
     scribe = "7000";
   };

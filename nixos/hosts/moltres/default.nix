@@ -6,6 +6,7 @@
     ../../../containers/searxng
     ../../server/cockroachdb
     ../../server/redlib
+    ../../server/rimgo
   ];
 
   networking.hostName = "moltres";
