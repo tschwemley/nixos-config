@@ -63,6 +63,7 @@ in
         acl domain_db hdr(host) -i db.schwem.io
         acl domain_draw hdr(host) -i draw.schwem.io
         acl domain_git hdr(host) -i git.schwem.io
+        acl domain_freetar hdr(host) -i freetar.schwem.io
         acl domain_it-tools hdr(host) -i it-tools.schwem.io
         acl domain_jellyfin hdr(host) -i jellyfin.schwem.io
         acl domain_jellyseerr hdr(host) -i jellyseerr.schwem.io
@@ -77,6 +78,7 @@ in
         use_backend auth if domain_auth
         use_backend cockroach_web if domain_db
         use_backend draw if domain_draw
+        use_backend freetar if domain_freetar
         use_backend git if domain_git
         use_backend it-tools if domain_it-tools
         use_backend jellyfin if domain_jellyfin
@@ -106,6 +108,10 @@ in
       backend draw
         http-request set-header X-Forwarded-Proto https
         server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
+
+      backend freetar
+        http-request set-header X-Forwarded-Proto https
+        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
       backend git
         http-request set-header X-Forwarded-Proto https

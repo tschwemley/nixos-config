@@ -11,6 +11,7 @@
   config.portMap = {
     anonymous-overflow = "8010";
     binternet = "8009";
+    freetar = "22000";
     forgejo = "8020";
     it-tools = "7001";
     rimgo = "8030";
