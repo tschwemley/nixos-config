@@ -21,7 +21,7 @@ let
     ];
   };
   ollama = import ../../../containers/ollama "/home/schwem/.ollama";
-  openwebui = import ../../../containers/openwebui "/home/schwem/.openwebui";
+  open-webui = import ../../../containers/open-webui "/home/schwem/.open-webui";
   user = (import ../../system/users.nix { inherit config pkgs; }).schwem;
 in
 {
@@ -30,7 +30,7 @@ in
     hardware
     networking
     ollama
-    openwebui
+    open-webui
     user
     ./secrets.nix
     ../../system/boot/systemd.nix
