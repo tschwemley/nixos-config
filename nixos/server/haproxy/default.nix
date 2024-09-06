@@ -63,7 +63,6 @@ in
         acl domain_db hdr(host) -i db.schwem.io
         acl domain_draw hdr(host) -i draw.schwem.io
         acl domain_git hdr(host) -i git.schwem.io
-        acl domain_imgur hdr(host) -i imgur.schwem.io
         acl domain_it-tools hdr(host) -i it-tools.schwem.io
         acl domain_jellyfin hdr(host) -i jellyfin.schwem.io
         acl domain_jellyseerr hdr(host) -i jellyseerr.schwem.io
@@ -71,6 +70,7 @@ in
         acl domain_monitor hdr(host) -i monitor.schwem.io
         acl domain_pinterest hdr(host) -i pinterest.schwem.io
         acl domain_reddit hdr(host) -i reddit.schwem.io
+        acl domain_rimgo hdr(host) -i rimgo.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
         acl domain_stackoverflow hdr(host) -i so.schwem.io
 
@@ -78,7 +78,6 @@ in
         use_backend cockroach_web if domain_db
         use_backend draw if domain_draw
         use_backend git if domain_git
-        use_backend imgur if domain_imgur
         use_backend it-tools if domain_it-tools
         use_backend jellyfin if domain_jellyfin
         use_backend jellyseerr if domain_jellyseerr
@@ -86,6 +85,7 @@ in
         use_backend monitor if domain_monitor
         use_backend pinterest if domain_pinterest
         use_backend reddit if domain_reddit
+        use_backend rimgo if domain_rimgo
         use_backend searxng if domain_search
         use_backend stackoverflow if domain_stackoverflow
 
@@ -111,7 +111,7 @@ in
         http-request set-header X-Forwarded-Proto https
         server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
-      backend imgur
+      backend rimgo
         http-request set-header X-Forwarded-Proto https
         server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
