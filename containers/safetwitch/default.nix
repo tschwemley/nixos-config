@@ -7,27 +7,49 @@
 }:
 
 {
-  services.nginx.virtualHosts = {
-    "twitch.schwem.io" = {
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:${config.portMap.safetwitch-frontend}";
-      };
+  services.nginx.virtualHosts."twitch.schwem.io".locations = {
+    "/" = {
+      proxyPass = "http://127.0.0.1:${config.portMap.safetwitch-frontend}";
+      proxyWebsockets = true;
     };
 
-    "twitch.api.schwem.io" = {
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:${config.portMap.safetwitch-backend}";
-      };
+    "/api" = {
+      proxyPass = "http://127.0.0.1:${config.portMap.safetwitch-backend}";
+      proxyWebsockets = true;
     };
   };
 
   # Containers
   virtualisation.oci-containers.containers = {
+    "safetwitch-frontend" = {
+      image = "codeberg.org/safetwitch/safetwitch:latest";
+      environment = {
+        "SAFETWITCH_BACKEND_DOMAIN" = "twitch.schwem.io";
+        "SAFETWITCH_DEFAULT_LOCALE" = "en";
+        "SAFETWITCH_FALLBACK_LOCALE" = "en";
+        "SAFETWITCH_HTTPS" = "true";
+        "SAFETWITCH_INSTANCE_DOMAIN" = "twitch.schwem.io";
+      };
+      ports = [
+        "127.0.0.1:${config.portMap.safetwitch-frontend}:8280/tcp"
+      ];
+      log-driver = "journald";
+      extraOptions = [
+        "--cap-add=CHOWN"
+        "--cap-add=SETGID"
+        "--cap-add=SETUID"
+        "--cap-drop=ALL"
+        "--hostname=safetwitch-frontend"
+        "--network-alias=safetwitch-frontend"
+        "--network=safetwitch_default"
+        "--security-opt=no-new-privileges:true"
+      ];
+    };
     "safetwitch-backend" = {
       image = "codeberg.org/safetwitch/safetwitch-backend:latest";
       environment = {
         "PORT" = "7000";
-        "URL" = "https://twitch.api.schwem.io";
+        "URL" = "https://twitch.schwem.io";
       };
       ports = [
         "127.0.0.1:${config.portMap.safetwitch-backend}:7000/tcp"
@@ -95,31 +117,6 @@
       partOf = [ "podman-compose-safetwitch-root.target" ];
       wantedBy = [ "podman-compose-safetwitch-root.target" ];
     };
-  };
-
-  virtualisation.oci-containers.containers."safetwitch-frontend" = {
-    image = "codeberg.org/safetwitch/safetwitch:latest";
-    environment = {
-      "SAFETWITCH_BACKEND_DOMAIN" = "api.twitch.schwem.io";
-      "SAFETWITCH_DEFAULT_LOCALE" = "en";
-      "SAFETWITCH_FALLBACK_LOCALE" = "en";
-      "SAFETWITCH_HTTPS" = "true";
-      "SAFETWITCH_INSTANCE_DOMAIN" = "twitch.schwem.io";
-    };
-    ports = [
-      "127.0.0.1:${config.portMap.safetwitch-frontend}:8280/tcp"
-    ];
-    log-driver = "journald";
-    extraOptions = [
-      "--cap-add=CHOWN"
-      "--cap-add=SETGID"
-      "--cap-add=SETUID"
-      "--cap-drop=ALL"
-      "--hostname=safetwitch-frontend"
-      "--network-alias=safetwitch-frontend"
-      "--network=safetwitch_default"
-      "--security-opt=no-new-privileges:true"
-    ];
   };
 
   # Root service
