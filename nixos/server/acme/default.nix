@@ -1,10 +1,18 @@
-{config, ...}: {
+{ config, ... }:
+{
   security.acme = {
     acceptTerms = true;
     certs = {
-      "schwem.io" = {};
-      "schwem.io-wildcard" = {domain = "*.schwem.io";};
-      "srht.schwem.io-wildcard" = {domain = "*.srht.schwem.io";};
+      "schwem.io" = { };
+      "schwem.io-wildcard" = {
+        domain = "*.schwem.io";
+      };
+      "schwem.io-wildcard-wildcard" = {
+        domain = "*.*.schwem.io";
+      };
+      "srht.schwem.io-wildcard" = {
+        domain = "*.srht.schwem.io";
+      };
     };
     defaults = {
       credentialFiles = {
@@ -21,7 +29,7 @@
   };
 
   sops.secrets.cloudflareApiZoneKey = {
-    group = config.users.users.acme.group;
+    inherit (config.users.users.acme) group;
     owner = config.users.users.acme.name;
     sopsFile = ./secrets.yaml;
   };

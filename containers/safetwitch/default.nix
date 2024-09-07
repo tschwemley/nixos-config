@@ -7,9 +7,17 @@
 }:
 
 {
-  services.nginx.virtualHosts."twitch.schwem.io" = {
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:${config.portMap.safetwitch-frontend}";
+  services.nginx.virtualHosts = {
+    "twitch.schwem.io" = {
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:${config.portMap.safetwitch-frontend}";
+      };
+    };
+
+    "api.twitch.schwem.io" = {
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:${config.portMap.safetwitch-backend}";
+      };
     };
   };
 
@@ -92,11 +100,11 @@
   virtualisation.oci-containers.containers."safetwitch-frontend" = {
     image = "codeberg.org/safetwitch/safetwitch:latest";
     environment = {
-      "SAFETWITCH_BACKEND_DOMAIN" = "localhost";
+      "SAFETWITCH_BACKEND_DOMAIN" = "api.twitch.schwem.io";
       "SAFETWITCH_DEFAULT_LOCALE" = "en";
       "SAFETWITCH_FALLBACK_LOCALE" = "en";
       "SAFETWITCH_HTTPS" = "true";
-      "SAFETWITCH_INSTANCE_DOMAIN" = "localhost";
+      "SAFETWITCH_INSTANCE_DOMAIN" = "twitch.schwem.io";
     };
     ports = [
       "127.0.0.1:${config.portMap.safetwitch-frontend}:8280/tcp"
