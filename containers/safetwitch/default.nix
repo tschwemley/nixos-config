@@ -55,10 +55,10 @@
 
     "safetwitch-backend" = {
       image = "codeberg.org/safetwitch/safetwitch-backend:latest";
-      # environment = {
-      #   # "PORT" = "7000";
-      #   "URL" = "https://twitch.schwem.io";
-      # };
+      environment = {
+        "PORT" = "7000";
+        "URL" = "https://twitch.api.schwem.io";
+      };
       ports = [
         "127.0.0.1:${config.portMap.safetwitch-backend}:7000/tcp"
         # "127.0.0.1:${config.portMap.safetwitch-backend}:8080/tcp"
