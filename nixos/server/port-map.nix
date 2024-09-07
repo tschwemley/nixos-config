@@ -16,6 +16,8 @@
     it-tools = "7001";
     rimgo = "8030";
     # libmedium = "7000";
+    safetwitch-frontend = "8280";
+    safetwitch-backend = "7100";
     scribe = "7000";
   };
 }
