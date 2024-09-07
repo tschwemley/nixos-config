@@ -8,13 +8,12 @@
 
 {
   services.nginx.virtualHosts."twitch.schwem.io".locations = {
-    "/" = {
-      proxyPass = "http://127.0.0.1:${config.portMap.safetwitch-frontend}";
-      proxyWebsockets = true;
-    };
-
     "/api" = {
       proxyPass = "http://127.0.0.1:${config.portMap.safetwitch-backend}";
+      proxyWebsockets = true;
+    };
+    "/" = {
+      proxyPass = "http://127.0.0.1:${config.portMap.safetwitch-frontend}";
       proxyWebsockets = true;
     };
   };
@@ -45,6 +44,7 @@
         "--security-opt=no-new-privileges:true"
       ];
     };
+
     "safetwitch-backend" = {
       image = "codeberg.org/safetwitch/safetwitch-backend:latest";
       environment = {
