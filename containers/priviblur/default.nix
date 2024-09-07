@@ -17,7 +17,7 @@
     "priviblur" = {
       image = "quay.io/syeopite/priviblur:latest";
       volumes = [
-        "/home/schwem/nixos-config/containers/priviblur/config.toml:/priviblur/config.toml:ro,Z"
+        "${./config.toml}:/priviblur/config.toml:ro,Z"
       ];
       ports = [
         "127.0.0.1:${config.portMap.priviblur}:8000/tcp"
