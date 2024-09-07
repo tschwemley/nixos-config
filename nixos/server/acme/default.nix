@@ -7,11 +7,8 @@
       "schwem.io-wildcard" = {
         domain = "*.schwem.io";
       };
-      "schwem.io-wildcard-wildcard" = {
-        domain = "*.*.schwem.io";
-      };
-      "srht.schwem.io-wildcard" = {
-        domain = "*.srht.schwem.io";
+      "schwem.io-wildcard-api" = {
+        domain = "*.api.schwem.io";
       };
     };
     defaults = {
