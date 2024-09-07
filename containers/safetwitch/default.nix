@@ -7,14 +7,22 @@
 }:
 
 {
-  services.nginx.virtualHosts."twitch.schwem.io".locations = {
-    "/api" = {
-      proxyPass = "http://127.0.0.1:${config.portMap.safetwitch-backend}";
-      proxyWebsockets = true;
+  services.nginx.virtualHosts = {
+    "twitch.schwem.io".locations = {
+      "/" = {
+        proxyWebsockets = true;
+        proxyPass = "http://127.0.0.1:${config.portMap.safetwitch-frontend}";
+        extraConfig = ''
+          add_header Access-Control-Allow-Origin "twitch.api.schwem.io";
+        '';
+      };
     };
-    "/" = {
-      proxyPass = "http://127.0.0.1:${config.portMap.safetwitch-frontend}";
-      proxyWebsockets = true;
+
+    "twitch.api.schwem.io".locations = {
+      "/" = {
+        proxyPass = "http://127.0.0.1:${config.portMap.safetwitch-backend}";
+        proxyWebsockets = true;
+      };
     };
   };
 
@@ -23,10 +31,10 @@
     "safetwitch-frontend" = {
       image = "codeberg.org/safetwitch/safetwitch:latest";
       environment = {
-        "SAFETWITCH_BACKEND_DOMAIN" = "twitch.schwem.io";
+        "SAFETWITCH_BACKEND_DOMAIN" = "twitch.api.schwem.io";
         "SAFETWITCH_DEFAULT_LOCALE" = "en";
         "SAFETWITCH_FALLBACK_LOCALE" = "en";
-        "SAFETWITCH_HTTPS" = "true";
+        "SAFETWITCH_HTTPS" = "false";
         "SAFETWITCH_INSTANCE_DOMAIN" = "twitch.schwem.io";
       };
       ports = [
@@ -47,12 +55,13 @@
 
     "safetwitch-backend" = {
       image = "codeberg.org/safetwitch/safetwitch-backend:latest";
-      environment = {
-        "PORT" = "7000";
-        "URL" = "https://twitch.schwem.io";
-      };
+      # environment = {
+      #   # "PORT" = "7000";
+      #   "URL" = "https://twitch.schwem.io";
+      # };
       ports = [
         "127.0.0.1:${config.portMap.safetwitch-backend}:7000/tcp"
+        # "127.0.0.1:${config.portMap.safetwitch-backend}:8080/tcp"
       ];
       user = "65534:65534";
       log-driver = "journald";

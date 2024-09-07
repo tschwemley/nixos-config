@@ -14,8 +14,8 @@
     freetar = "22000";
     forgejo = "8020";
     it-tools = "7001";
+    priviblur = "8040";
     rimgo = "8030";
-    # libmedium = "7000";
     safetwitch-frontend = "8280";
     safetwitch-backend = "7100";
     scribe = "7000";
