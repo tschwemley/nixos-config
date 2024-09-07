@@ -74,7 +74,7 @@ in
         acl domain_rimgo hdr(host) -i rimgo.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
         acl domain_stackoverflow hdr(host) -i so.schwem.io
-        acl domain_twitch hdr(host) -i twitch.schwem.io
+        acl domain_twitch hdr(host) -i twitch.schwem.io twitch.api.schwem.io
 
         use_backend auth if domain_auth
         use_backend cockroach_web if domain_db
