@@ -74,6 +74,7 @@ in
         acl domain_rimgo hdr(host) -i rimgo.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
         acl domain_stackoverflow hdr(host) -i so.schwem.io
+        acl domain_twitch hdr(host) -i twitch.schwem.io
 
         use_backend auth if domain_auth
         use_backend cockroach_web if domain_db
@@ -90,6 +91,7 @@ in
         use_backend rimgo if domain_rimgo
         use_backend searxng if domain_search
         use_backend stackoverflow if domain_stackoverflow
+        use_backend twitch if domain_twitch
 
         default_backend static
 
@@ -163,6 +165,10 @@ in
       backend stackoverflow
         http-request set-header X-Forwarded-Proto https
         server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
+
+      backend twitch
+        http-request set-header X-Forwarded-Proto https
+        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
     '';
   };
 
