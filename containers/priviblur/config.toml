@@ -1,6 +1,6 @@
 # Controls deployment options
 [deployment]
-    host = "127.0.0.1" # Set to 127.0.0.1 if you use a reverse proxy, or access it locally
+    host = "0.0.0.0" # Set to 127.0.0.1 if you use a reverse proxy, or access it locally
     port = 8000
 
     # # Domain which the instance is hosted. By default it is unset.
