@@ -1,6 +1,6 @@
 # Controls deployment options
 [deployment]
-    host = "0.0.0.0" # Set to 127.0.0.1 if you use a reverse proxy, or access it locally
+    host = "127.0.0.1" # Set to 127.0.0.1 if you use a reverse proxy, or access it locally
     port = 8000
 
     # # Domain which the instance is hosted. By default it is unset.
@@ -11,14 +11,9 @@
     # workers = 1
 
 
-# # Controls redis cache options
-# # Ignore to disable the cache
-# # 
 # # To enable caching, Redis is required, you then have to uncomment "url" and set it accordingly. Every other options in this section will use their default value (indicated next to them) if they are kept commented out.
-# [cache]
-    # url =
-    # # For docker use the following:
-    # url = "redis://priviblur-redis:6379"
+[cache]
+    url = "redis://priviblur-redis:6379"
 
     # # Number of seconds to cache poll results from active polls
     # cache_active_poll_results_for = 3600
