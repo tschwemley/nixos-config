@@ -7,6 +7,7 @@
     ../../server/soft-serve
     ../../../containers/binternet
     ../../../containers/it-tools
+    ../../../containers/safetwitch
   ];
 
   networking.hostName = "zapados";
