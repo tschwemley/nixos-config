@@ -16,7 +16,7 @@
     invidious = "3100";
     it-tools = "7001";
     priviblur = "8040";
-    proxitok = "8040";
+    proxitok = "8050";
     rimgo = "8030";
     safetwitch-frontend = "8280";
     safetwitch-backend = "7100";
