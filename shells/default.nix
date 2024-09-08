@@ -13,7 +13,6 @@
           # nix-prefetch-scripts
           sops
           self'.packages.build-host
-          self'.packages.build-all-hosts
           self'.packages.compose2nix
           ssh-to-age
           statix
