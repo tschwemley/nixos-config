@@ -21,5 +21,6 @@
     safetwitch-frontend = "8280";
     safetwitch-backend = "7100";
     scribe = "7000";
+    threadfin = "34400";
   };
 }
