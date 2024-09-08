@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [ podman-compose ];
-  networking.firewall.interfaces."podman+".allowedUDPPorts = [
+  networking.firewall.interfaces."podman*".allowedUDPPorts = [
     53
-    # 5353
+    5353
   ];
 
   virtualisation = {
