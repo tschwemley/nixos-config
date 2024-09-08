@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [ podman-compose ];
+  networking.firewall.interfaces."podman-+".allowedUDPPorts = [ 53 ];
+
   virtualisation = {
     podman = {
       enable = true;
@@ -10,6 +14,4 @@
       defaultNetwork.settings.dns_enabled = true;
     };
   };
-
-  environment.systemPackages = with pkgs; [podman-compose];
 }
