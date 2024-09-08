@@ -1,8 +1,14 @@
-{ config, ... }:
+{ config, lib, ... }:
+let
+  domain = "yt.schwem.io";
+in
 {
+  services.nginx.virtualHosts.${domain}.enableACME = lib.mkForce false;
+
   services.invidious = {
+    inherit domain;
+
     enable = true;
-    domain = "yt.schwem.io";
     http3-ytproxy.enable = true;
     nginx.enable = true;
     port = config.portMap.invidious;
