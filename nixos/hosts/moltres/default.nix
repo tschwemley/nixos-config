@@ -5,7 +5,7 @@
     # server imports
     ../../../containers/freetar
     ../../../containers/searxng
-    ../../../containers/threadfin
+    # ../../../containers/threadfin
     ../../server/cockroachdb
     ../../server/redlib
     ../../server/rimgo
