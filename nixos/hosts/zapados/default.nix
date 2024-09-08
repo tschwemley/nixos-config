@@ -4,7 +4,6 @@
 
     # server imports
     ../../server/cockroachdb
-    ../../server/soft-serve
     ../../../containers/binternet
     ../../../containers/it-tools
     ../../../containers/priviblur

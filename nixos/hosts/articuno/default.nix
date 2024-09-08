@@ -1,17 +1,18 @@
 {
-  imports =
-    [
-      (import ../../profiles/buyvm.nix "")
+  imports = [
+    (import ../../profiles/buyvm.nix "")
 
-      # server imports
-      ../../../containers/keycloak
-      ../../../containers/searxng
-      ../../server/acme
-      ../../server/cockroachdb
-      ../../server/haproxy
-      ../../server/monitoring
-      ../../server/oauth2-proxy
-    ];
+    # server imports
+    ../../../containers/keycloak
+    ../../../containers/proxitok
+    ../../../containers/searxng
+    ../../server/acme
+    ../../server/cockroachdb
+    ../../server/haproxy
+    ../../server/invidious
+    ../../server/monitoring
+    ../../server/oauth2-proxy
+  ];
 
   networking.hostName = "articuno";
 

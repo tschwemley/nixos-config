@@ -1,5 +1,5 @@
 {
-  networking.firewall.allowedTCPPorts = [8080];
+  networking.firewall.allowedTCPPorts = [ 8080 ];
 
   services.nginx = {
     enable = true;
@@ -11,6 +11,14 @@
       }
     ];
     recommendedProxySettings = true;
+    tailscaleAuth = {
+      enable = true;
+      expectedTailnet = "wyvern-map.ts.net";
+      virtualHosts = [
+        "monitor.schwem.io"
+        "threadfin.schwem.io"
+      ];
+    };
   };
 
   # sops.secrets.nginx_allow_secure = {
@@ -26,5 +34,5 @@
   #   owner = "nginx";
   # };
 
-  users.users.nginx.extraGroups = ["users"];
+  users.users.nginx.extraGroups = [ "users" ];
 }

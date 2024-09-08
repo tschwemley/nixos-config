@@ -24,13 +24,14 @@
           HOST=$1
 
           if [ $HOST = "servers" ] ; then
-            ${./scripts/build-servers.sh}
+          ${./scripts/build-servers.sh}
           else
             nix build .#nixosConfigurations.$HOST.config.system.build.toplevel -o $HOST
             nix-copy-closure --to $HOST $HOST
             rm $HOST
           fi
         '';
+        compose2nix = pkgs.callPackage ./utils/compose2nix.nix { };
         json2go = pkgs.callPackage ./json2go.nix { };
         prefetch-url-sha256 = writeScriptBin "prefetch-url-sha256" ''
           hash=$(nix-prefetch-url "$1")

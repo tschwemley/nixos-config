@@ -13,8 +13,10 @@
     binternet = "8009";
     freetar = "22000";
     forgejo = "8020";
+    invidious = "3100";
     it-tools = "7001";
     priviblur = "8040";
+    proxitok = "8040";
     rimgo = "8030";
     safetwitch-frontend = "8280";
     safetwitch-backend = "7100";

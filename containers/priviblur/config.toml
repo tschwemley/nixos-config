@@ -1,11 +1,11 @@
 # Controls deployment options
 [deployment]
-    host = "0.0.0.0" # Set to 127.0.0.1 if you use a reverse proxy, or access it locally
+    host = "127.0.0.1" # Set to 127.0.0.1 if you use a reverse proxy, or access it locally
     port = 8000
 
     # # Domain which the instance is hosted. By default it is unset.
     # # This is primary used to generate links to the instance
-    # domain =
+    domain = "tumblr.schwem.io"
 
     # # Amount of worker Priviblur instances to spawn. Increases speed significantly.
     # workers = 1
@@ -40,11 +40,11 @@
 
 
 # # Controls default user preferences
-# [default_user_preferences]
+[default_user_preferences]
 #
 #     # User interface theme
 #     # Acceptable values: [auto, light, dark]
-#     theme = "auto"
+    theme = "dark"
 #
 #     # User interface language
 #     # For available options see locales dir
