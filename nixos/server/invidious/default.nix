@@ -16,6 +16,7 @@ in
       banner = "nyx nyx nyx";
       continue = true;
       dark_mode = "dark";
+      db.name = "invidious";
       registration_enabled = false;
       save_player_pos = true;
       statistics_enabled = true;

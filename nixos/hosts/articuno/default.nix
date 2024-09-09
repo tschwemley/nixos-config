@@ -9,7 +9,7 @@
     ../../server/acme
     ../../server/cockroachdb
     ../../server/haproxy
-    # ../../server/invidious
+    ../../server/invidious
     ../../server/monitoring
     ../../server/oauth2-proxy
     ../../server/postgresql
