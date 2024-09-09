@@ -12,6 +12,7 @@
     # ../../server/invidious
     ../../server/monitoring
     ../../server/oauth2-proxy
+    ../../server/postgresql
   ];
 
   networking.hostName = "articuno";
