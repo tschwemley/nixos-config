@@ -4,6 +4,7 @@ self': [
       anonymous-overflow
       hypreasymotion
       json2go
+      ogen
       wl-ocr
       ;
 
