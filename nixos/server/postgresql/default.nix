@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   config.services.postgresql = {
     enable = true;
@@ -10,9 +11,9 @@
       user_map  root        postgres 
     '';
 
-    authentication = ''
+    authentication = lib.mkOverride 10 ''
       #type database  DBuser  auth-method optional_ident_map
-      local sameuser  all     peer        #map=superuser_map
+      local sameuser  all     peer        map=user_map
     '';
   };
 }
