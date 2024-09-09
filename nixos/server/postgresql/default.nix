@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  config.services.postgresql = {
+  services.postgresql = {
     enable = true;
     ensureDatabases = [
       "invidious"
@@ -9,6 +9,7 @@
     identMap = ''
       # mapName systemUser  DBUser
       user_map  root        postgres 
+      user_map  postgres    postgres 
     '';
 
     authentication = lib.mkOverride 10 ''
