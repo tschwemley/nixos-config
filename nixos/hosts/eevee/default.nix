@@ -1,9 +1,11 @@
-{inputs, ...}: {
+{
   imports = [
     (import ../../profiles/buyvm.nix "/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-18810")
 
     # server imports
-    "${inputs.nix-private.outPath}/containers/p2p"
+    ../../server/sabnzbd
+
+    # "${inputs.nix-private.outPath}/containers/p2p"
   ];
 
   networking.hostName = "eevee";

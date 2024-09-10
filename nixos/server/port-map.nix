@@ -18,6 +18,7 @@
     priviblur = "8040";
     proxitok = "8050";
     rimgo = "8030";
+    sabnzbd = "8314";
     safetwitch-frontend = "8280";
     safetwitch-backend = "7100";
     scribe = "7000";
