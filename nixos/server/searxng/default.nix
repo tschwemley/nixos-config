@@ -1,7 +1,10 @@
 { config, lib, ... }:
 {
+  imports = [ ./secrets.nix ];
+
   services.searx = {
     enable = true;
+    environmentFile = config.sops.secrets.sabnzbd_env_file.path;
     redisCreateLocally = true;
 
     # Rate limiting
@@ -140,7 +143,7 @@
 
         "wallhaven" = {
           disabled = false;
-          api_key = config.sops.secrets.wallhaven_api_key.path;
+          api_key = "@WALLHAVEN_API_KEY@";
           safesearch_map = "0";
         };
 
@@ -188,15 +191,6 @@
         "Unit converter plugin"
         "Tracker URL remover"
       ];
-    };
-  };
-
-  sops.secrets = {
-    searxng_secret = {
-      sopsFile = ./secrets.yaml;
-    };
-    wallhaven_api_key = {
-      sopsFile = ./secrets.yaml;
     };
   };
 
