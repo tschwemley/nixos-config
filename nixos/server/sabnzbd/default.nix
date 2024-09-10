@@ -1,5 +1,7 @@
 { config, ... }:
 {
+  imports = [ ./config.nix ];
+
   services.nginx.virtualHosts."sabnzbd.schwem.io" = {
     locations = {
       "/" = {
