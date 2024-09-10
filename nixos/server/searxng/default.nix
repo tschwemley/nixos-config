@@ -1,7 +1,7 @@
 { config, lib, ... }:
 {
   services.searx = {
-    enable = false;
+    enable = true;
     redisCreateLocally = true;
 
     # Rate limiting
