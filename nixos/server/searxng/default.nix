@@ -51,7 +51,7 @@
         query_in_title = true;
         search_on_category_select = false;
         static_use_hash = true;
-        theme_args.simple_style = "auto";
+        theme_args.simple_style = "dark";
       };
 
       # Search engine settings
