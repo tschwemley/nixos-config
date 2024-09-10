@@ -208,7 +208,14 @@
   systemd.services.nginx.serviceConfig.ProtectHome = false;
 
   # User management
-  users.groups.searx.members = [ "nginx" ];
+  users = {
+    # I already set the nixos hard-coded value for cockroachdb, so use different uid/gid
+    groups.searx = {
+      gid = 220;
+      members = [ "nginx" ];
+    };
+    userx.searx.uid = 221;
+  };
 
   # Nginx configuration
   services.nginx = {
