@@ -15,6 +15,7 @@
     forgejo = "8020";
     invidious = "3100";
     it-tools = "7001";
+    nginx-sso = "8082";
     priviblur = "8040";
     proxitok = "8050";
     rimgo = "8030";

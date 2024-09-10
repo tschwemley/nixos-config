@@ -10,7 +10,6 @@
     ../../server/haproxy
     # ../../server/invidious
     ../../server/monitoring
-    # ../../server/oauth2-proxy
     ../../server/postgresql
     ../../server/searxng
   ];

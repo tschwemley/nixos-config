@@ -30,6 +30,7 @@ in
     jq
     lsof
     pinentry
+    pwgen
     ripgrep
     rsync
     sops
