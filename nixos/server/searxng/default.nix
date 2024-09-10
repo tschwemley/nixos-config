@@ -204,33 +204,19 @@
     };
   };
 
-  # Systemd configuration
   systemd.services.nginx.serviceConfig.ProtectHome = false;
 
-  # User management
   users = {
-    # I already set the nixos hard-coded value for cockroachdb, so use different uid/gid
-    groups.searx = {
-      gid = 220;
-      members = [ "nginx" ];
-    };
-    users.searx.uid = 221;
+    users.uwsgi.uid = 200; # override with an unused nixos uid value (I already used the default of 201 for cockroachdb)
+    groups.searx.members = [ "nginx" ];
   };
 
-  # Nginx configuration
-  services.nginx = {
-    virtualHosts = {
-      "search.schwem.io" = {
-        # forceSSL = true;
-        # sslCertificate = "...";
-        # sslCertificateKey = "...";
-        locations = {
-          "/" = {
-            extraConfig = ''
-              uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};
-            '';
-          };
-        };
+  services.nginx.virtualHosts."search.schwem.io" = {
+    locations = {
+      "/" = {
+        extraConfig = ''
+          uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};
+        '';
       };
     };
   };
