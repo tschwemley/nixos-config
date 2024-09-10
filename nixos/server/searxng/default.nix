@@ -207,8 +207,9 @@
   systemd.services.nginx.serviceConfig.ProtectHome = false;
 
   users = {
-    users.uwsgi.uid = 200; # override with an unused nixos uid value (I already used the default of 201 for cockroachdb)
     groups.searx.members = [ "nginx" ];
+    # override with an unused nixos uid value (I already used the default of 201 for cockroachdb)
+    users.uwsgi.uid = lib.mkDefault 200;
   };
 
   services.nginx.virtualHosts."search.schwem.io" = {
