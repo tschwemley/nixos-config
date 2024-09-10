@@ -144,7 +144,7 @@
 
         "wallhaven" = {
           disabled = false;
-          api_key = config.sops.placeholder.wallhaven_api_key.path;
+          # api_key = config.sops.placeholder.wallhaven_api_key.path;
           safesearch_map = "0";
         };
 
@@ -209,7 +209,7 @@
   users = {
     groups.searx.members = [ "nginx" ];
     # override with an unused nixos uid value (I already used the default of 201 for cockroachdb)
-    users.uwsgi.uid = lib.mkDefault 200;
+    users.uwsgi.uid = lib.mkForce 200;
   };
 
   services.nginx.virtualHosts."search.schwem.io" = {
