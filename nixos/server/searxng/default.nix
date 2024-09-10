@@ -20,9 +20,7 @@
       };
     };
 
-    # UWSGI configuration
     runInUwsgi = true;
-
     uwsgiConfig = {
       socket = "/run/searx/searx.sock";
       http = ":${config.portMap.searxng}";
@@ -31,7 +29,6 @@
 
     # Searx configuration
     settings = {
-      # Instance settings
       general = {
         contact_url = false;
         debug = false;
@@ -41,7 +38,6 @@
         privacypolicy_url = false;
       };
 
-      # User interface
       ui = {
         center_alignment = true;
         default_locale = "en";
@@ -49,7 +45,7 @@
         hotkeys = "vim";
         infinite_scroll = false;
         query_in_title = true;
-        search_on_category_select = false;
+        search_on_category_select = true;
         static_use_hash = true;
         theme_args.simple_style = "dark";
       };
@@ -144,7 +140,7 @@
 
         "wallhaven" = {
           disabled = false;
-          # api_key = config.sops.placeholder.wallhaven_api_key.path;
+          api_key = config.sops.secrets.wallhaven_api_key.path;
           safesearch_map = "0";
         };
 
