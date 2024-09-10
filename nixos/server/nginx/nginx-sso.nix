@@ -19,8 +19,13 @@ in
   };
 
   sops = {
-    secrets.nginx_sso_auth_key = {
-      sopsFile = ./secrets.yaml;
+    secrets = {
+      nginx_sso_auth_key = {
+        sopsFile = ./secrets.yaml;
+      };
+      nginx_sso_client_secret = {
+        sopsFile = ./secrets.yaml;
+      };
     };
 
     templates.nginx_sso_config = {
