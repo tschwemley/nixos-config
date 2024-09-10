@@ -10,7 +10,7 @@ in
     serviceConfig = {
       ExecStart = ''
         ${pkg}/bin/nginx-sso \
-          --config ${config.sops.templates.nginx-sso-config.path} \
+          --config ${config.sops.templates.nginx_sso_config.path} \
           --frontend-dir ${pkg}/share/frontend
       '';
       Restart = "always";
@@ -23,7 +23,7 @@ in
       sopsFile = ./secrets.yaml;
     };
 
-    templates.nginx_allow_secure = {
+    templates.nginx_sso_config = {
       content = # yaml
         ''
           cookie:
