@@ -214,7 +214,7 @@
       gid = 220;
       members = [ "nginx" ];
     };
-    userx.searx.uid = 221;
+    users.searx.uid = 221;
   };
 
   # Nginx configuration
