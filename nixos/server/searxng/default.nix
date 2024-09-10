@@ -213,10 +213,10 @@
   # Nginx configuration
   services.nginx = {
     virtualHosts = {
-      "search.example.com" = {
-        forceSSL = true;
-        sslCertificate = "...";
-        sslCertificateKey = "...";
+      "search.schwem.io" = {
+        # forceSSL = true;
+        # sslCertificate = "...";
+        # sslCertificateKey = "...";
         locations = {
           "/" = {
             extraConfig = ''

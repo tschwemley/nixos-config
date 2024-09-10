@@ -3,9 +3,11 @@
   config,
   pkgs,
   ...
-}: let
-  rootUser = (import ../system/users.nix {inherit config pkgs;}).root;
-in {
+}:
+let
+  rootUser = (import ../system/users.nix { inherit config pkgs; }).root;
+in
+{
   imports = [
     inputs.sops.nixosModules.sops
     inputs.disko.nixosModules.disko
@@ -24,6 +26,7 @@ in {
     git
     gnupg
     go
+    ogen
     jq
     lsof
     pinentry
