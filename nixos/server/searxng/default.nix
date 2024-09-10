@@ -4,7 +4,7 @@
 
   services.searx = {
     enable = true;
-    environmentFile = config.sops.secrets.sabnzbd_env_file.path;
+    environmentFile = config.sops.secrets.searxng.path;
     redisCreateLocally = true;
 
     # Rate limiting
