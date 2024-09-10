@@ -5,7 +5,7 @@
     # server imports
     ../../../containers/keycloak
     ../../../containers/proxitok
-    ../../../containers/searxng
+    # ../../../containers/searxng
     ../../server/acme
     ../../server/cockroachdb
     ../../server/haproxy
