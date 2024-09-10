@@ -3,6 +3,7 @@
 
   services.nginx = {
     enable = true;
+
     defaultListen = [
       {
         addr = "0.0.0.0";
@@ -10,7 +11,14 @@
         proxyProtocol = true;
       }
     ];
+
+    # see source for more information on what these values set: 
+    #  https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/web-servers/nginx/default.nix
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
     recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+
     tailscaleAuth = {
       enable = true;
       expectedTailnet = "wyvern-map.ts.net";

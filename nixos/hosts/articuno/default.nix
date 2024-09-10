@@ -13,6 +13,7 @@
     ../../server/monitoring
     ../../server/oauth2-proxy
     ../../server/postgresql
+    ../../server/searxng
   ];
 
   networking.hostName = "articuno";
