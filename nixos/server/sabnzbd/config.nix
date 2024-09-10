@@ -69,7 +69,7 @@
             dirscan_dir = ""
             dirscan_speed = 5
             password_file = ""
-            log_dir = logs
+            log_dir = /var/lib/sabnzbd/logs
             max_art_tries = 3
             top_only = 0
             sfv_check = 1

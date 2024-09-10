@@ -5,7 +5,7 @@
   services.nginx.virtualHosts."sabnzbd.schwem.io" = {
     locations = {
       "/" = {
-        proxyPass = "127.0.0.1:${config.portMap.sabnzbd}";
+        proxyPass = "http://127.0.0.1:${config.portMap.sabnzbd}";
       };
     };
   };
