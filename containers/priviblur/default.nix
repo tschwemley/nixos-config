@@ -10,7 +10,7 @@
       proxyPass = "http://127.0.0.1:${config.portMap.priviblur}";
       proxyWebsockets = true;
       extraConfig = ''
-        auth_request https://auth.schwem.io/auth
+        auth_request https://auth.schwem.io/auth;
         auth_request_set $cookie $upstream_http_set_cookie;
         add_header Set-Cookie $cookie;
       '';
