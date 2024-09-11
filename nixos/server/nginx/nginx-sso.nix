@@ -19,14 +19,17 @@ in
   };
 
   sops = {
-    secrets = {
-      nginx_sso_auth_key = {
-        sopsFile = ./secrets.yaml;
+    secrets =
+      let
+        default = {
+          sopsFile = ./secrets.yaml;
+        };
+      in
+      {
+        nginx_sso_acl = default;
+        nginx_sso_auth_key = default;
+        nginx_sso_client_secret = default;
       };
-      nginx_sso_client_secret = {
-        sopsFile = ./secrets.yaml;
-      };
-    };
 
     templates.nginx_sso_config = {
       content = # yaml
