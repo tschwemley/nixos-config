@@ -2,18 +2,21 @@
   config,
   pkgs,
   ...
-}: let
-  browser = ["brave"];
+}:
+let
+  browser = [ "librewolf" ];
   # imageViewer = ["org.gnome.Loupe"];
   # videoPlayer = ["io.github.celluloid_player.Celluloid"];
   # audioPlayer = ["io.bassi.Amberol"];
 
-  xdgAssociations = type: program: list:
-    builtins.listToAttrs (map (e: {
+  xdgAssociations =
+    type: program: list:
+    builtins.listToAttrs (
+      map (e: {
         name = "${type}/${e}";
         value = program;
-      })
-      list);
+      }) list
+    );
 
   # image = xdgAssociations "image" imageViewer ["png" "svg" "jpeg" "gif"];
   # video = xdgAssociations "video" videoPlayer ["mp4" "avi" "mkv"];
@@ -36,11 +39,12 @@
     ]);
 
   # XDG MIME types
-  associations = builtins.mapAttrs (_: v: (map (e: "${e}.desktop") v)) ({
+  associations = builtins.mapAttrs (_: v: (map (e: "${e}.desktop") v)) (
+    {
       # "application/pdf" = ["org.pwmt.zathura-pdf-mupdf"];
       "text/html" = browser;
-      "text/plain" = ["nvim"];
-      "x-scheme-handler/chrome" = ["brave"];
+      "text/plain" = [ "nvim" ];
+      "x-scheme-handler/chrome" = [ "brave" ];
       # "x-scheme-handler/chrome" = ["chromium-browser"];
       # "inode/directory" = ["yazi"];
     }
@@ -48,8 +52,10 @@
     # // video
     # // audio
     # // audio
-    // browserTypes);
-in {
+    // browserTypes
+  );
+in
+{
   xdg = {
     enable = true;
     cacheHome = config.home.homeDirectory + "/.local/cache";
