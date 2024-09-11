@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 let
   pkg = pkgs.nginx-sso;
+  sopsInfo = {
+    sopsFile = ./secrets.yaml;
+    group = "nginx";
+    owner = "nginx";
+  };
 in
 {
   systemd.services.nginx-sso = {
@@ -19,17 +24,11 @@ in
   };
 
   sops = {
-    secrets =
-      let
-        default = {
-          sopsFile = ./secrets.yaml;
-        };
-      in
-      {
-        nginx_sso_acl = default;
-        nginx_sso_auth_key = default;
-        nginx_sso_client_secret = default;
-      };
+    secrets = {
+      nginx_sso_acl = sopsInfo;
+      nginx_sso_auth_key = sopsInfo;
+      nginx_sso_client_secret = sopsInfo;
+    };
 
     templates.nginx_sso_config = {
       content = # yaml
