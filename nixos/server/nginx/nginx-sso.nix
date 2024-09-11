@@ -2,9 +2,8 @@
 let
   pkg = pkgs.nginx-sso;
   sopsInfo = {
+    mode = "444";
     sopsFile = ./secrets.yaml;
-    group = "nginx";
-    owner = "nginx";
   };
 in
 {
@@ -31,6 +30,7 @@ in
     };
 
     templates.nginx_sso_config = {
+      mode = "444";
       content = # yaml
         ''
           cookie:
@@ -59,8 +59,6 @@ in
 
           ${config.sops.placeholder.nginx_sso_acl}
         '';
-      group = "nginx";
-      owner = "nginx";
     };
   };
 }
