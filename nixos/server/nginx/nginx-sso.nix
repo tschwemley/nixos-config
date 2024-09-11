@@ -12,7 +12,7 @@ in
 
     locations = {
       "/auth" = {
-        proxyPass = "articuno:${config.portMap.nginx-sso}/auth";
+        proxyPass = "http://articuno:${config.portMap.nginx-sso}/auth";
         extraConfig = ''
           internal;
 
