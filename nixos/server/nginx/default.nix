@@ -1,6 +1,4 @@
 {
-  imports = [ ./nginx-sso.nix ];
-
   networking.firewall.allowedTCPPorts = [ 8080 ];
 
   services.nginx = {
