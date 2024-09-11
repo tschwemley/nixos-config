@@ -24,7 +24,7 @@ in
 
       "/logout".return = "302 https://auth.schwem.io/login?go=$scheme://$http_host$request_uri";
 
-      "@error401".return = "302 https://auth.schwem.io/login?go=$scheme://$http_host$request_uri;";
+      "@error401".return = "302 https://auth.schwem.io/login?go=$scheme://$http_host$request_uri";
     };
   };
 
