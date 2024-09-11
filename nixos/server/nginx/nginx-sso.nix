@@ -7,6 +7,27 @@ let
   };
 in
 {
+  services.nginx.virtualHosts."auth.schwem.io" = {
+    extraConfig = "error_page 401 = @error401;";
+
+    locations = {
+      "/auth" = {
+        proxyPass = "articuno:${config.portMap.nginx-sso}/auth";
+        extraConfig = ''
+          internal;
+
+          proxy_pass_request_body off;
+          proxy_set_header Content-Length "";
+          proxy_set_header X-Origin-URI $request_uri;
+        '';
+      };
+
+      "/logout".return = "302 https://auth.schwem.io/login?go=$scheme://$http_host$request_uri";
+
+      "@error401".return = "302 https://auth.schwem.io/login?go=$scheme://$http_host$request_uri;";
+    };
+  };
+
   systemd.services.nginx-sso = {
     description = "Nginx SSO Backend";
     after = [ "network.target" ];
