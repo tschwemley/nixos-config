@@ -13,15 +13,18 @@ in
     locations = {
       "/auth" = {
         # proxyPass = "http://articuno:${config.portMap.nginx-sso}/auth";
+        proxyPass = "http://127.0.0.1:${config.portMap.nginx-sso}/auth";
         extraConfig = ''
-          internal;
+          # internal;
 
-          proxy_pass http://127.0.0.1:${config.portMap.nginx-sso}/auth;
+          # proxy_pass http://127.0.0.1:${config.portMap.nginx-sso}/auth;
           proxy_pass_request_body off;
           proxy_set_header Content-Length "";
           proxy_set_header X-Origin-URI $request_uri;
         '';
       };
+
+      "/login".proxyPass = "http://127.0.0.1:${config.portMap.nginx-sso}";
 
       "/logout".return = "302 https://auth.schwem.io/login?go=$scheme://$http_host$request_uri";
 
@@ -64,6 +67,14 @@ in
           listen:
             addr: "127.0.0.1"
             port: ${config.portMap.nginx-sso}
+
+          login:
+            title: "schwem.io - Login"
+            default_method: "oidc"
+            default_redirect: "https://schwem.io"
+            hide_mfa_field: true
+            names:
+              oidc: "SSO"
 
           providers:
             oidc:
