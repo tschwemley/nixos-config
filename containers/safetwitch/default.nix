@@ -31,7 +31,7 @@
     "safetwitch-frontend" = {
       image = "codeberg.org/safetwitch/safetwitch:latest";
       environment = {
-        "SAFETWITCH_BACKEND_DOMAIN" = "twitch.api.schwem.io";
+        "SAFETWITCH_BACKEND_DOMAIN" = "https://twitch.api.schwem.io";
         "SAFETWITCH_DEFAULT_LOCALE" = "en";
         "SAFETWITCH_FALLBACK_LOCALE" = "en";
         "SAFETWITCH_HTTPS" = "true";
