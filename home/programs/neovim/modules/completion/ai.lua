@@ -1,28 +1,35 @@
 local codecompanion = require("codecompanion")
-local anthropic = require("codecompanion.adapters").use("anthropic", {
-   env = {
-      api_key = "cmd:sops -d --extract '[\"anthropic-api-key\"]' ~/nixos-config/home/secrets/secrets.yaml 2>/dev/null",
-   },
-})
-
-local ollama = require("codecompanion.adapters").use("ollama", {
-   schema = {
-      model = {
-         default = "codestral:22b-v0.1-q8_0",
-      },
-   },
-})
 
 codecompanion.setup({
-   adapters = {
-      anthropic = anthropic,
-      ollama = ollama,
-   },
-   strategies = {
-      chat = "ollama",
-      inline = "ollama",
-      tool = "ollama",
-   },
+	adapters = {
+		anthropic = function()
+			return require("codecompanion.adapters").extend("openai", {
+				env = {
+					api_key = "cmd:sops -d --extract '[\"anthropic-api-key\"]' ~/nixos-config/home/secrets/secrets.yaml 2>/dev/null",
+				},
+			})
+		end,
+
+		ollama = {
+			schema = {
+				model = {
+					default = "codestral:22b-v0.1-q8_0",
+				},
+			},
+		},
+	},
+
+	strategies = {
+		chat = {
+			adapter = "ollama",
+		},
+		inline = {
+			adapter = "ollama",
+		},
+		tool = {
+			adapter = "ollama",
+		},
+	},
 })
 
 vim.keymap.set("n", "<leader>ca", codecompanion.actions, { noremap = true })
