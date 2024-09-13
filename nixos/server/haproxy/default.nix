@@ -118,7 +118,7 @@ in
 
       backend draw
         http-request set-header X-Forwarded-Proto https
-        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
+        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
       backend freetar
         http-request set-header X-Forwarded-Proto https
