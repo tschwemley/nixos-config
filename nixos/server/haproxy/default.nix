@@ -1,6 +1,7 @@
 let
   baseCert = "/var/lib/acme/schwem.io/full.pem";
   wildcardCert = "/var/lib/acme/schwem.io-wildcard/full.pem";
+  wildcardApiCert = "/var/lib/acme/schwem.io-wildcard-api/full.pem";
 in
 {
   networking.firewall.allowedTCPPorts = [
@@ -46,7 +47,7 @@ in
 
       frontend www
         bind *:80
-        bind *:443 ssl crt ${wildcardCert} crt ${baseCert}
+        bind *:443 ssl crt ${wildcardCert} crt ${baseCert} crt ${wildcardApiCert}
 
         option forwarded
         option forwardfor
