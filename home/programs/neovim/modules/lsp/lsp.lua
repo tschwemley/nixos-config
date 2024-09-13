@@ -10,7 +10,6 @@ local capabilities =
 local servers = {
    "bashls",
    "gopls",
-   -- 'golangci_lint_ls',
    "htmx",
    "intelephense",
    "lua_ls",
