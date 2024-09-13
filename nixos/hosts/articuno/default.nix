@@ -12,7 +12,7 @@
     ../../server/monitoring
     ../../server/nginx/nginx-sso.nix
     ../../server/postgresql
-    ../../server/searxng
+    # ../../server/searxng
   ];
 
   networking.hostName = "articuno";

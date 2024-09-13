@@ -34,7 +34,7 @@
         "SAFETWITCH_BACKEND_DOMAIN" = "twitch.api.schwem.io";
         "SAFETWITCH_DEFAULT_LOCALE" = "en";
         "SAFETWITCH_FALLBACK_LOCALE" = "en";
-        "SAFETWITCH_HTTPS" = "false";
+        "SAFETWITCH_HTTPS" = "true";
         "SAFETWITCH_INSTANCE_DOMAIN" = "twitch.schwem.io";
       };
       ports = [
@@ -50,6 +50,7 @@
         "--network-alias=safetwitch-frontend"
         "--network=safetwitch_default"
         "--security-opt=no-new-privileges:true"
+        "--pull=always"
       ];
     };
 
@@ -71,6 +72,7 @@
         "--network-alias=safetwitch-backend"
         "--network=safetwitch_default"
         "--security-opt=no-new-privileges:true"
+        "--pull=always"
       ];
     };
   };

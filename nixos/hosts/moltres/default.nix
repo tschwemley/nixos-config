@@ -3,6 +3,7 @@
     (import ../../profiles/buyvm.nix "/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-25377")
 
     # server imports
+    ../../../containers/excalidraw
     ../../../containers/freetar
     # ../../../containers/threadfin
     ../../server/cockroachdb
