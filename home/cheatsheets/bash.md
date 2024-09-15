@@ -1,6 +1,15 @@
-# Bash Cheatsheet: Arrays
+# Bash Cheatsheet
 
 Here's a simple and concise cheatsheet for creating, using, and looping through arrays in Bash:
+
+## Args
+
+```bash
+# Pass all args to another script/function/program/...
+./script "$@"
+```
+
+## Arrays
 
 ```bash
 # Creating an array

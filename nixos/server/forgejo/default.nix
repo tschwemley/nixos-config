@@ -9,7 +9,7 @@
     systemPackages = [
       # convenience wrapper for using the cli without having switch user or define config file location
       (pkgs.writeShellScriptBin "forgejo" ''
-        sudo -u forgejo ${pkgs.forgejo-lts}/bin/gitea -c ${config.services.forgejo.customDir}/conf/app.ini
+        sudo -u forgejo ${pkgs.forgejo-lts}/bin/gitea -c ${config.services.forgejo.customDir}/conf/app.ini "$@"
       '')
     ];
   };
