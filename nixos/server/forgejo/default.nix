@@ -57,6 +57,7 @@
       service = {
         DISABLE_REGISTRATION = true;
         ENABLE_BASIC_AUTHENTICATION = false;
+        SHOW_REGISTRATION_BUTTON = false;
       };
     };
   };
