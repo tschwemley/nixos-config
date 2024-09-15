@@ -6,7 +6,12 @@
 }:
 {
   environment = {
-    systemPackages = [ pkgs.forgejo ];
+    systemPackages = [
+      # convenience wrapper for using the cli without having switch user or define config file location
+      (pkgs.writeShellScriptBin "forgejo" ''
+        sudo -u forgejo ${pkgs.forgejo-lts}/bin/gitea -c ${config.services.forgejo}/conf/app.ini
+      '')
+    ];
   };
 
   services.nginx = {
@@ -28,9 +33,8 @@
     lfs.enable = true;
 
     settings = {
-      database = {
-        AUTO_MIGRATION = false;
-      };
+      database.AUTO_MIGRATION = false;
+      session.COOKIE_SECURE = true;
 
       server = {
         ROOT_URL = "https://git.schwem.io";
