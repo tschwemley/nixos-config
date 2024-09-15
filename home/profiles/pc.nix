@@ -12,6 +12,7 @@ in
     ./.
     ../programs/ags
     ../programs/ai
+    ../programs/aseprite.nix
     ../programs/bambu-studio.nix
     ../programs/bitwarden.nix
     ../programs/browsers
@@ -37,8 +38,6 @@ in
     ../terminal/xdg.nix
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
-
-    # ../programs/aseprite.nix
     # ../programs/cad.nix
     # ../programs/rustdesk.nix
     # ../programs/taskwarrior.nix

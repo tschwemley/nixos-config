@@ -31,6 +31,7 @@ let
 
     utils = with pkgs; [
       json2go
+      sqlfluff
       taplo
     ];
   };

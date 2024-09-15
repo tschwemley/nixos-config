@@ -1,9 +1,11 @@
+require("schwem.helpers").set_tabs(2)
+
 local function prettifyJSON()
-   vim.cmd("%!jq .");
+   vim.cmd("%!jq .")
 end
 
 local function minifyJSON()
-   vim.cmd("%!jq -r tostring");
+   vim.cmd("%!jq -r tostring")
 end
 
 local function toggleFormat()
@@ -14,6 +16,6 @@ local function toggleFormat()
    end
 end
 
-vim.keymap.set('n', '<leader>lf', toggleFormat, { buffer = true, noremap = true })
-vim.keymap.set('n', '<leader>lm', minifyJSON, { buffer = true, noremap = true })
-vim.keymap.set('n', '<leader>lp', prettifyJSON, { buffer = true, noremap = true })
+vim.keymap.set("n", "<leader>lf", toggleFormat, { buffer = true, noremap = true })
+vim.keymap.set("n", "<leader>lm", minifyJSON, { buffer = true, noremap = true })
+vim.keymap.set("n", "<leader>lp", prettifyJSON, { buffer = true, noremap = true })

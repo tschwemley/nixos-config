@@ -32,6 +32,11 @@ null_ls.setup({
       null_ls.builtins.hover.printenv.with({
          filetypes = { "sh", "zsh" },
       }),
+
+      -- sql
+      -- NOTE: defaulting to mysql for now for dialect. Can also create .sqlfluff file in dir with sql files
+      null_ls.builtins.diagnostics.sqlfluff.with({ extra_args = { "--dialect", "mysql" } }),
+      null_ls.builtins.formatting.sqlfluff.with({ extra_args = { "--dialect", "postgres" } }),
    },
 
    on_attach = function(client, bufnr)
