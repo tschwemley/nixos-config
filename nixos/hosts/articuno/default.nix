@@ -10,7 +10,7 @@
     ../../server/haproxy
     # ../../server/invidious
     ../../server/monitoring
-    ../../server/postgresql
+    # ../../server/postgresql
     # ../../server/searxng
   ];
 
