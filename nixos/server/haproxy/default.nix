@@ -23,7 +23,7 @@ in
         timeout http-request 10s
 
       listen psql
-        # bind :5432
+        bind :5432
         mode tcp
 
         retries 2
