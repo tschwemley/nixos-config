@@ -28,6 +28,10 @@
     lfs.enable = true;
 
     settings = {
+      database = {
+        AUTO_MIGRATION = false;
+      };
+
       server = {
         ROOT_URL = "https://git.schwem.io";
         HTTP_PORT = lib.strings.toInt config.portMap.forgejo;
@@ -35,6 +39,7 @@
 
       service = {
         DISABLE_REGISTRATION = true;
+        ENABLE_BASIC_AUTHENTICATION = false;
       };
     };
   };
