@@ -33,8 +33,13 @@
     lfs.enable = true;
 
     settings = {
-      database.AUTO_MIGRATION = false;
-      session.COOKIE_SECURE = true;
+      database = {
+        AUTO_MIGRATION = false;
+      };
+
+      session = {
+        COOKIE_SECURE = true;
+      };
 
       server = {
         ROOT_URL = "https://git.schwem.io";
