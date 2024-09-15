@@ -3,4 +3,4 @@ let
   nix = import ./nix.nix;
   qol = import ./qol.nix;
 in
-  git // nix // qol
+git // nix // qol

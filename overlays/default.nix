@@ -1,4 +1,5 @@
 self': [
+  (import ./forgejo.nix)
   (_: prev: {
     inherit (self'.packages)
       anonymous-overflow

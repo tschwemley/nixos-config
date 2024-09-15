@@ -7,7 +7,6 @@
 {
   environment = {
     systemPackages = [ pkgs.forgejo ];
-    shellAliases.forgejo = "sudo -u forgejo gitea";
   };
 
   services.nginx = {
