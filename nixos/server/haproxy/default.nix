@@ -75,6 +75,7 @@ in
         acl domain_rimgo hdr(host) -i rimgo.schwem.io
         acl domain_sabnzbd hdr(host) -i sabnzbd.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
+        acl domain_schwem hdr(host) -i schwem.io
         acl domain_stackoverflow hdr(host) -i so.schwem.io
         acl domain_tiktok hdr(host) -i tiktok.schwem.io
         acl domain_threadfin hdr(host) -i threadfin.schwem.io
@@ -95,6 +96,7 @@ in
         use_backend reddit if domain_reddit
         use_backend rimgo if domain_rimgo
         use_backend sabnzbd if domain_sabnzbd
+        use_backend schwem if domain_schwem
         use_backend searxng if domain_search
         use_backend stackoverflow if domain_stackoverflow
         use_backend tiktok if domain_tiktok
@@ -164,6 +166,10 @@ in
       backend sabnzbd
         http-request set-header X-Forwarded-Proto https
         server eevee eevee.wyvern-map.ts.net:8080 check send-proxy
+
+      backend schwem
+        http-request set-header X-Forwarded-Proto https
+        server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
 
       backend searxng
         http-request set-header X-Forwarded-Proto https

@@ -1,14 +1,13 @@
-{config, ...}: let
+{ config, ... }:
+let
   ip = config.containers.keycloak.localAddress;
   port = "80";
-in {
+in
+{
   services.nginx.virtualHosts."auth.schwem.io" = {
     locations = {
       "/admin" = {
         proxyPass = "http://${ip}:${port}/admin";
-        # extraConfig = ''
-        #   include ${config.sops.templates.nginx_allow_secure.path};
-        # '';
       };
       "/js" = {
         proxyPass = "http://${ip}:${port}/js";
