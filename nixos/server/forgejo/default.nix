@@ -37,6 +37,14 @@
         AUTO_MIGRATION = false;
       };
 
+      oauth = {
+        ENABLED = true;
+      };
+
+      openid = {
+        ENABLE_OPENID_SIGNIN = true;
+      };
+
       session = {
         COOKIE_SECURE = true;
       };
