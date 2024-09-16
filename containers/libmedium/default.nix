@@ -1,3 +1,4 @@
+# TODO: remove this file if 1) sticking with scribe or 2) getting rid of proxy altogether
 {
   config,
   pkgs,
