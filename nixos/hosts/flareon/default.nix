@@ -1,8 +1,11 @@
-{
+let
+  mediaUser = (import ../../system/users.nix).media;
+in {
   imports = [
     ../../profiles/proxmox.nix
     ../../services/nfs.nix
     ../../services/samba.nix
+    mediaUser
   ];
 
   networking.hostName = "flareon";

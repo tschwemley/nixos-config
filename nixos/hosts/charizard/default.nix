@@ -87,11 +87,10 @@ in
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
   system.stateVersion = "24.05";
 
-  tailscaleUpFlags = [
+  services.tailscale.extraUpFlags = [
     "--exit-node=100.84.59.97"
     "--exit-node-allow-lan-access=true"
     "--shields-up"
-    "--ssh"
   ];
   time.timeZone = "America/Detroit";
 

@@ -5,7 +5,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   disk = (import ../../hardware/disks).pikachu;
   hardware = {
     imports = [
@@ -24,8 +25,9 @@
       ../../network/tailscale.nix
     ];
   };
-  user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
-in {
+  user = (import ../../system/users.nix { inherit self config pkgs; }).schwem;
+in
+{
   imports = [
     disk
     hardware
@@ -38,12 +40,19 @@ in {
 
   boot = {
     initrd = {
-      availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "uas" "sd_mod"];
-      kernelModules = ["kvm-intel"];
+      availableKernelModules = [
+        "xhci_pci"
+        "ahci"
+        "nvme"
+        "usbhid"
+        "uas"
+        "sd_mod"
+      ];
+      kernelModules = [ "kvm-intel" ];
     };
     # TODO: this might need to be latest for laptop config. not sure yet
     kernelPackages = pkgs.linuxPackages_6_10;
-    supportedFilesystems = ["btrfs"];
+    supportedFilesystems = [ "btrfs" ];
 
     blacklistedKernelModules = [
       "snd_soc_avs"
@@ -71,7 +80,7 @@ in {
     stateVersion = "24.05";
   };
 
-  tailscaleUpFlags = [
+  services.tailscale.extraUpFlags = [
     "--exit-node=100.84.59.97"
     "--exit-node-allow-lan-access=true"
     "--shields-up"
@@ -131,6 +140,6 @@ in {
       enable = true;
       touchpad.tapping = false;
     };
-    xserver.videoDrivers = lib.mkDefault ["nvidia"];
+    xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
   };
 }
