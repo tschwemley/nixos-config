@@ -3,11 +3,13 @@
   pkgs,
   utils,
   ...
-}: let
+}:
+let
   ip = "${config.networking.hostName}.wyvern-map.ts.net";
-  # bindIP = "127.0.0.1";
-  bindIP = ip;
-in {
+in
+# bindIP = "127.0.0.1";
+# bindIP = ip;
+{
   systemd.services.seaweedfs-master = {
     after = [
       "network.target"
@@ -16,7 +18,7 @@ in {
     wantedBy = [
       "multi-user.target"
     ];
-    environment = {};
+    environment = { };
     serviceConfig = {
       Type = "simple";
       User = "root";
@@ -25,7 +27,7 @@ in {
         "${pkgs.seaweedfs}/bin/weed"
         "master"
         "-ip=${ip}"
-        "-ip.bind=${bindIP}"
+        "-ip.bind=${ip}"
         "-mdir=master"
         "-volumePreallocate"
         "-volumeSizeLimitMB=8192"
