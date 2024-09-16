@@ -18,6 +18,12 @@
       path = "/home/schwem/.ssh/flareon";
       sopsFile = ./../../nixos/hosts/flareon/secrets.yaml;
     };
+    "forgejo_schwem_key" = {
+      key = "forgejo_schwem";
+      owner = "schwem";
+      path = "/home/schwem/.ssh/forgejo";
+      sopsFile = ./../../nixos/hosts/flareon/secrets.yaml;
+    };
     "jolteon_key" = {
       key = "user_ssh_key";
       owner = "schwem";

@@ -41,6 +41,10 @@
         ENABLED = true;
       };
 
+      repository = {
+        ENABLE_PUSH_CREATE_USER = true;
+      };
+
       session = {
         COOKIE_SECURE = true;
       };
