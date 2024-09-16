@@ -3,7 +3,15 @@
   services.postgresql = {
     enable = true;
     ensureDatabases = [
-      "invidious"
+      # "invidious"
+      "keycloak"
+    ];
+
+    ensureUsers = [
+      {
+        name = "keycloak";
+        ensureDBOwnership = true;
+      }
     ];
 
     identMap = ''
