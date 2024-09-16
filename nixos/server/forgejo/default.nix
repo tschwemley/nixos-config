@@ -50,14 +50,20 @@
       };
 
       server = {
-        ROOT_URL = "https://git.schwem.io";
+        LANDING_PAGE = "explore";
         HTTP_PORT = lib.strings.toInt config.portMap.forgejo;
+        ROOT_URL = "https://git.schwem.io";
       };
 
       service = {
         DISABLE_REGISTRATION = true;
         ENABLE_BASIC_AUTHENTICATION = false;
         SHOW_REGISTRATION_BUTTON = false;
+      };
+
+      ui = {
+        DEFAULT_THEME = "forgejo-dark";
+        SHOW_USER_EMAIL = false;
       };
     };
   };
