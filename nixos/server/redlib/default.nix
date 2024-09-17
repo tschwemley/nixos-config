@@ -11,6 +11,15 @@ let
 in
 {
   services = {
+    # TODO: remove this after upstream bug is fixed
+    # BUG: https://github.com/redlib-org/redlib/issues/229
+    cron = {
+      enable = true;
+      systemCronJobs = [
+        "*/10 * * * * systemctl restart redlib.service"
+      ];
+    };
+
     nginx.virtualHosts."reddit.schwem.io" = {
       locations."/" = {
         proxyPass = "http://${address}:${config.portMap.redlib}";
