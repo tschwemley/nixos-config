@@ -1,42 +1,42 @@
 # Controls deployment options
 [deployment]
-    host = "0.0.0.0" # Set to 127.0.0.1 if you use a reverse proxy, or access it locally
-    port = 8000
+host = "0.0.0.0" # Set to 127.0.0.1 if you use a reverse proxy, or access it locally
+port = 8000
 
-    # # Domain which the instance is hosted. By default it is unset.
-    # # This is primary used to generate links to the instance
-    domain = "tumblr.schwem.io"
+# # Domain which the instance is hosted. By default it is unset.
+# # This is primary used to generate links to the instance
+domain = "tumblr.schwem.io"
 
-    # # Amount of worker Priviblur instances to spawn. Increases speed significantly.
-    # workers = 1
+# # Amount of worker Priviblur instances to spawn. Increases speed significantly.
+# workers = 1
 
 
 # # To enable caching, Redis is required, you then have to uncomment "url" and set it accordingly. Every other options in this section will use their default value (indicated next to them) if they are kept commented out.
 [cache]
-    url = "redis://priviblur-redis:6379"
+url = "redis://priviblur-redis:6379"
 
-    # # Number of seconds to cache poll results from active polls
-    # cache_active_poll_results_for = 3600
+# # Number of seconds to cache poll results from active polls
+# cache_active_poll_results_for = 3600
 
-    # # Number of seconds to cache poll results from expired polls
-    # cache_expired_poll_results_for = 86400
+# # Number of seconds to cache poll results from expired polls
+# cache_expired_poll_results_for = 86400
 
-    # # Number of seconds to cache feed (explore, search, etc) results for
-    # cache_feed_for = 3600
+# # Number of seconds to cache feed (explore, search, etc) results for
+# cache_feed_for = 3600
 
-    # # Number of seconds to cache blog feed (blog posts, blog search, blog tagged posts, etc) results for
-    # cache_blog_feed_for = 3600
+# # Number of seconds to cache blog feed (blog posts, blog search, blog tagged posts, etc) results for
+# cache_blog_feed_for = 3600
 
-    # # Number of seconds to cache individual posts for
-    # cache_blog_post_for = 300
+# # Number of seconds to cache individual posts for
+# cache_blog_post_for = 300
 
 # # Controls behaviors pertaining to the way Priviblur requests Tumblr
 # [priviblur_backend]
-    # # Timeout for requests to Tumblr's API
-    # main_response_timeout = 10
+# # Timeout for requests to Tumblr's API
+# main_response_timeout = 10
 
-    # # Timeout for fetching image responses from Tumblr
-    # image_response_timeout = 30
+# # Timeout for fetching image responses from Tumblr
+# image_response_timeout = 30
 
 
 # # Controls default user preferences
@@ -44,11 +44,11 @@
 #
 #     # User interface theme
 #     # Acceptable values: [auto, light, dark]
-    theme = "dark"
+theme = "dark"
 #
 #     # User interface language
 #     # For available options see locales dir
-#     language = "en_US"
+language = "en_US"
 
 
 # Controls logging behavior
@@ -56,16 +56,16 @@
 # Use Python's numerical logging levels
 # https://docs.python.org/3/howto/logging.html#logging-levels
 # [logging]
-    # # Sanic (Server)'s logging level'
-    # sanic_logging_level = 30
+# # Sanic (Server)'s logging level'
+# sanic_logging_level = 30
 
-    # # Priviblur's logging level
-    # priviblur_logging_level = 30
+# # Priviblur's logging level
+# priviblur_logging_level = 30
 
-    # # Priviblur extractor's logging level
-    # priviblur_extractor_logging_level = 20
+# # Priviblur extractor's logging level
+# priviblur_extractor_logging_level = 20
 
 
-# [misc]
-    # # Enable sanic's dev mode
-    # dev_mode = false
+[misc]
+# # Enable sanic's dev mode
+dev_mode = false
