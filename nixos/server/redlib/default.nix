@@ -16,7 +16,7 @@ in
     cron = {
       enable = true;
       systemCronJobs = [
-        "*/10 * * * * systemctl restart redlib.service"
+        "*/5 * * * * systemctl restart redlib.service"
       ];
     };
 
