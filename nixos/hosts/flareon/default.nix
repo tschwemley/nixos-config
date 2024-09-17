@@ -16,7 +16,6 @@
   system.stateVersion = "23.05";
 
   services.tailscale.extraUpFlags = [
-    "--advertise-exit-node"
     "--exit-node=us-chi-wg-007-1.mullvad.ts.net"
     "--exit-node-allow-lan-access=true"
   ];
