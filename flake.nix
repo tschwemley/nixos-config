@@ -81,6 +81,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    redlib-latest = {
+      url = "github:redlib-org/redlib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     scribe = {
       url = "sourcehut:~edwardloveall/scribe/main";
       inputs.nixpkgs.follows = "nixpkgs";

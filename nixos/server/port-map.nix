@@ -19,6 +19,7 @@
     nginx-sso = "8082";
     priviblur = "8040";
     proxitok = "8050";
+    redlib = "8180";
     rimgo = "8030";
     sabnzbd = "8314";
     safetwitch-frontend = "8280";

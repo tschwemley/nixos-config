@@ -1,0 +1,3 @@
+{
+  services.colord.enable = true;
+}

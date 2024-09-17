@@ -1,13 +1,30 @@
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   address = "127.0.0.1";
-  port = 8180;
-in {
-  imports = [./virtualhost.nix];
+  port = lib.strings.toInt config.portMap.redlib;
+in
+{
+  services = {
+    nginx.virtualHosts."reddit.schwem.io" = {
+      locations."/" = {
+        proxyPass = "http://${address}:${config.portMap.redlib}";
+      };
+    };
 
-  services.redlib = {
-    inherit address port;
-    enable = true;
-    openFirewall = true;
+    redlib = {
+      enable = true;
+      package = inputs.redlib-latest.packages.${pkgs.system}.default;
+
+      inherit address port;
+
+      openFirewall = true;
+    };
   };
 
   systemd.services.redlib = {
