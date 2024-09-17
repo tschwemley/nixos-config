@@ -68,4 +68,4 @@ language = "en_US"
 
 [misc]
 # # Enable sanic's dev mode
-dev_mode = false
+dev_mode = true
