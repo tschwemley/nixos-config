@@ -40,7 +40,7 @@ in
     # BUG: https://github.com/redlib-org/redlib/issues/229
     serviceConfig = {
       Restart = lib.mkDefault "always";
-      RestartSec = lib.mkDefault "300s";
+      RuntimeMaxSec = lib.mkDefault "300s";
     };
   };
 }
