@@ -29,6 +29,7 @@ in
 
   systemd.services.redlib = {
     environment = {
+      REDLIB_ROBOTS_DISABLE_INDEXING = "on";
       REDLIB_DEFAULT_THEME = "gruvboxdark";
       REDLIB_DEFAULT_SHOW_NSFW = "on";
       REDLIB_DEFAULT_USE_HLS = "on";
