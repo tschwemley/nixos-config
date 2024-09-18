@@ -2,6 +2,7 @@
   perSystem =
     {
       self',
+      inputs',
       pkgs,
       ...
     }:
@@ -14,6 +15,7 @@
           sops
           self'.packages.build-host
           self'.packages.compose2nix
+          inputs'.systemd2nix.packages.systemd2nix
           ssh-to-age
           statix
         ];
