@@ -5,6 +5,7 @@ self': [
       hypreasymotion
       json2go
       ogen
+      stash
       wl-ocr
       ;
 

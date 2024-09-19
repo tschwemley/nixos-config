@@ -19,6 +19,7 @@
         compose2nix = pkgs.callPackage ./utils/compose2nix.nix { };
         json2go = pkgs.callPackage ./json2go.nix { };
         ogen = pkgs.callPackage ./ogen-go.nix { };
+        stash = pkgs.callPackage ./stash.nix { };
         wl-ocr = pkgs.callPackage ./wl-ocr { };
       };
     };

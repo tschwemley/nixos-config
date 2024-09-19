@@ -3,7 +3,7 @@
   sops =
     let
       default = {
-        sopsFile = ./secrets.yaml;
+        sopsFile = ../secrets.yaml;
       };
     in
     {

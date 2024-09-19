@@ -27,6 +27,7 @@
     safetwitch-backend = "7100";
     scribe = "7000";
     searxng = "8888";
+    stash = "6969";
     threadfin = "34400";
   };
 }
