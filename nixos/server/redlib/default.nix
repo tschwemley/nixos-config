@@ -39,9 +39,9 @@ in
 
     # TODO: remove this after upstream bug is fixed
     # BUG: https://github.com/redlib-org/redlib/issues/229
-    serviceConfig = {
-      Restart = lib.mkDefault "always";
-      RuntimeMaxSec = lib.mkDefault "300s";
-    };
+    # serviceConfig = {
+    #   Restart = lib.mkDefault "always";
+    #   RuntimeMaxSec = lib.mkDefault "300s";
+    # };
   };
 }
