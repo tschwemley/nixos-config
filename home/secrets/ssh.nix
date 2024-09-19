@@ -19,10 +19,10 @@
       sopsFile = ./../../nixos/hosts/flareon/secrets.yaml;
     };
     "forgejo_schwem_key" = {
-      key = "forgejo_schwem";
+      key = "forgejo_schwem_key";
       owner = "schwem";
       path = "/home/schwem/.ssh/forgejo";
-      sopsFile = ./../../nixos/hosts/flareon/secrets.yaml;
+      sopsFile = ./ssh.yaml;
     };
     "jolteon_key" = {
       key = "user_ssh_key";
