@@ -38,6 +38,7 @@ in
         Restart = "always";
         RestartSec = 5;
         StateDirectory = stateDir;
+        WorkingDirectory = "/var/run/stash";
 
         # Hardening options
         LockPersonality = "yes";
@@ -66,6 +67,7 @@ in
     users.stash = {
       group = "stash";
       isSystemUser = true;
+      home = stateDir;
     };
   };
 }
