@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   # expects ffmpeg to be available
-  enviornment.systemPackages = [
+  environment.systemPackages = [
     pkgs.ffmpeg_7-headless
   ];
 
@@ -51,9 +51,9 @@
     };
   };
 
-  users.users = {
+  users = {
     groups.stash = { };
-    stash = {
+    users.stash = {
       group = "stash";
       isSystemUser = true;
     };
