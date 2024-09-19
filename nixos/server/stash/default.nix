@@ -9,7 +9,7 @@ in
   ];
 
   systemd = {
-    systemd.tmpfiles.rules = [
+    tmpfiles.rules = [
       "d ${stateDir} 0755 stash stash - -"
     ];
 
