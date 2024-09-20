@@ -132,8 +132,6 @@ in
   };
 
   services = {
-    getty.autologinUser = "schwem";
-
     asusd.enable = true;
     hardware.bolt.enable = true;
     libinput = {
