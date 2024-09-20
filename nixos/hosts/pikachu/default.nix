@@ -63,17 +63,6 @@ in {
     '';
   };
 
-  hardware.nvidia = {
-    open = lib.mkDefault true;
-    prime = {
-      # Bus ID of the Intel GPU.
-      intelBusId = "PCI:0:2:0";
-
-      # Bus ID of the NVIDIA GPU.
-      nvidiaBusId = "PCI:1:0:0";
-    };
-  };
-
   networking = {
     hostName = "pikachu";
     networkmanager.enable = true;
@@ -136,7 +125,7 @@ in {
 
     opengl = {
       enable = true;
-      opengl.extraPackages = with pkgs; [
+      extraPackages = with pkgs; [
         vaapiVdpau
       ];
     };
