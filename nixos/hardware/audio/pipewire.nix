@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ lib, pkgs, ... }:
+{
   environment = {
     # sessionVariables = {
     #   SDL_AUDIODRIVER = "pipewire";
@@ -14,7 +15,7 @@
     ];
   };
 
-  hardware.pulseaudio.enable = false;
+  hardware.pulseaudio.enable = lib.mkDefault false;
 
   # Enables the RealtimeKit system service, which hands out realtime scheduling priority to user
   # processes on demand. For example, the PulseAudio server uses this to acquire realtime priority.

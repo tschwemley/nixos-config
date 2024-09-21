@@ -44,8 +44,8 @@ in
   ];
 
   home = {
-    username = "schwem";
     homeDirectory = "/home/schwem";
+    username = "schwem";
   };
 
   # TODO: move all of the below out if keeping

@@ -68,14 +68,6 @@
 
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
-    nix-private = {
-      url = "git+ssh://git@github.com/tschwemley/nix-private.git";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
     neorg-overlay = {
       url = "github:nvim-neorg/nixpkgs-neorg-overlay";
       inputs.nixpkgs.follows = "nixpkgs";

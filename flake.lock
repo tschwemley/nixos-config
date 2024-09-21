@@ -604,11 +604,11 @@
         "norg-meta": "norg-meta"
       },
       "locked": {
-        "lastModified": 1726856442,
-        "narHash": "sha256-eWhRiVxOo2UjLVM6wPautQlDDyl5ACzZ706K55Q67Zk=",
+        "lastModified": 1726880996,
+        "narHash": "sha256-JkadF0lXR+2uyT3vOiDx28ilZymT1CsPj7z2y1GyAR8=",
         "owner": "nvim-neorg",
         "repo": "nixpkgs-neorg-overlay",
-        "rev": "0a635295448c75b8a37b78180224f1f49eecb996",
+        "rev": "1ad44e4ba2de80b6e37f94909c5f74416c58c653",
         "type": "github"
       },
       "original": {
@@ -631,29 +631,6 @@
         "owner": "nvim-neorg",
         "repo": "neorg-telescope",
         "type": "github"
-      }
-    },
-    "nix-private": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1722826526,
-        "narHash": "sha256-1OrVxldAyId7h2Ota+ZX3M8keaGzfBmyX/saoCEkAmI=",
-        "ref": "refs/heads/main",
-        "rev": "bfa1767c856a9bda0a0bd96bff2157f2aa6cd51c",
-        "revCount": 303,
-        "type": "git",
-        "url": "ssh://git@github.com/tschwemley/nix-private.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/tschwemley/nix-private.git"
       }
     },
     "nixos-hardware": {
@@ -812,7 +789,6 @@
         "hyprlock": "hyprlock",
         "hyprpaper": "hyprpaper",
         "neorg-overlay": "neorg-overlay",
-        "nix-private": "nix-private",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
         "redlib-latest": "redlib-latest",

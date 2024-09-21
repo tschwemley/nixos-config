@@ -1,15 +1,12 @@
 { config, pkgs, ... }:
 let
+  runDir = "/var/run/stash";
   stateDir = "/var/lib/stash";
 in
 {
-  # expects ffmpeg to be available
-  environment.systemPackages = [
-    pkgs.ffmpeg_7-headless
-  ];
-
   systemd = {
     tmpfiles.rules = [
+      "d ${runDir} 0500 stash stash - -"
       "d ${stateDir} 0755 stash stash - -"
     ];
 
@@ -30,11 +27,15 @@ in
         STASH_PORT = config.portMap.stash;
         # STASH_EXTERNAL_HOST = "stash.schwem.io";
       };
+      path = [
+        pkgs.ffmpeg_7-headless
+      ];
       serviceConfig = {
         User = "stash";
         Group = "stash";
         Type = "simple";
         ExecStart = "${pkgs.stash}/bin/stash";
+        ReadPaths = [ "/var/run/stash" ];
         Restart = "always";
         RestartSec = 5;
         StateDirectory = stateDir;
