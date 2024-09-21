@@ -63,7 +63,7 @@ in
 
       settings = {
         # hostname = "auth-test.schwem.io";
-        # hostname = "auth-test.schwem.io";
+        hostname = "jolteon"; # TODO: only set to jolteon for testing
         # this is important to prevent endless loading admin page
         # hostname-admin-url = "https://auth-test.schwem.io";
         http-port = 8480;
