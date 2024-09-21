@@ -51,7 +51,7 @@ in
 
       database = {
         host = "127.0.0.1";
-        # passwordFile = "/run/secrets/db_password";
+        passwordFile = "/run/secrets/db_password";
         port = 5432;
         name = "keycloak";
         type = "postgresql";
