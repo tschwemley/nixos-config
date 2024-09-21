@@ -61,6 +61,7 @@ in
         http-request set-header X-Forwarded-Real-IP %[src]
 
         acl domain_auth hdr(host) -i auth.schwem.io
+        acl domain_auth_test hdr(host) -i auth-test.schwem.io
         acl domain_dash hdr(host) -i dash.schwem.io
         acl domain_db hdr(host) -i db.schwem.io
         acl domain_draw hdr(host) -i draw.schwem.io
@@ -83,6 +84,7 @@ in
         acl domain_twitch hdr(host) -i twitch.schwem.io twitch.api.schwem.io
 
         use_backend auth if domain_auth
+        use_backend auth_test if domain_auth_test
         use_backend articuno if domain_dash
         use_backend cockroach_web if domain_db
         use_backend draw if domain_draw
@@ -111,6 +113,9 @@ in
 
       backend auth
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
+
+      backend auth_test
+        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
       backend cockroach_web
         http-request set-header X-Forwarded-Proto https
