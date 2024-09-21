@@ -5,7 +5,7 @@
     # server
     ../../server/anonymous-overflow
     ../../server/forgejo
-    # ../../server/keycloak
+    ../../server/keycloak
     ../../server/postgresql
     ../../server/scribe
   ];
