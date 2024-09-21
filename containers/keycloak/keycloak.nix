@@ -1,12 +1,19 @@
-{pkgs, ...}: let
-    keycloakPkg = pkgs.keycloak.overrideAttrs (_: rec {
-      version = "24.0.5";
-      src = pkgs.fetchzip {
-        url = "https://github.com/keycloak/keycloak/releases/download/${version}/keycloak-${version}.zip";
-        hash = "sha256-lf1miVEGQvPbmlOZMCXUyX/pKE+JoJFawhjVEPJDJ6s=";
-      };
-    });
-in {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  keycloakPkg = pkgs.keycloak.overrideAttrs (_: rec {
+    version = "24.0.5";
+    src = pkgs.fetchzip {
+      url = "https://github.com/keycloak/keycloak/releases/download/${version}/keycloak-${version}.zip";
+      hash = "sha256-lf1miVEGQvPbmlOZMCXUyX/pKE+JoJFawhjVEPJDJ6s=";
+    };
+  });
+in
+{
   services.keycloak = {
     enable = true;
 
@@ -32,4 +39,39 @@ in {
 
     # initialAdminPassword = "<set_to_rand_string>"; # change on first login
   };
+
+  systemd.services.keycloakExportRealms =
+    let
+      p = config.systemd.services.keycloak;
+    in
+    lib.mkIf config.services.keycloak.enable {
+      after = p.after;
+      before = [ "keycloak.service" ];
+      wantedBy = [ "multi-user.target" ];
+      environment = lib.mkForce p.environment;
+      serviceConfig =
+        let
+          origin = p.serviceConfig;
+        in
+        {
+          Type = "oneshot";
+          RemainAfterExit = true;
+          User = origin.User;
+          Group = origin.Group;
+          LoadCredential = origin.LoadCredential;
+          DynamicUser = origin.DynamicUser;
+          RuntimeDirectory = origin.RuntimeDirectory;
+          RuntimeDirectoryMode = origin.RuntimeDirectoryMode;
+          AmbientCapabilities = origin.AmbientCapabilities;
+          StateDirectory = "keycloak";
+          StateDirectoryMode = "0750";
+        };
+      script = ''
+        ${lib.strings.removeSuffix "kc.sh start --optimized\n" config.systemd.services.keycloak.script}
+         EDIR="/var/lib/keycloak"
+         EDIRT="$EDIR/$(date '+%Y/%m/%d/%H:%M:%S')"
+         mkdir -p $EDIRT
+         kc.sh export --optimized --dir=$EDIRT
+      '';
+    };
 }
