@@ -78,8 +78,8 @@ in
   sops.secrets.keycloak_db_password = {
     sopsFile = ./secrets.yaml;
 
-    inherit (config.systemd.services.keycloak) group;
-    owner = config.systemd.services.keycloak.user;
+    owner = "keycloak";
+    group = "keycloak";
     # mode = "0444";
   };
 }
