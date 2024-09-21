@@ -11,10 +11,7 @@ in
 {
   services = {
     postgresql = {
-      ensureDatabases = [
-        # "invidious"
-        "keycloak"
-      ];
+      ensureDatabases = [ "keycloak" ];
 
       ensureUsers = [
         {
@@ -24,37 +21,37 @@ in
       ];
     };
 
-    nginx.virtualHosts."auth.schwem.io" =
-      let
-        ip = "127.0.0.1";
-        port = 8480;
-      in
-      {
-        locations = {
-          "/admin" = {
-            proxyPass = "http://${ip}:${port}/admin";
-          };
-          "/js" = {
-            proxyPass = "http://${ip}:${port}/js";
-          };
-          "/realms" = {
-            proxyPass = "http://${ip}:${port}/realms";
-          };
-          "/resources" = {
-            proxyPass = "http://${ip}:${port}/resources";
-          };
-          "/robots.txt" = {
-            proxyPass = "http://${ip}:${port}/robots.txt";
-          };
-        };
-      };
+    # nginx.virtualHosts."auth.schwem.io" =
+    #   let
+    #     ip = "127.0.0.1";
+    #     port = 8480;
+    #   in
+    #   {
+    #     locations = {
+    #       "/admin" = {
+    #         proxyPass = "http://${ip}:${port}/admin";
+    #       };
+    #       "/js" = {
+    #         proxyPass = "http://${ip}:${port}/js";
+    #       };
+    #       "/realms" = {
+    #         proxyPass = "http://${ip}:${port}/realms";
+    #       };
+    #       "/resources" = {
+    #         proxyPass = "http://${ip}:${port}/resources";
+    #       };
+    #       "/robots.txt" = {
+    #         proxyPass = "http://${ip}:${port}/robots.txt";
+    #       };
+    #     };
+    #   };
 
     keycloak = {
       enable = true;
 
       database = {
         host = "127.0.0.1";
-        passwordFile = "/run/secrets/db_password";
+        # passwordFile = "/run/secrets/db_password";
         port = 5432;
         name = "keycloak";
         type = "postgresql";
@@ -65,9 +62,10 @@ in
       package = keycloakPkg;
 
       settings = {
-        hostname = "auth-test.schwem.io";
+        # hostname = "auth-test.schwem.io";
+        # hostname = "auth-test.schwem.io";
         # this is important to prevent endless loading admin page
-        hostname-admin-url = "https://auth-test.schwem.io";
+        # hostname-admin-url = "https://auth-test.schwem.io";
         http-port = 8480;
         proxy = "edge";
         transaction-xa-enable = false;
