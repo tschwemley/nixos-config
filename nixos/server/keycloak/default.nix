@@ -50,12 +50,8 @@ in
       enable = true;
 
       database = {
-        host = "127.0.0.1";
-        passwordFile = "/run/secrets/db_password";
-        port = 5432;
-        name = "keycloak";
+        passwordFile = config.sops.secrets.keycloak_db_password.path;
         type = "postgresql";
-        username = "keycloak";
         useSSL = false;
       };
 
