@@ -9,6 +9,7 @@ let
   });
 in
 {
+  environment.systemPackages = [ keycloakPkg ];
   services.nginx.virtualHosts."auth-test.schwem.io" =
     let
       ip = "127.0.0.1";
