@@ -7,7 +7,6 @@
       # mapName systemUser  DBUser
       user_map  root        postgres 
       user_map  postgres    postgres 
-      user_map  keycloak    keycloak 
     '';
 
     authentication = lib.mkOverride 10 ''

@@ -73,9 +73,9 @@ in
 
   sops.secrets.keycloak_db_password = {
     sopsFile = ./secrets.yaml;
+    mode = "0440";
 
-    owner = "keycloak";
+    # owner = "keycloak";
     group = "keycloak";
-    # mode = "0444";
   };
 }
