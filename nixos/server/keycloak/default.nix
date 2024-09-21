@@ -9,10 +9,10 @@ let
   });
 in
 {
-  nginx.virtualHosts."auth-test.schwem.io" =
+  services.nginx.virtualHosts."auth-test.schwem.io" =
     let
       ip = "127.0.0.1";
-      port = 8480;
+      port = "8480";
     in
     {
       locations = {
@@ -34,7 +34,7 @@ in
       };
     };
 
-  keycloak = {
+  services.keycloak = {
     enable = true;
 
     database = {
