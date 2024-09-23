@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   shellAliases = import ./aliases;
 in
@@ -10,7 +10,15 @@ in
     autocd = true;
     autosuggestion.enable = true;
     completionInit = ''
-      autoload -U compinit; compinit
+      # [[ ! -d  ~/.zsh-completions ]] && mkdir ~/.zsh-completions
+      # fpath+=~/.zsh-completions
+      #
+      # [[ ! -f ~/.zsh-completions/_podman ]] && ${pkgs.podman}/bin/podman completion zsh > ~/.zsh-completions/_podman
+      # compdef _podman podman
+
+      autoload -U compinit 
+
+
       #source <(glow completion zsh); compdef _glow glow
     '';
     defaultKeymap = "emacs";

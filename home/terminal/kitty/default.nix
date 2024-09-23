@@ -26,6 +26,7 @@
       listen_on = "unix:@kitty";
     };
     shellIntegration.enableFishIntegration = false;
-    theme = "Gruvbox Dark";
+    # theme = "Gruvbox Dark";
+    themeFile = "gruvbox-dark";
   };
 }

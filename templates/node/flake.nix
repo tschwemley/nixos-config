@@ -31,14 +31,24 @@
             config.allowUnfree = true;
           };
 
-          devShells.default = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              bun
-              nodejs_18
-              prefetch-npm-deps
-              prefetch-yarn-deps
-            ];
-          };
+          devShells.default =
+            let
+              python = pkgs.python3.withPackages (
+                ps: with ps; [
+                  distutils
+                  gyp
+                ]
+              );
+            in
+            pkgs.mkShell {
+              buildInputs = with pkgs; [
+                python
+                nodejs
+                prefetch-npm-deps
+                prefetch-yarn-deps
+                yarn
+              ];
+            };
 
           packages = { };
         };

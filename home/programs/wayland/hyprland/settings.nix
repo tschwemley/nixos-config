@@ -1,12 +1,16 @@
-{config, ...}: {
+{ config, ... }:
+{
   wayland.windowManager.hyprland.settings = {
     debug.disable_logs = false;
 
     cursor = {
       inactive_timeout = 4;
+      min_refresh_rate = 240;
       no_break_fs_vrr = true;
       no_hardware_cursors = true;
     };
+
+    decoration.blur.enabled = false; # TODO: remove this if it doesn't do anything to help solve issues
 
     exec-once = [
       "ags -c ~/nixos-config/home/programs/ags/config/config.js"
@@ -14,9 +18,7 @@
 
     general = {
       gaps_out = 10;
-      # layout = "dwindle";
-      layout = "master";
-      # layout = "scroller";
+      layout = "dwindle";
     };
 
     master = {
@@ -26,26 +28,22 @@
     };
 
     misc = {
-      #TODO: validate I want to keep these settings... they're copy/pasted
-      # disable auto polling for config file changes
-      # disable_autoreload = true;
-
       # disable the stupid default anime background
       disable_hyprland_logo = true;
       force_default_wallpaper = 0;
 
-      # disable dragging animation
-      # animate_mouse_windowdragging = false;
-
-      vrr = 2;
+      # TODO: highly recommended to keep true... switch to false to at least test once if causing issues
+      # vfr = false;
     };
 
     monitor = config.hyprland.monitors.config;
 
     render = {
+      # direct scanout attempts to reduce lag when there is only one fullscreen application on a screen
       direct_scanout = true;
     };
 
+    # TODO: remove or revisit plugins
     plugin = {
       # easymotion = {
       #   textsize = 20;

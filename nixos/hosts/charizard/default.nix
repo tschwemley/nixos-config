@@ -53,28 +53,23 @@ in
         "kvm-intel"
       ];
     };
-    # TODO: remove this or uncomment after I decide whether I want to be on the latest kernel or on LTS
-    # kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  home-manager.users.schwem.hyprland = {
+  home-manager.users.schwem.hyprland = rec {
     monitors = {
-      primary = "DP-1";
+      primary = "DP-2";
       config = [
-        # "HDMI-A-2,3840x2160@120,0x0,1" # LG C2
-        # "DP-2,2560x2880@60,3840x0,1" # LG Dual Up
-        # "DP-1,5120x3440@240,0x0,1" # Odyssey g9
-        # "DP-1, 5120x3440@240, 0x0, 1" # Odyssey g9
-        # "DP-1,5120x3440@240,0x0,1.067" # Odyssey g9
-        # "DP-1,5120x3440@239.761002,0x0,1" # Odyssey g9
-        "DP-1, 3840x2160@165, 0x0, 1, transform 1"
+        # "DP-2, 3840x2160@120, 0x0, 1, vrr, 0, bitdepth, 10, transform, 3"
+        # "DP-2, 3840x2160@120, 0x0, 1, vrr, 0, transform, 3"
+        "DP-2, 3840x2160@120, 0x0, 1, vrr, 0"
       ];
     };
     workspaces = [
-      "1, monitor:DP-1"
-      "2, monitor:DP-1"
-      "3, monitor:DP-1"
-      "4, monitor:DP-1"
+      "1, monitor:${monitors.primary}"
+      "2, monitor:${monitors.primary}"
+      "3, monitor:${monitors.primary}"
+      "4, monitor:${monitors.primary}"
     ];
   };
 
@@ -114,4 +109,5 @@ in
   #
   #   outputs."DP-1".edid = "g9.bin";
   # };
+  environment.pathsToLink = [ "/share/zsh" ];
 }

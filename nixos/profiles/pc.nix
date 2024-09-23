@@ -9,6 +9,7 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
     ./.
+    ../hardware/audio
     ../programs/gamemode.nix
     ../programs/hyprland.nix
     ../programs/kdeconnect.nix

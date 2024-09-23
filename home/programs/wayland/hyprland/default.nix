@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./options.nix
 
@@ -14,7 +15,7 @@
     # TODO: add these imports or put into own module/wayland module
     # ../../../services/dunst.nix
     # ../../../services/hypridle.nix
-    ../../../services/hyprpaper.nix
+    # ../../../services/hyprpaper.nix
   ];
 
   home.sessionVariables = {
@@ -40,7 +41,7 @@
     # ];
 
     systemd = {
-      variables = ["--all"];
+      variables = [ "--all" ];
       extraCommands = [
         "systemctl --user stop graphical-session.target"
         "systemctl --user start hyprland-session.target"

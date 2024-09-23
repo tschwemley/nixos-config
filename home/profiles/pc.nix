@@ -16,6 +16,7 @@ in
     ../programs/bambu-studio.nix
     ../programs/bitwarden.nix
     ../programs/browsers
+    ../programs/dbgate.nix
     ../programs/discord.nix
     ../programs/glow.nix
     ../programs/gtk.nix
