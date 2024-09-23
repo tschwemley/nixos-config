@@ -22,21 +22,21 @@ in
         timeout server 30s
         timeout http-request 10s
 
-      listen psql
-        bind :5432
-        mode tcp
-
-        retries 2
-        timeout connect 5s
-        timeout client 5m
-        timeout server 5m
-        option clitcpka
-
-        balance roundrobin
-        option httpchk GET /health?ready=1
-        server cockroach1 articuno.wyvern-map.ts.net:26257 check port 26080
-        server cockroach2 zapados.wyvern-map.ts.net:26257 check port 26080
-        server cockroach3 moltres.wyvern-map.ts.net:26257 check port 26080
+      # listen psql
+      #   bind :5432
+      #   mode tcp
+      #
+      #   retries 2
+      #   timeout connect 5s
+      #   timeout client 5m
+      #   timeout server 5m
+      #   option clitcpka
+      #
+      #   balance roundrobin
+      #   option httpchk GET /health?ready=1
+      #   server cockroach1 articuno.wyvern-map.ts.net:26257 check port 26080
+      #   server cockroach2 zapados.wyvern-map.ts.net:26257 check port 26080
+      #   server cockroach3 moltres.wyvern-map.ts.net:26257 check port 26080
 
       listen ssh
         bind *:2222
