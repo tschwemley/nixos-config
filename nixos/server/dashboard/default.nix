@@ -1,5 +1,5 @@
 {
-  services.nginx.virtualHosts."schwem.io".locations = {
+  services.nginx.virtualHosts."dash.schwem.io".locations = {
     "/" = {
       proxyPass = "http://localhost:6969";
       extraConfig = ''
@@ -7,6 +7,11 @@
       '';
     };
 
-    ".auth".proxyPass = "http://localhost:1337/auth";
+    ".auth" = {
+      proxyPass = "http://localhost:1337/auth";
+      extraConfig = ''
+        internal;
+      '';
+    };
   };
 }
