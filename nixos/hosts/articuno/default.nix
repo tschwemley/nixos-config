@@ -3,15 +3,16 @@
     (import ../../profiles/buyvm.nix "")
 
     # server imports
-    ../../../containers/keycloak
+    # ../../../containers/keycloak
     ../../../containers/proxitok
     ../../server/acme
-    ../../server/cockroachdb
+    # ../../server/cockroachdb
+    ../../server/keycloak
     ../../server/haproxy
     # ../../server/invidious
     ../../server/monitoring
-    # ../../server/postgresql
-    # ../../server/searxng
+    ../../server/postgresql
+    ../../server/searxng
   ];
 
   networking.hostName = "articuno";

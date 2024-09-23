@@ -114,8 +114,8 @@ in
       backend auth
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
 
-      backend auth_test
-        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
+      # backend auth_test
+      #   server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
       backend cockroach_web
         http-request set-header X-Forwarded-Proto https
@@ -177,9 +177,9 @@ in
 
       backend searxng
         http-request set-header X-Forwarded-Proto https
-        balance roundrobin
-        # server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
-        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
+        # balance roundrobin
+        server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
+        # server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
       backend static
         http-request set-header X-Forwarded-Proto https

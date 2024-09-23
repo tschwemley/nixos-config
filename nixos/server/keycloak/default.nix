@@ -10,7 +10,7 @@ let
 in
 {
   environment.systemPackages = [ keycloakPkg ];
-  services.nginx.virtualHosts."auth-test.schwem.io" =
+  services.nginx.virtualHosts."auth.schwem.io" =
     let
       ip = "127.0.0.1";
       port = "8480";
@@ -47,9 +47,9 @@ in
     package = keycloakPkg;
 
     settings = {
-      hostname = "auth-test.schwem.io";
+      hostname = "auth.schwem.io";
       # this is important to prevent endless loading admin page
-      hostname-admin-url = "https://auth-test.schwem.io";
+      hostname-admin-url = "https://auth.schwem.io";
       http-port = 8480;
       proxy = "edge";
       transaction-xa-enable = false;
