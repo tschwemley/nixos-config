@@ -7,6 +7,7 @@
     ../../../containers/proxitok
     ../../server/acme
     # ../../server/cockroachdb
+    ../../server/dashboard
     ../../server/keycloak
     ../../server/haproxy
     # ../../server/invidious
