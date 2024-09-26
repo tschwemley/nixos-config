@@ -15,7 +15,7 @@ in
       User = "oidc-sso";
       Group = "oidc-sso";
 
-      ExecStart = "${pkg}/bin/oidcsso";
+      ExecStart = "${pkg}/bin/oidcsso -debug";
 
       EnvironmentFile = config.sops.secrets.oidc_sso_env.path;
       WorkingDirectory = "/var/lib/oidc-sso";

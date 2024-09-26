@@ -855,11 +855,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1727321612,
-        "narHash": "sha256-kq+H0ahk/vYcgdV66YkUacHc/Q+gOPRkHA1/lU42PgE=",
+        "lastModified": 1727322335,
+        "narHash": "sha256-OT1lJb3o2FTa9CEBagUmK44AFyVYAbugzZ5fqFTh+mk=",
         "owner": "tschwemley",
         "repo": "simple-oidc-proxy",
-        "rev": "1997524e86bf8a0fca576eccec95bb9c1c0959f9",
+        "rev": "3781cdd9e98071183508ee87d33fbf2059f2e05f",
         "type": "github"
       },
       "original": {
