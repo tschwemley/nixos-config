@@ -6,7 +6,7 @@
 }:
 let
   pkg = inputs.server-oidc-sso.packages.${pkgs.system}.default;
-  runDir = "/var/lib/oidc-sso";
+  stateDir = "/var/lib/oidc-sso";
 in
 {
   systemd.services.oidc-sso = {
@@ -16,12 +16,10 @@ in
       User = "oidc-sso";
       Group = "oidc-sso";
 
-      ExecStart = "${pkg}/bin/oidcsso -debug";
-
-      EnvironmentFile = config.sops.secrets.oidc_sso_env.path;
-      # StateDirectory = runDir;
       SyslogIdentifier = "oidc-sso";
-      WorkingDirectory = runDir;
+      WorkingDirectory = stateDir;
+
+      ExecStart = "${pkg}/bin/oidcsso -e ${config.sops.secrets.oidc_sso_env.path}";
 
       # Hardening options
       LockPersonality = "yes";
@@ -51,7 +49,7 @@ in
   sops.secrets.oidc_sso_env = {
     group = "oidc-sso";
     owner = "oidc-sso";
-    path = "${runDir}/.env";
+    path = "${stateDir}/.env";
     mode = "0440";
     sopsFile = ./secrets.yaml;
   };
