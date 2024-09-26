@@ -27,8 +27,8 @@ in
     wantedBy = [ "multi-user.target" ];
   };
 
-  sops.secrets.oidc-sso_env = {
-    sopsFile = ./.env;
+  sops.secrets.oidc_sso_env = {
+    sopsFile = ./secrets.yaml;
   };
 
   users = {
