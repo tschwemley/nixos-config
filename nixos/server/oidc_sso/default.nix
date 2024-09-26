@@ -10,7 +10,7 @@ let
 in
 {
   services.nginx.virtualHosts."auth.schwem.io".locations = {
-    "check-token" = {
+    "/check-token" = {
       proxyPass = "http://127.0.0.1:${config.portMap.oidc-sso}/check-token";
     };
     "/login" = {
