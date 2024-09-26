@@ -2,7 +2,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./.
     ../network/containers.nix
@@ -19,7 +20,7 @@
   # disable man pages on servers
   documentation.man.enable = false;
 
-  environment.systemPackages = with pkgs; [postgresql_16];
+  environment.systemPackages = with pkgs; [ postgresql_16 ];
 
   services.getty.autologinUser = "root";
 
@@ -32,13 +33,17 @@
         sopsFile = ../../containers/secrets.yaml;
         path = "/root/.ssh/container_deploy_key";
       };
-      ssh_config = {
-        sopsFile = ../server/secrets.yaml;
-        path = "/root/.ssh/config";
+      oidc_sso_cookies = {
+        sopsFile = ../server/auth/secrets.yaml;
+        mode = "0444";
       };
       root_password = {
         mode = "0440";
         neededForUsers = true;
+      };
+      ssh_config = {
+        sopsFile = ../server/secrets.yaml;
+        path = "/root/.ssh/config";
       };
     };
   };
