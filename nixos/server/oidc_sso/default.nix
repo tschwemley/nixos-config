@@ -52,6 +52,7 @@ in
     group = "oidc-sso";
     owner = "oidc-sso";
     path = "${runDir}/.env";
+    mode = "0440";
     sopsFile = ./secrets.yaml;
   };
 
