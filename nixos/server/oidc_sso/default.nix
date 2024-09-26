@@ -10,7 +10,7 @@ let
 in
 {
   services.nginx.virtualHosts."auth.schwem.io".locations."/login" = {
-    proxyPass = "http://localhost:${config.portMap.oidc-sso}/login$request_uri";
+    proxyPass = "http://127.0.0.1:${config.portMap.oidc-sso}/login$request_uri";
   };
 
   systemd.services.oidc-sso = {
