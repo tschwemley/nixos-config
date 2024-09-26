@@ -12,6 +12,7 @@
     ../../server/haproxy
     # ../../server/invidious
     ../../server/monitoring
+    ../../server/oidc_sso
     ../../server/postgresql
     ../../server/searxng
   ];

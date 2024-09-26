@@ -342,11 +342,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1727303891,
-        "narHash": "sha256-+9lbjDzExvHiqBHois8XTGeUw9uy1g+geF4cAovz8Hw=",
+        "lastModified": 1727305730,
+        "narHash": "sha256-EWtisVQG1O058U09R3GTmzWWujuHYmyiKbpb9qE3Z9Q=",
         "ref": "refs/heads/main",
-        "rev": "22746b304614b313a78d740f4536e809a4df90e2",
-        "revCount": 5259,
+        "rev": "b1ad2d806634edff656cb5ddc9850ae2c73324e8",
+        "revCount": 5260,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -793,6 +793,7 @@
         "nixpkgs": "nixpkgs_3",
         "redlib-latest": "redlib-latest",
         "scribe": "scribe",
+        "server-oidc-sso": "server-oidc-sso",
         "sops": "sops",
         "systemd2nix": "systemd2nix"
       }
@@ -842,6 +843,29 @@
         "ref": "main",
         "repo": "scribe",
         "type": "sourcehut"
+      }
+    },
+    "server-oidc-sso": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1727310357,
+        "narHash": "sha256-8X10lKp355dO5OSDriPTcXY3gbQaLgzlz0YgaCw9NpM=",
+        "owner": "tschwemley",
+        "repo": "simple-oidc-proxy",
+        "rev": "0150761dfb596445f853b423e86cbc6500e2d508",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tschwemley",
+        "repo": "simple-oidc-proxy",
+        "type": "github"
       }
     },
     "sops": {

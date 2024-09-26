@@ -88,6 +88,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    server-oidc-sso = {
+      url = "github:tschwemley/simple-oidc-proxy";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
+
     systemd2nix = {
       url = "github:DavHau/systemd2nix";
       inputs.nixpkgs.follows = "nixpkgs";
