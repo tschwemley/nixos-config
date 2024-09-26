@@ -9,8 +9,8 @@ let
   stateDir = "/var/lib/oidc-sso";
 in
 {
-  services.nginx.virtualHosts."auth.schwem.io".locations."/login" = {
-    proxyPass = "http://127.0.0.1:${config.portMap.oidc-sso}/login$request_uri";
+  services.nginx.virtualHosts."auth.schwem.io".locations."login" = {
+    proxyPass = "http://127.0.0.1:${config.portMap.oidc-sso}/login$is_args$args";
   };
 
   systemd.services.oidc-sso = {
@@ -47,6 +47,10 @@ in
 
     description = "oidc-sso";
     after = [ "network.target" ];
+    requires = [
+      "keycloak.service"
+      "nginx.service"
+    ];
     wantedBy = [ "multi-user.target" ];
   };
 
