@@ -6,6 +6,7 @@
 }:
 let
   pkg = inputs.server-oidc-sso.packages.${pkgs.system}.default;
+  runDir = "/var/lib/oidc-sso";
 in
 {
   systemd.services.oidc-sso = {
@@ -18,9 +19,28 @@ in
       ExecStart = "${pkg}/bin/oidcsso -debug";
 
       EnvironmentFile = config.sops.secrets.oidc_sso_env.path;
-      WorkingDirectory = "/var/lib/oidc-sso";
-      StateDirectory = "oidc-sso";
+      # StateDirectory = runDir;
       SyslogIdentifier = "oidc-sso";
+      WorkingDirectory = runDir;
+
+      # Hardening options
+      LockPersonality = "yes";
+      ProtectSystem = "yes";
+      ProtectClock = "yes";
+      ProtectControlGroups = "yes";
+      ProtectHome = "yes";
+      ProtectHostname = "yes";
+      ProtectKernelLogs = "yes";
+      ProtectKernelModules = "yes";
+      ProtectKernelTunables = "yes";
+      ProtectProc = "invisible";
+      RemoveIPC = "yes";
+      RestrictAddressFamilies = "AF_INET AF_INET6 AF_UNIX AF_NETLINK";
+      RestrictNamespaces = "yes";
+      RestrictRealtime = "yes";
+      NoNewPrivileges = "yes";
+      PrivateDevices = "yes";
+      PrivateTmp = "yes";
     };
 
     description = "oidc-sso";
@@ -29,6 +49,9 @@ in
   };
 
   sops.secrets.oidc_sso_env = {
+    group = "oidc-sso";
+    owner = "oidc-sso";
+    path = "${runDir}/.env";
     sopsFile = ./secrets.yaml;
   };
 

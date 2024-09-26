@@ -35,11 +35,11 @@ in
         Group = "stash";
         Type = "simple";
         ExecStart = "${pkgs.stash}/bin/stash";
-        ReadPaths = [ "/var/run/stash" ];
+        ReadPaths = [ runDir ];
         Restart = "always";
         RestartSec = 5;
         StateDirectory = stateDir;
-        WorkingDirectory = "/var/run/stash";
+        WorkingDirectory = runDir;
 
         # Hardening options
         LockPersonality = "yes";
