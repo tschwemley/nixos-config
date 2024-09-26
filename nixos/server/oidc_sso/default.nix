@@ -9,8 +9,13 @@ let
   stateDir = "/var/lib/oidc-sso";
 in
 {
-  services.nginx.virtualHosts."auth.schwem.io".locations."login" = {
-    proxyPass = "http://127.0.0.1:${config.portMap.oidc-sso}/login$is_args$args";
+  services.nginx.virtualHosts."auth.schwem.io".locations = {
+    "/login" = {
+      proxyPass = "http://127.0.0.1:${config.portMap.oidc-sso}$request_uri";
+    };
+    "/auth/callback" = {
+      proxyPass = "http://127.0.0.1:${config.portMap.oidc-sso}$request_uri";
+    };
   };
 
   systemd.services.oidc-sso = {
