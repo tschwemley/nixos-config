@@ -33,10 +33,6 @@
         sopsFile = ../../containers/secrets.yaml;
         path = "/root/.ssh/container_deploy_key";
       };
-      oidc_sso_cookies = {
-        sopsFile = ../server/auth/secrets.yaml;
-        mode = "0444";
-      };
       root_password = {
         mode = "0440";
         neededForUsers = true;
