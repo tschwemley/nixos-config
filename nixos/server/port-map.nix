@@ -11,6 +11,7 @@
   config.portMap = {
     anonymous-overflow = "8010";
     binternet = "8009";
+    # dashboard = "";
     excalidraw = "8380";
     freetar = "22000";
     forgejo = "8020";
@@ -18,6 +19,7 @@
     it-tools = "7001";
     nginx-sso = "8082";
     nzbhydra2 = "5076";
+    oidc-sso = "1337";
     priviblur = "8040";
     proxitok = "8050";
     redlib = "8180";
