@@ -10,6 +10,7 @@
 
     ./.
     ../hardware/audio
+    ../programs/chrysalis
     ../programs/gamemode.nix
     ../programs/hyprland.nix
     ../programs/kdeconnect.nix
