@@ -3,16 +3,12 @@
     (import ../../profiles/buyvm.nix "")
 
     # server imports
-    # ../../../containers/keycloak
     ../../../containers/proxitok
     ../../server/acme
-    # ../../server/cockroachdb
+    ../../server/auth
     ../../server/dashboard
-    ../../server/keycloak
     ../../server/haproxy
-    # ../../server/invidious
     ../../server/monitoring
-    ../../server/oidc_sso
     ../../server/postgresql
     ../../server/searxng
   ];
