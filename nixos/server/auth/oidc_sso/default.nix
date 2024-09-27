@@ -9,17 +9,24 @@ let
   stateDir = "/var/lib/oidc-sso";
 in
 {
-  services.nginx.virtualHosts."auth.schwem.io".locations = {
-    "/check-token" = {
-      proxyPass = "http://127.0.0.1:${config.portMap.oidc-sso}/check-token";
-    };
-    "/login" = {
+  services.nginx.virtualHosts."auth.schwem.io".locations =
+    let
       proxyPass = "http://127.0.0.1:${config.portMap.oidc-sso}$request_uri";
+    in
+    {
+      "/auth" = {
+        inherit proxyPass;
+      };
+      "/auth/callback" = {
+        inherit proxyPass;
+      };
+      "/check-token" = {
+        inherit proxyPass;
+      };
+      "/login" = {
+        inherit proxyPass;
+      };
     };
-    "/auth/callback" = {
-      proxyPass = "http://127.0.0.1:${config.portMap.oidc-sso}$request_uri";
-    };
-  };
 
   systemd.services.oidc-sso = {
     enable = true;
