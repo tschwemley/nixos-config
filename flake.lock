@@ -881,11 +881,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1727425208,
-        "narHash": "sha256-PCyMlTNYPLvc3wPYDhEfttk9uiEWSzbm8Wspwh6KgbE=",
+        "lastModified": 1727425650,
+        "narHash": "sha256-gPq6P3nEJph0rXeqjWUPLQz36Fo0HreQcphuyc5oDpk=",
         "owner": "tschwemley",
         "repo": "simple-oidc-proxy",
-        "rev": "ca86211fb8af0df96377d0dc78fc7655ed844773",
+        "rev": "c2d80fb5268c4e7224729c981c5d971948f61463",
         "type": "github"
       },
       "original": {
