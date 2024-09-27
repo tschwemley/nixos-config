@@ -14,7 +14,7 @@
       };
 
       ".auth" = {
-        proxyPass = "http://127.0.0.1:${config.portMap.oidc-sso}/check-token";
+        proxyPass = "http://127.0.0.1:${config.portMap.oidc-sso}/auth";
         extraConfig = ''
           internal;
         '';
