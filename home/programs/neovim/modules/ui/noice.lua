@@ -1,4 +1,4 @@
--- NOTE: this is the recommended setup. Remove this comment when done, and comfortable with, cutomizations
+-- NOTE: this is the recommended setup. Remove this comment when done and comfortable with cutomizations
 require("noice").setup({
    cmdline = {
       view = "cmdline",

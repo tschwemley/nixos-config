@@ -3,7 +3,7 @@
   programs.neovim.plugins = with pkgs.vimPlugins; [
     edgy-nvim
     noice-nvim
-    nvim-notify
+    # nvim-notify
   ];
 
   xdg.configFile."nvim/after/plugin/edgy.lua".source = ./edgy.lua;
