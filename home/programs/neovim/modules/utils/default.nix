@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.neovim.plugins = with pkgs.vimPlugins; [
     dressing-nvim
     gitsigns-nvim
@@ -6,18 +7,20 @@
     nnn-vim
     nvim-spectre
     nvim-ufo
-    #plenary-nvim
     refactoring-nvim
+    rest-nvim
     vim-abolish
     vim-fugitive
     vim-speeddating
     vim-surround
   ];
 
-  xdg.configFile."nvim/after/plugin/mini-clue.lua".source = ./mini-clue.lua;
-  xdg.configFile."nvim/after/plugin/git.lua".source = ./git.lua;
-  xdg.configFile."nvim/after/plugin/nnn.lua".source = ./nnn.lua;
-  xdg.configFile."nvim/after/plugin/refactoring.lua".source = ./refactoring.lua;
-  xdg.configFile."nvim/after/plugin/spectre.lua".source = ./spectre.lua;
-  xdg.configFile."nvim/after/plugin/ufo.lua".source = ./ufo.lua;
+  xdg.configFile = {
+    "nvim/after/plugin/git.lua".source = ./git.lua;
+    "nvim/after/plugin/mini-clue.lua".source = ./mini-clue.lua;
+    "nvim/after/plugin/nnn.lua".source = ./nnn.lua;
+    "nvim/after/plugin/refactoring.lua".source = ./refactoring.lua;
+    "nvim/after/plugin/spectre.lua".source = ./spectre.lua;
+    "nvim/after/plugin/ufo.lua".source = ./ufo.lua;
+  };
 }
