@@ -11,7 +11,7 @@
   config.portMap = {
     anonymous-overflow = "8010";
     binternet = "8009";
-    # dashboard = "";
+    dashboard = "6980";
     excalidraw = "8380";
     freetar = "22000";
     forgejo = "8020";

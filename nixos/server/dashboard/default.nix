@@ -7,7 +7,7 @@
 
     locations = {
       "/" = {
-        proxyPass = "http://127.0.0.1:6969";
+        proxyPass = "http://127.0.0.1:${config.portMap.dashboard}";
         extraConfig = ''
           auth_request .auth;
         '';

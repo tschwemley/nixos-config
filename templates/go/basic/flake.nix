@@ -37,6 +37,12 @@
               go
             ];
           };
+
+          packages.default = pkgs.buildGoModule {
+            name = "go_app";
+            src = ./.;
+            vendorHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+          };
         };
     };
 }
