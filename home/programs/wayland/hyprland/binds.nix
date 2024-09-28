@@ -28,8 +28,8 @@
 
       "$mod shift, f, fullscreen, 1"
 
-      "alt, tab, layoutmsg, cyclenext"
-      "alt shift, tab, layoutmsg, cycleprev"
+      "alt, tab, cyclenext"
+      "alt shift, tab, cyclenext, prev"
       "$mod, l, layoutmsg, swapnext"
       "$mod, h, layoutmsg, swapprev"
       "$mod shift, h, movewindow, mon:1"
