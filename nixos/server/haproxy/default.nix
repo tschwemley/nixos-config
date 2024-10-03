@@ -27,7 +27,7 @@ in
         mode tcp
 
         acl git req_ssl_sni -i git.schwem.io
-        use_backend git if git
+        use_backend git_ssh if git
 
       frontend www
         bind *:80
