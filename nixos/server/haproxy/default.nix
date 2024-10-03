@@ -117,6 +117,12 @@ in
         http-request set-header X-Forwarded-Proto https
         server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
+      backend git_ssh
+        mode tcp
+        balance roundrobin
+        option tcplog
+        server jolteon jolteon.wyvern-map.ts.net:2222 check
+
       backend rimgo
         http-request set-header X-Forwarded-Proto https
         server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
