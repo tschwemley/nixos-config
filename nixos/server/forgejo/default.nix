@@ -14,6 +14,8 @@
     ];
   };
 
+  networking.firewall.allowedTCPPorts = [ 2222 ];
+
   services.nginx = {
     virtualHosts."git.schwem.io" = {
       locations."/" = {
