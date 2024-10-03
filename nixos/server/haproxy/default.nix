@@ -23,15 +23,15 @@ in
         timeout http-request 10s
 
       frontend git_ssh
-        bind *:2222
+        bind git.schwem.io:2222
         mode tcp
-
-        # acl git req_ssl_sni -i git.schwem.io
-        use_backend git_ssh if { ssl_fc_sni git.schwem.io }
+        default_backend git_ssh
 
       frontend www
         bind *:80
         bind *:443 ssl crt ${wildcardCert} crt ${baseCert} crt ${wildcardApiCert}
+
+        mode http
 
         option forwarded
         option forwardfor
@@ -98,7 +98,6 @@ in
 
       backend cockroach_web
         http-request set-header X-Forwarded-Proto https
-        # option httpchk GET /health?ready=1
         balance leastconn
 
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
@@ -119,9 +118,7 @@ in
 
       backend git_ssh
         mode tcp
-        balance roundrobin
-        option tcplog
-        server jolteon jolteon.wyvern-map.ts.net:2222 check
+        server jolteon_ssh jolteon:2222 check
 
       backend rimgo
         http-request set-header X-Forwarded-Proto https
