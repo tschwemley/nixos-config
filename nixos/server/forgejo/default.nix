@@ -53,6 +53,7 @@
         LANDING_PAGE = "explore";
         HTTP_PORT = lib.strings.toInt config.portMap.forgejo;
         ROOT_URL = "https://git.schwem.io";
+        SSH_PORT = 2222;
       };
 
       service = {
