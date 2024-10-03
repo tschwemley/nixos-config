@@ -22,7 +22,7 @@ in
         timeout server 30s
         timeout http-request 10s
 
-      fontend git_ssh
+      frontend git_ssh
         bind *:2222
         mode tcp
 
