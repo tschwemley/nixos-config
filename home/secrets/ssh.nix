@@ -21,7 +21,7 @@
     "forgejo_schwem_key" = {
       key = "forgejo_schwem_key";
       owner = "schwem";
-      path = "/home/schwem/.ssh/forgejo";
+      path = "/home/schwem/.ssh/forgejo_schwem_key";
       sopsFile = ./ssh.yaml;
     };
     "jolteon_key" = {
