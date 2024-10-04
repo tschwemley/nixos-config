@@ -5,7 +5,7 @@
   ...
 }:
 let
-  pkg = inputs.server-oidc-sso.packages.${pkgs.system}.default;
+  pkg = inputs.oidcsso.packages.${pkgs.system}.default;
   stateDir = "/var/lib/oidc-sso";
 in
 {

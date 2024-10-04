@@ -88,8 +88,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    server-oidc-sso = {
-      url = "github:tschwemley/simple-oidc-proxy";
+    oidcsso = {
+      url = "git+ssh://git.schwem.io/schwem/oidcsso";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
