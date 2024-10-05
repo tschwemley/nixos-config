@@ -3,7 +3,8 @@
   name,
   email,
   ...
-}: let
+}:
+let
   aliases = {
     b = "branch";
     cb = "checkout --branch";
@@ -11,8 +12,9 @@
     cm = "!git add . && git commit -am";
     s = "status";
   };
-in {
-  home.packages = with pkgs; [gh];
+in
+{
+  home.packages = with pkgs; [ gh ];
   programs.git = {
     inherit aliases;
     enable = true;
@@ -24,6 +26,11 @@ in {
       pull.rebase = true;
       core = {
         whitespace = "trailing-space,space-before-tab";
+      };
+      url = {
+        "ssh://forgejo" = {
+          insteadOf = "https://git.schwem.io";
+        };
       };
     };
   };
