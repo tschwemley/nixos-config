@@ -796,11 +796,11 @@
         "rev": "ad02727df7d95e731789cab2b69919d2f42a4e60",
         "revCount": 23,
         "type": "git",
-        "url": "ssh://git.schwem.io/schwem/oidcsso"
+        "url": "https://git.schwem.io/schwem/oidcsso"
       },
       "original": {
         "type": "git",
-        "url": "ssh://git.schwem.io/schwem/oidcsso"
+        "url": "https://git.schwem.io/schwem/oidcsso"
       }
     },
     "redlib-latest": {

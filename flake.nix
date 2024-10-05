@@ -89,7 +89,8 @@
     };
 
     oidcsso = {
-      url = "git+ssh://git.schwem.io/schwem/oidcsso";
+      # url = "git+ssh://git.schwem.io/schwem/oidcsso";
+      url = "git+https://git.schwem.io/schwem/oidcsso";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
