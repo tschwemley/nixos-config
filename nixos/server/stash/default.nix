@@ -29,17 +29,21 @@ in
       };
       path = [
         pkgs.ffmpeg_7-headless
+
+        # paths added below are for plugin support
+        pkgs.python3
+        pkgs.undetected-chromedriver
       ];
       serviceConfig = {
         User = "stash";
         Group = "stash";
         Type = "simple";
         ExecStart = "${pkgs.stash}/bin/stash";
-        ReadPaths = [ runDir ];
+        # ReadPaths = [ "/var/run/stash" ];
         Restart = "always";
         RestartSec = 5;
         StateDirectory = stateDir;
-        WorkingDirectory = runDir;
+        WorkingDirectory = "/var/run/stash";
 
         # Hardening options
         LockPersonality = "yes";
