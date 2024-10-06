@@ -61,7 +61,10 @@ in
     };
 
     description = "oidc-sso";
-    after = [ "network.target" ];
+    after = [
+      "network.target"
+      "keycloak.service"
+    ];
     requires = [
       "keycloak.service"
       "nginx.service"
