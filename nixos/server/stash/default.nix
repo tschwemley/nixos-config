@@ -27,13 +27,21 @@ in
         STASH_PORT = config.portMap.stash;
         # STASH_EXTERNAL_HOST = "stash.schwem.io";
       };
-      path = [
-        pkgs.ffmpeg_7-headless
+      path =
+        let
+          python = pkgs.python311.withPackages (
+            pythonPkgs: with pythonPkgs; [
+              pip
+            ]
+          );
+        in
+        [
+          pkgs.ffmpeg_7-headless
 
-        # paths added below are for plugin support
-        pkgs.python311
-        pkgs.undetected-chromedriver
-      ];
+          # paths added below are for plugin support
+          pkgs.undetected-chromedriver
+          python
+        ];
       serviceConfig = {
         User = "stash";
         Group = "stash";
