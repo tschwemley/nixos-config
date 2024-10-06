@@ -8,6 +8,7 @@ in
     tmpfiles.rules = [
       "d ${runDir} 0500 stash stash - -"
       "d ${stateDir} 0755 stash stash - -"
+      "d ${stateDir}/python-modules 0755 stash stash - -"
     ];
 
     services.stash = {
@@ -22,6 +23,10 @@ in
         "network-online.target"
       ];
       environment = {
+        # LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath buildInputs;
+
+        PYTHONPATH = "${stateDir}/python-modules";
+
         # STASH_HOST = "0.0.0.0";
         # STASH_HOST = "127.0.0.1";
         STASH_PORT = config.portMap.stash;
