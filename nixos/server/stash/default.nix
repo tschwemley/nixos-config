@@ -23,7 +23,7 @@ in
         "network-online.target"
       ];
       environment = {
-        # LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath buildInputs;
+        LD_LIBRARY_PATH = "${stateDir}/python-modules";
 
         PYTHONPATH = "${stateDir}/python-modules";
 
