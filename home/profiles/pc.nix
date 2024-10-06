@@ -12,12 +12,12 @@ in
     ./.
     ../programs/ags
     ../programs/ai
+    ../programs/browsers
+    ../programs/communication
+
     ../programs/aseprite.nix
     ../programs/bambu-studio.nix
     ../programs/bitwarden.nix
-    ../programs/browsers
-    ../programs/dbgate.nix
-    ../programs/discord.nix
     ../programs/glow.nix
     ../programs/gtk.nix
     ../programs/jellyfin.nix
@@ -26,20 +26,21 @@ in
     ../programs/libreoffice.nix
     ../programs/music
     ../programs/qt.nix
-    ../programs/slack.nix
     ../programs/vlc.nix
-    ../programs/wayland
-    ../programs/wayland/hyprland
+    ../programs/wayland/hyprland.nix
     ../programs/wcalc.nix
     ../programs/tigervnc.nix
     ../programs/vial.nix
     ../programs/wofi.nix
-    ../programs/zoom.nix
     ../terminal/kitty
-    ../terminal/xdg.nix
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
+    ../xdg
+    ../xdg/ssh/personal.nix
+
+    # TODO: go through and decide which to keep and which to remove
     # ../programs/cad.nix
+    # ../programs/dbgate.nix
     # ../programs/rustdesk.nix
     # ../programs/taskwarrior.nix
   ];

@@ -11,12 +11,14 @@ keys:
   - &pikachu age1rvv0m2d5weqgnsf7cv7k2wv8rkgqd06pcmpf98j98m7mkf2a5gwsr2eqja
   - &tentacool age1k3ejfs0t5xavhw7xje2k7263np65la6ek0a0fz3y926t5qykwvnqxhteps
   - &zapados age1z37rwn90f923pdhjtcsw2r8a48hwsuh73xjswjj8z7qr3kp3aeyqdamr5f
+  - &schwem-io age1fnlep954kqzdy62qpzap8ex0xm3xzcd9rau52rgewt7rtwn2huaqg593p9
 
 creation_rules:
-  - path_regex: ^(./)?home/secrets/secrets|ssh.yaml
+  - path_regex: ^(./)?home/(.*/)?(.*/)?.*.(env|json|yaml)
     key_groups:
       - age:
           - *personal
+          - *schwem-io
 
   - path_regex: nixos/hosts/articuno/secrets.yaml
     key_groups:
