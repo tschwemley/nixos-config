@@ -9,7 +9,7 @@ let
 in
 {
   imports = [
-    inputs.sops.nixosModules.sops
+    inputs.sops-nix.nixosModules.sops
     inputs.disko.nixosModules.disko
     rootUser
     ../network
