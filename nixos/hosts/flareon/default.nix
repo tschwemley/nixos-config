@@ -3,7 +3,7 @@
     ../../profiles/proxmox.nix
     ../../server/arr
     ../../server/stash
-    ../../services/samba.nix
+    # ../../services/samba.nix
   ];
 
   networking.hostName = "flareon";
