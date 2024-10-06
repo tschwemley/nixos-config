@@ -31,7 +31,7 @@ in
         pkgs.ffmpeg_7-headless
 
         # paths added below are for plugin support
-        pkgs.python3
+        pkgs.python311
         pkgs.undetected-chromedriver
       ];
       serviceConfig = {
