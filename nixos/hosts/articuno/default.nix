@@ -3,7 +3,7 @@
     (import ../../profiles/buyvm.nix "")
 
     # server imports
-    ../../../containers/proxitok
+    # ../../../containers/proxitok
     ../../server/acme
     ../../server/auth
     ../../server/dashboard

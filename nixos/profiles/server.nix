@@ -37,10 +37,6 @@
         mode = "0440";
         neededForUsers = true;
       };
-      ssh_config = {
-        sopsFile = ../server/secrets.yaml;
-        path = "/root/.ssh/config";
-      };
     };
   };
 

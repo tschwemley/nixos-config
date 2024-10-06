@@ -30,7 +30,14 @@
       };
     };
 
-  sops.secrets.forgejo_schwem_io_key = {
-    sopsFile = ./keys.yaml;
+  sops.secrets = {
+    articuno_key = {
+      key = "user_ssh_key";
+      sopsFile = ../../../nixos/hosts/articuno/secrets.yaml;
+    };
+
+    forgejo_schwem_io_key = {
+      sopsFile = ./keys.yaml;
+    };
   };
 }
