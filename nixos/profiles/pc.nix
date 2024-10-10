@@ -9,6 +9,8 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
     ./.
+    ./development.nix
+
     ../hardware/audio
     ../programs/chrysalis
     ../programs/gamemode.nix
