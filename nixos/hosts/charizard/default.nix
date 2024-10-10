@@ -94,20 +94,6 @@ in
 
   users.mutableUsers = true; # allow mutable users on non-servers
 
-  # hardware.display = {
-  #   edid = {
-  #     enable = true;
-  #     packages = [
-  #       (pkgs.runCommand "edid-g9" { } ''
-  #         mkdir -p "$out/lib/firmware/edid"
-  #         base64 -d > "$out/lib/firmware/edid/g9.bin" <<'EOF'
-  #         AP///////wBMLVNwUzhYQykeAQS1dyJ4OsclsUtGqCYOUFS/74BxT4EAgcCBgKnAswCVANHAGmgAoPA4H0AwIDoAqVBBAAAaAAAA/Qgy8B5mwgAKICAgICAgAAAA/ABMQzQ5Rzk1VAogICAgAAAA/wBINFpOQTAxNDY5CiAgAroCAyLwRBBaP1wjCQcHgwEAAOMFwADmBgUBi3MS5QGLhJABVl4AoKCgKVAwIDUAqVBBAAAaWE0AuKE4FED4LEUAqVBBAAAedNYAoPA4QEAwIDoAqVBBAAAab8IAoKCgVVAwIDUAqVBBAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAgnASeQAAAwFkB/UCiP8TPwF/gB8AnwUuACAABwAveQEI/xOfAC+AHwCfBVMAAgAJADO3AAj/E58AL4AfAJ8FKAACAAkA424BCP8JTwAHgB8AnwUqACAABwCQxwEI/w6fAC+AHwA3BIYAAgAJAAAAAAAAAAAAAAAAAAAAAAAAALKQ
-  #         EOF
-  #       '')
-  #     ];
-  #   };
-  #
-  #   outputs."DP-1".edid = "g9.bin";
-  # };
+  # TODO: is this still necessary? was used for completion, but I think this may be defined by default
   environment.pathsToLink = [ "/share/zsh" ];
 }

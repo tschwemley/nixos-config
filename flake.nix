@@ -88,16 +88,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    oidcsso = {
-      # url = "git+ssh://git.schwem.io/schwem/oidcsso";
-      url = "git+https://git.schwem.io/schwem/oidcsso";
+    systemd2nix = {
+      url = "github:DavHau/systemd2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # imports below here are server-specific imports for schwem.io
+    dashboard = {
+      url = "git+https://git.schwem.io/schwem/dashboard";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
 
-    systemd2nix = {
-      url = "github:DavHau/systemd2nix";
+    oidcsso = {
+      url = "git+https://git.schwem.io/schwem/oidcsso";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
   };
 
