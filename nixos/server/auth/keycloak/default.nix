@@ -51,7 +51,7 @@ in
       # this is important to prevent endless loading admin page
       hostname-admin-url = "https://auth.schwem.io";
       http-port = 8480;
-      proxy = "edge";
+      proxy-headers = "forwarded|xforwarded";
       transaction-xa-enable = false;
     };
 
