@@ -14,10 +14,11 @@
       sops.age.keyFile = "/etc/sops/age-keys.txt";
     };
   };
+
   schwem = {
     users.users.schwem = {
       isNormalUser = true;
-      shell = pkgs.zsh;
+
       extraGroups = [
         config.users.groups.keys.name
 
@@ -29,6 +30,12 @@
         "podman"
         "wheel"
       ];
+
+      openssh.authorizedKeys.keys = [
+        (builtins.readFile ../hosts/${config.networking.hostName}/ssh_key.pub)
+      ];
+
+      shell = pkgs.zsh;
     };
 
     home-manager.users.schwem = {
