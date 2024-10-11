@@ -48,10 +48,9 @@ in
 
     settings = {
       hostname = "auth.schwem.io";
-      # this is important to prevent endless loading admin page
-      hostname-admin-url = "https://auth.schwem.io";
+      hostname-admin-url = "https://auth.schwem.io"; # this is important to prevent endless loading admin page
       http-port = 8480;
-      proxy-headers = "forwarded|xforwarded";
+      proxy-headers = "forwarded"; # forwarded || xforwarded
       transaction-xa-enable = false;
     };
 
