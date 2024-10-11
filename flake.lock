@@ -85,11 +85,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728529414,
-        "narHash": "sha256-QPppjSXy+qyRIwHEb/B8QOSudYuMTSsWC9Jb38ha7X8=",
+        "lastModified": 1728620586,
+        "narHash": "sha256-g7uBk8+HgvHPqznqhtUAC+3HB+fR5z5VQr80V+Zzi0g=",
         "ref": "refs/heads/main",
-        "rev": "34b7f1474de66928ddcc1bc376d2d56025999490",
-        "revCount": 9,
+        "rev": "f33ae4e0d998c5a6d3b1024978e274a46efcb70d",
+        "revCount": 12,
         "type": "git",
         "url": "https://git.schwem.io/schwem/dashboard"
       },
@@ -314,11 +314,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728337164,
-        "narHash": "sha256-VdRTjJFyq4Q9U7Z/UoC2Q5jK8vSo6E86lHc2OanXtvc=",
+        "lastModified": 1728598744,
+        "narHash": "sha256-sSfvyO5xH3HObHHmh6lp/hcvo7tMjFKd/HXpxyrRnoE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "038630363e7de57c36c417fd2f5d7c14773403e4",
+        "rev": "342a1d682386d3a1d74f9555cb327f2f311dda6e",
         "type": "github"
       },
       "original": {
@@ -405,11 +405,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1728507606,
-        "narHash": "sha256-Bt6aMwB63lmb8SqKLo6hKdi//camzM3KvJ5242gn+gQ=",
+        "lastModified": 1728554473,
+        "narHash": "sha256-wzVeYNRedx8aAi8NsUvBbPJAilozHp+mC49NUKYk73c=",
         "ref": "refs/heads/main",
-        "rev": "c4eb1940336cd88ca65ba65582ce104e49dfc7c9",
-        "revCount": 5324,
+        "rev": "b65773bea9b912a41cfcbc789fb2e60a07e3d0c1",
+        "revCount": 5325,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -515,11 +515,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728135019,
-        "narHash": "sha256-OCUyEfD9g5232OILgW+BpjFVPM8AHl2WM59yRabJvSE=",
+        "lastModified": 1728595214,
+        "narHash": "sha256-Aw8RsO7d5PU4vzbi3IHBsnDoOYEVBxYeyGjQIQPYZUI=",
         "owner": "hyprwm",
         "repo": "hyprlock",
-        "rev": "eb63207ef051c62fa2ab010b3f89da263a397329",
+        "rev": "264fb8b70fb3da260838927e62c252efec0c517d",
         "type": "github"
       },
       "original": {
@@ -640,11 +640,11 @@
     "neorg": {
       "flake": false,
       "locked": {
-        "lastModified": 1727821831,
-        "narHash": "sha256-yfWQ6yKytu1jkWUtRZTVICslUWej6jVYv7frmSB7/6Q=",
+        "lastModified": 1728611810,
+        "narHash": "sha256-74TCGgEqY6YJM1WI4R0U7/9vM8Mb8PAhMaenz9r6qhI=",
         "owner": "nvim-neorg",
         "repo": "neorg",
-        "rev": "afc9a37bf021acb0853e95714c4c6436e1588286",
+        "rev": "13d1d546684c83ba464adbf463a8a272c884e1e8",
         "type": "github"
       },
       "original": {
@@ -665,11 +665,11 @@
         "norg-meta": "norg-meta"
       },
       "locked": {
-        "lastModified": 1728528496,
-        "narHash": "sha256-F8v/ZXjHl5BMPty6E1Xy80wiT/UaO8zsG9tVTknwJ6U=",
+        "lastModified": 1728614823,
+        "narHash": "sha256-F0vL1aLOZYCeEVUlBkJEdyrWAvdndLNbKB47Fy+LS5s=",
         "owner": "nvim-neorg",
         "repo": "nixpkgs-neorg-overlay",
-        "rev": "86595ffb77cf43d530ae1464e7fe9c4b0ec1652a",
+        "rev": "978674777e5b43fcbaf897e531f41bf62da40c66",
         "type": "github"
       },
       "original": {
@@ -776,11 +776,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1728241625,
-        "narHash": "sha256-yumd4fBc/hi8a9QgA9IT8vlQuLZ2oqhkJXHPKxH/tRw=",
+        "lastModified": 1728492678,
+        "narHash": "sha256-9UTxR8eukdg+XZeHgxW5hQA9fIKHsKCdOIUycTryeVw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c31898adf5a8ed202ce5bea9f347b1c6871f32d1",
+        "rev": "5633bcff0c6162b9e4b5f1264264611e950c8ec7",
         "type": "github"
       },
       "original": {
@@ -841,11 +841,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728101364,
-        "narHash": "sha256-o653kt7EH8Rmm2djasV9vK9gKtm/cbAO5rVztPZu22o=",
+        "lastModified": 1728619974,
+        "narHash": "sha256-VeoynHGd8fktS0RaH22I6Ezvjvl5mYTYtxfeZBz2Qvg=",
         "ref": "refs/heads/main",
-        "rev": "ad02727df7d95e731789cab2b69919d2f42a4e60",
-        "revCount": 23,
+        "rev": "d71ab87ee39cca8fdd60309645234b68675bc6be",
+        "revCount": 28,
         "type": "git",
         "url": "https://git.schwem.io/schwem/oidcsso"
       },
@@ -888,11 +888,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1728242377,
-        "narHash": "sha256-hNzrZEcQbtjVpvaiSBf2p4ivATuDK2CMJNKiR2CfElI=",
+        "lastModified": 1728600339,
+        "narHash": "sha256-tFxaDQF3nOF5KENkt1q477UEhKBnOKQaI2eUYEcgbFk=",
         "owner": "redlib-org",
         "repo": "redlib",
-        "rev": "b99412b4a1260f49a81d8dfeda51f126a005778b",
+        "rev": "7dda8d9bbb6c2ff0f75a924fdb6020854036e9a0",
         "type": "github"
       },
       "original": {
