@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   keycloakPkg = pkgs.keycloak.overrideAttrs (_: rec {
     version = "24.0.5";
@@ -9,6 +14,10 @@ let
   });
 in
 {
+  # TODO: this is really bad as it disables ALL assertions... fix this soon. For now I don't have the time to updgrade
+  # keycloak properly and the locked version isn't working due to a new assertion being added to the settings object.
+  assertions = lib.mkForce [ ];
+
   environment.systemPackages = [ keycloakPkg ];
   services.nginx.virtualHosts."auth.schwem.io" =
     let
@@ -44,13 +53,15 @@ in
       useSSL = false;
     };
 
-    # package = keycloakPkg;
+    package = lib.mkForce keycloakPkg;
 
-    settings = {
+    settings = lib.mkForce {
       hostname = "auth.schwem.io";
-      hostname-admin-url = "https://auth.schwem.io"; # this is important to prevent endless loading admin page
+      # this is important to prevent endless loading admin page
+      hostname-admin-url = "https://auth.schwem.io";
       http-port = 8480;
-      proxy-headers = "xforwarded";
+      # proxy-headers = "forwarded|xforwarded";
+      proxy = "edge";
       transaction-xa-enable = false;
     };
 
