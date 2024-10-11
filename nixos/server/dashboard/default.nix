@@ -84,9 +84,11 @@ in
   sops.secrets.dashboard_env = {
     group = "dashboard";
     owner = "dashboard";
+
+    key = "oidc_sso_env";
     path = "${stateDir}/.env";
     mode = "0440";
-    sopsFile = ../auth/oidc.yaml; # dashboard env only contains oidc values (cookie/provider info) for now
+    sopsFile = ../auth/oidc_sso/env.yaml; # dashboard env only contains oidc values (cookie/provider info) for now
   };
 
   users = {
