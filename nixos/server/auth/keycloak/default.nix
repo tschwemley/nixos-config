@@ -44,13 +44,13 @@ in
       useSSL = false;
     };
 
-    package = keycloakPkg;
+    # package = keycloakPkg;
 
     settings = {
       hostname = "auth.schwem.io";
       hostname-admin-url = "https://auth.schwem.io"; # this is important to prevent endless loading admin page
       http-port = 8480;
-      proxy-headers = "forwarded"; # forwarded || xforwarded
+      proxy-headers = "xforwarded";
       transaction-xa-enable = false;
     };
 
