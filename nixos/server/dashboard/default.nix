@@ -86,7 +86,7 @@ in
     owner = "dashboard";
     path = "${stateDir}/.env";
     mode = "0440";
-    sopsFile = ./secrets.yaml;
+    sopsFile = ../auth/oidc.yaml; # dashboard env only contains oidc values (cookie/provider info) for now
   };
 
   users = {

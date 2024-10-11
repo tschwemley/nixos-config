@@ -77,7 +77,7 @@ in
     owner = "oidcsso";
     path = "${stateDir}/.env";
     mode = "0440";
-    sopsFile = ./secrets.yaml;
+    sopsFile = ../oidc.yaml;
   };
 
   users = {
