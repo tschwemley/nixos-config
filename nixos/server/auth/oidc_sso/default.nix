@@ -11,7 +11,7 @@ in
 {
   services.nginx.virtualHosts."auth.schwem.io".locations =
     let
-      proxyPass = "http://127.0.0.1:${config.portMap.oidc-sso}$request_uri";
+      proxyPass = "http://127.0.0.1:${config.portMap.oidcsso}$request_uri";
     in
     {
       "/auth" = {
@@ -32,10 +32,10 @@ in
     enable = true;
     serviceConfig = {
       Type = "simple";
-      User = "oidc-sso";
-      Group = "oidc-sso";
+      User = "oidcsso";
+      Group = "oidcsso";
 
-      SyslogIdentifier = "oidc-sso";
+      SyslogIdentifier = "oidcsso";
       WorkingDirectory = stateDir;
 
       ExecStart = "${pkg}/bin/oidcsso -e ${config.sops.secrets.oidc_sso_env.path}";
@@ -60,7 +60,7 @@ in
       PrivateTmp = "yes";
     };
 
-    description = "oidc-sso";
+    description = "Simple OIDC/OAuth2 proxy for auth code flow.";
     after = [
       "network.target"
       "keycloak.service"
@@ -73,17 +73,17 @@ in
   };
 
   sops.secrets.oidc_sso_env = {
-    group = "oidc-sso";
-    owner = "oidc-sso";
+    group = "oidcsso";
+    owner = "oidcsso";
     path = "${stateDir}/.env";
     mode = "0440";
     sopsFile = ./secrets.yaml;
   };
 
   users = {
-    groups.oidc-sso = { };
-    users.oidc-sso = {
-      group = "oidc-sso";
+    groups.oidcsso = { };
+    users.oidcsso = {
+      group = "oidcsso";
       isSystemUser = true;
     };
   };

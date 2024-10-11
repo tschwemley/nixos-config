@@ -85,11 +85,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728620586,
-        "narHash": "sha256-g7uBk8+HgvHPqznqhtUAC+3HB+fR5z5VQr80V+Zzi0g=",
+        "lastModified": 1728621643,
+        "narHash": "sha256-UF85InlOqGTw+7ZLyI3Du423vYtbaYB12R2FfJlrlCY=",
         "ref": "refs/heads/main",
-        "rev": "f33ae4e0d998c5a6d3b1024978e274a46efcb70d",
-        "revCount": 12,
+        "rev": "e3837a355711c6614c29014ef78122a760b33f37",
+        "revCount": 13,
         "type": "git",
         "url": "https://git.schwem.io/schwem/dashboard"
       },
@@ -841,11 +841,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728619974,
-        "narHash": "sha256-VeoynHGd8fktS0RaH22I6Ezvjvl5mYTYtxfeZBz2Qvg=",
+        "lastModified": 1728621607,
+        "narHash": "sha256-Pf08/3uRu5LVVHAI6a58667ItRS3x7X49smP2xvIEts=",
         "ref": "refs/heads/main",
-        "rev": "d71ab87ee39cca8fdd60309645234b68675bc6be",
-        "revCount": 28,
+        "rev": "d74da3af444a59ba9acd8c9c414988f08b39948c",
+        "revCount": 29,
         "type": "git",
         "url": "https://git.schwem.io/schwem/oidcsso"
       },

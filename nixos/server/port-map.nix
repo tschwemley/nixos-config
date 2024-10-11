@@ -19,7 +19,7 @@
     it-tools = "7001";
     nginx-sso = "8082";
     nzbhydra2 = "5076";
-    oidc-sso = "1337";
+    oidcsso = "1337";
     priviblur = "8040";
     proxitok = "8050";
     redlib = "8180";

@@ -14,23 +14,27 @@ in
       error_page 401 = @error401;
     '';
 
-    locations = {
-      "/" = {
-        proxyPass = "http://127.0.0.1:${config.portMap.dashboard}";
-        extraConfig = ''
-          auth_request .auth;
-        '';
-      };
+    locations =
+      let
+        baseUrl = "http://127.0.0.1:${config.portMap.dashboard}";
+      in
+      {
+        "/" = {
+          proxyPass = baseUrl;
+          extraConfig = ''
+            auth_request .auth;
+          '';
+        };
 
-      ".auth" = {
-        proxyPass = "http://127.0.0.1:${config.portMap.oidc-sso}/auth";
-        extraConfig = ''
-          internal;
-        '';
-      };
+        ".auth" = {
+          proxyPass = "${baseUrl}/auth";
+          extraConfig = ''
+            internal;
+          '';
+        };
 
-      "@error401".return = "302 https://auth.schwem.io/login?rd=https://dash.schwem.io";
-    };
+        "@error401".return = "302 https://auth.schwem.io/login?rd=https://dash.schwem.io";
+      };
   };
 
   systemd.services.dashboard = {
@@ -43,7 +47,7 @@ in
       SyslogIdentifier = "dashboard";
       WorkingDirectory = stateDir;
 
-      ExecStart = "${pkg}/bin/dashboard -e ${config.sops.secrets.dashboard_env.path}";
+      ExecStart = "${pkg}/bin/dashboard -e ${config.sops.secrets.dashboard_env.path} -p ${config.portMap.dashboard}";
 
       # Hardening options
       LockPersonality = "yes";
