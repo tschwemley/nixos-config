@@ -5,20 +5,19 @@
   ...
 }:
 let
-  keycloakPkg = pkgs.keycloak.overrideAttrs (_: rec {
-    version = "24.0.5";
-    src = pkgs.fetchzip {
-      url = "https://github.com/keycloak/keycloak/releases/download/${version}/keycloak-${version}.zip";
-      hash = "sha256-lf1miVEGQvPbmlOZMCXUyX/pKE+JoJFawhjVEPJDJ6s=";
-    };
-  });
+  keycloakPkg =
+    (pkgs.keycloak.overrideAttrs (_: rec {
+      version = "25.0.0";
+      src = pkgs.fetchzip {
+        url = "https://github.com/keycloak/keycloak/releases/download/${version}/keycloak-${version}.zip";
+        hash = "sha256-EsxUDYFZ0HKNjVvPylMLyg15IuAR9sbP0DRIQV3xMB0=";
+      };
+    })).override
+      {
+        extraFeatures = [ "persistent-user-sessions" ];
+      };
 in
 {
-  # TODO: this is really bad as it disables ALL assertions... fix this soon. For now I don't have the time to updgrade
-  # keycloak properly and the locked version isn't working due to a new assertion being added to the settings object.
-  assertions = lib.mkForce [ ];
-
-  environment.systemPackages = [ keycloakPkg ];
   services.nginx.virtualHosts."auth.schwem.io" =
     let
       ip = "127.0.0.1";
@@ -55,17 +54,14 @@ in
 
     package = lib.mkForce keycloakPkg;
 
-    settings = lib.mkForce {
-      hostname = "auth.schwem.io";
-      # this is important to prevent endless loading admin page
-      hostname-admin-url = "https://auth.schwem.io";
+    settings = {
+      features = "persistent-user-sessions";
+      hostname = "https://auth.schwem.io";
+      hostname-admin = "https://auth.schwem.io";
+      http-enabled = true;
       http-port = 8480;
-      # proxy-headers = "forwarded|xforwarded";
-      proxy = "edge";
-      transaction-xa-enable = false;
+      proxy-headers = "xforwarded";
     };
-
-    # initialAdminPassword = "<set_to_rand_string>"; # change on first login
   };
 
   sops.secrets.keycloak_db_password = {

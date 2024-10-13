@@ -47,7 +47,9 @@ in
       SyslogIdentifier = "dashboard";
       WorkingDirectory = stateDir;
 
-      ExecStart = "${pkg}/bin/dashboard -e ${config.sops.secrets.dashboard_env.path} -p ${config.portMap.dashboard}";
+      ExecStart = "${pkg}/bin/dashboard -e ${config.sops.secrets.dashboard_env.path} -port ${config.portMap.dashboard}";
+      Restart = "on-failure";
+      RestartSec = 30;
 
       # Hardening options
       LockPersonality = "yes";
