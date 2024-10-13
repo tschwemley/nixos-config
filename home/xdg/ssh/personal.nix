@@ -1,5 +1,7 @@
 { config, ... }:
 {
+  imports = [ ./. ];
+
   programs.ssh.matchBlocks = {
     charizard = {
       hostname = "charizard";
