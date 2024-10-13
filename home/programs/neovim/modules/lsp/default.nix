@@ -40,7 +40,10 @@ let
     formatting = [
       none-ls-nvim
     ];
-    lsp = [ nvim-lspconfig ];
+    lsp = [
+      nvim-lspconfig
+      lazydev-nvim
+    ];
     utility = [
       nvim-web-devicons
     ];
