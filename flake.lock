@@ -85,11 +85,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728806449,
-        "narHash": "sha256-xlhdK8DZwkVQs4ZWAR6FYvVe/p8pghwgAuTyVNav61w=",
+        "lastModified": 1728873183,
+        "narHash": "sha256-gC0AzXddeYpGabo88MQ+q7H8a/itdeKp/sWmvD8RUK8=",
         "ref": "refs/heads/main",
-        "rev": "548d2cab78cb7476dffe5fcde3713194b9be0e0e",
-        "revCount": 16,
+        "rev": "65984788cf107198657900e89dd6e2799e41fe3e",
+        "revCount": 17,
         "type": "git",
         "url": "https://git.schwem.io/schwem/dashboard"
       },
@@ -314,11 +314,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728726232,
-        "narHash": "sha256-8ZWr1HpciQsrFjvPMvZl0W+b0dilZOqXPoKa2Ux36bc=",
+        "lastModified": 1728791962,
+        "narHash": "sha256-nr5QiXwQcZmf6/auC1UpX8iAtINMtdi2mH+OkqJQVmU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d57112db877f07387ce7104b5ac346ede556d2d7",
+        "rev": "64c6325b28ebd708653dd41d88f306023f296184",
         "type": "github"
       },
       "original": {
@@ -405,11 +405,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1728752206,
-        "narHash": "sha256-r5xU/LqU4TrUOIouhYqrTZc1VY1zLQOOzbLsFCDlfpI=",
+        "lastModified": 1728861919,
+        "narHash": "sha256-VTbYjwDEaYyALE73n4HaWqxy+3Mg+x2yvVGScZ72Zkk=",
         "ref": "refs/heads/main",
-        "rev": "1822707c7e7394ce8c7572f2fe890763a307f499",
-        "revCount": 5332,
+        "rev": "e7fd0f5aec85c11a8eaf5e1abf8504f0a6d0710e",
+        "revCount": 5339,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -515,11 +515,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728774991,
-        "narHash": "sha256-VxdkhsFa4vq9NbfEomum1CkFhWVHbR2LSYy0qpw70ZA=",
+        "lastModified": 1728821111,
+        "narHash": "sha256-3dDOBfFkmusoF+6LWXkvQaSfzXb0DEqMEQQvEBbjN9Q=",
         "owner": "hyprwm",
         "repo": "hyprlock",
-        "rev": "71021cc3de1b651aacb85c283aa991b78bfc4278",
+        "rev": "11694528b4e0af597f25a5308d6872afd0b06807",
         "type": "github"
       },
       "original": {

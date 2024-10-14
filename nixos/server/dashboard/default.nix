@@ -7,6 +7,7 @@
 let
   pkg = inputs.dashboard.packages.${pkgs.system}.default;
   stateDir = "/var/lib/dashboard";
+  staticPath = "${inputs.dashboard.packages.${pkgs.system}.default}/bin/web/static";
 in
 {
   # services.nginx.virtualHosts."dash.schwem.io" = {
@@ -48,7 +49,7 @@ in
       SyslogIdentifier = "dashboard";
       WorkingDirectory = stateDir;
 
-      ExecStart = "${pkg}/bin/dashboard -e ${config.sops.secrets.dashboard_env.path} -port ${config.portMap.dashboard}";
+      ExecStart = "${pkg}/bin/dashboard -e ${config.sops.secrets.dashboard_env.path} -p ${config.portMap.dashboard} -static-path ${staticPath}";
       Restart = "on-failure";
       RestartSec = 30;
 
