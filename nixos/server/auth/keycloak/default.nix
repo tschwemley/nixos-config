@@ -57,7 +57,7 @@ in
     settings = {
       features = "persistent-user-sessions";
       hostname = "https://auth.schwem.io";
-      hostname-admin = "https://auth.schwem.io";
+      hostname-admin = "http://articuno:8480";
       http-enabled = true;
       http-port = 8480;
       proxy-headers = "xforwarded";
