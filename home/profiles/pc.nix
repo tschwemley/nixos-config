@@ -14,12 +14,12 @@ in
     ../programs/ai
     ../programs/browsers
     ../programs/communication
+    ../programs/gnome
 
     ../programs/aseprite.nix
     ../programs/bambu-studio.nix
     ../programs/bitwarden.nix
     ../programs/glow.nix
-    ../programs/gtk.nix
     ../programs/jellyfin.nix
     ../programs/jira-cli.nix
     ../programs/khal.nix
@@ -36,7 +36,9 @@ in
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
     ../xdg
+    ../xdg/ssh/servers.nix
     ../xdg/ssh/personal.nix
+    ../xdg/ssh/work.nix
 
     # TODO: go through and decide which to keep and which to remove
     # ../programs/cad.nix
@@ -49,8 +51,4 @@ in
     homeDirectory = "/home/schwem";
     username = "schwem";
   };
-
-  # TODO: move all of the below out if keeping
-  # Also sets org.freedesktop.appearance color-scheme
-  dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 }

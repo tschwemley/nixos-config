@@ -1,5 +1,10 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    brave
+{ pkgs, ... }:
+{
+  home.packages = [
+    (pkgs.brave.override {
+      commandLineArgs = [
+        "--enable-features=TouchpadOverscrollHistoryNavigation"
+      ];
+    })
   ];
 }
