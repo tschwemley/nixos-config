@@ -25,9 +25,6 @@ in
     in
     {
       locations = {
-        "/admin" = {
-          proxyPass = "http://${ip}:${port}/admin";
-        };
         "/js" = {
           proxyPass = "http://${ip}:${port}/js";
         };
