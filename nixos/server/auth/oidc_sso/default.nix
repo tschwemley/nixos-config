@@ -39,6 +39,8 @@ in
       WorkingDirectory = stateDir;
 
       ExecStart = "${pkg}/bin/oidcsso -e ${config.sops.secrets.oidc_sso_env.path}";
+      Restart = "on-failure";
+      RestartSec = 30;
 
       # Hardening options
       LockPersonality = "yes";
