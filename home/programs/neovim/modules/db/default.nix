@@ -1,9 +1,10 @@
 {
-  config,
   pkgs,
   ...
-}: {
+}:
+{
   programs.neovim.plugins = with pkgs.vimPlugins; [
+    nvim-dbee
     vim-dadbod
     vim-dadbod-completion
     vim-dadbod-ui

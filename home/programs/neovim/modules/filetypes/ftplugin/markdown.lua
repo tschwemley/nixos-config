@@ -1,5 +1,5 @@
 require("schwem.helpers").set_tabs(2)
 
-vim.opt_local.breakindent = true
-vim.opt_local.linebreak = true
-vim.opt_local.wrap = true
+vim.o_local.breakindent = true
+vim.o_local.linebreak = true
+vim.o_local.wrap = true

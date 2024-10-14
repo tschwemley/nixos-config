@@ -21,7 +21,6 @@ let
     ];
 
     formatting = with pkgs; [
-      # alejandra
       golangci-lint
       golines
       gotools
@@ -59,6 +58,8 @@ in
   };
 
   xdg.configFile = {
+    "nvim/lua/lspconfigs".source = ./lspconfigs;
+
     "nvim/after/plugin/lsp/keymaps.lua".source = ./keymaps.lua;
     "nvim/after/plugin/lsp/lsp.lua".source = ./lsp.lua;
     "nvim/after/plugin/lsp/none_ls.lua".source = ./none_ls.lua;

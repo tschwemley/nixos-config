@@ -13,6 +13,7 @@
     vim-fugitive
     vim-speeddating
     vim-surround
+    vlog
   ];
 
   xdg.configFile = {

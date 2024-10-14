@@ -4,65 +4,39 @@ local lspconfig = require("lspconfig")
 ---------------------------------------------------------------------------------------------------
 --- LSP
 ---------------------------------------------------------------------------------------------------
-local capabilities =
-	vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(), cmp_lsp.default_capabilities())
+local defaultConfig = {
+	autostart = true,
+	-- this adds nvim-cmp capabilities to each lsp server in list
+	capabilities = vim.tbl_deep_extend(
+		"force",
+		{},
+		vim.lsp.protocol.make_client_capabilities(),
+		cmp_lsp.default_capabilities()
+	),
+}
 
 local servers = {
 	"bashls",
 	"gopls",
 	"htmx",
-	-- "intelephense",
-	-- "lua_ls",
+	"intelephense",
+	"lua_ls",
 	"nil_ls",
 	"sqls",
 	"taplo", -- taplo is for toml
-	"templ",
 	"ts_ls",
 }
 
 for _, lsp in ipairs(servers) do
-	lspconfig[lsp].setup({
-		autostart = true,
-		capabilities = capabilities, -- this adds nvim-cmp capabilities to each lsp server in list
-	})
+	local config = defaultConfig
+
+	-- Check if a configuration file exists for the current LSP server
+	local configPath = vim.fn.stdpath("config") .. "/lua/lspconfigs/" .. lsp .. ".lua"
+	if vim.uv.fs_stat(configPath) then
+		-- Load the settings from the configuration file and merge them into the default setup options
+		config = vim.tbl_deep_extend("force", config, require("lspconfigs." .. lsp))
+	end
+
+	-- Set up the LSP server with the merged config
+	lspconfig[lsp].setup(config)
 end
-
--- TODO: the servers below here should be handled the same as other servers once migrated fully to defining settings
--- in the ./servers directory
-lspconfig.intelephense.setup({
-	autostart = true,
-	capabilities = capabilities,
-	settings = {
-		intelephense = {
-			files = {
-				exclude = {
-					"**/.git/**",
-					"**/.svn/**",
-					"**/.hg/**",
-					"**/CVS/**",
-					"**/.DS_Store/**",
-					"**/node_modules/**",
-					"**/bower_components/**",
-					"**/vendor/**/{Tests,tests}/**",
-					"**/.history/**",
-					"**/vendor/**/vendor/**",
-					"/nix/store/**",
-				},
-			},
-		},
-	},
-})
-
-lspconfig.lua_ls.setup({
-	capabilities = capabilities,
-	settings = {
-		Lua = {
-			autostart = true,
-			capabilities = capabilities,
-			runtime = { version = "Lua 5.1" },
-			diagnostics = {
-				globals = { "vim", "it", "describe", "before_each", "after_each" },
-			},
-		},
-	},
-})

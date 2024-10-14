@@ -1,10 +1,6 @@
 vim.g.mapleader = " "
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
-
--- vim.keymap.set('n', '<c-h>', '<c-w>h', { noremap = true })
--- vim.keymap.set('n', '<c-j>', '<c-w>j', { noremap = true })
--- vim.keymap.set('n', '<c-k>', '<c-w>k', { noremap = true })
--- vim.keymap.set('n', '<c-l>', '<c-w>l', { noremap = true })
+vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
 
 vim.keymap.set("n", "<leader>bb", "<cmd>BufferLineCyclePrev<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>bn", "<cmd>BufferLineCycleNext<cr>", { noremap = true })

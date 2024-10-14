@@ -20,7 +20,7 @@ vim.keymap.set('n', '<leader>tq', '<cmd>Trouble qflist toggle<cr>', { noremap = 
 -- command to automatically watch log
 vim.api.nvim_create_user_command('WatchTail', 'set autoread | au CursorHold * checktime | call feedkeys("G")', {})
 -- vim.api.nvim_create_user_command('WatchTail', function()
---     vim.opt.autoread = true
+--     vim.o.autoread = true
 --     vim.api.nvim_create_autocmd("CursorHold", {
 --         pattern = "*",
 --         command = "checktime"
