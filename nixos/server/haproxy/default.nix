@@ -44,6 +44,7 @@ in
         http-request set-header X-Forwarded-Proto https
         http-request set-header X-Forwarded-Real-IP %[src]
 
+        acl domain_default hdr(host) -i schwem.io
         acl domain_auth hdr(host) -i auth.schwem.io
         acl domain_dash hdr(host) -i dash.schwem.io
         acl domain_db hdr(host) -i db.schwem.io
@@ -67,7 +68,8 @@ in
         acl domain_twitch hdr(host) -i twitch.schwem.io twitch.api.schwem.io
 
         use_backend auth if domain_auth
-        use_backend articuno if domain_dash
+        use_backend articuno if domain_default
+        # use_backend articuno if domain_dash
         use_backend cockroach_web if domain_db
         use_backend draw if domain_draw
         use_backend freetar if domain_freetar

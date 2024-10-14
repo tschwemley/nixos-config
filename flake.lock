@@ -85,11 +85,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728803399,
-        "narHash": "sha256-9xL6qSbisrTgwMi6AS9ScWPwjZEcbsCWCKfNGOKiWPA=",
+        "lastModified": 1728806449,
+        "narHash": "sha256-xlhdK8DZwkVQs4ZWAR6FYvVe/p8pghwgAuTyVNav61w=",
         "ref": "refs/heads/main",
-        "rev": "de672064b33c54e39bf24b1d022c9c297d4c69f8",
-        "revCount": 15,
+        "rev": "548d2cab78cb7476dffe5fcde3713194b9be0e0e",
+        "revCount": 16,
         "type": "git",
         "url": "https://git.schwem.io/schwem/dashboard"
       },

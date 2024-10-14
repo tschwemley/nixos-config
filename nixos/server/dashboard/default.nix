@@ -9,7 +9,8 @@ let
   stateDir = "/var/lib/dashboard";
 in
 {
-  services.nginx.virtualHosts."dash.schwem.io" = {
+  # services.nginx.virtualHosts."dash.schwem.io" = {
+  services.nginx.virtualHosts."schwem.io" = {
     extraConfig = ''
       error_page 401 = @error401;
     '';
@@ -33,7 +34,7 @@ in
           '';
         };
 
-        "@error401".return = "302 https://auth.schwem.io/login?rd=https://dash.schwem.io";
+        "@error401".return = "302 https://auth.schwem.io/login?rd=https://schwem.io";
       };
   };
 
