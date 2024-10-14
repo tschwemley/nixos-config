@@ -10,7 +10,7 @@ self': [
       ;
 
     vimPlugins = prev.vimPlugins // {
-      inherit (self'.packages) codecompanion;
+      inherit (self'.packages) codecompanion vlog;
     };
   })
 ]
