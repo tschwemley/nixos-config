@@ -25,6 +25,9 @@ in
     in
     {
       locations = {
+        "/admin" = {
+          proxyPass = "http://${ip}:${port}/admin";
+        };
         "/js" = {
           proxyPass = "http://${ip}:${port}/js";
         };
@@ -54,7 +57,7 @@ in
     settings = {
       features = "persistent-user-sessions";
       hostname = "https://auth.schwem.io";
-      hostname-admin = "http://articuno:8480";
+      hostname-admin = "https://auth.schwem.io";
       http-enabled = true;
       http-port = 8480;
       proxy-headers = "xforwarded";
