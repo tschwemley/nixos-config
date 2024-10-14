@@ -22,6 +22,10 @@
         '';
       };
 
+      "/robots.txt" = {
+        proxyPass = ".robots";
+      };
+
       # ".auth" = {
       #   proxyPass = "http://articuno:8082/auth";
       #   extraConfig = "internal;";

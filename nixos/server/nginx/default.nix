@@ -19,14 +19,10 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
 
-    tailscaleAuth = {
-      enable = true;
-      expectedTailnet = "wyvern-map.ts.net";
-      virtualHosts = [
-        "monitor.schwem.io"
-        "threadfin.schwem.io"
-      ];
-    };
+    virtualhosts.locations.".robots".extraConfig = ''
+      add_header Content-Type text/plain;
+      return = 200 "User-agent: *\nDisallow: /\n";
+    '';
   };
 
   users.users.nginx.extraGroups = [ "users" ];
