@@ -28,6 +28,8 @@ in
           '';
         };
 
+        "/robots.txt".proxyPass = ".request";
+
         ".auth" = {
           proxyPass = "http://127.0.0.1:${config.portMap.oidcsso}/auth";
           extraConfig = ''

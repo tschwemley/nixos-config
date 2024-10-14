@@ -15,16 +15,9 @@
       "/" = {
         proxyPass = "http://127.0.0.1:${config.portMap.priviblur}";
         proxyWebsockets = true;
-        extraConfig = ''
-          # auth_request .auth;
-          # auth_request_set $cookie $upstream_http_set_cookie;
-          # add_header Set-Cookie $cookie;
-        '';
       };
 
-      "/robots.txt" = {
-        proxyPass = ".robots";
-      };
+      "/robots.txt".proxyPass = ".robots";
 
       # ".auth" = {
       #   proxyPass = "http://articuno:8082/auth";

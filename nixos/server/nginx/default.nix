@@ -19,10 +19,12 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
 
-    virtualHosts."localhost".locations.".robots".extraConfig = ''
-      add_header Content-Type text/plain;
-      return = 200 "User-agent: *\nDisallow: /\n";
-    '';
+    virtualHosts."localhost".locations.".robots" = {
+      extraConfig = ''
+        add_header Content-Type text/plain;
+      '';
+      return = "200 \"User-agent: *\nDisallow: /\n\"";
+    };
   };
 
   users.users.nginx.extraGroups = [ "users" ];

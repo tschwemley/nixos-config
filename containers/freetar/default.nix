@@ -1,8 +1,12 @@
 { config, ... }:
 {
   services.nginx.virtualHosts."freetar.schwem.io" = {
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:${config.portMap.freetar}";
+    locations = {
+      "/" = {
+        proxyPass = "http://127.0.0.1:${config.portMap.freetar}";
+      };
+
+      "/robots.txt".proxyPass = ".robots";
     };
   };
 
