@@ -19,7 +19,7 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
 
-    virtualhosts.locations.".robots".extraConfig = ''
+    virtualHosts."localhost".locations.".robots".extraConfig = ''
       add_header Content-Type text/plain;
       return = 200 "User-agent: *\nDisallow: /\n";
     '';
