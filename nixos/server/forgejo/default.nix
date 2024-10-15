@@ -18,9 +18,13 @@
 
   services.nginx = {
     virtualHosts."git.schwem.io" = {
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:${config.portMap.forgejo}";
-        extraConfig = "client_max_body_size 512M;";
+      locations = {
+        "/" = {
+          proxyPass = "http://127.0.0.1:${config.portMap.forgejo}";
+          extraConfig = "client_max_body_size 512M;";
+        };
+
+        "/robots.txt".root = "/etc/nginx/static/";
       };
     };
   };
