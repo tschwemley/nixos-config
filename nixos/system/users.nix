@@ -11,6 +11,8 @@
 
     home-manager.users.root = {
       imports = [ ../../home/profiles ];
+      home.homeDirectory = "/root";
+      # TODO: switch age key file over to /etc?
       # sops.age.keyFile = "/etc/sops/age-keys.txt";
       sops.age.keyFile = "/root/.config/sops/age/keys.txt";
     };
