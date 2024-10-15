@@ -116,11 +116,13 @@ in
 
       backend git
         http-request set-header X-Forwarded-Proto https
-        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
+        # server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
+        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
 
       backend git_ssh
         mode tcp
-        server jolteon_ssh jolteon:2222 check
+        # server jolteon_ssh jolteon:2222 check
+        server zapados zapados:2222 check
 
       backend rimgo
         http-request set-header X-Forwarded-Proto https
