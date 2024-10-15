@@ -204,11 +204,9 @@
 
   services.nginx.virtualHosts."search.schwem.io" = {
     locations = {
-      "/" = {
-        extraConfig = ''
-          uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};
-        '';
-      };
+      "/".extraConfig = "uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};";
+
+      "/robots.txt".root = "/etc/nginx/static/";
     };
   };
 }

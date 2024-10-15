@@ -1,5 +1,5 @@
 {
-  environment.etc."nginx/robots.txt".text = ''
+  environment.etc."nginx/static/robots.txt".text = ''
     User-agent: *
     Disallow: /
   '';
@@ -23,14 +23,6 @@
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-
-    virtualHosts."schwem.io".locations."/robots.txt" = {
-      alias = "/etc/nginx/robots.txt";
-      # extraConfig = ''
-      #   add_header Content-Type text/plain;
-      # '';
-      # return = "200 \"User-agent: *\nDisallow: /\n\"";
-    };
   };
 
   users.users.nginx.extraGroups = [ "users" ];

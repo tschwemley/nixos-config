@@ -6,31 +6,11 @@
 }:
 {
   services.nginx.virtualHosts."tumblr.schwem.io" = {
-    # TODO: use another proxy or remove the commented out items
-    # extraConfig = ''
-    #   error_page 401 = @error401;
-    # '';
-
     locations = {
       "/" = {
         proxyPass = "http://127.0.0.1:${config.portMap.priviblur}";
         proxyWebsockets = true;
-        extraConfig = ''
-          # auth_request .auth;
-          # auth_request_set $cookie $upstream_http_set_cookie;
-          # add_header Set-Cookie $cookie;
-        '';
       };
-
-      # "/robots.txt".proxyPass = ".robots";
-
-      # ".auth" = {
-      #   proxyPass = "http://articuno:8082/auth";
-      #   extraConfig = "internal;";
-      # };
-      #
-      # "/logout".return = "302 https://auth.schwem.io/logout?go=https://$http_host";
-      # "@error401".return = "302 https://auth.schwem.io/login?go=https://$http_host$request_uri";
     };
   };
 

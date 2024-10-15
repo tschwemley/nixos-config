@@ -10,7 +10,6 @@ let
   staticPath = "${inputs.dashboard.packages.${pkgs.system}.default}/bin/web/static";
 in
 {
-  # services.nginx.virtualHosts."dash.schwem.io" = {
   services.nginx.virtualHosts."schwem.io" = {
     extraConfig = ''
       error_page 401 = @error401;
@@ -28,7 +27,7 @@ in
           '';
         };
 
-        # "/robots.txt".proxyPass = ".request";
+        "/robots.txt".root = "/etc/nginx/static/";
 
         ".auth" = {
           proxyPass = "http://127.0.0.1:${config.portMap.oidcsso}/auth";

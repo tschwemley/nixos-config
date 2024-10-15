@@ -1,8 +1,10 @@
 { config, ... }:
 {
   services.nginx.virtualHosts."pinterest.schwem.io" = {
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:${config.portMap.binternet}";
+    locations = {
+      "/".proxyPass = "http://127.0.0.1:${config.portMap.binternet}";
+
+      "/robots.txt".root = "etc/nginx/static/";
     };
   };
 
