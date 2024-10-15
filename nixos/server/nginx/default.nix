@@ -25,7 +25,7 @@
     recommendedTlsSettings = true;
 
     virtualHosts."schwem.io".locations."/robots.txt" = {
-      root = "/etc/nginx/robots.txt";
+      alias = "/etc/nginx/robots.txt";
       # extraConfig = ''
       #   add_header Content-Type text/plain;
       # '';
