@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./brave.nix
     ./librewolf.nix
@@ -6,5 +7,8 @@
     ./ungoogled-chromium.nix
   ];
 
-  home.packages = with pkgs; [lynx];
+  home.packages = with pkgs; [
+    lynx
+    tor-browser
+  ];
 }

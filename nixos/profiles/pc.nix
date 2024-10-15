@@ -39,9 +39,8 @@
     dconf.enable = true;
   };
 
-  services.getty.autologinUser = "schwem";
-
-  # unnecessary when only using network manager for wifi connections
-  # systemd.network.wait-online.enable = false;
-  # systemd.services.NetworkManager-wait-online.enable = false;
+  services = {
+    getty.autologinUser = "schwem";
+    tailscale.extraUpFlags = [ "--advertise-tags=tag:pc" ];
+  };
 }
