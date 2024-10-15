@@ -2,13 +2,14 @@
 {
   imports = [ ./config.nix ];
 
-  services.nginx.virtualHosts."sabnzbd.schwem.io" = {
-    locations = {
-      "/" = {
-        proxyPass = "http://127.0.0.1:${config.portMap.sabnzbd}";
-      };
-    };
-  };
+  # TODO: remove or keep -- for now leaning towards only allowing this to be accessible internally
+  # services.nginx.virtualHosts."sabnzbd.schwem.io" = {
+  #   locations = {
+  #     "/" = {
+  #       proxyPass = "http://127.0.0.1:${config.portMap.sabnzbd}";
+  #     };
+  #   };
+  # };
 
   services.sabnzbd = {
     enable = true;
