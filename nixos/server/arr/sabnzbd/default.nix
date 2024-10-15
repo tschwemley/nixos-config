@@ -13,7 +13,7 @@
 
   services.sabnzbd = {
     enable = true;
-    configFile = config.sops.templates."sabnzbd_ini".path;
+    configFile = config.sops.templates."sabnzbd.ini".path;
   };
 
   systemd.tmpfiles.rules = [
