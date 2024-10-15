@@ -16,7 +16,7 @@
     templates."sabnzbd.ini" = {
       group = "sabnzbd";
       owner = "sabnzbd";
-      mode = "0440";
+      mode = "0640";
       path = "/var/lib/sabnzbd/sabnzbd.ini";
       content =
         # ini
