@@ -19,7 +19,7 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
 
-    virtualHosts."localhost".locations.".robots" = {
+    virtualHosts."schwem.io".locations."/robots.txt" = {
       extraConfig = ''
         add_header Content-Type text/plain;
       '';
