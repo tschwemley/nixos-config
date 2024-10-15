@@ -3,7 +3,7 @@
     ../../profiles/proxmox.nix
 
     # server imports
-    ../../server/forgejo
+    # ../../server/forgejo
     ../../../containers/binternet
     ../../../containers/it-tools
     ../../../containers/priviblur
