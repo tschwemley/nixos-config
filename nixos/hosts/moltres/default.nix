@@ -6,7 +6,6 @@
     ../../../containers/excalidraw
     ../../../containers/freetar
     # ../../../containers/threadfin
-    # ../../server/cockroachdb
     ../../server/redlib
     ../../server/rimgo
     ../../server/searxng
