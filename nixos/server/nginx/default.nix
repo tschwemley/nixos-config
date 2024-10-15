@@ -1,4 +1,9 @@
 {
+  environment.etc."nginx/robots.txt".text = ''
+    User-agent: *
+    Disallow: /
+  '';
+
   networking.firewall.allowedTCPPorts = [ 8080 ];
 
   services.nginx = {
@@ -20,10 +25,11 @@
     recommendedTlsSettings = true;
 
     virtualHosts."schwem.io".locations."/robots.txt" = {
-      extraConfig = ''
-        add_header Content-Type text/plain;
-      '';
-      return = "200 \"User-agent: *\nDisallow: /\n\"";
+      root = "/etc/nginx/robots.txt";
+      # extraConfig = ''
+      #   add_header Content-Type text/plain;
+      # '';
+      # return = "200 \"User-agent: *\nDisallow: /\n\"";
     };
   };
 
