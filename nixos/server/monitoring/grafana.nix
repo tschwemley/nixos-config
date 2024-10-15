@@ -1,5 +1,6 @@
-# TODO: setup w/ cockroachdb. By default it's using sqlite
-{config, ...}: {
+# TODO: setup w/ postgresql. By default it's using sqlite
+{ config, ... }:
+{
   services.grafana = {
     enable = true;
     settings = {

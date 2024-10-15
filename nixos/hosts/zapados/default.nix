@@ -3,7 +3,6 @@
     ../../profiles/proxmox.nix
 
     # server imports
-    # ../../server/cockroachdb
     ../../../containers/binternet
     ../../../containers/it-tools
     ../../../containers/priviblur

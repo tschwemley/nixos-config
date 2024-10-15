@@ -77,7 +77,6 @@ in
     hostName = "charizard";
     networkmanager.enable = true;
     useDHCP = lib.mkDefault true;
-    wireless.enable = true;
   };
 
   services.resolved.dnsovertls = lib.mkDefault "true";
@@ -93,7 +92,4 @@ in
   time.timeZone = "America/Detroit";
 
   users.mutableUsers = true; # allow mutable users on non-servers
-
-  # TODO: is this still necessary? was used for completion, but I think this may be defined by default
-  environment.pathsToLink = [ "/share/zsh" ];
 }

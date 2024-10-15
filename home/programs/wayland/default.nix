@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 # Wayland config
 {
   home = {
@@ -23,7 +23,7 @@
       NIXOS_OZONE_WL = "1";
 
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-      QT_QPA_PLATFORM = "wayland;xcb"; # tells qt to use wayland, falling back if necessary
+      QT_QPA_PLATFORM = "wayland";
       QT_WAYLAND_DISABLE_WINDOW_DECORATION = "1";
 
       # make SDL2 applications use wayland
