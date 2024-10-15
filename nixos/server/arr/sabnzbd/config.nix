@@ -13,7 +13,7 @@
         "sabnzbd_servers" = default;
       };
 
-      templates."sabnzbd.ini" = {
+      templates."sabnzbd_ini" = {
         # mode = "0444";
         owner = "sabnzbd";
         group = "sabnzbd";
