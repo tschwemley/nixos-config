@@ -22,23 +22,30 @@ in
       {
         "/" = {
           proxyPass = baseUrl;
-          extraConfig = ''
-            auth_request .auth;
-          '';
+          # extraConfig = ''
+          #   auth_request .auth;
+          # '';
         };
 
         "/robots.txt".root = "/etc/nginx/static/";
 
-        ".auth" = {
-          proxyPass = "http://127.0.0.1:${config.portMap.oidcsso}/auth";
-          extraConfig = ''
-            internal;
-          '';
-        };
-
-        "@error401".return = "302 https://auth.schwem.io/login?rd=https://schwem.io";
+        # ".auth" = {
+        #   proxyPass = "http://127.0.0.1:${config.portMap.oidcsso}/auth";
+        #   extraConfig = ''
+        #     internal;
+        #   '';
+        # };
+        #
+        # "@error401".return = "302 https://auth.schwem.io/login?rd=https://schwem.io";
       };
   };
+
+  services.oidcsso.protectedHosts = [
+    {
+      host = "schwem.io";
+      redirect = "https://schwem.io";
+    }
+  ];
 
   systemd.services.dashboard = {
     enable = true;

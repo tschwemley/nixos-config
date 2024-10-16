@@ -1,32 +1,61 @@
 {
   config,
   inputs,
+  lib,
   pkgs,
   ...
 }:
 let
   pkg = inputs.oidcsso.packages.${pkgs.system}.default;
   stateDir = "/var/lib/oidc-sso";
+
+  protectedHosts = builtins.listToAttrs (
+    lib.lists.forEach config.services.oidcsso.protectedHosts (vhost: {
+      name = vhost.host;
+      value = {
+        extraConfig = ''
+          error_page 401 = @error401;
+        '';
+
+        locations = {
+          "/".extraConfig = "auth_request .auth;";
+
+          ".auth" = {
+            proxyPass = "http://127.0.0.1:${config.portMap.oidcsso}/auth";
+            extraConfig = ''
+              internal;
+            '';
+          };
+
+          "@error401".return = "302 https://auth.schwem.io/login?rd=${vhost.redirect}";
+        };
+      };
+    })
+  );
 in
 {
-  services.nginx.virtualHosts."auth.schwem.io".locations =
-    let
-      proxyPass = "http://127.0.0.1:${config.portMap.oidcsso}$request_uri";
-    in
-    {
-      "/auth" = {
-        inherit proxyPass;
+  imports = [ ./options.nix ];
+
+  services.nginx.virtualHosts = {
+    "auth.schwem.io".locations =
+      let
+        proxyPass = "http://127.0.0.1:${config.portMap.oidcsso}$request_uri";
+      in
+      {
+        "/auth" = {
+          inherit proxyPass;
+        };
+        "/auth/callback" = {
+          inherit proxyPass;
+        };
+        "/check-token" = {
+          inherit proxyPass;
+        };
+        "/login" = {
+          inherit proxyPass;
+        };
       };
-      "/auth/callback" = {
-        inherit proxyPass;
-      };
-      "/check-token" = {
-        inherit proxyPass;
-      };
-      "/login" = {
-        inherit proxyPass;
-      };
-    };
+  } // protectedHosts;
 
   systemd.services.oidc-sso = {
     enable = true;
