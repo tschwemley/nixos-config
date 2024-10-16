@@ -40,9 +40,7 @@
           auto_browser = 1
           language = en
           enable_https_verification = 1
-          host = 0.0.0.0
-          ; host = 127.0.0.1
-          ; host=jolteon
+          host = 127.0.0.1
           port = ${config.portMap.sabnzbd}
           https_port = ""
           username = ""
@@ -178,7 +176,7 @@
           ipv6_servers = 1
           url_base = /sabnzbd
           host_whitelist = localhost,${config.networking.hostName},
-          local_ranges = 100.64.0.0/10,
+          local_ranges = ,
           max_url_retries = 10
           downloader_sleep_time = 10
           receive_threads = 2
