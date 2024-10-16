@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 let
   shellAliases = import ./aliases;
 in
 {
+  home.file.".zsh_completions".source = ./completions;
+
   programs.zsh = {
     inherit shellAliases;
 
@@ -10,9 +12,8 @@ in
     autocd = true;
     autosuggestion.enable = true;
     completionInit = ''
-      [[ ! -d  ~/.zsh-completions ]] && mkdir ~/.zsh-completions
-      fpath+=~/.zsh-completions
-      autoload -U compinit 
+      fpath+=~/.zsh_completions
+      autoload -U compinit && compinit 
     '';
     defaultKeymap = "emacs";
     enableCompletion = true;
@@ -29,8 +30,5 @@ in
         tail -f "$1" | bat --paging=never -l log
       }
     '';
-    sessionVariables = {
-      VISUAL = "nvim";
-    };
   };
 }

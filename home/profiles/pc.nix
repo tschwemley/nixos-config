@@ -1,14 +1,5 @@
-{ pkgs, ... }:
-let
-  git = import ../programs/git.nix {
-    inherit pkgs;
-    name = "Tyler Schwemley";
-    email = "tjschwem@gmail.com";
-  };
-in
 {
   imports = [
-    git
     ./.
     ../programs/ags
     ../programs/ai
@@ -50,5 +41,9 @@ in
   home = {
     homeDirectory = "/home/schwem";
     username = "schwem";
+
+    sessionVariables = {
+      VISUAL = "nvim";
+    };
   };
 }

@@ -1,5 +1,15 @@
+{ pkgs, ... }:
+let
+  git = import ../programs/git.nix {
+    inherit pkgs;
+    name = "Tyler Schwemley";
+    email = "tjschwem@gmail.com";
+  };
+in
 {
   imports = [
+    git
+
     ../programs/bat.nix
     ../programs/btop.nix
     ../programs/fzf.nix
