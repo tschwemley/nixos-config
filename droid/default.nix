@@ -10,14 +10,11 @@
     inputs.nix-on-droid.lib.nixOnDroidConfiguration {
       inherit pkgs;
       modules = [
-        { system.stateVersion = "24.05"; }
-        self.homeConfigurations.droid
-        # {
-        #   system.stateVersion = "24.11";
-        #   # home-manager.config = ../home/profiles/droid.nix;
-        #   # home-manager.config = self.homeConfigurations.droid;
-        #   home-manager = self.homeConfigurations.droid;
-        # }
+        {
+          system.stateVersion = "24.05";
+          # home-manager.config = ../home/profiles/droid.nix;
+          home-manager.config = self.homeConfigurations.droid.config;
+        }
       ];
     }
   );
