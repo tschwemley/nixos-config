@@ -6,7 +6,7 @@
 {
   flake.nixOnDroidConfigurations.default = withSystem "aarch64-linux" (
     { pkgs, ... }:
-    inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+    inputs.nix-on-droid.lib.nixOnDroidConfigurations {
       inherit pkgs;
       modules = [
         {
