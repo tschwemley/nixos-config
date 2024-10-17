@@ -16,6 +16,7 @@ let
               inherit inputs system;
             };
           }
+          inputs.sops-nix.homeManagerModule
         ] ++ extraModules;
       }
     );
