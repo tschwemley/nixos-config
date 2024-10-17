@@ -11,6 +11,7 @@ let
       nodePackages.typescript-language-server
       typescript
       sqls
+      yaml-language-server
     ];
 
     linters = with pkgs; [

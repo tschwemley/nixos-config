@@ -80,6 +80,19 @@ creation_rules:
           - *personal
           - *zapados
 
+  - path_regex: ^(./)?secrets/.*/*.yaml|json|env
+    key_groups:
+      - age:
+          - *personal
+          - *containers
+          - *articuno
+          - *eevee
+          - *flareon
+          - *jolteon
+          - *moltres
+          - *tentacool
+          - *zapados
+
   - path_regex: ^(./)?(nixos/)?(containers|modules|network|services|server)/(.*/)?(.*/)?(.*.yaml|.env)
     key_groups:
       - age:
