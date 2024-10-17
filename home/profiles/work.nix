@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 let
   git = import ../programs/git.nix {
     inherit pkgs;
     name = "Tyler Schwemley";
-    email = "tschwemley@zynga.com";
+    email = lib.mkForce "tschwemley@zynga.com";
   };
 in
 {
