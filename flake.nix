@@ -66,6 +66,11 @@
       };
     };
 
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
     neorg-overlay = {
@@ -116,6 +121,7 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "aarch64-darwin"
+        "aarch64-linux"
         "x86_64-linux"
       ];
 
@@ -138,6 +144,7 @@
         };
 
       imports = [
+        ./droid
         ./home
         ./nixos
         ./packages
