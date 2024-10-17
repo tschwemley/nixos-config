@@ -17,7 +17,7 @@ in
     ../programs/nnn.nix
     ../programs/ripgrep.nix
     ../xdg/ssh/default.nix
-    ../terminal
+    ../terminal/shell
   ];
 
   home.stateVersion = "24.05";

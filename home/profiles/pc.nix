@@ -24,9 +24,9 @@
     ../programs/wayland/hyprland.nix
     ../programs/wcalc.nix
     ../programs/wofi.nix
-    ../terminal/kitty
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
+    ../terminal/kitty
     ../xdg
     ../xdg/netrc.nix
     ../xdg/ssh/servers.nix
