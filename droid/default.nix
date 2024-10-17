@@ -12,13 +12,13 @@
       modules = [
         {
           system.stateVersion = "24.05";
-          # home-manager.config = ../home/profiles/droid.nix;
+          home-manager.config = ../home/profiles/droid.nix;
           # home-manager.config = self.homeConfigurations.droid.config;
-          home-manager.config =
-            { pkgs, ... }:
-            {
-              imports = [ ../home/profiles/droid.nix ];
-            };
+          # home-manager.config =
+          #   { pkgs, ... }:
+          #   {
+          #     imports = [ ../home/profiles/droid.nix ];
+          #   };
         }
       ];
     }
