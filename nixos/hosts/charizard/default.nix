@@ -22,6 +22,7 @@ let
   };
   ollama = import ../../../containers/ollama "/home/schwem/.ollama";
   open-webui = import ../../../containers/open-webui "/home/schwem/.open-webui";
+  sillytavern = import ../../../containers/sillytavern "/home/schwem/.sillytavern";
   user = (import ../../system/users.nix { inherit config pkgs; }).schwem;
 in
 {
@@ -31,6 +32,7 @@ in
     networking
     ollama
     open-webui
+    sillytavern
     user
     ./secrets.nix
     ../../system/boot/systemd.nix
@@ -85,7 +87,7 @@ in
   system.stateVersion = "24.05";
 
   services.tailscale.extraUpFlags = [
-    "--exit-node=100.84.59.97"
+    "--exit-node=us-chi-wg-302.mullvad.ts.net"
     "--exit-node-allow-lan-access=true"
     "--shields-up"
   ];

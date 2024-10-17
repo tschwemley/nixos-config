@@ -23,6 +23,10 @@ let
 in
 {
   flake.homeConfigurations = {
+    droid = mkHome "aarch64-linux" [
+      ./profiles/droid.nix
+    ];
+
     work = mkHome "aarch64-darwin" [
       ./profiles/work.nix
     ];

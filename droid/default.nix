@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   withSystem,
   ...
@@ -11,7 +12,8 @@
       modules = [
         {
           system.stateVersion = "24.11";
-          home-manager.config = ../home/profiles/default.nix;
+          home-manager.config = ../home/profiles/droid.nix;
+          # home-manager.config = self.homeConfigurations.droid;
         }
       ];
     }
