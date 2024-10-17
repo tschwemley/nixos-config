@@ -1,30 +1,43 @@
-{ config, pkgs, ... }:
 {
-  services.postgresql.ensureDatabases = [ "bitmagnet" ];
-  services.postgresql.ensureUsers = [
-    {
-      name = "bitmagnet";
-      ensureClauses = {
-
-      };
-    }
-  ];
+  config,
+  pkgs,
+  utils,
+  ...
+}:
+let
+  stateDir = "/var/lib/bitmagnet";
+in
+{
+  # services.postgresql.ensureDatabases = [ "bitmagnet" ];
+  # services.postgresql.ensureUsers = [
+  #   {
+  #     name = "bitmagnet";
+  #     ensureClauses = {
+  #       ensureDBOwnership = true;
+  #     };
+  #   }
+  # ];
 
   systemd.services.bitmagnet = {
     after = [
       "network.target"
+      "postgresql.service"
     ];
     description = "Bitmagnet indexer and crawler";
     wantedBy = [
       "multi-user.target"
     ];
-    environment = { };
+    wants = [ "postgresql.service" ];
     serviceConfig = {
       User = config.users.users.bitmagnet.name;
       Group = config.users.groups.bitmagnet.name;
+      EnvironmentFile = config.sops.secrets.bitmagnet_env.path;
       ExecStart = "${pkgs.bitmagnet}/bin/bitmagnet worker run --all";
       Restart = "on-failure";
       RestartSec = "15s";
+      StateDirectory = stateDir;
+
+      # hardening options
       UMask = "0077";
       CapabilityBoundingSet = "";
       LockPersonality = "true";
@@ -52,6 +65,13 @@
       SystemCallArchitectures = "native";
       SystemCallFilter = "@system-service ~@privileged";
     };
+  };
+
+  sops.secrets.bitmagnet_env = {
+    group = "bitmagnet";
+    owner = "bitmagnet";
+    path = "${stateDir}/.env";
+    sopsFile = ../../../secrets/server/bitmagnet.env;
   };
 
   users = {
