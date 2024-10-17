@@ -10,7 +10,7 @@
       inherit pkgs;
       modules = [
         {
-          system.stateVersion = "24.11";
+          system.stateVersion = "24.05";
           home-manager.config = ../home/profiles/default.nix;
         }
       ];

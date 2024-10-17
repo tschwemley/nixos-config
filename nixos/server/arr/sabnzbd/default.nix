@@ -2,21 +2,27 @@
 {
   imports = [ ./config.nix ];
 
-  # TODO: remove or keep -- for now leaning towards only allowing this to be accessible internally
-  # services.nginx.virtualHosts."sabnzbd.schwem.io" = {
-  #   locations = {
-  #     "/" = {
-  #       proxyPass = "http://127.0.0.1:${config.portMap.sabnzbd}";
-  #     };
-  #   };
-  # };
-
   services.sabnzbd = {
     enable = true;
     configFile = config.sops.templates."sabnzbd.ini".path;
   };
 
-  systemd.tmpfiles.rules = [
-    "d /storage/downloads 0660 sabznbd sabnzbd - -"
-  ];
+  systemd = {
+    services.sabznbd = {
+      after = [
+        "storage.mount"
+        "tailscaled.service"
+      ];
+      wants = [
+        "storage.mount"
+        "tailscaled.service"
+      ];
+    };
+
+    tmpfiles.rules = [
+      "d /storage/downloads 0660 sabznbd arr - -"
+    ];
+  };
+
+  users.users.sabnzbd.extraGroups = [ "arr" ];
 }

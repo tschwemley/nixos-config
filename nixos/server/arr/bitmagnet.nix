@@ -1,5 +1,15 @@
 { config, pkgs, ... }:
 {
+  services.postgresql.ensureDatabases = [ "bitmagnet" ];
+  services.postgresql.ensureUsers = [
+    {
+      name = "bitmagnet";
+      ensureClauses = {
+
+      };
+    }
+  ];
+
   systemd.services.bitmagnet = {
     after = [
       "network.target"
