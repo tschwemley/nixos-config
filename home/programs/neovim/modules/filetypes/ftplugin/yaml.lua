@@ -1,3 +1,3 @@
 require("ufo").detach()
 
-vim.o_local.foldenable = false
+vim.opt_local.foldenable = false
