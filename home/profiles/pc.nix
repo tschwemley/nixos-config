@@ -28,6 +28,7 @@
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
     ../xdg
+    ../xdg/netrc.nix
     ../xdg/ssh/servers.nix
     ../xdg/ssh/personal.nix
     ../xdg/ssh/work.nix

@@ -16,7 +16,6 @@ in
     ../programs/neovim
     ../programs/nnn.nix
     ../programs/ripgrep.nix
-    ../xdg/netrc.nix
     ../xdg/ssh/default.nix
     ../terminal
   ];
