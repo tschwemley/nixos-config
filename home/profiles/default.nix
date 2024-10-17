@@ -20,6 +20,6 @@ in
     ../terminal
   ];
 
-  home.stateVersion = "24.11";
+  home.stateVersion = "24.05";
   sops.defaultSopsFile = ../secrets.yaml;
 }
