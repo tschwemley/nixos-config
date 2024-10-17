@@ -1,3 +1,4 @@
+# TODO: when writing reference: https://docs.haproxy.org/2.4/configuration.html#4.1
 {lib, ...}:
 with lib; let
   modeOpt = mkOption {
