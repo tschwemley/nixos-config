@@ -12,7 +12,7 @@
     home-manager.users.root = {
       imports = [
         ../../home/profiles
-        ../xdg/netrc.nix
+        ../../home/xdg/netrc.nix
       ];
       home.homeDirectory = "/root";
 
