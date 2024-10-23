@@ -12,8 +12,8 @@ let
     # Basic startup
     "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox"
     "--confirm-legal-notice"
-    "--webui-port=${config.portMap.qtbittorentWeb}"
-    "--torrenting-port=${config.portMap.qbittorentTorrent}"
+    "--webui-port=${config.portMap.qtbittorrentWeb}"
+    "--torrenting-port=${config.portMap.qtbittorrentTorrent}"
     "-d"
   ];
 in
