@@ -5,7 +5,9 @@
     ../programs/ai
     ../programs/browsers
     ../programs/communication
+    ../programs/development
     ../programs/gnome
+    ../programs/music
 
     ../programs/aseprite.nix
     ../programs/bambu-studio.nix
@@ -15,7 +17,6 @@
     ../programs/jira-cli.nix
     ../programs/khal.nix
     ../programs/libreoffice.nix
-    ../programs/music
     ../programs/qt.nix
     ../programs/tailscale-systray.nix
     ../programs/tigervnc.nix
@@ -35,8 +36,6 @@
 
     # TODO: go through and decide which to keep and which to remove
     # ../programs/cad.nix
-    # ../programs/dbgate.nix
-    # ../programs/rustdesk.nix
     # ../programs/taskwarrior.nix
   ];
 
