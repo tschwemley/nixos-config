@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   imports = [
     ./options.nix
@@ -32,7 +28,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
-    package = inputs.hyprland.packages.${pkgs.system}.default;
+    # package = inputs.hyprland.packages.${pkgs.system}.default;
 
     # plugins = [
     #   pkgs.hypreasymotion

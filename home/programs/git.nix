@@ -27,11 +27,11 @@ in
       core = {
         whitespace = "trailing-space,space-before-tab";
       };
-      url = {
-        "ssh://forgejo" = {
-          insteadOf = "https://git.schwem.io";
-        };
-      };
+      # url = {
+      #   "ssh://forgejo" = {
+      #     insteadOf = "https://git.schwem.io";
+      #   };
+      # };
     };
   };
 }
