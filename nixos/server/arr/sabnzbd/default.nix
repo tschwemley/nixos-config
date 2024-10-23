@@ -21,7 +21,7 @@
 
     tmpfiles.rules = [
       "d /storage/downloads 0660 sabznbd arr - -"
-      "f /var/lib/sabnzbd/scripts/move-dls 0750 sabnzbd sabnzbd - ${./post-process}"
+      "f /var/lib/sabnzbd/scripts/post-process 0750 sabnzbd sabnzbd - ${./post-process}"
     ];
   };
 
