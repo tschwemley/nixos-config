@@ -1,6 +1,11 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   imports = [ ./config.nix ];
+
+  networking.firewall.allowedTCPPorts = [
+    lib.toInt
+    config.portMap.sabnzbd
+  ];
 
   services.sabnzbd = {
     enable = true;
