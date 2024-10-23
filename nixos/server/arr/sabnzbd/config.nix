@@ -43,7 +43,7 @@ in
           auto_browser = 1
           language = en
           enable_https_verification = 1
-          host = 127.0.0.1
+          host = 0.0.0.0
           port = ${config.portMap.sabnzbd}
           https_port = ""
           username = ""
