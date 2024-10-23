@@ -1,10 +1,6 @@
-{ config, lib, ... }:
+{ config, ... }:
 {
   imports = [ ./config.nix ];
-
-  # networking.firewall.allowedTCPPorts = [
-  #   (lib.toInt config.portMap.sabnzbd)
-  # ];
 
   services.sabnzbd = {
     enable = true;
@@ -25,6 +21,7 @@
 
     tmpfiles.rules = [
       "d /storage/downloads 0660 sabznbd arr - -"
+      "f /var/lib/sabnzbd/scripts/move-dls 0750 sabnzbd sabnzbd - ${builtins.readFile ./post-process}"
     ];
   };
 

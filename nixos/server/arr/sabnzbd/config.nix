@@ -66,7 +66,7 @@ in
           complete_dir = /storage/downloads/complete
           complete_free = ""
           fulldisk_autoresume = 0
-          script_dir = ""
+          script_dir = "/var/lib/sabnzbd/scripts"
           nzb_backup_dir = ""
           admin_dir = admin
           backup_dir = ""

@@ -1,0 +1,21 @@
+#!/usr/env/bin sh
+
+# sabnznbd script options documented here: https://sabnzbd.org/wiki/configuration/4.3/scripts/post-processing-scripts
+FULL_PATH=$1
+FILE_NAME=$2
+JOB_NAME=$3
+INDEXER_REPORT_NUM=$4
+CATEGORY=$5
+GROUP=$6
+STATUS=$7
+FAIL_CALLBACK_URL=$8
+
+info() {
+	echo "-------------------------"
+	echo "File Name: ${FILE_NAME}"
+	echo "Category : ${CATEGORY}"
+	echo "Status   : ${STATUS}"
+	echo "-------------------------"
+}
+
+info
