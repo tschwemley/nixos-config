@@ -1,14 +1,14 @@
 {
   config,
-  lib,
   pkgs,
+  utils,
   ...
 }:
 let
   downloadsDir = "/storage/downloads/torrent";
   stateDir = "/var/lib/qbittorrent";
 
-  startupCommand = lib.utils.escapeSystemdExecArgs [
+  startupCommand = utils.escapeSystemdExecArgs [
     # Basic startup
     "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox"
     "--confirm-legal-notice"
