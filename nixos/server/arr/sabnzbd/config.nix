@@ -178,8 +178,8 @@ in
           nomedia_marker = ""
           ipv6_servers = 1
           url_base = /sabnzbd
-          host_whitelist = localhost,${hostName},${hostName}.wyvern-map.ts.net
-          local_ranges = ,
+          host_whitelist = localhost,${hostName},${hostName}.wyvern-map.ts.net,
+          local_ranges = 100.64.0.0/10,
           max_url_retries = 10
           downloader_sleep_time = 10
           receive_threads = 2
