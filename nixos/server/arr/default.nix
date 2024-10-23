@@ -1,6 +1,6 @@
 {
   imports = [
-    ./bitmagnet.nix
+    # ./bitmagnet.nix
     ./nzbhydra2.nix
     ./qbittorrent.nix
     ./sabnzbd
