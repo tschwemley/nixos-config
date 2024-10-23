@@ -2,8 +2,6 @@
 {
   imports = [ ./config.nix ];
 
-  networking.firewall.interfaces."tailscale0".allowedTCPPorts = [ 8314 ];
-
   services.sabnzbd = {
     enable = true;
     configFile = config.sops.templates."sabnzbd.ini".path;

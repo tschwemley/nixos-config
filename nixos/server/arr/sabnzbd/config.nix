@@ -1,4 +1,7 @@
 { config, ... }:
+let
+  inherit (config.networking) hostName;
+in
 {
   sops = {
     secrets =
@@ -175,7 +178,7 @@
           nomedia_marker = ""
           ipv6_servers = 1
           url_base = /sabnzbd
-          host_whitelist = localhost,${config.networking.hostName},
+          host_whitelist = localhost,${hostName},${hostName}.wyvern-map.ts.net
           local_ranges = ,
           max_url_retries = 10
           downloader_sleep_time = 10
