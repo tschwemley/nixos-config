@@ -7,12 +7,13 @@ in
     secrets =
       let
         secretAttrs = {
-          sopsFile = ../secrets.yaml;
+          sopsFile = ../../../../secrets/server/sabnzbd.yaml;
         };
       in
       {
         "sabnzbd_api_key" = secretAttrs;
         "sabnzbd_nzb_key" = secretAttrs;
+        "sabnzbd_extra_categories" = secretAttrs;
         "sabnzbd_servers" = secretAttrs;
       };
 
@@ -358,34 +359,43 @@ in
           name = audio
           order = 1
           pp = ""
-          script = Default
+          script = post-process
+          dir = ""
+          newzbin = ""
+          priority = -100
+          [[books]]
+          name = books
+          order = 2
+          pp = ""
+          script = post-process
           dir = ""
           newzbin = ""
           priority = -100
           [[movies]]
           name = movies
-          order = 2
+          order = 3
           pp = ""
-          script = Default
+          script = post-process
           dir = ""
           newzbin = ""
           priority = -100
           [[software]]
           name = software
-          order = 3
+          order = 4
           pp = ""
-          script = Default
+          script = post-process
           dir = ""
           newzbin = ""
           priority = -100
           [[tv]]
           name = tv
-          order = 4
+          order = 5
           pp = ""
-          script = Default
+          script = post-process
           dir = ""
           newzbin = ""
           priority = -100
+          ${config.sops.placeholder.sabnzbd_extra_categories}
         '';
     };
   };
