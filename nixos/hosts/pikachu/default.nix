@@ -5,7 +5,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   disk = (import ../../hardware/disks).pikachu;
   hardware = {
     imports = [
@@ -23,8 +24,9 @@
       ../../network/tailscale.nix
     ];
   };
-  user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
-in {
+  user = (import ../../system/users.nix { inherit self config pkgs; }).schwem;
+in
+{
   imports = [
     disk
     hardware
@@ -45,11 +47,11 @@ in {
         "uas"
         "sd_mod"
       ];
-      kernelModules = ["kvm-intel"];
+      kernelModules = [ "kvm-intel" ];
     };
     # TODO: this might need to be latest for laptop config. not sure yet
     kernelPackages = pkgs.linuxPackages_6_10;
-    supportedFilesystems = ["btrfs"];
+    supportedFilesystems = [ "btrfs" ];
 
     blacklistedKernelModules = [
       "snd_soc_avs"
@@ -67,7 +69,7 @@ in {
     hostName = "pikachu";
     networkmanager.enable = true;
     useDHCP = lib.mkDefault true;
-    wireless.enable = true;
+    # wireless.enable = true;
   };
 
   system = {
@@ -91,7 +93,7 @@ in {
       primary = "eDP-1";
       config = [
         "eDP-1,3840x2160@60,0x0,1.5"
-        "DP-1,3840x1100@120,0x1080,1.67"
+        "DP-1,3840x1100@120,0x1440,1.67"
       ];
     };
     workspaces = [
@@ -112,6 +114,13 @@ in {
   ];
 
   hardware = {
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        vaapiVdpau
+      ];
+    };
+
     nvidia = {
       open = lib.mkDefault true;
       prime = {
@@ -122,13 +131,6 @@ in {
         nvidiaBusId = "PCI:1:0:0";
       };
     };
-
-    opengl = {
-      enable = true;
-      extraPackages = with pkgs; [
-        vaapiVdpau
-      ];
-    };
   };
 
   services = {
@@ -138,6 +140,6 @@ in {
       enable = true;
       touchpad.tapping = false;
     };
-    xserver.videoDrivers = lib.mkDefault ["nvidia"];
+    xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
   };
 }
