@@ -1,5 +1,3 @@
-#!/usr/bin/env sh
-
 # sabnznbd script options documented here: https://sabnzbd.org/wiki/configuration/4.3/scripts/post-processing-scripts
 FULL_PATH=$1
 FILE_NAME=$2
