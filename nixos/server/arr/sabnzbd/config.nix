@@ -350,29 +350,21 @@ in
           name = *
           order = 0
           pp = 3
-          script = None
+          script = post-process
           dir = ""
           newzbin = ""
           priority = 0
-          [[movies]]
-          name = movies
+          [[audio]]
+          name = audio
           order = 1
           pp = ""
           script = Default
           dir = ""
           newzbin = ""
           priority = -100
-          [[tv]]
-          name = tv
+          [[movies]]
+          name = movies
           order = 2
-          pp = ""
-          script = Default
-          dir = ""
-          newzbin = ""
-          priority = -100
-          [[audio]]
-          name = audio
-          order = 3
           pp = ""
           script = Default
           dir = ""
@@ -380,6 +372,14 @@ in
           priority = -100
           [[software]]
           name = software
+          order = 3
+          pp = ""
+          script = Default
+          dir = ""
+          newzbin = ""
+          priority = -100
+          [[tv]]
+          name = tv
           order = 4
           pp = ""
           script = Default
