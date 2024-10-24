@@ -21,6 +21,10 @@
       layout = "dwindle";
     };
 
+    gestures = {
+      workspace_swipe = true;
+    };
+
     master = {
       # for all options see: https://wiki.hyprland.org/Configuring/Master-Layout/
       always_center_master = true;
