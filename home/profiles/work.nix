@@ -13,6 +13,7 @@ in
     ../programs/glow.nix
     ../programs/jira-cli.nix
     ../programs/wcalc.nix
+    ../xdg/ssh/work.nix
   ];
 
   home = {

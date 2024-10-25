@@ -1,19 +1,19 @@
-{ config, ... }:
+{ config, secretsPath, ... }:
 {
   imports = [ ./. ];
 
   programs.ssh.matchBlocks = {
+    gh = {
+      hostname = "github.com";
+      identityFile = config.sops.secrets.github_personal_zynga_key;
+      proxyJump = "mac";
+      user = "git";
+    };
     githubZynga = {
       host = "gh-zynga github-ca.corp.zynga.com";
       hostname = "github-ca.corp.zynga.com";
       identityFile = config.sops.secrets.gh_work_key.path;
-      proxyJump = "mac";
       user = "git";
-    };
-    mac = {
-      hostname = "192.168.1.69";
-      identityFile = config.sops.secrets.mac_key.path;
-      user = "tschwemley";
     };
     zyngaServer = {
       host = "slots-dev";
@@ -29,12 +29,12 @@
       (name: {
         inherit name;
         value = {
-          sopsFile = ../../../secrets/home/ssh.yaml;
+          sopsFile = "${secretsPath}/home/ssh.yaml";
         };
       })
       [
+        "gh_personal_zynga"
         "gh_work_key"
-        "mac_key"
         "work_server_key"
       ]
   );

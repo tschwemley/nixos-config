@@ -32,7 +32,6 @@
     ../xdg/netrc.nix
     ../xdg/ssh/servers.nix
     ../xdg/ssh/personal.nix
-    ../xdg/ssh/work.nix
 
     # TODO: go through and decide which to keep and which to remove
     # ../programs/cad.nix
