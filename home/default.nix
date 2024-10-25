@@ -12,9 +12,13 @@ let
         inherit pkgs;
         modules = [
           {
-            _module.args = {
-              inherit inputs system;
-            };
+            _module.args =
+              let
+                secretsPath = ../secrets;
+              in
+              {
+                inherit inputs secretsPath system;
+              };
           }
           inputs.sops-nix.homeManagerModule
         ] ++ extraModules;
