@@ -1,10 +1,10 @@
-{inputs, config, pkgs, ...}: let
+{ config, ... }:
+let
   font_family = "Hasklig";
-in {
-   programs.hyprlock = {
+in
+{
+  programs.hyprlock = {
     enable = true;
-
-    package = inputs.hyprlock.packages.${pkgs.system}.hyprlock;
 
     settings = {
       general = {

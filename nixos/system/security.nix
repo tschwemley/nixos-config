@@ -1,14 +1,17 @@
 {
   security = {
     # enable esync compatability (for Lutris)
-    pam.loginLimits = [
-      {
-        domain = "*";
-        item = "nofile";
-        type = "-";
-        value = "524288";
-      }
-    ];
+    pam = {
+      loginLimits = [
+        {
+          domain = "*";
+          item = "nofile";
+          type = "-";
+          value = "524288";
+        }
+      ];
+      services.hyprlock = { };
+    };
     polkit.enable = true;
     sudo.wheelNeedsPassword = false;
   };
