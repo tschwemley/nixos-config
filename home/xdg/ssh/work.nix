@@ -5,7 +5,7 @@
   programs.ssh.matchBlocks = {
     gh = {
       hostname = "github.com";
-      identityFile = config.sops.secrets.gh_personal_zynga_key;
+      identityFile = config.sops.secrets.gh_personal_zynga_key.path;
       proxyJump = "mac";
       user = "git";
     };
