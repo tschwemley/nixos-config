@@ -17,8 +17,12 @@ in
   ];
 
   home = {
-    username = "tschwemley";
     homeDirectory = "/Users/tschwemley";
+    username = "tschwemley";
+
+    packages = with pkgs; [
+      nodejs
+    ];
   };
 
   sops.age.keyFile = "/etc/sops/age-keys.txt";
