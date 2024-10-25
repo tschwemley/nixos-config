@@ -33,7 +33,7 @@
         };
       })
       [
-        "gh_personal_zynga"
+        "gh_personal_zynga_key"
         "gh_work_key"
         "work_server_key"
       ]
