@@ -6,7 +6,6 @@
     gh = {
       hostname = "github.com";
       identityFile = config.sops.secrets.gh_personal_zynga_key.path;
-      proxyJump = "mac";
       user = "git";
     };
     githubZynga = {
@@ -19,7 +18,6 @@
       host = "slots-dev";
       hostname = "slots-dev-vii-02";
       identityFile = config.sops.secrets.work_server_key.path;
-      proxyJump = "mac";
       user = "tschwemley";
     };
   };
