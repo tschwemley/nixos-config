@@ -20,4 +20,6 @@ in
     username = "tschwemley";
     homeDirectory = "/Users/tschwemley";
   };
+
+  sops.age.keyFile = "/etc/sops/age-keys.txt";
 }

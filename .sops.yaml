@@ -1,5 +1,6 @@
 keys:
   - &personal age1rl4wtr4hj2mxp2rcdk2kuahtqmfx7e5meadsukxljl0l054eccksus4s2n
+  - &work age1gzstgq4mmvmx40jna6cjhuw7lzkcza3hkzwnnqvv3svemtr8reasqj052x
   - &articuno age1v57lt42hl9et5x7asxad6gkg9ga0gqd7swvnxs3mpuuyhzsspqgqasz3ch
   - &charizard age1yhsl8v77jja50pgtg6yklddfe2uprs7y2l8lx6595e3sntjj3gjq98he3a
   - &containers age16vdqvcejdc9arqnjll2tegwskj2yst3ewqwl96nv7dnu6lr6psrq7xrhau
@@ -84,6 +85,7 @@ creation_rules:
     key_groups:
       - age:
           - *personal
+          - *work
           - *containers
           - *articuno
           - *eevee
