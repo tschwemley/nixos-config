@@ -16,6 +16,9 @@ end
       https://sbulav.github.io/vim/neovim-setting-up-luasnip/
    ]]
 ls.add_snippets(nil, {
+	-- go = {
+	-- 	snip(),
+	-- },
 	markdown = {
 		snip({ trig = "h1", namr = "h1", dscr = "" }, { text("#") }),
 		snip({ trig = "h2", namr = "h2", dscr = "" }, { text("##") }),

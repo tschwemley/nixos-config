@@ -1,8 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.neovim.plugins = with pkgs.vimPlugins; [
     codecompanion
     luasnip
-    neodev-nvim
+    # neodev-nvim
     nvim-cmp
     cmp-buffer
     cmp-cmdline
