@@ -10,6 +10,8 @@ in
   imports = [
     git
 
+    ../programs/development
+
     ../programs/bat.nix
     ../programs/btop.nix
     ../programs/fzf.nix

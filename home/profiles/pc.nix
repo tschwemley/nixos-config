@@ -5,7 +5,6 @@
     ../programs/ai
     ../programs/browsers
     ../programs/communication
-    ../programs/development
     ../programs/gnome
     ../programs/music
 
