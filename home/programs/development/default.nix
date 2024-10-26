@@ -2,6 +2,6 @@
 {
   imports = [ ];
   home.packages = with pkgs; [
-    inotify-tools
+    fswatch
   ];
 }
