@@ -21,14 +21,24 @@ in
       expireDuplicatesFirst = true;
       extended = true;
     };
-    initExtra = ''
-      source ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh
-      export PATH=$PATH:${config.home.profileDirectory}/bin
+    initExtra = # bash
+      ''
+        source ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh
+        export PATH=$PATH:${config.home.profileDirectory}/bin
 
-      # additional funcs
-      func tbat() {
-        tail -f "$1" | bat --paging=never -l log
-      }
-    '';
+        # additional funcs
+        func tbat() {
+          tail -f "$1" | bat --paging=never -l log
+        }
+
+        func SSH() {
+          if ! command -v kitty 2>&1 >/dev/null
+          then
+            ssh "$@"
+          else
+            kitty +kitten ssh "$@"
+          fi
+        }
+      '';
   };
 }

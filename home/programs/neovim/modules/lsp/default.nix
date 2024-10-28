@@ -1,5 +1,7 @@
 { pkgs, ... }:
 let
+  otter = import ./otter.nix pkgs.vimPlugins;
+
   packages = {
     lsp = with pkgs; [
       htmx-lsp
@@ -22,6 +24,7 @@ let
     ];
 
     formatting = with pkgs; [
+      alejandra
       golangci-lint
       golines
       gotools
@@ -41,8 +44,10 @@ let
       none-ls-nvim
     ];
     lsp = [
-      nvim-lspconfig
       lazydev-nvim
+      otter
+
+      nvim-lspconfig
     ];
     utility = [
       nvim-web-devicons

@@ -26,7 +26,8 @@ null_ls.setup({
       null_ls.builtins.diagnostics.deadnix,
       null_ls.builtins.diagnostics.statix,
 
-      null_ls.builtins.formatting.nixfmt,
+      null_ls.builtins.formatting.alejandra,
+      -- null_ls.builtins.formatting.nixfmt,
 
       -- other
       null_ls.builtins.hover.printenv.with({

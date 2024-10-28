@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-{
-  plugin = pkgs.vimPlugins.nvim-navbuddy;
+vimPlugins: {
+  plugin = vimPlugins.nvim-navbuddy;
   type = "lua";
   config = # lua
     ''

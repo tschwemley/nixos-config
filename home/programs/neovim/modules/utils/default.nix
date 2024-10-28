@@ -1,20 +1,28 @@
 { pkgs, ... }:
 {
-  programs.neovim.plugins = with pkgs.vimPlugins; [
-    dressing-nvim
-    gitsigns-nvim
-    mini-nvim
-    nnn-vim
-    nvim-spectre
-    nvim-ufo
-    refactoring-nvim
-    rest-nvim
-    vim-abolish
-    vim-fugitive
-    vim-speeddating
-    vim-surround
-    vlog
-  ];
+  programs.neovim.plugins =
+    with pkgs.vimPlugins;
+    let
+      navbuddy = import ./navbuddy.nix pkgs.vimPlugins;
+      rest-nvim = import ./rest-nvim.nix pkgs.vimPlugins;
+    in
+    [
+      navbuddy
+      rest-nvim
+
+      dressing-nvim
+      gitsigns-nvim
+      mini-nvim
+      nnn-vim
+      nvim-spectre
+      nvim-ufo
+      refactoring-nvim
+      vim-abolish
+      vim-fugitive
+      vim-speeddating
+      vim-surround
+      vlog
+    ];
 
   xdg.configFile = {
     "nvim/after/plugin/git.lua".source = ./git.lua;
