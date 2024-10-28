@@ -1,12 +1,14 @@
-{ lib, pkgs, ... }:
-let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   git = import ../programs/git.nix {
     inherit pkgs;
     name = "Tyler Schwemley";
     email = lib.mkForce "tschwemley@zynga.com";
   };
-in
-{
+in {
   imports = [
     git
     ./.
@@ -21,6 +23,7 @@ in
     username = "tschwemley";
 
     packages = with pkgs; [
+      mariadb
       nodejs
     ];
   };
