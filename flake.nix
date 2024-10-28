@@ -98,6 +98,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zen-browser = {
+      url = "github:fufexan/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # imports below here are server-specific imports for schwem.io
     dashboard = {
       url = "git+https://git.schwem.io/schwem/dashboard";

@@ -10,6 +10,7 @@ in
   imports = [
     git
 
+    ../programs/common.nix
     ../programs/development
 
     ../programs/bat.nix
