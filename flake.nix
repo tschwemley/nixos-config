@@ -24,48 +24,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # hypridle = {
-    #   url = "github:hyprwm/hypridle";
-    #   inputs = {
-    #     hyprlang.follows = "hyprland/hyprlang";
-    #     hyprutils.follows = "hyprland/hyprutils";
-    #     nixpkgs.follows = "hyprland/nixpkgs";
-    #     systems.follows = "hyprland/systems";
-    #   };
-    # };
-    #
-    # hyprland = {
-    #   type = "git";
-    #   url = "https://github.com/hyprwm/Hyprland";
-    #   submodules = true;
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    #
-    # hyprland-contrib = {
-    #   url = "github:hyprwm/contrib";
-    #   inputs.nixpkgs.follows = "hyprland/nixpkgs";
-    # };
-    #
-    # hyprlock = {
-    #   url = "github:hyprwm/hyprlock";
-    #   inputs = {
-    #     hyprlang.follows = "hyprland/hyprlang";
-    #     hyprutils.follows = "hyprland/hyprutils";
-    #     nixpkgs.follows = "hyprland/nixpkgs";
-    #     systems.follows = "hyprland/systems";
-    #   };
-    # };
-    #
-    # hyprpaper = {
-    #   url = "github:hyprwm/hyprpaper";
-    #   inputs = {
-    #     hyprlang.follows = "hyprland/hyprlang";
-    #     hyprutils.follows = "hyprland/hyprutils";
-    #     nixpkgs.follows = "hyprland/nixpkgs";
-    #     systems.follows = "hyprland/systems";
-    #   };
-    # };
-
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -103,7 +61,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # imports below here are server-specific imports for schwem.io
+    # imports below here are server-specific imports for schwem.io TODO: make this into a single repo
     dashboard = {
       url = "git+https://git.schwem.io/schwem/dashboard";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -115,38 +73,41 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
+
+    webhooks = {
+      url = "git+https://git.schwem.io/schwem/oidcsso";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
   };
 
-  outputs =
-    inputs@{
-      flake-parts,
-      nixpkgs,
-      ...
-    }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
+  outputs = inputs @ {
+    flake-parts,
+    nixpkgs,
+    ...
+  }:
+    flake-parts.lib.mkFlake {inherit inputs;} {
       systems = [
         "aarch64-darwin"
         "aarch64-linux"
         "x86_64-linux"
       ];
 
-      perSystem =
-        {
-          self',
-          config,
-          pkgs,
-          system,
-          ...
-        }:
-        {
-          # makes pkgs available to all perSystem functions
-          _module.args.pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
+      perSystem = {
+        self',
+        config,
+        pkgs,
+        system,
+        ...
+      }: {
+        # makes pkgs available to all perSystem functions
+        _module.args.pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
 
-            overlays = import ./overlays self';
-          };
+          overlays = import ./overlays self';
         };
+      };
 
       imports = [
         ./droid
