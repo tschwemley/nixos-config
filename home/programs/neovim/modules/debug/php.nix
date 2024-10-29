@@ -12,7 +12,7 @@
 
         dap.adapters.php = {
           type = 'executable',
-          command = '${pkgs.nodejs_22}/bin/node}',
+          command = 'node',
           args = { '${pkgs.vscode-extensions.xdebug.php-debug}/share/vscode/extensions/xdebug.php-debug/out/phpDebug.js' }
         }
       '';
