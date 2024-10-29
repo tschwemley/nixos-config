@@ -831,17 +831,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1730183508,
-        "narHash": "sha256-HZ858cMnmP6WTUBNKFBqAsGIzC8V1Uja0wleTO5l7vg=",
+        "lastModified": 1730182885,
+        "narHash": "sha256-oshe96oYUFezSVnjl841IL2nsy9l4CYSuYeZAP6Vsfk=",
         "ref": "refs/heads/main",
-        "rev": "0cce6e066b30c4b113d83c2e0242c78bfacceb87",
-        "revCount": 32,
+        "rev": "9918413c37dc04e2f76fdffbc6c74bfddc5e56d6",
+        "revCount": 11,
         "type": "git",
-        "url": "https://git.schwem.io/schwem/oidcsso"
+        "url": "https://git.schwem.io/schwem/webhooks"
       },
       "original": {
         "type": "git",
-        "url": "https://git.schwem.io/schwem/oidcsso"
+        "url": "https://git.schwem.io/schwem/webhooks"
       }
     },
     "zen-browser": {

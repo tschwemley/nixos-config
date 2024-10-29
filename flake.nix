@@ -75,7 +75,7 @@
     };
 
     webhooks = {
-      url = "git+https://git.schwem.io/schwem/oidcsso";
+      url = "git+https://git.schwem.io/schwem/webhooks";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
