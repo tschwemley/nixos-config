@@ -7,10 +7,11 @@ let
     "stayfocused, title:^()$,class:^(steam)$"
     "minsize 1 1, title:^()$,class:^(steam)$"
   ];
+  zenRules = [ "float, title:^(Picture-in-Picture)$" ];
 in
 {
   wayland.windowManager.hyprland.settings = {
     layerrule = [ ];
-    windowrulev2 = pavucontrolRules ++ steamRules;
+    windowrulev2 = pavucontrolRules ++ steamRules ++ zenRules;
   };
 }
