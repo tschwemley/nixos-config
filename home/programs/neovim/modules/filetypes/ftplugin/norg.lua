@@ -1,6 +1,6 @@
 require("schwem.helpers").set_tabs(2)
 
-vim.o_local.wrap = true
+vim.opt_local.wrap = true
 
 -- on save automatically export to markdown
 -- vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
