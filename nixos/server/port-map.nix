@@ -1,10 +1,8 @@
-{ lib, ... }:
-{
-  options.portMap =
-    with lib;
+{lib, ...}: {
+  options.portMap = with lib;
     mkOption {
       type = types.attrsOf types.str;
-      default = { };
+      default = {};
       description = "Map of server app/service name to port(s) used. Used to avoid collisions.";
     };
 
@@ -33,5 +31,6 @@
     searxng = "8888";
     stash = "6969";
     threadfin = "34400";
+    webhooks = "7780";
   };
 }
