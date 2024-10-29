@@ -1,7 +1,7 @@
 {
-  config,
   inputs,
   pkgs,
+  secretsPath,
   ...
 }: let
   pkg = inputs.webhooks.packages.${pkgs.system}.default;
@@ -17,7 +17,7 @@ in {
       SyslogIdentifier = "webhooks";
       WorkingDirectory = stateDir;
 
-      ExecStart = "${pkg}/bin/webhooks -e ${pkg}/webhooks_env -p ${config.portMap.webhooks}";
+      ExecStart = "${pkg}/bin/webhooks";
       Restart = "on-failure";
       RestartSec = 30;
 
@@ -40,20 +40,21 @@ in {
       PrivateDevices = "yes";
       PrivateTmp = "yes";
     };
+    serviceConfig.
 
     description = "webhooks";
     after = ["network.target"];
     wantedBy = ["multi-user.target"];
   };
 
-  # sops.secrets.webhooks_env = {
-  #   group = "webhooks";
-  #   owner = "webhooks";
-  #
-  #   path = "${stateDir}/.env";
-  #   mode = "0440";
-  #   sopsFile = "${secretsPath}/server/webhooks.yaml";
-  # };
+  sops.secrets.webhooks_env = {
+    group = "webhooks";
+    owner = "webhooks";
+
+    path = "${stateDir}/.env";
+    mode = "0440";
+    sopsFile = "${secretsPath}/server/webhooks.yaml";
+  };
 
   users = {
     groups.webhooks = {};
