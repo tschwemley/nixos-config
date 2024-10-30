@@ -1,12 +1,10 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   git = import ../programs/git.nix {
     inherit pkgs;
     name = "Tyler Schwemley";
     email = "tjschwem@gmail.com";
   };
-in
-{
+in {
   imports = [
     git
 
@@ -23,6 +21,9 @@ in
     ../terminal/shell
   ];
 
-  home.stateVersion = "24.05";
+  home = {
+    sessionVariables.TERM = "kitty";
+    stateVersion = "24.05";
+  };
   sops.defaultSopsFile = ../secrets.yaml;
 }

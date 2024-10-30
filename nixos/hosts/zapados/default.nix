@@ -11,8 +11,6 @@
     ../../server/knowledge/tiddlywiki.nix
   ];
 
-  environment.sessionVariables.TERM = "kitty";
-
   networking.hostName = "zapados";
   sops.defaultSopsFile = ./secrets.yaml;
 
