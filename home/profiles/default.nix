@@ -21,9 +21,7 @@ in {
     ../terminal/shell
   ];
 
-  home = {
-    sessionVariables.TERM = "kitty";
-    stateVersion = "24.05";
-  };
+  home.sessionVariables.TERM = "kitty";
+  home.stateVersion = "24.05";
   sops.defaultSopsFile = ../secrets.yaml;
 }
