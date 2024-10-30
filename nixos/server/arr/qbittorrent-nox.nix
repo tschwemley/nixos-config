@@ -17,7 +17,7 @@
   ];
 in {
   systemd = {
-    services.qbittorrent = {
+    services.qbittorrent-nox = {
       description = "qbittorrent-nox";
       after = [
         "network.target"
