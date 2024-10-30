@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   otter = import ./otter.nix pkgs.vimPlugins;
 
   packages = {
@@ -12,7 +11,7 @@ let
       nodePackages.intelephense
       nodePackages.typescript-language-server
       typescript
-      sqls
+      # sqls
       yaml-language-server
     ];
 
@@ -44,10 +43,11 @@ let
       none-ls-nvim
     ];
     lsp = [
-      lazydev-nvim
       otter
 
+      lazydev-nvim
       nvim-lspconfig
+      sqls.nvim
     ];
     utility = [
       nvim-web-devicons
@@ -56,8 +56,7 @@ let
 
   # TODO: make this an extension of lib at the flake level
   flatten = attrset: builtins.concatLists (builtins.attrValues attrset);
-in
-{
+in {
   programs.neovim = {
     extraPackages = flatten packages;
     plugins = flatten plugins;
