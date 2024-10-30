@@ -3,41 +3,37 @@
   inputs,
   pkgs,
   ...
-}:
-let
+}: let
   pkg = inputs.dashboard.packages.${pkgs.system}.default;
-  stateDir = "/var/lib/dashboard";
+  stateDir = "dashboard";
   staticPath = "${inputs.dashboard.packages.${pkgs.system}.default}/bin/web/static";
-in
-{
+in {
   services.nginx.virtualHosts."schwem.io" = {
     extraConfig = ''
       error_page 401 = @error401;
     '';
 
-    locations =
-      let
-        baseUrl = "http://127.0.0.1:${config.portMap.dashboard}";
-      in
-      {
-        "/" = {
-          proxyPass = baseUrl;
-          # extraConfig = ''
-          #   auth_request .auth;
-          # '';
-        };
-
-        "/robots.txt".root = "/etc/nginx/static/";
-
-        # ".auth" = {
-        #   proxyPass = "http://127.0.0.1:${config.portMap.oidcsso}/auth";
-        #   extraConfig = ''
-        #     internal;
-        #   '';
-        # };
-        #
-        # "@error401".return = "302 https://auth.schwem.io/login?rd=https://schwem.io";
+    locations = let
+      baseUrl = "http://127.0.0.1:${config.portMap.dashboard}";
+    in {
+      "/" = {
+        proxyPass = baseUrl;
+        # extraConfig = ''
+        #   auth_request .auth;
+        # '';
       };
+
+      "/robots.txt".root = "/etc/nginx/static/";
+
+      # ".auth" = {
+      #   proxyPass = "http://127.0.0.1:${config.portMap.oidcsso}/auth";
+      #   extraConfig = ''
+      #     internal;
+      #   '';
+      # };
+      #
+      # "@error401".return = "302 https://auth.schwem.io/login?rd=https://schwem.io";
+    };
   };
 
   services.oidcsso.protectedHosts = [
@@ -90,7 +86,7 @@ in
       "keycloak.service"
       "nginx.service"
     ];
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = ["multi-user.target"];
   };
 
   sops.secrets.dashboard_env = {
@@ -98,13 +94,13 @@ in
     owner = "dashboard";
 
     key = "oidc_sso_env";
-    path = "${stateDir}/.env";
+    path = "/var/lib/${stateDir}/.env";
     mode = "0440";
-    sopsFile = ../auth/oidc_sso/env.yaml; # dashboard env only contains oidc values (cookie/provider info) for now
+    sopsFile = ../security/auth/oidc_sso/env.yaml; # dashboard env only contains oidc values (cookie/provider info) for now
   };
 
   users = {
-    groups.dashboard = { };
+    groups.dashboard = {};
     users.dashboard = {
       group = "dashboard";
       isSystemUser = true;
