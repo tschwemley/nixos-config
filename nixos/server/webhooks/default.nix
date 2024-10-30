@@ -20,6 +20,7 @@ in {
       ExecStart = "${pkg}/bin/webhooks";
       Restart = "on-failure";
       RestartSec = 30;
+      ReadPaths = ["/etc/sops/age-keys.txt"];
 
       # Hardening options
       LockPersonality = "yes";
