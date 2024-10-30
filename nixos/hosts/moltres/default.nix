@@ -6,9 +6,11 @@
     ../../../containers/excalidraw
     ../../../containers/freetar
     # ../../../containers/threadfin
-    ../../server/redlib
-    ../../server/rimgo
+
     ../../server/searxng
+
+    ../../server/alt-frontends/redlib.nix
+    ../../server/alt-frontends/rimgo.nix
   ];
 
   networking.hostName = "moltres";

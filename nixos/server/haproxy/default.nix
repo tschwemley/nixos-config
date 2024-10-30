@@ -2,8 +2,7 @@ let
   baseCert = "/var/lib/acme/schwem.io/full.pem";
   wildcardCert = "/var/lib/acme/schwem.io-wildcard/full.pem";
   wildcardApiCert = "/var/lib/acme/schwem.io-wildcard-api/full.pem";
-in
-{
+in {
   networking.firewall.allowedTCPPorts = [
     80
     443
@@ -70,7 +69,6 @@ in
         use_backend auth if domain_auth
         use_backend articuno if domain_default
         # use_backend articuno if domain_dash
-        use_backend cockroach_web if domain_db
         use_backend draw if domain_draw
         use_backend freetar if domain_freetar
         use_backend git if domain_git
@@ -97,14 +95,6 @@ in
 
       backend auth
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
-
-      backend cockroach_web
-        http-request set-header X-Forwarded-Proto https
-        balance leastconn
-
-        server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
-        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
-        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
       backend draw
         http-request set-header X-Forwarded-Proto https
@@ -193,15 +183,5 @@ in
     '';
   };
 
-  sops.secrets = {
-    "cockroach-client.pem" = {
-      sopsFile = ../cockroachdb/secrets.yaml;
-      group = "haproxy";
-      mode = "0400";
-      path = "/var/lib/haproxy/cockroach-client.pem";
-      owner = "haproxy";
-    };
-  };
-
-  users.users.haproxy.extraGroups = [ "acme" ];
+  users.users.haproxy.extraGroups = ["acme"];
 }
