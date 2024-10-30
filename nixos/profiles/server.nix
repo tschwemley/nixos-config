@@ -2,25 +2,24 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
     ./.
+
     ../network/containers.nix
     ../network/systemd-networkd.nix
     ../network/tailscale.nix
-    ../server/haproxy/options.nix
-    ../server/monitoring/prometheus/node-exporter.nix
-    ../server/nginx
-    ../server/port-map.nix
-    ../server/static
-    # ../services/fail2ban.nix
+
+    ../server/infrastructure/haproxy/options.nix
+    ../server/infrastructure/monitoring/prometheus/node-exporter.nix
+    ../server/infrastructure/nginx
+    ../server/infrastructure/port-map.nix
   ];
 
   # disable man pages on servers
   documentation.man.enable = false;
 
-  environment.systemPackages = with pkgs; [ postgresql_16 ];
+  environment.systemPackages = with pkgs; [postgresql_16];
 
   services.getty.autologinUser = "root";
 
