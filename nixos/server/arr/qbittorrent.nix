@@ -5,7 +5,7 @@
   ...
 }: let
   downloadsDir = "/storage/downloads/torrent";
-  stateDir = "qbittorrent";
+  stateDir = "qbittorrent-nox";
 
   startupCommand = utils.escapeSystemdExecArgs [
     # Basic startup
@@ -18,7 +18,7 @@
 in {
   systemd = {
     services.qbittorrent = {
-      description = "qbittorrent";
+      description = "qbittorrent-nox";
       after = [
         "network.target"
         "storage.mount"
@@ -33,8 +33,8 @@ in {
 
       serviceConfig = {
         Type = "simple";
-        User = "qbittorrent";
-        Group = "qbittorrent";
+        User = "qbittorrent-nox";
+        Group = "qbittorrent-nox";
         ExecStart = startupCommand;
         Restart = "always";
         StateDirectory = stateDir;
@@ -45,10 +45,6 @@ in {
         PrivateDevices = true;
         DevicePolicy = "closed";
         ProtectSystem = "strict";
-        ReadWritePaths = [
-          downloadsDir
-          stateDir
-        ];
         ProtectHome = "read-only";
         ProtectControlGroups = true;
         ProtectKernelModules = true;
@@ -58,20 +54,24 @@ in {
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
         LockPersonality = true;
+
+        ReadPaths = [
+          downloadsDir
+        ];
       };
     };
 
     tmpfiles.rules = [
-      "d '${downloadsDir}' 0760 qbittorrent arr - -"
-      "d '${stateDir}' 0700 qbittorrent arr - -"
+      "d '${downloadsDir}' 0760 qbittorrent-nox arr - -"
+      #   "d '${stateDir}' 0700 qbittorrent-nox arr - -"
     ];
   };
 
-  users.users.qbittorrent = {
-    group = "qbittorrent";
+  users.users.qbittorrent-nox = {
+    group = "qbittorrent-nox";
     isSystemUser = true;
     extraGroups = ["arr"];
   };
 
-  users.groups.qbittorrent = {};
+  users.groups.qbittorrent-nox = {};
 }
