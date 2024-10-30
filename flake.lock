@@ -72,11 +72,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730135292,
-        "narHash": "sha256-QUU1P8x42b8moaUsxJkamfcRXdyNjIq79ZThzT3CVUA=",
+        "lastModified": 1730190761,
+        "narHash": "sha256-o5m5WzvY6cGIDupuOvjgNSS8AN6yP2iI9MtUC6q/uos=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "0e55423bf8c241cf18676a8b8424c7eadd170ffc",
+        "rev": "3979285062d6781525cded0f6c4ff92e71376b55",
         "type": "github"
       },
       "original": {
@@ -305,11 +305,11 @@
         "norg-meta": "norg-meta"
       },
       "locked": {
-        "lastModified": 1730045915,
-        "narHash": "sha256-smxGaPnAVT2wqtKo8+ieoN8bMUwvJuu5QnYgwtbwdQo=",
+        "lastModified": 1730211331,
+        "narHash": "sha256-mJBI46zkUVynCcdxSeMKe6CptRWPVIXwOXdA1E07llQ=",
         "owner": "nvim-neorg",
         "repo": "nixpkgs-neorg-overlay",
-        "rev": "64f81dff656b5670d5c25dff579f258b8cc9e92c",
+        "rev": "67df50f264dd2ab9839e0e5238a2c3ae1ba40cab",
         "type": "github"
       },
       "original": {
@@ -831,11 +831,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730187769,
-        "narHash": "sha256-F/d0x6156poRDYql69Mai74r81TgkBT9wJvbjo8w9go=",
+        "lastModified": 1730261025,
+        "narHash": "sha256-dsoNc72ZB6AOJbcB2XjipUTH7JU1d7co6PRs0Mvmlu4=",
         "ref": "refs/heads/main",
-        "rev": "f2989fe23df70e38f9f52b86982c3be8d3601ccc",
-        "revCount": 15,
+        "rev": "77a1015056114134287967056686f90aa9998e0e",
+        "revCount": 17,
         "type": "git",
         "url": "https://git.schwem.io/schwem/webhooks"
       },

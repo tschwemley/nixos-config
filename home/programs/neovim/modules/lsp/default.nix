@@ -11,7 +11,6 @@
       nodePackages.intelephense
       nodePackages.typescript-language-server
       typescript
-      # sqls
       yaml-language-server
     ];
 
@@ -47,7 +46,6 @@
 
       lazydev-nvim
       nvim-lspconfig
-      sqls.nvim
     ];
     utility = [
       nvim-web-devicons
