@@ -13,4 +13,6 @@
       };
     };
   };
+
+  systemd.tmpfiles.rules = ["d /var/lib/tiddlywiki 0755 root root - -"];
 }
