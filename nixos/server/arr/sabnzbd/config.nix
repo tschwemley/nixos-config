@@ -1,21 +1,21 @@
-{ config, secretsPath, ... }:
-let
-  inherit (config.networking) hostName;
-in
 {
+  config,
+  secretsPath,
+  ...
+}: let
+  inherit (config.networking) hostName;
+in {
   sops = {
-    secrets =
-      let
-        secretAttrs = {
-          sopsFile = "${secretsPath}/server/sabnzbd.yaml";
-        };
-      in
-      {
-        "sabnzbd_api_key" = secretAttrs;
-        "sabnzbd_nzb_key" = secretAttrs;
-        "sabnzbd_extra_categories" = secretAttrs;
-        "sabnzbd_servers" = secretAttrs;
+    secrets = let
+      secretAttrs = {
+        sopsFile = "${secretsPath}/server/sabnzbd.yaml";
       };
+    in {
+      "sabnzbd_api_key" = secretAttrs;
+      "sabnzbd_nzb_key" = secretAttrs;
+      "sabnzbd_extra_categories" = secretAttrs;
+      "sabnzbd_servers" = secretAttrs;
+    };
 
     templates."sabnzbd.ini" = {
       group = "sabnzbd";
@@ -61,7 +61,7 @@ in
           api_key = ${config.sops.placeholder.sabnzbd_api_key}
           nzb_key = ${config.sops.placeholder.sabnzbd_api_key}
           socks5_proxy_url = ""
-          permissions = ""
+          permissions = "0770"
           download_dir = /storage/downloads/incomplete
           download_free = ""
           complete_dir = /storage/downloads/complete

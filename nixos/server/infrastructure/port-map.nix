@@ -31,6 +31,7 @@
     searxng = "8888";
     stash = "6969";
     threadfin = "34400";
+    tiddlywiki = "4242";
     webhooks = "7780";
   };
 }
