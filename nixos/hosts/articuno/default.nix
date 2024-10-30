@@ -3,14 +3,14 @@
     (import ../../profiles/buyvm.nix "")
 
     # server imports
-    # ../../../containers/proxitok
-    ../../server/acme
-    ../../server/auth
     ../../server/dashboard
-    ../../server/haproxy
-    ../../server/monitoring
-    ../../server/postgresql
-    ../../server/searxng
+
+    ../../server/security/acme
+    ../../server/security/auth
+    ../../server/infrastructure/haproxy
+    ../../server/infrastructure/monitoring
+    ../../server/infrastructure/postgresql
+    ../../server/services/searxng
   ];
 
   networking.hostName = "articuno";
@@ -20,7 +20,7 @@
     age.keyFile = "/root/.config/sops/age/keys.txt";
   };
 
-  services.tailscale.extraUpFlags = [ "--advertise-tags=tags:server,tags:master" ];
+  services.tailscale.extraUpFlags = ["--advertise-tags=tags:server,tags:master"];
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
   system.stateVersion = "23.05";

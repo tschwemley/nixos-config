@@ -3,11 +3,12 @@
     ../../profiles/proxmox.nix
 
     # server imports
-    # ../../server/forgejo
     ../../../containers/binternet
     ../../../containers/it-tools
     ../../../containers/priviblur
     ../../../containers/safetwitch
+
+    ../../server/knowledge/tiddlywiki.nix
   ];
 
   networking.hostName = "zapados";

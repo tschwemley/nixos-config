@@ -5,15 +5,10 @@ let
 in
 {
   systemd = {
-    tmpfiles.rules = [
-      "d ${runDir} 0500 stash stash - -"
-      "d ${stateDir} 0755 stash stash - -"
-      "d ${stateDir}/python-modules 0755 stash stash - -"
-    ];
-
     services.stash = {
       after = [
         "network-online.target"
+        "storage.mount"
       ];
       description = "Stash";
       wantedBy = [
@@ -21,6 +16,7 @@ in
       ];
       wants = [
         "network-online.target"
+        "storage.mount"
       ];
       environment = {
         LD_LIBRARY_PATH = "${stateDir}/python-modules";
@@ -78,6 +74,12 @@ in
         PrivateTmp = "yes";
       };
     };
+
+    tmpfiles.rules = [
+      "d ${runDir} 0500 stash stash - -"
+      "d ${stateDir} 0755 stash stash - -"
+      "d ${stateDir}/python-modules 0755 stash stash - -"
+    ];
   };
 
   users = {

@@ -20,6 +20,9 @@
 
     tmpfiles = {
       rules = [
+        "d /storage/downloads/complete 0770 sabznbd arr - -"
+        "d /storage/downloads/incomplete 0770 sabznbd arr - -"
+
         "d /var/lib/sabnzbd 0760 sabznbd sabnzbd - -"
         "C+ /var/lib/sabnzbd/scripts/post-process 0755 sabnzbd sabnzbd - ${./post-process}"
       ];

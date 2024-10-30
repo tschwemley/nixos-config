@@ -4,12 +4,12 @@
 
     # server
     ../../server/arr
-    ../../server/forgejo
-    ../../server/postgresql
-    ../../server/webhooks
 
     ../../server/alt-frontends/anonymous-overflow.nix
     ../../server/alt-frontends/scribe
+    ../../server/development/forgejo
+    ../../server/infrastructure/postgresql
+    ../../server/infrastructure/webhooks
   ];
 
   networking.hostName = "jolteon";

@@ -22,7 +22,7 @@ in {
     ../../profiles/server.nix
 
     # server imports
-    ../../server/jellyfin
+    ../../server/media/jellyfin
   ];
 
   boot = {
@@ -34,7 +34,6 @@ in {
     nv-codec-headers-12
     nvidia-vaapi-driver
   ];
-
 
   hardware = {
     opengl = {
