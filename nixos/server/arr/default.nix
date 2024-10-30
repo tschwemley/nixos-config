@@ -7,5 +7,7 @@
     ./sabnzbd
   ];
 
+  systemd.tmpfiles.rules = ["d /storage/downloads 0770 root arr - -"];
+
   users.groups.arr = {};
 }
