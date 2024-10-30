@@ -3,10 +3,9 @@
   pkgs,
   utils,
   ...
-}:
-let
+}: let
   downloadsDir = "/storage/downloads/torrent";
-  stateDir = "/var/lib/qbittorrent";
+  stateDir = "qbittorrent";
 
   startupCommand = utils.escapeSystemdExecArgs [
     # Basic startup
@@ -16,10 +15,8 @@ let
     "--torrenting-port=${config.portMap.qtbittorrentTorrent}"
     "-d"
   ];
-in
-{
+in {
   systemd = {
-
     services.qbittorrent = {
       description = "qbittorrent";
       after = [
@@ -32,7 +29,7 @@ in
         "storage.mount"
         "tailscaled.service"
       ];
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = ["multi-user.target"];
 
       serviceConfig = {
         Type = "simple";
@@ -73,8 +70,8 @@ in
   users.users.qbittorrent = {
     group = "qbittorrent";
     isSystemUser = true;
-    extraGroups = [ "arr" ];
+    extraGroups = ["arr"];
   };
 
-  users.groups.qbittorrent = { };
+  users.groups.qbittorrent = {};
 }
