@@ -46,6 +46,7 @@ in {
     };
     nvidia = {
       modesetting.enable = true;
+      open = true;
       prime = {
         # Bus ID of the Intel GPU.
         intelBusId = "PCI:0:2:0";
@@ -60,10 +61,11 @@ in {
     hostName = "tentacool";
     wireless = {
       enable = true;
-      environmentFile = "/run/secrets/wireless.env";
       networks."Where the Wild Pings Are" = {
-        psk = "@PSK_HOME@";
+        psk = "ext:PSK_HOME";
       };
+      secretsFile = "/run/secrets/wireless.env";
+
       extraConfig = "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=wheel";
     };
   };
