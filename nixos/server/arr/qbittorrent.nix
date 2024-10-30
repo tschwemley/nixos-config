@@ -13,7 +13,7 @@
     "--confirm-legal-notice"
     "--webui-port=${config.portMap.qtbittorrentWeb}"
     "--torrenting-port=${config.portMap.qtbittorrentTorrent}"
-    "-d"
+    "--profile=/var/lib/qbittorrent-nox"
   ];
 in {
   systemd = {
