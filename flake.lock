@@ -52,11 +52,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728873183,
-        "narHash": "sha256-gC0AzXddeYpGabo88MQ+q7H8a/itdeKp/sWmvD8RUK8=",
+        "lastModified": 1730318951,
+        "narHash": "sha256-C2GqqnoCI0tkprjsqZhS9vpS+lADrcrXkMIive6Y27g=",
         "ref": "refs/heads/main",
-        "rev": "65984788cf107198657900e89dd6e2799e41fe3e",
-        "revCount": 17,
+        "rev": "b2ee58c323be1519aaef5061c84771ca394e85ba",
+        "revCount": 18,
         "type": "git",
         "url": "https://git.schwem.io/schwem/dashboard"
       },
@@ -305,11 +305,11 @@
         "norg-meta": "norg-meta"
       },
       "locked": {
-        "lastModified": 1730211331,
-        "narHash": "sha256-mJBI46zkUVynCcdxSeMKe6CptRWPVIXwOXdA1E07llQ=",
+        "lastModified": 1730276576,
+        "narHash": "sha256-6ZcMRv29aygbPLOI6clwBLzuIDkLBuRivgt50WkPBn0=",
         "owner": "nvim-neorg",
         "repo": "nixpkgs-neorg-overlay",
-        "rev": "67df50f264dd2ab9839e0e5238a2c3ae1ba40cab",
+        "rev": "6814f56f56e0b3b2b18d35237e0658fccd2323cd",
         "type": "github"
       },
       "original": {
@@ -623,11 +623,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1729558445,
-        "narHash": "sha256-mYm9dNyDxMqLebVvP75nWDX3Lfe25Z2+JZWonTocI/w=",
+        "lastModified": 1730315738,
+        "narHash": "sha256-WKN8J1eWf2X9hPoNqWMZOs8FTwVoJS4tgb6RwPWSY/o=",
         "owner": "redlib-org",
         "repo": "redlib",
-        "rev": "f3d2f0cc5943312f8d6c8bec50d0daf70f4116e5",
+        "rev": "bc9530821d9526d6e84d78e8bdb36dabd1f17d27",
         "type": "github"
       },
       "original": {
