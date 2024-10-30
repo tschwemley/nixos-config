@@ -2,9 +2,9 @@
   imports = [
     # ./bitmagnet.nix
     ./nzbhydra2.nix
-    ./qbittorrent.nix
+    ./qbittorrent-nox.nix
     ./sabnzbd
   ];
 
-  users.groups.arr = { };
+  users.groups.arr = {};
 }
