@@ -1,6 +1,44 @@
 {
   description = "Schwem's NixOS configuration and dotfiles";
 
+  outputs = inputs @ {
+    flake-parts,
+    nixpkgs,
+    ...
+  }:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = [
+        "aarch64-darwin"
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
+
+      perSystem = {
+        self',
+        config,
+        pkgs,
+        system,
+        ...
+      }: {
+        # makes pkgs available to all perSystem functions
+        _module.args.pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+
+          overlays = import ./overlays self';
+        };
+      };
+
+      imports = [
+        ./droid
+        ./home
+        ./nixos
+        ./packages
+        ./shells
+        ./templates
+      ];
+    };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -80,42 +118,4 @@
       inputs.flake-parts.follows = "flake-parts";
     };
   };
-
-  outputs = inputs @ {
-    flake-parts,
-    nixpkgs,
-    ...
-  }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = [
-        "aarch64-darwin"
-        "aarch64-linux"
-        "x86_64-linux"
-      ];
-
-      perSystem = {
-        self',
-        config,
-        pkgs,
-        system,
-        ...
-      }: {
-        # makes pkgs available to all perSystem functions
-        _module.args.pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-
-          overlays = import ./overlays self';
-        };
-      };
-
-      imports = [
-        ./droid
-        ./home
-        ./nixos
-        ./packages
-        ./shells
-        ./templates
-      ];
-    };
 }

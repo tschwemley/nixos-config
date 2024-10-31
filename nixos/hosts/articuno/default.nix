@@ -6,7 +6,7 @@
     ../../server/dashboard
 
     ../../server/security/acme
-    ../../server/security/auth
+    ../../server/security/auth/keycloak
     ../../server/infrastructure/haproxy
     ../../server/infrastructure/monitoring
     ../../server/infrastructure/postgresql

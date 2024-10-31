@@ -2,9 +2,9 @@
   config,
   lib,
   pkgs,
+  secretsPath,
   ...
-}:
-let
+}: let
   keycloakPkg =
     (pkgs.keycloak.overrideAttrs (_: rec {
       version = "25.0.0";
@@ -12,36 +12,34 @@ let
         url = "https://github.com/keycloak/keycloak/releases/download/${version}/keycloak-${version}.zip";
         hash = "sha256-EsxUDYFZ0HKNjVvPylMLyg15IuAR9sbP0DRIQV3xMB0=";
       };
-    })).override
-      {
-        extraFeatures = [ "persistent-user-sessions" ];
-      };
-in
-{
-  services.nginx.virtualHosts."auth.schwem.io" =
-    let
-      ip = "127.0.0.1";
-      port = "8480";
-    in
+    }))
+    .override
     {
-      locations = {
-        "/admin" = {
-          proxyPass = "http://${ip}:${port}/admin";
-        };
-        "/js" = {
-          proxyPass = "http://${ip}:${port}/js";
-        };
-        "/realms" = {
-          proxyPass = "http://${ip}:${port}/realms";
-        };
-        "/resources" = {
-          proxyPass = "http://${ip}:${port}/resources";
-        };
-        "/robots.txt" = {
-          proxyPass = "http://${ip}:${port}/robots.txt";
-        };
+      extraFeatures = ["persistent-user-sessions"];
+    };
+in {
+  services.nginx.virtualHosts."auth.schwem.io" = let
+    ip = "127.0.0.1";
+    port = "8480";
+  in {
+    locations = {
+      "/admin" = {
+        proxyPass = "http://${ip}:${port}/admin";
+      };
+      "/js" = {
+        proxyPass = "http://${ip}:${port}/js";
+      };
+      "/realms" = {
+        proxyPass = "http://${ip}:${port}/realms";
+      };
+      "/resources" = {
+        proxyPass = "http://${ip}:${port}/resources";
+      };
+      "/robots.txt" = {
+        proxyPass = "http://${ip}:${port}/robots.txt";
       };
     };
+  };
 
   services.keycloak = {
     enable = true;
@@ -65,7 +63,7 @@ in
   };
 
   sops.secrets.keycloak_db_password = {
-    sopsFile = ./secrets.yaml;
+    sopsFile = "${secretsPath}/server/keycloak.yaml";
     mode = "0444";
   };
 }
