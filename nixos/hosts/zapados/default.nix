@@ -8,6 +8,7 @@
     ../../server/alt-frontends/binternet.nix
     ../../server/alt-frontends/priviblur
     ../../server/alt-frontends/safetwitch
+    ../../server/automation/home-assistant.nix
     ../../server/knowledge/tiddlywiki.nix
   ];
 
