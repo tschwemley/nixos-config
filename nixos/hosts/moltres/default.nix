@@ -4,13 +4,13 @@
 
     # server imports
     ../../../containers/excalidraw
-    ../../../containers/freetar
-    # ../../../containers/threadfin
 
-    ../../server/searxng
-
+    ../../server/alt-frontends/freetar.nix
     ../../server/alt-frontends/redlib.nix
     ../../server/alt-frontends/rimgo.nix
+    ../../server/services/searxng
+
+    # ../../../containers/threadfin
   ];
 
   networking.hostName = "moltres";

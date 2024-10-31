@@ -107,7 +107,6 @@ in {
       backend git
         http-request set-header X-Forwarded-Proto https
         server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
-        # server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
 
       backend git_ssh
         mode tcp

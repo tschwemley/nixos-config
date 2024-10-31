@@ -3,11 +3,11 @@
     ../../profiles/proxmox.nix
 
     # server imports
-    ../../../containers/binternet
     ../../../containers/it-tools
-    ../../../containers/priviblur
-    ../../../containers/safetwitch
 
+    ../../server/alt-frontends/binternet.nix
+    ../../server/alt-frontends/priviblur
+    ../../server/alt-frontends/safetwitch
     ../../server/knowledge/tiddlywiki.nix
   ];
 

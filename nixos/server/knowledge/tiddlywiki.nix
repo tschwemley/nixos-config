@@ -1,8 +1,15 @@
 {config, ...}: {
   services = {
-    # nginx.virtualHosts.jolteon = {
-    #   locations."/".proxyPass = "127.0.0.1:${config.portMap.tiddlywiki}";
-    # };
+    nginx.virtualHosts."wiki.schwem.io" = {
+      locations."/".proxyPass = "127.0.0.1:${config.portMap.tiddlywiki}";
+    };
+
+    oidcsso.protectedHosts = [
+      {
+        host = "wiki.schwem.io";
+        redirect = "https://wiki.schwem.io";
+      }
+    ];
 
     tiddlywiki = {
       enable = true;
