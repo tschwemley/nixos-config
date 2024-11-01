@@ -14,7 +14,7 @@
     ../server/infrastructure/monitoring/prometheus/node-exporter.nix
     ../server/infrastructure/nginx
     ../server/infrastructure/port-map.nix
-    ../server/security/auth/oidc_sso
+    ../server/security/auth/oidcsso
   ];
 
   # disable man pages on servers
@@ -24,9 +24,8 @@
 
   services.getty.autologinUser = "root";
 
-  # make sure every user config has a root_password setup in secrets
   sops = {
-    age.keyFile = "/root/.config/sops/age/keys.txt";
+    age.keyFile = "/etc/sops/age-keys.txt";
 
     secrets = {
       container_deploy_key = {

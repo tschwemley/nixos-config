@@ -36,12 +36,12 @@ in {
     };
   };
 
-  services.oidcsso.protectedHosts = [
-    {
-      host = "schwem.io";
-      redirect = "https://schwem.io";
-    }
-  ];
+  # services.oidcsso.protectedHosts = [
+  #   {
+  #     host = "schwem.io";
+  #     redirect = "https://schwem.io";
+  #   }
+  # ];
 
   systemd.services.dashboard = {
     enable = true;

@@ -3,59 +3,80 @@
   inputs,
   lib,
   pkgs,
+  secretsPath,
   ...
-}:
-let
+}: let
   pkg = inputs.oidcsso.packages.${pkgs.system}.default;
   stateDir = "/var/lib/oidc-sso";
 
   protectedHosts = builtins.listToAttrs (
-    lib.lists.forEach config.services.oidcsso.protectedHosts (vhost: {
+    # lib.lists.forEach config.services.oidcsso.protectedHosts (vhost: {
+    lib.lists.forEach (import ../protected-hosts.nix) (vhost: {
       name = vhost.host;
-      value = {
+      value = let
+        baseUrl = "http://localhost:${config.portMap.oidcsso}";
+        queryParams =
+          "?redirect=${vhost.redirect}"
+          + (
+            lib.strings.optionalString
+            (vhost ? allowed_groups)
+            "&allowed_groups=${lib.strings.concatStringsSep "," vhost.allowed_groups}"
+          )
+          + (
+            lib.strings.optionalString
+            (vhost ? allowed_roles)
+            "&allowed_roles=${lib.strings.concatStringsSep "," vhost.allowed_roles}"
+          );
+      in {
         extraConfig = ''
           error_page 401 = @error401;
         '';
 
-        locations = {
+        locations = let
+          proxyPass = "http://${baseUrl}$request_uri";
+        in {
           "/".extraConfig = "auth_request .auth;";
 
           ".auth" = {
-            proxyPass = "http://articuno:${config.portMap.oidcsso}/auth";
+            proxyPass = "http://${baseUrl}/auth";
             extraConfig = ''
               internal;
             '';
           };
 
-          "@error401".return = "302 https://auth.schwem.io/login?rd=${vhost.redirect}";
+          "/login" = {inherit proxyPass;};
+
+          "@error401".proxyPass = "302 http://${baseUrl}/login${queryParams}";
+          # "@error401".return = "302 https://auth.schwem.io/login?rd=${vhost.redirect}";
         };
       };
     })
   );
-in
-{
-  imports = [ ./options.nix ];
+in {
+  # imports = [./options.nix];
 
-  services.nginx.virtualHosts = {
-    "auth.schwem.io".locations =
-      let
-        proxyPass = "http://127.0.0.1:${config.portMap.oidcsso}$request_uri";
-      in
-      {
-        "/auth" = {
-          inherit proxyPass;
-        };
-        "/auth/callback" = {
-          inherit proxyPass;
-        };
-        "/check-token" = {
-          inherit proxyPass;
-        };
-        "/login" = {
-          inherit proxyPass;
-        };
-      };
-  } // protectedHosts;
+  services.nginx.virtualHosts = protectedHosts;
+
+  # services.nginx.virtualHosts =
+  #   {
+  #     "auth.schwem.io".locations = let
+  #       proxyPass = "http://127.0.0.1:${config.portMap.oidcsso}$request_uri";
+  #     in {
+  #       "/auth" = {
+  #         inherit proxyPass;
+  #       };
+  #       "/auth/callback" = {
+  #         inherit proxyPass;
+  #       };
+  #       "/check-token" = {
+  #         inherit proxyPass;
+  #       };
+  #       "/login" = {
+  #         inherit proxyPass;
+  #       };
+  #     };
+  #   }
+  #   // protectedHosts;
 
   systemd.services.oidc-sso = {
     enable = true;
@@ -100,7 +121,7 @@ in
       "keycloak.service"
       "nginx.service"
     ];
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = ["multi-user.target"];
   };
 
   sops.secrets.oidc_sso_env = {
@@ -108,11 +129,11 @@ in
     owner = "oidcsso";
     path = "${stateDir}/.env";
     mode = "0440";
-    sopsFile = ./env.yaml;
+    sopsFile = "${secretsPath}/server/oidcsso.yaml";
   };
 
   users = {
-    groups.oidcsso = { };
+    groups.oidcsso = {};
     users.oidcsso = {
       group = "oidcsso";
       isSystemUser = true;

@@ -1,11 +1,11 @@
 local builtin = require("telescope.builtin")
 
 local function show_methods()
-   builtin.lsp_document_symbols({ symbols = "function" })
+   builtin.lsp_document_symbols({ symbols = { "function", "method" } })
 end
 
 local function show_variables()
-   builtin.lsp_document_symbols({ symbols = { "constant", "variable" } })
+   builtin.lsp_document_symbols({ symbols = { "constant", "property", "variable" } })
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -31,6 +31,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
       vim.keymap.set("n", "<leader>ll", builtin.lsp_document_symbols, opts)
       vim.keymap.set("n", "<leader>lm", show_methods, opts)
+      vim.keymap.set("n", "<leader>ls", builtin.lsp_document_symbols, opts)
       vim.keymap.set("n", "<leader>lv", show_variables, opts)
    end,
 })
