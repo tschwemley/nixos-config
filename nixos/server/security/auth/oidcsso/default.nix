@@ -48,9 +48,8 @@
           "/auth/callback" = {inherit proxyPass;};
           "/login" = {inherit proxyPass;};
 
-          "@error401".proxyPass = "${baseUrl}/login${queryParams}";
-          # TODO :I think this actually needs to point to ${vhost.host}/login (if proxypass doesn't work)
-          # "@error401".return = "302 http://oidcsso_server/login${queryParams}";
+          # TODO :I think this actually needs to point to ${vhost.host}/login
+          "@error401".return = "302 ${baseUrl}/login${queryParams}";
         };
       };
     })
