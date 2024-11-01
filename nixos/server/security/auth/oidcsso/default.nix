@@ -83,11 +83,7 @@ in {
   systemd.services.oidc-sso = let
     afterAndRequires =
       ["nginx.service"]
-      ++ (
-        if (config.systemd.services ? "keycloak")
-        then ["keycloak.service"]
-        else []
-      );
+      ++ lib.lists.optional config.services.keycloak.enable ["keycloak.service"];
   in {
     enable = true;
     serviceConfig = {
