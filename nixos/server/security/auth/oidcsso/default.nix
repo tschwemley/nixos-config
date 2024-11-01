@@ -14,7 +14,7 @@
     lib.lists.forEach (import ../protected-hosts.nix) (vhost: {
       name = vhost.host;
       value = let
-        baseUrl = "http://localhost:${config.portMap.oidcsso}";
+        baseUrl = "http://127.0.0.1:${config.portMap.oidcsso}";
         queryParams =
           "?redirect=${vhost.redirect}"
           + (

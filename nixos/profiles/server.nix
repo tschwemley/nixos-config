@@ -1,29 +1,21 @@
 {
-  config,
   lib,
   pkgs,
   ...
-}: let
-  tmpImport =
-    if config.networking.hostName != "moltres"
-    then []
-    else [];
-in {
-  imports =
-    [
-      ./.
+}: {
+  imports = [
+    ./.
 
-      ../network/containers.nix
-      ../network/systemd-networkd.nix
-      ../network/tailscale.nix
+    ../network/containers.nix
+    ../network/systemd-networkd.nix
+    ../network/tailscale.nix
 
-      ../server/infrastructure/haproxy/options.nix
-      ../server/infrastructure/monitoring/prometheus/node-exporter.nix
-      ../server/infrastructure/nginx
-      ../server/infrastructure/port-map.nix
-      # ../server/security/auth/oidcsso
-    ]
-    ++ tmpImport;
+    ../server/infrastructure/haproxy/options.nix
+    ../server/infrastructure/monitoring/prometheus/node-exporter.nix
+    ../server/infrastructure/nginx
+    ../server/infrastructure/port-map.nix
+    ../server/security/auth/oidcsso
+  ];
 
   # disable man pages on servers
   documentation.man.enable = false;
