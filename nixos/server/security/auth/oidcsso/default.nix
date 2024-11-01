@@ -123,15 +123,8 @@ in {
     };
 
     description = "Simple OIDC/OAuth2 proxy for auth code flow.";
-    # after = [
-    #   "network.target"
-    #   "keycloak.service"
-    # ];
-    #
-    # requires = [
-    #   "keycloak.service"
-    #   "nginx.service"
-    # ];
+    after = afterAndRequires;
+    requires = afterAndRequires;
     wantedBy = ["multi-user.target"];
   };
 
