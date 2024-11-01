@@ -44,6 +44,8 @@
             '';
           };
 
+          "/auth" = {inherit proxyPass;};
+          "/auth/callback" = {inherit proxyPass;};
           "/login" = {inherit proxyPass;};
 
           "@error401".proxyPass = "302 http://${baseUrl}/login${queryParams}";
@@ -78,7 +80,15 @@ in {
   #   }
   #   // protectedHosts;
 
-  systemd.services.oidc-sso = {
+  systemd.services.oidc-sso = let
+    afterAndRequires =
+      ["nginx.service"]
+      ++ (
+        if (config.systemd.services ? "keycloak")
+        then ["keycloak.service"]
+        else []
+      );
+  in {
     enable = true;
     serviceConfig = {
       Type = "simple";
@@ -113,14 +123,15 @@ in {
     };
 
     description = "Simple OIDC/OAuth2 proxy for auth code flow.";
-    after = [
-      "network.target"
-      "keycloak.service"
-    ];
-    requires = [
-      "keycloak.service"
-      "nginx.service"
-    ];
+    # after = [
+    #   "network.target"
+    #   "keycloak.service"
+    # ];
+    #
+    # requires = [
+    #   "keycloak.service"
+    #   "nginx.service"
+    # ];
     wantedBy = ["multi-user.target"];
   };
 
