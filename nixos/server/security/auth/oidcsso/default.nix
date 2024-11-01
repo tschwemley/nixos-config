@@ -7,14 +7,13 @@
   ...
 }: let
   pkg = inputs.oidcsso.packages.${pkgs.system}.default;
-  stateDir = "/var/lib/oidc-sso";
+  stateDir = "/var/lib/oidcsso";
 
   protectedHosts = builtins.listToAttrs (
-    # lib.lists.forEach config.services.oidcsso.protectedHosts (vhost: {
     lib.lists.forEach (import ../protected-hosts.nix) (vhost: {
       name = vhost.host;
       value = let
-        baseUrl = "http://127.0.0.1:${config.portMap.oidcsso}";
+        baseUrl = "http://oidcsso_server";
         queryParams =
           "?redirect=${vhost.redirect}"
           + (
@@ -33,12 +32,13 @@
         '';
 
         locations = let
-          proxyPass = "http://${baseUrl}$request_uri";
+          proxyPass = "${baseUrl}$request_uri";
         in {
           "/".extraConfig = "auth_request .auth;";
 
           ".auth" = {
-            proxyPass = "http://${baseUrl}/auth";
+            proxyPass = "${baseUrl}/auth";
+            # proxyPass = "http://oidcsso_server/auth";
             extraConfig = ''
               internal;
             '';
@@ -48,8 +48,9 @@
           "/auth/callback" = {inherit proxyPass;};
           "/login" = {inherit proxyPass;};
 
-          "@error401".proxyPass = "302 http://${baseUrl}/login${queryParams}";
-          # "@error401".return = "302 https://auth.schwem.io/login?rd=${vhost.redirect}";
+          "@error401".proxyPass = "${baseUrl}/login${queryParams}";
+          # TODO :I think this actually needs to point to ${vhost.host}/login (if proxypass doesn't work)
+          # "@error401".return = "302 http://oidcsso_server/login${queryParams}";
         };
       };
     })
@@ -57,34 +58,19 @@
 in {
   # imports = [./options.nix];
 
-  services.nginx.virtualHosts = protectedHosts;
+  services.nginx = {
+    upstreams = {
+      "oidcsso_server" = {
+        servers = {
+          "127.0.0.1:1337" = {};
+        };
+      };
+    };
 
-  # services.nginx.virtualHosts =
-  #   {
-  #     "auth.schwem.io".locations = let
-  #       proxyPass = "http://127.0.0.1:${config.portMap.oidcsso}$request_uri";
-  #     in {
-  #       "/auth" = {
-  #         inherit proxyPass;
-  #       };
-  #       "/auth/callback" = {
-  #         inherit proxyPass;
-  #       };
-  #       "/check-token" = {
-  #         inherit proxyPass;
-  #       };
-  #       "/login" = {
-  #         inherit proxyPass;
-  #       };
-  #     };
-  #   }
-  #   // protectedHosts;
+    virtualHosts = protectedHosts;
+  };
 
-  systemd.services.oidc-sso = let
-    afterAndRequires =
-      ["nginx.service"]
-      ++ lib.lists.optional config.services.keycloak.enable ["keycloak.service"];
-  in {
+  systemd.services.oidcsso = {
     enable = true;
     serviceConfig = {
       Type = "simple";
@@ -94,7 +80,7 @@ in {
       SyslogIdentifier = "oidcsso";
       WorkingDirectory = stateDir;
 
-      ExecStart = "${pkg}/bin/oidcsso -e ${config.sops.secrets.oidc_sso_env.path}";
+      ExecStart = "${pkg}/bin/oidcsso -e ${config.sops.secrets.oidcsso_env.path}";
       Restart = "on-failure";
       RestartSec = 30;
 
@@ -119,12 +105,12 @@ in {
     };
 
     description = "Simple OIDC/OAuth2 proxy for auth code flow.";
-    after = afterAndRequires;
-    requires = afterAndRequires;
+    # after = afterAndRequires;
+    # requires = afterAndRequires;
     wantedBy = ["multi-user.target"];
   };
 
-  sops.secrets.oidc_sso_env = {
+  sops.secrets.oidcsso_env = {
     group = "oidcsso";
     owner = "oidcsso";
     path = "${stateDir}/.env";

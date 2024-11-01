@@ -4,7 +4,7 @@
     Disallow: /
   '';
 
-  networking.firewall.allowedTCPPorts = [ 8080 ];
+  networking.firewall.allowedTCPPorts = [8080];
 
   services.nginx = {
     enable = true;
@@ -17,7 +17,7 @@
       }
     ];
 
-    # see source for more information on what these values set: 
+    # see source for more information on what these values set:
     #  https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/web-servers/nginx/default.nix
     recommendedGzipSettings = true;
     recommendedOptimisation = true;
@@ -25,5 +25,5 @@
     recommendedTlsSettings = true;
   };
 
-  users.users.nginx.extraGroups = [ "users" ];
+  users.users.nginx.extraGroups = ["users"];
 }
