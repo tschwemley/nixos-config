@@ -52,11 +52,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730318951,
-        "narHash": "sha256-C2GqqnoCI0tkprjsqZhS9vpS+lADrcrXkMIive6Y27g=",
+        "lastModified": 1730532250,
+        "narHash": "sha256-q11QRU+fdnYLXomBf2FsIBo0zfiQvorDir9+Z/dDSoY=",
         "ref": "refs/heads/main",
-        "rev": "b2ee58c323be1519aaef5061c84771ca394e85ba",
-        "revCount": 18,
+        "rev": "3f13c9080588c908373e5c60a80ef10f17755498",
+        "revCount": 20,
         "type": "git",
         "url": "https://git.schwem.io/schwem/dashboard"
       },
@@ -124,11 +124,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1727826117,
-        "narHash": "sha256-K5ZLCyfO/Zj9mPFldf3iwS6oZStJcU4tSpiXTMYaaL0=",
+        "lastModified": 1730504689,
+        "narHash": "sha256-hgmguH29K2fvs9szpq2r3pz2/8cJd2LPS+b4tfNFCwE=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "3d04084d54bedc3d6b8b736c70ef449225c361b1",
+        "rev": "506278e768c2a08bec68eb62932193e341f55c90",
         "type": "github"
       },
       "original": {
@@ -386,11 +386,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1730368399,
-        "narHash": "sha256-F8vJtG389i9fp3k2/UDYHMed3PLCJYfxCqwiVP7b9ig=",
+        "lastModified": 1730520317,
+        "narHash": "sha256-IH+vuP/F4zdOwmbCNXtszaCbzAiqx5O72NwtlTv+Nco=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "da14839ac5f38ee6adbdb4e6db09b5eef6d6ccdc",
+        "rev": "d3986e78856a70d0b38d9e88dc39390556c2e962",
         "type": "github"
       },
       "original": {
