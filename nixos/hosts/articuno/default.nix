@@ -15,10 +15,7 @@
 
   networking.hostName = "articuno";
 
-  sops = {
-    defaultSopsFile = ./secrets.yaml;
-    age.keyFile = "/root/.config/sops/age/keys.txt";
-  };
+  sops.defaultSopsFile = ./secrets.yaml;
 
   services.tailscale.extraUpFlags = ["--advertise-tags=tags:server,tags:master"];
 
