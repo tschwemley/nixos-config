@@ -243,11 +243,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730016908,
-        "narHash": "sha256-bFCxJco7d8IgmjfNExNz9knP8wvwbXU4s/d53KOK6U0=",
+        "lastModified": 1730490306,
+        "narHash": "sha256-AvCVDswOUM9D368HxYD25RsSKp+5o0L0/JHADjLoD38=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e83414058edd339148dc142a8437edb9450574c8",
+        "rev": "1743615b61c7285976f85b303a36cdf88a556503",
         "type": "github"
       },
       "original": {
@@ -624,11 +624,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1730405375,
-        "narHash": "sha256-pAn0MF4tzL+rMbTiUrVBP5xCvQuQxb1iqrEnrTpkfeg=",
+        "lastModified": 1730499385,
+        "narHash": "sha256-fbk0m20NpaUCWvH/l9hfmx+VKw4U3pkTkXdAeHL7bHs=",
         "owner": "redlib-org",
         "repo": "redlib",
-        "rev": "9aea9c90a2dd91d3b9b7247fd03a5bab7ea4088a",
+        "rev": "f03bdcf472d32d51a1093528071dc329b348379d",
         "type": "github"
       },
       "original": {
@@ -852,15 +852,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1730337471,
-        "narHash": "sha256-WWeoOSeGQBwazsPOIoENSzuAXMvT1AKvfaSk0j4sYBo=",
-        "owner": "fufexan",
+        "lastModified": 1730490882,
+        "narHash": "sha256-XcjaaFJB6KHGEZZm0Lc4BeL1oET3l69WmgMJLrclSkQ=",
+        "owner": "tschwemley",
         "repo": "zen-browser-flake",
-        "rev": "a8d22714d0b929108d82ca8e9d692539ecfaeebb",
+        "rev": "6ebeea0cfd1eb9eb622132b5e374df9c658e759d",
         "type": "github"
       },
       "original": {
-        "owner": "fufexan",
+        "owner": "tschwemley",
         "repo": "zen-browser-flake",
         "type": "github"
       }
