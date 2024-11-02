@@ -1,6 +1,9 @@
-{ config, secretsPath, ... }:
 {
-  imports = [ ./. ];
+  config,
+  secretsPath,
+  ...
+}: {
+  imports = [./.];
 
   programs.ssh.matchBlocks = {
     charizard = {
@@ -35,6 +38,13 @@
       host = "slots-dev";
       hostname = "slots-dev-vii-02";
       identityFile = config.sops.secrets.work_server_key.path;
+      localForwards = [
+        {
+          bind.port = 9095;
+          host.address = "localhost";
+          host.port = 9095;
+        }
+      ];
       proxyJump = "mac";
       user = "tschwemley";
     };
@@ -42,19 +52,19 @@
 
   sops.secrets = builtins.listToAttrs (
     map
-      (name: {
-        inherit name;
-        value = {
-          sopsFile = "${secretsPath}/home/ssh.yaml";
-        };
-      })
-      [
-        "charizard_ssh_key"
-        "gh_work_key"
-        "mac_key"
-        "personal_gh_key"
-        "pikachu_ssh_key"
-        "work_server_key"
-      ]
+    (name: {
+      inherit name;
+      value = {
+        sopsFile = "${secretsPath}/home/ssh.yaml";
+      };
+    })
+    [
+      "charizard_ssh_key"
+      "gh_work_key"
+      "mac_key"
+      "personal_gh_key"
+      "pikachu_ssh_key"
+      "work_server_key"
+    ]
   );
 }

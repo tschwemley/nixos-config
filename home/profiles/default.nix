@@ -17,8 +17,9 @@ in {
     ../programs/neovim
     ../programs/nnn.nix
     ../programs/ripgrep.nix
-    ../xdg/ssh/default.nix
+    ../programs/thefuck.nix
     ../terminal/shell
+    ../xdg/ssh/default.nix
   ];
 
   home.sessionVariables.TERM = "kitty";

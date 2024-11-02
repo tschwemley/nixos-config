@@ -45,4 +45,10 @@
       VISUAL = "nvim";
     };
   };
+
+  programs.git.extraConfig.url = {
+    "ssh://gh" = {
+      insteadOf = "https://github.com";
+    };
+  };
 }

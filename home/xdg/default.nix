@@ -2,20 +2,19 @@
   config,
   pkgs,
   ...
-}:
-let
-  browser = [ "librewolf" ];
+}: let
+  browser = ["zen"];
   # imageViewer = ["org.gnome.Loupe"];
   # videoPlayer = ["io.github.celluloid_player.Celluloid"];
   # audioPlayer = ["io.bassi.Amberol"];
 
-  xdgAssociations =
-    type: program: list:
+  xdgAssociations = type: program: list:
     builtins.listToAttrs (
       map (e: {
         name = "${type}/${e}";
         value = program;
-      }) list
+      })
+      list
     );
 
   # image = xdgAssociations "image" imageViewer ["png" "svg" "jpeg" "gif"];
@@ -43,8 +42,8 @@ let
     {
       # "application/pdf" = ["org.pwmt.zathura-pdf-mupdf"];
       "text/html" = browser;
-      "text/plain" = [ "nvim" ];
-      "x-scheme-handler/chrome" = [ "brave" ];
+      "text/plain" = ["nvim"];
+      "x-scheme-handler/chrome" = ["brave"];
       # "x-scheme-handler/chrome" = ["chromium-browser"];
       # "inode/directory" = ["yazi"];
     }
@@ -54,8 +53,7 @@ let
     # // audio
     // browserTypes
   );
-in
-{
+in {
   xdg = {
     enable = true;
     cacheHome = config.home.homeDirectory + "/.local/cache";

@@ -4,8 +4,7 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   disk = (import ../../hardware/disks).charizard;
   hardware = {
     imports = [
@@ -23,9 +22,8 @@ let
   ollama = import ../../../containers/ollama "/home/schwem/.ollama";
   open-webui = import ../../../containers/open-webui "/home/schwem/.open-webui";
   sillytavern = import ../../../containers/sillytavern "/home/schwem/.sillytavern";
-  user = (import ../../system/users.nix { inherit config pkgs; }).schwem;
-in
-{
+  user = (import ../../system/users.nix {inherit config pkgs;}).schwem;
+in {
   imports = [
     disk
     hardware
