@@ -7,6 +7,8 @@
     };
 
   config.portMap = {
+    archiveboxWeb = "8000";
+    archiveboxNovnc = "8001";
     anonymous-overflow = "8010";
     binternet = "8009";
     dashboard = "6980";
