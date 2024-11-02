@@ -45,7 +45,6 @@ in {
 
         acl domain_default hdr(host) -i schwem.io
         acl domain_auth hdr(host) -i auth.schwem.io
-        acl domain_dash hdr(host) -i dash.schwem.io
         acl domain_db hdr(host) -i db.schwem.io
         acl domain_draw hdr(host) -i draw.schwem.io
         acl domain_git hdr(host) -i git.schwem.io
@@ -58,9 +57,9 @@ in {
         acl domain_pinterest hdr(host) -i pinterest.schwem.io
         acl domain_reddit hdr(host) -i reddit.schwem.io
         acl domain_rimgo hdr(host) -i rimgo.schwem.io
-        acl domain_sabnzbd hdr(host) -i sabnzbd.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
         acl domain_stackoverflow hdr(host) -i so.schwem.io
+        acl domain_tiddlywiki hdr(host) -i tiddlywiki.schwem.io
         acl domain_tiktok hdr(host) -i tiktok.schwem.io
         acl domain_threadfin hdr(host) -i threadfin.schwem.io
         acl domain_tumblr hdr(host) -i tumblr.schwem.io
@@ -68,7 +67,6 @@ in {
 
         use_backend auth if domain_auth
         use_backend articuno if domain_default
-        # use_backend articuno if domain_dash
         use_backend draw if domain_draw
         use_backend freetar if domain_freetar
         use_backend git if domain_git
@@ -80,9 +78,9 @@ in {
         use_backend pinterest if domain_pinterest
         use_backend reddit if domain_reddit
         use_backend rimgo if domain_rimgo
-        use_backend sabnzbd if domain_sabnzbd
         use_backend searxng if domain_search
         use_backend stackoverflow if domain_stackoverflow
+        use_backend tiddlywiki if domain_tiddlywiki
         use_backend tiktok if domain_tiktok
         use_backend threadfin if domain_threadfin
         use_backend tumblr if domain_tumblr
@@ -146,10 +144,6 @@ in {
         #server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
         server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
-      backend sabnzbd
-        http-request set-header X-Forwarded-Proto https
-        server eevee eevee.wyvern-map.ts.net:8080 check send-proxy
-
       backend searxng
         http-request set-header X-Forwarded-Proto https
         # balance roundrobin
@@ -163,6 +157,10 @@ in {
       backend stackoverflow
         http-request set-header X-Forwarded-Proto https
         server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
+
+      backend tiddlywiki
+        http-request set-header X-Forwarded-Proto https
+        server zapados zapados:8080 check send-proxy
 
       backend tiktok
         http-request set-header X-Forwarded-Proto https
