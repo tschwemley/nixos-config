@@ -2,6 +2,7 @@
   config,
   inputs,
   pkgs,
+  secretsPath,
   ...
 }: let
   pkg = inputs.dashboard.packages.${pkgs.system}.default;
@@ -93,10 +94,10 @@ in {
     group = "dashboard";
     owner = "dashboard";
 
-    key = "oidc_sso_env";
+    key = "oidcsso_env";
     path = "/var/lib/${stateDir}/.env";
     mode = "0440";
-    sopsFile = ../security/auth/oidc_sso/env.yaml; # dashboard env only contains oidc values (cookie/provider info) for now
+    sopsFile = "${secretsPath}/server/oidcsso.yaml"; # dashboard env only contains oidc values (cookie/provider info) for now
   };
 
   users = {
