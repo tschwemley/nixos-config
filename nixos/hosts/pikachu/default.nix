@@ -5,8 +5,7 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   disk = (import ../../hardware/disks).pikachu;
   hardware = {
     imports = [
@@ -24,9 +23,8 @@ let
       ../../network/tailscale.nix
     ];
   };
-  user = (import ../../system/users.nix { inherit self config pkgs; }).schwem;
-in
-{
+  user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
+in {
   imports = [
     disk
     hardware
@@ -39,31 +37,30 @@ in
 
   boot = {
     initrd = {
-      availableKernelModules = [
-        "xhci_pci"
-        "ahci"
-        "nvme"
-        "usbhid"
-        "uas"
-        "sd_mod"
-      ];
-      kernelModules = [ "kvm-intel" ];
+      availableKernelModules = ["xhci_pci" "thunderbolt" "nvme"];
+      kernelModules = ["kvm-intel"];
     };
-    # TODO: this might need to be latest for laptop config. not sure yet
-    kernelPackages = pkgs.linuxPackages_6_10;
-    supportedFilesystems = [ "btrfs" ];
 
-    blacklistedKernelModules = [
-      "snd_soc_avs"
-    ];
+    # extraModprobeConfig = ''
+    #   options snd-hda-intel dmic_detect=0
+    # '';
 
-    extraModprobeConfig = ''
-      #options snd-intel-dspcfg dsp_driver=3
-      options snd-intel-dspcfg dsp_driver=1
-      options snd_sof_pci ipc_type=1
-      options snd_sof_intel_hda_common sof_use_tplg_nhlt=1
-    '';
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = ["snd-intel-dspcfg.dsp_driver=1"];
+
+    # blacklistedKernelModules = [
+    #   "snd_soc_avs"
+    # ];
+
+    # extraModprobeConfig = ''
+    #   #options snd-intel-dspcfg dsp_driver=3
+    #   options snd-intel-dspcfg dsp_driver=1
+    #   options snd_sof_pci ipc_type=1
+    #   options snd_sof_intel_hda_common sof_use_tplg_nhlt=1
+    # '';
   };
+
+  hardware.sensor.iio.enable = true;
 
   networking = {
     hostName = "pikachu";
@@ -110,6 +107,8 @@ in
 
   # laptop specific options
   environment.systemPackages = with pkgs; [
+    # acpi
+    # acpidump-all
     sof-firmware
   ];
 
@@ -140,6 +139,6 @@ in
       enable = true;
       touchpad.tapping = false;
     };
-    xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
+    xserver.videoDrivers = lib.mkDefault ["nvidia"];
   };
 }

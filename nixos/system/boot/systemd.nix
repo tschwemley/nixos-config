@@ -2,7 +2,6 @@
   imports = [./.];
 
   boot = {
-
     initrd = {
       systemd.enable = true;
     };

@@ -1,5 +1,6 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
+  environment.systemPackages = [pkgs.overskride];
+
   hardware.bluetooth = {
     enable = true;
     package = pkgs.bluez-experimental;
