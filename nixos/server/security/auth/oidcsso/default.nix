@@ -33,6 +33,9 @@
 
         locations = let
           proxyPass = "${baseUrl}$request_uri";
+          extraConfig = ''
+            internal;
+          '';
         in {
           "/".extraConfig = "auth_request .auth;";
 
@@ -48,8 +51,7 @@
           "/auth/callback" = {inherit proxyPass;};
           "/login" = {inherit proxyPass;};
 
-          # TODO :I think this actually needs to point to ${vhost.host}/login
-          "@error401".return = "302 ${baseUrl}/login${queryParams}";
+          "@error401".return = "302 https://${vhost.host}/login${queryParams}";
         };
       };
     })
