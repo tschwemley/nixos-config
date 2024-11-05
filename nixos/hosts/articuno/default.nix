@@ -4,12 +4,12 @@
 
     # server imports
     ../../server/dashboard
-
-    ../../server/security/acme
-    ../../server/security/auth/keycloak
+    ../../server/development/cyberchef.nix
     ../../server/infrastructure/haproxy
     ../../server/infrastructure/monitoring
     ../../server/infrastructure/postgresql
+    ../../server/security/acme
+    ../../server/security/auth/keycloak
     ../../server/services/searxng
   ];
 

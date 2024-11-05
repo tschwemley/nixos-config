@@ -68,7 +68,7 @@ in {
 
         use_backend auth if domain_auth
         use_backend articuno if domain_default
-        use_backend jolteon if domain_cyberchef
+        use_backend articuno if domain_cyberchef
         use_backend draw if domain_draw
         use_backend freetar if domain_freetar
         use_backend git if domain_git
