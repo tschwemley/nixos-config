@@ -1,4 +1,6 @@
 {
+  imports = [./wireshark.nix];
+
   networking = {
     firewall = {
       enable = true;
