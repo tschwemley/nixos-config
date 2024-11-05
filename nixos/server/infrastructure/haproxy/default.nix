@@ -45,6 +45,7 @@ in {
 
         acl domain_default hdr(host) -i schwem.io
         acl domain_auth hdr(host) -i auth.schwem.io
+        acl domain_cyberchef hdr(host) -i cyberchef.schwem.io
         acl domain_db hdr(host) -i db.schwem.io
         acl domain_draw hdr(host) -i draw.schwem.io
         acl domain_git hdr(host) -i git.schwem.io
@@ -67,6 +68,7 @@ in {
 
         use_backend auth if domain_auth
         use_backend articuno if domain_default
+        use_backend jolteon if domain_cyberchef
         use_backend draw if domain_draw
         use_backend freetar if domain_freetar
         use_backend git if domain_git
@@ -111,10 +113,6 @@ in {
         server jolteon_ssh jolteon:2222 check
         # server zapados zapados:2222 check
 
-      backend rimgo
-        http-request set-header X-Forwarded-Proto https
-        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
-
       backend it-tools
         http-request set-header X-Forwarded-Proto https
         server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
@@ -126,6 +124,10 @@ in {
       backend jellyseerr
         http-request set-header X-Forwarded-Proto https
         server tentacool tentacool.wyvern-map.ts.net:8080 check send-proxy
+
+      backend jolteon
+        mode tcp
+        server jolteon jolteon:8080 check send-proxy
 
       backend medium
         http-request set-header X-Forwarded-Proto https
@@ -142,6 +144,10 @@ in {
       backend reddit
         http-request set-header X-Forwarded-Proto https
         #server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
+        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
+
+      backend rimgo
+        http-request set-header X-Forwarded-Proto https
         server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
       backend searxng
