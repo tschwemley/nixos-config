@@ -15,6 +15,7 @@
     ../programs/jellyfin.nix
     ../programs/jira-cli.nix
     ../programs/khal.nix
+    ../programs/lan-mouse.nix
     ../programs/libreoffice.nix
     ../programs/qt.nix
     ../programs/tailscale-systray.nix
