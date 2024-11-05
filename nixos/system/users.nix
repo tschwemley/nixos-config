@@ -2,8 +2,7 @@
   config,
   pkgs,
   ...
-}:
-{
+}: {
   root = {
     users.users.root.openssh.authorizedKeys.keys = [
       (builtins.readFile ../hosts/${config.networking.hostName}/ssh_key.pub)
@@ -20,7 +19,7 @@
       # sops.age.keyFile = "/etc/sops/age-keys.txt";
       sops.age.keyFile = "/root/.config/sops/age/keys.txt";
       # systemd.users.sops-nix
-      systemd.user.services.sops-nix.Install.Before = [ "home-manager-root.service" ];
+      systemd.user.services.sops-nix.Install.Before = ["home-manager-root.service"];
       # systemd.user.services.sops-nix.Install.WantedBy = [ "home-manager-root.service" ];
     };
   };
@@ -39,6 +38,7 @@
         "plugdev"
         "podman"
         "wheel"
+        "wireshark"
       ];
 
       openssh.authorizedKeys.keys = [
@@ -49,7 +49,7 @@
     };
 
     home-manager.users.schwem = {
-      imports = [ ../../home/profiles/pc.nix ];
+      imports = [../../home/profiles/pc.nix];
 
       sops.age.keyFile = "/home/schwem/.config/sops/age/keys.txt";
       systemd.user.settings.Manager.DefaultLimitNOFILE = "524288";
