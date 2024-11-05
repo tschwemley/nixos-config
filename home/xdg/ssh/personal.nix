@@ -11,6 +11,7 @@
       identityFile = config.sops.secrets.charizard_ssh_key.path;
       user = "schwem";
     };
+
     githubZynga = {
       host = "gh-zynga github-ca.corp.zynga.com";
       hostname = "github-ca.corp.zynga.com";
@@ -18,26 +19,34 @@
       proxyJump = "mac";
       user = "git";
     };
+
     pikachu = {
       hostname = "pikachu";
       identityFile = config.sops.secrets.pikachu_ssh_key.path;
       user = "schwem";
     };
+
     personalGithub = {
       host = "gh github.com";
       hostname = "github.com";
       identityFile = config.sops.secrets.personal_gh_key.path;
       user = "git";
     };
+
     mac = {
       hostname = "192.168.1.69";
       identityFile = config.sops.secrets.mac_key.path;
       user = "tschwemley";
+      dynamicForwards = [{port = 9876;}];
     };
+
     zyngaServer = {
       host = "slots-dev";
       hostname = "slots-dev-vii-02";
       identityFile = config.sops.secrets.work_server_key.path;
+      proxyJump = "mac";
+      user = "tschwemley";
+
       localForwards = [
         {
           bind.port = 9095;
@@ -45,8 +54,6 @@
           host.port = 9095;
         }
       ];
-      proxyJump = "mac";
-      user = "tschwemley";
     };
   };
 

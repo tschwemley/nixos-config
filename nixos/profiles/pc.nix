@@ -2,16 +2,15 @@
   inputs,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
     ./.
-    ./development.nix
 
     ../hardware/audio
+    ../hardware/flipperzero.nix
     ../programs/chrysalis
     ../programs/gamemode.nix
     ../programs/hyprland.nix
@@ -41,6 +40,6 @@
 
   services = {
     getty.autologinUser = "schwem";
-    tailscale.extraUpFlags = [ "--advertise-tags=tag:pc" ];
+    tailscale.extraUpFlags = ["--advertise-tags=tag:pc"];
   };
 }
