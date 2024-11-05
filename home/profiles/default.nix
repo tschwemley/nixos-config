@@ -1,15 +1,8 @@
-{pkgs, ...}: let
-  git = import ../programs/git.nix {
-    inherit pkgs;
-    name = "Tyler Schwemley";
-    email = "tjschwem@gmail.com";
-  };
-in {
+{
   imports = [
-    git
-
     ../programs/common.nix
     ../programs/development
+    ../programs/git.nix
 
     ../programs/bat.nix
     ../programs/btop.nix

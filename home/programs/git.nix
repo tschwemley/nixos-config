@@ -1,7 +1,6 @@
 {
+  osConfig,
   pkgs,
-  name,
-  email,
   ...
 }: let
   aliases = {
@@ -15,21 +14,26 @@ in {
   home.packages = with pkgs; [gh];
   programs.git = {
     inherit aliases;
+
     enable = true;
-    userEmail = email;
-    userName = name;
     lfs.enable = true;
+    userEmail = "tjschwem@gmail.com";
+    userName = "Tyler Schwemley";
+
     extraConfig = {
       init.defaultBranch = "main";
       pull.rebase = true;
       core = {
         whitespace = "trailing-space,space-before-tab";
       };
-      # url = {
-      # "ssh://forgejo" = {
-      #   insteadOf = "https://git.schwem.io";
-      # };
-      # };
+      url =
+        if osConfig.networking.hostName == "charizard" || osConfig.networking.hostName == "pikachu"
+        then {
+          "ssh://forgejo" = {
+            insteadOf = "https://git.schwem.io";
+          };
+        }
+        else {};
     };
   };
 }
