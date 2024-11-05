@@ -126,7 +126,7 @@ in {
         server tentacool tentacool.wyvern-map.ts.net:8080 check send-proxy
 
       backend jolteon
-        mode tcp
+        http-request set-header X-Forwarded-Proto https
         server jolteon jolteon:8080 check send-proxy
 
       backend medium
