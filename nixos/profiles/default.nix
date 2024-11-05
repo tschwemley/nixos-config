@@ -10,6 +10,8 @@ in {
     inputs.sops-nix.nixosModules.sops
     inputs.disko.nixosModules.disko
     rootUser
+
+    ../development
     ../network
     ../programs/home-manager.nix
     ../programs/zsh.nix
@@ -25,7 +27,6 @@ in {
       curl
       git
       gnupg
-      go
       ogen
       jq
       lsof
