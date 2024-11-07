@@ -6,6 +6,7 @@
       htmx-lsp
       lua-language-server
       gopls
+      marksman
       nil
       nodePackages.bash-language-server
       nodePackages.intelephense

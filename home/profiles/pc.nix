@@ -5,6 +5,7 @@
     ../programs/ai
     ../programs/browsers
     ../programs/communication
+    ../programs/development/dbgate.nix
     ../programs/gnome
     ../programs/music
 

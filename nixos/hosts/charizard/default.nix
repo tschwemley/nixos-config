@@ -34,7 +34,6 @@ in {
     user
     ./secrets.nix
     ../../system/boot/systemd.nix
-    # ../../services/samba.nix
     ../../profiles/pc.nix
   ];
 
@@ -60,8 +59,6 @@ in {
     monitors = {
       primary = "DP-2";
       config = [
-        # "DP-2, 3840x2160@120, 0x0, 1, vrr, 0, bitdepth, 10, transform, 3"
-        # "DP-2, 3840x2160@120, 0x0, 1, vrr, 0, transform, 3"
         "DP-2, 3840x2160@120, 0x0, 1, vrr, 0"
       ];
     };
@@ -84,12 +81,12 @@ in {
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
   system.stateVersion = "24.05";
 
-  systemd.services."NetworkManager-wait-online.service".enable = lib.mkForce false;
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
   services.tailscale.extraUpFlags = [
     "--exit-node=us-chi-wg-302.mullvad.ts.net"
     "--exit-node-allow-lan-access=true"
-    "--shields-up"
+    # "--shields-up"
   ];
   time.timeZone = "America/Detroit";
 

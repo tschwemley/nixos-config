@@ -1,4 +1,3 @@
-{ pkgs, ... }:
-{
-  home.packages = [ pkgs.dbgate ];
+{pkgs, ...}: {
+  home.packages = [pkgs.dbgate];
 }

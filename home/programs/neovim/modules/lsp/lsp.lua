@@ -21,6 +21,7 @@ local servers = {
 	"htmx",
 	"intelephense",
 	"lua_ls",
+	"marksman",
 	"nil_ls",
 	"sqls",
 	"taplo", -- taplo is for toml
