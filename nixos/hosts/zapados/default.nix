@@ -25,6 +25,7 @@
   # TODO: if keeping then move over to server dir
   services.oauth2-proxy = {
     enable = true;
+    emailDomains = ["schwem.io" "gmail.com"];
     keyFile = config.sops.secrets."oauth2-proxy.env".path;
   };
 
