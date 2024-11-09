@@ -1,4 +1,8 @@
 {
+  config,
+  secretsPath,
+  ...
+}: {
   imports = [
     ../../profiles/proxmox.nix
 
@@ -18,5 +22,14 @@
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion/ when ready to update
   system.stateVersion = "23.05";
 
-  services.oauth2-proxy.enable = true;
+  # TODO: if keeping then move over to server dir
+  services.oauth2-proxy = {
+    enable = true;
+    keyPath = config.sops.secrets."oauth2-proxy.env".path;
+  };
+
+  sops.secrets."oauth2-proxy.env" = {
+    format = "dotenv";
+    sopsFile = "${secretsPath}/secrets/server/oauth2-proxy.env";
+  };
 }
