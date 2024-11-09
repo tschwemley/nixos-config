@@ -25,11 +25,11 @@
   # TODO: if keeping then move over to server dir
   services.oauth2-proxy = {
     enable = true;
-    keyPath = config.sops.secrets."oauth2-proxy.env".path;
+    keyFile = config.sops.secrets."oauth2-proxy.env".path;
   };
 
   sops.secrets."oauth2-proxy.env" = {
-    format = "dotenv";
-    sopsFile = "${secretsPath}/secrets/server/oauth2-proxy.env";
+    # path = "${secretsPath}/secrets/server/oauth2-proxy.env";
+    sopsFile = "${secretsPath}/server/oauth2-proxy.yaml";
   };
 }
