@@ -9,22 +9,26 @@
   pkg = inputs.oidcsso.packages.${pkgs.system}.default;
   stateDir = "/var/lib/oidcsso";
 
+  cfg = config.services.oidcsso;
+
+  # protectedHosts = builtins.listToAttrs (
+  #   lib.lists.forEach (import ../protected-hosts.nix) (vhost: {
   protectedHosts = builtins.listToAttrs (
-    lib.lists.forEach (import ../protected-hosts.nix) (vhost: {
+    lib.lists.forEach cfg.protectedHosts (vhost: {
       name = vhost.host;
       value = let
-        baseUrl = "http://oidcsso_server";
+        baseUrl = "http://127.0.0.1:${config.portMap.oidcsso}";
         queryParams =
           "?redirect=${vhost.redirect}"
           + (
             lib.strings.optionalString
             (vhost ? allowed_groups)
-            "&allowed_groups=${lib.strings.concatStringsSep "," vhost.allowed_groups}"
-          )
-          + (
-            lib.strings.optionalString
-            (vhost ? allowed_roles)
-            "&allowed_roles=${lib.strings.concatStringsSep "," vhost.allowed_roles}"
+            "&allowed_groups=${lib.strings.concatStringsSep "," vhost.allowedGroups}"
+            # )
+            # + (
+            #   lib.strings.optionalString
+            #   (vhost ? allowed_roles)
+            #   "&allowed_roles=${lib.strings.concatStringsSep "," vhost.allowed_roles}"
           );
       in {
         extraConfig = ''
@@ -33,18 +37,12 @@
 
         locations = let
           proxyPass = "${baseUrl}$request_uri";
-          extraConfig = ''
-            internal;
-          '';
         in {
           "/".extraConfig = "auth_request .auth;";
 
           ".auth" = {
             proxyPass = "${baseUrl}/auth";
-            # proxyPass = "http://oidcsso_server/auth";
-            extraConfig = ''
-              internal;
-            '';
+            extraConfig = "internal";
           };
 
           "/auth" = {inherit proxyPass;};
@@ -56,20 +54,27 @@
       };
     })
   );
-in {
-  # imports = [./options.nix];
 
-  services.nginx = {
-    upstreams = {
-      "oidcsso_server" = {
-        servers = {
-          "127.0.0.1:1337" = {};
-        };
-      };
-    };
-
-    virtualHosts = protectedHosts;
+  rbacJson = pkgs.writeTextFile rec {
+    name = "oidc-sso-rbac.json";
+    text = builtins.toJSON cfg.protectedHosts;
+    destination = "${stateDir}/${name}";
   };
+in {
+  imports = [./options.nix];
+
+  services.nginx.virtualHosts = protectedHosts;
+  # services.nginx = {
+  #   upstreams = {
+  #     "oidcsso_server" = {
+  #       servers = {
+  #         "127.0.0.1:1337" = {};
+  #       };
+  #     };
+  #   };
+  #
+  #   virtualHosts = protectedHosts;
+  # };
 
   systemd.services.oidcsso = {
     enable = true;
@@ -81,7 +86,7 @@ in {
       SyslogIdentifier = "oidcsso";
       WorkingDirectory = stateDir;
 
-      ExecStart = "${pkg}/bin/oidcsso -e ${config.sops.secrets.oidcsso_env.path}";
+      ExecStart = "${pkg}/bin/oidcsso -e ${config.sops.secrets.oidcsso_env.path} -r ${rbacJson.outPath}";
       Restart = "on-failure";
       RestartSec = 30;
 
@@ -105,9 +110,7 @@ in {
       PrivateTmp = "yes";
     };
 
-    description = "Simple OIDC/OAuth2 proxy for auth code flow.";
-    # after = afterAndRequires;
-    # requires = afterAndRequires;
+    description = "Simple OIDC/OAuth2 proxy";
     wantedBy = ["multi-user.target"];
   };
 
