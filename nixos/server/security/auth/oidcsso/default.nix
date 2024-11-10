@@ -42,7 +42,7 @@
 
           ".auth" = {
             proxyPass = "${baseUrl}/auth";
-            extraConfig = "internal";
+            extraConfig = "internal;";
           };
 
           "/auth" = {inherit proxyPass;};

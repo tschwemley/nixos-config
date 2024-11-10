@@ -39,6 +39,9 @@ in {
 
   services.oidcsso.protectedHosts = [
     {
+      allowedGroups = ["admin"];
+      allowedRealmRoles = ["admin"];
+      allowedResourceAccess = [{forgejo = ["admin"];}];
       host = "schwem.io";
       # redirect = "https://schwem.io";
     }
