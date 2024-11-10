@@ -37,15 +37,10 @@ in {
   #   };
   # };
 
-  services.oidcsso.protectedHosts = [
-    {
-      allowedGroups = ["admin"];
-      allowedRealmRoles = ["admin"];
-      # allowedResourceAccess = [{forgejo = ["admin"];}];
-      host = "schwem.io";
-      # redirect = "https://schwem.io";
-    }
-  ];
+  services.oidcsso.protectedHosts."schwem.io" = {
+    allowedGroups = ["admin"];
+    allowedRealmRoles = ["admin"];
+  };
 
   systemd.services.dashboard = {
     enable = true;

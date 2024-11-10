@@ -15,14 +15,15 @@
         default = {};
         type = attrsOf (listOf str);
       };
-      host = mkOption {type = str;};
+      # host = mkOption {type = str;};
       # redirect = mkOption {type = str;};
     };
   };
 in {
   options.services.oidcsso.protectedHosts = mkOption {
-    type = with types; listOf (submodule protectedHostOption);
-    default = [];
+    # type = with types; listOf (submodule protectedHostOption);
+    type = with types; attrsOf (submodule protectedHostOption);
+    default = {};
     description = "List of virtual hosts to put behind auth proxy.";
   };
 }

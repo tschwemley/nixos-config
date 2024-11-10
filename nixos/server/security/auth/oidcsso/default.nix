@@ -13,56 +13,75 @@
 
   # protectedHosts = builtins.listToAttrs (
   #   lib.lists.forEach (import ../protected-hosts.nix) (vhost: {
-  protectedHosts = builtins.listToAttrs (
-    lib.lists.forEach cfg.protectedHosts (vhost: {
-      name = vhost.host;
-      value = let
-        baseUrl = "http://127.0.0.1:${config.portMap.oidcsso}";
-        queryParams =
-          "?redirect=https://${vhost.host}"
-          + (
-            lib.strings.optionalString
-            (vhost ? allowed_groups)
-            "&allowed_groups=${lib.strings.concatStringsSep "," vhost.allowedGroups}"
-            # )
-            # + (
-            #   lib.strings.optionalString
-            #   (vhost ? allowed_roles)
-            #   "&allowed_roles=${lib.strings.concatStringsSep "," vhost.allowed_roles}"
-          );
-      in {
-        extraConfig = ''
-          error_page 401 = @error401;
-        '';
-
-        locations = let
-          proxyPass = "${baseUrl}$request_uri";
-        in {
-          "/".extraConfig = "auth_request .auth;";
-
-          ".auth" = {
-            proxyPass = "${baseUrl}/auth";
-            extraConfig = "internal;";
-          };
-
-          "/auth" = {inherit proxyPass;};
-          "/auth/callback" = {inherit proxyPass;};
-          "/login" = {inherit proxyPass;};
-
-          "@error401".return = "302 https://${vhost.host}/login${queryParams}";
-        };
-      };
-    })
-  );
+  # protectedHosts = builtins.listToAttrs (
+  #   lib.lists.forEach cfg.protectedHosts (vhost: {
+  # name = vhost.host;
+  # value = let
+  #   baseUrl = "http://127.0.0.1:${config.portMap.oidcsso}";
+  #   queryParams =
+  #     "?redirect=https://${vhost.host}"
+  #     + (
+  #       lib.strings.optionalString
+  #       (vhost ? allowed_groups)
+  #       "&allowed_groups=${lib.strings.concatStringsSep "," vhost.allowedGroups}"
+  #       # )
+  #       # + (
+  #       #   lib.strings.optionalString
+  #       #   (vhost ? allowed_roles)
+  #       #   "&allowed_roles=${lib.strings.concatStringsSep "," vhost.allowed_roles}"
+  #     );
+  # in {
 
   rbacFile = pkgs.writeTextFile {
     name = "oidcsso-rbac.json";
     text = builtins.toJSON cfg.protectedHosts;
   };
+
+  virtualHosts =
+    lib.attrsets.mapAttrs (host: _: let
+      baseUrl = "http://127.0.0.1:${config.portMap.oidcsso}";
+    in {
+      extraConfig = ''
+        error_page 401 = @error401;
+      '';
+
+      locations = let
+        proxyPass = "${baseUrl}$request_uri";
+      in {
+        "/".extraConfig = "auth_request .auth;";
+
+        ".auth" = {
+          proxyPass = "${baseUrl}/auth";
+          extraConfig = "internal;";
+        };
+
+        "/auth" = {inherit proxyPass;};
+        "/auth/callback" = {inherit proxyPass;};
+        "/login" = {inherit proxyPass;};
+
+        "@error401".return = "302 https://${host}/login?redirect=${host}";
+      };
+    })
+    cfg.protectedHosts;
+  #   })
+  # );
+  # rbacFile = let
+  #   protectedHosts = lib.lists.forEach cfg.protectedHosts (host: {
+  #     ${host.host} = {inherit (host) allowedGroups allowedRealmRoles allowedResourceAccess;};
+  #   });
+  # in
+  #   pkgs.writeTextFile {
+  #     name = "oidcsso-rbac.json";
+  #     text = builtins.toJSON protectedHosts;
+  #   };
+  # rbacFile = pkgs.writeTextFile {
+  #   name = "oidcsso-rbac.json";
+  #   text = builtins.toJSON cfg.protectedHosts;
+  # };
 in {
   imports = [./options.nix];
 
-  services.nginx.virtualHosts = protectedHosts;
+  services.nginx = {inherit virtualHosts;};
   # services.nginx = {
   #   upstreams = {
   #     "oidcsso_server" = {
