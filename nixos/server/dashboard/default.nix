@@ -9,40 +9,40 @@
   stateDir = "dashboard";
   staticPath = "${inputs.dashboard.packages.${pkgs.system}.default}/bin/web/static";
 in {
-  services.nginx.virtualHosts."schwem.io" = {
-    extraConfig = ''
-      error_page 401 = @error401;
-    '';
+  # services.nginx.virtualHosts."schwem.io" = {
+  #   extraConfig = ''
+  #     error_page 401 = @error401;
+  #   '';
+  #
+  #   locations = let
+  #     baseUrl = "http://127.0.0.1:${config.portMap.dashboard}";
+  #   in {
+  #     "/" = {
+  #       proxyPass = baseUrl;
+  #       # extraConfig = ''
+  #       #   auth_request .auth;
+  #       # '';
+  #     };
+  #
+  #     "/robots.txt".root = "/etc/nginx/static/";
+  #
+  #     # ".auth" = {
+  #     #   proxyPass = "http://127.0.0.1:${config.portMap.oidcsso}/auth";
+  #     #   extraConfig = ''
+  #     #     internal;
+  #     #   '';
+  #     # };
+  #     #
+  #     # "@error401".return = "302 https://auth.schwem.io/login?rd=https://schwem.io";
+  #   };
+  # };
 
-    locations = let
-      baseUrl = "http://127.0.0.1:${config.portMap.dashboard}";
-    in {
-      "/" = {
-        proxyPass = baseUrl;
-        # extraConfig = ''
-        #   auth_request .auth;
-        # '';
-      };
-
-      "/robots.txt".root = "/etc/nginx/static/";
-
-      # ".auth" = {
-      #   proxyPass = "http://127.0.0.1:${config.portMap.oidcsso}/auth";
-      #   extraConfig = ''
-      #     internal;
-      #   '';
-      # };
-      #
-      # "@error401".return = "302 https://auth.schwem.io/login?rd=https://schwem.io";
-    };
-  };
-
-  # services.oidcsso.protectedHosts = [
-  #   {
-  #     host = "schwem.io";
-  #     redirect = "https://schwem.io";
-  #   }
-  # ];
+  services.oidcsso.protectedHosts = [
+    {
+      host = "schwem.io";
+      # redirect = "https://schwem.io";
+    }
+  ];
 
   systemd.services.dashboard = {
     enable = true;

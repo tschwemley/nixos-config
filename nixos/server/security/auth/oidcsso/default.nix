@@ -55,10 +55,10 @@
     })
   );
 
-  rbacJson = pkgs.writeTextFile rec {
-    name = "oidc-sso-rbac.json";
+  rbacJson = pkgs.writeTextFile {
+    name = "oidc-sso-rbac";
     text = builtins.toJSON cfg.protectedHosts;
-    destination = "${stateDir}/${name}";
+    destination = "rbac.json";
   };
 in {
   imports = [./options.nix];
