@@ -41,7 +41,7 @@ in {
     {
       allowedGroups = ["admin"];
       allowedRealmRoles = ["admin"];
-      allowedResourceAccess = [{forgejo = ["admin"];}];
+      # allowedResourceAccess = [{forgejo = ["admin"];}];
       host = "schwem.io";
       # redirect = "https://schwem.io";
     }
