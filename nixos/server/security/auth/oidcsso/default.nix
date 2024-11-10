@@ -39,7 +39,6 @@
 
   virtualHosts =
     lib.attrsets.mapAttrs (host: info: let
-      # baseUrl = "http://127.0.0.1:${config.portMap.oidcsso}";
       inherit (info) baseUrl;
     in {
       extraConfig = ''
@@ -49,7 +48,10 @@
       locations = let
         proxyPass = "${baseUrl}$request_uri";
       in {
-        "/".extraConfig = "auth_request .auth;";
+        "/" = {
+          inherit proxyPass;
+          extraConfig = "auth_request .auth;";
+        };
 
         ".auth" = {
           proxyPass = "${baseUrl}/auth";
