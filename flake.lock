@@ -448,6 +448,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1731210236,
+        "narHash": "sha256-QPG4ZQAvqM2yIcH2UcG0YOSxgXGyzTvkYjAquzlepBU=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "465eab85d222e5d52d46987edfb6f84b7c7723ed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1730602179,
@@ -648,6 +664,7 @@
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-master": "nixpkgs-master",
         "oidcsso": "oidcsso",
         "redlib-latest": "redlib-latest",
         "scribe": "scribe",
