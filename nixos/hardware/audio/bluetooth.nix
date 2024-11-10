@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  environment.systemPackages = [pkgs.blueman];
+
   hardware.bluetooth = {
     enable = true;
     package = pkgs.bluez-experimental;
