@@ -4,8 +4,8 @@ pkgs: {
     src = pkgs.fetchFromGitHub {
       "owner" = "olimorris";
       "repo" = "codecompanion.nvim";
-      "rev" = "v8.3.1";
-      "hash" = "sha256-2uTdh1TdXvIEosjf90caApR/tNNX5xJJKTgfCCEnDjs=";
+      "rev" = "v9.5.0";
+      "hash" = "sha256-r+PKDMJQZZ40MXg0XlWCLwPTWUUa1YrdNrOm9rYGa0Q=";
     };
   };
   vlog = pkgs.vimUtils.buildVimPlugin {
