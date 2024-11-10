@@ -15,8 +15,7 @@
         default = {};
         type = attrsOf (listOf str);
       };
-      # host = mkOption {type = str;};
-      # redirect = mkOption {type = str;};
+      baseUrl = mkOption {type = str;};
     };
   };
 in {

@@ -38,8 +38,9 @@
   };
 
   virtualHosts =
-    lib.attrsets.mapAttrs (host: _: let
-      baseUrl = "http://127.0.0.1:${config.portMap.oidcsso}";
+    lib.attrsets.mapAttrs (host: info: let
+      # baseUrl = "http://127.0.0.1:${config.portMap.oidcsso}";
+      inherit (info) baseUrl;
     in {
       extraConfig = ''
         error_page 401 = @error401;

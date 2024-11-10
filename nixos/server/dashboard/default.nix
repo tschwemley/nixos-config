@@ -40,6 +40,7 @@ in {
   services.oidcsso.protectedHosts."schwem.io" = {
     allowedGroups = ["admin"];
     allowedRealmRoles = ["admin"];
+    baseUrl = "http://127.0.0.1:${config.portMap.oidcsso}";
   };
 
   systemd.services.dashboard = {
