@@ -15,7 +15,7 @@
         default = {};
         type = attrsOf (listOf str);
       };
-      baseUrl = mkOption {type = str;};
+      upstream = mkOption {type = str;};
     };
   };
 in {

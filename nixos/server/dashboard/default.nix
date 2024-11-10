@@ -9,10 +9,20 @@
   stateDir = "dashboard";
   staticPath = "${inputs.dashboard.packages.${pkgs.system}.default}/bin/web/static";
 in {
-  services.oidcsso.protectedHosts."schwem.io" = {
-    allowedGroups = ["admin"];
-    allowedRealmRoles = ["admin"];
-    baseUrl = "http://127.0.0.1:${config.portMap.dashboard}";
+  services = {
+    oidcsso.protectedHosts."schwem.io" = {
+      allowedGroups = ["admin"];
+      allowedRealmRoles = ["admin"];
+      upstream = "http://dashboard";
+    };
+
+    nginx.upstreams = {
+      "dashboard" = {
+        servers = {
+          "127.0.0.1:${config.portMap.dashboard}" = {};
+        };
+      };
+    };
   };
 
   systemd.services.dashboard = {

@@ -11,27 +11,6 @@
 
   cfg = config.services.oidcsso;
 
-  # protectedHosts = builtins.listToAttrs (
-  #   lib.lists.forEach (import ../protected-hosts.nix) (vhost: {
-  # protectedHosts = builtins.listToAttrs (
-  #   lib.lists.forEach cfg.protectedHosts (vhost: {
-  # name = vhost.host;
-  # value = let
-  #   baseUrl = "http://127.0.0.1:${config.portMap.oidcsso}";
-  #   queryParams =
-  #     "?redirect=https://${vhost.host}"
-  #     + (
-  #       lib.strings.optionalString
-  #       (vhost ? allowed_groups)
-  #       "&allowed_groups=${lib.strings.concatStringsSep "," vhost.allowedGroups}"
-  #       # )
-  #       # + (
-  #       #   lib.strings.optionalString
-  #       #   (vhost ? allowed_roles)
-  #       #   "&allowed_roles=${lib.strings.concatStringsSep "," vhost.allowed_roles}"
-  #     );
-  # in {
-
   rbacFile = pkgs.writeTextFile {
     name = "oidcsso-rbac.json";
     text = builtins.toJSON cfg.protectedHosts;
@@ -39,7 +18,7 @@
 
   virtualHosts =
     lib.attrsets.mapAttrs (host: info: let
-      inherit (info) baseUrl;
+      baseUrl = "http://oidcsso_server";
     in {
       extraConfig = ''
         error_page 401 = @error401;
@@ -49,7 +28,7 @@
         proxyPass = "${baseUrl}$request_uri";
       in {
         "/" = {
-          inherit proxyPass;
+          proxyPass = info.upstream;
           extraConfig = "auth_request .auth;";
         };
 
@@ -66,36 +45,20 @@
       };
     })
     cfg.protectedHosts;
-  #   })
-  # );
-  # rbacFile = let
-  #   protectedHosts = lib.lists.forEach cfg.protectedHosts (host: {
-  #     ${host.host} = {inherit (host) allowedGroups allowedRealmRoles allowedResourceAccess;};
-  #   });
-  # in
-  #   pkgs.writeTextFile {
-  #     name = "oidcsso-rbac.json";
-  #     text = builtins.toJSON protectedHosts;
-  #   };
-  # rbacFile = pkgs.writeTextFile {
-  #   name = "oidcsso-rbac.json";
-  #   text = builtins.toJSON cfg.protectedHosts;
-  # };
 in {
   imports = [./options.nix];
 
-  services.nginx = {inherit virtualHosts;};
-  # services.nginx = {
-  #   upstreams = {
-  #     "oidcsso_server" = {
-  #       servers = {
-  #         "127.0.0.1:1337" = {};
-  #       };
-  #     };
-  #   };
-  #
-  #   virtualHosts = protectedHosts;
-  # };
+  services.nginx = {
+    inherit virtualHosts;
+
+    upstreams = {
+      "oidcsso_server" = {
+        servers = {
+          "127.0.0.1:1337" = {};
+        };
+      };
+    };
+  };
 
   systemd.services.oidcsso = {
     enable = true;
