@@ -19,7 +19,7 @@
       value = let
         baseUrl = "http://127.0.0.1:${config.portMap.oidcsso}";
         queryParams =
-          "?redirect=${vhost.redirect}"
+          "?redirect=https://${vhost.host}"
           + (
             lib.strings.optionalString
             (vhost ? allowed_groups)
@@ -55,10 +55,9 @@
     })
   );
 
-  rbacJson = pkgs.writeTextFile {
-    name = "oidc-sso-rbac";
+  rbacFile = pkgs.writeTextFile {
+    name = "oidcsso-rbac.json";
     text = builtins.toJSON cfg.protectedHosts;
-    destination = "rbac.json";
   };
 in {
   imports = [./options.nix];
@@ -86,7 +85,7 @@ in {
       SyslogIdentifier = "oidcsso";
       WorkingDirectory = stateDir;
 
-      ExecStart = "${pkg}/bin/oidcsso -e ${config.sops.secrets.oidcsso_env.path} -r ${rbacJson.outPath}";
+      ExecStart = "${pkg}/bin/oidcsso -e ${config.sops.secrets.oidcsso_env.path} -r ${rbacFile.outPath}";
       Restart = "on-failure";
       RestartSec = 30;
 

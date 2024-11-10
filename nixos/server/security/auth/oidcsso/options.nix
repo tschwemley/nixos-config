@@ -3,9 +3,18 @@
 
   protectedHostOption = {
     options = with types; {
-      allowedGroups = mkOption {type = listOf str;};
-      allowedRealmRoles = mkOption {type = listOf str;};
-      allowedResourceAccess = mkOption {type = attrsOf listOf str;};
+      allowedGroups = mkOption {
+        default = [];
+        type = listOf str;
+      };
+      allowedRealmRoles = mkOption {
+        default = [];
+        type = listOf str;
+      };
+      allowedResourceAccess = mkOption {
+        default = {};
+        type = attrsOf (listOf str);
+      };
       host = mkOption {type = str;};
       # redirect = mkOption {type = str;};
     };
