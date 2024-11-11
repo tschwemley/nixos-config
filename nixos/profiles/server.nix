@@ -14,7 +14,7 @@
     ../server/infrastructure/monitoring/prometheus/node-exporter.nix
     ../server/infrastructure/nginx
     ../server/infrastructure/port-map.nix
-    ../server/security/auth/oidcsso
+    ../server/security/auth/oidcproxy
   ];
 
   # disable man pages on servers

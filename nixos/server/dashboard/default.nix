@@ -10,7 +10,7 @@
   staticPath = "${inputs.dashboard.packages.${pkgs.system}.default}/bin/web/static";
 in {
   services = {
-    oidcsso.protectedHosts."schwem.io" = {
+    oidcproxy.protectedHosts."schwem.io" = {
       allowedGroups = ["admin"];
       allowedRealmRoles = ["admin"];
       upstream = "http://dashboard";
@@ -75,10 +75,10 @@ in {
     group = "dashboard";
     owner = "dashboard";
 
-    key = "oidcsso_env";
+    key = "oidcproxy_env";
     path = "/var/lib/${stateDir}/.env";
     mode = "0440";
-    sopsFile = "${secretsPath}/server/oidcsso.yaml"; # dashboard env only contains oidc values (cookie/provider info) for now
+    sopsFile = "${secretsPath}/server/oidcproxy.yaml"; # dashboard env only contains oidc values (cookie/provider info) for now
   };
 
   users = {

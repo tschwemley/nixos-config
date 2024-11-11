@@ -450,11 +450,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1731306955,
-        "narHash": "sha256-pTH0htWVVLXn9MVBODh8vWxOrb2OPM1Fhlhr7eHwjGo=",
+        "lastModified": 1731309189,
+        "narHash": "sha256-CP0k7PbtZXAcwPwpYdDgnt2FaqOeS/llZufxC2WAP6o=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "4d9d042055b65d0e865d4628039b3f99d42689f5",
+        "rev": "cf81310c69b91935dc213afd084dbf5a60834f18",
         "type": "github"
       },
       "original": {
@@ -607,7 +607,7 @@
         "type": "github"
       }
     },
-    "oidcsso": {
+    "oidcproxy": {
       "inputs": {
         "flake-parts": [
           "flake-parts"
@@ -617,17 +617,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1730183508,
-        "narHash": "sha256-HZ858cMnmP6WTUBNKFBqAsGIzC8V1Uja0wleTO5l7vg=",
+        "lastModified": 1731309496,
+        "narHash": "sha256-VIq3L1/XB5OHsamAFnnLqdhWqoWK3DkkOoI3K2IcZW8=",
         "ref": "refs/heads/main",
-        "rev": "0cce6e066b30c4b113d83c2e0242c78bfacceb87",
-        "revCount": 32,
+        "rev": "1767b5aeec4d03aa1405ddb9cfb6047f0e71a722",
+        "revCount": 13,
         "type": "git",
-        "url": "https://git.schwem.io/schwem/oidcsso"
+        "url": "https://git.schwem.io/schwem/oidcproxy"
       },
       "original": {
         "type": "git",
-        "url": "https://git.schwem.io/schwem/oidcsso"
+        "url": "https://git.schwem.io/schwem/oidcproxy"
       }
     },
     "redlib-latest": {
@@ -665,7 +665,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-master": "nixpkgs-master",
-        "oidcsso": "oidcsso",
+        "oidcproxy": "oidcproxy",
         "redlib-latest": "redlib-latest",
         "scribe": "scribe",
         "sops-nix": "sops-nix",

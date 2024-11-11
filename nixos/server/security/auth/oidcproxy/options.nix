@@ -19,7 +19,7 @@
     };
   };
 in {
-  options.services.oidcsso.protectedHosts = mkOption {
+  options.services.oidcproxy.protectedHosts = mkOption {
     # type = with types; listOf (submodule protectedHostOption);
     type = with types; attrsOf (submodule protectedHostOption);
     default = {};

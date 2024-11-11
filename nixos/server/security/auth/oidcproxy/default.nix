@@ -6,19 +6,19 @@
   secretsPath,
   ...
 }: let
-  pkg = inputs.oidcsso.packages.${pkgs.system}.default;
-  stateDir = "/var/lib/oidcsso";
+  pkg = inputs.oidcproxy.packages.${pkgs.system}.default;
+  stateDir = "/var/lib/oidcproxy";
 
-  cfg = config.services.oidcsso;
+  cfg = config.services.oidcproxy;
 
   rbacFile = pkgs.writeTextFile {
-    name = "oidcsso-rbac.json";
+    name = "oidcproxy-rbac.json";
     text = builtins.toJSON cfg.protectedHosts;
   };
 
   virtualHosts =
     lib.attrsets.mapAttrs (host: info: let
-      baseUrl = "http://oidcsso_server";
+      baseUrl = "http://oidcproxy_server";
     in {
       extraConfig = ''
         error_page 401 = @error401;
@@ -52,7 +52,7 @@ in {
     inherit virtualHosts;
 
     upstreams = {
-      "oidcsso_server" = {
+      "oidcproxy_server" = {
         servers = {
           "127.0.0.1:1337" = {};
         };
@@ -60,17 +60,17 @@ in {
     };
   };
 
-  systemd.services.oidcsso = {
+  systemd.services.oidcproxy = {
     enable = true;
     serviceConfig = {
       Type = "simple";
-      User = "oidcsso";
-      Group = "oidcsso";
+      User = "oidcproxy";
+      Group = "oidcproxy";
 
-      SyslogIdentifier = "oidcsso";
+      SyslogIdentifier = "oidcproxy";
       WorkingDirectory = stateDir;
 
-      ExecStart = "${pkg}/bin/oidcsso -e ${config.sops.secrets.oidcsso_env.path} -r ${rbacFile.outPath}";
+      ExecStart = "${pkg}/bin/oidcproxy -e ${config.sops.secrets.oidcproxy_env.path} -r ${rbacFile.outPath}";
       Restart = "on-failure";
       RestartSec = 30;
 
@@ -98,18 +98,18 @@ in {
     wantedBy = ["multi-user.target"];
   };
 
-  sops.secrets.oidcsso_env = {
-    group = "oidcsso";
-    owner = "oidcsso";
+  sops.secrets.oidcproxy_env = {
+    group = "oidcproxy";
+    owner = "oidcproxy";
     path = "${stateDir}/.env";
     mode = "0440";
-    sopsFile = "${secretsPath}/server/oidcsso.yaml";
+    sopsFile = "${secretsPath}/server/oidcproxy.yaml";
   };
 
   users = {
-    groups.oidcsso = {};
-    users.oidcsso = {
-      group = "oidcsso";
+    groups.oidcproxy = {};
+    users.oidcproxy = {
+      group = "oidcproxy";
       isSystemUser = true;
     };
   };

@@ -107,8 +107,8 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
-    oidcsso = {
-      url = "git+https://git.schwem.io/schwem/oidcsso";
+    oidcproxy = {
+      url = "git+https://git.schwem.io/schwem/oidcproxy";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
