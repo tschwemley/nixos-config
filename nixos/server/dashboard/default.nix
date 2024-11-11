@@ -6,7 +6,7 @@
   ...
 }: let
   pkg = inputs.dashboard.packages.${pkgs.system}.default;
-  stateDir = "dashboard";
+  stateDir = "/var/lib/dashboard";
   staticPath = "${inputs.dashboard.packages.${pkgs.system}.default}/bin/web/static";
 in {
   services = {
@@ -76,7 +76,7 @@ in {
     owner = "dashboard";
 
     key = "oidcproxy_env";
-    path = "/var/lib/${stateDir}/.env";
+    path = "${stateDir}/.env";
     mode = "0440";
     sopsFile = "${secretsPath}/server/oidcproxy.yaml"; # dashboard env only contains oidc values (cookie/provider info) for now
   };
