@@ -15,6 +15,10 @@
         default = {};
         type = attrsOf (listOf str);
       };
+      clientName = mkOption {
+        default = "";
+        type = str;
+      };
       upstream = mkOption {type = str;};
     };
   };
