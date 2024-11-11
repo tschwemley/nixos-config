@@ -31,6 +31,7 @@
     ../terminal/kitty
     ../xdg
     ../xdg/netrc.nix
+    ../xdg/rclone.nix
     ../xdg/ssh/servers.nix
     ../xdg/ssh/personal.nix
 
@@ -48,9 +49,14 @@
     };
   };
 
-  programs.git.extraConfig.url = {
-    "ssh://gh" = {
-      insteadOf = "https://github.com";
+  # pc specific program config
+  programs = {
+    git.extraConfig.url = {
+      "ssh://gh" = {
+        insteadOf = "https://github.com";
+      };
     };
+
+    zsh.shellAliases.systemctl = "sudo systemctl";
   };
 }

@@ -1,13 +1,8 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   extraPackages = with pkgs;
     if system == "aarch64-darwin"
     then []
-    else
-    [
+    else [
       catimg
       ffmpeg
       ffmpegthumbnailer
@@ -36,12 +31,13 @@ in {
     inherit extraPackages plugins;
     enable = true;
     bookmarks = {
+      "/" = "/";
       "3" = "~/Downloads/3d-prints/";
       D = "~/Downloads";
-      a = "~/projects/ai";
-      h = "~/projects/hir/casino_server";
+      m = "~/mnt";
       p = "~/projects";
       n = "~/nixos-config";
+      s = "/storage";
     };
   };
 }
