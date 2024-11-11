@@ -60,7 +60,7 @@ in {
         acl domain_rimgo hdr(host) -i rimgo.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
         acl domain_stackoverflow hdr(host) -i so.schwem.io
-        acl domain_tiddlywiki hdr(host) -i tiddlywiki.schwem.io
+        acl domain_tiddlywiki hdr(host) -i wiki.schwem.io
         acl domain_tiktok hdr(host) -i tiktok.schwem.io
         acl domain_threadfin hdr(host) -i threadfin.schwem.io
         acl domain_tumblr hdr(host) -i tumblr.schwem.io
