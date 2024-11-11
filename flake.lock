@@ -52,11 +52,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1731309159,
-        "narHash": "sha256-mIol+5unW/qeSOJ+NqMRn7hLpYltG0NOUWiaOb3Ldvk=",
+        "lastModified": 1731310019,
+        "narHash": "sha256-4q8TssKtds34UOecPaBa9OdilmruVHjHgk77bbdcBBs=",
         "ref": "refs/heads/main",
-        "rev": "91ba6f76e04469d54574e68c548eb63343b7a029",
-        "revCount": 26,
+        "rev": "44f75a30f9a167626625a5aec218a211513e7a39",
+        "revCount": 27,
         "type": "git",
         "url": "https://git.schwem.io/schwem/dashboard"
       },
@@ -450,11 +450,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1731309189,
-        "narHash": "sha256-CP0k7PbtZXAcwPwpYdDgnt2FaqOeS/llZufxC2WAP6o=",
+        "lastModified": 1731309682,
+        "narHash": "sha256-Ef/eU+x8Rs4Eg4Zt+nCYJzGzJ6+KFH9oPgnmtLNjZcw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "cf81310c69b91935dc213afd084dbf5a60834f18",
+        "rev": "172f0cee3628f0533e948d197f9e7c51538cc639",
         "type": "github"
       },
       "original": {
