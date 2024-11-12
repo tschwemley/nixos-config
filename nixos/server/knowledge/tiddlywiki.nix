@@ -1,6 +1,6 @@
 {config, ...}: {
   services = {
-    oidcproxy.protectedHosts."schwem.io" = {
+    oidcproxy.protectedHosts."wiki.schwem.io" = {
       allowedGroups = ["admin"];
       allowedRealmRoles = ["admin"];
       upstream = "http://tiddlywiki";
