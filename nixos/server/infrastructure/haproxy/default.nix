@@ -60,11 +60,11 @@ in {
         acl domain_rimgo hdr(host) -i rimgo.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
         acl domain_stackoverflow hdr(host) -i so.schwem.io
-        acl domain_tiddlywiki hdr(host) -i wiki.schwem.io
         acl domain_tiktok hdr(host) -i tiktok.schwem.io
         acl domain_threadfin hdr(host) -i threadfin.schwem.io
         acl domain_tumblr hdr(host) -i tumblr.schwem.io
         acl domain_twitch hdr(host) -i twitch.schwem.io twitch.api.schwem.io
+        acl domain_wiki hdr(host) -i wiki.schwem.io
 
         use_backend auth if domain_auth
         use_backend articuno if domain_default
@@ -82,11 +82,11 @@ in {
         use_backend rimgo if domain_rimgo
         use_backend searxng if domain_search
         use_backend stackoverflow if domain_stackoverflow
-        use_backend tiddlywiki if domain_tiddlywiki
         use_backend tiktok if domain_tiktok
         use_backend threadfin if domain_threadfin
         use_backend tumblr if domain_tumblr
         use_backend twitch if domain_twitch
+        use_backend wiki if domain_wiki
 
         default_backend static
 
@@ -164,10 +164,6 @@ in {
         http-request set-header X-Forwarded-Proto https
         server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
-      backend tiddlywiki
-        http-request set-header X-Forwarded-Proto https
-        server zapados zapados:8080 check send-proxy
-
       backend tiktok
         http-request set-header X-Forwarded-Proto https
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
@@ -183,6 +179,11 @@ in {
       backend twitch
         http-request set-header X-Forwarded-Proto https
         server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
+
+      backend wiki
+        http-request set-header X-Forwarded-Proto https
+        server zapados zapados:8080 check send-proxy
+
     '';
   };
 
