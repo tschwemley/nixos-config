@@ -450,11 +450,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1731381467,
-        "narHash": "sha256-KQlA/+98jO5zNdYsTYBimbcLNGOur9jIuqKvPNyqlZM=",
+        "lastModified": 1731389305,
+        "narHash": "sha256-NoPclODC7pLq4LTuIpAIjRUK/IA+c1Te56QIOyW84ug=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5703364874eba73190bd94e42a0f21871837d277",
+        "rev": "d30293dc9854f57d9d5ae1f2e18b6a9506852a93",
         "type": "github"
       },
       "original": {
@@ -617,11 +617,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1731355493,
-        "narHash": "sha256-zPIlBnX+2z8ls/ZsAJ7MjdicYKGPl/tjMPjDGOLBVVA=",
+        "lastModified": 1731390015,
+        "narHash": "sha256-qTnwgM5gYKieQYDRHvpQKYq4uBNl7itGZy1xQa2hy3Y=",
         "ref": "refs/heads/main",
-        "rev": "857c27d17e814ea6a949f43266b93894941ae0c0",
-        "revCount": 14,
+        "rev": "b843aa00cdc77786cc6251a619327bd9f136754d",
+        "revCount": 15,
         "type": "git",
         "url": "https://git.schwem.io/schwem/oidcproxy"
       },
