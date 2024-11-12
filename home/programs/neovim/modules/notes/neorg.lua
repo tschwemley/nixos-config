@@ -16,13 +16,14 @@ require("neorg").setup({
 		},
 		["core.concealer"] = {},
 		["core.dirman"] = {
-         config = {
-            workspaces = {
-               notes = "~/notes"
-            },
-            index = "index.norg"
-         }
-      },
+			config = {
+				workspaces = {
+					notes = "~/notes",
+				},
+				index = "index.norg",
+			},
+		},
+		["core.integrations.telescope"] = {},
 		["core.ui"] = {},
 		["core.ui.calendar"] = {},
 	},

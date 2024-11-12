@@ -1,6 +1,11 @@
 {pkgs, ...}: {
   programs.neovim = {
-    extraLuaPackages = luaPkgs: with luaPkgs; [lua-utils-nvim nvim-nio pathlib-nvim];
+    extraLuaPackages = luaPkgs:
+      with luaPkgs; [
+        lua-utils-nvim
+        nvim-nio
+        pathlib-nvim
+      ];
 
     plugins = with pkgs.vimPlugins; [
       neorg
