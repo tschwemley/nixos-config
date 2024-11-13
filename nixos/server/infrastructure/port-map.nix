@@ -20,7 +20,7 @@
     nginx-sso = "8082";
     nzbhydra2 = "5076";
     oidcproxy = "1337";
-    openweb-ui = "4141";
+    open-webui = "4141";
     priviblur = "8040";
     proxitok = "8050";
     qtbittorrentWeb = "8880";

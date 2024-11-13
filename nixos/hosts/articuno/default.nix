@@ -10,6 +10,7 @@
     ../../server/infrastructure/postgresql
     ../../server/security/acme
     ../../server/security/auth/keycloak
+    ../../server/services/open-webui.nix
     ../../server/services/searxng
   ];
 

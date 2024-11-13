@@ -44,6 +44,8 @@ in {
         http-request set-header X-Forwarded-Real-IP %[src]
 
         acl domain_default hdr(host) -i schwem.io
+
+        acl domain_ai hdr(host) -i ai.schwem.io
         acl domain_auth hdr(host) -i auth.schwem.io
         acl domain_cyberchef hdr(host) -i cyberchef.schwem.io
         acl domain_db hdr(host) -i db.schwem.io
@@ -66,6 +68,7 @@ in {
         acl domain_twitch hdr(host) -i twitch.schwem.io twitch.api.schwem.io
         acl domain_wiki hdr(host) -i wiki.schwem.io
 
+        use_backend articuno if domain_ai
         use_backend auth if domain_auth
         use_backend articuno if domain_default
         use_backend articuno if domain_cyberchef
