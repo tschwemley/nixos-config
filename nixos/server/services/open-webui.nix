@@ -37,7 +37,8 @@
     in {
       openwebui_database_url = secretAttrs;
       openwebui_oauth_client_secret = secretAttrs;
-      openwebui_oauth_provider_url = secretAttrs;
+      openwebui_openid_provider_url = secretAttrs;
+      openwebui_openid_redirect_uri = secretAttrs;
     };
 
     templates.open-webui-env = {
