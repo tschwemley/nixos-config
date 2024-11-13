@@ -53,7 +53,7 @@
           ENABLE_SIGNUP=False
           ENABLE_LOGIN_FORM=False
           DEFAULT_MODELS=
-          DATABASE_URL=${config.sops.placeholder.openwebui_database_url}
+          #DATABASE_URL=${config.sops.placeholder.openwebui_database_url}
           PORT=${config.portMap.open-webui}
 
           # Oauth
