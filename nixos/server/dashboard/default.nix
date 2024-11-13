@@ -13,6 +13,7 @@ in {
     oidcproxy.protectedHosts."schwem.io" = {
       allowedGroups = ["admin"];
       allowedRealmRoles = ["admin"];
+      unprotectedPaths = ["/static"];
       upstream = "http://dashboard";
     };
 

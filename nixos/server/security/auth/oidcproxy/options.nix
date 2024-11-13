@@ -19,6 +19,10 @@
         default = "";
         type = str;
       };
+      unprotectedPaths = mkOption {
+        default = [];
+        type = listOf str;
+      };
       upstream = mkOption {type = str;};
     };
   };

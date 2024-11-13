@@ -26,23 +26,31 @@
 
       locations = let
         proxyPass = "${baseUrl}$request_uri";
-      in {
-        "/" = {
-          proxyPass = info.upstream;
-          extraConfig = "auth_request .auth;";
+        baseLocations = {
+          "/" = {
+            proxyPass = info.upstream;
+            extraConfig = "auth_request .auth;";
+          };
+
+          ".auth" = {
+            proxyPass = "${baseUrl}/auth";
+            extraConfig = "internal;";
+          };
+
+          "/auth" = {inherit proxyPass;};
+          "/auth/callback" = {inherit proxyPass;};
+          "/login" = {inherit proxyPass;};
+
+          "@error401".return = "302 https://${host}/login?redirect=${host}";
         };
 
-        ".auth" = {
-          proxyPass = "${baseUrl}/auth";
-          extraConfig = "internal;";
-        };
-
-        "/auth" = {inherit proxyPass;};
-        "/auth/callback" = {inherit proxyPass;};
-        "/login" = {inherit proxyPass;};
-
-        "@error401".return = "302 https://${host}/login?redirect=${host}";
-      };
+        unprotectedLocations = builtins.listToAttrs (builtins.map (path: {
+            name = path;
+            value = {inherit proxyPass;};
+          })
+          info.unprotectedPaths);
+      in
+        baseLocations // unprotectedLocations;
     })
     cfg.protectedHosts;
 in {
