@@ -46,7 +46,10 @@
 
         unprotectedLocations = builtins.listToAttrs (builtins.map (path: {
             name = path;
-            value = {inherit proxyPass;};
+            value = {
+              inherit proxyPass;
+              extraConfig = "auth_request off;";
+            };
           })
           info.unprotectedPaths);
       in
