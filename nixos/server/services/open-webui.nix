@@ -60,6 +60,7 @@
           PORT=${config.portMap.open-webui}
 
           # Oauth
+          ENABLE_OAUTH_ROLE_MANAGEMENT=true
           ENABLE_OAUTH_SIGNUP=true
           OAUTH_CLIENT_ID=open-webui
           OAUTH_CLIENT_SECRET=${config.sops.placeholder.openwebui_oauth_client_secret}
