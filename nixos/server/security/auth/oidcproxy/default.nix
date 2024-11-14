@@ -27,11 +27,6 @@
       locations = let
         proxyPass = "${baseUrl}$request_uri";
         baseLocations = {
-          "/" = {
-            proxyPass = info.upstream;
-            extraConfig = "auth_request .auth;";
-          };
-
           ".auth" = {
             proxyPass = "${baseUrl}/auth";
             extraConfig = "internal;";
@@ -42,6 +37,11 @@
           "/login" = {inherit proxyPass;};
 
           "@error401".return = "302 https://${host}/login?redirect=${host}";
+
+          "/" = {
+            proxyPass = info.upstream;
+            extraConfig = "auth_request .auth;";
+          };
         };
 
         unprotectedLocations = builtins.listToAttrs (builtins.map (path: {
