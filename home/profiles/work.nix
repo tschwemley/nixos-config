@@ -19,6 +19,8 @@
       mariadb
       nodejs
     ];
+
+    sessionVariables.TERM = lib.mkDefault "xterm-kitty";
   };
 
   programs = {
