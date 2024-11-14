@@ -78,7 +78,7 @@ in {
       SyslogIdentifier = "oidcproxy";
       WorkingDirectory = stateDir;
 
-      ExecStart = "${pkg}/bin/oidcproxy -e ${config.sops.secrets.oidcproxy_env.path} -r ${rbacFile.outPath}";
+      ExecStart = "${pkg}/bin/oidcproxy -e ${config.sops.secrets.oidcproxy_env.path} -r ${rbacFile.outPath} -d";
       Restart = "on-failure";
       RestartSec = 30;
 
