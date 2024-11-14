@@ -1,6 +1,9 @@
-{ config, secretsPath, ... }:
 {
-  imports = [ ./. ];
+  config,
+  secretsPath,
+  ...
+}: {
+  imports = [./.];
 
   programs.ssh.matchBlocks = {
     gh = {
@@ -18,22 +21,28 @@
       host = "slots-dev";
       hostname = "slots-dev-vii-02";
       identityFile = config.sops.secrets.work_server_key.path;
+      localForwards = [
+        {
+          bind.port = 9095;
+          host.port = 9095;
+        }
+      ];
       user = "tschwemley";
     };
   };
 
   sops.secrets = builtins.listToAttrs (
     map
-      (name: {
-        inherit name;
-        value = {
-          sopsFile = "${secretsPath}/home/ssh.yaml";
-        };
-      })
-      [
-        "gh_personal_zynga_key"
-        "gh_work_key"
-        "work_server_key"
-      ]
+    (name: {
+      inherit name;
+      value = {
+        sopsFile = "${secretsPath}/home/ssh.yaml";
+      };
+    })
+    [
+      "gh_personal_zynga_key"
+      "gh_work_key"
+      "work_server_key"
+    ]
   );
 }
