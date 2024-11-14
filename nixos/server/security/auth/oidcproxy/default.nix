@@ -50,7 +50,7 @@
           })
           info.unprotectedPaths);
       in
-        baseLocations // unprotectedLocations;
+        unprotectedLocations // baseLocations;
     })
     cfg.protectedHosts;
 in {
