@@ -1,6 +1,9 @@
-{ config, lib, ... }:
 {
-  imports = [ ./secrets.nix ];
+  config,
+  lib,
+  ...
+}: {
+  imports = [./secrets.nix];
 
   services.searx = {
     enable = true;
@@ -55,37 +58,41 @@
 
       # Search engine settings
       search = {
-        safe_search = 0;
+        autocomplete = "startpage";
         autocomplete_min = 2;
-        autocomplete = "duckduckgo";
         ban_time_on_fail = 5;
         default_lang = "en";
+        formats = [
+          "html"
+          "json"
+        ];
         max_ban_time_on_fail = 120;
+        safe_search = 0;
       };
 
       # Server configuration
       server = {
         base_url = "https://search.schwem.io";
-        port = lib.strings.toInt config.portMap.searxng;
         bind_address = "127.0.0.1";
-        secret_key = config.sops.secrets.searxng_secret.path;
-        limiter = true;
-        public_instance = true;
         image_proxy = true;
+        limiter = true;
         method = "GET";
+        port = lib.strings.toInt config.portMap.searxng;
+        public_instance = true;
+        secret_key = config.sops.secrets.searxng_secret.path;
       };
 
       # Search engines
-      engines = lib.mapAttrsToList (name: value: { inherit name; } // value) {
+      engines = lib.mapAttrsToList (name: value: {inherit name;} // value) {
         "1x".disabled = true;
         "artic".disabled = false;
         "bing images".disabled = false;
         "bing videos".disabled = false;
         "bing".disabled = false;
-        "brave".disabled = true;
-        "brave.images".disabled = true;
-        "brave.news".disabled = true;
-        "brave.videos".disabled = true;
+        # "brave".disabled = false;
+        # "brave.images".disabled = true;
+        # "brave.news".disabled = true;
+        # "brave.videos".disabled = true;
 
         "crowdview" = {
           disabled = false;
@@ -197,7 +204,7 @@
   systemd.services.nginx.serviceConfig.ProtectHome = false;
 
   users = {
-    groups.searx.members = [ "nginx" ];
+    groups.searx.members = ["nginx"];
     # override with an unused nixos uid value (I already used the default of 201 for cockroachdb)
     users.uwsgi.uid = lib.mkForce 200;
   };
