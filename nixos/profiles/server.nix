@@ -20,7 +20,10 @@
   # disable man pages on servers
   documentation.man.enable = false;
 
-  environment.systemPackages = with pkgs; [postgresql_16];
+  environment.systemPackages = with pkgs; [
+    postgresql_16
+    sqlite-interactive
+  ];
 
   services.getty.autologinUser = "root";
 

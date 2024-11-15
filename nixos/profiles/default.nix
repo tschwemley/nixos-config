@@ -35,6 +35,7 @@ in {
       ripgrep
       rsync
       sops
+      tree
       unzip
       wget
       zip

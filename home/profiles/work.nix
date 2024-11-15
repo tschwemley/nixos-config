@@ -30,7 +30,7 @@
 
     zsh.shellAliases = {
       # see: https://so.schwem.io/questions/13713101/rsync-exclude-according-to-gitignore-hgignore-svnignore-like-filter-c
-      rsync = "rsync -vhra --include='**.gitignore' --exclude='/.git' --filter=':- .gitignore' --delete-after";
+      # rsync = "rsync -vhra --include='**.gitignore' --exclude='/.git' --filter=':- .gitignore' --delete-after";
     };
   };
 
