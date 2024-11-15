@@ -75,7 +75,7 @@
         base_url = "https://search.schwem.io";
         bind_address = "127.0.0.1";
         image_proxy = true;
-        limiter = true;
+        limiter = false;
         method = "GET";
         port = lib.strings.toInt config.portMap.searxng;
         public_instance = true;
