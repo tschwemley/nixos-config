@@ -3,7 +3,7 @@
     (import ../../profiles/buyvm.nix "")
 
     # server imports
-    # ../../server/dashboard
+    ../../server/dashboard
     ../../server/development/cyberchef.nix
     ../../server/infrastructure/haproxy
     ../../server/infrastructure/monitoring

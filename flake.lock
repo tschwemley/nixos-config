@@ -63,6 +63,29 @@
         "type": "github"
       }
     },
+    "dashboard": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1731310019,
+        "narHash": "sha256-4q8TssKtds34UOecPaBa9OdilmruVHjHgk77bbdcBBs=",
+        "ref": "refs/heads/main",
+        "rev": "44f75a30f9a167626625a5aec218a211513e7a39",
+        "revCount": 27,
+        "type": "git",
+        "url": "https://git.schwem.io/schwem/dashboard"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.schwem.io/schwem/dashboard"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -304,11 +327,11 @@
         "norg-meta": "norg-meta"
       },
       "locked": {
-        "lastModified": 1731795265,
-        "narHash": "sha256-nLUvszGO8OgdLeAAuoBWsi7NbsgQ+/oDaiyVjaJDCPo=",
+        "lastModified": 1731806475,
+        "narHash": "sha256-UMvnDQgsEJ1XF1/WvNgRCx8+FDrlxbk72OaLZAU782I=",
         "owner": "nvim-neorg",
         "repo": "nixpkgs-neorg-overlay",
-        "rev": "a2d3fbcd0052c4634b10151ac0fd7d8e68984ed9",
+        "rev": "ddd50591f9833f3e94a224f462316e8d8abfcdf1",
         "type": "github"
       },
       "original": {
@@ -589,6 +612,29 @@
         "type": "github"
       }
     },
+    "oidcproxy": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1731664598,
+        "narHash": "sha256-6RzaFnAwMbWrCHZHo3Srqf8zjkjRnt0PD5I9u1MW3zU=",
+        "ref": "refs/heads/main",
+        "rev": "817220567417ceedb71ff8dae0a897ee1e725e56",
+        "revCount": 21,
+        "type": "git",
+        "url": "https://git.schwem.io/schwem/oidcproxy"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.schwem.io/schwem/oidcproxy"
+      }
+    },
     "redlib-latest": {
       "inputs": {
         "crane": "crane",
@@ -615,6 +661,7 @@
     "root": {
       "inputs": {
         "ags": "ags",
+        "dashboard": "dashboard",
         "disko": "disko",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
@@ -622,10 +669,12 @@
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
+        "oidcproxy": "oidcproxy",
         "redlib-latest": "redlib-latest",
         "scribe": "scribe",
         "sops-nix": "sops-nix",
         "systemd2nix": "systemd2nix",
+        "webhooks": "webhooks",
         "zen-browser": "zen-browser"
       }
     },
@@ -700,17 +749,17 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1731008979,
-        "narHash": "sha256-yN1NxvmqV8UltLkqYBWTeZNgpD/eyh/7LM58caHiEfE=",
+        "lastModified": 1730605784,
+        "narHash": "sha256-1NveNAMLHbxOg0BpBMSVuZ2yW2PpDnZLbZ25wV50PMc=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "fe63071416471abdab06caa234122932a7c4b980",
+        "rev": "e9b5eef9b51cdf966c76143e13a9476725b2f760",
         "type": "github"
       },
       "original": {
         "owner": "Mic92",
+        "ref": "e9b5eef",
         "repo": "sops-nix",
-        "rev": "fe63071416471abdab06caa234122932a7c4b980",
         "type": "github"
       }
     },
@@ -778,6 +827,29 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
+      }
+    },
+    "webhooks": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1730265126,
+        "narHash": "sha256-NSSixekwojniyLHEQ0yCS2ZU10j8l1NLGC8VchO8Y4U=",
+        "ref": "refs/heads/main",
+        "rev": "1e94c0a9bbbf4dc1c011bc51b7b63f52d9b8dafc",
+        "revCount": 18,
+        "type": "git",
+        "url": "https://git.schwem.io/schwem/webhooks"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.schwem.io/schwem/webhooks"
       }
     },
     "zen-browser": {
