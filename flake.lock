@@ -63,29 +63,6 @@
         "type": "github"
       }
     },
-    "dashboard": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1731310019,
-        "narHash": "sha256-4q8TssKtds34UOecPaBa9OdilmruVHjHgk77bbdcBBs=",
-        "ref": "refs/heads/main",
-        "rev": "44f75a30f9a167626625a5aec218a211513e7a39",
-        "revCount": 27,
-        "type": "git",
-        "url": "https://git.schwem.io/schwem/dashboard"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.schwem.io/schwem/dashboard"
-      }
-    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -469,22 +446,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-master": {
-      "locked": {
-        "lastModified": 1731799881,
-        "narHash": "sha256-GRlDXqmwJoW3F0Ymn0ETLsxujLD5idvdaDEzIjF5EEs=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "cd43d6867192ddfb98ba106065a89790e2722b3f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1730602179,
@@ -628,29 +589,6 @@
         "type": "github"
       }
     },
-    "oidcproxy": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1731664598,
-        "narHash": "sha256-6RzaFnAwMbWrCHZHo3Srqf8zjkjRnt0PD5I9u1MW3zU=",
-        "ref": "refs/heads/main",
-        "rev": "817220567417ceedb71ff8dae0a897ee1e725e56",
-        "revCount": 21,
-        "type": "git",
-        "url": "https://git.schwem.io/schwem/oidcproxy"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.schwem.io/schwem/oidcproxy"
-      }
-    },
     "redlib-latest": {
       "inputs": {
         "crane": "crane",
@@ -677,7 +615,6 @@
     "root": {
       "inputs": {
         "ags": "ags",
-        "dashboard": "dashboard",
         "disko": "disko",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
@@ -685,13 +622,10 @@
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-master": "nixpkgs-master",
-        "oidcproxy": "oidcproxy",
         "redlib-latest": "redlib-latest",
         "scribe": "scribe",
         "sops-nix": "sops-nix",
         "systemd2nix": "systemd2nix",
-        "webhooks": "webhooks",
         "zen-browser": "zen-browser"
       }
     },
@@ -844,29 +778,6 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
-      }
-    },
-    "webhooks": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1730265126,
-        "narHash": "sha256-NSSixekwojniyLHEQ0yCS2ZU10j8l1NLGC8VchO8Y4U=",
-        "ref": "refs/heads/main",
-        "rev": "1e94c0a9bbbf4dc1c011bc51b7b63f52d9b8dafc",
-        "revCount": 18,
-        "type": "git",
-        "url": "https://git.schwem.io/schwem/webhooks"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.schwem.io/schwem/webhooks"
       }
     },
     "zen-browser": {

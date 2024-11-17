@@ -41,7 +41,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -102,22 +101,22 @@
     };
 
     # imports below here are server-specific imports for schwem.io TODO: make this into a single repo
-    dashboard = {
-      url = "git+https://git.schwem.io/schwem/dashboard";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
-
-    oidcproxy = {
-      url = "git+https://git.schwem.io/schwem/oidcproxy";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
-
-    webhooks = {
-      url = "git+https://git.schwem.io/schwem/webhooks";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
+    # dashboard = {
+    #   url = "git+https://git.schwem.io/schwem/dashboard";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.flake-parts.follows = "flake-parts";
+    # };
+    #
+    # oidcproxy = {
+    #   url = "git+https://git.schwem.io/schwem/oidcproxy";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.flake-parts.follows = "flake-parts";
+    # };
+    #
+    # webhooks = {
+    #   url = "git+https://git.schwem.io/schwem/webhooks";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.flake-parts.follows = "flake-parts";
+    # };
   };
 }
