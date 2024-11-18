@@ -9,7 +9,6 @@
     direnv-vim
     dressing-nvim
     gitsigns-nvim
-    mini-nvim
     nnn-vim
     nvim-ufo
     refactoring-nvim

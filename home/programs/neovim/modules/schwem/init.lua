@@ -1,2 +1,2 @@
-require('schwem.keymap')
-require('schwem.set')
+require("schwem.keymap")
+require("schwem.set")
