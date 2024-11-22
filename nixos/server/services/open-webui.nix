@@ -64,6 +64,7 @@
           ENABLE_OAUTH_SIGNUP=true
           OAUTH_CLIENT_ID=open-webui
           OAUTH_CLIENT_SECRET=${config.sops.placeholder.openwebui_oauth_client_secret}
+          OAUTH_USERNAME_CLAIM=preferred_username
           OPENID_PROVIDER_URL=${config.sops.placeholder.openwebui_openid_provider_url}
           OPENID_REDIRECT_URI=${config.sops.placeholder.openwebui_openid_redirect_uri}
 

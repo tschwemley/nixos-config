@@ -24,7 +24,7 @@
     ../services/colord.nix
     ../services/dbus.nix
     ../services/gnome.nix
-    ../services/rclone/flareon.nix
+    # ../services/rclone/flareon.nix
     ../services/upower.nix
 
     ../system/fonts.nix
@@ -36,6 +36,8 @@
   environment.systemPackages = with pkgs; [
     mariadb
   ];
+
+  musnix.enable = true;
 
   # this is required to make home manager managed GTK items function
   programs.dconf.enable = true;

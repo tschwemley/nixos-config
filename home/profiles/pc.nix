@@ -34,7 +34,6 @@
 
     ../xdg
     ../xdg/netrc.nix
-    ../xdg/rclone.nix
     ../xdg/ssh/servers.nix
     ../xdg/ssh/personal.nix
 

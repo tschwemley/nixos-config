@@ -1,3 +1,5 @@
-{
-  imports = [ ./go.nix ];
+{pkgs, ...}: {
+  imports = [./go.nix];
+
+  environment.systemPackages = [pkgs.android-tools];
 }

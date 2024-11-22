@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   wayland.windowManager.hyprland.settings = {
     debug.disable_logs = false;
 
@@ -14,6 +13,7 @@
 
     exec-once = [
       "ags -c ~/nixos-config/home/programs/ags/config/config.js"
+      "wl-paste --watch cliphist store"
     ];
 
     general = {

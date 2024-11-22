@@ -3,7 +3,8 @@ self': [
 
   # define packages outputs.packages as an overlay to allow conveinent access via pkgs
   (_: prev: {
-    inherit (self'.packages)
+    inherit
+      (self'.packages)
       anonymous-overflow
       hypreasymotion
       json2go
@@ -12,8 +13,10 @@ self': [
       wl-ocr
       ;
 
-    vimPlugins = prev.vimPlugins // {
-      inherit (self'.packages) codecompanion vlog;
-    };
+    vimPlugins =
+      prev.vimPlugins
+      // {
+        inherit (self'.packages) codecompanion vlog;
+      };
   })
 ]

@@ -11,7 +11,7 @@ codecompanion.setup({
          })
       end,
 
-      codestral = function()
+      ollama = function()
          return require("codecompanion.adapters").extend("ollama", {
             name = "ollama",
             schema = {
@@ -20,6 +20,7 @@ codecompanion.setup({
                   choices = {
                      "codestral:22b-v0.1-q8_0",
                      "qwen2.5-coder:7b-instruct-q8_0",
+                     "qwen2.5-coder:32b",
                   },
                },
             },

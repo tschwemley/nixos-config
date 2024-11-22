@@ -1,7 +1,7 @@
 local builtin = require("telescope.builtin")
 
 local function show_methods()
-   builtin.lsp_document_symbols({ symbols = { "function", "method" } })
+   builtin.lsp_document_symbols({ symbols = { "function", "method", "constructor" } })
 end
 
 local function show_variables()

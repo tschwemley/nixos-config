@@ -1,13 +1,28 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
 
     bind = [
-      # TODO: organize these better and add comments for sections
-      "$mod, Return, exec, ${pkgs.kitty}/bin/kitty"
+      # application launching
       "$mod, p, exec, wofi --show drun"
+      "$mod, Return, exec, ${pkgs.kitty}/bin/kitty"
 
+      # clipboard, ocr, and screenshot
+      "$mod, V, exec, cliphist list | wofi -dmenu | cliphist decode | wl-copy"
+      "$mod, o, exec, wl-ocr"
+      "$mod $shift, s, exec, grimblast --notify copysave area"
+
+      # window management
+      "alt, tab, cyclenext"
+      "alt shift, tab, cyclenext, prev"
+      "$mod, l, layoutmsg, swapnext"
+      "$mod, h, layoutmsg, swapprev"
+      "$mod, w, killactive"
+      "$mod shift, f, fullscreen, 1"
+      "$mod shift, h, movewindow, mon:1"
+      "$mod shift, l, movewindow, mon:0"
+
+      # workspaces
       "$mod, 1, workspace, 1"
       "$mod, 2, workspace, 2"
       "$mod, 3, workspace, 3"
@@ -25,19 +40,6 @@
       "$mod shift, 6, movetoworkspace, 6"
       "$mod shift, 7, movetoworkspace, 7"
       "$mod shift, 8, movetoworkspace, 8"
-
-      "$mod shift, f, fullscreen, 1"
-
-      "alt, tab, cyclenext"
-      "alt shift, tab, cyclenext, prev"
-      "$mod, l, layoutmsg, swapnext"
-      "$mod, h, layoutmsg, swapprev"
-      "$mod shift, h, movewindow, mon:1"
-      "$mod shift, l, movewindow, mon:0"
-      "$mod, w, killactive"
-
-      "$mod, o, exec, wl-ocr"
-      "$mod $shift, s, exec, grimblast --notify copysave area"
 
       # "$mod, z, easymotion, action:hyprctl dispatch focuswindow address:{}"
     ];

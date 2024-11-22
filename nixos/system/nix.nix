@@ -1,7 +1,10 @@
-{
+{self', ...}: {
   nix = {
-    # automatically trigger garbage collection (by default weekly)
-    gc.automatic = true;
+    gc = {
+      dates = "0 0 8 * * 2"; # every tues at 08:00:00
+      # stores time last triggered so if host was powered off during last schedule run it will trigger immediately
+      persistent = true;
+    };
 
     settings = {
       auto-optimise-store = true;
@@ -20,5 +23,9 @@
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
+  # Ensure system nixpkgs has overlays as well not just pkgs module arg --  TODO: move this elsewhere
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = import ../../overlays self';
+  };
 }
