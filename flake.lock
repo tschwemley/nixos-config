@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1731689198,
-        "narHash": "sha256-XMFaDht3RHtlwZ7NQKbz2Cd0e4oDMB7syyOd9ifbn98=",
+        "lastModified": 1731966249,
+        "narHash": "sha256-9hDeMy6S2q1wWBFGiJic5yUms19zW8LhAX9MlCtuN6k=",
         "owner": "Aylur",
         "repo": "ags",
-        "rev": "3e270c8172ae7b61c5e5f24aea69985f792aa000",
+        "rev": "12e0bfefd2051c43d7450123fcb095f655b891e8",
         "type": "github"
       },
       "original": {
@@ -29,11 +29,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1731533099,
-        "narHash": "sha256-q0JcigMAoz3bJqCJwms5mR2de5J1Cw5NgjCev+2ylDA=",
+        "lastModified": 1731952585,
+        "narHash": "sha256-Sh1E7sJd8JJM3PCU1ZOei/QWz97OLCENIi2rTRoaniw=",
         "owner": "aylur",
         "repo": "astal",
-        "rev": "f7cfc8eb77a395373bf40f83b0d779ece34a6108",
+        "rev": "664c7a4ddfcf48c6e8accd3c33bb94424b0e8609",
         "type": "github"
       },
       "original": {
@@ -73,11 +73,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1731310019,
-        "narHash": "sha256-4q8TssKtds34UOecPaBa9OdilmruVHjHgk77bbdcBBs=",
+        "lastModified": 1732249396,
+        "narHash": "sha256-BlOPPS0D/FfLsXGyXvZ7cFuLldvdbqVq+CaLrHy0lXI=",
         "ref": "refs/heads/main",
-        "rev": "44f75a30f9a167626625a5aec218a211513e7a39",
-        "revCount": 27,
+        "rev": "bea0829ae25b5a2d4527436defe17ccd8ff01617",
+        "revCount": 30,
         "type": "git",
         "url": "https://git.schwem.io/schwem/dashboard"
       },
@@ -93,11 +93,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1731746438,
-        "narHash": "sha256-f3SSp1axoOk0NAI7oFdRzbxG2XPBSIXC+/DaAXnvS1A=",
+        "lastModified": 1732221404,
+        "narHash": "sha256-fWTyjgGt+BHmkeJ5IxOR4zGF4/uc+ceWmhBjOBSVkgQ=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "cb64993826fa7a477490be6ccb38ba1fa1e18fa8",
+        "rev": "97c0c4d7072f19b598ed332e9f7f8ad562c6885b",
         "type": "github"
       },
       "original": {
@@ -264,11 +264,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1731786860,
-        "narHash": "sha256-130gQ5k8kZlxjBEeLpE+SvWFgSOFgQFeZlqIik7KgtQ=",
+        "lastModified": 1732025103,
+        "narHash": "sha256-qjEI64RKvDxRyEarY0jTzrZMa8ebezh2DEZmJJrpVdo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "1bd5616e33c0c54d7a5b37db94160635a9b27aeb",
+        "rev": "a46e702093a5c46e192243edbd977d5749e7f294",
         "type": "github"
       },
       "original": {
@@ -299,14 +299,34 @@
         "type": "github"
       }
     },
+    "musnix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1732139495,
+        "narHash": "sha256-bsL1CZWp5fMDXP6U0Ipwi/XA1YigK9ON+pC7Cxurgec=",
+        "owner": "musnix",
+        "repo": "musnix",
+        "rev": "996b38613a282299c852eca204a10914c6b0074d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "musnix",
+        "repo": "musnix",
+        "type": "github"
+      }
+    },
     "neorg": {
       "flake": false,
       "locked": {
-        "lastModified": 1731788292,
-        "narHash": "sha256-D0mWarEaj+BgkYnDPioWRdUdu4+uPwxmHQyMKTN3jyo=",
+        "lastModified": 1731818282,
+        "narHash": "sha256-G0SDsIPCvc9KZP8hTF3uUl2x4cSE98XLacfEAHUdYVQ=",
         "owner": "nvim-neorg",
         "repo": "neorg",
-        "rev": "c7ada7881d7076a235b6323edcd81ae260affb41",
+        "rev": "2d8ed7ee68f9b33a75324d92dbc706d93bb258a2",
         "type": "github"
       },
       "original": {
@@ -327,11 +347,11 @@
         "norg-meta": "norg-meta"
       },
       "locked": {
-        "lastModified": 1731806475,
-        "narHash": "sha256-UMvnDQgsEJ1XF1/WvNgRCx8+FDrlxbk72OaLZAU782I=",
+        "lastModified": 1731933255,
+        "narHash": "sha256-S+4ganslYoidFxCpWFpzoGVBskUrQUwzMkUKS0rz3jY=",
         "owner": "nvim-neorg",
         "repo": "nixpkgs-neorg-overlay",
-        "rev": "ddd50591f9833f3e94a224f462316e8d8abfcdf1",
+        "rev": "24c1f958312c1125ba69cfee1f5a5d0a4940da99",
         "type": "github"
       },
       "original": {
@@ -503,11 +523,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1731676054,
-        "narHash": "sha256-OZiZ3m8SCMfh3B6bfGC/Bm4x3qc1m2SVEAlkV6iY7Yg=",
+        "lastModified": 1732014248,
+        "narHash": "sha256-y/MEyuJ5oBWrWAic/14LaIr/u5E0wRVzyYsouYY3W6w=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5e4fbfb6b3de1aa2872b76d49fafc942626e2add",
+        "rev": "23e89b7da85c3640bbc2173fe04f4bd114342367",
         "type": "github"
       },
       "original": {
@@ -622,11 +642,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1731664598,
-        "narHash": "sha256-6RzaFnAwMbWrCHZHo3Srqf8zjkjRnt0PD5I9u1MW3zU=",
+        "lastModified": 1732246372,
+        "narHash": "sha256-9ugWA5Z8OdNCCMzJvWhpEMadUKk32ghwJTUKPURTIeY=",
         "ref": "refs/heads/main",
-        "rev": "817220567417ceedb71ff8dae0a897ee1e725e56",
-        "revCount": 21,
+        "rev": "1cb8c91df3d2ab7dac96a373b2d57d707f2883f4",
+        "revCount": 23,
         "type": "git",
         "url": "https://git.schwem.io/schwem/oidcproxy"
       },
@@ -645,11 +665,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1731707580,
-        "narHash": "sha256-QXcjpIO1y6mi+4E2BC6O16TaLFfpcPcCHumuJBXmcoU=",
+        "lastModified": 1732148369,
+        "narHash": "sha256-UyA/iAPTbnrI6rNe7u8swO2h8PkLV6s4XS90Jv19CQ8=",
         "owner": "redlib-org",
         "repo": "redlib",
-        "rev": "6c64ebd56b98f5616c2014e2e0567fa37791844c",
+        "rev": "6be6f892a4eb159f5a27ce48f0ce615298071eac",
         "type": "github"
       },
       "original": {
@@ -665,6 +685,7 @@
         "disko": "disko",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
+        "musnix": "musnix",
         "neorg-overlay": "neorg-overlay",
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",

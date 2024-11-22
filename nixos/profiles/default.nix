@@ -13,10 +13,14 @@ in {
 
     ../development
     ../network
+    ../virtualisation
+
     ../programs/home-manager.nix
     ../programs/zsh.nix
+
+    ../services/rclone
+
     ../system/nix.nix
-    ../virtualisation
   ];
 
   # basic tools I want available on every host and managed by the system

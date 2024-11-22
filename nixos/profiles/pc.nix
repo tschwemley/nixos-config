@@ -11,6 +11,7 @@
 
     ../hardware/audio
     ../hardware/flipperzero.nix
+
     ../programs/chrysalis
     ../programs/gamemode.nix
     ../programs/hyprland.nix
@@ -19,10 +20,13 @@
     ../programs/steam.nix
     ../programs/wine.nix
     ../programs/xdg.nix
+
     ../services/colord.nix
     ../services/dbus.nix
     ../services/gnome.nix
+    ../services/rclone/flareon.nix
     ../services/upower.nix
+
     ../system/fonts.nix
     ../system/greetd.nix
     ../system/security.nix
@@ -33,10 +37,8 @@
     mariadb
   ];
 
-  programs = {
-    # this is required to make home manager managed GTK items function
-    dconf.enable = true;
-  };
+  # this is required to make home manager managed GTK items function
+  programs.dconf.enable = true;
 
   services = {
     getty.autologinUser = "schwem";

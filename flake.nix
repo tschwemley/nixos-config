@@ -16,17 +16,17 @@
       perSystem = {
         self',
         config,
-        pkgs,
         system,
         ...
-      }: {
-        # makes pkgs available to all perSystem functions
-        _module.args.pkgs = import nixpkgs {
+      }: let
+        pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-
           overlays = import ./overlays self';
         };
+      in {
+        # makes pkgs available to all perSystem functions
+        _module.args = {inherit pkgs;};
       };
 
       imports = [
@@ -59,6 +59,11 @@
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    musnix = {
+      url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

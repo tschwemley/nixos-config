@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  imports = [./mini-visits.nix];
+
   programs.neovim.plugins = with pkgs.vimPlugins; let
     navbuddy = import ./navbuddy.nix pkgs.vimPlugins;
     rest-nvim = import ./rest-nvim.nix pkgs.vimPlugins;
