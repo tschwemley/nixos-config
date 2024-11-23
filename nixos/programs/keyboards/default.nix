@@ -4,4 +4,6 @@
     # open source gui and qmk fork -- udev built along with package
     vial
   ];
+
+  services.udev.packages = [pkgs.vial];
 }

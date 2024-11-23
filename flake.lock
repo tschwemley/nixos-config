@@ -757,11 +757,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730265126,
-        "narHash": "sha256-NSSixekwojniyLHEQ0yCS2ZU10j8l1NLGC8VchO8Y4U=",
+        "lastModified": 1732349724,
+        "narHash": "sha256-oI29doAUiCEmA+nNppPAmqSCCtwKrg6ukuOI6/+Z5xI=",
         "ref": "refs/heads/main",
-        "rev": "1e94c0a9bbbf4dc1c011bc51b7b63f52d9b8dafc",
-        "revCount": 18,
+        "rev": "23ecd56cdb6835783e679141954bd1814a03d1f8",
+        "revCount": 19,
         "type": "git",
         "url": "https://git.schwem.io/schwem/webhooks"
       },
