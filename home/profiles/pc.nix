@@ -21,7 +21,6 @@
     ../programs/qt.nix
     ../programs/tailscale-systray.nix
     ../programs/tigervnc.nix
-    ../programs/vial.nix
     ../programs/vlc.nix
     ../programs/wayland/hyprland.nix
     ../programs/wcalc.nix

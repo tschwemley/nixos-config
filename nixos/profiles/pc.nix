@@ -12,10 +12,10 @@
     ../hardware/audio
     ../hardware/flipperzero.nix
 
-    ../programs/chrysalis
     ../programs/gamemode.nix
     ../programs/hyprland.nix
     ../programs/kdeconnect.nix
+    ../programs/keyboards
     ../programs/man.nix
     ../programs/steam.nix
     ../programs/wine.nix
