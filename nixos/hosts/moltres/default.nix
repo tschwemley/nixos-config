@@ -19,4 +19,9 @@
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
   system.stateVersion = "23.05";
+
+  services.tailscale.extraUpFlags = [
+    "--exit-node=us-mia-wg-003.mullvad.ts.net"
+    "--exit-node-allow-lan-access=true"
+  ];
 }
