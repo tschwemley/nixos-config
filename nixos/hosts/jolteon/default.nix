@@ -6,10 +6,13 @@
     ../../server/arr
 
     ../../server/alt-frontends/anonymous-overflow.nix
-    ../../server/alt-frontends/scribe
     ../../server/development/forgejo
     ../../server/infrastructure/postgresql
     ../../server/infrastructure/webhooks
+
+    # TODO: fix or delete... not a priority atm.
+    # Fails during start with: Lucky::ForceSSLHandler was nil, but the setting is required.
+    # ../../server/alt-frontends/scribe
   ];
 
   networking.hostName = "jolteon";
