@@ -7,6 +7,7 @@
     nvim-dap
     nvim-dap-go
     nvim-dap-ui
+    telescope-dap-nvim
   ];
 
   # xdg.configFile."nvim/after/plugin/debug".source = ./lua;
