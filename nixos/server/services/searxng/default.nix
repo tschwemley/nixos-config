@@ -211,11 +211,11 @@
 
   services.nginx.virtualHosts."search.schwem.io" = {
     locations = {
-      "/".extraConfig = "uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};";
-
       "/api" = {
         proxyPass = "https://search.schwem.io/search$request_uri&format=json";
       };
+
+      "/".extraConfig = "uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};";
 
       "/robots.txt".root = "/etc/nginx/static/";
     };
