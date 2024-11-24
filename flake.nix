@@ -79,12 +79,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # TODO: remove if custom package works
-    # redlib-latest = {
-    #   url = "github:redlib-org/redlib?rev=6be6f892a4eb159f5a27ce48f0ce615298071eac";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     scribe = {
       url = "sourcehut:~edwardloveall/scribe/main";
       inputs.nixpkgs.follows = "nixpkgs";
