@@ -25,7 +25,6 @@
   };
 
   systemd.tmpfiles.rules = [
-    "d /var/lib/tiddlywiki 0755 root root - -"
-    "f+ /var/lib/tiddlywiki/tiddlywiki.info tiddlywiki tiddlywiki - ${./tiddlywiki.info}"
+    "L+ /var/lib/tiddlywiki/tiddlywiki.info 0644 tiddlywiki tiddlywiki - ${./tiddlywiki.info}"
   ];
 }
