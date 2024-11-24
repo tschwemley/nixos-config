@@ -85,7 +85,7 @@
       # Search engines
       engines = lib.mapAttrsToList (name: value: {inherit name;} // value) {
         "1x".disabled = true;
-        "artic".disabled = false;
+        "artic".disabled = true;
         "bing images".disabled = false;
         "bing videos".disabled = false;
         "bing".disabled = false;
@@ -212,6 +212,10 @@
   services.nginx.virtualHosts."search.schwem.io" = {
     locations = {
       "/".extraConfig = "uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};";
+
+      "/api" = {
+        proxyPass = "https://search.schwem.io/search$request_uri&format=json";
+      };
 
       "/robots.txt".root = "/etc/nginx/static/";
     };
