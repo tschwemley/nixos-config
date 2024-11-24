@@ -3,8 +3,10 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: let
+  listenAddr = "127.0.0.1";
+  listenPort = config.portMap.forgejo;
+in {
   environment = {
     systemPackages = [
       # convenience wrapper for using the cli without having switch user or define config file location
@@ -14,13 +16,13 @@
     ];
   };
 
-  networking.firewall.allowedTCPPorts = [ 2222 ];
+  networking.firewall.allowedTCPPorts = [2222];
 
   services.nginx = {
     virtualHosts."git.schwem.io" = {
       locations = {
         "/" = {
-          proxyPass = "http://127.0.0.1:${config.portMap.forgejo}";
+          proxyPass = "http://${listenAddr}:${listenPort}";
           extraConfig = "client_max_body_size 512M;";
         };
 
@@ -57,7 +59,8 @@
 
       server = {
         LANDING_PAGE = "explore";
-        HTTP_PORT = lib.strings.toInt config.portMap.forgejo;
+        HTTP_ADDR = listenAddr;
+        HTTP_PORT = lib.strings.toInt listenPort;
         ROOT_URL = "https://git.schwem.io";
         SSH_DOMAIN = "git.schwem.io";
         SSH_PORT = 2222;
@@ -77,15 +80,13 @@
     };
   };
 
-  sops.secrets =
-    let
-      sopsConfig = {
-        sopsFile = ./secrets.yaml;
-      };
-    in
-    {
-      forgejo_db_password = sopsConfig;
-      forgejo_smtp_server = sopsConfig;
-      forgejo_smtp_token = sopsConfig;
+  sops.secrets = let
+    sopsConfig = {
+      sopsFile = ./secrets.yaml;
     };
+  in {
+    forgejo_db_password = sopsConfig;
+    forgejo_smtp_server = sopsConfig;
+    forgejo_smtp_token = sopsConfig;
+  };
 }
