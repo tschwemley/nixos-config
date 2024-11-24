@@ -9,10 +9,6 @@ in {
     enable = true;
     autocd = true;
     autosuggestion.enable = true;
-    # completionInit = ''
-    #   fpath+=~/.zsh_completions
-    #   autoload -U compinit && compinit
-    # '';
     defaultKeymap = "emacs";
     enableCompletion = true;
     history = {
@@ -31,8 +27,9 @@ in {
         # additional funcs
         func tbat() { tail -f "$1" | bat --paging=never -l log }
 
-        func nsh() { nix-shell -p "$1" }
-        func nshr() { nix-shell -p "$1" "$2" }
+        # run command from nixpkgs via current system flake
+        func run() { nix run ~/nixos-config#nixosConfigurations."$HOST".pkgs."$1" }
+        func srun() { sudo nix run ~/nixos-config#nixosConfigurations."$HOST".pkgs."$1" }
       '';
   };
 }
