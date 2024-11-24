@@ -9,7 +9,7 @@
     ../../server/alt-frontends/priviblur
     ../../server/alt-frontends/safetwitch
     ../../server/automation/home-assistant
-    ../../server/knowledge/tiddlywiki.nix
+    ../../server/knowledge/tiddlywiki
   ];
 
   networking.hostName = "zapados";
