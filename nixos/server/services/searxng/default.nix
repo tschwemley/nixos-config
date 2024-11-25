@@ -11,20 +11,20 @@
     redisCreateLocally = true;
 
     # Rate limiting
-    limiterSettings = {
-      real_ip = {
-        x_for = 1;
-        ipv4_prefix = 32;
-        ipv6_prefix = 56;
-      };
-
-      botdetection = {
-        ip_limit = {
-          filter_link_local = true;
-          link_token = true;
-        };
-      };
-    };
+    # limiterSettings = {
+    #   real_ip = {
+    #     x_for = 1;
+    #     ipv4_prefix = 32;
+    #     ipv6_prefix = 56;
+    #   };
+    #
+    #   botdetection = {
+    #     ip_limit = {
+    #       filter_link_local = true;
+    #       link_token = true;
+    #     };
+    #   };
+    # };
 
     runInUwsgi = true;
     uwsgiConfig = {
@@ -75,6 +75,7 @@
         base_url = "https://search.schwem.io";
         bind_address = "127.0.0.1";
         image_proxy = true;
+        # limiter = true;
         limiter = false;
         method = "GET";
         port = lib.strings.toInt config.portMap.searxng;
@@ -211,37 +212,18 @@
 
   services.nginx.virtualHosts."search.schwem.io" = {
     locations = {
-      "/api" = {
+      "/" = {
         extraConfig = ''
-          rewrite ^/api(.*)$ /search$1&format=json break;
-
           uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};
-
-          include uwsgi_params;
-
-          # see flaskfix.py
-          uwsgi_param    HTTP_X_SCHEME         $scheme;
-          uwsgi_param    HTTP_X_SCRIPT_NAME    /searxng;
-
-          # see limiter.py
-          uwsgi_param    HTTP_X_REAL_IP        $remote_addr;
-          uwsgi_param    HTTP_X_FORWARDED_FOR  $proxy_add_x_forwarded_for;
         '';
       };
 
-      "/".extraConfig = ''
-        uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};
-
-        include uwsgi_params;
-
-        # see flaskfix.py
-        uwsgi_param    HTTP_X_SCHEME         $scheme;
-        uwsgi_param    HTTP_X_SCRIPT_NAME    /searxng;
-
-        # see limiter.py
-        uwsgi_param    HTTP_X_REAL_IP        $remote_addr;
-        uwsgi_param    HTTP_X_FORWARDED_FOR  $proxy_add_x_forwarded_for;
-      '';
+      "/api/" = {
+        extraConfig = ''
+          rewrite /api/ /search?format=json break;
+          uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};
+        '';
+      };
 
       "/robots.txt".root = "/etc/nginx/static/";
     };

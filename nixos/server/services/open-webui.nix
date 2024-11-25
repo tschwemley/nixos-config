@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   secretsPath,
   ...
 }: {
@@ -25,6 +26,7 @@
     open-webui = {
       enable = true;
       environmentFile = config.sops.templates.open-webui-env.path;
+      package = pkgs.open-webui;
       port = lib.strings.toInt config.portMap.open-webui;
     };
   };

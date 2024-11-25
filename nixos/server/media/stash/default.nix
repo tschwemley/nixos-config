@@ -1,9 +1,11 @@
-{ config, pkgs, ... }:
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   runDir = "/var/run/stash";
   stateDir = "/var/lib/stash";
-in
-{
+in {
   systemd = {
     services.stash = {
       after = [
@@ -28,27 +30,25 @@ in
         STASH_PORT = config.portMap.stash;
         # STASH_EXTERNAL_HOST = "stash.schwem.io";
       };
-      path =
-        let
-          python = pkgs.python311.withPackages (
-            pythonPkgs: with pythonPkgs; [
+      path = let
+        python = pkgs.python311.withPackages (
+          pythonPkgs:
+            with pythonPkgs; [
               pip
             ]
-          );
-        in
-        [
-          pkgs.ffmpeg_7-headless
+        );
+      in [
+        pkgs.ffmpeg_7-headless
 
-          # paths added below are for plugin support
-          pkgs.undetected-chromedriver
-          python
-        ];
+        # paths added below are for plugin support
+        pkgs.undetected-chromedriver
+        python
+      ];
       serviceConfig = {
         User = "stash";
         Group = "stash";
         Type = "simple";
         ExecStart = "${pkgs.stash}/bin/stash";
-        # ReadPaths = [ "/var/run/stash" ];
         Restart = "always";
         RestartSec = 5;
         StateDirectory = stateDir;
@@ -83,7 +83,7 @@ in
   };
 
   users = {
-    groups.stash = { };
+    groups.stash = {};
     users.stash = {
       group = "stash";
       isSystemUser = true;
