@@ -29,7 +29,7 @@
     runInUwsgi = true;
     uwsgiConfig = {
       socket = "/run/searx/searx.sock";
-      http = ":${config.portMap.searxng}";
+      # http = ":${config.portMap.searxng}";
       chmod-socket = "660";
     };
 
@@ -212,10 +212,36 @@
   services.nginx.virtualHosts."search.schwem.io" = {
     locations = {
       "/api" = {
-        proxyPass = "https://search.schwem.io/search$request_uri&format=json";
+        extraConfig = ''
+          rewrite ^/api(.*)$ /search$1&format=json break;
+
+          uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};
+
+          include uwsgi_params;
+
+          # see flaskfix.py
+          uwsgi_param    HTTP_X_SCHEME         $scheme;
+          uwsgi_param    HTTP_X_SCRIPT_NAME    /searxng;
+
+          # see limiter.py
+          uwsgi_param    HTTP_X_REAL_IP        $remote_addr;
+          uwsgi_param    HTTP_X_FORWARDED_FOR  $proxy_add_x_forwarded_for;
+        '';
       };
 
-      "/".extraConfig = "uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};";
+      "/".extraConfig = ''
+        uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};
+
+        include uwsgi_params;
+
+        # see flaskfix.py
+        uwsgi_param    HTTP_X_SCHEME         $scheme;
+        uwsgi_param    HTTP_X_SCRIPT_NAME    /searxng;
+
+        # see limiter.py
+        uwsgi_param    HTTP_X_REAL_IP        $remote_addr;
+        uwsgi_param    HTTP_X_FORWARDED_FOR  $proxy_add_x_forwarded_for;
+      '';
 
       "/robots.txt".root = "/etc/nginx/static/";
     };
