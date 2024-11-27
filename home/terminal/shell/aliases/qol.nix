@@ -2,6 +2,7 @@
   btop = "sudo btop";
   cat = "bat -pp";
   checkip = "curl https://ipinfo.io/ip";
+  checkmullvad = "curl -sS https://am.i.mullvad.net/json | jq";
   copy = "wl-copy";
   dirsizes = "sudo du -h --max-depth=1 | sort -hr";
   notes = "nvim -c 'Neorg workspace notes' -c 'Neorg journal today'";
