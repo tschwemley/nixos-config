@@ -12,7 +12,6 @@
     decoration.blur.enabled = false; # TODO: remove this if it doesn't do anything to help solve issues
 
     exec-once = [
-      "ags -c ~/nixos-config/home/programs/ags/config/config.js"
       "wl-paste --watch cliphist store"
     ];
 

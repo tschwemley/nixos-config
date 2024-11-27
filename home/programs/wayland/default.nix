@@ -11,7 +11,7 @@
       wl-clipboard
       wl-ocr
       wlr-randr
-      # wf-recorder # records screen
+      wf-recorder # records screen
       ydotool
     ];
 

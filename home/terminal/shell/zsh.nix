@@ -28,8 +28,18 @@ in {
         func tbat() { tail -f "$1" | bat --paging=never -l log }
 
         # run command from nixpkgs via current system flake
-        func run() { nix run ~/nixos-config#nixosConfigurations."$HOST".pkgs."$1" }
-        func srun() { sudo nix run ~/nixos-config#nixosConfigurations."$HOST".pkgs."$1" }
+        func run() {
+          pkg=$1
+          shift
+
+          nix run ~/nixos-config#nixosConfigurations."$HOST".pkgs."$pkg" -- "$@"
+        }
+        func srun() {
+          pkg=$1
+          shift
+
+          sudo nix run ~/nixos-config#nixosConfigurations."$HOST".pkgs."$pkg" -- "$@"
+        }
       '';
   };
 }

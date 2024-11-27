@@ -1,7 +1,6 @@
 {
   imports = [
     ./.
-    ../programs/ags
     ../programs/ai
     ../programs/browsers
     ../programs/communication
@@ -33,7 +32,6 @@
 
     ../xdg
     ../xdg/netrc.nix
-    ../xdg/ssh/servers.nix
     ../xdg/ssh/personal.nix
 
     # TODO: go through and decide which to keep and which to remove
