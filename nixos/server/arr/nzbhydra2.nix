@@ -3,15 +3,16 @@
   secretsPath,
   ...
 }: {
-  services = {
-    # TODO: uncomment if exposing via web; otherwise delete
-    # nginx.virtualHosts."nzbhydra.schwem.io".locations = {
-    #   "/" = {
-    #     proxyPass = "http://127.0.0.1:${config.portMap.nzbhydra2}";
-    #   };
-    # };
-
-    nzbhydra2.enable = true;
+  services.nzbhydra2 = {
+    enable = true;
+    package = pkgs.nzbhydra2.overrideAttrs rec {
+      version = "7.10.1";
+      src = pkgs.fetchzip {
+        url = "https://github.com/theotherp/nzbhydra2/releases/download/v${version}/nzbhydra2-${version}-generic.zip";
+        hash = "sha256-Nnrh8gvdxqDfANEeBX9/Q0DiRGuF0qJsGnH86g3/3O4=";
+        stripRoot = false;
+      };
+    };
   };
 
   systemd.services.nzbhydra2 = {
