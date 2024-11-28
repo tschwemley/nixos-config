@@ -80,8 +80,10 @@
     };
 
     sops-nix = {
+      # TODO: remove the comment and bug designation if this works after updating
       # BUG:
-      url = "github:Mic92/sops-nix/e9b5eef";
+      # url = "github:Mic92/sops-nix/e9b5eef";
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
