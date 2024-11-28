@@ -4,46 +4,36 @@
   ...
 }: let
   runDir = "/var/run/stash";
-  stateDir = "/var/lib/stash";
+  dataDir = "/var/lib/stash";
 in {
   systemd = {
     services.stash = {
-      after = [
-        "network-online.target"
-        "storage.mount"
-      ];
-      description = "Stash";
       wantedBy = [
         "multi-user.target"
       ];
-      wants = [
-        "network-online.target"
+      after = [
+        "network.target"
         "storage.mount"
       ];
+      description = "Stash";
+      path = with pkgs; [
+        ffmpeg-full
+        python3
+        ruby
+      ];
       environment = {
-        LD_LIBRARY_PATH = "${stateDir}/python-modules";
+        # TODO: possibly enable this
+        # STASH_CONFIG_FILE = "${cfg.dataDir}/config.yml";
 
-        PYTHONPATH = "${stateDir}/python-modules";
+        # LD_LIBRARY_PATH = "${dataDir}/python-modules";
+        #
+        # PYTHONPATH = "${dataDir}/python-modules";
 
         # STASH_HOST = "0.0.0.0";
         # STASH_HOST = "127.0.0.1";
         STASH_PORT = config.portMap.stash;
         # STASH_EXTERNAL_HOST = "stash.schwem.io";
       };
-      path = let
-        python = pkgs.python311.withPackages (
-          pythonPkgs:
-            with pythonPkgs; [
-              pip
-            ]
-        );
-      in [
-        pkgs.ffmpeg_7-headless
-
-        # paths added below are for plugin support
-        pkgs.undetected-chromedriver
-        python
-      ];
       serviceConfig = {
         User = "stash";
         Group = "stash";
@@ -51,34 +41,53 @@ in {
         ExecStart = "${pkgs.stash}/bin/stash";
         Restart = "always";
         RestartSec = 5;
-        StateDirectory = stateDir;
-        WorkingDirectory = "/var/run/stash";
+        StateDirectory = dataDir;
+        WorkingDirectory = dataDir;
+        # WorkingDirectory = "/var/run/stash";
 
         # Hardening options
-        LockPersonality = "yes";
-        ProtectSystem = "yes";
-        ProtectClock = "yes";
-        ProtectControlGroups = "yes";
-        ProtectHome = "yes";
-        ProtectHostname = "yes";
-        ProtectKernelLogs = "yes";
-        ProtectKernelModules = "yes";
-        ProtectKernelTunables = "yes";
+        DevicePolicy = "auto"; # needed for hardware acceleration
+        PrivateDevices = false; # needed for hardware acceleration
+        AmbientCapabilities = [""];
+        CapabilityBoundingSet = [""];
+        ProtectSystem = "full";
+        LockPersonality = true;
+        NoNewPrivileges = true;
+        PrivateTmp = true;
+        PrivateUsers = true;
+        ProtectClock = true;
+        ProtectControlGroups = true;
+        ProtectHostname = true;
+        ProtectKernelLogs = true;
+        ProtectKernelModules = true;
+        ProtectKernelTunables = true;
+        ProcSubset = "pid";
         ProtectProc = "invisible";
-        RemoveIPC = "yes";
-        RestrictAddressFamilies = "AF_INET AF_INET6 AF_UNIX AF_NETLINK";
-        RestrictNamespaces = "yes";
-        RestrictRealtime = "yes";
-        NoNewPrivileges = "yes";
-        PrivateDevices = "yes";
-        PrivateTmp = "yes";
+        RemoveIPC = true;
+        RestrictAddressFamilies = [
+          "AF_UNIX"
+          "AF_INET"
+          "AF_INET6"
+        ];
+        RestrictNamespaces = true;
+        RestrictRealtime = true;
+        RestrictSUIDSGID = true;
+        MemoryDenyWriteExecute = true;
+        SystemCallArchitectures = "native";
+        SystemCallFilter = [
+          "~@cpu-emulation"
+          "~@debug"
+          "~@mount"
+          "~@obsolete"
+          "~@privileged"
+        ];
       };
     };
 
     tmpfiles.rules = [
       "d ${runDir} 0500 stash stash - -"
-      "d ${stateDir} 0755 stash stash - -"
-      "d ${stateDir}/python-modules 0755 stash stash - -"
+      "d ${dataDir} 0755 stash stash - -"
+      "d ${dataDir}/python-modules 0755 stash stash - -"
     ];
   };
 
@@ -87,7 +96,7 @@ in {
     users.stash = {
       group = "stash";
       isSystemUser = true;
-      home = stateDir;
+      home = dataDir;
     };
   };
 }
