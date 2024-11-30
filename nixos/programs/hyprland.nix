@@ -1,4 +1,3 @@
-{ inputs, pkgs, ... }:
 {
   programs.hyprland = {
     enable = true;
@@ -6,4 +5,7 @@
     # portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     xwayland.enable = true;
   };
+
+  # hints electron apps to use wayland
+  environment.variables.NIXOS_OZONE_WL = "1";
 }

@@ -1,5 +1,8 @@
-{ inputs, pkgs, ... }:
 {
+  # inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./brave.nix
     ./librewolf.nix
@@ -8,7 +11,7 @@
   ];
 
   home.packages = with pkgs; [
-    inputs.zen-browser.packages."${pkgs.system}".default
+    pkgs.zen
 
     lynx
     tor-browser

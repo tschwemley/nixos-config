@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  browser = ["zen"];
+  browser = ["zen.desktop"];
   # imageViewer = ["org.gnome.Loupe"];
   # videoPlayer = ["io.github.celluloid_player.Celluloid"];
   # audioPlayer = ["io.bassi.Amberol"];
@@ -26,6 +26,7 @@
       "x-extension-htm"
       "x-extension-html"
       "x-extension-shtml"
+      "x-extension-xhtml+xml"
       "x-extension-xht"
       "x-extension-xhtml"
     ])
@@ -44,7 +45,6 @@
       "text/html" = browser;
       "text/plain" = ["nvim"];
       "x-scheme-handler/chrome" = ["brave"];
-      # "x-scheme-handler/chrome" = ["chromium-browser"];
       # "inode/directory" = ["yazi"];
     }
     # // image

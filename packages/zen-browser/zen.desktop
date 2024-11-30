@@ -1,0 +1,26 @@
+[Desktop Entry]
+Actions=new-window;new-private-window;profile-manager-window;
+Categories=Network;WebBrowser;
+Exec=zen --name zen %U
+GenericName=Web Browser
+Icon=zen
+Keywords=Internet;WWW;Browser;Web;Explorer;
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;
+Name=Zen Browser
+StartupNotify=true
+StartupWMClass=zen-alpha
+Terminal=false
+Type=Application
+X-MultipleArgs=false
+
+[Desktop Action new-window]
+Name=New Window
+Exec=zen --new-window %U
+
+[Desktop Action new-private-window]
+Name=New Private Window
+Exec=zen --private-window %U
+
+[Desktop Action profile-manager-window]
+Name=Profile Manager
+Exec=zen --ProfileManager %U

@@ -81,7 +81,6 @@ in {
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
-    age.keyFile = "/root/.config/sops/age/keys.txt";
 
     secrets."wireless.env".sopsFile = ../../network/secrets.yaml;
 

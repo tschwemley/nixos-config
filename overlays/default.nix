@@ -11,6 +11,7 @@ self': [
       ogen
       stash
       wl-ocr
+      zen
       ;
 
     vimPlugins =

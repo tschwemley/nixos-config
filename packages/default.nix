@@ -15,6 +15,7 @@
       raindrop = pkgs.callPackage ./raindrop.nix {};
       stash = pkgs.callPackage ./stash {};
       wl-ocr = pkgs.callPackage ./wl-ocr {};
+      zen = pkgs.callPackage ./zen-browser {};
     };
   };
 }
