@@ -1,7 +1,7 @@
 {
   imports = [
     ../../profiles/proxmox.nix
-    ../../server/arr
+    # ../../server/arr
     ../../server/media/stash
     ../../services/samba.nix
   ];
