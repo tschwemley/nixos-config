@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: let
-  runDir = "/var/run/stash";
   dataDir = "/var/lib/stash";
 in {
   systemd = {
@@ -17,21 +16,16 @@ in {
       ];
       description = "Stash";
       path = with pkgs; [
-        ffmpeg-full
+        jellyfin-ffmpeg
+        # ffmpeg-full
         python3
         ruby
       ];
       environment = {
-        # TODO: possibly enable this
-        # STASH_CONFIG_FILE = "${cfg.dataDir}/config.yml";
-
-        # LD_LIBRARY_PATH = "${dataDir}/python-modules";
-        #
-        # PYTHONPATH = "${dataDir}/python-modules";
-
-        # STASH_HOST = "0.0.0.0";
-        # STASH_HOST = "127.0.0.1";
         STASH_PORT = config.portMap.stash;
+
+        # TODO: possibly enable these
+        # STASH_CONFIG_FILE = "${cfg.dataDir}/config.yml";
         # STASH_EXTERNAL_HOST = "stash.schwem.io";
       };
       serviceConfig = {
@@ -43,7 +37,6 @@ in {
         RestartSec = 5;
         StateDirectory = dataDir;
         WorkingDirectory = dataDir;
-        # WorkingDirectory = "/var/run/stash";
 
         # Hardening options
         DevicePolicy = "auto"; # needed for hardware acceleration
@@ -85,9 +78,8 @@ in {
     };
 
     tmpfiles.rules = [
-      "d ${runDir} 0500 stash stash - -"
-      "d ${dataDir} 0755 stash stash - -"
-      "d ${dataDir}/python-modules 0755 stash stash - -"
+      "d ${dataDir} 0775 stash stash - -"
+      # "d ${dataDir}/python-modules 0755 stash stash - -"
     ];
   };
 
