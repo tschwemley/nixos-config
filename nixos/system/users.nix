@@ -19,8 +19,16 @@
       # sops.age.keyFile = "/etc/sops/age-keys.txt";
       sops.age.keyFile = "/root/.config/sops/age/keys.txt";
       # systemd.users.sops-nix
-      systemd.user.services.sops-nix.Install.Before = ["home-manager-root.service"];
-      # systemd.user.services.sops-nix.Install.WantedBy = [ "home-manager-root.service" ];
+      # systemd.user.services.sops-nix.Install.Before = ["home-manager-root.service"];
+      # systemd.user.services.sops-nix.Install.WantedBy = ["home-manager-root.service"];
+      systemd.user.services.sops-nix = {
+        wantedBy = [
+          "home-manager-root.service"
+        ];
+        before = [
+          "home-manager-root.service"
+        ];
+      };
     };
   };
 
