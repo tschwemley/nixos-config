@@ -16,5 +16,9 @@
       path = ./php;
       description = "Basic php application";
     };
+    python = {
+      path = ./python;
+      description = "Basic python application";
+    };
   };
 }
