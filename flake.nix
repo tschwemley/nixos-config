@@ -80,9 +80,6 @@
     };
 
     sops-nix = {
-      # TODO: remove the comment and bug designation if this works after updating
-      # BUG:
-      # url = "github:Mic92/sops-nix/e9b5eef";
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -106,6 +103,13 @@
 
     oidcproxy = {
       url = "git+https://git.schwem.io/schwem/oidcproxy";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
+
+    stash = {
+      # url = "git+https://git.schwem.io/schwem/stash-flake";
+      url = "/home/schwem/projects/nix/stashapp";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
