@@ -7,7 +7,8 @@
     packages = with pkgs; [
       fira-code
       hasklig
-      nerdfonts
+      nerd-fonts.hasklug
+      nerd-fonts.symbols-only
       noto-fonts-emoji
     ];
 

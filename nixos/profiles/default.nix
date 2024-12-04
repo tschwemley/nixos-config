@@ -16,6 +16,7 @@ in {
     ../virtualisation
 
     ../programs/home-manager.nix
+    ../programs/less.nix
     ../programs/zsh.nix
 
     ../services/rclone

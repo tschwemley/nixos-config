@@ -1,7 +1,12 @@
 {pkgs, ...}: {
+  home.sessionVariables = {
+    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+  };
+
   programs.bat = {
     enable = true;
     config = {
+      lessopen = true;
       theme = "gruvbox-dark";
     };
     extraPackages = with pkgs; [

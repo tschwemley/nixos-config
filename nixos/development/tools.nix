@@ -1,3 +1,6 @@
 {pkgs, ...}: {
-  environment.systemPackages = [pkgs.insomnia];
+  environment.systemPackages = with pkgs; [
+    insomnia
+    tealdeer
+  ];
 }

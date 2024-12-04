@@ -25,7 +25,8 @@ in {
 
         # NOTE: if I add many more funcs its worth splitting off into their own file or dir
         # additional funcs
-        func tbat() { tail -f "$1" | bat --paging=never -l log }
+
+        func tailf() { tail -f "$1" | bat --paging=never -l log }
 
         # run command from nixpkgs via current system flake
         func run() {

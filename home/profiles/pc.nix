@@ -55,7 +55,5 @@
         insteadOf = "https://github.com";
       };
     };
-
-    zsh.shellAliases.systemctl = "sudo systemctl";
   };
 }
