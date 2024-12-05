@@ -108,8 +108,8 @@
     };
 
     stash = {
-      # url = "git+https://git.schwem.io/schwem/stash-flake";
-      url = "/home/schwem/projects/nix/stashapp";
+      url = "git+https://git.schwem.io/schwem/stash-flake";
+      # url = "/home/schwem/projects/nix/stashapp";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
