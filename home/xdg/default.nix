@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  browser = ["zen.desktop"];
+  browser = ["zen.desktop.desktop"];
   # imageViewer = ["org.gnome.Loupe"];
   # videoPlayer = ["io.github.celluloid_player.Celluloid"];
   # audioPlayer = ["io.bassi.Amberol"];
@@ -32,6 +32,7 @@
     ])
     // (xdgAssociations "x-scheme-handler" browser [
       "about"
+      "chrome"
       "ftp"
       "http"
       "https"
@@ -44,7 +45,7 @@
       # "application/pdf" = ["org.pwmt.zathura-pdf-mupdf"];
       "text/html" = browser;
       "text/plain" = ["nvim"];
-      "x-scheme-handler/chrome" = ["brave"];
+      # "x-scheme-handler/chrome" = ["brave"];
       # "inode/directory" = ["yazi"];
     }
     # // image

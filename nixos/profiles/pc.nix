@@ -24,7 +24,9 @@
     ../services/colord.nix
     ../services/dbus.nix
     ../services/gnome.nix
-    # ../services/rclone/flareon.nix
+    ../services/rclone/flareon.nix
+    ../services/rclone/jolteon.nix
+    ../services/rclone/tentacool.nix
     ../services/upower.nix
 
     ../system/fonts.nix
@@ -35,6 +37,7 @@
   # TODO: move locations?
   environment.systemPackages = with pkgs; [
     mariadb
+    usbutils
   ];
 
   musnix.enable = true;
