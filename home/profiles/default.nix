@@ -1,7 +1,6 @@
 {
   imports = [
     ../programs/development
-    ../programs/git.nix
     ../programs/bat.nix
     ../programs/btop.nix
     ../programs/fzf.nix

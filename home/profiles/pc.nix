@@ -6,13 +6,13 @@
     ../programs/communication
     ../programs/development/dbgate.nix
     ../programs/gnome
+    ../programs/media
     ../programs/music
 
     ../programs/aseprite.nix
     ../programs/bambu-studio.nix
     ../programs/bitwarden.nix
     ../programs/glow.nix
-    ../programs/jellyfin.nix
     ../programs/jira-cli.nix
     ../programs/khal.nix
     ../programs/lan-mouse.nix
@@ -20,7 +20,6 @@
     ../programs/qt.nix
     ../programs/tailscale-systray.nix
     ../programs/tigervnc.nix
-    ../programs/vlc.nix
     ../programs/wayland/hyprland.nix
     ../programs/wcalc.nix
     ../programs/wofi.nix
