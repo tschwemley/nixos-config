@@ -10,11 +10,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1732249396,
-        "narHash": "sha256-BlOPPS0D/FfLsXGyXvZ7cFuLldvdbqVq+CaLrHy0lXI=",
+        "lastModified": 1733695982,
+        "narHash": "sha256-9bp3Ov5m58O5L828vr3mWnMiUoQd8KZCgM67wz1/IJg=",
         "ref": "refs/heads/main",
-        "rev": "bea0829ae25b5a2d4527436defe17ccd8ff01617",
-        "revCount": 30,
+        "rev": "226fa0e0a9a1d2640820faa20e65c63894980ab0",
+        "revCount": 31,
         "type": "git",
         "url": "https://git.schwem.io/schwem/dashboard"
       },
@@ -241,11 +241,11 @@
     "neorg": {
       "flake": false,
       "locked": {
-        "lastModified": 1733499332,
-        "narHash": "sha256-akCnC87SQvFJ7gDtWW7vGLepyMiTWpGAjiy2Kgtcnd8=",
+        "lastModified": 1733680833,
+        "narHash": "sha256-xM0Rfkbtlhy8jIcipcpOKQ4moNvPgjsLpOIcC5Ip1mQ=",
         "owner": "nvim-neorg",
         "repo": "neorg",
-        "rev": "708aba142d384ae53cd0ee1de34134d0477f3666",
+        "rev": "0460ccd3b97bc100ca1af0270588b4c76d29c4c4",
         "type": "github"
       },
       "original": {
@@ -266,11 +266,11 @@
         "norg-meta": "norg-meta"
       },
       "locked": {
-        "lastModified": 1733588351,
-        "narHash": "sha256-RTJqCJtwSwECOUtYoakWQ/7SL2+voT/ehyNS3WF2vGA=",
+        "lastModified": 1733682080,
+        "narHash": "sha256-qQeNAUNRuLeGCcAyYepK/CtxlIeqL1ws47Hx1yYgQnk=",
         "owner": "nvim-neorg",
         "repo": "nixpkgs-neorg-overlay",
-        "rev": "d487309724b1ded3f98d9edbf9c0488868c93fd0",
+        "rev": "cf7e851a4981256fd597e7842e2d887ab6afc664",
         "type": "github"
       },
       "original": {
@@ -426,11 +426,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1733392399,
-        "narHash": "sha256-kEsTJTUQfQFIJOcLYFt/RvNxIK653ZkTBIs4DG+cBns=",
+        "lastModified": 1733581040,
+        "narHash": "sha256-Qn3nPMSopRQJgmvHzVqPcE3I03zJyl8cSbgnnltfFDY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d0797a04b81caeae77bcff10a9dde78bc17f5661",
+        "rev": "22c3f2cf41a0e70184334a958e6b124fb0ce3e01",
         "type": "github"
       },
       "original": {
@@ -545,11 +545,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1732246372,
-        "narHash": "sha256-9ugWA5Z8OdNCCMzJvWhpEMadUKk32ghwJTUKPURTIeY=",
+        "lastModified": 1733695872,
+        "narHash": "sha256-VjGnwN47wcminJGsg4cn7ObGrQOTZMBbTWvDW2A5zkU=",
         "ref": "refs/heads/main",
-        "rev": "1cb8c91df3d2ab7dac96a373b2d57d707f2883f4",
-        "revCount": 23,
+        "rev": "95edbf9595cb05a4ef34d830f64108390fb2cc7a",
+        "revCount": 24,
         "type": "git",
         "url": "https://git.schwem.io/schwem/oidcproxy"
       },
@@ -719,11 +719,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1732349724,
-        "narHash": "sha256-oI29doAUiCEmA+nNppPAmqSCCtwKrg6ukuOI6/+Z5xI=",
+        "lastModified": 1733695991,
+        "narHash": "sha256-HiGd08nyjzUwGJ+qEflqWbn1Lwwkjd0z6IxPYtipVwY=",
         "ref": "refs/heads/main",
-        "rev": "23ecd56cdb6835783e679141954bd1814a03d1f8",
-        "revCount": 19,
+        "rev": "ba7ca2b471735d7224ad2d2a16ece6d4179e02ee",
+        "revCount": 20,
         "type": "git",
         "url": "https://git.schwem.io/schwem/webhooks"
       },
