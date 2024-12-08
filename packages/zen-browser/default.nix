@@ -19,7 +19,7 @@
   xorg,
   # package-related
 }:
-stdenvNoCC.mkDerivation (finalAttrs: rec {
+stdenvNoCC.mkDerivation (_: rec {
   pname = "zen";
   version = "1.0.1-a.22";
 

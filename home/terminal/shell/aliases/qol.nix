@@ -8,6 +8,8 @@
   notes = "nvim -c 'Neorg workspace notes' -c 'Neorg journal today'";
   l = "ls";
   ll = "ls -alh";
+  lgroups = "bat /etc/group";
+  lusers = "bat /etc/passwd";
   randstr = "head /dev/urandom | tr -dc A-Za-z0-9 | head -c10";
   userctl = "systemctl --user";
 }

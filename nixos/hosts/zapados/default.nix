@@ -10,6 +10,7 @@
     ../../server/alt-frontends/safetwitch
     ../../server/automation/home-assistant
     ../../server/knowledge/tiddlywiki
+    ../../server/services/leantime
   ];
 
   networking.hostName = "zapados";

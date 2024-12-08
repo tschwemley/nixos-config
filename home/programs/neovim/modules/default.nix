@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   imports = [
     ./colors
     ./completion
@@ -16,10 +16,5 @@
     ./schwem
     ./ui
     ./utils
-  ];
-
-  # plugins imported here are used in multiple locations
-  programs.neovim.plugins = with pkgs.vimPlugins; [
-    mini-nvim
   ];
 }

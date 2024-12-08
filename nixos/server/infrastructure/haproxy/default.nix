@@ -62,6 +62,7 @@ in {
         acl domain_rimgo hdr(host) -i rimgo.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
         acl domain_stackoverflow hdr(host) -i so.schwem.io
+        acl domain_tasks hdr(host) -i tasks.schwem.io
         acl domain_tiktok hdr(host) -i tiktok.schwem.io
         acl domain_threadfin hdr(host) -i threadfin.schwem.io
         acl domain_tumblr hdr(host) -i tumblr.schwem.io
@@ -90,6 +91,7 @@ in {
         use_backend tumblr if domain_tumblr
         use_backend twitch if domain_twitch
         use_backend wiki if domain_wiki
+        use_backend zapados if domain_tasks
 
         default_backend static
 
@@ -187,6 +189,8 @@ in {
         http-request set-header X-Forwarded-Proto https
         server zapados zapados:8080 check send-proxy
 
+      backend zapados
+        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
     '';
   };
 

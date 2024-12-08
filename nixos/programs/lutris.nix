@@ -1,14 +1,14 @@
 {pkgs, ...}: let
-  lutris = with pkgs;
-    lutris.overrideAttr rec {
-      version = "0.5.18";
-      src = fetchFromGitHub {
-        owner = "lutris";
-        repo = "lutris";
-        rev = "v${version}";
-        hash = "${lib.fakeHash}";
-      };
+  lutris = pkgs.lutris.overrideDerivation (_: rec {
+    name = "lutris-${version}";
+    version = "0.5.18";
+    src = pkgs.fetchFromGitHub {
+      owner = "lutris";
+      repo = "lutris";
+      rev = "v${version}";
+      hash = "sha256-dI5hqWBWrOGYUEM9Mfm7bTh7BEc4e+T9gJeiZ3BiqmE=";
     };
+  });
 in {
   environment.systemPackages = [lutris];
 
@@ -17,9 +17,9 @@ in {
     pam = {
       loginLimits = [
         {
-          domain = "*";
+          domain = "schwem";
           item = "nofile";
-          type = "-";
+          type = "hard";
           value = "524288";
         }
       ];
@@ -27,5 +27,5 @@ in {
   };
 
   systemd.extraConfig = "DefaultLimitNOFILE=524288";
-  systemd.user.extraConfig = "LimitNOFILE=524288";
+  systemd.user.extraConfig = "DefaultLimitNOFILE=524288";
 }

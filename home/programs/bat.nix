@@ -6,7 +6,7 @@
   programs.bat = {
     enable = true;
     config = {
-      lessopen = true;
+      # lessopen = true;
       theme = "gruvbox-dark";
     };
     extraPackages = with pkgs; [

@@ -16,6 +16,7 @@
     ../programs/hyprland.nix
     ../programs/kdeconnect.nix
     ../programs/keyboards
+    ../programs/lutris.nix
     ../programs/man.nix
     ../programs/steam.nix
     ../programs/wine.nix
