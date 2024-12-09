@@ -151,6 +151,6 @@ vimcmd_visual_symbol = '[](bold fg:color_yellow)'
 [hostname]
 ssh_only = true
 ssh_symbol = "󰣀"
-format = '[$ssh_symbol](bold blue) on [$hostname](bold red) '
+format = '[$ssh_symbol ](bold blue) on [$hostname](bold red) '
 trim_at = '.companyname.com'
 disabled = false
