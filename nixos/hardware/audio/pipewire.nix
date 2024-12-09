@@ -1,17 +1,18 @@
-{ lib, pkgs, ... }:
 {
+  lib,
+  pkgs,
+  ...
+}: {
   environment = {
-    # sessionVariables = {
-    #   SDL_AUDIODRIVER = "pipewire";
-    #   ALSOFT_DRIVERS = "pipewire";
-    # };
+    # TODO: not really sure if these are necessary for anything I'm running or not yet reeval later
+    sessionVariables = {
+      SDL_AUDIODRIVER = "pipewire";
+      ALSOFT_DRIVERS = "pipewire";
+    };
 
     systemPackages = with pkgs; [
-      alsa-utils
       pavucontrol
-      pwvucontrol
       pamixer
-      pipewire.jack
     ];
   };
 

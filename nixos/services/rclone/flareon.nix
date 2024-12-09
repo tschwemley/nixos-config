@@ -11,4 +11,10 @@
       "config=${config.sops.secrets."rclone.conf".path}"
     ];
   };
+
+  sops.secrets.rclone_flareon_key = {
+    key = "user_ssh_key";
+    mode = "0600";
+    sopsFile = ../../hosts/flareon/secrets.yaml;
+  };
 }
