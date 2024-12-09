@@ -1,8 +1,8 @@
-{
+{inputs, ...}: {
   imports = [
+    inputs.stash.nixosModules.default
+
     ../../profiles/proxmox.nix
-    # ../../server/arr
-    ../../server/media/stash
     ../../services/samba.nix
   ];
 
