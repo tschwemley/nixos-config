@@ -1,40 +1,52 @@
-{pkgs, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
 
-    bind = [
-      # application launching
-      "$mod, p, exec, wofi --show drun"
-      "$mod, Return, exec, ${pkgs.kitty}/bin/kitty"
+    bind = let
+      # map over workspaces && return a list of the binds for moving apps/switching to
+      # we also flatten since we're merging into the bind attr
+      workspaceBinds =
+        lib.lists.flatten
+        (
+          lib.lists.imap0 (
+            k: _: let
+              num = builtins.toString (k + 1);
+            in [
+              "$mod, ${num}, workspace, ${num}"
+              "$mod shift, ${num}, movetoworkspace, ${num}"
+            ]
+          )
+          config.hyprland.workspaces
+        );
+    in
+      [
+        # application launching
+        "$mod, p, exec, wofi --show drun"
+        "$mod, Return, exec, ${pkgs.kitty}/bin/kitty"
 
-      # clipboard, ocr, and screenshot
-      "$mod, V, exec, cliphist list | wofi -dmenu | cliphist decode | wl-copy"
-      "$mod, o, exec, wl-ocr"
-      "$mod $shift, s, exec, grimblast --notify copysave area"
+        # clipboard, ocr, and screenshot
+        "$mod, V, exec, cliphist list | wofi -dmenu | cliphist decode | wl-copy"
+        "$mod, o, exec, wl-ocr"
+        "$mod $shift, s, exec, grimblast --notify copysave area"
 
-      # window management
-      "alt, tab, cyclenext"
-      "alt shift, tab, cyclenext, prev"
-      "$mod, l, layoutmsg, swapnext"
-      "$mod, h, layoutmsg, swapprev"
-      "$mod, w, killactive"
-      "$mod shift, f, fullscreen, 1"
-      "$mod shift, h, movewindow, mon:1"
-      "$mod shift, l, movewindow, mon:0"
+        # window management
+        "alt, tab, cyclenext"
+        "alt shift, tab, cyclenext, prev"
+        "$mod, l, layoutmsg, swapnext"
+        "$mod, h, layoutmsg, swapprev"
+        "$mod, w, killactive"
+        "$mod shift, f, fullscreen, 1"
+        "$mod shift, h, movewindow, mon:1"
+        "$mod shift, l, movewindow, mon:0"
 
-      # workspaces
-      "$mod, 1, workspace, 1"
-      "$mod, 2, workspace, 2"
-      "$mod, 3, workspace, 3"
-      "$mod, 4, workspace, 4"
-
-      "$mod shift, 1, movetoworkspace, 1"
-      "$mod shift, 2, movetoworkspace, 2"
-      "$mod shift, 3, movetoworkspace, 3"
-      "$mod shift, 4, movetoworkspace, 4"
-
-      # "$mod, z, easymotion, action:hyprctl dispatch focuswindow address:{}"
-    ];
+        # "$mod, z, easymotion, action:hyprctl dispatch focuswindow address:{}"
+      ]
+      ++ workspaceBinds;
 
     # mouse binds
     bindm = [
