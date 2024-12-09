@@ -1,6 +1,7 @@
 {
   "description": "Basic client-server edition",
   "plugins": [
+	  "flibbles/relink",
     "tiddlywiki/tiddlyweb",
     "tiddlywiki/filesystem",
     "tiddlywiki/highlight",
