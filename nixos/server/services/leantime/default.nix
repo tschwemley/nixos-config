@@ -108,11 +108,11 @@
       "LEAN_USE_REDIS" = "false";
       "LEAN_USE_S3" = "false";
     };
-    volumes = [
-      "leantime_plugins:/var/www/html/app/Plugins:rw"
-      "leantime_public_userfiles:/var/www/html/public/userfiles:rw"
-      "leantime_userfiles:/var/www/html/userfiles:rw"
-    ];
+    # volumes = [
+    # "leantime_plugins:/var/www/html/app/Plugins:rw"
+    # "leantime_public_userfiles:/var/www/html/public/userfiles:rw"
+    # "leantime_userfiles:/var/www/html/userfiles:rw"
+    # ];
     ports = [
       "80/tcp"
     ];
@@ -133,15 +133,15 @@
       };
       "podman-leantime".after = [
         "podman-network-leantime_leantime-net.service"
-        "podman-volume-leantime_plugins.service"
-        "podman-volume-leantime_public_userfiles.service"
-        "podman-volume-leantime_userfiles.service"
+        # "podman-volume-leantime_plugins.service"
+        # "podman-volume-leantime_public_userfiles.service"
+        # "podman-volume-leantime_userfiles.service"
       ];
       "podman-leantime".requires = [
         "podman-network-leantime_leantime-net.service"
-        "podman-volume-leantime_plugins.service"
-        "podman-volume-leantime_public_userfiles.service"
-        "podman-volume-leantime_userfiles.service"
+        # "podman-volume-leantime_plugins.service"
+        # "podman-volume-leantime_public_userfiles.service"
+        # "podman-volume-leantime_userfiles.service"
       ];
       "podman-leantime".partOf = [
         "podman-compose-leantime-root.target"
@@ -155,11 +155,11 @@
         };
         after = [
           "podman-network-leantime_leantime-net.service"
-          "podman-volume-leantime_db_data.service"
+          # "podman-volume-leantime_db_data.service"
         ];
         requires = [
           "podman-network-leantime_leantime-net.service"
-          "podman-volume-leantime_db_data.service"
+          # "podman-volume-leantime_db_data.service"
         ];
         partOf = [
           "podman-compose-leantime-root.target"
@@ -197,42 +197,42 @@
         partOf = ["podman-compose-leantime-root.target"];
         wantedBy = ["podman-compose-leantime-root.target"];
       };
-      "podman-volume-leantime_plugins" = {
-        path = [pkgs.podman];
-        serviceConfig = {
-          Type = "oneshot";
-          RemainAfterExit = true;
-        };
-        script = ''
-          podman volume inspect leantime_plugins || podman volume create leantime_plugins
-        '';
-        partOf = ["podman-compose-leantime-root.target"];
-        wantedBy = ["podman-compose-leantime-root.target"];
-      };
-      "podman-volume-leantime_public_userfiles" = {
-        path = [pkgs.podman];
-        serviceConfig = {
-          Type = "oneshot";
-          RemainAfterExit = true;
-        };
-        script = ''
-          podman volume inspect leantime_public_userfiles || podman volume create leantime_public_userfiles
-        '';
-        partOf = ["podman-compose-leantime-root.target"];
-        wantedBy = ["podman-compose-leantime-root.target"];
-      };
-      "podman-volume-leantime_userfiles" = {
-        path = [pkgs.podman];
-        serviceConfig = {
-          Type = "oneshot";
-          RemainAfterExit = true;
-        };
-        script = ''
-          podman volume inspect leantime_userfiles || podman volume create leantime_userfiles
-        '';
-        partOf = ["podman-compose-leantime-root.target"];
-        wantedBy = ["podman-compose-leantime-root.target"];
-      };
+      # "podman-volume-leantime_plugins" = {
+      #   path = [pkgs.podman];
+      #   serviceConfig = {
+      #     Type = "oneshot";
+      #     RemainAfterExit = true;
+      #   };
+      #   script = ''
+      #     podman volume inspect leantime_plugins || podman volume create leantime_plugins
+      #   '';
+      #   partOf = ["podman-compose-leantime-root.target"];
+      #   wantedBy = ["podman-compose-leantime-root.target"];
+      # };
+      # "podman-volume-leantime_public_userfiles" = {
+      #   path = [pkgs.podman];
+      #   serviceConfig = {
+      #     Type = "oneshot";
+      #     RemainAfterExit = true;
+      #   };
+      #   script = ''
+      #     podman volume inspect leantime_public_userfiles || podman volume create leantime_public_userfiles
+      #   '';
+      #   partOf = ["podman-compose-leantime-root.target"];
+      #   wantedBy = ["podman-compose-leantime-root.target"];
+      # };
+      # "podman-volume-leantime_userfiles" = {
+      #   path = [pkgs.podman];
+      #   serviceConfig = {
+      #     Type = "oneshot";
+      #     RemainAfterExit = true;
+      #   };
+      #   script = ''
+      #     podman volume inspect leantime_userfiles || podman volume create leantime_userfiles
+      #   '';
+      #   partOf = ["podman-compose-leantime-root.target"];
+      #   wantedBy = ["podman-compose-leantime-root.target"];
+      # };
     };
 
     # Root service
@@ -349,9 +349,9 @@
       "LEAN_USE_REDIS" = "false";
       "LEAN_USE_S3" = "false";
     };
-    volumes = [
-      "leantime_db_data:/var/lib/mysql:rw"
-    ];
+    # volumes = [
+    #   "leantime_db_data:/var/lib/mysql:rw"
+    # ];
     cmd = ["--character-set-server=UTF8MB4" "--collation-server=UTF8MB4_unicode_ci"];
     log-driver = "journald";
     extraOptions = [
