@@ -6,7 +6,7 @@
     "tiddlywiki/highlight",
     "tiddlywiki/markdown",
     "flibbles/relink",
-    "flibbles/relink-markdown",
+    "flibbles/relink-markdown"
   ],
   "themes": [
     "tiddlywiki/vanilla",
