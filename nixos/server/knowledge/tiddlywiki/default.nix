@@ -1,5 +1,5 @@
 {config, ...}: {
-  # imports = [./plugins.nix];
+  imports = [./plugins.nix];
 
   services = {
     oidcproxy.protectedHosts."wiki.schwem.io" = {
