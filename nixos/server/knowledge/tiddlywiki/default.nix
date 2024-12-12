@@ -1,5 +1,11 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [./plugins.nix];
+
+  environment.systemPackages = [pkgs.nodePackages.tiddlywiki];
 
   services = {
     oidcproxy.protectedHosts."wiki.schwem.io" = {
