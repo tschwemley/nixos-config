@@ -32,7 +32,13 @@
     };
   };
 
-  systemd.tmpfiles.rules = [
-    "L+ /var/lib/tiddlywiki/tiddlywiki.info 0644 tiddlywiki tiddlywiki - ${./tiddlywiki.info}"
-  ];
+  systemd = {
+    services.tiddlywiki.environment = {
+      TIDDLYWIKI_PLUGIN_PATH = "/var/lib/tiddlywiki/plugins";
+    };
+
+    tmpfiles.rules = [
+      "L+ /var/lib/tiddlywiki/tiddlywiki.info 0644 tiddlywiki tiddlywiki - ${./tiddlywiki.info}"
+    ];
+  };
 }

@@ -1,6 +1,6 @@
 {pkgs, ...}: let
-  relinkPlugins = pkgs.stdenv.mkDerivation {
-    name = "tiddlywikiPlugins-flibbles";
+  tiddlywikiPlugins = pkgs.stdenv.mkDerivation {
+    name = "tiddlywikiPlugins";
     src = pkgs.fetchFromGitHub {
       owner = "flibbles";
       repo = "tw5-relink";
@@ -21,6 +21,6 @@
   };
 in {
   systemd.tmpfiles.rules = [
-    "L+ /var/lib/tiddlywiki/plugins 0655 tiddlywiki tiddlywiki - ${relinkPlugins}/plugins"
+    "L+ /var/lib/tiddlywiki/plugins 0655 tiddlywiki tiddlywiki - ${tiddlywikiPlugins}/plugins"
   ];
 }
