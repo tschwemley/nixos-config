@@ -23,6 +23,7 @@ in {
     ../services/rclone
 
     ../system/nix.nix
+    ../system/nixpkgs.nix
   ];
 
   environment.sessionVariables.TERM = "kitty";

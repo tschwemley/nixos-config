@@ -183,11 +183,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1733484277,
-        "narHash": "sha256-i5ay20XsvpW91N4URET/nOc0VQWOAd4c4vbqYtcH8Rc=",
+        "lastModified": 1733873195,
+        "narHash": "sha256-dTosiZ3sZ/NKoLKQ++v8nZdEHya0eTNEsaizNp+MUPM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d00c6f6d0ad16d598bf7e2956f52c1d9d5de3c3a",
+        "rev": "f26aa4b76fb7606127032d33ac73d7d507d82758",
         "type": "github"
       },
       "original": {
@@ -241,11 +241,11 @@
     "neorg": {
       "flake": false,
       "locked": {
-        "lastModified": 1733680833,
-        "narHash": "sha256-xM0Rfkbtlhy8jIcipcpOKQ4moNvPgjsLpOIcC5Ip1mQ=",
+        "lastModified": 1733872345,
+        "narHash": "sha256-6pUwWfsJ0TmToGU7Bvaeobnj2vuIqwd4w3TDdTvQZSk=",
         "owner": "nvim-neorg",
         "repo": "neorg",
-        "rev": "0460ccd3b97bc100ca1af0270588b4c76d29c4c4",
+        "rev": "62671a7b03a1f38a6e5e03b006a9b6f8d804be0e",
         "type": "github"
       },
       "original": {
@@ -266,11 +266,11 @@
         "norg-meta": "norg-meta"
       },
       "locked": {
-        "lastModified": 1733682080,
-        "narHash": "sha256-qQeNAUNRuLeGCcAyYepK/CtxlIeqL1ws47Hx1yYgQnk=",
+        "lastModified": 1733880019,
+        "narHash": "sha256-4NwCUoM7xJiWXBp4d4ewKrUrCu/N8AbLGZmhZULkq9Q=",
         "owner": "nvim-neorg",
         "repo": "nixpkgs-neorg-overlay",
-        "rev": "cf7e851a4981256fd597e7842e2d887ab6afc664",
+        "rev": "d07a670edd0baa311556dd583e24ccc005b4eee3",
         "type": "github"
       },
       "original": {
@@ -346,11 +346,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1733481457,
-        "narHash": "sha256-IS3bxa4N1VMSh3/P6vhEAHQZecQ3oAlKCDvzCQSO5Is=",
+        "lastModified": 1733861262,
+        "narHash": "sha256-+jjPup/ByS0LEVIrBbt7FnGugJgLeG9oc+ivFASYn2U=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "e563803af3526852b6b1d77107a81908c66a9fcf",
+        "rev": "cf737e2eba82b603f54f71b10cb8fd09d22ce3f5",
         "type": "github"
       },
       "original": {
@@ -426,11 +426,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1733581040,
-        "narHash": "sha256-Qn3nPMSopRQJgmvHzVqPcE3I03zJyl8cSbgnnltfFDY=",
+        "lastModified": 1733759999,
+        "narHash": "sha256-463SNPWmz46iLzJKRzO3Q2b0Aurff3U1n0nYItxq7jU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "22c3f2cf41a0e70184334a958e6b124fb0ce3e01",
+        "rev": "a73246e2eef4c6ed172979932bc80e1404ba2d56",
         "type": "github"
       },
       "original": {
@@ -574,7 +574,8 @@
         "sops-nix": "sops-nix",
         "stash": "stash",
         "systemd2nix": "systemd2nix",
-        "webhooks": "webhooks"
+        "webhooks": "webhooks",
+        "zen-browser": "zen-browser"
       }
     },
     "scribe": {
@@ -622,11 +623,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1733128155,
-        "narHash": "sha256-m6/qwJAJYcidGMEdLqjKzRIjapK4nUfMq7rDCTmZajc=",
+        "lastModified": 1733785344,
+        "narHash": "sha256-pm4cfEcPXripE36PYCl0A2Tu5ruwHEvTee+HzNk+SQE=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "c6134b6fff6bda95a1ac872a2a9d5f32e3c37856",
+        "rev": "a80af8929781b5fe92ddb8ae52e9027fae780d2a",
         "type": "github"
       },
       "original": {
@@ -645,11 +646,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1733715791,
-        "narHash": "sha256-Mo+fQNEarM1eBGQB9VT5Uzu1a3rE6853cfYRx+uO/R0=",
+        "lastModified": 1733848442,
+        "narHash": "sha256-WHYCFPP/156C/F14/9kqB5Zrv8sqGxCItpSxMG5dOuA=",
         "ref": "refs/heads/main",
-        "rev": "969d37c18f567ea44bd8148bf08d9f7f5c2f4b3e",
-        "revCount": 6,
+        "rev": "9bd32d66c70851264bcae0c7ba96e04ee97fb0fb",
+        "revCount": 7,
         "type": "git",
         "url": "https://git.schwem.io/schwem/stash-flake"
       },
@@ -730,6 +731,26 @@
       "original": {
         "type": "git",
         "url": "https://git.schwem.io/schwem/webhooks"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1733891848,
+        "narHash": "sha256-VRUk3rJvWXyFVvgiNGZzd/GW9UreUwAC5Fnkva1xG+I=",
+        "owner": "tschwemley",
+        "repo": "zen-browser-flake",
+        "rev": "e75a8b5ba73fb72ae8ebf6c3b95b82136e2a115c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tschwemley",
+        "repo": "zen-browser-flake",
+        "type": "github"
       }
     }
   },

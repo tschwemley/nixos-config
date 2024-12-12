@@ -2,34 +2,30 @@
   inputs,
   withSystem,
   ...
-}:
-let
-  mkSystem =
-    systemString: configPath:
+}: let
+  mkSystem = systemString: configPath:
     withSystem systemString (
       {
-        system,
+        inputs',
         pkgs,
+        system,
         ...
       }:
-      inputs.nixpkgs.lib.nixosSystem {
-        inherit system;
+        inputs.nixpkgs.lib.nixosSystem {
+          inherit system;
 
-        specialArgs =
-          let
+          specialArgs = let
             secretsPath = ../secrets;
-          in
-          {
-            inherit inputs pkgs secretsPath;
+          in {
+            inherit inputs inputs' pkgs secretsPath;
           };
 
-        modules = [
-          configPath
-        ];
-      }
+          modules = [
+            configPath
+          ];
+        }
     );
-in
-{
+in {
   flake.nixosConfigurations = {
     articuno = mkSystem "x86_64-linux" ./hosts/articuno;
     charizard = mkSystem "x86_64-linux" ./hosts/charizard;

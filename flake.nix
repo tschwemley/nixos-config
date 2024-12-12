@@ -89,10 +89,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # zen-browser = {
-    #   url = "github:tschwemley/zen-browser-flake";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    zen-browser = {
+      url = "github:tschwemley/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # imports below here are server-specific imports for schwem.io TODO: make this into a single repo
     dashboard = {

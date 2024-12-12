@@ -1,5 +1,5 @@
 {
-  # inputs,
+  inputs',
   pkgs,
   ...
 }: {
@@ -11,7 +11,9 @@
   ];
 
   home.packages = with pkgs; [
-    pkgs.zen
+    inputs'.zen-browser.packages.default
+
+    # pkgs.zen
 
     lynx
     tor-browser

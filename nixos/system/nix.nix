@@ -1,5 +1,12 @@
-{self', ...}: {
+{pkgs, ...}: {
+  environment.systemPackages = [pkgs.nix-doc];
+
   nix = {
+    # for documentation
+    extraOptions = ''
+      # plugin-files = ${pkgs.nix-doc}/lib/libnix_doc_plugin.so
+    '';
+
     gc = {
       dates = "0 0 8 * * 2"; # every tues at 08:00:00
       # stores time last triggered so if host was powered off during last schedule run it will trigger immediately
@@ -21,11 +28,5 @@
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       ];
     };
-  };
-
-  # Ensure system nixpkgs has overlays as well not just pkgs module arg --  TODO: move this elsewhere
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = import ../../overlays self';
   };
 }
