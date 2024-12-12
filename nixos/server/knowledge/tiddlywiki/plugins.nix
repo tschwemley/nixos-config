@@ -13,14 +13,14 @@
     installPhase = ''
       runHook preInstall
 
-      mkdir -p $out/flibbles
-      cp -r $src/* $out/flibbles
+      mkdir $out
+      cp -r $src/plugins $out/
 
       runHook postInstall
     '';
   };
 in {
   systemd.tmpfiles.rules = [
-    "L+ /var/lib/tiddlywiki/flibbles 0655 tiddlywiki tiddlywiki - ${relinkPlugins}/flibbles"
+    "L+ /var/lib/tiddlywiki/plugins 0655 tiddlywiki tiddlywiki - ${relinkPlugins}/plugins"
   ];
 }

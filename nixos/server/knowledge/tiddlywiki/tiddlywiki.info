@@ -5,8 +5,8 @@
     "tiddlywiki/filesystem",
     "tiddlywiki/highlight",
     "tiddlywiki/markdown",
-    "flibbles/relink",
-    "flibbles/relink-markdown"
+    "plugins/relink",
+    "plugins/relink-markdown"
   ],
   "themes": [
     "tiddlywiki/vanilla",
