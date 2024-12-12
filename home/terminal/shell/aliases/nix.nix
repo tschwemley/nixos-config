@@ -9,5 +9,5 @@ in {
   ngc = collectGarbage;
   nixconf = "cd ~/nixos-config";
   nrbs = "sudo nixos-rebuild switch --flake .#$HOST";
-  nrepl = "nix repl ~/nixos-config/nixos/system/repl.nix";
+  nrepl = "nix repl -f ${../../../../nixos/system/repl.nix}";
 }

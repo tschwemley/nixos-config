@@ -1,4 +1,6 @@
 {config, ...}: {
+  # imports = [./plugins.nix];
+
   services = {
     oidcproxy.protectedHosts."wiki.schwem.io" = {
       allowedGroups = ["admin"];

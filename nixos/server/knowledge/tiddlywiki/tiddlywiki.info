@@ -1,11 +1,12 @@
 {
   "description": "Basic client-server edition",
   "plugins": [
-	  "flibbles/relink",
     "tiddlywiki/tiddlyweb",
     "tiddlywiki/filesystem",
     "tiddlywiki/highlight",
-    "tiddlywiki/markdown"
+    "tiddlywiki/markdown",
+    "flibbles/relink",
+    "flibbles/relink-markdown",
   ],
   "themes": [
     "tiddlywiki/vanilla",
