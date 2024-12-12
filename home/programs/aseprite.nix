@@ -1,3 +1,4 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [aseprite];
-}
+# {pkgs, ...}: {
+#   home.packages = with pkgs; [aseprite];
+# }
+{}

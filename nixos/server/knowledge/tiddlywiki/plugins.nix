@@ -20,17 +20,9 @@
     '';
   };
 in {
-  # systemd.tmpfiles.rules = [
-  #   "L+ /var/lib/tiddlywiki/plugins 0655 tiddlywiki tiddlywiki - ${tiddlywikiPlugins}/plugins"
-  # ];
-
   systemd.services.tiddlywiki = {
     environment = {
-      TIDDLYWIKI_PLUGIN_PATH = "/var/lib/tiddlywiki/plugins";
+      TIDDLYWIKI_PLUGIN_PATH = "${tiddlywikiPlugins}";
     };
-
-    preStart = ''
-      ln -s ${tiddlywikiPlugins}/plugins /var/lib/tiddlywiki/plugins
-    '';
   };
 }
