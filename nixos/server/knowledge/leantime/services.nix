@@ -28,6 +28,7 @@
           "podman-compose-leantime-root.target"
         ];
       };
+
       "podman-mysql_leantime" = {
         serviceConfig = {
           Restart = lib.mkOverride 90 "always";
@@ -76,6 +77,7 @@
         partOf = ["podman-compose-leantime-root.target"];
         wantedBy = ["podman-compose-leantime-root.target"];
       };
+
       "podman-volume-leantime_plugins" = {
         path = [pkgs.podman];
         serviceConfig = {
@@ -88,6 +90,7 @@
         partOf = ["podman-compose-leantime-root.target"];
         wantedBy = ["podman-compose-leantime-root.target"];
       };
+
       "podman-volume-leantime_public_userfiles" = {
         path = [pkgs.podman];
         serviceConfig = {
@@ -100,6 +103,7 @@
         partOf = ["podman-compose-leantime-root.target"];
         wantedBy = ["podman-compose-leantime-root.target"];
       };
+
       "podman-volume-leantime_userfiles" = {
         path = [pkgs.podman];
         serviceConfig = {

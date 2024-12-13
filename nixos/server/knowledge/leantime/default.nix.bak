@@ -1,7 +1,0 @@
-{php82, ...}: let
-  php = php82;
-in
-  php.buildComposerProject (finalAttrs: {
-    pname = "leantime";
-    version = "";
-  })

@@ -30,6 +30,7 @@
         "leantime_db_data:/var/lib/mysql:rw"
       ];
       cmd = ["--character-set-server=UTF8MB4" "--collation-server=UTF8MB4_unicode_ci"];
+      ports = ["3306/tcp"];
       log-driver = "journald";
       extraOptions = [
         "--network-alias=leantime_db"
