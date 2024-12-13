@@ -17,5 +17,5 @@
 
   home.sessionVariables.TERM = "kitty";
   home.stateVersion = "24.11";
-  sops.defaultSopsFile = ../secrets.yaml;
+  # sops.defaultSopsFile = ../secrets.yaml;
 }

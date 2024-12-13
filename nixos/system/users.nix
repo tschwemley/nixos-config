@@ -11,10 +11,10 @@
     home-manager.users.root = {
       imports = [
         ../../home/profiles
-        ../../home/xdg/netrc.nix
+        # ../../home/xdg/netrc.nix
       ];
       home.homeDirectory = "/root";
-      sops.age.keyFile = "/etc/sops/age-keys.txt";
+      # sops.age.keyFile = "/etc/sops/age-keys.txt";
     };
   };
 
