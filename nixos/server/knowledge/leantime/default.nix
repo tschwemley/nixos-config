@@ -5,6 +5,7 @@
   ];
 
   sops.secrets.leantime-env = {
+    format = "dotenv";
     key = "";
     sopsFile = "${secretsPath}/server/leantime.env";
   };
