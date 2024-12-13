@@ -5,6 +5,7 @@
     "tiddlywiki/filesystem",
     "tiddlywiki/highlight",
     "tiddlywiki/markdown",
+	"plugins/nico/projectify",
     "plugins/relink",
     "plugins/relink-markdown"
   ],
