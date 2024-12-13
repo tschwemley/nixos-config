@@ -9,6 +9,7 @@
     ../../server/alt-frontends/priviblur
     ../../server/alt-frontends/safetwitch
     ../../server/automation/home-assistant
+    ../../server/knowledge/leantime
     ../../server/knowledge/tiddlywiki
   ];
 
