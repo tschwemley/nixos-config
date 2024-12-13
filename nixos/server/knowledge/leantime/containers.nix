@@ -1,6 +1,13 @@
 {config, ...}: let
   stateDir = "/var/lib/leantime";
 in {
+  systemd.tmpfiles.rules = [
+    "d /var/lib/leantime/db_data 0755 root root - -"
+    "d /var/lib/leantime/plugins 0755 root root - -"
+    "d /var/lib/leantime/public 0755 root root - -"
+    "d /var/lib/leantime/userfiles 0755 root root - -"
+  ];
+
   virtualisation.oci-containers.containers = {
     # Containers
     "leantime" = {
