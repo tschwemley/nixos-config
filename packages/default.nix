@@ -13,9 +13,8 @@
       json2go = pkgs.callPackage ./json2go.nix {};
       ogen = pkgs.callPackage ./ogen-go.nix {};
       raindrop = pkgs.callPackage ./raindrop.nix {};
-      stash = pkgs.callPackage ./stash {};
       wl-ocr = pkgs.callPackage ./wl-ocr {};
-      zen = pkgs.callPackage ./zen-browser {};
+      # zen = pkgs.callPackage ./zen-browser {};
     };
   };
 }
