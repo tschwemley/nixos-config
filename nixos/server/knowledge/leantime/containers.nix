@@ -4,7 +4,7 @@ in {
   systemd.tmpfiles.rules = [
     "d /var/lib/leantime/db_data 0755 root root - -"
     "d /var/lib/leantime/plugins 0755 root root - -"
-    "d /var/lib/leantime/public 0755 root root - -"
+    "d /var/lib/leantime/public_userfiles 0755 root root - -"
     "d /var/lib/leantime/userfiles 0755 root root - -"
   ];
 
