@@ -13,6 +13,7 @@
     ripgrep
     rsync
     sops
+    systemctl-tui
     tree
     unzip
     wget
