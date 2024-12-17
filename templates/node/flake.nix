@@ -31,26 +31,11 @@
             config.allowUnfree = true;
           };
 
-          devShells.default =
-            let
-              python = pkgs.python3.withPackages (
-                ps: with ps; [
-                  distutils
-                  gyp
-                ]
-              );
-            in
-            pkgs.mkShell {
+          devShells.default = pkgs.mkShell {
               buildInputs = with pkgs; [
-                python
                 nodejs
-                prefetch-npm-deps
-                prefetch-yarn-deps
-                yarn
               ];
             };
-
-          packages = { };
         };
     };
 }
