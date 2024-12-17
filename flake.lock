@@ -646,11 +646,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1734460132,
-        "narHash": "sha256-RcqhH2MSxlWxw0RgR4K/rXzK59Uv+H4fgr9h7uP/76Y=",
+        "lastModified": 1734474489,
+        "narHash": "sha256-LI/j7XBnMOBtBkg65tHL6bK+NXmwGDsDMj6mrCmy8uU=",
         "ref": "refs/heads/main",
-        "rev": "ea486ce6f701d8fe6aa8c03a273142efd0089566",
-        "revCount": 9,
+        "rev": "f136d638129c35c9411d77201211ee4841e7a2b9",
+        "revCount": 10,
         "type": "git",
         "url": "https://git.schwem.io/schwem/stash-flake"
       },
