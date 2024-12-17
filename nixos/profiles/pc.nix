@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   pkgs,
   ...
 }: {
@@ -48,6 +49,10 @@
 
   services = {
     getty.autologinUser = "schwem";
+    resolved.dnsovertls = lib.mkDefault "true";
     tailscale.extraUpFlags = ["--advertise-tags=tag:pc"];
   };
+
+  time.timeZone = "America/New_York";
+  users.mutableUsers = true; # allow mutable users on non-servers
 }

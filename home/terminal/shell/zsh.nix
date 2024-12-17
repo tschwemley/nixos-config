@@ -26,7 +26,10 @@ in {
         # NOTE: if I add many more funcs its worth splitting off into their own file or dir
         # additional funcs
 
-        func tailf() { tail -f "$1" | bat --paging=never -l log }
+        func nbuild() {
+          nix build "$@" 2>/tmp/last-build.error.log
+          $(tail -n1 /tmp/last-build.error.log | sed "s/.*\(nix log.*\)'./\1/")
+        }
 
         # run command from nixpkgs via current system flake
         func run() {
@@ -35,12 +38,15 @@ in {
 
           nix run ~/nixos-config#nixosConfigurations."$HOST".pkgs."$pkg" -- "$@"
         }
+
         func srun() {
           pkg=$1
           shift
 
           sudo nix run ~/nixos-config#nixosConfigurations."$HOST".pkgs."$pkg" -- "$@"
         }
+
+        func tailf() { tail -f "$1" | bat --paging=never -l log }
       '';
   };
 }
