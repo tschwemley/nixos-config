@@ -19,7 +19,22 @@
         system,
         ...
       }: let
-        pkgs = import nixpkgs {
+        # pkgs = import nixpkgs {
+        #   inherit system;
+        #   config.allowUnfree = true;
+        #   overlays = import ./overlays self';
+        # };
+        patched-pkgs = (import nixpkgs {inherit system;}).applyPatches {
+          name = "pkgs-patched";
+          src = inputs.nixpkgs;
+          patches = [
+            (builtins.fetchurl {
+              url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/244172.patch";
+              sha256 = "sha256:00s90n7k79ldcyvmm9l2hpbd868va26jk22v16vrmr4k3712w7r0";
+            })
+          ];
+        };
+        pkgs = import patched-pkgs {
           inherit system;
           config.allowUnfree = true;
           overlays = import ./overlays self';

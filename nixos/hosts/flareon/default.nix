@@ -3,6 +3,7 @@
     inputs.stash.nixosModules.default
 
     ../../profiles/proxmox.nix
+    ../../server/arr/whisparr.nix
     ../../services/samba.nix
   ];
 
