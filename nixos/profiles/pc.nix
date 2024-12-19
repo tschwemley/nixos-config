@@ -1,7 +1,6 @@
 {
   inputs,
   lib,
-  pkgs,
   ...
 }: {
   imports = [
@@ -20,6 +19,7 @@
     ../programs/lutris.nix
     ../programs/man.nix
     ../programs/steam.nix
+    ../programs/usbutils.nix
     ../programs/wine.nix
     ../programs/xdg.nix
 
@@ -34,12 +34,6 @@
     ../system/fonts.nix
     ../system/greetd.nix
     ../system/security.nix
-  ];
-
-  # TODO: move locations?
-  environment.systemPackages = with pkgs; [
-    mariadb
-    usbutils
   ];
 
   musnix.enable = true;

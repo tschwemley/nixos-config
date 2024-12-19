@@ -81,9 +81,6 @@ in {
     "--exit-node-allow-lan-access=true"
     "--shields-up"
   ];
-  time.timeZone = "America/Detroit";
-
-  users.mutableUsers = true; # allow mutable users on non-servers
 
   home-manager.users.schwem.hyprland = {
     monitors = {

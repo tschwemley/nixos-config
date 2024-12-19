@@ -36,14 +36,14 @@ in {
           pkg=$1
           shift
 
-          nix run ~/nixos-config#nixosConfigurations."$HOST".pkgs."$pkg" -- "$@"
+          nix run github:nixos/nixpkgs/nixos-unstable#"$pkg" -- "$@"
         }
 
         func srun() {
           pkg=$1
           shift
 
-          sudo nix run ~/nixos-config#nixosConfigurations."$HOST".pkgs."$pkg" -- "$@"
+          sudo nix run github:nixos/nixpkgs/nixos-unstable#"$pkg" -- "$@"
         }
 
         func tailf() { tail -f "$1" | bat --paging=never -l log }
