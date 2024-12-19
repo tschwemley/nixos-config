@@ -66,7 +66,6 @@ in {
     hostName = "pikachu";
     networkmanager.enable = true;
     useDHCP = lib.mkDefault true;
-    # wireless.enable = true;
   };
 
   system = {
@@ -77,9 +76,8 @@ in {
   };
 
   services.tailscale.extraUpFlags = [
-    "--exit-node=100.84.59.97"
+    "--exit-node=us-chi-wg-305.mullvad.ts.net"
     "--exit-node-allow-lan-access=true"
-    "--shields-up"
   ];
 
   home-manager.users.schwem.hyprland = {
@@ -148,5 +146,16 @@ in {
       touchpad.tapping = false;
     };
     xserver.videoDrivers = lib.mkDefault ["nvidia"];
+  };
+
+  # TODO: move to shared location if works for both pc hosts
+  systemd.services.tailscaled-autoconnect = let
+    after = lib.mkDefault [
+      "systemd-networkd"
+      "tailscaled.service"
+    ];
+    wants = after;
+  in {
+    inherit after wants;
   };
 }
