@@ -26,9 +26,9 @@
     ../services/colord.nix
     ../services/dbus.nix
     ../services/gnome.nix
-    ../services/rclone/flareon.nix
-    ../services/rclone/jolteon.nix
-    ../services/rclone/tentacool.nix
+    # ../services/rclone/flareon.nix
+    # ../services/rclone/jolteon.nix
+    # ../services/rclone/tentacool.nix
     ../services/upower.nix
 
     ../system/fonts.nix
@@ -43,6 +43,12 @@
 
   services = {
     getty.autologinUser = "schwem";
+
+    rclone = {
+      enableFlareon = true;
+      enableJolteon = true;
+      enableTentacool = true;
+    };
     resolved.dnsovertls = lib.mkDefault "true";
     tailscale.extraUpFlags = ["--advertise-tags=tag:pc"];
   };

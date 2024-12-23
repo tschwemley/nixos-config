@@ -9,6 +9,7 @@
       "args2env"
       "vfs-cache-mode=writes"
       "config=${config.sops.secrets."rclone.conf".path}"
+      "metadata"
     ];
   };
 
