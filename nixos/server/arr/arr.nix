@@ -1,4 +1,6 @@
 {
+  imports = [./servarr];
+
   services = {
     radarr.enable = true;
   };

@@ -17,10 +17,13 @@
 
   networking.hostName = "jolteon";
 
-  services.tailscale.extraUpFlags = [
-    "--exit-node=100.66.251.23"
-    "--exit-node-allow-lan-access=true"
-  ];
+  services = {
+    servarr.enableSonarr = true;
+    tailscale.extraUpFlags = [
+      "--exit-node=100.66.251.23"
+      "--exit-node-allow-lan-access=true"
+    ];
+  };
 
   sops.defaultSopsFile = ./secrets.yaml;
 
