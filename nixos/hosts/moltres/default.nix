@@ -6,7 +6,7 @@
     ../../../containers/excalidraw
 
     ../../server/alt-frontends/freetar.nix
-    ../../server/alt-frontends/redlib.nix
+    # ../../server/alt-frontends/redlib.nix
     ../../server/alt-frontends/rimgo.nix
     ../../server/services/searxng
 

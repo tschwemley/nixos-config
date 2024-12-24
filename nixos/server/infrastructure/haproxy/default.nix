@@ -148,8 +148,7 @@ in {
 
       backend reddit
         http-request set-header X-Forwarded-Proto https
-        #server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
-        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
+        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
 
       backend rimgo
         http-request set-header X-Forwarded-Proto https
