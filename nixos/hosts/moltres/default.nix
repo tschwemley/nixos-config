@@ -6,12 +6,19 @@
     ../../../containers/excalidraw
 
     ../../server/alt-frontends/freetar.nix
-    # ../../server/alt-frontends/redlib.nix
+    ../../server/alt-frontends/redlib.nix
     ../../server/alt-frontends/rimgo.nix
     ../../server/services/searxng
 
     # ../../../containers/threadfin
   ];
+
+  # TODO: remove this after testing vps
+  services.nginx.virtualHosts."redlib.schwem.io" = {
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:8180";
+    };
+  };
 
   networking.hostName = "moltres";
 
