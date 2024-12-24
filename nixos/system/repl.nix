@@ -24,6 +24,7 @@ in
       eevee
       jolteon
       flareon
+      tentacool
       ;
 
     curSystem = flake.nixosConfigurations.${hostname};

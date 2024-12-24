@@ -1,6 +1,8 @@
 {pkgs, ...}: {
+  # when using bat also use it as the man pager
   home.sessionVariables = {
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    MANROFFOPT = "-c";
   };
 
   programs.bat = {

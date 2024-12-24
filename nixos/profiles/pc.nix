@@ -26,11 +26,9 @@
     ../services/colord.nix
     ../services/dbus.nix
     ../services/gnome.nix
-    # ../services/rclone/flareon.nix
-    # ../services/rclone/jolteon.nix
-    # ../services/rclone/tentacool.nix
     ../services/upower.nix
 
+    ../system/documentation.nix
     ../system/fonts.nix
     ../system/greetd.nix
     ../system/security.nix
@@ -49,6 +47,7 @@
       enableJolteon = true;
       enableTentacool = true;
     };
+
     resolved.dnsovertls = lib.mkDefault "true";
     tailscale.extraUpFlags = ["--advertise-tags=tag:pc"];
   };

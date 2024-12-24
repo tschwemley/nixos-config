@@ -24,9 +24,8 @@
       };
     };
 in {
-  home.sessionVariables = {
-    NNN_FIFO = "/tmp/nnn.fifo";
-  };
+  home.sessionVariables.NNN_FIFO = "/tmp/nnn.fifo";
+
   programs.nnn = {
     inherit extraPackages plugins;
     enable = true;
