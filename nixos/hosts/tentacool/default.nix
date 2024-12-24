@@ -35,6 +35,8 @@ in {
     nvidia-vaapi-driver
   ];
 
+  ethDev = "enp2s0";
+
   hardware = {
     opengl = {
       enable = true;
