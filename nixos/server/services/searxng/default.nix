@@ -101,6 +101,7 @@
         "annas archive".disabled = false;
         "btdigg".disabled = false;
         "openrepos".disabled = false;
+        "z-library".disabled = true;
 
         # Image search ------
         "bing images".disabled = false;
