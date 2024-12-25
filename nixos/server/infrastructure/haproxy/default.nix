@@ -164,7 +164,6 @@ in {
         http-request set-header X-Forwarded-Proto https
         # balance roundrobin
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
-        # server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
       backend static
         http-request set-header X-Forwarded-Proto https

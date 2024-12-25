@@ -9,6 +9,11 @@
     enable = true;
     environmentFile = config.sops.secrets.searxng_env_file.path;
     redisCreateLocally = true;
+    runInUwsgi = true;
+    uwsgiConfig = {
+      socket = "/run/searx/searx.sock";
+      chmod-socket = "660";
+    };
 
     # Rate limiting
     # limiterSettings = {
@@ -26,13 +31,6 @@
     #   };
     # };
 
-    runInUwsgi = true;
-    uwsgiConfig = {
-      socket = "/run/searx/searx.sock";
-      # http = ":${config.portMap.searxng}";
-      chmod-socket = "660";
-    };
-
     # Searx configuration
     settings = {
       general = {
@@ -49,7 +47,7 @@
         default_locale = "en";
         default_theme = "simple";
         hotkeys = "vim";
-        infinite_scroll = false;
+        infinite_scroll = true;
         query_in_title = true;
         search_on_category_select = true;
         static_use_hash = true;
@@ -83,101 +81,70 @@
         secret_key = config.sops.secrets.searxng_secret.path;
       };
 
-      # Search engines
+      # Engines full list + defaults: https://docs.searxng.org/user/configured_engines.html
       engines = lib.mapAttrsToList (name: value: {inherit name;} // value) {
-        "1x".disabled = true;
-        "artic".disabled = true;
-        "bing images".disabled = false;
-        "bing videos".disabled = false;
+        # General search ----
         "bing".disabled = false;
-        # "brave".disabled = false;
-        # "brave.images".disabled = true;
-        # "brave.news".disabled = true;
-        # "brave.videos".disabled = true;
-
-        "crowdview" = {
+        "qwant" = {
           disabled = false;
-          weight = 0.5;
+          weight = 2;
         };
 
-        "curlie".disabled = true;
-        "currency".disabled = true;
-        "dailymotion".disabled = true;
-
+        # duckduckgo instant answer api
         "ddg definitions" = {
           disabled = false;
           weight = 2;
         };
 
+        # File search -------
+        "1337x".disabled = false;
+        "annas archive".disabled = false;
+        "btdigg".disabled = false;
+        "openrepos".disabled = false;
+
+        # Image search ------
+        "bing images".disabled = false;
         "deviantart".disabled = false;
-        "dictzone".disabled = true;
-        "duckduckgo images".disabled = true;
-        "duckduckgo videos".disabled = true;
-        "duckduckgo".disabled = true;
-        "flickr".disabled = true;
-        "google images".disabled = false;
-        "google news".disabled = true;
-        "google play movies".disabled = true;
-        "google videos".disabled = false;
         "imgur".disabled = false;
-        "invidious".disabled = true;
-        "library of congress".disabled = false;
-        "lingva".disabled = true;
-
-        "material icons" = {
-          disabled = true;
-          weight = 0.2;
-        };
-
-        "mojeek".disabled = true;
-        "mwmbl" = {
-          disabled = false;
-          weight = 0.4;
-        };
-
-        "odysee".disabled = true;
+        "google images".disabled = false;
         "openverse".disabled = false;
-        "peertube".disabled = false;
-        "pinterest".disabled = true;
-        "piped".disabled = true;
-        "qwant images".disabled = true;
-        "qwant videos".disabled = false;
-        "qwant".disabled = true;
-        "rumble".disabled = false;
-        "sepiasearch".disabled = false;
+        "qwant images" = {
+          disabled = false;
+          weight = 2;
+        };
         "svgrepo".disabled = false;
         "unsplash".disabled = false;
-        "vimeo".disabled = true;
-
         "wallhaven" = {
           disabled = false;
           api_key = "@WALLHAVEN_API_KEY@";
           safesearch_map = "0";
         };
 
-        "wikibooks".disabled = false;
-        "wikicommons.images".disabled = false;
-        "wikidata".disabled = false;
-        "wikiquote".disabled = true;
-        "wikisource".disabled = true;
+        # Repos search ------
+        "codeberg".disabled = false;
 
-        "wikispecies" = {
-          disabled = false;
-          weight = 0.5;
-        };
+        # Video search
+        "bing videos".disabled = false;
+        "google videos".disabled = false;
+        "peertube".disabled = false;
+        "qwant videos".disabled = false;
 
-        "wikiversity" = {
-          disabled = false;
-          weight = 0.5;
-        };
-
-        "wikivoyage" = {
-          disabled = false;
-          weight = 0.5;
-        };
-
-        "yacy images".disabled = true;
-        "youtube".disabled = false;
+        # wikipedia
+        # "wikibooks".disabled = false;
+        # "wikicommons.images".disabled = false;
+        # "wikidata".disabled = false;
+        # "wikispecies" = {
+        #   disabled = false;
+        #   weight = 0.5;
+        # };
+        # "wikiversity" = {
+        #   disabled = false;
+        #   weight = 0.5;
+        # };
+        # "wikivoyage" = {
+        #   disabled = false;
+        #   weight = 0.5;
+        # };
       };
 
       # Outgoing requests
