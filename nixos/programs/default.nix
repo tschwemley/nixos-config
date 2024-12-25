@@ -2,7 +2,6 @@
   environment.systemPackages = with pkgs; [
     age
     curl
-    dust
     git
     gnupg
     ogen

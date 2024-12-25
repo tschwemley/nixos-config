@@ -7,6 +7,7 @@
   gcob = "git checkout -b";
   gcm = "git cm";
   gl = "git log";
+  icat = "kitten icat";
   jl = "journalctl -xeu";
   lgroups = "bat /etc/group";
   lusers = "bat /etc/passwd";
