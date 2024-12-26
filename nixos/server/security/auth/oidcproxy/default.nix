@@ -3,7 +3,6 @@
   inputs,
   lib,
   pkgs,
-  secretsPath,
   ...
 }: let
   pkg = inputs.oidcproxy.packages.${pkgs.system}.default;
@@ -114,7 +113,7 @@ in {
     owner = "oidcproxy";
     path = "${stateDir}/.env";
     mode = "0440";
-    sopsFile = "${secretsPath}/server/oidcproxy.yaml";
+    sopsFile = "${config.lib.secrets.server}/oidcproxy.yaml";
   };
 
   users = {

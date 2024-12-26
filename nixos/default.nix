@@ -13,15 +13,11 @@
       }:
         inputs.nixpkgs.lib.nixosSystem {
           inherit system;
-
-          specialArgs = let
-            secretsPath = ../secrets;
-          in {
-            inherit inputs inputs' pkgs secretsPath;
-          };
+          specialArgs = {inherit inputs inputs' pkgs;};
 
           modules = [
             configPath
+            ./lib.nix
           ];
         }
     );

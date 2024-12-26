@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  secretsPath,
   ...
 }: {
   services = {
@@ -34,7 +33,7 @@
   sops = {
     secrets = let
       secretAttrs = {
-        sopsFile = "${secretsPath}/server/open-webui.yaml";
+        sopsFile = "${config.lib.secrets.server}/open-webui.yaml";
       };
     in {
       openwebui_database_url = secretAttrs;

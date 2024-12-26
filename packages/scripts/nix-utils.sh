@@ -1,3 +1,6 @@
+echo "BEFORE NEXT USE SECRET PATHS MUST BE UPDATED"
+exit 1
+
 printHelp() {
 	echo "Usage: nix-utils [command] (args...)"
 	exit 1

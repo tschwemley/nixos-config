@@ -1,7 +1,7 @@
 {
+  config,
   inputs,
   pkgs,
-  secretsPath,
   ...
 }: let
   pkg = inputs.webhooks.packages.${pkgs.system}.default;
@@ -54,7 +54,7 @@ in {
 
     path = "${stateDir}/.env";
     mode = "0440";
-    sopsFile = "${secretsPath}/server/webhooks.yaml";
+    sopsFile = "${config.lib.secrets.server}/webhooks.yaml";
   };
 
   users = {

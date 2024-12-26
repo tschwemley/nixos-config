@@ -15,10 +15,8 @@
           modules =
             [
               {
-                _module.args = let
-                  secretsPath = ../secrets;
-                in {
-                  inherit inputs' secretsPath system;
+                _module.args = {
+                  inherit inputs' system;
                 };
               }
               inputs.sops-nix.homeManagerModule

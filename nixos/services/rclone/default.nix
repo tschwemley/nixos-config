@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  secretsPath,
   ...
 }: let
   cfg = config.services.rclone;
@@ -51,7 +50,7 @@ in {
 
       mode = "0774";
       path = "/etc/rclone/rclone.conf";
-      sopsFile = "${secretsPath}/nixos/rclone.yaml";
+      sopsFile = "${config.lib.secrets.nixos}/rclone.yaml";
     };
   };
 }

@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  secretsPath,
   ...
 }: let
   keycloakPkg =
@@ -63,7 +62,7 @@ in {
   };
 
   sops.secrets.keycloak_db_password = {
-    sopsFile = "${secretsPath}/server/keycloak.yaml";
+    sopsFile = "${config.lib.secrets.server}/keycloak.yaml";
     mode = "0444";
   };
 }
