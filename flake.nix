@@ -19,11 +19,16 @@
         system,
         ...
       }: let
-        pkgs = import nixpkgs {
+        patched = (import nixpkgs {inherit system;}).applyPatches {
+          name = "nixpkgs-patched-367695";
+          src = nixpkgs;
+          patches = [./nixos-nixpgs-367695.patch];
+        };
+
+        pkgs = import patched {
           inherit system;
           config = {
             allowUnfree = true;
-            # TODO: move to another location
             permittedInsecurePackages = [
               "dotnet-sdk-6.0.428"
               "aspnetcore-runtime-6.0.36"
@@ -47,10 +52,8 @@
     };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # TODO: I added this for a reason but forgot what that reason was. If I still don't remember
-    # by the time I circle next to this file then it was a shit reason && remove
-    # nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";

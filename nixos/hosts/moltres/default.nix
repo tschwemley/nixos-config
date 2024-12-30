@@ -1,6 +1,7 @@
 {
   imports = [
-    (import ../../profiles/buyvm.nix "/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-25377")
+    ./hardware-configuration.nix
+    ../../profiles/server.nix
 
     # server imports
     ../../../containers/excalidraw
