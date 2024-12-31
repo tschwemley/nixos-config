@@ -18,7 +18,7 @@
               num = builtins.toString (k + 1);
             in [
               "$mod, ${num}, workspace, ${num}"
-              "$mod shift, ${num}, movetoworkspace, ${num}"
+              "$mod shift, ${num}, movetoworkspacesilent, ${num}"
             ]
           )
           config.hyprland.workspaces
@@ -43,10 +43,9 @@
         "$mod shift, f, fullscreen, 1"
         "$mod shift, h, movewindow, mon:1"
         "$mod shift, l, movewindow, mon:0"
-
-        # "$mod, z, easymotion, action:hyprctl dispatch focuswindow address:{}"
       ]
-      ++ workspaceBinds;
+      ++ workspaceBinds
+      ++ config.hyprland.pluginBinds;
 
     # mouse binds
     bindm = [

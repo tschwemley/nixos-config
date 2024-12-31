@@ -36,6 +36,8 @@
 
   musnix.enable = true;
 
+  nix.settings.trusted-users = ["schwem"];
+
   # this is required to make home manager managed GTK items function
   programs.dconf.enable = true;
 

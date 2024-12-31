@@ -1,18 +1,14 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./binds.nix
     ./options.nix
+    ./plugins.nix
     ./rules.nix
+    ./services
     ./settings.nix
 
-    ./plugins
-
-    # ../hyprlock.nix
-    # TODO: add these imports or put into own module/wayland module
+    # TODO: remove or add back if keeping dunst
     # ../../../services/dunst.nix
-    # ../../../services/hypridle.nix
-    # ../../../services/hyprpaper.nix
   ];
 
   home.sessionVariables = {
@@ -22,6 +18,7 @@
 
   home.packages = with pkgs; [
     grimblast
+    hyprcursor
     hyprpicker
   ];
 
@@ -30,7 +27,7 @@
     enable = true;
 
     systemd = {
-      variables = [ "--all" ];
+      variables = ["--all"];
       extraCommands = [
         "systemctl --user stop graphical-session.target"
         "systemctl --user start hyprland-session.target"
