@@ -10,14 +10,14 @@
     ../programs/music
 
     ../programs/aseprite.nix
-    ../programs/bambu-studio.nix
+    # ../programs/bambu-studio.nix
     ../programs/bitwarden.nix
     ../programs/glow.nix
-    ../programs/jira-cli.nix
     ../programs/khal.nix
     ../programs/lan-mouse.nix
     ../programs/libreoffice.nix
     ../programs/qt.nix
+    ../programs/rustdesk.nix
     ../programs/tailscale-systray.nix
     ../programs/tigervnc.nix
     ../programs/wayland/hyprland.nix
@@ -26,6 +26,8 @@
 
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
+
+    ../theme
 
     ../terminal/kitty
 
