@@ -1,9 +1,11 @@
 {inputs, ...}: {
   imports = [
     inputs.stash.nixosModules.default
+    # extra storage partition
+    (import ../../hardware/disks/block-storage.nix "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi2" "/storage2")
 
     ../../profiles/proxmox.nix
-    ../../server/arr/whisparr.nix
+    # ../../server/arr/whisparr.nix
     ../../services/samba.nix
   ];
 

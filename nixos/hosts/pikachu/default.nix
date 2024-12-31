@@ -6,7 +6,7 @@
   pkgs,
   ...
 }: let
-  disk = (import ../../hardware/disks).pikachu;
+  disk = import ../../hardware/disks/btrfs-encrypted.nix "nvme0n1" "pika-crypted";
   hardware = {
     imports = [
       inputs.nixos-hardware.nixosModules.common-cpu-intel

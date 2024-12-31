@@ -1,4 +1,4 @@
-diskName: let
+diskName: mountpoint: let
   partitions = {
     storage = {
       size = "100%";
@@ -6,8 +6,8 @@ diskName: let
         type = "btrfs";
         extraArgs = ["-f"];
         subvolumes = {
-          "/storage" = {
-            mountpoint = "/storage";
+          "${mountpoint}" = {
+            inherit mountpoint;
             mountOptions = ["compress=lzo"];
           };
         };

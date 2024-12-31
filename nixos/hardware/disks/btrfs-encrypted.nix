@@ -1,8 +1,4 @@
-{
-  diskName,
-  luksName ? "crypted",
-  ...
-}:
+diskName: luksName:
 #let
 # luksName =
 #   if config.networking.hostname == "pikachu"

@@ -5,7 +5,7 @@ storageDisk: let
 
   storage =
     if storageDisk != ""
-    then import ./block-storage.nix storageDisk
+    then import ./block-storage.nix storageDisk "/storage"
     else {};
 in {
   imports = [

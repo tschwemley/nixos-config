@@ -6,7 +6,7 @@ let
   partitions = import ./efi-partitions.nix;
 
   root = import ./ephemeral-root.nix rootName partitions;
-  storage = import ./block-storage.nix storageName;
+  storage = import ./block-storage.nix storageName "/storage";
 in {
   imports = [
     root
