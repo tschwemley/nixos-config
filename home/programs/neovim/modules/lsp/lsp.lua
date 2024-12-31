@@ -1,4 +1,5 @@
-local cmp_lsp = require("cmp_nvim_lsp")
+local blink = require('blink.cmp')
+-- local cmp_lsp = require("cmp_nvim_lsp")
 local lspconfig = require("lspconfig")
 
 ---------------------------------------------------------------------------------------------------
@@ -7,12 +8,13 @@ local lspconfig = require("lspconfig")
 local defaultConfig = {
    autostart = true,
    -- this adds nvim-cmp capabilities to each lsp server in list
-   capabilities = vim.tbl_deep_extend(
-      "force",
-      {},
-      vim.lsp.protocol.make_client_capabilities(),
-      cmp_lsp.default_capabilities()
-   ),
+   -- capabilities = vim.tbl_deep_extend(
+   --    "force",
+   --    {},
+   --    vim.lsp.protocol.make_client_capabilities(),
+   --    cmp_lsp.default_capabilities()
+   -- ),
+   -- capabilities = blink
 }
 
 local servers = {
@@ -30,12 +32,14 @@ local servers = {
 }
 
 for _, lsp in ipairs(servers) do
-   local config = defaultConfig
+   local config = {
+      autostart = true,
+      capabilities = blink.get_lsp_capabilities(),
+   }
 
    -- Check if a configuration file exists for the current LSP server
    local configPath = vim.fn.stdpath("config") .. "/lua/lspconfigs/" .. lsp .. ".lua"
    if vim.uv.fs_stat(configPath) then
-      -- Load the settings from the configuration file and merge them into the default setup options
       config = vim.tbl_deep_extend("force", config, require("lspconfigs." .. lsp))
    end
 

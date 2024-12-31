@@ -1,9 +1,12 @@
 {pkgs, ...}: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
     glow-nvim
-    # go-nvim
   ];
 
-  xdg.configFile."nvim/after/plugin/filetypes.lua".source = ./filetypes.lua;
-  xdg.configFile."nvim/after/ftplugin".source = ./ftplugin;
+  xdg.configFile = {
+    "nvim/after/plugin/filetypes.lua".source = ./filetypes.lua;
+    "nvim/after/ftplugin".source = ./ftplugin;
+
+    "nvim/syntax/tid.vim".source = ./syntax/tid.vim;
+  };
 }

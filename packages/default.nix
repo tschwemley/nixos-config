@@ -5,7 +5,7 @@
   in {
     packages = {
       inherit (hyprlandPlugins) hypreasymotion hyprscroller;
-      inherit (vimPlugins) codecompanion vlog;
+      inherit (vimPlugins) vlog;
 
       anonymous-overflow = pkgs.callPackage ./anonymousoverflow {};
       build-host = pkgs.callPackage ./utils/build-hosts.nix {inherit self;};
@@ -14,7 +14,6 @@
       ogen = pkgs.callPackage ./ogen-go.nix {};
       raindrop = pkgs.callPackage ./raindrop.nix {};
       wl-ocr = pkgs.callPackage ./wl-ocr {};
-      # zen = pkgs.callPackage ./zen-browser {};
     };
   };
 }

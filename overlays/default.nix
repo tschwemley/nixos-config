@@ -15,7 +15,7 @@ self': [
     vimPlugins =
       prev.vimPlugins
       // {
-        inherit (self'.packages) codecompanion vlog;
+        inherit (self'.packages) vlog;
       };
   })
 ]

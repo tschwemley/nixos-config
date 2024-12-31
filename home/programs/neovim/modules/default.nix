@@ -5,7 +5,7 @@
     ./db
     ./debug
     ./diagnostics
-    ./editing
+    # ./editing # TODO: uncomment or removev editing dir
     ./filetypes
     ./lines
     ./lsp
