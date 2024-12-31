@@ -1,4 +1,8 @@
-diskName: mountpoint: let
+{
+  diskName,
+  mountpoint ? "storage",
+  ...
+}: let
   partitions = {
     storage = {
       size = "100%";
@@ -6,8 +10,8 @@ diskName: mountpoint: let
         type = "btrfs";
         extraArgs = ["-f"];
         subvolumes = {
-          "${mountpoint}" = {
-            inherit mountpoint;
+          "/${mountpoint}" = {
+            mountpoint = "/${mountpoint}";
             mountOptions = ["compress=lzo"];
           };
         };
@@ -15,7 +19,7 @@ diskName: mountpoint: let
     };
   };
 in {
-  disko.devices.disk.storage = {
+  disko.devices.disk."${mountpoint}" = {
     type = "disk";
     device = diskName;
     content = {

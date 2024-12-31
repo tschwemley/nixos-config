@@ -2,7 +2,10 @@
   imports = [
     inputs.stash.nixosModules.default
     # extra storage partition
-    (import ../../hardware/disks/block-storage.nix "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi2" "/storage2")
+    (import ../../hardware/disks/block-storage.nix {
+      storageName = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi1";
+      mountpoint = "storage2";
+    })
 
     ../../profiles/proxmox.nix
     ../../services/samba.nix
