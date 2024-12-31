@@ -1,14 +1,10 @@
-{
-  config,
-  secretsPath,
-  ...
-}: let
+{config, ...}: let
   inherit (config.networking) hostName;
 in {
   sops = {
     secrets = let
       secretAttrs = {
-        sopsFile = "${secretsPath}/server/sabnzbd.yaml";
+        sopsFile = "${config.lib.secrets.server}/sabnzbd.yaml";
       };
     in {
       "sabnzbd_api_key" = secretAttrs;

@@ -10,6 +10,7 @@
     ../network/systemd-networkd.nix
     ../network/tailscale.nix
 
+    ../server/arr
     ../server/infrastructure/haproxy/options.nix
     ../server/infrastructure/monitoring/prometheus/node-exporter.nix
     ../server/infrastructure/nginx
