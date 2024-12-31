@@ -4,7 +4,7 @@
   ...
 }: let
   partitions = {
-    storage = {
+    "${mountpoint}" = {
       size = "100%";
       content = {
         type = "btrfs";
