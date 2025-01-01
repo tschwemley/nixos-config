@@ -3,7 +3,7 @@
     inputs.stash.nixosModules.default
     # extra storage partition
     (import ../../hardware/disks/block-storage.nix {
-      diskName = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi1";
+      diskName = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi2";
       mountpoint = "storage2";
     })
 
