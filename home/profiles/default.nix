@@ -10,7 +10,8 @@
     ../programs/ripgrep.nix
     ../programs/thefuck.nix
 
-    ../terminal/shell
+    # ../terminal/shell
+    ../terminal
 
     ../xdg/ssh/default.nix
   ];

@@ -1,37 +1,22 @@
 {
   inputs,
-  withSystem,
+  pkgs,
   ...
 }: let
   mkHome = system: extraModules:
-    withSystem system (
-      {
-        inputs',
-        pkgs,
-        ...
-      }:
-        inputs.home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules =
-            [
-              {
-                _module.args = {
-                  inherit inputs' system;
-                };
-              }
-              inputs.sops-nix.homeManagerModule
-            ]
-            ++ extraModules;
-        }
-    );
-in {
-  flake.homeConfigurations = {
-    droid = mkHome "aarch64-linux" [
-      ./profiles/droid.nix
-    ];
+    inputs.home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
 
-    work = mkHome "aarch64-darwin" [
-      ./profiles/work.nix
-    ];
-  };
+      extraSpecialArgs = {inherit inputs pkgs;};
+      modules = [inputs.sops-nix.homeManagerModule] ++ extraModules;
+    };
+  # );
+in {
+  droid = mkHome "aarch64-linux" [
+    ./profiles/droid.nix
+  ];
+
+  work = mkHome "aarch64-darwin" [
+    ./profiles/work.nix
+  ];
 }

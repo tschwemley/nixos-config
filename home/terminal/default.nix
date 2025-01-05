@@ -2,7 +2,9 @@
   imports = [
     ./kitty
     ./shell
-    # ./wezterm
+    ./wezterm
+
+    ./yazi.nix
   ];
 
   programs.thefuck = {

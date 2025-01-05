@@ -30,13 +30,13 @@
 
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            air
             go
+            (writeShellScriptBin "modupdate" "go get -u -t ./...")
           ];
         };
 
         packages.default = pkgs.buildGoModule {
-          name = "file-utils";
+          name = "";
           src = ./.;
           vendorHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
         };
