@@ -5,7 +5,7 @@
     ../programs/browsers
     ../programs/communication
     ../programs/development/dbgate.nix
-    ../programs/gnome
+    ../programs/gtk
     ../programs/media
     ../programs/music
 

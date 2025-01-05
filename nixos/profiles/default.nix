@@ -28,4 +28,8 @@ in {
 
   environment.sessionVariables.TERM = "kitty";
   hardware.enableRedistributableFirmware = true;
+
+  # NOTE: for now I only have x86_64-linux systems. If/when that changes this should be overwritten
+  # for other archs, set at the host level, or new profile(s) created.
+  nixpkgs.hostPlatform = "x86_64-linux";
 }

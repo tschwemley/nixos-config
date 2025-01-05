@@ -1,4 +1,5 @@
 {
+  self,
   config,
   lib,
   pkgs,
@@ -33,7 +34,7 @@
   sops = {
     secrets = let
       secretAttrs = {
-        sopsFile = "${config.lib.secrets.server}/open-webui.yaml";
+        sopsFile = "${self.lib.secrets.server}/open-webui.yaml";
       };
     in {
       openwebui_database_url = secretAttrs;

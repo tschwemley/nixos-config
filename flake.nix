@@ -1,59 +1,70 @@
 {
   description = "Schwem's NixOS configuration and dotfiles";
 
-  outputs = inputs @ {
-    flake-parts,
+  outputs = {
+    self,
+    home-manager,
     nixpkgs,
+    systems,
     ...
-  }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = [
-        "aarch64-darwin"
-        "aarch64-linux"
-        "x86_64-linux"
-      ];
+  } @ inputs: let
+    lib = nixpkgs.lib // home-manager.lib // (import ./lib.nix);
 
-      perSystem = {
-        self',
-        config,
-        system,
-        ...
-      }: let
-        patched = (import nixpkgs {inherit system;}).applyPatches {
-          name = "nixpkgs-patched-367695";
-          src = nixpkgs;
-          patches = [./nixos-nixpgs-367695.patch];
-        };
+    systemPackages =
+      lib.genAttrs (import systems)
+      (
+        system: let
+          nixpkgs' = (import ./nixos/system/nixpkgs.nix {inherit self inputs;}).nixpkgs;
+        in
+          import nixpkgs {
+            inherit system;
+            inherit (nixpkgs') config overlays;
+          }
+      );
 
-        pkgs = import patched {
-          inherit system;
-          config = {
-            allowUnfree = true;
-            permittedInsecurePackages = [
-              "dotnet-sdk-6.0.428"
-              "aspnetcore-runtime-6.0.36"
-            ];
-          };
-          overlays = import ./overlays self';
-        };
-      in {
-        # makes pkgs available to all perSystem functions
-        _module.args = {inherit pkgs;};
-      };
+    eachSystem = fn: lib.genAttrs (import systems) (system: fn systemPackages.${system});
+    hosts = lib.attrNames (builtins.readDir ./nixos/hosts);
+  in {
+    inherit lib;
 
-      imports = [
-        ./droid
-        ./home
-        ./nixos
-        ./packages
-        ./shells
-        ./templates
-      ];
-    };
+    devShells = eachSystem (pkgs: import ./shells pkgs);
+    packages = eachSystem (pkgs: import ./packages pkgs);
+
+    nixosConfigurations = lib.genAttrs hosts (host:
+      lib.nixosSystem {
+        specialArgs = {inherit inputs self;};
+        modules = [./nixos/hosts/${host}];
+      });
+  };
+
+  # outputs = inputs @ {flake-parts, ...}:
+  # flake-parts.lib.mkFlake {inherit inputs;} {
+  #   systems = [
+  #     "aarch64-darwin"
+  #     "aarch64-linux"
+  #     "x86_64-linux"
+  #   ];
+  #
+  #   imports = [
+  #     ./droid
+  #     ./home
+  #     ./nixos
+  #     ./packages
+  #     ./shells
+  #     ./templates
+  #   ];
+  # };
 
   inputs = {
+    # BUG: upstream fucked up another giant dependency yet again
+    # TODO: remove after upstream fix.....
+    rocmPackages-pin.url = "github:NixOS/nixpkgs/585f76290ed66a3fdc5aae0933b73f9fd3dca7e3";
+
+    # BUG: need to use master atm for several deps to work + webcord. Too lazy to pin.
     nixpkgs.url = "github:nixos/nixpkgs/master";
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    systems.url = "github:nix-systems/default-linux";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -97,13 +108,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    systemd2nix = {
-      url = "github:DavHau/systemd2nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    yazi.url = "github:sxyazi/yazi";
 
     zen-browser = {
-      url = "github:tschwemley/zen-browser-flake";
+      url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
