@@ -16,7 +16,7 @@
       */
       ''
         require('schwem.keymap')
-        require('schwem.set')
+        require('schwem.opts')
 
         vim.api.nvim_create_user_command("Dump", function(opts)
           print(opts.args)

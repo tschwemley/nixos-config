@@ -1,4 +1,5 @@
 {
+  self,
   config,
   inputs,
   pkgs,
@@ -78,7 +79,7 @@ in {
     key = "oidcproxy_env";
     path = "${stateDir}/.env";
     mode = "0440";
-    sopsFile = "${config.lib.secrets.server}/oidcproxy.yaml"; # dashboard env only contains oidc values (cookie/provider info) for now
+    sopsFile = "${self.lib.secrets.server}/oidcproxy.yaml"; # dashboard env only contains oidc values (cookie/provider info) for now
   };
 
   users = {

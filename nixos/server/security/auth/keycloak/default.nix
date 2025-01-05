@@ -1,4 +1,5 @@
 {
+  self,
   config,
   lib,
   pkgs,
@@ -62,7 +63,7 @@ in {
   };
 
   sops.secrets.keycloak_db_password = {
-    sopsFile = "${config.lib.secrets.server}/keycloak.yaml";
+    sopsFile = "${self.lib.secrets.server}/keycloak.yaml";
     mode = "0444";
   };
 }

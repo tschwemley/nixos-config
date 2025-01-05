@@ -1,4 +1,5 @@
 {
+  self,
   config,
   lib,
   pkgs,
@@ -50,7 +51,7 @@ in {
 
       mode = "0774";
       path = "/etc/rclone/rclone.conf";
-      sopsFile = "${config.lib.secrets.nixos}/rclone.yaml";
+      sopsFile = "${self.lib.secrets.nixos}/rclone.yaml";
     };
   };
 }

@@ -10,4 +10,5 @@ in {
   nixconf = "cd ~/nixos-config";
   nrbs = "sudo nixos-rebuild switch --flake .#$HOST";
   nrepl = "cd ~/nixos-config && nix repl -f ./nixos/system/repl.nix && cd -";
+  systemd2nix = "nix run github:DavHau/systemd2nix";
 }

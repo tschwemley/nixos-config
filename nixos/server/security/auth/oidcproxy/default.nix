@@ -1,4 +1,5 @@
 {
+  self,
   config,
   inputs,
   lib,
@@ -113,7 +114,7 @@ in {
     owner = "oidcproxy";
     path = "${stateDir}/.env";
     mode = "0440";
-    sopsFile = "${config.lib.secrets.server}/oidcproxy.yaml";
+    sopsFile = "${self.lib.secrets.server}/oidcproxy.yaml";
   };
 
   users = {

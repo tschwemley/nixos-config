@@ -13,9 +13,6 @@
     vulkan-tools
   ];
 
-  # TODO: evaluate if this is still necessary
-  environment.sessionVariables.LIBVA_DRIVER_NAME = "vdpau";
-
   hardware.amdgpu.opencl.enable = true;
   nixpkgs.config.rocmSupport = true;
 }

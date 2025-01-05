@@ -1,5 +1,5 @@
 {
-  config,
+  self,
   inputs,
   pkgs,
   ...
@@ -54,7 +54,7 @@ in {
 
     path = "${stateDir}/.env";
     mode = "0440";
-    sopsFile = "${config.lib.secrets.server}/webhooks.yaml";
+    sopsFile = "${self.lib.secrets.server}/webhooks.yaml";
   };
 
   users = {

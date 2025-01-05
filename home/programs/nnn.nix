@@ -3,7 +3,7 @@
     if system == "aarch64-darwin"
     then []
     else [
-      catimg
+      # catimg # BUG: uncomment or delete out after upstream bug is fixed
       ffmpeg
       ffmpegthumbnailer
       xdragon

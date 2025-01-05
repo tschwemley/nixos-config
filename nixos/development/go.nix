@@ -1,5 +1,8 @@
 {pkgs, ...}: {
-  environment.systemPackages = [pkgs.go];
+  environment.systemPackages = with pkgs; [
+    go
+    ogen
+  ];
 
   # this is necessary so that delve can attach to remote processes (e.g. a running server binary)
   security.wrappers.delve = {

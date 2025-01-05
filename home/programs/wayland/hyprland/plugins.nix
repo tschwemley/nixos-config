@@ -4,8 +4,8 @@
   ...
 }: {
   imports = [
-    ./hypridle.nix
-    ./hyprlock.nix
+    ./services/hypridle.nix
+    ./services/hyprlock.nix
   ];
 
   options = {

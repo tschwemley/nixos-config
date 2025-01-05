@@ -4,7 +4,7 @@
     curl
     git
     gnupg
-    ogen
+    jdupes
     jq
     lsof
     pinentry

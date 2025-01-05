@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  self,
+  config,
+  ...
+}: {
   # TODO: remove this and the whisparr service when merged into unstable (as of writing in master)
   # imports = [./whisparr-service.nix];
 
@@ -14,6 +18,6 @@
     group = users.groups.whisparr.name;
     owner = users.users.whisparr.name;
     path = "${users.users.whisparr.home}/config.xml";
-    sopsFile = "${config.lib.secrets.server}/arr.yaml";
+    sopsFile = "${self.lib.secrets.server}/arr.yaml";
   };
 }

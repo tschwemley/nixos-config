@@ -18,7 +18,10 @@
   networking.hostName = "jolteon";
 
   services = {
-    servarr.enableSonarr = true;
+    servarr = {
+      enableSonarr = true;
+      enableWhisparr = true;
+    };
     tailscale.extraUpFlags = [
       "--exit-node=100.66.251.23"
       "--exit-node-allow-lan-access=true"
