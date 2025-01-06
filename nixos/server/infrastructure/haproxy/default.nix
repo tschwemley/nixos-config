@@ -21,7 +21,7 @@ in {
         timeout server 30s
         timeout http-request 10s
 
-      frontend git_ssh
+      frontend git_ssh_backend
         bind git.schwem.io:2222
         mode tcp
         default_backend git_ssh
@@ -115,7 +115,7 @@ in {
         http-request set-header X-Forwarded-Proto https
         server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
-      backend git_ssh
+      backend git_ssh_backend
         mode tcp
         server jolteon_ssh jolteon:2222 check
         # server zapados zapados:2222 check
