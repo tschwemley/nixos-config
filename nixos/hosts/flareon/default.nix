@@ -9,6 +9,7 @@
 
     ../../profiles/proxmox.nix
     ../../services/samba.nix
+    ../../services/webdav.nix
   ];
 
   networking.hostName = "flareon";
@@ -20,7 +21,7 @@
   services = {
     servarr.enableWhisparr = true;
     tailscale.extraUpFlags = [
-      "--exit-node=us-chi-wg-007-1.mullvad.ts.net"
+      "--exit-node=us-chi-wg-301-1.mullvad.ts.net"
       "--exit-node-allow-lan-access=true"
     ];
   };
