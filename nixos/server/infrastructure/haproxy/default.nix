@@ -21,10 +21,10 @@ in {
         timeout server 30s
         timeout http-request 10s
 
-      frontend git_ssh_backend
+      frontend git_ssh
         bind git.schwem.io:2222
         mode tcp
-        default_backend git_ssh
+        default_backend git_ssh_backend
 
       frontend www
         bind *:80
