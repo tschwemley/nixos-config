@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   services.samba = {
     enable = true;
     securityType = "user";
@@ -22,8 +21,19 @@
       # "map to guest" = "bad user";
     };
     shares = {
-      private = {
+      shh1 = {
         path = "/storage/shh";
+        browseable = "yes";
+        "read only" = "no";
+        "guest ok" = "no";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        "force user" = "smb";
+        # "force group" = "users";
+      };
+
+      shh2 = {
+        path = "/storage2/shh";
         browseable = "yes";
         "read only" = "no";
         "guest ok" = "no";

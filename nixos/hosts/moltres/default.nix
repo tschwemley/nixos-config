@@ -1,15 +1,15 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../profiles/server.nix
+    ../../profiles/racknerd.nix
 
     # server imports
-    ../../../containers/excalidraw
-
-    ../../server/alt-frontends/freetar.nix
+    # ../../../containers/excalidraw
+    #
+    # ../../server/alt-frontends/freetar.nix
     ../../server/alt-frontends/redlib.nix
-    ../../server/alt-frontends/rimgo.nix
-    ../../server/services/searxng
+    # ../../server/alt-frontends/rimgo.nix
+    # ../../server/services/searxng
 
     # ../../../containers/threadfin
   ];
@@ -28,8 +28,8 @@
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
   system.stateVersion = "23.05";
 
-  services.tailscale.extraUpFlags = [
-    "--exit-node=us-mia-wg-003.mullvad.ts.net"
-    "--exit-node-allow-lan-access=true"
-  ];
+  # services.tailscale.extraUpFlags = [
+  #   "--exit-node=us-mia-wg-003.mullvad.ts.net"
+  #   "--exit-node-allow-lan-access=true"
+  # ];
 }
