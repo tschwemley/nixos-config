@@ -27,7 +27,7 @@
   in {
     inherit lib;
 
-    devShells = eachSystem (pkgs: import ./shells pkgs);
+    devShells = eachSystem (pkgs: import ./devshell pkgs);
     packages = eachSystem (pkgs: import ./packages pkgs);
 
     nixosConfigurations = lib.genAttrs hosts (host:
@@ -36,24 +36,6 @@
         modules = [./nixos/hosts/${host}];
       });
   };
-
-  # outputs = inputs @ {flake-parts, ...}:
-  # flake-parts.lib.mkFlake {inherit inputs;} {
-  #   systems = [
-  #     "aarch64-darwin"
-  #     "aarch64-linux"
-  #     "x86_64-linux"
-  #   ];
-  #
-  #   imports = [
-  #     ./droid
-  #     ./home
-  #     ./nixos
-  #     ./packages
-  #     ./shells
-  #     ./templates
-  #   ];
-  # };
 
   inputs = {
     # BUG: upstream fucked up another giant dependency yet again

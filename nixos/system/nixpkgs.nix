@@ -24,6 +24,7 @@
           wl-ocr
           ;
 
+        inherit (inputs.disko.packages.${final.system}) disko;
         inherit (inputs.zen-browser.packages.${final.system}) zen-browser;
 
         vimPlugins = prev.vimPlugins // {inherit (self.packages.${final.system}) vlog;};
