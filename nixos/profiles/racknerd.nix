@@ -4,6 +4,7 @@
 in {
   imports = [
     ./server.nix
+    ../system/boot/systemd.nix
 
     root
     (modulesPath + "/profiles/qemu-guest.nix")
