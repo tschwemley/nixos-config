@@ -26,3 +26,13 @@ for item in "${array[@]}"; do
   echo $item
 done
 ```
+
+## Paths
+
+```bash
+# Get the absolute path of the current script                                 
+SCRIPT_PATH=$(readlink -f "$0")                                               
+                                                                              
+# Get the directory containing the current script                             
+SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
+```

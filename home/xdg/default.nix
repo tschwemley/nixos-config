@@ -5,7 +5,6 @@
 }: let
   browser = ["zen"];
   # imageViewer = ["org.gnome.Loupe"];
-  # videoPlayer = ["io.github.celluloid_player.Celluloid"];
   # audioPlayer = ["io.bassi.Amberol"];
 
   xdgAssociations = type: program: list:
@@ -18,7 +17,7 @@
     );
 
   # image = xdgAssociations "image" imageViewer ["png" "svg" "jpeg" "gif"];
-  # video = xdgAssociations "video" videoPlayer ["mp4" "avi" "mkv"];
+  video = xdgAssociations "video" ["vlc"] ["avi" "mp4" "mkv" "wmv"];
   # audio = xdgAssociations "audio" audioPlayer ["mp3" "flac" "wav" "aac"];
   browserTypes =
     (xdgAssociations "application" browser [
@@ -26,9 +25,9 @@
       "x-extension-htm"
       "x-extension-html"
       "x-extension-shtml"
-      "x-extension-xhtml+xml"
       "x-extension-xht"
       "x-extension-xhtml"
+      "x-extension-xhtml+xml"
     ])
     // (xdgAssociations "x-scheme-handler" browser [
       "about"
@@ -46,12 +45,11 @@
       "text/html" = browser;
       "text/plain" = ["nvim"];
       "x-scheme-handler/chrome" = browser;
-      # "inode/directory" = ["yazi"];
+      "inode/directory" = ["yazi"];
     }
+    # // audio
     # // image
-    # // video
-    # // audio
-    # // audio
+    // video
     // browserTypes
   );
 in {

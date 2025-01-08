@@ -97,7 +97,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # imports below here are server-specific imports for schwem.io TODO: make this into a single repo
+    # imports below here are server-specific imports for schwem.io
+    #   TODO: make them into a single repo
     dashboard = {
       url = "git+https://git.schwem.io/schwem/dashboard";
       inputs.nixpkgs.follows = "nixpkgs";

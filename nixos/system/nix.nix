@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{inputs, pkgs, ...}: {
   environment.systemPackages = [pkgs.nix-doc];
 
   nix = {
@@ -12,6 +12,8 @@
       # stores time last triggered so if host was powered off during last schedule run it will trigger immediately
       persistent = true;
     };
+
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
     settings = {
       auto-optimise-store = true;
