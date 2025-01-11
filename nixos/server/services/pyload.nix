@@ -16,8 +16,9 @@ in {
     inherit group owner;
 
     format = "dotenv";
+    key = "";
     mode = "0400";
-    sopsFile = "${self.lib.secrets.server}/secrets/server/pyload.env";
+    sopsFile = "${self.lib.secrets.server}/pyload.env";
   };
 
   systemd.tmpfiles.rules = ["d ${downloadDirectory} 0755 ${owner} ${group} - -" ];

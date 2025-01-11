@@ -2,13 +2,12 @@
   imports = [
     ../../profiles/proxmox.nix
 
-    # server
     ../../server/arr
-
     ../../server/alt-frontends/anonymous-overflow.nix
     ../../server/development/forgejo
     ../../server/infrastructure/postgresql
-    ../../server/infrastructure/webhooks
+    ../../server/services/pyload.nix
+    ../../server/services/webhooks
 
     # TODO: fix or delete... not a priority atm.
     # Fails during start with: Lucky::ForceSSLHandler was nil, but the setting is required.

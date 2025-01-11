@@ -138,7 +138,7 @@ in {
 
       backend medium
         http-request set-header X-Forwarded-Proto https
-        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
+        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
       backend monitor
         http-request set-header X-Forwarded-Proto https
