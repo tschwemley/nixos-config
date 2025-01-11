@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   pkgs,
   ...
@@ -9,6 +10,8 @@
 
   programs.neovim = {
     enable = true;
+    package = inputs.neovim-overlay.packages.${pkgs.system}.default;
+
     defaultEditor = lib.mkDefault true;
     extraLuaConfig =
       /*

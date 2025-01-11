@@ -1,6 +1,8 @@
 local blink = require("blink.cmp")
 -- local cmp_lsp = require("cmp_nvim_lsp")
 local lspconfig = require("lspconfig")
+local log = require("plenary.log")
+-- local log = require("plenary.log").new()
 
 ---------------------------------------------------------------------------------------------------
 --- LSP
@@ -30,18 +32,24 @@ local servers = {
 	"yamlls",
 }
 
-for _, lsp in ipairs(servers) do
+for _, server in ipairs(servers) do
+	log.info("Setting up LSP config for: ", server)
+	print("Setting up LSP config for: ", server)
 	local config = {
 		autostart = true,
-		capabilities = blink.get_lsp_capabilities(config.capabilities),
+		capabilities = vim.lsp.protocol.make_client_capabilities(),
+		-- capabilities = blink.get_lsp_capabilities(_, true),
 	}
 
+	log.fmt_info("\tconfig: %s\n", config)
+
 	-- Check if a configuration file exists for the current LSP server
-	local configPath = vim.fn.stdpath("config") .. "/lua/lspconfigs/" .. lsp .. ".lua"
+	local configPath = vim.fn.stdpath("config") .. "/lua/lspconfigs/" .. server .. ".lua"
 	if vim.uv.fs_stat(configPath) then
-		config = vim.tbl_deep_extend("force", config, require("lspconfigs." .. lsp))
+		config = vim.tbl_deep_extend("force", config, require("lspconfigs." .. server))
+		log.fmt_info("\t**Aditional config defined for: %s at %s\n\tmerged config: %s\n", server, configPath, config)
 	end
 
 	-- Set up the LSP server with the merged config
-	lspconfig[lsp].setup(config)
+	lspconfig[server].setup(config)
 end

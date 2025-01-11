@@ -15,12 +15,13 @@
     gitsigns-nvim
     nnn-vim
     nvim-ufo
+    plenary-nvim
     refactoring-nvim
     vim-abolish
     vim-fugitive
     vim-speeddating
     vim-surround
-    vlog
+    # vlog
   ];
 
   xdg.configFile = {
