@@ -7,8 +7,6 @@
     };
 
   config.portMap = {
-    archiveboxWeb = "8000";
-    archiveboxNovnc = "8001";
     anonymous-overflow = "8010";
     binternet = "8009";
     dashboard = "6980";
@@ -23,6 +21,7 @@
     open-webui = "4141";
     priviblur = "8040";
     proxitok = "8050";
+    pyload = "8000";
     qtbittorrentWeb = "8880";
     qtbittorrentTorrent = "8881";
     redlib = "8180";

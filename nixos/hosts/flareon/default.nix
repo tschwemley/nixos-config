@@ -9,7 +9,6 @@
 
     ../../profiles/proxmox.nix
     ../../services/samba.nix
-    ../../services/webdav.nix
   ];
 
   networking.hostName = "flareon";
@@ -19,7 +18,8 @@
   system.stateVersion = "23.05";
 
   services = {
-    servarr.enableWhisparr = true;
+    # TODO: reenable after fixing port collision
+    # servarr.enableWhisparr = true;
     tailscale.extraUpFlags = [
       "--exit-node=us-chi-wg-301-1.mullvad.ts.net"
       "--exit-node-allow-lan-access=true"

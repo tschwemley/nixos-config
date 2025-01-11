@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  lib,
   ...
 }:
 {
@@ -17,7 +18,7 @@
   services.scribe = {
     enable = true;
     appDomain = "medium.schwem.io";
-    port = 7000;
+    port = lib.toInt config.portMap.scribe;
     environmentFile = config.sops.secrets.scribe-env.path;
   };
 

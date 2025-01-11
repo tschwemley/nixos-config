@@ -13,9 +13,7 @@
     };
 
     overlays = [
-      inputs.yazi.overlays.yazi
-
-      (final: prev: {
+      (final: _: {
         inherit
           (self.packages.${final.pkgs.system})
           anonymous-overflow
@@ -26,11 +24,7 @@
 
         inherit (inputs.disko.packages.${final.system}) disko;
         inherit (inputs.zen-browser.packages.${final.system}) zen-browser;
-
-        vimPlugins = prev.vimPlugins // {inherit (self.packages.${final.system}) vlog;};
       })
     ];
-
-    # overlays = ()self.lib.mapAttrsToList (_: overlay: overlay) self.overlays;
   };
 }

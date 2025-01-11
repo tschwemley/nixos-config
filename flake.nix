@@ -38,20 +38,9 @@
   };
 
   inputs = {
-    # BUG: upstream fucked up another giant dependency yet again
-    # TODO: remove after upstream fix.....
-    rocmPackages-pin.url = "github:NixOS/nixpkgs/585f76290ed66a3fdc5aae0933b73f9fd3dca7e3";
-
-    # BUG: need to use master atm for several deps to work + webcord. Too lazy to pin.
-    nixpkgs.url = "github:nixos/nixpkgs/master";
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     systems.url = "github:nix-systems/default-linux";
-
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
 
     disko = {
       url = "github:nix-community/disko";
@@ -75,8 +64,8 @@
 
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
-    neorg-overlay = {
-      url = "github:nvim-neorg/nixpkgs-neorg-overlay";
+    neovim-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -90,8 +79,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    yazi.url = "github:sxyazi/yazi";
-
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -102,26 +89,21 @@
     dashboard = {
       url = "git+https://git.schwem.io/schwem/dashboard";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
     };
 
     oidcproxy = {
       url = "git+https://git.schwem.io/schwem/oidcproxy";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
     };
 
     stash = {
       url = "git+https://git.schwem.io/schwem/stash-flake";
-      # url = "/home/schwem/projects/nix/stashapp";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
     };
 
     webhooks = {
       url = "git+https://git.schwem.io/schwem/webhooks";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
     };
   };
 }
