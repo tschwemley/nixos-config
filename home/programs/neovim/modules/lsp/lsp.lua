@@ -21,7 +21,6 @@ local log = require("plenary.log")
 local servers = {
 	"bashls",
 	"gopls",
-	"htmx",
 	"intelephense",
 	"lua_ls",
 	"marksman",

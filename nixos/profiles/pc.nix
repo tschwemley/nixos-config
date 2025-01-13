@@ -16,7 +16,7 @@
     ../programs/hyprland.nix
     ../programs/kdeconnect.nix
     ../programs/keyboards
-    ../programs/lutris.nix
+    # ../programs/lutris.nix
     ../programs/man.nix
     ../programs/steam.nix
     ../programs/usbutils.nix
@@ -28,13 +28,13 @@
     ../services/gnome.nix
     ../services/upower.nix
 
+    ../security/onlykey.nix
+
     ../system/documentation.nix
     ../system/fonts.nix
     ../system/greetd.nix
     ../system/security.nix
   ];
-
-  musnix.enable = true;
 
   nix.settings.trusted-users = ["schwem"];
 

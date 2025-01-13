@@ -18,11 +18,9 @@
           (self.packages.${final.pkgs.system})
           anonymous-overflow
           json2go
-          ogen
           wl-ocr
           ;
 
-        inherit (inputs.disko.packages.${final.system}) disko;
         inherit (inputs.zen-browser.packages.${final.system}) zen-browser;
       })
     ];
