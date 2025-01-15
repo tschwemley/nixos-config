@@ -20,7 +20,7 @@
 
   services = {
     # TODO: remove this after refactoring sabnzbd config/module
-    services.sabnzbd.enable = lib.mkDefault false;
+    sabnzbd.enable = lib.mkDefault false;
 
     # TODO: reenable after fixing port collision
     # servarr.enableWhisparr = true;
