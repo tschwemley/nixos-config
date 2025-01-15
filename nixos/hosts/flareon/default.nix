@@ -1,6 +1,7 @@
-{inputs, ...}: {
+{inputs, lib, ...}: {
   imports = [
     inputs.stash.nixosModules.default
+
     # extra storage partition
     (import ../../hardware/disks/block-storage.nix {
       diskName = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi2";
@@ -18,6 +19,9 @@
   system.stateVersion = "23.05";
 
   services = {
+    # TODO: remove this after refactoring sabnzbd config/module
+    services.sabnzbd.enable = lib.mkDefault false;
+
     # TODO: reenable after fixing port collision
     # servarr.enableWhisparr = true;
     tailscale.extraUpFlags = [
