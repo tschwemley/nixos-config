@@ -7,8 +7,9 @@
     config = {
       allowUnfree = true;
       permittedInsecurePackages = [
-        "dotnet-sdk-6.0.428"
         "aspnetcore-runtime-6.0.36"
+        "dotnet-sdk-6.0.428"
+        "electron-31.7.7" # TODO: fix electron version
       ];
     };
 

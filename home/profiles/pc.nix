@@ -56,5 +56,11 @@
         insteadOf = "https://github.com";
       };
     };
+
+    # TODO: remove this or move out
+    neovide = {
+      enable = true;
+      settings = {};
+    };
   };
 }

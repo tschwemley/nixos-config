@@ -1,5 +1,4 @@
-# {pkgs, ...}: {
-pkgs: {
+{pkgs, ...}: {
   hardware.onlykey.enable = true;
 
   environment.systemPackages = with pkgs; [

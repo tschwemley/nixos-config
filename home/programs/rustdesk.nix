@@ -1,1 +1,3 @@
-{pkgs, ...}: {home.packages = [pkgs.rustdesk-flutter];}
+{pkgs, ...}: {
+  home.packages = [pkgs.rustdesk-flutter];
+}
