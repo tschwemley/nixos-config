@@ -6,7 +6,7 @@
     ../../server/alt-frontends/anonymous-overflow.nix
     ../../server/development/forgejo
     ../../server/infrastructure/postgresql
-    ../../server/services/pyload.nix
+    # ../../server/services/pyload.nix TODO: pyload is being a piece of shit
     ../../server/services/webhooks
 
     # TODO: fix or delete... not a priority atm.
