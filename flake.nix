@@ -8,7 +8,7 @@
     systems,
     ...
   } @ inputs: let
-    lib = nixpkgs.lib // home-manager.lib // (import ./lib.nix);
+    lib = import ./lib.nix (nixpkgs.lib // home-manager.lib);
 
     systemPackages =
       lib.genAttrs (import systems)
