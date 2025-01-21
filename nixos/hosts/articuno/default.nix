@@ -7,22 +7,22 @@ let
     })
   ];
 in {
-  imports =
-    [
-      (import ../../profiles/buyvm.nix "")
+  imports = [
+    (import ../../profiles/buyvm.nix "")
 
-      # server imports
-      ../../server/dashboard
-      ../../server/development/cyberchef.nix
-      ../../server/infrastructure/haproxy
-      ../../server/infrastructure/monitoring
-      ../../server/infrastructure/postgresql
-      ../../server/security/acme
-      ../../server/security/auth/keycloak
-      ../../server/services/open-webui.nix
-      ../../server/services/searxng
-    ]
-    ++ storageDisks;
+    # server imports
+    ../../server/dashboard
+    ../../server/development/cyberchef.nix
+    ../../server/infrastructure/haproxy
+    ../../server/infrastructure/monitoring
+    ../../server/infrastructure/postgresql
+    ../../server/security/acme
+    ../../server/security/auth/keycloak
+    ../../server/services/open-webui.nix
+    ../../server/services/searxng
+  ];
+  # FIXME: storage disks causing boot failure
+  # ++ storageDisks;
 
   networking.hostName = "articuno";
 
