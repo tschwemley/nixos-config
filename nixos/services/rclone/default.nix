@@ -9,28 +9,31 @@
 
   inherit (lib) mkEnableOption mkIf;
 
-  fileSystems = (lib.lists.foldr (name: fs:
-    fs
-    // {
-      "/mnt/${name}" =
-        mkIf (
-          (name == "tentacool" && cfg.enableTentacool)
-          || (name == "jolteon" && cfg.enableJolteon)
-          || (name == "flareon" && cfg.enableFlareon)
-        ) {
-          device = "${name}:/storage";
-          fsType = "rclone";
-          options = [
-            "nodev"
-            "nofail"
-            "allow_other"
-            "args2env"
-            "vfs-cache-mode=writes"
-            "config=${config.sops.secrets."rclone.conf".path}"
-            "metadata"
-          ];
-        };
-    }) {}) ["flareon" "jolteon" "tentacool"];
+  # FIXME: this is dogshit
+  fileSystems =
+    ((lib.lists.foldr (name: fs:
+      fs
+      // {
+        "/mnt/${name}" =
+          mkIf (
+            (name == "tentacool" && cfg.enableTentacool)
+            || (name == "jolteon" && cfg.enableJolteon)
+            || (name == "flareon" && cfg.enableFlareon)
+          ) {
+            device = "${name}:/storage";
+            fsType = "rclone";
+            options = [
+              "nodev"
+              "nofail"
+              "allow_other"
+              "args2env"
+              "vfs-cache-mode=writes"
+              "config=${config.sops.secrets."rclone.conf".path}"
+              "metadata"
+            ];
+          };
+      }) {}) ["flareon" "jolteon" "tentacool"])
+    // {};
 in {
   options = {
     services.rclone = {

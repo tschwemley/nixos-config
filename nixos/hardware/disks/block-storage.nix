@@ -1,5 +1,5 @@
 {
-  diskName,
+  device,
   mountpoint ? "storage",
   ...
 }: let
@@ -20,8 +20,9 @@
   };
 in {
   disko.devices.disk."${mountpoint}" = {
+    inherit device;
+
     type = "disk";
-    device = diskName;
     content = {
       inherit partitions;
       type = "gpt";
