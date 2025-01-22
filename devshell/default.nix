@@ -5,6 +5,7 @@ pkgs: {
       compose2nix
       disko
       nix-prefetch-scripts
+      nurl
       sops
       ssh-to-age
       statix

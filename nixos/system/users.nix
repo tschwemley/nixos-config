@@ -11,10 +11,8 @@
     home-manager.users.root = {
       imports = [
         ../../home/profiles
-        # ../../home/xdg/netrc.nix
       ];
       home.homeDirectory = "/root";
-      # sops.age.keyFile = "/etc/sops/age-keys.txt";
     };
   };
 
@@ -46,7 +44,7 @@
       imports = [../../home/profiles/pc.nix];
 
       sops.age.keyFile = "/home/schwem/.config/sops/age/keys.txt";
-      systemd.user.settings.Manager.DefaultLimitNOFILE = "524288";
+      systemd.user.settings.Manager.DefaultLimitNOFILE = "524288"; # for lutris
     };
   };
 }

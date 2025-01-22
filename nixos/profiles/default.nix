@@ -21,6 +21,7 @@ in {
     ../programs/less.nix
     ../programs/zsh.nix
 
+    ../services/fwupd.nix
     ../services/rclone
 
     ../system/nix.nix
