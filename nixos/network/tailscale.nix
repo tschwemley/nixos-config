@@ -20,13 +20,15 @@
     sops.secrets.tailscale_auth_key = {};
 
     systemd.services.tailscaled-autoconnect = let
-      after = lib.mkDefault [
-        "systemd-networkd"
+      before = lib.mkDefault [
+        "mnt-jolteon.mount"
+        "mnt-flareon.mount"
+        "mnt-tentacool.mount"
         "tailscaled.service"
       ];
-      wants = after;
+      wantedBy = before;
     in {
-      inherit after wants;
+      inherit before wantedBy;
     };
   };
 }

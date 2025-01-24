@@ -1,4 +1,5 @@
 {
+  # TODO: uncomment below after unfucking my shit up for the asdfa321349873210348723 time
   imports = [
     ./.
     ../programs/ai
@@ -9,8 +10,8 @@
     ../programs/media
     ../programs/music
 
-    ../programs/aseprite.nix
-    # ../programs/bambu-studio.nix
+    # ../programs/aseprite.nix
+    ../programs/bambu-studio.nix
     ../programs/bitwarden.nix
     ../programs/glow.nix
     ../programs/khal.nix
@@ -18,8 +19,8 @@
     ../programs/libreoffice.nix
     ../programs/qt.nix
     ../programs/rustdesk.nix
-    ../programs/tailscale-systray.nix
-    ../programs/tigervnc.nix
+    # ../programs/tailscale-systray.nix
+    # ../programs/tigervnc.nix
     ../programs/wayland/hyprland.nix
     ../programs/wcalc.nix
     ../programs/wofi.nix

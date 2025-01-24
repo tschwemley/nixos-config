@@ -83,24 +83,24 @@
     # imports below here are server-specific imports for schwem.io
     #   TODO: make them into a single repo
     #   TODO: uncomment these after removing flake-parts deps
-    # dashboard = {
-    #   url = "git+https://git.schwem.io/schwem/dashboard";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    #
-    # oidcproxy = {
-    #   url = "git+https://git.schwem.io/schwem/oidcproxy";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    #
-    # stash = {
-    #   url = "git+https://git.schwem.io/schwem/stash-flake";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    #
-    # webhooks = {
-    #   url = "git+https://git.schwem.io/schwem/webhooks";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    dashboard = {
+      url = "git+https://git.schwem.io/schwem/dashboard";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    oidcproxy = {
+      url = "git+https://git.schwem.io/schwem/oidcproxy";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    stash = {
+      url = "git+https://git.schwem.io/schwem/stash-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    webhooks = {
+      url = "git+https://git.schwem.io/schwem/webhooks";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }

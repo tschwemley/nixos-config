@@ -1,8 +1,4 @@
-pkgs: let
-  vimPlugins = import ./vimPlugins pkgs;
-in {
-  inherit (vimPlugins) vlog;
-
+pkgs: {
   anonymous-overflow = pkgs.callPackage ./anonymousoverflow.nix {};
   compose2nix = pkgs.callPackage ./utils/compose2nix.nix {};
   json2go = pkgs.callPackage ./json2go.nix {};
