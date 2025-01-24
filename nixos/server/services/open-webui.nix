@@ -82,10 +82,10 @@
           OAUTH_SCOPES="openid email profile"
           OAUTH_USERNAME_CLAIM=preferred_username
 
-          ENABLE_SIGNUP=False
           ENABLE_LOGIN_FORM=False
           ENABLE_OAUTH_ROLE_MANAGEMENT=True
           ENABLE_OAUTH_SIGNUP=True
+          ENABLE_SIGNUP=True
           #OAUTH_MERGE_ACCOUNTS_BY_EMAIL=True
 
           # Ollama
