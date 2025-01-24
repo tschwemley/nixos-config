@@ -39,6 +39,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     systems.url = "github:nix-systems/default-linux";
 
@@ -49,11 +50,6 @@
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    musnix = {
-      url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
