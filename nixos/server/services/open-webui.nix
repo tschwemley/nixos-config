@@ -39,11 +39,16 @@
     in {
       openwebui_database_url = secretAttrs;
       openwebui_oauth_client_secret = secretAttrs;
+      openwebui_openai_api_base_url = secretAttrs;
+      openwebui_openai_api_key = secretAttrs;
       openwebui_openid_provider_url = secretAttrs;
       openwebui_openid_redirect_uri = secretAttrs;
+      openwebui_secret_key = secretAttrs;
     };
 
-    templates.open-webui-env = {
+    templates.open-webui-env = let
+      inherit (config.sops) placeholder;
+    in {
       mode = "0500";
       content =
         /*
@@ -54,40 +59,53 @@
 
           # General
           ENV=prod
-          WEBUI_URL=https://ai.schwem.io
-          ENABLE_SIGNUP=False
-          ENABLE_LOGIN_FORM=False
-          DEFAULT_MODELS=
-          #DATABASE_URL=${config.sops.placeholder.openwebui_database_url}
+          #DATABASE_URL=${placeholder.openwebui_database_url}
           PORT=${config.portMap.open-webui}
 
-          # Oauth
-          OPENID_PROVIDER_URL=${config.sops.placeholder.openwebui_openid_provider_url}
-          OPENID_REDIRECT_URI=${config.sops.placeholder.openwebui_openid_redirect_uri}
+          DEFAULT_MODELS=deepseek/deepseek-chat
+          #RESET_CONFIG_ON_START=True # resets the config.json file on startup
 
+          WEBUI_SECRET_KEY=${placeholder.openwebui_secret_key};
+          WEBUI_SESSION_COOKIE_SECURE=True
+          WEBUI_URL=https://ai.schwem.io
+
+          # Auth
           OAUTH_CLIENT_ID=open-webui
-          OAUTH_CLIENT_SECRET=${config.sops.placeholder.openwebui_oauth_client_secret}
+          OAUTH_CLIENT_SECRET=${placeholder.openwebui_oauth_client_secret}
+          OPENID_PROVIDER_URL=${placeholder.openwebui_openid_provider_url}
+          OPENID_REDIRECT_URI=${placeholder.openwebui_openid_redirect_uri}
+
           OAUTH_ALLOWED_ROLES=user,admin
           OAUTH_ADMIN_ROLES=admin
           OAUTH_EMAIL_CLAIM=email
           OAUTH_ROLES_CLAIM=resource_access.open-webui.roles
+          OAUTH_SCOPES="openid email profile"
           OAUTH_USERNAME_CLAIM=preferred_username
 
-          ENABLE_OAUTH_ROLE_MANAGEMENT=true
-          ENABLE_OAUTH_SIGNUP=true
+          ENABLE_SIGNUP=False
+          ENABLE_LOGIN_FORM=False
+          ENABLE_OAUTH_ROLE_MANAGEMENT=True
+          ENABLE_OAUTH_SIGNUP=True
+          #OAUTH_MERGE_ACCOUNTS_BY_EMAIL=True
 
           # Ollama
           ENABLE_OLLAMA_API=False
 
           # OpenAI
+          ENABLE_OPENAI_API=True
+          OPENAI_API_BASE_URL=${placeholder.openwebui_openai_api_base_url}
+          OPENAI_API_KEY=${placeholder.openwebui_openai_api_key}
+
+          # Text to Speech
+          AUDIO_TTS_ENGINE=transformers
+
+          # Image Generation
+          # Proxy
+          # Speech to Text
           # Tasks
+          # Tools
           # RAG
           # Web Search
-          # Speech to Text
-          # Text to Speech
-          # Image Generation
-          # Tools
-          # Proxy
         '';
     };
   };
