@@ -4,6 +4,7 @@
   outputs = {
     self,
     home-manager,
+    nix-on-droid,
     nixpkgs,
     systems,
     ...
@@ -35,6 +36,11 @@
         specialArgs = {inherit inputs self;};
         modules = [./nixos/hosts/${host}];
       });
+
+    nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
+      pkgs = import nixpkgs {system = "aarch64-linux";};
+      modules = [./droid];
+    };
   };
 
   inputs = {
