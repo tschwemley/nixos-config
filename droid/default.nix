@@ -9,7 +9,7 @@
   # insert Nix-on-Droid config
 
   home-manager.config = {pkgs, ...}: {
-    # Read home-manager changelog before changing this value
+    home.enableNixpkgsReleaseCheck = false;
     home.stateVersion = "24.05";
 
     extraSpecialArgs = {inherit self inputs;};
