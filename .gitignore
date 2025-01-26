@@ -1,5 +1,6 @@
 # environment
 .direnv/*
+!.direnv/init.lua
 
 # build/script outputs
 ./articuno
