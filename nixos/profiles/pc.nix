@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   lib,
   ...
@@ -54,6 +55,13 @@
 
     resolved.dnsovertls = lib.mkDefault "true";
     tailscale.extraUpFlags = ["--advertise-tags=tag:pc"];
+  };
+
+  sops = {
+    defaultSopsFile = ../hosts/${config.networking.hostName}/secrets.yaml;
+    age.sshKeyPaths = [];
+    age.keyFile = "/home/schwem/.config/sops/age/keys.txt";
+    gnupg.sshKeyPaths = [];
   };
 
   time.timeZone = "America/New_York";
