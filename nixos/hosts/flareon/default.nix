@@ -1,10 +1,14 @@
-{inputs, lib, ...}: {
+{
+  inputs,
+  lib,
+  ...
+}: {
   imports = [
     inputs.stash.nixosModules.default
 
     # extra storage partition
     (import ../../hardware/disks/block-storage.nix {
-      diskName = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi2";
+      device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi2";
       mountpoint = "storage2";
     })
 
@@ -13,12 +17,18 @@
   ];
 
   networking.hostName = "flareon";
+
   sops.defaultSopsFile = ./secrets.yaml;
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion/ when ready to update
   system.stateVersion = "23.05";
 
   services = {
+    rclone = {
+      enableJolteon = true;
+      enableZapados = true;
+    };
+
     # TODO: remove this after refactoring sabnzbd config/module
     sabnzbd.enable = lib.mkDefault false;
 

@@ -16,9 +16,10 @@
       // {
         "/mnt/${name}" =
           mkIf (
-            (name == "tentacool" && cfg.enableTentacool)
+            (name == "flareon" && cfg.enableFlareon)
             || (name == "jolteon" && cfg.enableJolteon)
-            || (name == "flareon" && cfg.enableFlareon)
+            || (name == "tentacool" && cfg.enableTentacool)
+            || (name == "zapados" && cfg.enableZapados)
           ) {
             device = "${name}:/storage";
             fsType = "rclone";
@@ -32,14 +33,39 @@
               "metadata"
             ];
           };
-      }) {}) ["flareon" "jolteon" "tentacool"])
+      }) {}) ["flareon" "jolteon" "tentacool" "zapados"])
     // {};
+
+  tmpFileRules = let
+    mkRule = name: "d /mnt/${name} 0775 root root - -";
+  in
+    (
+      if cfg.enableFlareon
+      then [(mkRule "flareon")]
+      else []
+    )
+    ++ (
+      if cfg.enableJolteon
+      then [(mkRule "jolteon")]
+      else []
+    )
+    ++ (
+      if cfg.enableTentacool
+      then [(mkRule "tentacool")]
+      else []
+    )
+    ++ (
+      if cfg.enableZapados
+      then [(mkRule "zapados")]
+      else []
+    );
 in {
   options = {
     services.rclone = {
       enableFlareon = mkEnableOption "flareon";
       enableJolteon = mkEnableOption "jolteon";
       enableTentacool = mkEnableOption "tentacool";
+      enableZapados = mkEnableOption "zazpados";
     };
   };
 
@@ -56,5 +82,7 @@ in {
       path = "/etc/rclone/rclone.conf";
       sopsFile = "${self.lib.secrets.nixos}/rclone.yaml";
     };
+
+    systemd.tmpfiles.rules = tmpFileRules;
   };
 }

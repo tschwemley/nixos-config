@@ -31,22 +31,23 @@ local servers = {
 	"yamlls",
 }
 
+-- TODO: remove commented logging and comment above when done A/B testing
 for _, server in ipairs(servers) do
-	log.info("Setting up LSP config for: ", server)
-	print("Setting up LSP config for: ", server)
+	-- log.info("Setting up LSP config for: ", server)
+	-- print("Setting up LSP config for: ", server)
 	local config = {
 		autostart = true,
 		capabilities = vim.lsp.protocol.make_client_capabilities(),
 		-- capabilities = blink.get_lsp_capabilities(_, true),
 	}
 
-	log.fmt_info("\tconfig: %s\n", config)
+	-- log.fmt_info("\tconfig: %s\n", config)
 
 	-- Check if a configuration file exists for the current LSP server
 	local configPath = vim.fn.stdpath("config") .. "/lua/lspconfigs/" .. server .. ".lua"
 	if vim.uv.fs_stat(configPath) then
 		config = vim.tbl_deep_extend("force", config, require("lspconfigs." .. server))
-		log.fmt_info("\t**Aditional config defined for: %s at %s\n\tmerged config: %s\n", server, configPath, config)
+		-- log.fmt_info("\t**Aditional config defined for: %s at %s\n\tmerged config: %s\n", server, configPath, config)
 	end
 
 	-- Set up the LSP server with the merged config
