@@ -5,6 +5,7 @@
     ../programs/ai
     ../programs/browsers
     ../programs/communication
+    ../programs/creative
     ../programs/development/dbgate.nix
     ../programs/gtk
     ../programs/media
