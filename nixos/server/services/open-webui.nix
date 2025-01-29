@@ -77,16 +77,17 @@
 
           # OAUTH_ALLOWED_ROLES=user,admin
           # OAUTH_ADMIN_ROLES=admin
-          OAUTH_EMAIL_CLAIM=email
-          OAUTH_ROLES_CLAIM=resource_access.open-webui.roles
-          OAUTH_SCOPES="openid email profile"
-          OAUTH_USERNAME_CLAIM=preferred_username
+          # OAUTH_EMAIL_CLAIM=email
+          # OAUTH_USERNAME_CLAIM=preferred_username
+          # OAUTH_MERGE_ACCOUNTS_BY_EMAIL=True
+          # OAUTH_SCOPES="openid email profile"
 
           ENABLE_LOGIN_FORM=False
-          ENABLE_OAUTH_ROLE_MANAGEMENT=True
           ENABLE_OAUTH_SIGNUP=True
           ENABLE_SIGNUP=True
-          #OAUTH_MERGE_ACCOUNTS_BY_EMAIL=True
+
+          ENABLE_OAUTH_ROLE_MANAGEMENT=True
+          OAUTH_ROLES_CLAIM=resource_access.open-webui.roles
 
           # Ollama
           ENABLE_OLLAMA_API=False
