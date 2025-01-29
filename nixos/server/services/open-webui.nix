@@ -75,8 +75,8 @@
           OPENID_PROVIDER_URL=${placeholder.openwebui_openid_provider_url}
           OPENID_REDIRECT_URI=${placeholder.openwebui_openid_redirect_uri}
 
-          OAUTH_ALLOWED_ROLES=user,admin
-          OAUTH_ADMIN_ROLES=admin
+          # OAUTH_ALLOWED_ROLES=user,admin
+          # OAUTH_ADMIN_ROLES=admin
           OAUTH_EMAIL_CLAIM=email
           OAUTH_ROLES_CLAIM=resource_access.open-webui.roles
           OAUTH_SCOPES="openid email profile"
