@@ -11,6 +11,7 @@
     ../../server/alt-frontends/safetwitch
     ../../server/automation/home-assistant
     ../../server/knowledge/tiddlywiki
+    ../../system/fonts.nix
   ];
 
   networking.hostName = "zapados";
