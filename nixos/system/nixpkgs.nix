@@ -27,6 +27,8 @@
         inherit
           (inputs.nixpkgs-stable.legacyPackages.${final.system})
           bambu-studio
+          hyprland
+          hyprlandPlugins
           rocmPackages
           ;
 

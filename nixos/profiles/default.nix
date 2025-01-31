@@ -33,4 +33,5 @@ in {
 
   # set here by default since at any given time most/all my configs are x86_64-linux
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  sops.defaultSopsFile = ../hosts/${config.networking.hostName}/secrets.yaml;
 }

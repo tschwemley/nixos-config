@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    bottles # another wineprefix manager. supposedly easy to use
+    bottles
     wineWowPackages.waylandFull
     winetricks
 

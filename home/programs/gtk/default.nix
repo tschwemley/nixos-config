@@ -22,7 +22,5 @@ in {
   };
 
   # packages to install when utilizing gtk
-  home.packages = with pkgs; [
-    nautilus
-  ];
+  home.packages = [pkgs.nemo];
 }
