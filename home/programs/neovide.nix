@@ -1,0 +1,6 @@
+{
+  neovide = {
+    enable = true;
+    settings = {};
+  };
+}

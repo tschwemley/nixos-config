@@ -3,8 +3,10 @@
     ../../profiles/racknerd.nix
 
     ../../../containers/excalidraw
-    ../../server/alt-frontends/redlib.nix
     ../../server/infrastructure/haproxy
+
+    # TODO: decide if this will be one of the servers to load balance redlib on
+    # ../../server/alt-frontends/redlib.nix
 
     #../../server/alt-frontends/freetar.nix
     #../../server/alt-frontends/rimgo.nix
@@ -13,13 +15,6 @@
 
     # ../../../containers/threadfin
   ];
-
-  # TODO: remove this after testing vps
-  services.nginx.virtualHosts."redlib.schwem.io" = {
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:8180";
-    };
-  };
 
   networking.hostName = "moltres";
 

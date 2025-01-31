@@ -9,6 +9,7 @@ in {
     2222
   ];
 
+  # TODO: set up load balancing or failover between ny servers
   services.haproxy = {
     enable = true;
     # TODO: WIP: finish converting config into an opt for my needs

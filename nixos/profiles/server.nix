@@ -28,8 +28,6 @@
   services.getty.autologinUser = "root";
 
   sops = {
-    age.keyFile = "/etc/sops/age-keys.txt";
-
     secrets = {
       container_deploy_key = {
         sopsFile = ../../containers/secrets.yaml;

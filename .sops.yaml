@@ -2,13 +2,12 @@ keys:
   - &personal age1rl4wtr4hj2mxp2rcdk2kuahtqmfx7e5meadsukxljl0l054eccksus4s2n
   - &work age1gzstgq4mmvmx40jna6cjhuw7lzkcza3hkzwnnqvv3svemtr8reasqj052x
   - &articuno age1v57lt42hl9et5x7asxad6gkg9ga0gqd7swvnxs3mpuuyhzsspqgqasz3ch
-  - &charizard age1yhsl8v77jja50pgtg6yklddfe2uprs7y2l8lx6595e3sntjj3gjq98he3a
+  - &charizard age1cjhxs524nj7r0z2cmx3kf4vpscj8fxy0wmnxuy6nnfzt4dtahevsskgrus
   - &containers age16vdqvcejdc9arqnjll2tegwskj2yst3ewqwl96nv7dnu6lr6psrq7xrhau
   - &eevee age19tr69celsjf9c4ld8ur49tnxcgg2z676mkm0rdfvhdajg96dkp5qtufu4x
   - &flareon age1l844clz38nt5mq6kg5m0wl64p398dn0j3hm5jzy8ag0d302q5awqep73jx
   - &jolteon age13qley8lnkqspu8yda95vqsvkrnfjmpm6m7e8um9gtm3yd8a4c34spzfx79
   - &machamp age1k5e5uk0897ne5lrvmhhgn6am5cr32l2w7aa4ldapncwluv0rqekspj8w97
-  # - &moltres age1p6ta8m3xng6l73pvff5f4txvrhlpslcuty60tf0ngafw0jru0fnsnrzaxw
   - &moltres age183ss93pcc9vxxscndjktthj3jdrc2vqzg06dyd7kw3htgxsdmedqr3fj9q
   - &pikachu age1rvv0m2d5weqgnsf7cv7k2wv8rkgqd06pcmpf98j98m7mkf2a5gwsr2eqja
   - &tentacool age1k3ejfs0t5xavhw7xje2k7263np65la6ek0a0fz3y926t5qykwvnqxhteps
@@ -20,6 +19,7 @@ creation_rules:
     key_groups:
       - age:
           - *personal
+          - *charizard
           - *schwem-io
 
   - path_regex: nixos/hosts/articuno/secrets.yaml
@@ -89,6 +89,7 @@ creation_rules:
           - *work
           - *containers
           - *articuno
+          - *charizard
           - *eevee
           - *flareon
           - *jolteon
@@ -102,6 +103,7 @@ creation_rules:
           - *personal
           - *containers
           - *articuno
+          - *charizard
           - *eevee
           - *flareon
           - *jolteon
