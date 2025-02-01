@@ -4,11 +4,11 @@
 
     ../../../containers/excalidraw
     ../../server/infrastructure/haproxy
+    ../../server/alt-frontends/freetar.nix
 
     # TODO: decide if this will be one of the servers to load balance redlib on
     # ../../server/alt-frontends/redlib.nix
 
-    #../../server/alt-frontends/freetar.nix
     #../../server/alt-frontends/rimgo.nix
     # ../../server/alt-frontends/scribe
     #../../server/services/searxng

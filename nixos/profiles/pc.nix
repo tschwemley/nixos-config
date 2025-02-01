@@ -54,14 +54,7 @@
     };
 
     resolved.dnsovertls = lib.mkDefault "true";
-    tailscale.extraUpFlags = ["--advertise-tags=tag:pc"];
-  };
-
-  sops = {
-    defaultSopsFile = ../hosts/${config.networking.hostName}/secrets.yaml;
-    age.sshKeyPaths = [];
-    age.keyFile = "/home/schwem/.config/sops/age/keys.txt";
-    gnupg.sshKeyPaths = [];
+    tailscale.extraSetFlags = ["--advertise-tags tag:pc"];
   };
 
   time.timeZone = "America/New_York";

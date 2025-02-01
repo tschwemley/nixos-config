@@ -1,23 +1,26 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  nerdfonts = with pkgs.nerd-fonts; [
+    _0xproto
+    fira-code
+    hasklug
+    iosevka
+    symbols-only
+  ];
+in {
   environment.systemPackages = with pkgs; [
     fontconfig
   ];
 
   fonts = {
-    packages = with pkgs; [
-      fira-code
-      hasklig
-      nerd-fonts.hasklug
-      nerd-fonts.symbols-only
-      noto-fonts-emoji
-    ];
+    fontconfig.enable = true;
+    fontDir.enable = true;
 
-    fontconfig = {
-      enable = true;
-      # TODO: useful for oled? test with secondary monitor
-      # antialias = true;
-      # hinting.enable = true;
-      # subpixel.rgba = "rgb";
-    };
+    packages = with pkgs;
+      [
+        hasklig
+        inter # used for reaper theme(s)
+        noto-fonts-emoji
+      ]
+      ++ nerdfonts;
   };
 }

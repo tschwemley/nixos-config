@@ -44,7 +44,6 @@
       imports = [../../home/profiles/pc.nix];
 
       sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
-      # sops.age.keyFile = "/home/schwem/.config/sops/age/keys.txt";
       systemd.user.settings.Manager.DefaultLimitNOFILE = "524288"; # for lutris
     };
   };

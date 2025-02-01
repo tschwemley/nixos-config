@@ -6,7 +6,7 @@
     ../../server/arr/usenet
     ../../server/development/forgejo
     ../../server/infrastructure/postgresql
-    ../../server/services/webhooks
+    # ../../server/services/webhooks
 
     # ../../server/services/pyload.nix TODO: pyload is being a piece of shit
 
