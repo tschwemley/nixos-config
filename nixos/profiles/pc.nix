@@ -34,7 +34,6 @@
     ../security/onlykey.nix
 
     ../system/documentation.nix
-    ../system/fonts.nix
     ../system/greetd.nix
     ../system/security.nix
   ];

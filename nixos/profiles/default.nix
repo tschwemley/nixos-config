@@ -24,6 +24,7 @@ in {
     ../services/fwupd.nix
     ../services/rclone
 
+    ../system/fonts.nix
     ../system/nix.nix
     ../system/nixpkgs.nix
     ../system/tty.nix
