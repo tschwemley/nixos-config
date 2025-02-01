@@ -14,8 +14,9 @@ buildGoModule rec {
     hash = "sha256-hvcOJctvNswEws+cCoeGQSvFzZvnThhKk3fJ7TnNulY=";
   };
 
-  CGO_ENABLED = 0;
   vendorHash = "sha256-P3kUGFJhj/pTNeVTwtg4IqhoHBH9rROfkr+ZsrUtmdo=";
+
+  env.CGO_ENABLED = 0;
 
   installPhase = ''
     runHook preInstall
