@@ -1,4 +1,5 @@
 {
+  self,
   config,
   lib,
   pkgs,
@@ -10,8 +11,10 @@
 
     services.tailscale = {
       enable = true;
+      package = self.packages.${pkgs.system}.tailscale;
 
       authKeyFile = config.sops.secrets.tailscale_auth_key.path;
+      disableTaildrop = true;
       extraUpFlags = ["--ssh"];
       openFirewall = true;
       useRoutingFeatures = "both"; # sets reverse path 'loose' + ip forwarding

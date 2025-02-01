@@ -6,6 +6,7 @@
     home-manager,
     nix-on-droid,
     nixpkgs,
+    nixpkgs-master,
     systems,
     ...
   } @ inputs: let
@@ -17,7 +18,7 @@
         system: let
           nixpkgs' = (import ./nixos/system/nixpkgs.nix {inherit self inputs;}).nixpkgs;
         in
-          import nixpkgs {
+          import nixpkgs-master {
             inherit system;
             inherit (nixpkgs') config overlays;
           }
@@ -46,6 +47,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     systems.url = "github:nix-systems/default-linux";

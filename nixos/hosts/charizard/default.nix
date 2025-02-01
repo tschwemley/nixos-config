@@ -30,9 +30,12 @@ in {
     ollama
     open-webui
     user
-    ./secrets.nix
-    ../../system/boot/systemd.nix
+
     ../../profiles/pc.nix
+    ../../system/boot/systemd.nix
+
+    # TODO: remove this after testing and move to default
+    ../../system/repl.nix
   ];
 
   boot = {
@@ -45,12 +48,8 @@ in {
         "uas"
         "sd_mod"
       ];
-      kernelModules = [
-        "amdgpu"
-        "kvm-intel"
-      ];
+      kernelModules = ["kvm-intel"];
     };
-    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   home-manager.users.schwem = {
@@ -72,15 +71,17 @@ in {
         "3, monitor:${primary}"
         "4, monitor:${primary}"
 
-        "5, monitor:${secondary}, default:true"
-        "6, monitor:${secondary}"
-        "7, monitor:${secondary}"
-        "8, monitor:${secondary}"
+        # NOTE: disabled while seconary monitor is down
+        # "5, monitor:${secondary}, default:true"
+        # "6, monitor:${secondary}"
+        # "7, monitor:${secondary}"
+        # "8, monitor:${secondary}"
       ];
     };
   };
 
   networking = {
+    enableIPv6 = true;
     hostName = "charizard";
     networkmanager.enable = true;
     useDHCP = lib.mkDefault true;
@@ -91,32 +92,25 @@ in {
 
   # systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
-  services.tailscale.extraUpFlags = [
-    "--exit-node-allow-lan-access=true"
+  services.tailscale.extraSetFlags = [
     "--exit-node=us-chi-wg-302.mullvad.ts.net"
+    "--exit-node-allow-lan-access=true"
   ];
 
   # TODO: move below here elsewhere
   # ---
 
-  # TODO: virtualisation/vm
-  # environment.systemPackages = with pkgs; [
-  #   libguestfs
-  #   qemu
-  #   quickemu
-  # ];
-
   hardware.opentabletdriver.enable = true;
 
-  systemd.services.tailscaled-autoconnect = let
-    after = lib.mkDefault [
-      "systemd-networkd"
-      "tailscaled.service"
-    ];
-    wants = after;
-  in {
-    inherit after wants;
-  };
+  # systemd.services.tailscaled-autoconnect = let
+  #   after = lib.mkDefault [
+  #     "systemd-networkd"
+  #     "tailscaled.service"
+  #   ];
+  #   wants = after;
+  # in {
+  #   inherit after wants;
+  # };
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [

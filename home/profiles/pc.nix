@@ -1,5 +1,4 @@
 {
-  # TODO: uncomment below after unfucking my shit up for the asdfa321349873210348723 time
   imports = [
     ./.
     ../programs/ai
@@ -10,8 +9,9 @@
     ../programs/gtk
     ../programs/media
     ../programs/music
+    ../programs/neovide.nix
 
-    # ../programs/aseprite.nix
+    # ../programs/aseprite.nix TODO: fix for python plugin
     ../programs/bambu-studio.nix
     ../programs/bitwarden.nix
     ../programs/glow.nix
@@ -20,9 +20,7 @@
     ../programs/libreoffice.nix
     ../programs/qt.nix
     ../programs/rustdesk.nix
-    # ../programs/tailscale-systray.nix
-    # ../programs/tigervnc.nix
-    ../programs/wayland/hyprland.nix
+    ../programs/wayland/hyprland
     ../programs/wcalc.nix
     ../programs/wofi.nix
 
@@ -40,7 +38,9 @@
 
     # TODO: go through and decide which to keep and which to remove
     # ../programs/cad.nix
+    # ../programs/tailscale-systray.nix
     # ../programs/taskwarrior.nix
+    # ../programs/tigervnc.nix
   ];
 
   home = {
@@ -58,12 +58,6 @@
       "ssh://gh" = {
         insteadOf = "https://github.com";
       };
-    };
-
-    # TODO: remove this or move out
-    neovide = {
-      enable = true;
-      settings = {};
     };
   };
 }

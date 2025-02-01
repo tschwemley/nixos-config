@@ -10,7 +10,6 @@
     ../programs/ripgrep.nix
     ../programs/thefuck.nix
 
-    # ../terminal/shell
     ../terminal
 
     ../xdg/ssh/default.nix
@@ -18,5 +17,5 @@
 
   home.sessionVariables.TERM = "kitty";
   home.stateVersion = "24.11";
-  # sops.defaultSopsFile = ../secrets.yaml;
+  sops.age.keyFile = "/etc/sops/age-keys.txt";
 }
