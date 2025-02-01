@@ -12,5 +12,6 @@
   lgroups = "bat /etc/group";
   lusers = "bat /etc/passwd";
   randstr = "head /dev/urandom | tr -dc A-Za-z0-9 | head -c10";
+  run = ",";
   userctl = "systemctl --user";
 }
