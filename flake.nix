@@ -45,6 +45,7 @@
     };
 
     overlays = import ./overlays.nix {inherit inputs self;};
+    templates = import ./templates;
   };
 
   inputs = {
