@@ -30,7 +30,6 @@ in {
     hardware
     networking
     user
-    ./secrets.nix
     ../../system/boot/systemd.nix
     ../../profiles/pc.nix
   ];
