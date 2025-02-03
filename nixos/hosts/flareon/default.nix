@@ -18,16 +18,6 @@ in {
     [
       inputs.stash.nixosModules.default
 
-      # extra storage drives
-      # (import ../../hardware/disks/block-storage.nix {
-      #   device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi2";
-      #   mountpoint = "storage2";
-      # })
-      # (import ../../hardware/disks/block-storage.nix {
-      #   device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi3";
-      #   mountpoint = "storage3";
-      # })
-
       ../../profiles/proxmox.nix
       ../../services/samba.nix
     ]
@@ -39,17 +29,16 @@ in {
   system.stateVersion = "23.05";
 
   services = {
-    rclone = {
-      enableJolteon = true;
-      enableZapados = true;
-    };
+    # TODO: remove this after refactoring rclone imports (or making explicit module)
+    rclone.enableJolteon = true;
 
     # TODO: remove this after refactoring sabnzbd config/module
     sabnzbd.enable = lib.mkDefault false;
 
     # TODO: reenable after fixing port collision
     # servarr.enableWhisparr = true;
-    tailscale.extraUpFlags = [
+
+    tailscale.extraSetFlags = [
       "--exit-node=us-chi-wg-301-1.mullvad.ts.net"
       "--exit-node-allow-lan-access=true"
     ];
