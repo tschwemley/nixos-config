@@ -3,43 +3,37 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    systems.url = "github:nix-systems/default-linux";
   };
 
-  outputs = inputs @ {
-    flake-parts,
+  outputs = {
     nixpkgs,
+    systems,
     ...
-  }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = [
-        "x86_64-linux"
-      ];
-
-      perSystem = {
-        config,
-        pkgs,
-        system,
-        ...
-      }: {
-        # makes pkgs available to all perSystem functions
-        _module.args.pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
-
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            go
-            (writeShellScriptBin "modupdate" "go get -u -t ./...")
-          ];
-        };
-
-        packages.default = pkgs.buildGoModule {
-          name = "";
-          src = ./.;
-          vendorHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-        };
+  }: let
+    inherit (nixpkgs) lib;
+    eachSystem = lib.genAttrs (import systems);
+    systemPkgs = system: nixpkgs.legacyPackages.${system};
+  in {
+    devShells = eachSystem (system: let
+      pkgs = systemPkgs system;
+    in {
+      default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          go
+          (writeShellScriptBin "modupdate" "go get -u -t ./...")
+        ];
       };
-    };
+    });
+
+    packages = eachSystem (system: let
+      pkgs = systemPkgs system;
+    in {
+      default = pkgs.buildGoModule {
+        name = "";
+        src = ./.;
+        vendorHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+      };
+    });
+  };
 }
