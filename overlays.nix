@@ -1,0 +1,5 @@
+{
+  inputs,
+  packages,
+}: {
+}

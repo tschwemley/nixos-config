@@ -11,12 +11,10 @@ in {
   services.prometheus = {
     enable = true;
 
-    # TODO: make this not shit
     scrapeConfigs = [
       (mkNodeExporterScrapeConfig "articuno")
       (mkNodeExporterScrapeConfig "zapados")
       (mkNodeExporterScrapeConfig "moltres")
-      (mkNodeExporterScrapeConfig "eevee")
       (mkNodeExporterScrapeConfig "flareon")
       (mkNodeExporterScrapeConfig "jolteon")
     ];
