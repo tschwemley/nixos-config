@@ -28,7 +28,6 @@
     ../services/colord.nix
     ../services/dbus.nix
     ../services/gnome.nix
-    ../services/rclone/zapados.nix
     ../services/upower.nix
 
     ../security/onlykey.nix
@@ -53,7 +52,7 @@
     };
 
     resolved.dnsovertls = lib.mkDefault "true";
-    tailscale.extraSetFlags = ["--advertise-tags tag:pc"];
+    tailscale.extraUpFlags = ["--advertise-tags tag:pc"];
   };
 
   time.timeZone = "America/New_York";
