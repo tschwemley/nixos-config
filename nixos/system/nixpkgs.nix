@@ -4,16 +4,19 @@
   ...
 }: {
   nixpkgs = {
-    config = {
-      allowUnfree = true;
-      permittedInsecurePackages = [
-        # "aspnetcore-runtime-6.0.36"
-        # "dotnet-sdk-6.0.428"
-        # "electron-31.7.7" # TODO: fix electron version
-      ];
-    };
+    config.allowUnfree = true;
 
     overlays = [
+      # hyprland overlays
+      # inputs.hypridle.overlays.default
+      # inputs.hyprland.overlays.default
+      # inputs.hyprland-plugins.overlays.default
+      # inputs.hyprlock.overlays.default
+      # inputs.hyprpaper.overlays.default
+
+      # self.overlays.zen-browser
+
+      # TODO: just move this to flake.overlays and then import the same as overlays above
       (final: _: {
         inherit
           (self.packages.${final.pkgs.system})
@@ -27,9 +30,7 @@
         inherit
           (inputs.nixpkgs-stable.legacyPackages.${final.system})
           bambu-studio
-          # hyprland
-          # hyprlandPlugins
-          rocmPackages
+          # rocmPackages
           ;
 
         inherit (inputs.zen-browser.packages.${final.system}) zen-browser;

@@ -45,8 +45,8 @@ in {
     #   options snd-hda-intel dmic_detect=0
     # '';
 
-    kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = ["snd-intel-dspcfg.dsp_driver=1"];
+    # kernelPackages = pkgs.linuxPackages_latest;
+    # kernelParams = ["snd-intel-dspcfg.dsp_driver=1"];
 
     # blacklistedKernelModules = [
     #   "snd_soc_avs"
