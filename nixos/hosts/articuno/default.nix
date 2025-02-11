@@ -1,12 +1,13 @@
-let
-  storageDisks = [
-    (import ../../hardware/disks/block-storage.nix {device = "/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-28656";})
-    (import ../../hardware/disks/block-storage.nix {
-      device = "/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-28639";
-      mountpoint = "/storage2";
-    })
-  ];
-in {
+# let
+# storageDisks = [
+#   (import ../../hardware/disks/block-storage.nix {device = "/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-28656";})
+#   (import ../../hardware/disks/block-storage.nix {
+#     device = "/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-28639";
+#     mountpoint = "/storage2";
+#   })
+# ];
+# in {
+{
   imports = [
     (import ../../profiles/buyvm.nix "")
 

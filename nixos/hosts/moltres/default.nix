@@ -2,10 +2,11 @@
   imports = [
     ../../profiles/racknerd.nix
 
+    ../../server/ai/open-webui.nix
+    ../../server/ai/sillytavern.nix
     ../../server/alt-frontends/freetar.nix
     ../../server/knowledge/excalidraw
     ../../server/infrastructure/haproxy
-    ../../server/services/open-webui.nix
 
     # TODO: decide if this will be one of the servers to load balance redlib on
     # ../../server/alt-frontends/redlib.nix
