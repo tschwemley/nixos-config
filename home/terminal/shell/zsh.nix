@@ -1,5 +1,9 @@
-{config, ...}: let
-  shellAliases = import ./aliases;
+{
+  config,
+  lib,
+  ...
+}: let
+  shellAliases = import ./aliases lib;
 in {
   # home.file.".zsh_completions".source = ./completions;
 
