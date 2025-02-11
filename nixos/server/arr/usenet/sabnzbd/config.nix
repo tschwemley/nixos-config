@@ -45,7 +45,7 @@ in {
           language = en
           enable_https_verification = 1
           host = 0.0.0.0
-          port = ${config.portMap.sabnzbd}
+          port = ${self.lib.port-map.sabnzbd}
           https_port = ""
           username = ""
           password = ""

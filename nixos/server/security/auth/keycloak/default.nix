@@ -62,6 +62,10 @@ in {
     };
   };
 
+  services.postgresql.authentication = ''
+    host    nyx   sneaks   100.64.0.0/10 scram-sha-256  # Tailscale network
+  '';
+
   sops.secrets.keycloak_db_password = {
     sopsFile = "${self.lib.secrets.server}/keycloak.yaml";
     mode = "0444";

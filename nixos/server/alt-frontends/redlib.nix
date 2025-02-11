@@ -1,10 +1,14 @@
-{config, lib, ...}: let
+{
+  self,
+  lib,
+  ...
+}: let
   address = "127.0.0.1";
 in {
   services = {
     nginx.virtualHosts."reddit.schwem.io" = {
       locations."/" = {
-        proxyPass = "http://${address}:${config.portMap.redlib}";
+        proxyPass = "http://${address}:${self.lib.port-map.redlib}";
       };
     };
 
@@ -12,7 +16,7 @@ in {
       enable = true;
 
       inherit address;
-      port = lib.toInt config.portMap.redlib;
+      port = lib.toInt self.lib.port-map.redlib;
       settings = {
         REDLIB_ROBOTS_DISABLE_INDEXING = "on";
         REDLIB_DEFAULT_THEME = "gruvboxdark";
@@ -30,7 +34,7 @@ in {
   # virtualisation.oci-containers.containers."redlib" = {
   #   autoStart = true;
   #   image = "quay.io/redlib/redlib:latest";
-  #   ports = ["${listenAddress}:${config.portMap.redlib}:8080"];
+  #   ports = ["${listenAddress}:${self.lib.port-map.redlib}:8080"];
   #   extraOptions = ["--pull=always"];
   #   environment = {
   #     # see: https://github.com/redlib-org/redlib?tab=readme-ov-file#configuration

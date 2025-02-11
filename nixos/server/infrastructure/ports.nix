@@ -1,12 +1,5 @@
-{lib, ...}: {
-  options.portMap = with lib;
-    mkOption {
-      type = types.attrsOf types.str;
-      default = {};
-      description = "Map of server app/service name to port(s) used. Used to avoid collisions.";
-    };
-
-  config.portMap = {
+{
+  variables.ports = {
     anonymous-overflow = "8010";
     binternet = "8009";
     dashboard = "6980";

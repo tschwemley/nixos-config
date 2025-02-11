@@ -1,8 +1,10 @@
-{ config, lib, ... }:
-let
-  domain = "yt.schwem.io";
-in
 {
+  self,
+  lib,
+  ...
+}: let
+  domain = "yt.schwem.io";
+in {
   services.nginx.virtualHosts.${domain}.enableACME = lib.mkForce false;
 
   services.invidious = {
@@ -11,7 +13,7 @@ in
     enable = true;
     http3-ytproxy.enable = true;
     nginx.enable = true;
-    port = config.portMap.invidious;
+    port = self.lib.port-map.invidious;
     settings = {
       banner = "nyx nyx nyx";
       continue = true;

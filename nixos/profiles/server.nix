@@ -13,7 +13,7 @@
     ../server/infrastructure/haproxy/options.nix
     ../server/infrastructure/monitoring/prometheus/node-exporter.nix
     ../server/infrastructure/nginx
-    ../server/infrastructure/port-map.nix
+    ../server/infrastructure/ports.nix
     ../server/security/auth/oidcproxy
   ];
 

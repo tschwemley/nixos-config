@@ -1,5 +1,5 @@
 {
-  config,
+  self,
   pkgs,
   utils,
   ...
@@ -11,8 +11,8 @@
     # Basic startup
     "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox"
     "--confirm-legal-notice"
-    "--webui-port=${config.portMap.qtbittorrentWeb}"
-    "--torrenting-port=${config.portMap.qtbittorrentTorrent}"
+    "--webui-port=${self.lib.port-map.qtbittorrentWeb}"
+    "--torrenting-port=${self.lib.port-map.qtbittorrentTorrent}"
     "--profile=/var/lib/qbittorrent-nox"
   ];
 in {

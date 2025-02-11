@@ -1,4 +1,5 @@
 {
+  self,
   config,
   lib,
   ...
@@ -76,7 +77,7 @@
         # limiter = true;
         limiter = false;
         method = "GET";
-        port = lib.strings.toInt config.portMap.searxng;
+        port = lib.strings.toInt self.lib.port-map.searxng;
         public_instance = true;
         secret_key = config.sops.secrets.searxng_secret.path;
       };

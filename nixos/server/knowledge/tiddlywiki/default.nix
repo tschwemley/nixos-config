@@ -1,5 +1,5 @@
 {
-  config,
+  self,
   pkgs,
   ...
 }: {
@@ -17,7 +17,7 @@
     nginx.upstreams = {
       "tiddlywiki" = {
         servers = {
-          "127.0.0.1:${config.portMap.tiddlywiki}" = {};
+          "127.0.0.1:${self.lib.port-map.tiddlywiki}" = {};
         };
       };
     };
@@ -27,7 +27,7 @@
       listenOptions = {
         # for available options see: https://tiddlywiki.com/#WebServer
         host = "127.0.0.1";
-        port = config.portMap.tiddlywiki;
+        port = self.lib.port-map.tiddlywiki;
       };
     };
   };

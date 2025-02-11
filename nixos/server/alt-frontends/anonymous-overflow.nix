@@ -1,24 +1,22 @@
 {
-  config,
+  self,
   pkgs,
   ...
-}:
-let
+}: let
   pkg = pkgs.anonymous-overflow;
 
   runDir = "/var/run/anonymous-overflow";
   stateDir = "/var/lib/anonymous-overflow";
-in
-{
+in {
   services.nginx = {
     virtualHosts."so.schwem.io" = {
       locations."/" = {
-        proxyPass = "http://127.0.0.1:${config.portMap.anonymous-overflow}";
+        proxyPass = "http://127.0.0.1:${self.lib.port-map.anonymous-overflow}";
       };
     };
   };
 
-  users.groups.anonymous-overflow = { };
+  users.groups.anonymous-overflow = {};
   users.users.anonymous-overflow = {
     isSystemUser = true;
     group = "anonymous-overflow";
@@ -35,16 +33,16 @@ in
 
   systemd.services.anonymous-overflow = {
     description = "Alternative front end for stack overflow";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
+    wantedBy = ["multi-user.target"];
+    after = ["network.target"];
 
     environment = {
       APP_URL = "https://so.schwem.io";
       JWT_SIGNING_SECRET = "thisisasecretchangeme";
-      PORT = config.portMap.anonymous-overflow;
+      PORT = self.lib.port-map.anonymous-overflow;
     };
 
-    path = [ pkg ];
+    path = [pkg];
 
     serviceConfig = {
       Type = "simple";

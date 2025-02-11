@@ -1,6 +1,6 @@
 # Auto-generated using compose2nix v0.2.3.
 {
-  config,
+  self,
   pkgs,
   lib,
   ...
@@ -27,7 +27,7 @@
             "/home/schwem/nixos-config/data:/data:rw"
           ];
           ports = [
-            "${config.portMap.archiveboxWeb}:8000/tcp"
+            "${self.lib.port-map.archiveboxWeb}:8000/tcp"
           ];
           log-driver = "journald";
           extraOptions = [
@@ -60,7 +60,7 @@
             "RUN_XTERM" = "no";
           };
           ports = [
-            "${config.portMap.archiveboxNovnc}:8080/tcp"
+            "${self.lib.port-map.archiveboxNovnc}:8080/tcp"
           ];
           log-driver = "journald";
           extraOptions = [

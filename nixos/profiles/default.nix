@@ -19,6 +19,7 @@ in {
     ../programs
     ../programs/home-manager.nix
     ../programs/less.nix
+    ../programs/systemutils.nix
     ../programs/zsh.nix
 
     ../services/fwupd.nix
@@ -28,9 +29,10 @@ in {
     ../system/nix.nix
     ../system/nixpkgs.nix
     ../system/tty.nix
+    ../system/variables.nix
   ];
 
-  environment.sessionVariables.TERM = "kitty";
+  environment.sessionVariables.TERM = "wezterm";
   hardware.enableRedistributableFirmware = true;
 
   # set here by default since at any given time most/all my configs are x86_64-linux

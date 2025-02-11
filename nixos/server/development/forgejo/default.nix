@@ -1,11 +1,12 @@
 {
+  self,
   config,
   lib,
   pkgs,
   ...
 }: let
   listenAddr = "127.0.0.1";
-  listenPort = config.portMap.forgejo;
+  listenPort = self.lib.port-map.forgejo;
 in {
   environment = {
     systemPackages = [

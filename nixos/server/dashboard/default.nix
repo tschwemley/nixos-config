@@ -20,7 +20,7 @@ in {
     nginx.upstreams = {
       "dashboard" = {
         servers = {
-          "127.0.0.1:${config.portMap.dashboard}" = {};
+          "127.0.0.1:${self.lib.port-map.dashboard}" = {};
         };
       };
     };
@@ -36,7 +36,7 @@ in {
       SyslogIdentifier = "dashboard";
       WorkingDirectory = stateDir;
 
-      ExecStart = "${pkg}/bin/dashboard -e ${config.sops.secrets.dashboard_env.path} -p ${config.portMap.dashboard} -static-path ${staticPath}";
+      ExecStart = "${pkg}/bin/dashboard -e ${config.sops.secrets.dashboard_env.path} -p ${self.lib.port-map.dashboard} -static-path ${staticPath}";
       Restart = "on-failure";
       RestartSec = 30;
 

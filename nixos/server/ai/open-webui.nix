@@ -17,7 +17,7 @@
       upstreams = {
         "open-webui" = {
           servers = {
-            "127.0.0.1:${config.portMap.open-webui}" = {};
+            "127.0.0.1:${self.lib.port-map.open-webui}" = {};
           };
         };
       };
@@ -27,7 +27,7 @@
       enable = true;
       environmentFile = config.sops.templates.open-webui-env.path;
       package = pkgs.open-webui;
-      port = lib.strings.toInt config.portMap.open-webui;
+      port = lib.strings.toInt self.lib.port-map.open-webui;
     };
   };
 
@@ -60,7 +60,7 @@
           # General
           ENV=prod
           #DATABASE_URL=${placeholder.openwebui_database_url}
-          PORT=${config.portMap.open-webui}
+          PORT=${self.lib.port-map.open-webui}
 
           DEFAULT_MODELS=deepseek/deepseek-chat
           #RESET_CONFIG_ON_START=True # resets the config.json file on startup
