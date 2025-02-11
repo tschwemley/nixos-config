@@ -6,25 +6,22 @@
     home-manager,
     nix-on-droid,
     nixpkgs,
-    nixpkgs-master,
     systems,
     ...
   } @ inputs: let
     lib = import ./lib.nix (nixpkgs.lib // home-manager.lib);
 
-    systemPackages =
-      lib.genAttrs (import systems)
-      (
-        system: let
-          nixpkgs' = (import ./nixos/system/nixpkgs.nix {inherit self inputs;}).nixpkgs;
-        in
-          import nixpkgs-master {
-            inherit system;
-            inherit (nixpkgs') config overlays;
-          }
-      );
+    pkgsForSystem = lib.genAttrs (import systems) (
+      system: let
+        nixpkgs' = (import ./nixos/system/nixpkgs.nix {inherit self inputs;}).nixpkgs;
+      in
+        import nixpkgs {
+          inherit system;
+          inherit (nixpkgs') config overlays;
+        }
+    );
 
-    eachSystem = fn: lib.genAttrs (import systems) (system: fn systemPackages.${system});
+    eachSystem = fn: lib.genAttrs (import systems) (system: fn pkgsForSystem.${system});
     hosts = lib.attrNames (builtins.readDir ./nixos/hosts);
   in {
     inherit lib;
@@ -65,49 +62,56 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/hyprland";
+    # hyprland.url = "github:hyprwm/hyprland";
+    #
+    # hyprland-contrib = {
+    #   url = "github:hyprwm/contrib";
+    #   inputs.nixpkgs.follows = "hyprland/nixpkgs";
+    # };
+    #
+    # hyprland-plugins = {
+    #   url = "github:hyprwm/hyprland-plugins";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
+    #
+    # hypridle = {
+    #   url = "github:hyprwm/hypridle";
+    #   inputs = {
+    #     hyprlang.follows = "hyprland/hyprlang";
+    #     hyprutils.follows = "hyprland/hyprutils";
+    #     nixpkgs.follows = "hyprland/nixpkgs";
+    #     systems.follows = "hyprland/systems";
+    #   };
+    # };
+    #
+    # hyprlock = {
+    #   url = "github:hyprwm/hyprlock";
+    #   inputs = {
+    #     hyprgraphics.follows = "hyprland/hyprgraphics";
+    #     hyprlang.follows = "hyprland/hyprlang";
+    #     hyprutils.follows = "hyprland/hyprutils";
+    #     nixpkgs.follows = "hyprland/nixpkgs";
+    #     systems.follows = "hyprland/systems";
+    #   };
+    # };
+    #
+    # hyprpaper = {
+    #   url = "github:hyprwm/hyprpaper";
+    #   inputs = {
+    #     hyprgraphics.follows = "hyprland/hyprgraphics";
+    #     hyprlang.follows = "hyprland/hyprlang";
+    #     hyprutils.follows = "hyprland/hyprutils";
+    #     nixpkgs.follows = "hyprland/nixpkgs";
+    #     systems.follows = "hyprland/systems";
+    #   };
+    # };
 
-    hypridle = {
-      url = "github:hyprwm/hypridle";
-      inputs = {
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprutils.follows = "hyprland/hyprutils";
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
-      };
+    neovim-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "hyprland/nixpkgs";
-    };
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs = {
-        hyprgraphics.follows = "hyprland/hyprgraphics";
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprutils.follows = "hyprland/hyprutils";
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
-      };
-    };
-
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-      inputs = {
-        hyprgraphics.follows = "hyprland/hyprgraphics";
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprutils.follows = "hyprland/hyprutils";
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
-      };
-    };
+    nil.url = "github:oxalica/nil";
 
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-24.05";
@@ -115,11 +119,7 @@
     };
 
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
-
-    neovim-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-topology.url = "github:oddlama/nix-topology";
 
     # scribe = {
     #   url = "sourcehut:~edwardloveall/scribe/main";
