@@ -1,18 +1,12 @@
-{config, ...}: {
-  fileSystems."/mnt/flareon" = {
-    device = "flareon:/storage";
-    fsType = "rclone";
-    options = [
-      "nodev"
-      "nofail"
-      "allow_other"
-      "args2env"
-      "vfs-cache-mode=writes"
-      "config=${config.sops.secrets."rclone.conf".path}"
-      "metadata"
-    ];
-  };
-
+mkRcloneFSOptions: let
+  host = "flareon";
+  paths = [
+    "storage"
+    "storage2"
+    "storage3"
+  ];
+in {
+  fileSystems = mkRcloneFSOptions host paths;
   sops.secrets.rclone_flareon_key = {
     key = "user_ssh_key";
     mode = "0600";

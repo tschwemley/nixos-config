@@ -49,6 +49,7 @@
       enableFlareon = true;
       enableJolteon = true;
       enableTentacool = true;
+      enableZapados = true;
     };
 
     resolved.dnsovertls = lib.mkDefault "true";

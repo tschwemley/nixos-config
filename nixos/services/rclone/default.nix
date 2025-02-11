@@ -7,82 +7,41 @@
 }: let
   cfg = config.services.rclone;
 
-  inherit (lib) mkEnableOption mkIf;
+  options = [
+    "allow_other"
+    "args2env"
+    "config=${config.sops.secrets."rclone.conf".path}"
+    "metadata"
+    "nodev"
+    "nofail"
+    "vfs-cache-mode=writes"
+  ];
+  fsType = "rclone";
 
-  # FIXME: this is dogshit
-  fileSystems =
-    ((lib.lists.foldr (name: fs:
-      fs
-      // {
-        "/mnt/${name}" =
-          mkIf (
-            (name == "flareon" && cfg.enableFlareon)
-            || (name == "jolteon" && cfg.enableJolteon)
-            || (name == "tentacool" && cfg.enableTentacool)
-            || (name == "zapados" && cfg.enableZapados)
-          ) {
-            device = "${name}:/storage";
-            fsType = "rclone";
-            options = [
-              "nodev"
-              "nofail"
-              "allow_other"
-              "args2env"
-              "vfs-cache-mode=writes"
-              "config=${config.sops.secrets."rclone.conf".path}"
-              "metadata"
-            ];
-          };
-      }) {}) ["flareon" "jolteon" "tentacool" "zapados"])
-    // {};
-
-  tmpFileRules = let
-    mkRule = name: "d /mnt/${name} 0775 root root - -";
-  in
-    (
-      if cfg.enableFlareon
-      then [(mkRule "flareon")]
-      else []
-    )
-    ++ (
-      if cfg.enableJolteon
-      then [(mkRule "jolteon")]
-      else []
-    )
-    ++ (
-      if cfg.enableTentacool
-      then [(mkRule "tentacool")]
-      else []
-    )
-    ++ (
-      if cfg.enableZapados
-      then [(mkRule "zapados")]
-      else []
-    );
+  mkRcloneFSOptions = host: paths:
+    lib.listToAttrs (map (path:
+      lib.nameValuePair "/mnt/${host}/${path}" {
+        inherit fsType options;
+        device = "${host}:/${path}";
+      })
+    paths);
 in {
-  options = {
-    services.rclone = {
-      enableFlareon = mkEnableOption "flareon";
-      enableJolteon = mkEnableOption "jolteon";
-      enableTentacool = mkEnableOption "tentacool";
-      enableZapados = mkEnableOption "zazpados";
-    };
-  };
+  imports = [
+    ./options.nix
+    (lib.mkIf cfg.enableJolteon (import ./jolteon.nix mkRcloneFSOptions))
+    (lib.mkIf cfg.enableFlareon (import ./flareon.nix mkRcloneFSOptions))
+    (lib.mkIf cfg.enableTentacool (import ./tentacool.nix mkRcloneFSOptions))
+    (lib.mkIf cfg.enableZapados (import ./zapados.nix mkRcloneFSOptions))
+  ];
 
-  config = {
-    inherit fileSystems;
+  environment.systemPackages = [pkgs.rclone];
 
-    environment.systemPackages = [pkgs.rclone];
+  sops.secrets."rclone.conf" = {
+    owner = "root";
+    group = "users";
 
-    sops.secrets."rclone.conf" = {
-      owner = "root";
-      group = "users";
-
-      mode = "0774";
-      path = "/etc/rclone/rclone.conf";
-      sopsFile = "${self.lib.secrets.nixos}/rclone.yaml";
-    };
-
-    systemd.tmpfiles.rules = tmpFileRules;
+    mode = "0774";
+    path = "/etc/rclone/rclone.conf";
+    sopsFile = "${self.lib.secrets.nixos}/rclone.yaml";
   };
 }
