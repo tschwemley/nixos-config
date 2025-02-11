@@ -5,6 +5,7 @@
     ../programs/browsers
     ../programs/communication
     ../programs/creative
+    ../programs/development/bruno.nix
     ../programs/development/dbgate.nix
     ../programs/gtk
     ../programs/media
@@ -12,7 +13,7 @@
     ../programs/neovide.nix
 
     # ../programs/aseprite.nix TODO: fix for python plugin
-    ../programs/bambu-studio.nix
+    # ../programs/bambu-studio.nix
     ../programs/bitwarden.nix
     ../programs/glow.nix
     ../programs/khal.nix
