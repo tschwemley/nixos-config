@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = let
-    repl_path = toString ./.;
+    repl_path = toString ../..;
     nrepl = pkgs.writeShellScriptBin "nrepl" ''
       source /etc/set-environment
       nix repl "${repl_path}/repl.nix" "$@"

@@ -1,6 +1,4 @@
 lib: let
-  collectGarbage = "sudo nix-collect-garbage -d && sudo nix-store --gc && nix-collect-garbage -d && nix-store --gc";
-
   buildHosts = lib.mapAttrs' (
     host: _: {
       name = "build-${host}";
@@ -11,10 +9,9 @@ in
   {
     cdnix = "cd ~/nixos-config";
     hms = "nix run home-manager/master -- switch --flake ";
-    ncg = collectGarbage;
     nfc = "nix flake check";
     nfu = "nix flake update && git add flake.lock && git commit -m 'flake update' && git push origin main";
-    ngc = collectGarbage;
+    ngc = "sudo nix-collect-garbage --delete-older-than 3d && sudo nix-store --gc --delete-older-than 3d";
     nixconf = "cd ~/nixos-config";
     nrbs = "sudo nixos-rebuild switch --flake .#$HOST";
     # nrepl = "cd ~/nixos-config && nix repl -f ./nixos/system/repl.nix && cd -";
