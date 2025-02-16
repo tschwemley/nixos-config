@@ -9,7 +9,7 @@
     systems,
     ...
   } @ inputs: let
-    lib = import ./lib.nix (nixpkgs.lib // home-manager.lib);
+    lib = import ./lib (nixpkgs.lib // home-manager.lib);
 
     pkgsForSystem = lib.genAttrs (import systems) (
       system: let
