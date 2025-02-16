@@ -4,5 +4,7 @@
     reaper
     sonic-pi
     supercollider
+    yabridge
+    yabridgectl
   ];
 }
