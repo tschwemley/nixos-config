@@ -11,6 +11,8 @@
 
     ./.
 
+    ../development/android.nix
+
     ../hardware/audio
     ../hardware/flipperzero.nix
 
