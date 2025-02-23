@@ -1,6 +1,6 @@
 {
+  self,
   config,
-  secretsPath,
   ...
 }: {
   imports = [./.];
@@ -17,7 +17,7 @@
 
   sops.secrets = {
     "git.schwem.io.deploy.key" = {
-      sopsFile = "${secretsPath}/nixos/ssh.yaml";
+      sopsFile = "${self.lib.secrets.nixos}/ssh.yaml";
       mode = "0600";
     };
   };

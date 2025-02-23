@@ -71,7 +71,7 @@ in {
         acl domain_twitch hdr(host) -i twitch.schwem.io twitch.api.schwem.io
         acl domain_wiki hdr(host) -i wiki.schwem.io
 
-        use_backend articuno if domain_ai
+        use_backend moltres if domain_ai
         use_backend auth if domain_auth
         use_backend articuno if domain_default
         use_backend articuno if domain_cyberchef
@@ -141,9 +141,13 @@ in {
         http-request set-header X-Forwarded-Proto https
         server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
+      backend moltres
+        http-request set-header X-Forwarded-Proto https
+        server moltres moltres:8080 check send-proxy
+
       backend monitor
         http-request set-header X-Forwarded-Proto https
-        server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
+        server articuno articuno check send-proxy
 
       backend pinterest
         http-request set-header X-Forwarded-Proto https
@@ -151,7 +155,7 @@ in {
 
       backend reddit
         http-request set-header X-Forwarded-Proto https
-        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
+        server moltres moltres:8080 check send-proxy
 
       backend redlib
         http-request set-header X-Forwarded-Proto https

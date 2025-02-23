@@ -12,6 +12,7 @@
     (import ../../profiles/buyvm.nix "")
 
     # server imports
+    # ../../server/ai/open-webui.nix
     ../../server/dashboard
     ../../server/development/cyberchef.nix
     ../../server/infrastructure/haproxy
@@ -19,7 +20,6 @@
     ../../server/infrastructure/postgresql
     ../../server/security/acme
     ../../server/security/auth/keycloak
-    ../../server/services/open-webui.nix
     ../../server/services/searxng
   ];
   # FIXME: storage disks causing boot failure

@@ -1,8 +1,7 @@
-hostPath: {
-  # imports = [./virtualhost.nix];
-
-  # original docker command:
-  # docker run -d --device /dev/kfd --device /dev/dri -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama:rocm
+let 
+  stateDir = "/var/lib/sillytavern";
+in {
+  systemd.tmpfiles.rules = ["d ${stateDir} 0770 root users - -"];
 
   virtualisation.oci-containers.containers.silly-tavern = {
     autoStart = true;
@@ -10,9 +9,12 @@ hostPath: {
     extraOptions = ["--network=host"];
     ports = ["8000:8000"];
     volumes = [
-      "${hostPath}/config:/home/node/app/config"
-      "${hostPath}/data:/home/node/app/data"
-      "${hostPath}/plugins:/home/node/app/plugins"
+      "${stateDir}/config:/home/node/app/config"
+      "${stateDir}/data:/home/node/app/data"
+      "${stateDir}/plugins:/home/node/app/plugins"
     ];
   };
 }
+
+# original docker command:
+# docker run -d --device /dev/kfd --device /dev/dri -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama:rocm

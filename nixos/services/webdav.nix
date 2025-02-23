@@ -4,13 +4,9 @@
     settings = {
       server.listen = ["0.0.0.0:4918" "[::]:4918"];
       accounts = {
-        # auth-type = "htpasswd.default";
         auth-type = "pam";
         acct-type = "unix";
       };
-      # htpasswd.default = {
-      #   htpasswd = "/etc/htpasswd";
-      # };
       location = [
         {
           route = ["/storage/shh"];

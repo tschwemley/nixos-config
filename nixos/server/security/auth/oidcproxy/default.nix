@@ -1,12 +1,12 @@
 {
   self,
   config,
-  inputs,
+  # inputs,
   lib,
   pkgs,
   ...
 }: let
-  pkg = inputs.oidcproxy.packages.${pkgs.system}.default;
+  # pkg = inputs.oidcproxy.packages.${pkgs.system}.default;
   stateDir = "/var/lib/oidcproxy";
 
   cfg = config.services.oidcproxy;
@@ -81,7 +81,7 @@ in {
       SyslogIdentifier = "oidcproxy";
       WorkingDirectory = stateDir;
 
-      ExecStart = "${pkg}/bin/oidcproxy -e ${config.sops.secrets.oidcproxy_env.path} -r ${rbacFile.outPath} -d";
+      ExecStart = "${pkgs.oidcproxy}/bin/oidcproxy -e ${config.sops.secrets.oidcproxy_env.path} -r ${rbacFile.outPath} -d";
       Restart = "on-failure";
       RestartSec = 30;
 

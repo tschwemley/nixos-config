@@ -6,12 +6,6 @@
       path = "/home/schwem/.ssh/articuno";
       sopsFile = ./../../nixos/hosts/articuno/secrets.yaml;
     };
-    "eevee_key" = {
-      key = "user_ssh_key";
-      owner = "schwem";
-      path = "/home/schwem/.ssh/eevee";
-      sopsFile = ./../../nixos/hosts/eevee/secrets.yaml;
-    };
     "flareon_key" = {
       key = "user_ssh_key";
       owner = "schwem";
