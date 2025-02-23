@@ -23,6 +23,7 @@
     settings = {
       auto-optimise-store = true;
       experimental-features = ["nix-command" "flakes"];
+      extra-sandbox-paths = ["/etc/sops/nix-sandbox"];
       sandbox = "relaxed";
       substituters = [
         "https://cache.nixos.org?priority=10"

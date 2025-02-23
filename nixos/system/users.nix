@@ -23,6 +23,7 @@
       extraGroups = [
         config.users.groups.keys.name
 
+        "adbusers"
         "audio"
         "docker"
         "gamemode"

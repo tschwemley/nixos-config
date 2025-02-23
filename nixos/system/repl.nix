@@ -3,7 +3,7 @@
     repl_path = toString ../..;
     nrepl = pkgs.writeShellScriptBin "nrepl" ''
       source /etc/set-environment
-      nix repl "${repl_path}/repl.nix" "$@"
+      nix repl -f ${repl_path}/repl.nix "$@"
     '';
   in [
     nrepl

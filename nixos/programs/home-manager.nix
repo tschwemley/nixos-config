@@ -3,7 +3,7 @@
   inputs,
   ...
 }: {
-  imports = [inputs.home-manager.nixosModule];
+  imports = [inputs.home-manager.nixosModules.default];
   home-manager = {
     backupFileExtension = "bak";
     useGlobalPkgs = true;
