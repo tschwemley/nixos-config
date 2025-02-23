@@ -1,7 +1,8 @@
 let
-  browser = ["zen"];
-  # imageViewer = ["org.gnome.Loupe"];
   # audioPlayer = ["io.bassi.Amberol"];
+  browser = ["zen"];
+  imageViewer = ["org.gnome.Loupe"];
+  videoPlayer = ["vlc"];
 
   xdgAssociations = type: program: list:
     builtins.listToAttrs (
@@ -12,9 +13,8 @@ let
       list
     );
 
-  # image = xdgAssociations "image" imageViewer ["png" "svg" "jpeg" "gif"];
-  video = xdgAssociations "video" ["vlc"] ["avi" "mp4" "mkv" "wmv"];
   # audio = xdgAssociations "audio" audioPlayer ["mp3" "flac" "wav" "aac"];
+
   browserTypes =
     (xdgAssociations "application" browser [
       "json"
@@ -33,6 +33,8 @@ let
       "https"
       "unknown"
     ]);
+  image = xdgAssociations "image" imageViewer ["png" "svg" "jpeg" "gif"];
+  video = xdgAssociations "video" videoPlayer ["mp4" "mpeg" "x-flv" "x-matroska" "x-ms-wmv" "x-msvideo"];
 
   # XDG MIME types
   associations = builtins.mapAttrs (_: v: (map (e: "${e}.desktop") v)) (
@@ -45,9 +47,9 @@ let
       "inode/directory" = ["nemo"];
     }
     # // audio
-    # // image
-    // video
     // browserTypes
+    // image
+    // video
   );
 in {
   xdg.mimeApps = {
