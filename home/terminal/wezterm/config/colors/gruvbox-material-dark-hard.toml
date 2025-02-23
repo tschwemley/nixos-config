@@ -31,7 +31,7 @@ selection_fg = "#1d2021"
 
 [metadata]
 aliases = []
-name = "GruvboxDarkHard"
+name = "GruvboxMaterialDarkHard"
 origin_url = "https://github.com/mbadolato/iTerm2-Color-Schemes"
 wezterm_version = "20230320-124340-559cb7b0"
 
