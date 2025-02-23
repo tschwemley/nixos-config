@@ -3,15 +3,11 @@
     ./jellyfin.nix
     ./spotify.nix
     ./loupe.nix
-    ./vlc.nix
+    ./video.nix
   ];
 
   home.packages = with pkgs; [
     audacity
-    handbrake
-    ffmpeg
-    mediainfo
-    shotcut
     streamlink
   ];
 }

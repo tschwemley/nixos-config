@@ -15,7 +15,7 @@
     ../xdg/ssh/default.nix
   ];
 
-  home.sessionVariables.TERM = "kitty";
+  home.sessionVariables.TERM = "wezterm";
   home.stateVersion = "24.11";
   sops.age.keyFile = "/etc/sops/age-keys.txt";
 }
