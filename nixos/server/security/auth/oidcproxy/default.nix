@@ -117,6 +117,8 @@ in {
     sopsFile = "${self.lib.secrets.server}/oidcproxy.yaml";
   };
 
+  systemd.tmpfiles.rules = ["d ${stateDir} 0750 oidcproxy oidcproxy - -"];
+
   users = {
     groups.oidcproxy = {};
     users.oidcproxy = {
