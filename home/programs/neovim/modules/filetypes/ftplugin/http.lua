@@ -1,1 +1,1 @@
-vim.keymap.set("n", "R", vim.cmd("Rest run"), { buffer = 0 })
+--vim.keymap.set("n", "R", vim.cmd("Rest run"), { buffer = 0 })

@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  imports = [./tiddlywiki.nix];
+
   programs.neovim = {
     extraLuaPackages = luaPkgs:
       with luaPkgs; [

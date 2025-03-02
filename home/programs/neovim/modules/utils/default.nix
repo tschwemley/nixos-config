@@ -2,12 +2,10 @@
   programs.neovim.plugins = with pkgs.vimPlugins; let
     mini-nvim = import ./mini.nix pkgs.vimPlugins;
     navbuddy = import ./navbuddy.nix pkgs.vimPlugins;
-    nvim-sops = import ./nvim-sops.nix pkgs.vimPlugins;
     rest-nvim = import ./rest-nvim.nix pkgs.vimPlugins;
   in [
     mini-nvim
     navbuddy
-    nvim-sops
     rest-nvim
 
     direnv-vim

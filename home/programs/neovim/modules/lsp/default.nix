@@ -1,32 +1,33 @@
-{pkgs, ...}: let
+{
+  self,
+  pkgs,
+  ...
+}: let
   otter = import ./otter.nix pkgs.vimPlugins;
 
   packages = {
     lsp = with pkgs; [
       htmx-lsp
       lua-language-server
-      gopls
       marksman
       nil
+      # nixd
       nodePackages.bash-language-server
       nodePackages.intelephense
       nodePackages.typescript-language-server
+      phpactor
       typescript
       yaml-language-server
     ];
 
     linters = with pkgs; [
       deadnix
-      golangci-lint
       prettierd
       statix
     ];
 
     formatting = with pkgs; [
       alejandra
-      golangci-lint
-      golines
-      gotools
       nixfmt-rfc-style
       stylua
     ];
@@ -53,12 +54,13 @@
     ];
   };
 
-  # TODO: make this an extension of lib at the flake level
-  flatten = attrset: builtins.concatLists (builtins.attrValues attrset);
+  inherit (self) lib;
 in {
+  imports = [./go.nix];
+
   programs.neovim = {
-    extraPackages = flatten packages;
-    plugins = flatten plugins;
+    extraPackages = lib.flattenAttrs packages;
+    plugins = lib.flattenAttrs plugins;
   };
 
   xdg.configFile = {

@@ -1,11 +1,17 @@
 {pkgs, ...}: {
   programs.neovim = {
     extraPackages = with pkgs; [
+      # lsp and linters
+      golangci-lint
+      gopls
+      templ
+
+      # binaries used by go.nvim
       gofumpt
       golines
-      gotools # contains goimports, gopls, and more. see: https://go.googlesource.com/tools
+      gomodifytags
+      impl
       reftools # contains fillstruct, fillswitch, and fixplurals
     ];
-    plugins = [pkgs.vimPlugins.go-nvim];
   };
 }

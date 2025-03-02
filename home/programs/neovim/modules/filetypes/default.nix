@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  # imports = [./go.nix];
+
   programs.neovim.plugins = with pkgs.vimPlugins; [
     glow-nvim
   ];
