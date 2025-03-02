@@ -1,47 +1,46 @@
 {
-  description = "Basic Python Application";
+  description = "";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    systems.url = "github:nix-systems/default-linux";
   };
 
-  outputs = inputs @ {
-    flake-parts,
+  outputs = {
+    self,
     nixpkgs,
+    systems,
     ...
-  }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = [
-        "x86_64-linux"
-      ];
+  }: let
+    inherit (nixpkgs) lib;
 
-      perSystem = {
-        self',
-        pkgs,
-        system,
-        ...
-      }: let
-        python = pkgs.python312;
-      in {
-        # makes pkgs available to all perSystem functions
-        _module.args.pkgs = import nixpkgs {inherit system;};
+    pkgsForSystem = lib.genAttrs (import systems) (system: import nixpkgs {inherit system;});
+    eachSystem = fn: lib.genAttrs (import systems) (system: fn pkgsForSystem.${system});
+  in {
+    inherit lib;
 
-        devShells.default = pkgs.mkShell {
-          buildInputs = [
-            self'.packages.pythonApp
-          ];
-        };
-
-        packages = {
-          pythonApp = let
-            pythonPkgs = ps:
-              with ps; [
-                # python app required packages go here
-              ];
-          in
-            python.withPackages pythonPkgs;
-        };
+    devShells = eachSystem (pkgs: {
+      default = pkgs.mkShell {
+        buildInputs = [
+          self.packages.${builtins.currentSystem}.default
+          # (pkgs.python313.withPackages (pythonPkgs:
+          #   with pythonPkgs; [
+          #     daphne
+          #     django_5
+          #     playwright
+          #     wand
+          #     python-dotenv
+          #   ]))
+          # script to generate gemset.nix
+          # (pkgs.writeShellScriptBin "gem-to-nix" ''
+          # ${pkgs.bundix}/bin/bundix --gemfile ${gemDir}/Gemfile --lockfile ${gemDir}/Gemfile.lock
+          # '')
+        ];
       };
-    };
+    });
+
+    packages = eachSystem (pkgs: {
+      default = pkgs.python313.withPackages (pythonPkgs: with pythonPkgs; []);
+    });
+  };
 }
