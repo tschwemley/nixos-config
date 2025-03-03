@@ -34,43 +34,44 @@ in
       hash = "sha256-C7lzmzU/Bzes8KOXXVTUEvr/9njn1nsuM7ccyggykhU=";
     };
 
-    nativeBuildInputs = [python];
-
-    buildInputs = [
-      # python
+    propagatedBuildInputs = [
+      python
       imagemagick
       firefox-bin
       playwright
-      #./static
     ];
 
-    # buildPhase = ''
-    #   runHook preBuild
-    #
-    #   mkdir -p $out/{bin,lib}
-    #
-    #   runHook postBuild
-    # '';
-
-    installPhase = ''
-      runHook preInstall
-
-      # create necessary top-level out dirs
-      mkdir -p $out/{bin,lib}
-
+    buildPhase = ''
+      runHook preBuild
       # create dir in lib for trmnl server and copy necessary files
-      mkdir $out/lib/trmnl-server
+
+      mkdir -p $out/{bin,lib/trmnl-server}
       cp -r ./{byos_django,templates,trmnl} $src/{LICENSE,manage.py} $out/lib/trmnl-server/
 
       # build static files and copy to lib
       python manage.py collectstatic --noinput
-      cp -r ./static $out/lib/trmnl-server
+      cp -r ./static $out/lib/
+
+      cp ${python}/bin/daphne $out/bin
+
+      runHook postBuild
+    '';
+
+    installPhase = ''
+      runHook preInstall
 
       # create a wrapper script for python manage.py and copy to out dir as trmnl-server binary
-      cat > $out/bin/trmnl-server <<EOF # bash
-      ${lib.getExe python} $out/lib/trmnl-server/manage.py "\$@"
+      cat > $out/bin/trmnl-server-init <<EOF # bash
+      ${lib.getExe python} $out/lib/trmnl-server/manage.py migrate
+      ${lib.getExe python} $out/lib/trmnl-server/manage.py createsuperuser "\$@"
       EOF
-      chmod +x $out/bin/trmnl-server
+
+      cat > $out/bin/trmnl-server-run <<EOF # bash
+      export PYTHONPATH=$out/lib/trmnl-server
+      $out/bin/daphne "\$@" byos_django.asgi:application
+      EOF
+
+      chmod +x $out/bin/trmnl-server-{run,init}
 
       runHook postInstall
     '';

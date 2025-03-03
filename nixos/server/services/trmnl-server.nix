@@ -4,6 +4,8 @@
   pkgs,
   ...
 }: let
+  bindAddr = "127.0.0.1";
+  port = config.variables.ports.trmnl-server;
   stateDir = "/var/lib/trmnl-server";
 in {
   services.nginx.virtualHosts."trmnl.schwem.io" = {
@@ -13,7 +15,7 @@ in {
     };
 
     locations."/static" = {
-      tryFiles = "${pkgs.trmnl-server}/lib/trmnl-server/$uri =404";
+      tryFiles = "${pkgs.trmnl-server}/lib/static/$uri =404";
     };
   };
 
@@ -21,12 +23,10 @@ in {
     format = "dotenv";
     key = "";
     mode = "0400";
-    sopsFile = "${self.lib.secrets.server}/pyload.env";
+    sopsFile = "${self.lib.secrets.server}/trmnl-server.env";
   };
 
-  systemd.services.trmnl-server = let
-    trmnl-server = "${pkgs.trmnl-server}/bin/trmnl-server";
-  in {
+  systemd.services.trmnl-server = {
     description = "BYOS For Trmnl (https://usetrmnl.com)";
 
     environment = {
@@ -39,14 +39,13 @@ in {
       */
       ''
         if [ ! -f $DB_FILE ] ; then
-          ${trmnl-server} migrate
-          ${trmnl-server} createsuperuser --username=admin --email=automation@schwem.io --noinput
+          ${pkgs.trmnl-server}/bin/trmnl-server-init --username=admin --email=automation@schwem.io --noinput
         fi
       '';
 
     serviceConfig = {
       EnvironmentFile = config.sops.secrets.trmnl-server.path;
-      ExecStart = "${pkgs.python313Packages.daphne} -b 127.0.0.1 -p ${config.variables.ports.trmnl-server} byos_django.asgi:application";
+      ExecStart = "${pkgs.trmnl-server-run} -b ${bindAddr} -p ${port}";
       Restart = "always";
       RestartSec = "15s";
 
