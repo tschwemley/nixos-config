@@ -8,15 +8,68 @@
   port = config.variables.ports.trmnl-server;
   stateDir = "/var/lib/trmnl-server";
 in {
-  services.nginx.virtualHosts."trmnl.schwem.io" = {
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:${config.variables.ports.trmnl-server}";
-      proxyWebsockets = true;
-    };
+  /*
+  upstream backend {
+      server app:8000;
+  }
 
-    # locations."/static/" = {
-    locations."/static" = {
-      tryFiles = "${pkgs.trmnl-server}/lib/static/$uri =404";
+  server {
+      listen 80 default_server;
+      server_name trmnl.dev;
+      location / {
+          try_files $uri @proxy_to_app;
+      }
+
+      location /static {
+          alias /src/static;
+      }
+
+      location @proxy_to_app {
+          proxy_pass http://backend;
+
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection "upgrade";
+
+          proxy_redirect off;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Host $host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+      }
+  }
+  */
+
+  services.nginx.virtualHosts."trmnl.schwem.io" = {
+    locations = {
+      "/" = {
+        tryFiles = "$uri @proxy_to_app";
+        # proxyPass = "http://127.0.0.1:${config.variables.ports.trmnl-server}";
+        # proxyWebsockets = true;
+      };
+
+      # locations."/static/" = {
+      "/static" = {
+        alias = "${pkgs.trmnl-server}/lib/static";
+        # tryFiles = "${pkgs.trmnl-server}/lib/static/$uri =404";
+      };
+
+      "@proxy_to_app" = {
+        proxyPass = "http://127.0.0.1:${config.variables.ports.trmnl-server}";
+        extraConfig = ''
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection "upgrade";
+
+          proxy_redirect off;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Host $host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+        '';
+      };
     };
   };
 
