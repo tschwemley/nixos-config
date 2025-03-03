@@ -67,6 +67,7 @@ in {
         acl domain_tasks hdr(host) -i tasks.schwem.io
         acl domain_tiktok hdr(host) -i tiktok.schwem.io
         acl domain_threadfin hdr(host) -i threadfin.schwem.io
+        acl domain_trmnl hdr(host) -i trmnl.schwem.io
         acl domain_tumblr hdr(host) -i tumblr.schwem.io
         acl domain_twitch hdr(host) -i twitch.schwem.io twitch.api.schwem.io
         acl domain_wiki hdr(host) -i wiki.schwem.io
@@ -91,6 +92,7 @@ in {
         use_backend stackoverflow if domain_stackoverflow
         use_backend tiktok if domain_tiktok
         use_backend threadfin if domain_threadfin
+        use_backend jolteon if domain_trmnl
         use_backend tumblr if domain_tumblr
         use_backend twitch if domain_twitch
         use_backend wiki if domain_wiki

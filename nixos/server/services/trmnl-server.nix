@@ -14,6 +14,7 @@ in {
       proxyWebsockets = true;
     };
 
+    # locations."/static/" = {
     locations."/static" = {
       tryFiles = "${pkgs.trmnl-server}/lib/static/$uri =404";
     };
