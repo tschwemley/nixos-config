@@ -46,6 +46,7 @@
       openwebui_secret_key = secretAttrs;
     };
 
+    # using template because of values defined in nix (namely port)
     templates.open-webui-env = let
       inherit (config.sops) placeholder;
     in {
