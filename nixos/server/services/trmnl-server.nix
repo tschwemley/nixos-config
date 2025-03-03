@@ -45,7 +45,7 @@ in {
 
     serviceConfig = {
       EnvironmentFile = config.sops.secrets.trmnl-server.path;
-      ExecStart = "${pkgs.trmnl-server-run} -b ${bindAddr} -p ${port}";
+      ExecStart = "${pkgs.trmnl-server}/bin/trmnl-server-run -b ${bindAddr} -p ${port}";
       Restart = "always";
       RestartSec = "15s";
 
