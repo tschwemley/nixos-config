@@ -1,3 +1,4 @@
 {pkgs, ...}: {
-  disko = pkgs.writeShellScript "disko" (builtins.readFile ./disko.sh);
+  findDesktopEntries = pkgs.callPackage ./find-desktop-entries.nix {};
+  rotateSopsFile = pkgs.callPackage ./rotate-sops-file.nix {};
 }
