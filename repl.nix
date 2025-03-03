@@ -1,13 +1,17 @@
 let
-  curHost = { curHost = builtins.head (builtins.match "(.*)\n" (builtins.readFile "/etc/hostname"));};
+  host = builtins.head (builtins.match "(.*)\n" (builtins.readFile "/etc/hostname"));
   flake = builtins.getFlake (toString ./.);
-  # nixpkgs = import <nixpkgs> { };
+
+  inherit (flake.nixosConfigurations.${host}) pkgs;
 in
-{ inherit curHost flake; }
-// flake
-// builtins
-# // nixpkgs # NOTE: uncommenting this will make all of nixpkgs load going from ~600 to >~24k vars
-# // nixpkgs.lib
-// flake.lib
-// flake.nixosConfigurations
-// curHost
+  {
+    inherit flake;
+    curHost = host;
+  }
+  // flake
+  // builtins
+  # // nixpkgs # NOTE: uncommenting this will make all of nixpkgs load going from ~600 to >~24k vars
+  // flake.lib
+  // flake.nixosConfigurations
+  // host
+  // pkgs
