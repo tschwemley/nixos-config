@@ -1,4 +1,5 @@
 {
+  bash,
   fetchFromGitHub,
   lib,
   imagemagick,
@@ -61,12 +62,14 @@ in
       runHook preInstall
 
       # create a wrapper script for python manage.py and copy to out dir as trmnl-server binary
-      cat > $out/bin/trmnl-server-init <<EOF # bash
+      cat > $out/bin/trmnl-server-init <<EOF
+      #!${bash}/bin/bash
       ${lib.getExe python} $out/lib/trmnl-server/manage.py migrate
       ${lib.getExe python} $out/lib/trmnl-server/manage.py createsuperuser "\$@"
       EOF
 
-      cat > $out/bin/trmnl-server-run <<EOF # bash
+      cat > $out/bin/trmnl-server-run <<EOF
+      #!${bash}/bin/bash
       export PYTHONPATH=$out/lib/trmnl-server
       $out/bin/daphne "\$@" byos_django.asgi:application
       EOF
