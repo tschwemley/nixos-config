@@ -40,7 +40,7 @@ in {
       ''
         if [ ! -f $DB_FILE ] ; then
           ${trmnl-server} migrate
-          ${trmnl-server} createsuperuser --username=$SUPERUSER_USERNAME --email=$SUPERUSER_EMAIL --noinput
+          ${trmnl-server} createsuperuser --username=admin --email=automation@schwem.io --noinput
         fi
       '';
 
