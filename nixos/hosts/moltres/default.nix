@@ -5,6 +5,7 @@
     ../../server/ai/open-webui.nix
     ../../server/ai/sillytavern.nix
     ../../server/alt-frontends/freetar.nix
+    ../../server/alt-frontends/redlib.nix
     ../../server/knowledge/excalidraw
     ../../server/infrastructure/haproxy
 
