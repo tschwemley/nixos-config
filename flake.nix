@@ -35,6 +35,8 @@
         modules = [./nixos/hosts/${host}];
       });
 
+    nixosModules = import ./modules;
+
     nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
       pkgs = import nixpkgs {system = "aarch64-linux";};
       specialArgs = {inherit inputs self;};

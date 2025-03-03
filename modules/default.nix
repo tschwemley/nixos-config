@@ -1,0 +1,3 @@
+{
+  variables = import ./variables;
+}
