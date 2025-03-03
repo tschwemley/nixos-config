@@ -46,8 +46,8 @@ in {
 
     serviceConfig = {
       EnvironmentFile = config.sops.secrets.trmnl-server.path;
-      ExecStart = "${trmnl-server} runserver 127.0.0.1:8000";
-      Restart = "on-failure";
+      ExecStart = "${pkgs.python313Packages.daphne} -b 127.0.0.1 -p ${config.variables.ports.trmnl-server} byos_django.asgi:application";
+      Restart = "always";
       RestartSec = "15s";
 
       WorkingDirectory = stateDir;
