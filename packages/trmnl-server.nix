@@ -68,8 +68,8 @@ in
       ${lib.getExe python} $out/lib/trmnl-server/manage.py createsuperuser "\$@"
       EOF
 
-      #!${bash}/bin/bash
       cat > $out/bin/trmnl-server-run <<EOF
+      #!${bash}/bin/bash
       export PYTHONPATH=$out/lib/trmnl-server
       $out/bin/daphne "\$@" byos_django.asgi:application
       EOF
