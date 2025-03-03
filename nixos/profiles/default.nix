@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   config,
   lib,
@@ -11,6 +12,7 @@ in {
     inputs.sops-nix.nixosModules.sops
     inputs.disko.nixosModules.disko
     rootUser
+    self.nixosModules.variables
 
     ../development
     ../network
@@ -29,7 +31,6 @@ in {
     ../system/nix.nix
     ../system/nixpkgs.nix
     ../system/tty.nix
-    ../system/variables.nix
   ];
 
   environment.sessionVariables.TERM = "wezterm";
