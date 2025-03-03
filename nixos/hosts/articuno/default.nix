@@ -14,7 +14,7 @@ in {
       (import ../../profiles/buyvm.nix "")
 
       # server imports
-      # ../../server/ai/open-webui.nix
+      ../../server/ai/open-webui.nix
       ../../server/dashboard
       ../../server/development/cyberchef.nix
       ../../server/infrastructure/haproxy
