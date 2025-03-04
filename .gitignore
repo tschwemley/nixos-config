@@ -9,8 +9,8 @@
 ./eevee
 ./flareon
 ./jolteon
-./result
 result
+repl-result-out
 ssh_host*
 
 # llama.log
