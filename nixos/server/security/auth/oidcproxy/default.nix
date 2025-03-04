@@ -1,12 +1,10 @@
 {
   self,
   config,
-  # inputs,
   lib,
   pkgs,
   ...
 }: let
-  # pkg = inputs.oidcproxy.packages.${pkgs.system}.default;
   stateDir = "/var/lib/oidcproxy";
 
   cfg = config.services.oidcproxy;
@@ -112,9 +110,12 @@ in {
   sops.secrets.oidcproxy_env = {
     group = "oidcproxy";
     owner = "oidcproxy";
-    path = "${stateDir}/.env";
+
+    format = "dotenv";
+    key = "";
     mode = "0440";
-    sopsFile = "${self.lib.secrets.server}/oidcproxy.yaml";
+    path = "${stateDir}/.env";
+    sopsFile = "${self.lib.secrets.server}/oidcproxy.env";
   };
 
   systemd.tmpfiles.rules = ["d ${stateDir} 0750 oidcproxy oidcproxy - -"];
