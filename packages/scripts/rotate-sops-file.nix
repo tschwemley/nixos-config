@@ -1,4 +1,8 @@
-{writeShellScriptBin}:
+{
+  lib,
+  sops,
+  writeShellScriptBin,
+}:
 writeShellScriptBin "rotate-sops-file"
 /*
 bash
@@ -6,5 +10,6 @@ bash
 ''
   [[ -z "$1" ]] && echo "missing path to a sops-encrypted file."
   file=$1
-  sops --in-place -d $file && sops --in-place -e $file
+  ${lib.getExe sops} --in-place -d "$file"
+  ${lib.getExe sops} --in-place -e "$file"
 ''
