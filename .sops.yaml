@@ -3,11 +3,8 @@ keys:
   - &work age1gzstgq4mmvmx40jna6cjhuw7lzkcza3hkzwnnqvv3svemtr8reasqj052x
   - &articuno age1v57lt42hl9et5x7asxad6gkg9ga0gqd7swvnxs3mpuuyhzsspqgqasz3ch
   - &charizard age1cjhxs524nj7r0z2cmx3kf4vpscj8fxy0wmnxuy6nnfzt4dtahevsskgrus
-  - &containers age16vdqvcejdc9arqnjll2tegwskj2yst3ewqwl96nv7dnu6lr6psrq7xrhau
-  - &eevee age19tr69celsjf9c4ld8ur49tnxcgg2z676mkm0rdfvhdajg96dkp5qtufu4x
   - &flareon age1l844clz38nt5mq6kg5m0wl64p398dn0j3hm5jzy8ag0d302q5awqep73jx
   - &jolteon age13qley8lnkqspu8yda95vqsvkrnfjmpm6m7e8um9gtm3yd8a4c34spzfx79
-  - &machamp age1k5e5uk0897ne5lrvmhhgn6am5cr32l2w7aa4ldapncwluv0rqekspj8w97
   - &moltres age183ss93pcc9vxxscndjktthj3jdrc2vqzg06dyd7kw3htgxsdmedqr3fj9q
   - &pikachu age1rvv0m2d5weqgnsf7cv7k2wv8rkgqd06pcmpf98j98m7mkf2a5gwsr2eqja
   - &tentacool age1k3ejfs0t5xavhw7xje2k7263np65la6ek0a0fz3y926t5qykwvnqxhteps
@@ -15,13 +12,7 @@ keys:
   - &schwem-io age1fnlep954kqzdy62qpzap8ex0xm3xzcd9rau52rgewt7rtwn2huaqg593p9
 
 creation_rules:
-  - path_regex: ^(./)?home/(.*/)?(.*/)?.*.(env|json|yaml)
-    key_groups:
-      - age:
-          - *personal
-          - *charizard
-          - *schwem-io
-
+  # host secrets
   - path_regex: nixos/hosts/articuno/secrets.yaml
     key_groups:
       - age:
@@ -34,12 +25,6 @@ creation_rules:
           - *personal
           - *charizard
 
-  - path_regex: nixos/hosts/eevee/secrets.yaml
-    key_groups:
-      - age:
-          - *personal
-          - *eevee
-
   - path_regex: nixos/hosts/flareon/secrets.yaml
     key_groups:
       - age:
@@ -51,12 +36,6 @@ creation_rules:
       - age:
           - *personal
           - *jolteon
-
-  - path_regex: nixos/hosts/machamp/secrets.yaml
-    key_groups:
-      - age:
-          - *personal
-          - *machamp
 
   - path_regex: nixos/hosts/moltres/secrets.yaml
     key_groups:
@@ -82,29 +61,56 @@ creation_rules:
           - *personal
           - *zapados
 
-  - path_regex: ^(./)?secrets/.*/*.yaml|json|env
+  # home secrets
+  - path_regex: ^(./)?secrets/home/*.yaml|json|env
     key_groups:
       - age:
           - *personal
-          - *work
-          - *containers
+          - *charizard
+          - *pikachu
+
+  # nixos secrets
+  - path_regex: ^(./)?secrets/nixos/*.yaml|json|env
+    key_groups:
+      - age:
+          - *personal
           - *articuno
           - *charizard
-          - *eevee
           - *flareon
           - *jolteon
           - *moltres
+          - *pikachu
           - *tentacool
           - *zapados
+
+  # server secrets
+  - path_regex: ^(./)?secrets/server/.*.(yaml|json|env)
+    key_groups:
+      - age:
+          - *personal
+          - *articuno
+          - *charizard
+          - *flareon
+          - *jolteon
+          - *moltres
+          - *pikachu
+          - *tentacool
+          - *zapados
+
+  # TODO: sunset these pathways
+  - path_regex: ^(./)?home/(.*/)?(.*/)?.*.(env|json|yaml)
+    key_groups:
+      - age:
+          - *personal
+          - *charizard
+          - *schwem-io
 
   - path_regex: ^(./)?(nixos/)?(containers|modules|network|services|server)/(.*/)?(.*/)?(.*.yaml|.env)
     key_groups:
       - age:
           - *personal
-          - *containers
           - *articuno
           - *charizard
-          - *eevee
           - *flareon
           - *jolteon
           - *moltres

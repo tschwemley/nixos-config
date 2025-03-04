@@ -6,6 +6,7 @@ pkgs: {
       disko
       nix-prefetch-scripts
       nurl
+      scripts.rotateSecrets
       sops
       ssh-to-age
       statix
