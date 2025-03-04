@@ -82,7 +82,9 @@ in {
       RuntimeDirectoryMode = "0750";
 
       # ExecStart = "${pkgs.oidcproxy}/bin/oidcproxy -e ${config.sops.secrets.oidcproxy_env.path} -r ${rbacFile.outPath} -d";
+      # ExecStart = "${lib.getExe pkgs.oidcproxy} -e ${config.sops.secrets.oidcproxy.path} -r ${rbacFile} -d";
       ExecStart = "${lib.getExe pkgs.oidcproxy} -r ${rbacFile} -d";
+      EnvironmentFile = config.sops.secrets.oidcproxy.path;
       Restart = "on-failure";
       RestartSec = 30;
 
@@ -129,7 +131,7 @@ in {
     wantedBy = ["multi-user.target"];
   };
 
-  sops.secrets.oidcproxy_env = {
+  sops.secrets.oidcproxy = {
     # group = "oidcproxy";
     # owner = "oidcproxy";
 
