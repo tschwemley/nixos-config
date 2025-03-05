@@ -28,10 +28,11 @@
 
   sops = {
     secrets = {
-      container_deploy_key = {
-        sopsFile = ../../containers/secrets.yaml;
-        path = "/root/.ssh/container_deploy_key";
-      };
+      # TODO : remove after validting nothing is continuing to rely on this
+      # container_deploy_key = {
+      #   sopsFile = ../../containers/secrets.yaml;
+      #   path = "/root/.ssh/container_deploy_key";
+      # };
       root_password = {
         mode = "0440";
         neededForUsers = true;

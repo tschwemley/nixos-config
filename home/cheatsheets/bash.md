@@ -7,6 +7,12 @@ Here's a simple and concise cheatsheet for creating, using, and looping through 
 ```bash
 # Pass all args to another script/function/program/...
 ./script "$@"
+
+# Check for num of args
+if [ $# -eq 0 ] ;
+
+# Check if specific arg empty
+if [ -z "$1" ] ;
 ```
 
 ## Arrays
@@ -27,12 +33,25 @@ for item in "${array[@]}"; do
 done
 ```
 
+## Files
+
+```bash
+# Loop through files (reads all file names into memory && w/ globbing)
+for file in /var/*
+do
+    #whatever you need with "$file"
+done
+
+# Loop through files (does not load all file names into memory && no globbing)
+ls -f /var | while read -r file; do cmd $file; done
+```
+
 ## Paths
 
 ```bash
-# Get the absolute path of the current script                                 
-SCRIPT_PATH=$(readlink -f "$0")                                               
-                                                                              
-# Get the directory containing the current script                             
+# Get the absolute path of the current script
+SCRIPT_PATH=$(readlink -f "$0")
+
+# Get the directory containing the current script
 SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
 ```
