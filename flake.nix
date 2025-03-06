@@ -51,8 +51,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-
     systems.url = "github:nix-systems/default-linux";
+
+    nil.url = "github:oxalica/nil";
+    nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
     disko = {
       url = "github:nix-community/disko";
@@ -69,15 +71,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nil.url = "github:oxalica/nil";
-
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-hardware.url = "github:nixos/nixos-hardware/master";
-    nix-topology.url = "github:oddlama/nix-topology";
+    nix-topology = {
+      url = "github:oddlama/nix-topology";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    noogle = {
+      url = "github:nix-community/noogle";
+      inputs = {
+        nixpkgs-master.follows = "nixpkgs-master";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
 
     # scribe = {
     #   url = "sourcehut:~edwardloveall/scribe/main";

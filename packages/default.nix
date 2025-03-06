@@ -1,6 +1,7 @@
 pkgs: {
   anonymous-overflow = pkgs.callPackage ./anonymousoverflow.nix {};
   json2go = pkgs.callPackage ./json2go.nix {};
+  nrepl = pkgs.callPackage ./nrepl.nix {};
   raindrop = pkgs.callPackage ./raindrop.nix {};
   scripts = import ./scripts pkgs;
   tailscale = pkgs.callPackage ./tailscale.nix {};

@@ -17,6 +17,7 @@
           (self.packages.${system})
           anonymous-overflow
           json2go
+          nrepl
           scripts
           trmnl-server
           wl-ocr

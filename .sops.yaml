@@ -62,7 +62,7 @@ creation_rules:
           - *zapados
 
   # home secrets
-  - path_regex: ^(./)?secrets/home/*.yaml|json|env
+  - path_regex: ^(./)?secrets/home/.*.(yaml|json|env)
     key_groups:
       - age:
           - *personal
@@ -70,7 +70,7 @@ creation_rules:
           - *pikachu
 
   # nixos secrets
-  - path_regex: ^(./)?secrets/nixos/*.yaml|json|env
+  - path_regex: ^(./)?secrets/nixos/.*.(yaml|json|env)
     key_groups:
       - age:
           - *personal
