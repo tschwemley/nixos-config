@@ -1,5 +1,14 @@
 # Nix Cheatsheet
 
+## flakes
+
+### Add a file locally in git but don't include it in commits[^1]
+
+```sh
+git add --intent-to-add extra/flake.nix
+git update-index --skip-worktree --assume-unchanged extra/flake.nix
+```
+
 ## nixpkgs
 
 ### Overriding Package Attributes
@@ -15,3 +24,5 @@ The function `overrideAttrs` allows overriding the attribute set passed to a std
   });
 }
 ```
+
+[^1]: https://wiki.nixos.org/wiki/Flakes#Development_tricks

@@ -1,8 +1,6 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   treesitter = import ./treesitter.nix pkgs;
-in
-{
+in {
   programs.neovim.plugins = with pkgs.vimPlugins; [
     treesitter
     nvim-treesitter-textobjects

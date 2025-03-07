@@ -1,5 +1,4 @@
 {
-  config,
   inputs,
   lib,
   ...
@@ -12,6 +11,7 @@
     ./.
 
     ../development/android.nix
+    ../development/embedded.nix
 
     ../hardware/audio
     ../hardware/flipperzero.nix
@@ -37,6 +37,8 @@
     ../system/documentation.nix
     ../system/greetd.nix
     ../system/security.nix
+
+    ../virtualisation/qemu.nix
   ];
 
   nix.settings.trusted-users = ["schwem"];

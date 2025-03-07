@@ -10,15 +10,14 @@
     ../programs/gtk
     ../programs/media
     ../programs/music
+    ../programs/productivity
+
     ../programs/neovide.nix
 
-    # ../programs/aseprite.nix TODO: fix for python plugin
-    ../programs/bambu-studio.nix
     ../programs/bitwarden.nix
+    ../programs/cowsay.nix
     ../programs/glow.nix
-    ../programs/khal.nix
-    ../programs/lan-mouse.nix
-    ../programs/libreoffice.nix
+    ../programs/input-leap.nix
     ../programs/qt.nix
     ../programs/rustdesk.nix
     ../programs/wayland/hyprland
