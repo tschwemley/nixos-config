@@ -40,7 +40,7 @@ in {
     owner = "root";
     group = "users";
 
-    mode = "0774";
+    mode = "0744";
     path = "/etc/rclone/rclone.conf";
     sopsFile = "${self.lib.secrets.nixos}/rclone.yaml";
   };
