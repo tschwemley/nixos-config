@@ -66,6 +66,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland-input-capture = {
+      url = "github:3l0w/Hyprland/feat/input-capture-impl";
+      # inputs.nixpkgs.follows = "nixpkgs"; # comment this out if trouble building
+    };
+
     neovim-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
