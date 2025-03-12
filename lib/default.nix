@@ -1,11 +1,7 @@
-lib: 
+lib:
 lib
-// rec {
-  # getPort = name: port-map.${name};
-  #
-  # getPortAsString = name: lib.strings.toInt (getPort name);
-  #
-  # port-map = import ./port-map.nix;
+// {
+  hosts = lib.attrNames (builtins.readDir ../nixos/hosts);
 
   flattenAttrs = attrset: builtins.concatLists (builtins.attrValues attrset);
 
@@ -31,6 +27,7 @@ lib
 
   stringList = lib.types.listOf lib.types.str;
 
+  # TODO: remove this once all references are switched over to config.variables.ports
   port-map = {
     anonymous-overflow = "8010";
     binternet = "8009";
@@ -60,7 +57,5 @@ lib
     threadfin = "34400";
     tiddlywiki = "4242";
     webhooks = "7780";
-
   };
-
 }

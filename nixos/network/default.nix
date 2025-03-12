@@ -1,5 +1,11 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [./wireshark.nix];
+
+  environment.systemPackages = [pkgs.traceroute];
 
   networking = {
     firewall = {

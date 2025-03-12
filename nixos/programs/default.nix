@@ -4,6 +4,7 @@
     git
     gnupg
     jq
+    nrepl
     pinentry
     pwgen
     ripgrep

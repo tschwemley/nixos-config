@@ -26,5 +26,5 @@
   threadfin = "34400";
   tiddlywiki = "4242";
   trmnl-server = "8000";
-  webhooks = "7780";
+  webhook = "7780";
 }

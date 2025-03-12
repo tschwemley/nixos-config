@@ -21,6 +21,6 @@ in {
     };
   };
 
-  # packages to install when utilizing gtk
+  # nemo = gui file explorer
   home.packages = [pkgs.nemo];
 }

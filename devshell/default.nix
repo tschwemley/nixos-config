@@ -10,7 +10,7 @@ pkgs: {
       sops
       ssh-to-age
       statix
-      (writeShellScriptBin "build-host" (builtins.readFile ../scripts/build-host.sh))
+      # (writeShellScriptBin "build-host" (builtins.readFile ../scripts/build-host.sh))
     ];
   };
 }
