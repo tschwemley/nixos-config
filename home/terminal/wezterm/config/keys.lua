@@ -1,42 +1,57 @@
-local act = require("wezterm").action
+local wezterm = require("wezterm")
+
+local action = require("wezterm").action
+local pane_utils = require("pane_utils")
 
 return {
 	{
+		key = "D",
+		mods = "CTRL|SHIFT",
+		action = action.ShowDebugOverlay,
+		description = "Open Wezterm debug overlay",
+	},
+	{
+		key = "l",
+		mods = "CTRL|ALT",
+		action = action.SendKey({ key = "l", mods = "CTRL" }),
+		description = "Clear screen",
+	},
+	--
+	-- pane management
+	{
 		key = "%",
 		mods = "CTRL|SHIFT",
-		action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+		action = action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
 	{
 		key = '"',
 		mods = "CTRL|SHIFT",
-		action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
+		action = action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 	{
 		key = "h",
 		mods = "CTRL",
-		action = act.ActivatePaneDirection("Left"),
+		action = action.ActivatePaneDirection("Left"),
 	},
 	{
 		key = "l",
 		mods = "CTRL",
-		action = act.ActivatePaneDirection("Right"),
+		action = action.ActivatePaneDirection("Right"),
 	},
 	{
 		key = "k",
 		mods = "CTRL",
-		action = act.ActivatePaneDirection("Up"),
+		action = action.ActivatePaneDirection("Up"),
 	},
 	{
 		key = "j",
 		mods = "CTRL",
-		action = act.ActivatePaneDirection("Down"),
+		action = action.ActivatePaneDirection("Down"),
 	},
-	{ -- clear screen on ctrl+alt+l
+	{
 		key = "l",
-		mods = "CTRL|ALT",
-		action = act.SendKey({
-			key = "l",
-			mods = "CTRL",
-		}),
+		mods = "CTRL|SHIFT",
+		action = wezterm.action_callback(pane_utils.cycle_layouts({})),
+		description = "Cycle layouts",
 	},
 }
