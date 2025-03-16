@@ -8,6 +8,7 @@ in
     inherit curHost flake self testHosts;
     inherit (flake) lib;
     inherit (self) config pkgs;
+    inherit (self.pkgs) system;
   }
   // flake
   // flake.nixosConfigurations

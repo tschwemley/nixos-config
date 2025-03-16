@@ -1,50 +1,55 @@
 {
   description = "Schwem's NixOS configuration and dotfiles";
 
-  outputs = {
+  outputs = inputs @ {
     self,
     home-manager,
     nix-on-droid,
     nixpkgs,
     systems,
     ...
-  } @ inputs: let
+  }: let
     lib = import ./lib (nixpkgs.lib // home-manager.lib);
 
-    pkgsForSystem = lib.genAttrs (import systems) (
-      system: let
-        nixpkgs' = (import ./nixos/system/nixpkgs.nix {inherit self inputs;}).nixpkgs;
-      in
-        import nixpkgs {
-          inherit system;
-          inherit (nixpkgs') config overlays;
-        }
-    );
-
-    eachSystem = fn: lib.genAttrs (import systems) (system: fn pkgsForSystem.${system});
+    pkgsFor = lib.genAttrs (import systems) (system: (import ./nixpkgs.nix {inherit self system;}));
+    eachSystem = fn: lib.genAttrs (import systems) (system: fn pkgsFor.${system});
     hosts = lib.attrNames (builtins.readDir ./nixos/hosts);
   in {
     inherit lib;
 
-    devShells = eachSystem (pkgs: import ./devshell pkgs);
+    devShells = eachSystem (pkgs: import ./devshell inputs pkgs);
+    nixosModules = import ./modules;
+    overlays = import ./overlays.nix {inherit self;};
     packages = eachSystem (pkgs: import ./packages pkgs);
+    templates = import ./templates;
 
-    nixosConfigurations = lib.genAttrs hosts (host:
+    homeConfigurations = {
+      # TODO: For possible solution for building and then deploying remotely to work server
+      #       see: https://gist.github.com/fricklerhandwerk/fbf0b212bbbf51b79a08fdac8659481d
+      "work@linux" = let
+        pkgs = pkgsFor."x86_64-linux";
+      in
+        lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {inherit inputs self;};
+          modules = [./home/profiles/work.nix];
+        };
+    };
+
+    nixosConfigurations = lib.genAttrs hosts (host: let
+      # atm all nixos hosts are x86_64-linux
+      pkgs = pkgsFor."x86_64-linux";
+    in
       lib.nixosSystem {
-        specialArgs = {inherit inputs self;};
+        specialArgs = {inherit inputs pkgs self;};
         modules = [./nixos/hosts/${host}];
       });
-
-    nixosModules = import ./modules;
 
     nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
       pkgs = import nixpkgs {system = "aarch64-linux";};
       specialArgs = {inherit inputs self;};
       modules = [./droid];
     };
-
-    overlays = import ./overlays.nix {inherit inputs self;};
-    templates = import ./templates;
   };
 
   inputs = {
@@ -124,11 +129,6 @@
 
     stash = {
       url = "git+https://git.schwem.io/schwem/stash-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    webhooks = {
-      url = "git+https://git.schwem.io/schwem/webhooks";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

@@ -30,6 +30,7 @@
         "networkmanager"
         "plugdev"
         "podman"
+        "video"
         "wheel"
         "wireshark"
       ];
@@ -45,7 +46,6 @@
       imports = [../../home/profiles/pc.nix];
 
       sops.age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
-      systemd.user.settings.Manager.DefaultLimitNOFILE = "524288"; # for lutris
     };
   };
 }
