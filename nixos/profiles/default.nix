@@ -29,7 +29,6 @@ in {
 
     ../system/fonts.nix
     ../system/nix.nix
-    ../system/nixpkgs.nix
     ../system/tty.nix
   ];
 

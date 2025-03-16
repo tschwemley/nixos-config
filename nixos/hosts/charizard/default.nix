@@ -20,7 +20,6 @@
     ];
   };
   ollama = import ../../../containers/ollama "/home/schwem/.ollama";
-  open-webui = import ../../../containers/open-webui "/home/schwem/.open-webui";
   user = (import ../../system/users.nix {inherit config pkgs;}).schwem;
 in {
   imports = [
@@ -28,14 +27,10 @@ in {
     hardware
     networking
     ollama
-    open-webui
     user
 
     ../../profiles/pc.nix
     ../../system/boot/systemd.nix
-
-    # TODO: remove this after testing and move to default
-    ../../system/repl.nix
   ];
 
   boot = {
@@ -92,28 +87,24 @@ in {
 
   # systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
-  services.tailscale.extraSetFlags = [
-    "--exit-node=us-chi-wg-302.mullvad.ts.net"
+  services.tailscale.extraUpFlags = [
+    "--exit-node=us-chi-wg-303.mullvad.ts.net"
     "--exit-node-allow-lan-access=true"
+    "--operator=schwem"
   ];
 
   # TODO: move below here elsewhere
-  # ---
 
+  # ---
   hardware.opentabletdriver.enable = true;
 
-  # systemd.services.tailscaled-autoconnect = let
-  #   after = lib.mkDefault [
-  #     "systemd-networkd"
-  #     "tailscaled.service"
-  #   ];
-  #   wants = after;
-  # in {
-  #   inherit after wants;
-  # };
-
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "unrar"
+  systemd.services.tailscaled-autoconnect = let
+    after = lib.mkDefault [
+      "NetworkManager-wait-online"
+      "tailscaled.service"
     ];
+    wants = after;
+  in {
+    inherit after wants;
+  };
 }

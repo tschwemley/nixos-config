@@ -10,7 +10,6 @@
       extraSpecialArgs = {inherit inputs pkgs;};
       modules = [inputs.sops-nix.homeManagerModule] ++ extraModules;
     };
-  # );
 in {
   droid = mkHome "aarch64-linux" [
     ./profiles/droid.nix

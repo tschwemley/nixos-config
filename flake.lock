@@ -314,24 +314,6 @@
         "type": "github"
       }
     },
-    "flake-parts_6": {
-      "inputs": {
-        "nixpkgs-lib": "nixpkgs-lib_2"
-      },
-      "locked": {
-        "lastModified": 1733312601,
-        "narHash": "sha256-4pDvzqnegAfRkPwO3wmwBhVi/Sye1mzps0zHWYnP88c=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "205b12d8b7cd4802fbcb8e8ef6a0f1408781a4f9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
     "flake-utils": {
       "inputs": {
         "systems": "systems_2"
@@ -1106,18 +1088,6 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/e9b51731911566bbf7e4895475a87fe06961de0b.tar.gz"
       }
     },
-    "nixpkgs-lib_2": {
-      "locked": {
-        "lastModified": 1733096140,
-        "narHash": "sha256-1qRH7uAUsyQI7R1Uwl4T+XvdNv778H0Nb5njNrqvylY=",
-        "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/5487e69da40cbd611ab2cadee0b4637225f7cfae.tar.gz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/5487e69da40cbd611ab2cadee0b4637225f7cfae.tar.gz"
-      }
-    },
     "nixpkgs-master": {
       "locked": {
         "lastModified": 1742099477,
@@ -1426,7 +1396,6 @@
         "sops-nix": "sops-nix",
         "stash": "stash",
         "systems": "systems_5",
-        "webhooks": "webhooks",
         "zen-browser": "zen-browser"
       }
     },
@@ -1623,27 +1592,6 @@
         "owner": "numtide",
         "repo": "treefmt-nix",
         "type": "github"
-      }
-    },
-    "webhooks": {
-      "inputs": {
-        "flake-parts": "flake-parts_6",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1733695991,
-        "narHash": "sha256-HiGd08nyjzUwGJ+qEflqWbn1Lwwkjd0z6IxPYtipVwY=",
-        "ref": "refs/heads/main",
-        "rev": "ba7ca2b471735d7224ad2d2a16ece6d4179e02ee",
-        "revCount": 20,
-        "type": "git",
-        "url": "https://git.schwem.io/schwem/webhooks"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.schwem.io/schwem/webhooks"
       }
     },
     "xdph": {

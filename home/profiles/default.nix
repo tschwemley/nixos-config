@@ -1,5 +1,7 @@
-{
+{inputs, ...}: {
   imports = [
+    inputs.sops-nix.homeManagerModule
+
     ../programs/development
     ../programs/bat.nix
     ../programs/btop.nix

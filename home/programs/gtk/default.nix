@@ -20,7 +20,4 @@ in {
       gtk-application-prefer-dark-theme = 1;
     };
   };
-
-  # nemo = gui file explorer
-  home.packages = [pkgs.nemo];
 }

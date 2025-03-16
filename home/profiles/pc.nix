@@ -1,7 +1,7 @@
 {
   imports = [
     ./.
-    ../programs/ai
+    ../programs/ai.nix
     ../programs/browsers
     ../programs/communication
     ../programs/creative
@@ -18,8 +18,9 @@
     ../programs/cowsay.nix
     ../programs/glow.nix
     ../programs/input-leap.nix
+    ../programs/nemo.nix
     ../programs/qt.nix
-    ../programs/rustdesk.nix
+    # ../programs/rustdesk.nix
     ../programs/wayland/hyprland
     ../programs/wcalc.nix
     ../programs/wofi.nix

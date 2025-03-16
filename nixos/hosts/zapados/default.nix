@@ -11,6 +11,7 @@
     ../../server/alt-frontends/safetwitch
     ../../server/automation/home-assistant
     ../../server/knowledge/tiddlywiki
+    ../../server/services/webhooks
     ../../system/fonts.nix
   ];
 
