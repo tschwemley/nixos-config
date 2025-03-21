@@ -22,6 +22,7 @@
   safetwitch-backend = "7100";
   scribe = "7000";
   searxng = "8888";
+  silly-tavern = "18000";
   stash = "6969";
   threadfin = "34400";
   tiddlywiki = "4242";

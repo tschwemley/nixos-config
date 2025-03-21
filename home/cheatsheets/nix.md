@@ -9,6 +9,19 @@ git add --intent-to-add extra/flake.nix
 git update-index --skip-worktree --assume-unchanged extra/flake.nix
 ```
 
+## Flakes
+
+### Using a non-flake repo in `flake.inputs`
+
+```nix
+{
+  foo = {
+    # ...
+    flake = false;
+  }
+}
+```
+
 ## nixpkgs
 
 ### Overriding Package Attributes

@@ -9,14 +9,17 @@
     enable = true;
     cacheHome = config.home.homeDirectory + "/.local/cache";
 
-    # portal = {
-    # enable = true;
-    # extraPortals = [pkgs.xdg-desktop-portal-gtk];
-    #   config = {
-    #     common.default = ["gtk"];
-    #     hyprland.default = ["gtk" "hyprland"];
-    #   };
-    # };
+    portal = {
+      enable = true;
+
+      config = {
+        common.default = ["gtk"];
+        hyprland.default = ["gtk" "hyprland"];
+      };
+
+      extraPortals = with pkgs; [xdg-desktop-portal-gtk];
+      xdgOpenUsePortal = true;
+    };
 
     userDirs = {
       enable = true;

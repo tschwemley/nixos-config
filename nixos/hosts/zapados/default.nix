@@ -2,9 +2,6 @@
   imports = [
     ../../profiles/proxmox.nix
 
-    # server imports
-    ../../../containers/it-tools
-
     ../../server/alt-frontends/binternet.nix
     ../../server/alt-frontends/priviblur
     ../../server/alt-frontends/redlib.nix

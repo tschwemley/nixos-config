@@ -28,8 +28,8 @@ in {
     networking
     ollama
     user
-
     ../../profiles/pc.nix
+
     ../../system/boot/systemd.nix
   ];
 

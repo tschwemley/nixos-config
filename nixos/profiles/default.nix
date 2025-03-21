@@ -29,12 +29,14 @@ in {
 
     ../system/fonts.nix
     ../system/nix.nix
+    ../system/nixpkgs.nix
     ../system/tty.nix
   ];
 
   environment.sessionVariables.TERM = "wezterm";
   hardware.enableRedistributableFirmware = true;
 
+  # TODO: set this in each host file explicitly. Once in all host files remove from here
   # set here by default since at any given time most/all my configs are x86_64-linux
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 

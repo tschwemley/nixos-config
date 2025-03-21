@@ -138,8 +138,7 @@ in {
     format = "dotenv";
     key = "";
     mode = "0440";
-    # path = "${stateDir}/.env";
-    # sopsFile = "${self.lib.secrets.server}/oidcproxy.env";
+    path = "${stateDir}/.env";
     sopsFile = "${config.variables.secretPaths.server}/oidcproxy.env";
   };
 

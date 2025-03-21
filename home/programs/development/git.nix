@@ -27,7 +27,7 @@ in {
         whitespace = "trailing-space,space-before-tab";
       };
       url =
-        if osConfig.networking.hostName == "charizard" || osConfig.networking.hostName == "pikachu"
+        if osConfig != null && (osConfig.networking.hostName == "charizard" || osConfig.networking.hostName == "pikachu")
         then {
           "ssh://forgejo" = {
             insteadOf = "https://git.schwem.io";

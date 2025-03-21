@@ -11,13 +11,20 @@
   }: let
     lib = import ./lib (nixpkgs.lib // home-manager.lib);
 
-    pkgsFor = lib.genAttrs (import systems) (system: (import ./nixpkgs.nix {inherit self system;}));
+    pkgsFor = lib.genAttrs (import systems) (system: (import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+      overlays = [
+        self.overlays.default
+        self.inputs.neovim-overlay.overlays.default
+      ];
+    }));
     eachSystem = fn: lib.genAttrs (import systems) (system: fn pkgsFor.${system});
     hosts = lib.attrNames (builtins.readDir ./nixos/hosts);
   in {
     inherit lib;
 
-    devShells = eachSystem (pkgs: import ./devshell inputs pkgs);
+    devShells = eachSystem (pkgs: import ./devshell pkgs);
     nixosModules = import ./modules;
     overlays = import ./overlays.nix {inherit self;};
     packages = eachSystem (pkgs: import ./packages pkgs);
@@ -26,22 +33,21 @@
     homeConfigurations = {
       # TODO: For possible solution for building and then deploying remotely to work server
       #       see: https://gist.github.com/fricklerhandwerk/fbf0b212bbbf51b79a08fdac8659481d
-      "work@linux" = let
+      "work@linux" = lib.homeManagerConfiguration {
         pkgs = pkgsFor."x86_64-linux";
-      in
-        lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = {inherit inputs self;};
-          modules = [./home/profiles/work.nix];
-        };
+        extraSpecialArgs = {inherit inputs self;};
+        modules = [./home/profiles/work.nix];
+      };
+      "work@mac" = lib.homeManagerConfiguration {
+        pkgs = pkgsFor."aarch64-darwin";
+        extraSpecialArgs = {inherit inputs self;};
+        modules = [./home/profiles/work.nix];
+      };
     };
 
-    nixosConfigurations = lib.genAttrs hosts (host: let
-      # atm all nixos hosts are x86_64-linux
-      pkgs = pkgsFor."x86_64-linux";
-    in
+    nixosConfigurations = lib.genAttrs hosts (host:
       lib.nixosSystem {
-        specialArgs = {inherit inputs pkgs self;};
+        specialArgs = {inherit inputs self;};
         modules = [./nixos/hosts/${host}];
       });
 
@@ -89,14 +95,6 @@
     nix-topology = {
       url = "github:oddlama/nix-topology";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    noogle = {
-      url = "github:nix-community/noogle";
-      inputs = {
-        nixpkgs-master.follows = "nixpkgs-master";
-        nixpkgs.follows = "nixpkgs";
-      };
     };
 
     # scribe = {

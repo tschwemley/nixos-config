@@ -1,4 +1,4 @@
-{inputs, ...}: let
+let
   storageDisks = [
     (import ../../hardware/disks/block-storage.nix {
       device = "/dev/disk/by-id/scsi-0BUYVM_SLAB_VOLUME-28656";
@@ -12,10 +12,8 @@ in {
   imports =
     [
       (import ../../profiles/buyvm.nix "")
-      inputs.stash.nixosModules.default
 
       # server imports
-      ../../server/ai/open-webui.nix
       ../../server/dashboard
       ../../server/development/cyberchef.nix
       ../../server/infrastructure/haproxy

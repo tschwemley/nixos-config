@@ -1,6 +1,5 @@
 {
   inputs,
-  config,
   lib,
   pkgs,
   ...
@@ -81,32 +80,31 @@ in {
     thermald.enable = lib.mkDefault true;
   };
 
-  sops = {
-    defaultSopsFile = ./secrets.yaml;
-
-    secrets."wireless.env".sopsFile = ../../network/secrets.yaml;
-
-    templates."20-wireless.network" = {
-      group = config.users.users.systemd-network.group;
-      owner = config.users.users.systemd-network.name;
-
-      mode = "0444";
-      path = "/etc/systemd/network/20-primary.network";
-
-      content = ''
-        [Match]
-        Name=wlp3s0
-
-        [Network]
-        Address=${config.sops.placeholder.publicIP}/24
-        DNS=194.242.2.2 2a07:e340::2
-
-        [Route]
-        Destination=0.0.0.0/0
-        Gateway=${config.sops.placeholder.gateway}
-      '';
-    };
-  };
+  # TODO: see if this can be removed now that wired connection in place
+  # sops = {
+  #   secrets."wireless.env".sopsFile = ../../network/secrets.yaml;
+  #
+  #   templates."20-wireless.network" = {
+  #     inherit (config.users.users.systemd-network) group;
+  #     owner = config.users.users.systemd-network.name;
+  #
+  #     mode = "0444";
+  #     path = "/etc/systemd/network/20-primary.network";
+  #
+  #     content = ''
+  #       [Match]
+  #       Name=wlp3s0
+  #
+  #       [Network]
+  #       Address=${config.sops.placeholder.publicIP}/24
+  #       DNS=194.242.2.2 2a07:e340::2
+  #
+  #       [Route]
+  #       Destination=0.0.0.0/0
+  #       Gateway=${config.sops.placeholder.gateway}
+  #     '';
+  #   };
+  # };
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion/ when ready to update
   system.stateVersion = "23.05";
