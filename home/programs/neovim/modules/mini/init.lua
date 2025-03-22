@@ -11,7 +11,11 @@ require("mini.icons").setup()
 require("mini.statusline").setup()
 
 -- General WorkFlow
--- require("mini.diff").setup()
+-- require("mini.diff").setup({
+-- 	view = {
+-- 		style = "sign",
+-- 	},
+-- })
 require("mini.visits").setup()
 
 -- Text Editing
