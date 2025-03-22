@@ -3,12 +3,18 @@
   pkgs,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
-    amdgpu_top
-    glxinfo
-    pciutils
-    vulkan-tools
-  ];
+  environment = {
+    sessionVariables = {
+      VDPAU_DRIVER = "radeonsi";
+    };
+
+    systemPackages = with pkgs; [
+      amdgpu_top
+      glxinfo
+      pciutils
+      vulkan-tools
+    ];
+  };
 
   hardware = {
     amdgpu = {

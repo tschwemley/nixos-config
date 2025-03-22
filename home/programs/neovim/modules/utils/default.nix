@@ -1,12 +1,7 @@
 {pkgs, ...}: {
-  programs.neovim.plugins = with pkgs.vimPlugins; let
-    mini-nvim = import ./mini.nix pkgs.vimPlugins;
-    navbuddy = import ./navbuddy.nix pkgs.vimPlugins;
-    rest-nvim = import ./rest-nvim.nix pkgs.vimPlugins;
-  in [
-    mini-nvim
-    navbuddy
-    rest-nvim
+  programs.neovim.plugins = with pkgs.vimPlugins; [
+    # TODO: revisit navbuddy when time... looks interesting
+    # navbuddy # old config: navbuddy = import ./navbuddy.nix pkgs.vimPlugins;
 
     direnv-vim
     dressing-nvim

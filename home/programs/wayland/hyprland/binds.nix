@@ -40,6 +40,7 @@
         "$mod, l, layoutmsg, swapnext"
         "$mod, h, layoutmsg, swapprev"
         "$mod, w, killactive"
+        "$mod alt, f, togglefloating, active"
         "$mod shift, f, fullscreen, 1"
         "$mod shift, h, movewindow, mon:1"
         "$mod shift, l, movewindow, mon:0"

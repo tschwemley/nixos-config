@@ -49,9 +49,9 @@
       lazydev-nvim
       nvim-lspconfig
     ];
-    utility = [
-      nvim-web-devicons
-    ];
+    # utility = [
+    #   nvim-web-devicons
+    # ];
   };
 
   inherit (self) lib;

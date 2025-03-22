@@ -11,28 +11,17 @@
     ../xdg/ssh/work.nix
   ];
 
-  home = {
-    homeDirectory = "/Users/tschwemley";
+  home = let
     username = "tschwemley";
-
-    packages = with pkgs; [
-      mariadb
-      nodejs
-    ];
-
-    sessionVariables.TERM = lib.mkDefault "xterm-kitty";
+  in {
+    inherit username;
+    homeDirectory = "/home/${username}";
   };
 
-  programs = {
-    git = {
-      userEmail = lib.mkDefault "tschwemley@zynga.com";
-    };
+  # not 100% sure why this is necessary but without it there's this error:
+  # A corresponding Nix package must be specified via `nix.package` for generating nix.conf. 🤷
+  nix.package = pkgs.nix;
 
-    zsh.shellAliases = {
-      # see: https://so.schwem.io/questions/13713101/rsync-exclude-according-to-gitignore-hgignore-svnignore-like-filter-c
-      # rsync = "rsync -vhra --include='**.gitignore' --exclude='/.git' --filter=':- .gitignore' --delete-after";
-    };
-  };
-
-  sops.age.keyFile = "/etc/sops/age-keys.txt";
+  programs.git.userEmail = lib.mkDefault "tschwemley@zynga.com";
+  targets.genericLinux.enable = true;
 }

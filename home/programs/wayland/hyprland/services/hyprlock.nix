@@ -1,8 +1,7 @@
-{ config, ... }:
-let
+{config, ...}: let
   font_family = "Hasklig";
-in
-{
+in {
+  # TODO: clean up this file
   programs.hyprlock = {
     enable = true;
 

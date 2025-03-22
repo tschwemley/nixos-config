@@ -4,27 +4,22 @@
   home = {
     packages = with pkgs; [
       cliphist
-      grim
-      slurp
+      grim # TODO: are grimblast and grim both needed?
+      slurp # TODO: I don't remember what slurp does/if it's necessary anymore
 
       # utils
       wl-clipboard
       wl-ocr
-      wlr-randr
-      wf-recorder # records screen
-      ydotool
+      wf-recorder
+      ydotool # TODO: still need?
     ];
 
     sessionVariables = {
-      # QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-      QT_QPA_PLATFORM = "wayland";
-      # QT_WAYLAND_DISABLE_WINDOW_DECORATION = "1";
+      MOZ_ENABLE_WAYLAND = 1;
 
       # make SDL2 applications use wayland
       SDL_VIDEODRIVER = "wayland";
-
       XDG_SESSION_TYPE = "wayland";
-      # see: https://wiki.archlinux.org/title/Wayland#GUI_libraries
     };
   };
 }

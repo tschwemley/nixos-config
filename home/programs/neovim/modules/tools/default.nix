@@ -1,12 +1,11 @@
 {pkgs, ...}: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
-    # database
-    nvim-dbee
+    # db plugins
     vim-dadbod
     vim-dadbod-completion
     vim-dadbod-ui
 
-    #git 
+    #git plugins
     gitsigns-nvim
     neogit
   ];

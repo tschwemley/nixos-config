@@ -13,6 +13,9 @@ in {
   environment.systemPackages = [lutris];
 
   # enable esync compatability (for Lutris)
+  # TODO: some combination of these may not be necessary? It's been a minute since I tested
+
+  home-manager.users.schwem.systemd.user.settings.Manager.DefaultLimitNOFILE = "524288";
   security = {
     pam = {
       loginLimits = [

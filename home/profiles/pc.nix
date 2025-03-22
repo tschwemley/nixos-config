@@ -6,8 +6,8 @@
     ../programs/communication
     ../programs/creative
     ../programs/development/bruno.nix
-    ../programs/development/dbgate.nix
-    ../programs/gtk
+    ../programs/development/database.nix
+    ../programs/gnome
     ../programs/media
     ../programs/music
     ../programs/productivity
@@ -18,6 +18,7 @@
     ../programs/cowsay.nix
     ../programs/glow.nix
     ../programs/input-leap.nix
+    ../programs/lan-mouse.nix
     ../programs/nemo.nix
     ../programs/qt.nix
     # ../programs/rustdesk.nix

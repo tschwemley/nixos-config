@@ -1,3 +1,5 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.input-leap];
+  home.packages = with pkgs; [
+    input-leap
+  ];
 }

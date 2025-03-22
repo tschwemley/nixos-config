@@ -46,10 +46,10 @@ let
       # "inode/directory" = ["yazi"];
       "inode/directory" = ["nemo"];
     }
-    # // audio
-    // browserTypes
     // image
     // video
+    // browserTypes
+    # // audio
   );
 in {
   xdg.mimeApps = {

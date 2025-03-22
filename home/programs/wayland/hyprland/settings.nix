@@ -1,4 +1,5 @@
 {config, ...}: {
+  # For all settings available see: https://wiki.hyprland.org/Configuring/Variables/
   wayland.windowManager.hyprland.settings = {
     debug.disable_logs = false;
 
@@ -9,35 +10,39 @@
       no_hardware_cursors = true;
     };
 
+    ecosystem = {
+      no_donation_nag = true;
+      no_update_news = true;
+    };
+
     exec-once = [
       "wl-paste --watch cliphist store"
     ];
 
     general = {
       gaps_out = 10;
-      # layout = "master";
-      layout = "hy3";
+      layout = "dwindle"; # defaults: dwindle, master
     };
 
     gestures = {
       workspace_swipe = true;
     };
 
-    # input = {
-    #   follow_mouse = 2;
-    # };
+    input = {
+      follow_mouse = 1;
+    };
 
     # see: https://wiki.hyprland.org/Configuring/Master-Layout/
     master = {
-      always_center_master = true;
       mfact = 0.40;
-
       orientation = "center";
+      slave_count_for_center_master = 0;
     };
 
     misc = {
-      # disable the stupid default anime background
+      # disable the cringe anime background
       disable_hyprland_logo = true;
+      disable_splash_rendering = true;
       force_default_wallpaper = 0;
     };
 
@@ -49,5 +54,7 @@
     };
 
     workspace = config.hyprland.workspaces;
+
+    xwayland.force_zero_scaling = true;
   };
 }

@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ../.
     ./binds.nix
     ./options.nix
     ./plugins.nix
@@ -12,12 +13,14 @@
   ];
 
   home.sessionVariables = {
+    GDK_SCALE = 2;
+    XCURSOR_SIZE = 32;
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_DESKTOP = "Hyprland";
   };
 
   home.packages = with pkgs; [
-    grimblast
+    grimblast # TODO: are grimblast and grim both needed?
     hyprcursor
     hyprpicker
   ];
