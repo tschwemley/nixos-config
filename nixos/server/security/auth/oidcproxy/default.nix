@@ -132,9 +132,6 @@ in {
   };
 
   sops.secrets.oidcproxy = {
-    # group = "oidcproxy";
-    # owner = "oidcproxy";
-
     format = "dotenv";
     key = "";
     mode = "0440";
