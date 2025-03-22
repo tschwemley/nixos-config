@@ -3,7 +3,6 @@
 local blink = require("blink.cmp")
 local log = require("plenary.log")
 local lspconfig = require("lspconfig")
--- local log = require("plenary.log").new()
 
 ---------------------------------------------------------------------------------------------------
 --- LSP
