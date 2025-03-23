@@ -10,6 +10,6 @@
     telescope-dap-nvim
   ];
 
-  # xdg.configFile."nvim/after/plugin/debug".source = ./lua;
-  xdg.configFile."nvim/after/plugin/debug/debug.lua".source = ./lua/debug.lua;
+  # TODO: uncomment, move out of after/, and load only when starting a debugging session
+  # xdg.configFile."nvim/after/plugin/debug/debug.lua".source = ./lua/debug.lua;
 }

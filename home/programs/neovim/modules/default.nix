@@ -4,7 +4,6 @@
     ./completion
     ./debug
     ./diagnostics
-    # ./editing # TODO: uncomment or removev editing dir
     ./filetypes
     ./lsp
     ./mini

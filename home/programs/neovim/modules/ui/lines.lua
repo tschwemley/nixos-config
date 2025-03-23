@@ -1,13 +1,8 @@
+require("lualine").setup()
+
 local bufferline = require("bufferline")
 local builtin = require("telescope.builtin")
 
--- require("lualine").setup({
---    sections = {
---       lualine_x = {
---          "rest",
---       },
---    },
--- })
 bufferline.setup()
 
 vim.keymap.set("n", "<leader>bch", "<cmd>BufferLineCloseLeft<cr>")
