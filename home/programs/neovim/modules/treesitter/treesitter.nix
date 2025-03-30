@@ -1,43 +1,59 @@
-pkgs:
-with pkgs.vimPlugins;
-  nvim-treesitter.withPlugins (parser: [
-    parser.astro
-    parser.awk
-    parser.bash
-    parser.cmake
-    parser.comment # TODO: should this stay uncommented?
-    parser.css
-    parser.csv
-    parser.diff
-    parser.go
-    parser.gotmpl
-    parser.gomod
-    parser.gosum
-    parser.html
-    parser.http
-    parser.ini
-    parser.javascript
-    parser.jq
-    parser.json
-    parser.jsonc
-    parser.lua
-    parser.luadoc
-    parser.make
-    parser.markdown
-    parser.markdown_inline
-    parser.nix
-    parser.norg
-    parser.php
-    parser.python
-    parser.regex
-    parser.sql
-    parser.ssh_config
-    parser.templ
-    parser.toml
-    parser.tsx
-    parser.typescript
-    parser.vimdoc
-    parser.xml
-    parser.yaml
-    parser.zig
-  ])
+pkgs: let
+  bruno = pkgs.tree-sitter.buildGrammar {
+    language = "bruno";
+    version = "8af0aab";
+    src = pkgs.fetchFromGitHub {
+      owner = "Scalamando";
+      repo = "tree-sitter-bruno";
+      rev = "dd27fe0eff8e7f8184dfc91e426b886dc8369c46";
+      sha256 = "sha256-WjA5Y6ZejFlHi5C/Wv56Hqpo/BJ4+vq9VIMSzWrznx4=";
+    };
+  };
+in
+  with pkgs.vimPlugins;
+    nvim-treesitter.withPlugins (
+      parser:
+        with parser;
+          [
+            astro
+            awk
+            bash
+            cmake
+            comment # see: https://github.com/stsewd/tree-sitter-comment
+            css
+            csv
+            diff
+            go
+            gotmpl
+            gomod
+            gosum
+            html
+            http
+            ini
+            javascript
+            jq
+            json
+            jsonc
+            lua
+            luadoc
+            make
+            markdown
+            markdown_inline
+            nix
+            norg
+            php
+            python
+            regex
+            sql
+            ssh_config
+            templ
+            toml
+            tsx
+            typescript
+            vimdoc
+            xml
+            yaml
+            zig
+          ]
+          ++ [bruno]
+    )

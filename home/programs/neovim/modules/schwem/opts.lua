@@ -1,4 +1,5 @@
 vim.o.autoread = true          -- reload files on change
+vim.o.background = "dark"      -- background color
 vim.o.colorcolumn = "100"      -- setting the color column
 vim.o.errorbells = false       -- disabling error bells
 vim.o.fileformat = "unix"      -- setting the file format

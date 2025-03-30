@@ -7,10 +7,10 @@
 
   packages = {
     lsp = with pkgs; [
-      htmx-lsp
+      # htmx-lsp
       lua-language-server
-      marksman
-      nil
+      # marksman
+      nil # nix
       # nixd
       nodePackages.bash-language-server
       nodePackages.intelephense
@@ -49,9 +49,6 @@
       lazydev-nvim
       nvim-lspconfig
     ];
-    # utility = [
-    #   nvim-web-devicons
-    # ];
   };
 
   inherit (self) lib;
