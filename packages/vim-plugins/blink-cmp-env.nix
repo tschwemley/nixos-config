@@ -1,6 +1,7 @@
 {
-  vimUtils,
   fetchFromGitHub,
+  nix-update-script,
+  vimUtils,
 }:
 vimUtils.buildVimPlugin {
   pname = "blink-cmp-env";
@@ -13,4 +14,5 @@ vimUtils.buildVimPlugin {
   };
   meta.homepage = "https://github.com/bydlw98/blink-cmp-env/";
   meta.hydraPlatforms = [];
+  passthru.updateScript = nix-update-script {};
 }

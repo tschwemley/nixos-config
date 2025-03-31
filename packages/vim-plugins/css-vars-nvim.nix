@@ -1,9 +1,10 @@
 {
   fetchFromGitHub,
   nix-update-script,
+  vimPlugins,
   vimUtils,
 }:
-vimUtils.buildVimPlugin {
+(vimUtils.buildVimPlugin {
   pname = "css-vars-nvim";
   version = "2025-01-28";
   src = fetchFromGitHub {
@@ -14,4 +15,10 @@ vimUtils.buildVimPlugin {
   };
   meta.homepage = "https://github.com/jdrupal-dev/css-vars.nvim/";
   passthru.updateScript = nix-update-script {};
+})
+.overrideAttrs {
+  dependencies = with vimPlugins; [
+    blink-cmp
+    plenary-nvim
+  ];
 }
