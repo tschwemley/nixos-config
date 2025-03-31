@@ -15,5 +15,5 @@
     "nvim/after/plugin/noice.lua".source = ./noice.lua;
   };
 }
-# references:
+# REF:
 #   - https://github.com/folke/edgy.nvim

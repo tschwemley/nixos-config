@@ -27,7 +27,7 @@
       [
         # application launching
         "$mod, p, exec, wofi --show drun"
-        "$mod, Return, exec, ${pkgs.kitty}/bin/kitty"
+        "$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"
 
         # clipboard, ocr, and screenshot
         "$mod, V, exec, cliphist list | wofi -dmenu | cliphist decode | wl-copy"

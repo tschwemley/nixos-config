@@ -3,6 +3,4 @@
     everforest
     gruvbox-nvim
   ];
-
-  xdg.configFile."nvim/after/plugin/colors.lua".source = ./colors.lua;
 }

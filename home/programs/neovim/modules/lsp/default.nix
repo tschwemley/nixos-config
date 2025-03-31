@@ -45,8 +45,6 @@
     ];
     lsp = [
       otter
-
-      lazydev-nvim
       nvim-lspconfig
     ];
   };

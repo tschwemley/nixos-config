@@ -1,4 +1,5 @@
-{
+{pkgs, ...}: {
+  programs.neovim.plugins = [pkgs.vimPlugins.lazydev-nvim];
   xdg.configFile = {
     "nvim/after/plugin/filetypes.lua".source = ./filetypes.lua;
     "nvim/after/ftplugin".source = ./ftplugin;

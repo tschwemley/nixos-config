@@ -60,12 +60,13 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    systems.url = "github:nix-systems/default-linux";
+    # NOTE: uncomment these as required when necessary for
+    # nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     nil.url = "github:oxalica/nil";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
+    systems.url = "github:nix-systems/default-linux";
 
     disko = {
       url = "github:nix-community/disko";

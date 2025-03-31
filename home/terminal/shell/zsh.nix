@@ -5,7 +5,7 @@
 }: let
   shellAliases = import ./aliases lib;
 in {
-  # home.file.".zsh_completions".source = ./completions;
+  home.file.".zsh_completions".source = ./completions;
 
   programs.zsh = {
     inherit shellAliases;
@@ -19,6 +19,14 @@ in {
       expireDuplicatesFirst = true;
       extended = true;
     };
-    initExtra = import ./aliases/funcs.nix config;
+    initExtra =
+      #bash
+      ''
+        source ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh
+        export PATH=$PATH:${config.home.profileDirectory}/bin
+
+        ${builtins.readFile ./hooks.zsh}
+        ${builtins.readFile ./functions.zsh}
+      '';
   };
 }

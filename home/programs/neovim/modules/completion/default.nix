@@ -1,17 +1,12 @@
 {pkgs, ...}: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
-    blink-cmp
     blink-compat # necessary for compat with any nvim-cmp plugins
+    blink-cmp
+    blink-cmp-env
+    blink-emoji-nvim
+    blink-ripgrep-nvim
+    css-vars-nvim
     luasnip
-
-    # TODO: determine which (if any) of these are necessary in the migration to Blink
-    # nvim-cmp
-    # cmp-buffer
-    # cmp-cmdline
-    # cmp-dap
-    # cmp-nvim-lsp
-    # cmp-path
-    # cmp_luasnip
   ];
 
   xdg.configFile = {

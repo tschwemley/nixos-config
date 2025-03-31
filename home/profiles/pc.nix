@@ -1,7 +1,7 @@
 {
   imports = [
     ./.
-    ../programs/ai.nix
+    ../programs/ai
     ../programs/browsers
     ../programs/communication
     ../programs/creative
@@ -31,8 +31,6 @@
     ../services/status-notifier-watcher.nix
 
     ../theme
-
-    ../terminal/kitty
 
     ../xdg
     ../xdg/netrc.nix

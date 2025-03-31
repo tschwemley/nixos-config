@@ -5,7 +5,7 @@
     # handbrake
     # mediainfo
     # shotcut
-    # vlc
+    # vlc TODO: figure out why vlc is crashing
   ];
 
   # xdg.configFile."mpv/mpv.conf".text = ''

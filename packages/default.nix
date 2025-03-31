@@ -1,5 +1,6 @@
 pkgs: {
   anonymous-overflow = pkgs.callPackage ./anonymousoverflow.nix {};
+  extraVimPlugins = import ./vim-plugins pkgs;
   json2go = pkgs.callPackage ./json2go.nix {};
   nrepl = pkgs.callPackage ./nrepl.nix {};
   raindrop = pkgs.callPackage ./raindrop.nix {};

@@ -11,7 +11,7 @@
     ./files
     ./lsp
     ./mini
-    ./notes
+    # ./notes
     ./schwem
     ./telescope
     ./terminal

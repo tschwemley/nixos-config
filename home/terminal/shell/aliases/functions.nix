@@ -6,6 +6,15 @@ bash
   source ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh
   export PATH=$PATH:${config.home.profileDirectory}/bin
 
+  check-help-flag() {
+    local cmd="$1"
+    if [[ "$cmd" =~ --help\b|-h\b ]]; then
+      local base_cmd="''${cmd%% *}"
+      eval "''${cmd%%--help*}" --help | ${pkgs.bat}/bin/bat --plain --language=help
+      return 1  # Skip original execution
+    fi
+  }
+
   # nix build with output of last error
   func nbuild() {
     nix build "$@" 2>/tmp/last-build.error.log

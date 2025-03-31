@@ -23,19 +23,19 @@
 
     wayland.windowManager.hyprland = {
       plugins = with pkgs.hyprlandPlugins; [
-        hy3
+        # hy3
         # hyprexpo
-        hyprscroller
+        # hyprscroller
       ];
 
       settings.plugin = {
-        hy3 = {
-          autotile = {
-            enable = true;
-            # trigger_width = 800;
-            # trigger_height = 500;
-          };
-        };
+        # hy3 = {
+        #   autotile = {
+        #     enable = true;
+        #     # trigger_width = 800;
+        #     # trigger_height = 500;
+        #   };
+        # };
 
         # hyprexpo = {
         #   columns = 3;

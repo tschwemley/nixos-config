@@ -26,14 +26,17 @@ in {
       core = {
         whitespace = "trailing-space,space-before-tab";
       };
-      url =
-        if osConfig != null && (osConfig.networking.hostName == "charizard" || osConfig.networking.hostName == "pikachu")
-        then {
-          "ssh://forgejo" = {
-            insteadOf = "https://git.schwem.io";
-          };
-        }
-        else {};
+      url = {
+        "ssh://forgejo" = {
+          insteadOf = "https://git.schwem.io";
+        };
+      };
     };
+
+    ignores = [
+      ".aider*"
+      ".direnv/"
+      ".env"
+    ];
   };
 }
