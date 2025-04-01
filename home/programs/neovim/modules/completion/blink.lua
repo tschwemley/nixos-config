@@ -32,7 +32,7 @@ require("blink.cmp").setup({
    },
 
    sources = {
-      default = { "buffer", "emoji", "ripgrep", "snippets" },
+      default = { "buffer", "emoji", "snippets" },
 
       per_filetype = {
          sql = { "snippets", "dadbod", "buffer" },
@@ -43,7 +43,6 @@ require("blink.cmp").setup({
          css_vars = { name = "css-vars", module = "css-vars.blink" },
          env = { name = "Env", module = "blink-cmp-env" },
          lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
-         ripgrep = { name = "Ripgrep", module = "blink-ripgrep" },
 
          emoji = {
             name = "Emoji",
