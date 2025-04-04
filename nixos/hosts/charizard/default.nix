@@ -1,35 +1,25 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
   ...
 }: let
   disk = import ../../hardware/disks/btrfs-encrypted.nix "nvme1n1" "crypted";
-  hardware = {
-    imports = [
-      inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
-      ../../hardware/amd.nix
-      ../../hardware/audio
-    ];
-  };
   networking = {
     imports = [
       ../../network/containers.nix
       ../../network/tailscale.nix
     ];
   };
-  ollama = import ../../../containers/ollama "/home/schwem/.ollama";
   user = (import ../../system/users.nix {inherit config pkgs;}).schwem;
 in {
   imports = [
     disk
-    hardware
     networking
-    ollama
     user
-    ../../profiles/pc.nix
 
+    ./hardware.nix
+    ../../profiles/pc.nix
     ../../system/boot/systemd.nix
   ];
 
@@ -57,7 +47,7 @@ in {
         config = [
           # name, resolution, position, scale, vrr, vrr_mode
           "${primary}, 3840x2160@120, 0x0, 1, vrr, 0"
-          "${secondary}, 1920x1080@60, 0x2160, 1.2"
+          #"${secondary}, 1920x1080@60, 0x2160, 1.2"
         ];
       };
       workspaces = [
@@ -85,8 +75,6 @@ in {
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
   system.stateVersion = "24.05";
 
-  # systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
-
   services.tailscale.extraUpFlags = [
     "--exit-node=us-chi-wg-303.mullvad.ts.net"
     "--exit-node-allow-lan-access=true"
@@ -94,10 +82,6 @@ in {
   ];
 
   # TODO: move below here elsewhere
-
-  # ---
-  hardware.opentabletdriver.enable = true;
-
   systemd.services.tailscaled-autoconnect = let
     after = lib.mkDefault [
       "NetworkManager-wait-online"
