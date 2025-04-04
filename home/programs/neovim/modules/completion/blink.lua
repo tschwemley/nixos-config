@@ -4,6 +4,7 @@ require("blink.cmp").setup({
    signature = { enabled = true }, -- signature.window.show_documentation = false to only show the signature, and not the documentation
    snippets = { preset = "luasnip" },
 
+   -- use mini.icons in the completion menu
    completion = {
       menu = {
          draw = {
@@ -32,10 +33,11 @@ require("blink.cmp").setup({
    },
 
    sources = {
-      default = { "buffer", "emoji", "snippets" },
+      default = { "buffer", "emoji", "lsp", "path", "snippets" },
 
       per_filetype = {
-         sql = { "snippets", "dadbod", "buffer" },
+         lua = { "buffer", "lazydev", "lsp", "snippets" },
+         sql = { "buffer", "dadbod", "snippets" },
       },
 
       providers = {
