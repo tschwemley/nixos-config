@@ -111,4 +111,6 @@
         '';
     };
   };
+
+  systemd.services.open-webui.path = [pkgs.ffmpeg_headless];
 }
