@@ -134,7 +134,7 @@ in {
   sops.secrets.oidcproxy = {
     format = "dotenv";
     key = "";
-    mode = "0440";
+    mode = "0444";
     path = "${stateDir}/.env";
     sopsFile = "${config.variables.secretPaths.server}/oidcproxy.env";
   };
