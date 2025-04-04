@@ -1,3 +1,6 @@
 {pkgs, ...}: {
-    environment.systemPackages = [pkgs.mariadb];
+  environment.systemPackages = with pkgs; [
+    mariadb
+    sqlite-interactive
+  ];
 }

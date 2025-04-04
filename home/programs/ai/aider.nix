@@ -20,13 +20,14 @@
     yaml
     */
     ''
-      model: "openrouter/deepseek/deepseek-r1"
       api-key:
         - openrouter=${config.sops.placeholder.openrouter_api_key}
+      model: "openrouter/deepseek/deepseek-r1"
 
-      ###
-      # Other available models:
-      ###
-      #model: "openrouter/deepseek/deepseek-chat-v3-0324"
+      # --------------------
+      # Appearance Settings
+
+      code-theme: gruvbox-dark
+      dark-mode: true
     '';
 }

@@ -1,6 +1,6 @@
-{pkgs, ...}: {
-  imports = [./git.nix];
-  home.packages = with pkgs; [
-    fswatch
+{
+  imports = [
+    ./git.nix
+    ./navi.nix
   ];
 }
