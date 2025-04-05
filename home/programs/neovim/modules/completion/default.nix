@@ -8,9 +8,12 @@
     luasnip
   ];
 
-  xdg.configFile = {
-    "nvim/after/plugin/blink.lua".source = ./blink.lua;
-    "nvim/after/plugin/luasnip.lua".source = ./luasnip.lua;
-    "nvim/after/plugin/snippets".source = ./snippets;
+  xdg = {
+    configFile = {
+      "nvim/after/plugin/blink.lua".source = ./blink.lua;
+      "nvim/after/plugin/luasnip.lua".source = ./luasnip.lua;
+    };
+
+    dataFile."nvim/snippets".source = ./snippets;
   };
 }
