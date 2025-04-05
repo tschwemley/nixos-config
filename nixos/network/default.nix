@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [./wireshark.nix];
 
   environment.systemPackages = [pkgs.traceroute];
@@ -13,18 +9,16 @@
       allowPing = true;
     };
 
-    nameservers = ["194.242.2.2" "2a07:e340::2"];
-
     nftables.enable = true;
   };
 
   # always use systemd-resolved
   services.resolved = {
     enable = true;
-    dnssec = lib.mkDefault "false";
+    dnssec = "true";
     dnsovertls = "opportunistic";
     domains = ["~."];
-    fallbackDns = ["194.242.2.2" "2a07:e340::2"];
+    fallbackDns = ["9.9.9.9"];
   };
 
   services.openssh = {
