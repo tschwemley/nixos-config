@@ -1,9 +1,11 @@
-{ pkgs, ... }:
-{
-  environment.systemPackages = with pkgs; [ podman-compose ];
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [podman-compose];
+
+  # Enable container name DNS for non-default Podman networks.
+  # https://github.com/NixOS/nixpkgs/issues/226365
   networking.firewall.interfaces."podman*".allowedUDPPorts = [
     53
-    5353
+    # 5353
   ];
 
   virtualisation = {
@@ -11,9 +13,10 @@
       enable = true;
 
       # Create a `docker` alias for podman, to use it as a drop-in replacement
+      autoPrune.enable = true;
       dockerCompat = true;
 
-      # Required for containers under podman-compose to be able to talk to each other.
+      # Required for container networking to be able to use names
       defaultNetwork.settings.dns_enabled = true;
     };
   };
