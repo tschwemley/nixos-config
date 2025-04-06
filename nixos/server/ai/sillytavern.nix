@@ -44,52 +44,52 @@ in {
     requires = service;
     partOf = target;
     wantedBy = target;
-  };
 
-  services = {
-    # Builds
-    "podman-build-sillytavern" = {
-      path = [pkgs.podman pkgs.git];
-      serviceConfig = {
-        Type = "oneshot";
-        TimeoutSec = 300;
+    services = {
+      # Builds
+      "podman-build-sillytavern" = {
+        path = [pkgs.podman pkgs.git];
+        serviceConfig = {
+          Type = "oneshot";
+          TimeoutSec = 300;
+        };
+        script = ''
+          cd /home/schwem/nixos-config
+          podman build -t ghcr.io/sillytavern/sillytavern:latest .
+        '';
       };
-      script = ''
-        cd /home/schwem/nixos-config
-        podman build -t ghcr.io/sillytavern/sillytavern:latest .
-      '';
-    };
 
-    # Networks
-    "podman-network-sillytavern_default" = {
-      path = [pkgs.podman];
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-        ExecStop = "podman network rm -f sillytavern_default";
+      # Networks
+      "podman-network-sillytavern_default" = {
+        path = [pkgs.podman];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+          ExecStop = "podman network rm -f sillytavern_default";
+        };
+        script = ''
+          podman network inspect sillytavern_default || podman network create sillytavern_default
+        '';
+        partOf = ["podman-compose-sillytavern-root.target"];
+        wantedBy = ["podman-compose-sillytavern-root.target"];
       };
-      script = ''
-        podman network inspect sillytavern_default || podman network create sillytavern_default
-      '';
-      partOf = ["podman-compose-sillytavern-root.target"];
-      wantedBy = ["podman-compose-sillytavern-root.target"];
-    };
 
-    tmpfiles.rules = [
-      "d ${stateDir}/config 0750 root users - -"
-      "d ${stateDir}/data 0750 root users - -"
-      "d ${stateDir}/extensions 0750 root users - -"
-      "d ${stateDir}/plugins 0750 root users - -"
-    ];
+      tmpfiles.rules = [
+        "d ${stateDir}/config 0750 root users - -"
+        "d ${stateDir}/data 0750 root users - -"
+        "d ${stateDir}/extensions 0750 root users - -"
+        "d ${stateDir}/plugins 0750 root users - -"
+      ];
 
-    # Root service
-    # When started, this will automatically create all resources and start
-    # the containers. When stopped, this will teardown all resources.
-    targets."podman-compose-sillytavern-root" = {
-      unitConfig = {
-        Description = "Root target for sillytavern container";
+      # Root service
+      # When started, this will automatically create all resources and start
+      # the containers. When stopped, this will teardown all resources.
+      targets."podman-compose-sillytavern-root" = {
+        unitConfig = {
+          Description = "Root target for sillytavern container";
+        };
+        wantedBy = ["multi-user.target"];
       };
-      wantedBy = ["multi-user.target"];
     };
   };
 }
