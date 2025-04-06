@@ -6,9 +6,25 @@
 }: let
   stateDir = "/var/lib/sillytavern";
 in {
-  services.nginx.virtualHosts."sillytavern.schwem.io".locations."/" = {
-    proxyPass = "http://sillytavern";
-    proxyWebsockets = true;
+  services = {
+    nginx = {
+      upstreams."sillytavern" = {
+        servers = {
+          "127.0.0.1:${config.variables.ports.sillytavern}" = {};
+        };
+      };
+
+      virtualHosts."sillytavern.schwem.io".locations."/" = {
+        proxyPass = "http://sillytavern";
+        proxyWebsockets = true;
+      };
+    };
+
+    oidcproxy.protectedHosts."sillytavern.schwem.io" = {
+      allowedGroups = ["admin"];
+      allowedRealmRoles = ["admin"];
+      upstream = "http://sillytavern";
+    };
   };
 
   systemd = {
@@ -91,7 +107,7 @@ in {
       "${stateDir}/plugins:/home/node/app/plugins:rw"
     ];
     ports = [
-      "127.0.0.1:${config.variables.ports.silly-tavern}:8000/tcp"
+      "127.0.0.1:${config.variables.ports.sillytavern}:8000/tcp"
     ];
     log-driver = "journald";
     extraOptions = [
