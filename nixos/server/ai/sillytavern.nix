@@ -81,15 +81,15 @@ in {
       "d ${stateDir}/extensions 0750 root users - -"
       "d ${stateDir}/plugins 0750 root users - -"
     ];
-  };
 
-  # Root service
-  # When started, this will automatically create all resources and start
-  # the containers. When stopped, this will teardown all resources.
-  targets."podman-compose-sillytavern-root" = {
-    unitConfig = {
-      Description = "Root target for sillytavern container";
+    # Root service
+    # When started, this will automatically create all resources and start
+    # the containers. When stopped, this will teardown all resources.
+    targets."podman-compose-sillytavern-root" = {
+      unitConfig = {
+        Description = "Root target for sillytavern container";
+      };
+      wantedBy = ["multi-user.target"];
     };
-    wantedBy = ["multi-user.target"];
   };
 }
