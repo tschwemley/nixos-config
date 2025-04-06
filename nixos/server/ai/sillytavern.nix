@@ -2,7 +2,10 @@
   stateDir = "/var/lib/sillytavern";
   user = "sillytavern";
 in {
-  services.nginx.virtualHosts."sillytavern.schwem.io".
+  services.nginx.virtualHosts."sillytavern.schwem.io".locations."/" = {
+    proxyPass = "http://open-webui";
+    proxyWebsockets = true;
+  };
 
   systemd.tmpfiles.rules = [
     "d ${stateDir}/config 0750 ${user} users - -"
