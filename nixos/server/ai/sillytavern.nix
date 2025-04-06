@@ -1,5 +1,6 @@
 {config, ...}: let
   stateDir = "/var/lib/sillytavern";
+  group = "sillytavern";
   user = "sillytavern";
 in {
   services.nginx.virtualHosts."sillytavern.schwem.io".locations."/" = {
@@ -14,9 +15,12 @@ in {
     "d ${stateDir}/plugins 0750 ${user} users - -"
   ];
 
-  users.users.${user} = {
-    group = user;
-    isSystemUser = true;
+  users.users = {
+    groups.${group} = {};
+    ${user} = {
+      inherit group;
+      isSystemUser = true;
+    };
   };
 
   virtualisation.oci-containers.containers.silly-tavern = {
