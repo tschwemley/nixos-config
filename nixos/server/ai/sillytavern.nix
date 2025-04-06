@@ -6,6 +6,11 @@
 }: let
   stateDir = "/var/lib/sillytavern";
 in {
+  services.nginx.virtualHosts."ai.schwem.io".locations."/" = {
+    proxyPass = "http://sillytavern";
+    proxyWebsockets = true;
+  };
+
   systemd = {
     services = {
       "podman-sillytavern" = {
