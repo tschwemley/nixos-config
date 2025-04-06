@@ -69,6 +69,13 @@ in {
       };
       wantedBy = ["multi-user.target"];
     };
+
+    tmpfiles.rules = [
+      "d ${stateDir}/config 0750 root users - -"
+      "d ${stateDir}/data 0750 root users - -"
+      "d ${stateDir}/extensions 0750 root users - -"
+      "d ${stateDir}/plugins 0750 root users - -"
+    ];
   };
 
   virtualisation.oci-containers.containers."sillytavern" = {
