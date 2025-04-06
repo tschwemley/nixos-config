@@ -63,7 +63,7 @@ in {
         acl domain_redlib hdr(host) -i redlib.schwem.io
         acl domain_rimgo hdr(host) -i rimgo.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
-        acl domain_sillytavern hdr(host) -i sillytavern.schwem.io
+        # acl domain_sillytavern hdr(host) -i sillytavern.schwem.io
         acl domain_stackoverflow hdr(host) -i so.schwem.io
         acl domain_tasks hdr(host) -i tasks.schwem.io
         acl domain_tiktok hdr(host) -i tiktok.schwem.io
@@ -90,7 +90,7 @@ in {
         use_backend redlib if domain_redlib
         use_backend rimgo if domain_rimgo
         use_backend searxng if domain_search
-        use_backend moltres if domain_sillytavern
+        # use_backend moltres if domain_sillytavern
         use_backend stackoverflow if domain_stackoverflow
         use_backend tiktok if domain_tiktok
         use_backend threadfin if domain_threadfin
