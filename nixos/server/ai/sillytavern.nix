@@ -14,7 +14,7 @@ in {
     "d ${stateDir}/plugins 0750 ${user} users - -"
   ];
 
-  users.users.${user}.isNormalUser = true;
+  users.users.${user}.isSystemUser = true;
 
   virtualisation.oci-containers.containers.silly-tavern = {
     autoStart = true;
