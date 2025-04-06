@@ -21,6 +21,7 @@ in {
     image = "ghcr.io/sillytavern/sillytavern:latest";
     podman = {inherit user;};
     ports = ["127.0.0.1:${config.variables.ports.silly-tavern}:8000"];
+    privileged = true;
     pull = "always";
     volumes = [
       "${stateDir}:/home/node/app"
