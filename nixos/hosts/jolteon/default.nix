@@ -6,7 +6,7 @@
     ../../server/arr/usenet
     ../../server/development/forgejo
     ../../server/infrastructure/postgresql
-    ../../server/services/trmnl-server.nix
+    # ../../server/services/trmnl-server.nix
 
     # ../../server/services/webhooks
 
