@@ -15,9 +15,9 @@ in {
     "d ${stateDir}/plugins 0750 ${user} users - -"
   ];
 
-  users.users = {
+  users = {
     groups.${group} = {};
-    ${user} = {
+    users.${user} = {
       inherit group;
       isSystemUser = true;
     };
