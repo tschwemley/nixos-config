@@ -1,5 +1,3 @@
-# Auto-ge
-# Auto-generated using compose2nix v0.3.1.
 {
   config,
   pkgs,
@@ -8,30 +6,6 @@
 }: let
   stateDir = "/var/lib/sillytavern";
 in {
-  # Containers
-  virtualisation.oci-containers.containers."sillytavern" = {
-    image = "localhost/ghcr.io/sillytavern/sillytavern:latest";
-    environment = {
-      "FORCE_COLOR" = "1";
-      "NODE_ENV" = "production";
-    };
-    volumes = [
-      "${stateDir}/config:/home/node/app/config:rw"
-      "${stateDir}/data:/home/node/app/data:rw"
-      "${stateDir}/extensions:/home/node/app/public/scripts/extensions/third-party:rw"
-      "${stateDir}/plugins:/home/node/app/plugins:rw"
-    ];
-    ports = [
-      "127.0.0.1:${config.variables.ports.silly-tavern}:8000/tcp"
-    ];
-    log-driver = "journald";
-    extraOptions = [
-      "--hostname=sillytavern"
-      "--network-alias=sillytavern"
-      "--network=sillytavern_default"
-    ];
-  };
-
   systemd = {
     services = {
       "podman-sillytavern" = {
@@ -90,5 +64,28 @@ in {
       };
       wantedBy = ["multi-user.target"];
     };
+  };
+
+  virtualisation.oci-containers.containers."sillytavern" = {
+    image = "ghcr.io/sillytavern/sillytavern:latest";
+    environment = {
+      "FORCE_COLOR" = "1";
+      "NODE_ENV" = "production";
+    };
+    volumes = [
+      "${stateDir}/config:/home/node/app/config:rw"
+      "${stateDir}/data:/home/node/app/data:rw"
+      "${stateDir}/extensions:/home/node/app/public/scripts/extensions/third-party:rw"
+      "${stateDir}/plugins:/home/node/app/plugins:rw"
+    ];
+    ports = [
+      "127.0.0.1:${config.variables.ports.silly-tavern}:8000/tcp"
+    ];
+    log-driver = "journald";
+    extraOptions = [
+      "--hostname=sillytavern"
+      "--network-alias=sillytavern"
+      "--network=sillytavern_default"
+    ];
   };
 }
