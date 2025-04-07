@@ -1,4 +1,6 @@
 {config, ...}: let
+  inherit (config.services.ntfy-sh) group user;
+
   socketPath = "/run/ntfy/ntfy.sock";
 in {
   services = {
@@ -20,14 +22,22 @@ in {
     };
   };
 
-  systemd.sockets.ntfy-sh = {
-    description = "Socket for ntfy-sh notification service";
-    wantedBy = ["sockets.target"];
-    socketConfig = {
-      ListenStream = socketPath;
-      SocketUser = config.services.ntfy-sh.user;
-      SocketGroup = config.services.ntfy-sh.group;
-      SocketMode = "0700";
+  systemd = {
+    services.ntfy-sh = {
     };
+
+    sockets.ntfy-sh = {
+      description = "Socket for ntfy-sh notification service";
+      wantedBy = ["sockets.target"];
+      socketConfig = {
+        ListenStream = socketPath;
+        RemoveOnStop = true;
+        SocketUser = user;
+        SocketGroup = group;
+        SocketMode = "0700";
+      };
+    };
+
+    tmpfiles.rules = ["d /run/ntfy 0750 ${user} ${group} -"];
   };
 }
