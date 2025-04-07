@@ -97,7 +97,6 @@ in {
         use_backend jellyseerr if domain_jellyseerr
         use_backend monitor if domain_monitor
         use_backend searxng if domain_search
-        use_backend tumblr if domain_tumblr
 
         default_backend static
 
