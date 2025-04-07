@@ -171,8 +171,6 @@
     };
   };
 
-  systemd.services.nginx.serviceConfig.ProtectHome = false;
-
   services.nginx.virtualHosts."search.schwem.io" = {
     locations = {
       "/" = {

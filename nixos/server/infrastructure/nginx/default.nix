@@ -23,7 +23,12 @@
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
+    recommendedUwsgiSettings = true;
+    recommendedZstdSettings = true;
   };
+
+  # This is needed for nginx to be able to read other processes in /run
+  systemd.services.nginx.serviceConfig.ProtectHome = false;
 
   users.users.nginx.extraGroups = ["users"];
 }

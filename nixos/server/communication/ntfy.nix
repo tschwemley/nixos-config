@@ -18,6 +18,7 @@ in {
         base-url = "https://ntfy.schwem.io";
         behind-proxy = true;
         listen-unix = socketPath;
+        listen-mode = "0760";
       };
     };
   };
