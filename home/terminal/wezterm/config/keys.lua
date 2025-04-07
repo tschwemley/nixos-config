@@ -19,13 +19,30 @@ return {
    },
    --
    -- pane management
-   -- {
-   --    key = "Enter",
-   --    mods = "CTRL|SHIFT",
-   --    action = action.SplitPane({
-   --       domain = "CurrentPaneDomain",
-   --    }),
-   -- },
+   {
+      key = "Enter",
+      mods = "CTRL",
+      action = wezterm.action_callback(function(window, pane)
+         local num_panes = #window:get_panes()
+         
+         if num_panes == 1 then
+            -- First pane - split bottom with 20% height
+            pane:split({ direction = "Down", size = 0.2 })
+         else
+            -- For multiple panes, split right in bottom pane with equal widths
+            local root_pane = window:get_root_pane()
+            local bottom_pane = root_pane:child(1) -- Get the bottom pane from initial split
+            local num_bottom_panes = #bottom_pane:get_children() or 1
+            local new_size = 100 / (num_bottom_panes + 1)
+            
+            bottom_pane:split({
+               direction = "Right",
+               size = new_size
+            })
+         end
+      end),
+      description = "Smart split pane (bottom/right with proportional sizing)",
+   },
    {
       key = "%",
       mods = "CTRL|SHIFT",
