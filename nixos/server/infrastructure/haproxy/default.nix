@@ -49,61 +49,55 @@ in {
         acl domain_ai hdr(host) -i ai.schwem.io
         acl domain_auth hdr(host) -i auth.schwem.io
         acl domain_cyberchef hdr(host) -i cyberchef.schwem.io
-        acl domain_db hdr(host) -i db.schwem.io
         acl domain_draw hdr(host) -i draw.schwem.io
         acl domain_git hdr(host) -i git.schwem.io
-        acl domain_freetar hdr(host) -i freetar.schwem.io
         acl domain_it-tools hdr(host) -i it-tools.schwem.io
         acl domain_jellyfin hdr(host) -i jellyfin.schwem.io
         acl domain_jellyseerr hdr(host) -i jellyseerr.schwem.io
-        acl domain_medium hdr(host) -i medium.schwem.io
         acl domain_monitor hdr(host) -i monitor.schwem.io
         acl domain_ntfy hdr(host) -i ntfy.schwem.io
         acl domain_pinterest hdr(host) -i pinterest.schwem.io
         acl domain_reddit hdr(host) -i reddit.schwem.io
-        acl domain_redlib hdr(host) -i redlib.schwem.io
         acl domain_rimgo hdr(host) -i rimgo.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
-        # acl domain_sillytavern hdr(host) -i sillytavern.schwem.io
         acl domain_stackoverflow hdr(host) -i so.schwem.io
-        acl domain_tasks hdr(host) -i tasks.schwem.io
-        acl domain_tiktok hdr(host) -i tiktok.schwem.io
-        acl domain_threadfin hdr(host) -i threadfin.schwem.io
-        acl domain_trmnl hdr(host) -i trmnl.schwem.io
         acl domain_tumblr hdr(host) -i tumblr.schwem.io
         acl domain_twitch hdr(host) -i twitch.schwem.io twitch.api.schwem.io
         acl domain_wiki hdr(host) -i wiki.schwem.io
+
+        # acl domain_medium hdr(host) -i medium.schwem.io
+        # acl domain_sillytavern hdr(host) -i sillytavern.schwem.io
+        # acl domain_trmnl hdr(host) -i trmnl.schwem.io
+        # acl domain_tasks hdr(host) -i tasks.schwem.io
+        # acl domain_threadfin hdr(host) -i threadfin.schwem.io
 
         use_backend articuno if domain_default
         use_backend articuno if domain_cyberchef
         use_backend articuno if domain_ntfy
 
         use_backend moltres if domain_ai
+        use_backend moltres if domain_reddit
+        use_backend moltres if domain_rimgo
+        # use_backend moltres if domain_sillytavern
 
-        use_backend zapados if domain_tasks
+        use_backend zapados if domain_pinterest
+        use_backend zapados if domain_tumblr
+        use_backend zapados if domain_wiki
+        use_backend zapados if domain_twitch
+        # use_backend zapados if domain_tasks
+
+        use_backend jolteon if domain_stackoverflow
+        use_backend jolteon if domain_git
+        # use_backend jolteon if domain_trmnl
 
         use_backend auth if domain_auth
         use_backend draw if domain_draw
-        use_backend freetar if domain_freetar
-        use_backend git if domain_git
         use_backend it-tools if domain_it-tools
         use_backend jellyfin if domain_jellyfin
         use_backend jellyseerr if domain_jellyseerr
-        use_backend medium if domain_medium
         use_backend monitor if domain_monitor
-        use_backend pinterest if domain_pinterest
-        use_backend reddit if domain_reddit
-        use_backend redlib if domain_redlib
-        use_backend rimgo if domain_rimgo
         use_backend searxng if domain_search
-        # use_backend moltres if domain_sillytavern
-        use_backend stackoverflow if domain_stackoverflow
-        use_backend tiktok if domain_tiktok
-        use_backend threadfin if domain_threadfin
-        use_backend jolteon if domain_trmnl
         use_backend tumblr if domain_tumblr
-        use_backend twitch if domain_twitch
-        use_backend wiki if domain_wiki
 
         default_backend static
 
@@ -116,14 +110,6 @@ in {
       backend draw
         http-request set-header X-Forwarded-Proto https
         server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
-
-      backend freetar
-        http-request set-header X-Forwarded-Proto https
-        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
-
-      backend git
-        http-request set-header X-Forwarded-Proto https
-        server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
       backend git_ssh_backend
         mode tcp
@@ -146,10 +132,6 @@ in {
         http-request set-header X-Forwarded-Proto https
         server jolteon jolteon:8080 check send-proxy
 
-      backend medium
-        http-request set-header X-Forwarded-Proto https
-        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
-
       backend moltres
         http-request set-header X-Forwarded-Proto https
         server moltres moltres:8080 check send-proxy
@@ -161,18 +143,6 @@ in {
       backend pinterest
         http-request set-header X-Forwarded-Proto https
         server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
-
-      backend reddit
-        http-request set-header X-Forwarded-Proto https
-        server moltres moltres:8080 check send-proxy
-
-      backend redlib
-        http-request set-header X-Forwarded-Proto https
-        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
-
-      backend rimgo
-        http-request set-header X-Forwarded-Proto https
-        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
       backend searxng
         http-request set-header X-Forwarded-Proto https
@@ -187,27 +157,12 @@ in {
         http-request set-header X-Forwarded-Proto https
         server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
-      backend tiktok
-        http-request set-header X-Forwarded-Proto https
-        server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
-
-      backend threadfin
-        http-request set-header X-Forwarded-Proto https
-        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
-
-      backend tumblr
-        http-request set-header X-Forwarded-Proto https
-        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
-
-      backend twitch
-        http-request set-header X-Forwarded-Proto https
-        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
-
-      backend wiki
-        http-request set-header X-Forwarded-Proto https
-        server zapados zapados:8080 check send-proxy
+      # backend threadfin
+      #   http-request set-header X-Forwarded-Proto https
+      #   server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
       backend zapados
+        http-request set-header X-Forwarded-Proto https
         server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
     '';
   };

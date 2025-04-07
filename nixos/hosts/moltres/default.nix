@@ -8,9 +8,9 @@
     ../../server/knowledge/excalidraw
 
     ../../server/alt-frontends/redlib.nix
+    ../../server/alt-frontends/rimgo.nix
 
     # ../../server/ai/sillytavern.nix
-    #../../server/alt-frontends/rimgo.nix
     # ../../server/alt-frontends/scribe
     # ../../server/infrastructure/haproxy
     #../../server/services/searxng

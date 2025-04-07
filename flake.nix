@@ -60,7 +60,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # NOTE: uncomment these as required when necessary for
+    # NOTE: uncomment these as required/when necessary for overlays
     # nixpkgs-master.url = "github:nixos/nixpkgs/master";
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
