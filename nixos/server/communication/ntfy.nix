@@ -13,7 +13,7 @@ in {
       # REF: https://docs.ntfy.sh/config/#config-options
       settings = {
         auth-default-access = "deny-all";
-        base-url = "ntfy.schwem.io";
+        base-url = "https://ntfy.schwem.io";
         behind-proxy = true;
         listen-unix = socketPath;
       };

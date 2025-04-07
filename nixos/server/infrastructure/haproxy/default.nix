@@ -58,6 +58,7 @@ in {
         acl domain_jellyseerr hdr(host) -i jellyseerr.schwem.io
         acl domain_medium hdr(host) -i medium.schwem.io
         acl domain_monitor hdr(host) -i monitor.schwem.io
+        acl domain_ntfy hdr(host) -i ntfy.schwem.io
         acl domain_pinterest hdr(host) -i pinterest.schwem.io
         acl domain_reddit hdr(host) -i reddit.schwem.io
         acl domain_redlib hdr(host) -i redlib.schwem.io
@@ -73,10 +74,15 @@ in {
         acl domain_twitch hdr(host) -i twitch.schwem.io twitch.api.schwem.io
         acl domain_wiki hdr(host) -i wiki.schwem.io
 
-        use_backend moltres if domain_ai
-        use_backend auth if domain_auth
         use_backend articuno if domain_default
         use_backend articuno if domain_cyberchef
+        use_backend articuno if domain_ntfy
+
+        use_backend moltres if domain_ai
+
+        use_backend zapados if domain_tasks
+
+        use_backend auth if domain_auth
         use_backend draw if domain_draw
         use_backend freetar if domain_freetar
         use_backend git if domain_git
@@ -98,7 +104,6 @@ in {
         use_backend tumblr if domain_tumblr
         use_backend twitch if domain_twitch
         use_backend wiki if domain_wiki
-        use_backend zapados if domain_tasks
 
         default_backend static
 
