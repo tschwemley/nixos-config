@@ -31,12 +31,12 @@ in {
         RemoveOnStop = true;
         SocketUser = user;
         SocketGroup = group;
-        SocketMode = "0750";
+        SocketMode = "0660";
       };
     };
 
-    tmpfiles.rules = ["d /run/ntfy 0750 ${user} ${group} -"];
+    tmpfiles.rules = ["d /run/ntfy 0660 ${user} ${group} -"];
   };
 
-  users.users.ntfy-sh.extraGroups = [config.users.users.nginx.group];
+  users.groups.ntfy-sh.members = ["nginx"];
 }
