@@ -5,7 +5,7 @@
 in {
   services = {
     nginx = {
-      upstreams.ntfy.servers."unix://${socketPath}" = {};
+      upstreams.ntfy.servers."unix:${socketPath}" = {};
       virtualHosts."ntfy.schwem.io".locations."/".proxyPass = "http://ntfy";
     };
 
