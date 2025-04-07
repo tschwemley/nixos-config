@@ -21,9 +21,10 @@
     ../programs/lan-mouse.nix
     ../programs/nemo.nix
     ../programs/qt.nix
-    # ../programs/rustdesk.nix
+    # ../programs/rustdesk.nix FIXME: uncomment next time this comment is noticed
     ../programs/wayland/hyprland
     ../programs/wcalc.nix
+    ../programs/webcamoid.nix
     ../programs/wofi.nix
 
     ../services/kdeconnect.nix

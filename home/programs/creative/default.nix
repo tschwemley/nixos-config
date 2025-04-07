@@ -1,10 +1,8 @@
 {pkgs, ...}: {
   imports = [
     # ../programs/aseprite.nix TODO: fix for python plugin
-    ./bambu-studio.nix
+    ./3d-printing.nix.nix
     ./gimp.nix
     ./inkscape.nix
   ];
-
-  home.packages = [pkgs.webcamoid];
 }
