@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
 
 local action = require("wezterm").action
+-- local pane_utils = require("pane_utils")
 local layouts = require("layouts")
 
 return {
@@ -18,17 +19,17 @@ return {
    },
    --
    -- pane management
-   {
-      key = "Enter",
-      mods = "CTRL|SHIFT",
-      action = action.SplitPane({
-         domain = "CurrentPaneDomain",
-      }),
-   },
+   -- {
+   --    key = "Enter",
+   --    mods = "CTRL|SHIFT",
+   --    action = action.SplitPane({
+   --       domain = "CurrentPaneDomain",
+   --    }),
+   -- },
    {
       key = "%",
       mods = "CTRL|SHIFT",
-      action = action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+      action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
    },
    {
       key = '"',
@@ -55,4 +56,10 @@ return {
       mods = "CTRL",
       action = action.ActivatePaneDirection("Down"),
    },
+   -- {
+   --    key = "l",
+   --    mods = "CTRL|SHIFT",
+   --    action = wezterm.action_callback(pane_utils.cycle_layouts({})),
+   --    description = "Cycle layouts",
+   -- },
 }
