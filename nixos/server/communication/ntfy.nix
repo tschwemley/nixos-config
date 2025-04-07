@@ -23,8 +23,8 @@ in {
   systemd.sockets.ntfy-sh = {
     description = "Socket for ntfy-sh notification service";
     wantedBy = ["sockets.target"];
-    ListenStream = socketPath;
     socketConfig = {
+      ListenStream = socketPath;
       SocketUser = config.services.ntfy-sh.user;
       SocketGroup = config.services.ntfy-sh.group;
       SocketMode = "0700";
