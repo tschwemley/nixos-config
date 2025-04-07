@@ -11,9 +11,10 @@ let
 in {
   imports =
     [
-      (import ../../profiles/buyvm.nix "")
+      ../../profiles/buyvm.nix
 
       # server imports
+      ../../server/communication/ntfy.nix
       ../../server/dashboard
       ../../server/development/cyberchef.nix
       ../../server/infrastructure/haproxy
@@ -26,11 +27,7 @@ in {
     ++ storageDisks;
 
   networking.hostName = "articuno";
-
-  sops.defaultSopsFile = ./secrets.yaml;
-
   services.tailscale.extraUpFlags = ["--advertise-tags=tags:server,tags:master"];
-
-  # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
-  system.stateVersion = "23.05";
+  sops.defaultSopsFile = ./secrets.yaml;
+  system.stateVersion = "23.05"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
 }

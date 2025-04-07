@@ -1,4 +1,4 @@
-storageDisk: let
+let
   primaryDisk = "/dev/vda";
   partitions = import ../hardware/disks/partitions.nix;
 in {

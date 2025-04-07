@@ -5,6 +5,7 @@
   excalidraw = "8380";
   freetar = "22000";
   forgejo = "8020";
+  home-assistant = "8123";
   invidious = "3100";
   it-tools = "7001";
   nginx-sso = "8082";
