@@ -23,9 +23,6 @@ in {
   };
 
   systemd = {
-    services.ntfy-sh = {
-    };
-
     sockets.ntfy-sh = {
       description = "Socket for ntfy-sh notification service";
       wantedBy = ["sockets.target"];
@@ -34,7 +31,7 @@ in {
         RemoveOnStop = true;
         SocketUser = user;
         SocketGroup = group;
-        SocketMode = "0700";
+        SocketMode = "0750";
       };
     };
 
