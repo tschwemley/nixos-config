@@ -37,4 +37,6 @@ in {
 
     tmpfiles.rules = ["d /run/ntfy 0750 ${user} ${group} -"];
   };
+
+  users.users.ntfy-sh.extraGroups = [config.users.users.nginx.group];
 }
