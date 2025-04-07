@@ -18,7 +18,7 @@ in {
         base-url = "https://ntfy.schwem.io";
         behind-proxy = true;
         listen-unix = socketPath;
-        listen-mode = "0760";
+        listen-mode = "0770";
       };
     };
   };
@@ -32,11 +32,11 @@ in {
         RemoveOnStop = true;
         SocketUser = user;
         SocketGroup = group;
-        SocketMode = "0760";
+        SocketMode = "0770";
       };
     };
 
-    tmpfiles.rules = ["d /run/ntfy 0750 ${user} ${group} -"];
+    tmpfiles.rules = ["d /run/ntfy 0770 ${user} ${group} -"];
   };
 
   users.groups.ntfy-sh.members = ["nginx"];
