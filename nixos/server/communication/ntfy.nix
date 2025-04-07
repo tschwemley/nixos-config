@@ -1,4 +1,4 @@
-let
+{config, ...}: let
   socketPath = "/run/ntfy/ntfy.sock";
 in {
   services = {
@@ -17,6 +17,17 @@ in {
         behind-proxy = true;
         listen-unix = socketPath;
       };
+    };
+  };
+
+  systemd.sockets.ntfy-sh = {
+    description = "Socket for ntfy-sh notification service";
+    wantedBy = ["sockets.target"];
+    ListenStream = socketPath;
+    socketConfig = {
+      SocketUser = config.services.ntfy-sh.user;
+      SocketGroup = config.services.ntfy-sh.group;
+      SocketMode = "0700";
     };
   };
 }
