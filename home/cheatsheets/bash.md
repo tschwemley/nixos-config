@@ -13,6 +13,33 @@ if [ $# -eq 0 ] ;
 
 # Check if specific arg empty
 if [ -z "$1" ] ;
+
+# Handle command line options
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        -h|--help) 
+            usage
+            exit 0
+            ;;
+        -f|--file)
+            filename="$2"
+            shift 
+            ;;
+        *)
+            echo "Unknown option: $1"
+            exit 1
+            ;;
+    esac
+    shift
+done
+
+# Usage function example
+usage() {
+    echo "Usage: $0 [options]"
+    echo "Options:"
+    echo "  -h, --help      Show this help message"
+    echo "  -f, --file FILE Specify input file"
+}
 ```
 
 ## Arrays
