@@ -1,8 +1,4 @@
-{
-  osConfig,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   aliases = {
     b = "branch";
     cb = "checkout --branch";
@@ -37,6 +33,7 @@ in {
       ".aider*"
       ".direnv/"
       ".env"
+      "openrouter-usage*json"
     ];
   };
 }

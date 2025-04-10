@@ -11,7 +11,7 @@
     vim-abolish
     vim-speeddating
     vim-startuptime
-    vim-surround
+    # vim-surround
   ];
 
   xdg.configFile = {

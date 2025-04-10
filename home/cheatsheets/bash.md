@@ -17,13 +17,13 @@ if [ -z "$1" ] ;
 # Handle command line options
 while [[ "$#" -gt 0 ]]; do
     case $1 in
-        -h|--help) 
+        -h|--help)
             usage
             exit 0
             ;;
         -f|--file)
             filename="$2"
-            shift 
+            shift
             ;;
         *)
             echo "Unknown option: $1"
