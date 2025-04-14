@@ -1,4 +1,5 @@
 {
+  self,
   config,
   pkgs,
   ...
@@ -9,9 +10,15 @@
     ];
 
     home-manager.users.root = {
-      imports = [
-        ../../home/profiles
-      ];
+      imports =
+        [
+          ../../home/profiles
+        ]
+        ++ (
+          if self.lib.isServer config.networking.hostName
+          then [../../home/xdg/ssh/servers.nix]
+          else []
+        );
       home.homeDirectory = "/root";
     };
   };

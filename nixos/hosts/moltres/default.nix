@@ -3,7 +3,6 @@
     ../../profiles/racknerd.nix
 
     ../../server/ai/open-webui.nix
-    ../../server/alt-frontends/freetar.nix
     ../../server/alt-frontends/redlib.nix
     ../../server/knowledge/excalidraw
 

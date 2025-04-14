@@ -1,9 +1,13 @@
 lib:
 lib
-// {
+// rec {
   hosts = lib.attrNames (builtins.readDir ../nixos/hosts);
 
   flattenAttrs = attrset: builtins.concatLists (builtins.attrValues attrset);
+
+  isPC = host: builtins.elem host ["charizard" "pikachu"];
+
+  isServer = host: !isPC host;
 
   mkStrOption = attrs: lib.mkOption ({type = lib.types.str;} // attrs);
 
@@ -33,7 +37,6 @@ lib
     binternet = "8009";
     dashboard = "6980";
     excalidraw = "8380";
-    freetar = "22000";
     forgejo = "8020";
     invidious = "3100";
     it-tools = "7001";
