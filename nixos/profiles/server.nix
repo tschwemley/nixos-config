@@ -1,4 +1,5 @@
 {
+  self,
   lib,
   pkgs,
   ...
@@ -26,17 +27,15 @@
 
   services.getty.autologinUser = "root";
 
-  sops = {
-    secrets = {
-      # TODO : remove after validting nothing is continuing to rely on this
-      # container_deploy_key = {
-      #   sopsFile = ../../containers/secrets.yaml;
-      #   path = "/root/.ssh/container_deploy_key";
-      # };
-      root_password = {
-        mode = "0440";
-        neededForUsers = true;
-      };
+  sops.secrets = {
+    "git.schwem.io.deploy.key" = {
+      sopsFile = "${self.lib.secrets.nixos}/ssh.yaml";
+      mode = "0600";
+    };
+
+    root_password = {
+      mode = "0440";
+      neededForUsers = true;
     };
   };
 
