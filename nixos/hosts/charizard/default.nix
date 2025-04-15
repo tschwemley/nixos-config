@@ -1,4 +1,5 @@
 {
+  self,
   config,
   lib,
   pkgs,
@@ -11,7 +12,7 @@
       ../../network/tailscale.nix
     ];
   };
-  user = (import ../../system/users.nix {inherit config pkgs;}).schwem;
+  user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
 in {
   imports = [
     disk
