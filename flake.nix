@@ -66,7 +66,7 @@
 
     nil.url = "github:oxalica/nil";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
-    systems.url = "github:nix-systems/default-linux";
+    systems.url = "github:nix-systems/default";
 
     disko = {
       url = "github:nix-community/disko";
