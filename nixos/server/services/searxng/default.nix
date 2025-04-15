@@ -57,7 +57,7 @@
 
       # Search engine settings
       search = {
-        autocomplete = "startpage";
+        autocomplete = "qwant";
         autocomplete_min = 2;
         ban_time_on_fail = 5;
         default_lang = "en";
@@ -74,8 +74,7 @@
         base_url = "https://search.schwem.io";
         bind_address = "127.0.0.1";
         image_proxy = true;
-        # limiter = true;
-        limiter = false;
+        limiter = true; # forced on anyways when using uwsgi
         method = "GET";
         port = lib.strings.toInt self.lib.port-map.searxng;
         public_instance = true;
