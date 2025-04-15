@@ -6,11 +6,13 @@
 }: {
   imports = [./secrets.nix];
 
+  # config/settings REF: https://docs.searxng.org/admin/settings/index.html
   services.searx = {
     enable = true;
     environmentFile = config.sops.secrets.searxng_env_file.path;
     redisCreateLocally = true;
     runInUwsgi = true;
+
     uwsgiConfig = {
       socket = "/run/searx/searx.sock";
       chmod-socket = "660";
