@@ -58,7 +58,10 @@
         ''
           # see: https://docs.openwebui.com/getting-started/env-configuration/
 
+          ###
           # General
+          ###
+
           ENV=prod
           #DATABASE_URL=${placeholder.openwebui_database_url}
           PORT=${self.lib.port-map.open-webui}
@@ -66,11 +69,16 @@
           DEFAULT_MODELS=deepseek/deepseek-chat
           #RESET_CONFIG_ON_START=True # resets the config.json file on startup
 
+          CUSTOM_NAME=AI Chat
+          ENABLE_CHANNELS=True
+          WEBUI_URL=https://ai.schwem.io
           WEBUI_SECRET_KEY=${placeholder.openwebui_secret_key};
           WEBUI_SESSION_COOKIE_SECURE=True
-          WEBUI_URL=https://ai.schwem.io
 
+
+          ###
           # Auth
+          ###
           OAUTH_CLIENT_ID=open-webui
           OAUTH_CLIENT_SECRET=${placeholder.openwebui_oauth_client_secret}
           OPENID_PROVIDER_URL=${placeholder.openwebui_openid_provider_url}
