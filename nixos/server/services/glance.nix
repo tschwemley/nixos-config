@@ -63,7 +63,7 @@ in {
       };
 
       nginx.virtualHosts.virtualHosts.locations."schwem.io" = {
-        "/".proxyPass = "http://${host}:${port}";
+        "/".proxyPass = "http://${host}:${toString port}";
       };
     };
   };
