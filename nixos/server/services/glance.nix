@@ -61,10 +61,10 @@ in {
           negative-color = "6 96 59";
         };
       };
+    };
 
-      nginx.virtualHosts.virtualHosts.locations."schwem.io" = {
-        "/".proxyPass = "http://${host}:${toString port}";
-      };
+    nginx.virtualHosts.virtualHosts.locations."schwem.io" = {
+      "/".proxyPass = "http://${host}:${toString port}";
     };
   };
 }
