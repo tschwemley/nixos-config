@@ -4,6 +4,7 @@
   dashboard = "6980";
   excalidraw = "8380";
   forgejo = "8020";
+  glance = "6143";
   home-assistant = "8123";
   invidious = "3100";
   it-tools = "7001";

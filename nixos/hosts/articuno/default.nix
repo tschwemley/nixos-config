@@ -15,13 +15,14 @@ in {
 
       # server imports
       ../../server/communication/ntfy.nix
-      ../../server/dashboard
+      # ../../server/dashboard
       ../../server/development/cyberchef.nix
       ../../server/infrastructure/haproxy
       ../../server/infrastructure/monitoring
       ../../server/infrastructure/postgresql
       ../../server/security/acme
       ../../server/security/auth/keycloak
+      ../../server/services/glance.nix
       ../../server/services/searxng
     ]
     ++ storageDisks;
