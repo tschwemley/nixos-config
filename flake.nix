@@ -122,10 +122,10 @@
     # imports below here are server-specific imports for schwem.io
     #   TODO: make them into a single repo
     #   TODO: uncomment these after removing flake-parts deps
-    dashboard = {
-      url = "git+https://git.schwem.io/schwem/dashboard";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # dashboard = {
+    #   url = "git+https://git.schwem.io/schwem/dashboard";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     oidcproxy = {
       url = "git+https://git.schwem.io/schwem/oidcproxy";

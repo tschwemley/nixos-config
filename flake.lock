@@ -1,25 +1,5 @@
 {
   "nodes": {
-    "dashboard": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1740354044,
-        "narHash": "sha256-BhJWRj9Ou6bYTDZs+lF2XkvQA2XMqB6deu/o44Ptpto=",
-        "ref": "refs/heads/main",
-        "rev": "65c1f0c5613ef2ec0cd35aecea43b3a8c206b914",
-        "revCount": 32,
-        "type": "git",
-        "url": "https://git.schwem.io/schwem/dashboard"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.schwem.io/schwem/dashboard"
-      }
-    },
     "devshell": {
       "inputs": {
         "nixpkgs": [
@@ -301,11 +281,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1744663884,
-        "narHash": "sha256-a6QGaZMDM1miK8VWzAITsEPOdmLk+xTPyJSTjVs3WhI=",
+        "lastModified": 1744735751,
+        "narHash": "sha256-OPpfgL3qUIbQdbmp1/ZwnlsuTLooHN4or0EABnZTFRY=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d5cdf55bd9f19a3debd55b6cb5d38f7831426265",
+        "rev": "db7738e67a101ad945abbcb447e1310147afaf1b",
         "type": "github"
       },
       "original": {
@@ -688,7 +668,6 @@
     },
     "root": {
       "inputs": {
-        "dashboard": "dashboard",
         "disko": "disko",
         "home-manager": "home-manager",
         "musnix": "musnix",
