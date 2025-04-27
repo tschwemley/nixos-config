@@ -27,7 +27,7 @@
     devShells = eachSystem (pkgs: import ./devshell pkgs);
     nixosModules = import ./modules;
     overlays = import ./overlays.nix {inherit self;};
-    packages = eachSystem (pkgs: import ./packages pkgs);
+    packages = eachSystem (pkgs: import ./packages self pkgs);
     templates = import ./templates;
 
     homeConfigurations = {
@@ -73,9 +73,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    gbar = {
+      url = "github:scorpion-26/gBar";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # TODO: fix up private appimage import(s)
+    hueforge = {
+      url = "file:/home/schwem/appimages/HueForge_v0.9.0-beta-1.AppImage";
+      flake = false;
     };
 
     # hyprland-input-capture = {
@@ -127,13 +138,18 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    oidcproxy = {
-      url = "git+https://git.schwem.io/schwem/oidcproxy";
+    # stash = {
+    #   url = "git+https://git.schwem.io/schwem/stash-flake";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    nix-private = {
+      url = "git+https://git.schwem.io/schwem/nix-private";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stash = {
-      url = "git+https://git.schwem.io/schwem/stash-flake";
+    oidcproxy = {
+      url = "git+https://git.schwem.io/schwem/oidcproxy";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
