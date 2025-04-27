@@ -191,6 +191,11 @@
     };
   };
 
+  systemd.services.uwsgi = {
+    after = ["network.target" "systemd-networkd.service"];
+    requires = ["network.target" "systemd-networkd.service"];
+  };
+
   users = {
     groups.searx.members = ["nginx"];
     # override with an unused nixos uid value (I already used the default of 201 for cockroachdb)

@@ -74,6 +74,7 @@ in {
         use_backend articuno if domain_default
         use_backend articuno if domain_cyberchef
         use_backend articuno if domain_ntfy
+        use_backend articuno if domain_twitch
 
         use_backend moltres if domain_ai
         use_backend moltres if domain_reddit
@@ -83,7 +84,6 @@ in {
         use_backend zapados if domain_pinterest
         use_backend zapados if domain_tumblr
         use_backend zapados if domain_wiki
-        use_backend zapados if domain_twitch
         # use_backend zapados if domain_tasks
 
         use_backend jolteon if domain_stackoverflow
@@ -164,6 +164,11 @@ in {
         http-request set-header X-Forwarded-Proto https
         server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
     '';
+  };
+
+  systemd.services.haproxy = {
+    after = ["systemd-networkd.service"];
+    requires = ["systemd-networkd.service"];
   };
 
   users.users.haproxy.extraGroups = ["acme"];
