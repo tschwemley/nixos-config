@@ -19,5 +19,7 @@
       # Required for container networking to be able to use names
       defaultNetwork.settings.dns_enabled = true;
     };
+
+    oci-containers.backend = "podman";
   };
 }

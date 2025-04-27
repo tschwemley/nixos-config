@@ -1,88 +1,105 @@
+# Auto-generated using compose2nix v0.3.1.
 {
-  self,
-  config,
   pkgs,
+  lib,
   ...
-}: let
-  bindAddr = "127.0.0.1";
-  port = config.variables.ports.trmnl-server;
-  stateDir = "/var/lib/trmnl-server";
-in {
-  services.nginx = {
-    # appendHttpConfig = ''
-    #   # Increase the maximum size of the hash table
-    #   proxy_headers_hash_max_size 1024;
-    #
-    #   # Increase the bucket size of the hash table
-    #   proxy_headers_hash_bucket_size 128;
-    # '';
-
-    virtualHosts."trmnl.schwem.io".locations = {
-      "/" = {
-        proxyPass = "http://127.0.0.1:${config.variables.ports.trmnl-server}";
-      };
-
-      "/static/" = {
-        alias = "${pkgs.trmnl-server}/lib/static/";
-      };
-    };
-  };
-
-  sops.secrets.trmnl-server = {
-    format = "dotenv";
-    key = "";
-    mode = "0400";
-    sopsFile = "${self.lib.secrets.server}/trmnl-server.env";
-  };
-
-  systemd.services.trmnl-server = {
-    description = "BYOS For Trmnl (https://usetrmnl.com)";
-
+}: {
+  # Containers
+  virtualisation.oci-containers.containers."trmnl-server-app" = {
+    image = "ghcr.io/usetrmnl/byos_laravel:latest";
     environment = {
-      CSRF_TRUSTED_ORIGINS = "https://trmnl.schwem.io";
-      DB_FILE = "${stateDir}/sqlite.db";
+      "PHP_OPCACHE_ENABLE" = "1";
+      "TRMNL_PROXY_REFRESH_MINUTES" = "15";
+    };
+    volumes = [
+      "trmnl-server_database:/var/www/html/database:rw"
+      "trmnl-server_storage:/var/www/html/storage:rw"
+    ];
+    ports = [
+      "4567:8080/tcp"
+    ];
+    log-driver = "journald";
+    extraOptions = [
+      "--network-alias=app"
+      "--network=trmnl-server_default"
+    ];
+  };
+
+  systemd = {
+    services = {
+      "podman-trmnl-server-app" = {
+        serviceConfig = {
+          Restart = lib.mkOverride 90 "always";
+        };
+        after = [
+          "podman-network-trmnl-server_default.service"
+          "podman-volume-trmnl-server_database.service"
+          "podman-volume-trmnl-server_storage.service"
+        ];
+        requires = [
+          "podman-network-trmnl-server_default.service"
+          "podman-volume-trmnl-server_database.service"
+          "podman-volume-trmnl-server_storage.service"
+        ];
+        partOf = [
+          "podman-compose-trmnl-server-root.target"
+        ];
+        wantedBy = [
+          "podman-compose-trmnl-server-root.target"
+        ];
+      };
+
+      # Networks
+      "podman-network-trmnl-server_default" = {
+        path = [pkgs.podman];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+          ExecStop = "podman network rm -f trmnl-server_default";
+        };
+        script = ''
+          podman network inspect trmnl-server_default || podman network create trmnl-server_default
+        '';
+        partOf = ["podman-compose-trmnl-server-root.target"];
+        wantedBy = ["podman-compose-trmnl-server-root.target"];
+      };
+
+      # Volumes
+      "podman-volume-trmnl-server_database" = {
+        path = [pkgs.podman];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+        };
+        script = ''
+          podman volume inspect trmnl-server_database || podman volume create trmnl-server_database
+        '';
+        partOf = ["podman-compose-trmnl-server-root.target"];
+        wantedBy = ["podman-compose-trmnl-server-root.target"];
+      };
+
+      "podman-volume-trmnl-server_storage" = {
+        path = [pkgs.podman];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+        };
+        script = ''
+          podman volume inspect trmnl-server_storage || podman volume create trmnl-server_storage
+        '';
+        partOf = ["podman-compose-trmnl-server-root.target"];
+        wantedBy = ["podman-compose-trmnl-server-root.target"];
+      };
     };
 
-    preStart =
-      /*
-      bash
-      */
-      ''
-        if [ ! -f $DB_FILE ] ; then
-          ${pkgs.trmnl-server}/bin/trmnl-server-init --username=admin --email=automation@schwem.io --noinput
-        fi
-      '';
-
-    serviceConfig = {
-      EnvironmentFile = config.sops.secrets.trmnl-server.path;
-      ExecStart = "${pkgs.trmnl-server}/bin/trmnl-server-run -b ${bindAddr} -p ${port}";
-      Restart = "always";
-      RestartSec = "15s";
-
-      WorkingDirectory = stateDir;
-      StateDirectory = "trmnl-server";
-      RuntimeDirectory = "trmnl-server";
-      RuntimeDirectoryMode = "0750";
-
-      PrivateTmp = true;
-      DynamicUser = true;
-      DevicePolicy = "closed";
-      LockPersonality = true;
-      # TODO: try to flip below boolean; this config was copied from elsewhere (orig value: false)
-      MemoryDenyWriteExecute = false; # onnxruntime/capi/onnxruntime_pybind11_state.so: cannot enable executable stack as shared object requires: Permission Denied
-      PrivateUsers = true;
-      ProtectHome = true;
-      ProtectHostname = true;
-      ProtectKernelLogs = true;
-      ProtectKernelModules = true;
-      ProtectKernelTunables = true;
-      ProtectControlGroups = true;
-      # TODO: try to change below value; this config was copied from elsewhere (orig value: all)
-      ProcSubset = "all"; # Error in cpuinfo: failed to parse processor information from /proc/cpuinfo
-      RestrictNamespaces = true;
-      RestrictRealtime = true;
-      SystemCallArchitectures = "native";
-      UMask = "0077";
+    # Root service
+    # When started, this will automatically create all resources and start
+    # the containers. When stopped, this will teardown all resources.
+    targets."podman-compose-trmnl-server-root" = {
+      unitConfig = {
+        Description = "Root target generated by compose2nix.";
+      };
+      wantedBy = ["multi-user.target"];
     };
   };
 }

@@ -1,10 +1,10 @@
 {
+  self,
   config,
-  lib,
   ...
 }: let
   host = "127.0.0.1";
-  port = lib.toInt config.variables.ports.glance;
+  port = self.lib.toInt config.variables.ports.glance;
 in {
   services = {
     glance = {
@@ -30,8 +30,14 @@ in {
                 widgets = [
                   {type = "calendar";}
                   {
+                    type = "clock";
+                    timezones = [
+                      {timezone = "\${DEFAULT_TIMEZONE}";}
+                    ];
+                  }
+                  {
                     type = "weather";
-                    location = "Detroit, MI";
+                    location = "\${DEFAULT_LOCATION}";
                   }
                 ];
               }
@@ -41,10 +47,6 @@ in {
                 widgets = [
                   {
                     type = "search";
-                  }
-                  {
-                    type = "weather";
-                    location = "Detroit, MI";
                   }
                 ];
               }
@@ -65,4 +67,12 @@ in {
 
     nginx.virtualHosts."schwem.io".locations."/".proxyPass = "http://${host}:${toString port}";
   };
+
+  sops.secrets.glanceEnv = {
+    format = "dotenv";
+    # key = "";
+    sopsFile = "${self.lib.secrets.server}/glance.env";
+  };
+
+  systemd.services.glance.serviceConfig.EnvironmentFile = config.sops.secrets.glanceEnv.path;
 }

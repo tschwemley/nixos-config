@@ -32,6 +32,7 @@
 
         "adbusers"
         "audio"
+        "dialout"
         "docker"
         "gamemode"
         "networkmanager"
