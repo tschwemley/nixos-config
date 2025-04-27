@@ -6,6 +6,9 @@
     blink-emoji-nvim
     css-vars-nvim
     luasnip
+
+    # compatability plugins (require blink-compat)
+    cmp-dap
   ];
 
   xdg = {

@@ -37,7 +37,8 @@ require("blink.cmp").setup({
 
       per_filetype = {
          lua = { "buffer", "lazydev", "lsp", "snippets" },
-         sql = { "buffer", "dadbod", "snippets" },
+         mysql = { "buffer", "dadbod", "lsp", "path", "snippets" },
+         sql = { "buffer", "dadbod", "lsp", "path", "snippets" },
       },
 
       providers = {

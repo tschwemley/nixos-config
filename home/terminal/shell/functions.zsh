@@ -1,18 +1,34 @@
 # nix build with output of last error
-func nbuild() {
+nbuild() {
   nix build "$@" 2>/tmp/last-build.error.log
   $(tail -n1 /tmp/last-build.error.log | sed "s/.*\(nix log.*\)'./\1/")
 }
 
+rnum() {                                                      
+	local min max
+	echo $#
+	if [ $# > 1 ]; then 
+		min=$1
+		max=$2
+	else 
+		min=0
+		max=$1
+	fi
+
+	printf "min: %d; max: %d\n" min max
+
+	echo $((RANDOM % (max - min + 1) + min))                  
+}
+
 # run command from nixpkgs via current system flake
-func run() {
+run() {
   pkg=$1
   shift
 
   nix run github:nixos/nixpkgs/nixos-unstable#"$pkg" -- "$@"
 }
 
-func srun() {
+srun() {
   pkg=$1
   shift
 
@@ -20,7 +36,7 @@ func srun() {
 }
 
 # TODO: func needs fixed for extracting multiple keys. Not worth extra time when writing.
-func sops_extract() {
+sops_extract() {
   # Assign all but the last argument as a secret key
   secretKeys=$(printf '"%s" ' "$\{@:1:$#-1}")
 
@@ -36,4 +52,4 @@ func sops_extract() {
 
 
 # tail with bat
-func tailf() { tail -f "$1" | bat --paging=never -l log }
+tailf() { tail -f "$1" | bat --paging=never -l log }

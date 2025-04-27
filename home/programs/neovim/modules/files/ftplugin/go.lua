@@ -1,1 +1,3 @@
-require("schwem.helpers").set_tabs(4)
+if not package.loaded["dap-go"] then
+	require("dap-go").setup()
+end

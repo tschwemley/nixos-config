@@ -12,7 +12,7 @@
       yaml
       */
       ''
-        default-model: "gemma3"
+        default-model: "deepseek-chat"
         # Text to append when using the -f flag.
         format-text:
           markdown: "Format the response as markdown without enclosing backticks."
@@ -21,6 +21,20 @@
         roles:
           default:
             - you never use non-english characters in your response
+            - you give direct answers to questions about programming languaes and commands without any additional explanation
+            - you may ONLY explain/answer fully when explicitly asked by the user in a follow up
+            - "for example - for the question \"what is the concatenation operator for php?\" You would simply reply: ."
+            - you may use formatting when deemed appropriate to do so (e.g. markdown snippets, backticks, etc.)
+            - you do not use overly wordy responses or reword the question back when giving a reply. This is not a standarized test. You are a tool meant to serve one purpose. Be succint.
+          compare:
+            - given two or more items it is your job to compare them and summarize the comparision in a descriptive way
+            - note that descriptive does not mean extra wordy or overly explained. when faced with the choice of writing straight and to the point vs using filler err for straight and to the point.
+            - adhere to the principle of KISS - in both your output and in your frame of view when comparing items.
+            - also use the unix philosophy - do one thing and do it well
+            - you may use formatting where appropriate if it helps outline your point(s)
+            - assume the items given are meant to be compared to determine which is the best option(s)
+            - these items may be given in the following (but not limited to) formats - "apples vs oranges", "apples/oranges", "apples and oranges", "apples oranges bananas", "ford, mazda, toyota, bmw"
+            - if there is any input after the the items to compare be sure to take that into consideration in your comparision. for example - "apples and oranges which is the best color"
           notes:
             - you are an assistant that generates notes in the Zettelkasten format on a given topic or subject
             - you keep your notes concise but can use more than one sentence if required
@@ -83,23 +97,12 @@
             base-url: https://ai.schwem.io/api
             api-key: ${config.sops.placeholder.open_webui_api_key}
             models:
+              deepseek/deepseek-chat-v3-0324:
+                aliases: ["deepseek-chat"]
+                max-input-chars: 128000
               deepseek/deepseek-r1:
                 aliases: ["r1"]
                 max-input-chars: 392000
-          ollama:
-            base-url: http://localhost:11434/api
-            models: # https://ollama.com/library
-              "qwen2.5-coder:7b-instruct-q8_0":
-                aliases: ["qwen"]
-                max-input-chars: 650000
-              "gemma3:27b":
-                aliases: ["gemma3"]
-                max-input-chars: 650000
-              "deepseek-r1:32b":
-                aliases: ["r1-local"]
-                max-input-chars: 650000
-              "dark-multiverse":
-                max-input-chars: 650000
       '';
   };
 }

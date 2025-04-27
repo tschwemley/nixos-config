@@ -34,9 +34,10 @@ in {
       "3" = "~/Downloads/3d-prints/";
 
       D = "~/Downloads";
-      p = "~/projects";
+      h = "~/projects/hir";
       m = "/mnt";
       n = "~/nixos-config";
+      p = "~/projects";
       s = "/storage";
     };
   };

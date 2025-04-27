@@ -1,6 +1,7 @@
 {self, ...}: {
   default = final: prev: let
     inherit (prev) system;
+    inherit (self.inputs.nixpkgs.legacyPackages.${system}) fetchFromGitHub;
   in {
     inherit
       (self.packages.${system})
@@ -18,7 +19,31 @@
     oidcproxy = self.inputs.oidcproxy.packages.${system}.default;
     vimPlugins = prev.vimPlugins // self.packages.${system}.extraVimPlugins;
 
-    # Custom defined overlays. If overtime these grow then move overlays into a dir
+    ###
+    # Custom defined overlays.
+    # TODO:  If over time these grow then move overlays into a dir
+    ###
+
+    # BUG: upstream -> https://github.com/NixOS/nixpkgs/issues/399907
+    qt6Packages =
+      prev.qt6Packages
+      // {
+        qt6gtk2 = prev.qt6Packages.qt6gtk2.overrideAttrs {
+          pname = "qt6gtk2";
+          version = "0.5-unstable-2025-03-04";
+
+          src = prev.fetchFromGitLab {
+            domain = "opencode.net";
+            owner = "trialuser";
+            repo = "qt6gtk2";
+            rev = "d7c14bec2c7a3d2a37cde60ec059fc0ed4efee67";
+            hash = "sha256-6xD0lBiGWC3PXFyM2JW16/sDwicw4kWSCnjnNwUT4PI=";
+          };
+        };
+      };
+
+    # BUG: issue with wine versioning causing build failures for yabridge. Check periodically and
+    # remove when no longer an issue.
     pinnedWine =
       import (fetchTarball {
         url = "https://github.com/NixOS/nixpkgs/archive/da466ad.tar.gz";
@@ -42,6 +67,5 @@
     yabridgectl = prev.yabridgectl.override {
       wine = final.pinnedWine.wineWowPackages.staging;
     };
-    # ENDFIXME
   };
 }

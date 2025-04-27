@@ -1,11 +1,11 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     celluloid
-    # ffmpeg
+    ffmpeg
     # handbrake
     # mediainfo
     # shotcut
-    # vlc TODO: figure out why vlc is crashing
+    vlc
   ];
 
   # xdg.configFile."mpv/mpv.conf".text = ''

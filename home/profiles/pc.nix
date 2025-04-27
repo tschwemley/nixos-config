@@ -1,4 +1,8 @@
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./.
     ../programs/ai
@@ -6,7 +10,7 @@
     ../programs/communication
     ../programs/creative
     ../programs/development/bruno.nix
-    ../programs/development/database.nix
+    ../programs/development/databases.nix
     ../programs/gnome
     ../programs/media
     ../programs/music
@@ -17,7 +21,7 @@
     ../programs/bitwarden.nix
     ../programs/cowsay.nix
     ../programs/glow.nix
-    ../programs/input-leap.nix
+    # ../programs/input-leap.nix
     ../programs/lan-mouse.nix
     ../programs/nemo.nix
     ../programs/qt.nix

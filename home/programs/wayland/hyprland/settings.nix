@@ -1,5 +1,5 @@
 {config, ...}: {
-  # For all settings available see: https://wiki.hyprland.org/Configuring/Variables/
+  # For all settings available REF: https://wiki.hyprland.org/Configuring/Variables/
   wayland.windowManager.hyprland.settings = {
     debug.disable_logs = false;
 
@@ -32,7 +32,7 @@
       follow_mouse = 1;
     };
 
-    # see: https://wiki.hyprland.org/Configuring/Master-Layout/
+    # REF: https://wiki.hyprland.org/Configuring/Master-Layout/
     master = {
       mfact = 0.40;
       orientation = "center";
