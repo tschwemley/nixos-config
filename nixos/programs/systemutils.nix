@@ -2,7 +2,7 @@
   environment.systemPackages = with pkgs; [
     curl
     dust
-    jdupes
+    fclones
     lsof
     psmisc
     tree
