@@ -46,6 +46,14 @@ in {
                 widgets = [
                   {
                     type = "search";
+                    search-engine = "https://kagi.com/search?q={QUERY}";
+                  }
+                  {
+                    type = "split-column";
+                    widgets = [
+                      {type = "hacker-news";}
+                      {type = "lobsters";}
+                    ];
                   }
                 ];
               }
@@ -53,11 +61,11 @@ in {
               {
                 size = "small";
                 widgets = [
-                  {type = "hacker-news";}
-                  {type = "lobsters";}
+                  # TODO: figure out what's going here
                 ];
               }
             ];
+
             name = "Home";
           }
         ];
