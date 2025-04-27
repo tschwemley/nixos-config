@@ -50,6 +50,14 @@ in {
                   }
                 ];
               }
+
+              {
+                size = "small";
+                widgets = [
+                  {type = "hacker-news";}
+                  {type = "lobsters";}
+                ];
+              }
             ];
             name = "Home";
           }
