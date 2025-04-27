@@ -14,8 +14,8 @@ in {
       ../../profiles/buyvm.nix
 
       # server imports
+      ../../server/alt-frontends/safetwitch
       ../../server/communication/ntfy.nix
-      # ../../server/dashboard
       ../../server/development/cyberchef.nix
       ../../server/infrastructure/haproxy
       ../../server/infrastructure/monitoring

@@ -16,7 +16,8 @@
 in {
   imports =
     [
-      inputs.stash.nixosModules.default
+      # inputs.stash.nixosModules.default
+      inputs.nix-private.nixosModules.envs.flareon
 
       ../../profiles/proxmox.nix
       ../../services/samba.nix
