@@ -41,6 +41,7 @@ in {
 
     lfs.enable = true;
 
+    # REF: https://forgejo.org/docs/latest/admin/config-cheat-sheet/
     settings = {
       database = {
         AUTO_MIGRATION = false;
@@ -89,5 +90,10 @@ in {
     forgejo_db_password = sopsConfig;
     forgejo_smtp_server = sopsConfig;
     forgejo_smtp_token = sopsConfig;
+  };
+
+  systemd.services.forgejo = {
+    after = ["nginx.service"];
+    wants = ["nginx.service"];
   };
 }
