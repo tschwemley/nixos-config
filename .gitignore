@@ -13,4 +13,5 @@ result
 repl-result-out
 ssh_host*
 
-# llama.log
+# sources
+./packages/hueforge/HueForge*
