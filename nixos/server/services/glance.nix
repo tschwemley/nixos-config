@@ -16,19 +16,17 @@ in {
         # TODO:
         #   1. decide if want/need more than just the dashboard/home page
         #   2. add widgets:
-        #     a. search
-        #     b. rss
-        #     c. weather
-        #     d. clock
-        #     e. rss
-        #     f. more... REF: https://github.com/glanceapp/glance/blob/main/docs/configuration.md#widgets
+        #     a. rss
+        #     b. a useful calendar (default is basically just a display)
+        #     c. more...
+        #
+        # REF: https://github.com/glanceapp/glance/blob/main/docs/configuration.md#widgets
         pages = [
           {
             columns = [
               {
                 size = "small";
                 widgets = [
-                  {type = "calendar";}
                   {
                     type = "clock";
                     timezones = [
@@ -38,6 +36,7 @@ in {
                   {
                     type = "weather";
                     location = "\${DEFAULT_LOCATION}";
+                    units = "imperial";
                   }
                 ];
               }
