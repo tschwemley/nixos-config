@@ -19,7 +19,7 @@ in {
       expireDuplicatesFirst = true;
       extended = true;
     };
-    initExtra =
+    initContent =
       #bash
       ''
         source ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh
