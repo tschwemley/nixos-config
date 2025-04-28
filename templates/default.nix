@@ -7,6 +7,10 @@
     path = ./go/web;
     description = "Go web application w/ Echo and Templ";
   };
+  nix = {
+    path = ./nix;
+    description = "Basic nix project setup w/ direnv";
+  };
   node = {
     path = ./node;
     description = "Basic node application";
