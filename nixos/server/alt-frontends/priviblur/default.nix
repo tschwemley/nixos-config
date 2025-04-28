@@ -17,16 +17,18 @@
   virtualisation.oci-containers.containers = {
     "priviblur" = {
       image = "quay.io/syeopite/priviblur:latest";
-      volumes = [
-        "${./config.toml}:/priviblur/config.toml:ro,Z"
+      log-driver = "journald";
+      pull = "always";
+
+      extraOptions = [
+        "--network-alias=priviblur"
+        "--network=priviblur_default"
       ];
       ports = [
         "127.0.0.1:${self.lib.port-map.priviblur}:8000/tcp"
       ];
-      log-driver = "journald";
-      extraOptions = [
-        "--network-alias=priviblur"
-        "--network=priviblur_default"
+      volumes = [
+        "${./config.toml}:/priviblur/config.toml:ro,Z"
       ];
     };
 

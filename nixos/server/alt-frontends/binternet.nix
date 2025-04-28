@@ -11,5 +11,6 @@
     autoStart = true;
     image = "ghcr.io/ahwxorg/binternet:latest";
     ports = ["127.0.0.1:${self.lib.port-map.binternet}:8080"];
+    pull = "always";
   };
 }
