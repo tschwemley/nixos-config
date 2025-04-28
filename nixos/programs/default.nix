@@ -1,9 +1,9 @@
+# TODO: slowly move these files into appropriate subcategories
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     age
     git
     gnupg
-    jq
     nrepl
     pinentry
     pwgen
