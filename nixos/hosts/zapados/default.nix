@@ -1,6 +1,6 @@
 {
   imports = [
-    ../../profiles/proxmox.nix
+    ../../profiles/proxmox-no-storage.nix
 
     ../../server/alt-frontends/binternet.nix
     ../../server/alt-frontends/priviblur
