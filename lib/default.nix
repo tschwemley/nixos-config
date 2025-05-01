@@ -22,6 +22,8 @@ lib
       patches = import ./patches.nix;
     };
 
+  secret = type: filename: ../secrets/${type}/${filename};
+
   # define secret paths as constants for convenience
   secrets = {
     home = ../secrets/home;
