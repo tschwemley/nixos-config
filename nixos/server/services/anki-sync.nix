@@ -1,11 +1,19 @@
-{config, ...}: {
+{self, config, ...}: {
   services = {
     anki-sync-server = {
       enable = true;
+
+      users = [
+        { username = "schwem"; passwordFile = "/run/secrets/anki_schwem_password"; }
+      ];
     };
 
     nginx.virtualHosts."anki.schwem.io".locations = {
       "/".proxyPass = "http://127.0.0.1:${toString config.services.anki-sync-server.port}";
     };
+  };
+
+  sops.secrets."anki.yaml" = {
+    sopsFile = self.secret "server" "anki.yaml";
   };
 }
