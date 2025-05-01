@@ -14,6 +14,6 @@
   };
 
   sops.secrets."anki.yaml" = {
-    sopsFile = self.secret "server" "anki.yaml";
+    sopsFile = self.lib.secret "server" "anki.yaml";
   };
 }
