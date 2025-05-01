@@ -4,10 +4,11 @@
 
     ../../server/ai/open-webui.nix
     ../../server/alt-frontends/redlib.nix
-    ../../server/knowledge/excalidraw
-
     ../../server/alt-frontends/redlib.nix
     ../../server/alt-frontends/rimgo.nix
+    ../../server/knowledge/excalidraw
+    ../../server/services/anki-sync.nix
+
 
     # ../../server/ai/sillytavern.nix
     # ../../server/alt-frontends/scribe
