@@ -13,7 +13,8 @@
     };
   };
 
-  sops.secrets."anki.yaml" = {
-    sopsFile = self.lib.secret "server" "anki.yaml";
+  sops.secrets."anki_schwem_password" = {
+    mode = "0400";
+    sopsFile = self.secret "server" "anki.yaml";
   };
 }
