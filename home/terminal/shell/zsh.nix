@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   ...
 }: let
@@ -22,9 +21,6 @@ in {
     initContent =
       #bash
       ''
-        source ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh
-        export PATH=$PATH:${config.home.profileDirectory}/bin
-
         ${builtins.readFile ./hooks.zsh}
         ${builtins.readFile ./functions.zsh}
       '';
