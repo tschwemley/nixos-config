@@ -38,6 +38,7 @@
         "networkmanager"
         "plugdev"
         "podman"
+        "render"
         "video"
         "wheel"
         "wireshark"
