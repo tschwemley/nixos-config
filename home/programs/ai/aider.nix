@@ -5,7 +5,9 @@
 }: {
   home = {
     packages = with pkgs; [
-      aider-chat-with-browser
+      # aider-chat-with-browser
+      aider-chat-with-playwright
+      # aider-chat-full
       playwright
     ];
 

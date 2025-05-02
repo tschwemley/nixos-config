@@ -6,9 +6,9 @@
   imports = [./aider.nix];
   home = {
     packages = with pkgs; [
+      llama-cpp
       lmstudio
       mods
-      ollama
     ];
   };
 
