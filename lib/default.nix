@@ -48,7 +48,6 @@ lib
     open-webui = "4141";
     priviblur = "8040";
     proxitok = "8050";
-    pyload = "8000";
     qtbittorrentWeb = "8880";
     qtbittorrentTorrent = "8881";
     redlib = "8180";

@@ -2,15 +2,15 @@
   imports = [
     ../../profiles/proxmox.nix
 
-    ../../server/alt-frontends/anonymous-overflow.nix
+    # BUG: https://github.com/httpjamesm/AnonymousOverflow/issues/175
+    # Uncomment after upstream resolution - OR - I have time to implement cloudflare bypass
+    # ../../server/alt-frontends/anonymous-overflow.nix
     ../../server/arr/usenet
     ../../server/development/forgejo
     ../../server/infrastructure/postgresql
     ../../server/services/trmnl-server.nix
 
     # ../../server/services/webhooks
-
-    # ../../server/services/pyload.nix TODO: pyload is being a piece of shit
 
     # TODO: fix or delete... not a priority atm.
     # Fails during start with: Lucky::ForceSSLHandler was nil, but the setting is required.
