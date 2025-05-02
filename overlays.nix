@@ -22,7 +22,7 @@
       // self.packages.${system}.extraVimPlugins
       // {
         # TODO: can be removed as soon as nixpkgs has version >= 2025-04-30
-        none-ls-nvim = prev.buildVimPlugin {
+        none-ls-nvim = prev.vimUtils.buildVimPlugin {
           pname = "none-ls.nvim";
           version = "2025-04-26";
           src = prev.fetchFromGitHub {
