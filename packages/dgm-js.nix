@@ -8,6 +8,9 @@
   pkg-config,
   typescript,
   vips,
+  glib,
+  gcc,
+  gdk-pixbuf,
 }: let
   nodejs = nodejs_23;
 in
@@ -29,7 +32,14 @@ in
       pkg-config
       typescript
       vips
+      vips.dev  # For header files
+      glib
+      gcc
+      gdk-pixbuf
     ];
+
+    # Add vips headers to include path
+    NIX_CFLAGS_COMPILE = "-I${vips.dev}/include";
 
     npmDeps = importNpmLock {
       npmRoot = src;
@@ -60,9 +70,12 @@ in
     buildPhase = ''
       runHook preBuild
       
-      # Build with system libvips
-      SHARP_FORCE_GLOBAL_LIBVIPS=1 npm_config_sharp_libvips_binary_host="" \
-        npm_config_sharp_binary_host="" npm run build --workspaces
+      # Build with system libvips using explicit node path
+      PATH=${nodejs}/bin:$PATH \
+      SHARP_FORCE_GLOBAL_LIBVIPS=1 \
+      npm_config_sharp_libvips_binary_host="" \
+      npm_config_sharp_binary_host="" \
+      ${nodejs}/bin/npm run build --workspaces
 
       runHook postBuild
     '';
