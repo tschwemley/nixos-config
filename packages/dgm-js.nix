@@ -16,10 +16,9 @@
     hash = "sha256-46Cac1XVFo9+F1/JFhkq6zkqoUmqYqyYbYZS4P8c2F8=";
   };
 
-  npmModules = importNpmLock.buildNodeModules {
-    inherit nodejs;
-    npmRoot = "${repo}/apps/demo";
-    packageLock = lib.importJSON ./package-lock.json;
+  # Import dependencies from package-lock.json, including devDependencies
+  nodeDependencies = importNpmLock {
+    packageLock = ./package-lock.json;
   };
 in
   stdenv.mkDerivation {
@@ -33,14 +32,16 @@ in
     ];
 
     buildInputs = [
-      npmModules
+      # Use the generated node_modules which includes devDependencies
+      nodeDependencies.nodeModules
     ];
 
     buildPhase = ''
       runHook preBuild
 
       mkdir $out
-      cp -r $src/* ${npmModules}/node_modules $out/
+      # Copy source files and the generated node_modules into the build directory
+      cp -r $src/* ${nodeDependencies.nodeModules}/node_modules $out/
 
       cd $out
       npm run build
