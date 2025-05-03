@@ -3,6 +3,7 @@
   fetchFromGitHub,
   importNpmLock,
   node-gyp,
+  node-pre-gyp,
   nodejs_23,
   pkg-config,
   typescript,
@@ -23,6 +24,7 @@ in
 
     nativeBuildInputs = [
       node-gyp
+      node-pre-gyp
       nodejs
       pkg-config
       typescript
