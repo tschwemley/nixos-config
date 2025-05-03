@@ -1,10 +1,9 @@
 {
+  buildNpmPackage,
   fetchFromGitHub,
-  importNpmLock,
   lib,
-  nodejs,
-  stdenv,
-  typescript
+  nodejs, # Keep nodejs for potential overrides if needed, buildNpmPackage usually provides it
+  typescript # Keep typescript in case it's needed globally
 }: let
   pname = "dgmjs";
   version = "0.38.4";
@@ -15,39 +14,35 @@
     tag = "v${version}";
     hash = "sha256-46Cac1XVFo9+F1/JFhkq6zkqoUmqYqyYbYZS4P8c2F8=";
   };
-
-  # Import dependencies from package-lock.json, including devDependencies
-  nodeDependencies = importNpmLock {
-    inherit nodejs; # Pass nodejs to importNpmLock
-    packageLock = ./package-lock.json;
-  };
 in
-  stdenv.mkDerivation {
+  buildNpmPackage {
     inherit pname version;
 
     src = "${repo}/apps/demo";
 
+    # Provide the package-lock.json file
+    packageLock = ./package-lock.json;
+
+    # Placeholder hash - Nix will tell us the correct one on build failure
+    npmDepsHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+
+    # buildNpmPackage provides nodejs, but keep typescript if needed globally
     nativeBuildInputs = [
-      nodejs
       typescript
     ];
 
-    buildInputs = [
-      # Use the generated node_modules which includes devDependencies
-      nodeDependencies
-    ];
+    # buildNpmPackage runs 'npm run build' by default.
+    # If a different script is needed, use:
+    # npmBuildScript = "your-build-script";
 
-    buildPhase = ''
-      runHook preBuild
+    # If environment variables are needed during build:
+    # NIX_NODE_LINK_WORKSPACE = true; # Example
 
-      mkdir $out
-      # Copy source files and the generated node_modules into the build directory
-      # The node_modules directory is inside the nodeDependencies derivation output path
-      cp -r $src/* ${nodeDependencies}/node_modules $out/
-
-      cd $out
-      npm run build
-
-      runHook postBuild
-    '';
+    meta = with lib; {
+      description = "dgmjs demo application";
+      homepage = "https://github.com/dgmjs/dgmjs";
+      license = licenses.mit; # Adjust if needed
+      # maintainers = with maintainers; [ yourHandle ]; # Optional
+      platforms = platforms.all; # Adjust if needed
+    };
   }
