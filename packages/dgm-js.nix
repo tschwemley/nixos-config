@@ -18,6 +18,7 @@
 
   # Import dependencies from package-lock.json, including devDependencies
   nodeDependencies = importNpmLock {
+    inherit nodejs; # Pass nodejs to importNpmLock
     packageLock = ./package-lock.json;
   };
 in
