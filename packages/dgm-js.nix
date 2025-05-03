@@ -33,7 +33,7 @@ in
 
     buildInputs = [
       # Use the generated node_modules which includes devDependencies
-      nodeDependencies.nodeModules
+      nodeDependencies
     ];
 
     buildPhase = ''
@@ -41,7 +41,8 @@ in
 
       mkdir $out
       # Copy source files and the generated node_modules into the build directory
-      cp -r $src/* ${nodeDependencies.nodeModules}/node_modules $out/
+      # The node_modules directory is inside the nodeDependencies derivation output path
+      cp -r $src/* ${nodeDependencies}/node_modules $out/
 
       cd $out
       npm run build
