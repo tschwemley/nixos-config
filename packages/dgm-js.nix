@@ -6,7 +6,7 @@
   nodejs_23,
   pkg-config,
   typescript,
-  libvips,
+  vips,
 }: let
   nodejs = nodejs_23;
 in
@@ -26,7 +26,7 @@ in
       nodejs
       pkg-config
       typescript
-      libvips
+      vips
     ];
 
     npmDeps = importNpmLock {
