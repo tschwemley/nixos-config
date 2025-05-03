@@ -20,6 +20,7 @@
     inherit nodejs;
     npmRoot = "${repo}/apps/demo";
     packageLock = lib.importJSON ./package-lock.json;
+    production = false; # Include devDependencies
   };
 in
   stdenv.mkDerivation {
