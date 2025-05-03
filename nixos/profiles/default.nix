@@ -33,7 +33,6 @@ in {
     ../system/tty.nix
   ];
 
-  environment.sessionVariables.TERM = "wezterm";
   hardware.enableRedistributableFirmware = true;
 
   # TODO: set this in each host file explicitly. Once in all host files remove from here
