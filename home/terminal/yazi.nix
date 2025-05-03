@@ -4,7 +4,8 @@
   ...
 }: {
   home.packages = with pkgs; [
-    poppler # pdf preview
+    # poppler # pdf preview
+    poppler-utils # pdf preview
   ];
 
   nix.settings = {
