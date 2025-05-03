@@ -33,11 +33,11 @@ in
       npmRoot = src;
     };
 
-    # Use system libvips and prevent downloads
-    SHARP_FORCE_GLOBAL_LIBVIPS = "1";
-    npm_config_sharp_libvips_binary_host = "";
-    npm_config_sharp_binary_host = "";
-    
+    # Allow network access for sharp to download binaries
+    __noChroot = true;
+    npm_config_sharp_libvips_binary_host = "https://github.com/lovell/sharp-libvips/releases";
+    npm_config_sharp_binary_host = "https://github.com/lovell/sharp/releases";
+
     npmConfigHook = importNpmLock.npmConfigHook;
 
     # Configure node-gyp to use our node headers
@@ -55,31 +55,11 @@ in
     # The prepack script runs the build script, which we'd rather do in the build phase.
     npmPackFlags = ["--workspace=apps/demo" "--ignore-scripts"];
 
-    # configurePhase = ''
-    #   runHook preConfigure
-    #
-    #   export HOME=$(mktemp -d)
-    #
-    #   # set nodedir to prevent node-gyp from downloading headers
-    #   # taken from https://nixos.org/manual/nixpkgs/stable/#javascript-tool-specific
-    #   mkdir -p $HOME/.node-gyp/${nodejs.version}
-    #   echo 9 > $HOME/.node-gyp/${nodejs.version}/installVersion
-    #   ln -sfv ${nodejs}/include $HOME/.node-gyp/${nodejs.version}
-    #   export npm_config_nodedir=${nodejs}
-    #
-    #   # use updated node-gyp
-    #   export npm_config_node_gyp=${node-gyp}/lib/node_modules/node-gyp/bin/node-gyp.js
-    #
-    #   runHook postConfigure
-    # '';
-
     buildPhase = ''
       runHook preBuild
-        
-      # Build sharp first with our configured environment
-      cd node_modules/sharp
-      npm run install
-      cd ../..
+      
+      # Install sharp first with network access
+      npm_config_global=false npm install --ignore-scripts sharp
       
       # Then build the rest
       npm run build --workspaces
