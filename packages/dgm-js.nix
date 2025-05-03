@@ -33,11 +33,11 @@ in
       npmRoot = src;
     };
 
-    # Allow network access for sharp to download binaries
-    __noChroot = true;
-    npm_config_sharp_libvips_binary_host = "https://github.com/lovell/sharp-libvips/releases";
-    npm_config_sharp_binary_host = "https://github.com/lovell/sharp/releases";
-
+    # Force using system libvips and prevent downloads
+    SHARP_FORCE_GLOBAL_LIBVIPS = "1";
+    npm_config_sharp_libvips_binary_host = "";
+    npm_config_sharp_binary_host = "";
+    
     npmConfigHook = importNpmLock.npmConfigHook;
 
     # Configure node-gyp to use our node headers
@@ -58,11 +58,9 @@ in
     buildPhase = ''
       runHook preBuild
       
-      # Install sharp first with network access
-      npm_config_global=false npm install --ignore-scripts sharp
-      
-      # Then build the rest
-      npm run build --workspaces
+      # Build with system libvips
+      SHARP_FORCE_GLOBAL_LIBVIPS=1 npm_config_sharp_libvips_binary_host="" \
+        npm_config_sharp_binary_host="" npm run build --workspaces
 
       runHook postBuild
     '';
