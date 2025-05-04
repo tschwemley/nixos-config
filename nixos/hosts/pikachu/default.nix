@@ -50,6 +50,8 @@ in {
 
   hardware.sensor.iio.enable = true;
 
+  musnix.kernel.packages = lib.mkForce pkgs.linuxPackages_6_11_rt;
+
   networking = {
     hostName = "pikachu";
     networkmanager.enable = true;
