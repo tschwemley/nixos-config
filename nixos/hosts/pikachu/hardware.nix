@@ -21,8 +21,6 @@
   # ];
 
   hardware = {
-    bolt.enable = true;
-
     firmware = [pkgs.sof-firmware];
 
     graphics = {
@@ -49,6 +47,8 @@
       };
     };
   };
+
+  services.hardware.bolt.enable = true;
 
   # services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
 }
