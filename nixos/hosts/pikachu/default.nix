@@ -77,12 +77,6 @@ in {
   };
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  services.thermald.enable = lib.mkDefault true;
-
-  services.tailscale.extraUpFlags = [
-    "--exit-node=us-chi-wg-305.mullvad.ts.net"
-    "--exit-node-allow-lan-access=true"
-  ];
 
   home-manager.users.schwem.hyprland = {
     monitors = {
@@ -117,46 +111,39 @@ in {
 
   # laptop specific options
   environment.systemPackages = with pkgs; [
+    asusctl
+    supergfxctl
+
     # acpi
     # acpidump-all
-    sof-firmware
+    # sof-firmware
   ];
 
-  hardware = {
-    graphics = {
-      enable = true;
-      extraPackages = with pkgs; [
-        vaapiVdpau
-      ];
-    };
-    #
-    # nvidia = {
-    #   open = lib.mkDefault true;
-    #   prime = {
-    #     # Bus ID of the Intel GPU.
-    #     intelBusId = "PCI:0:2:0";
-    #
-    #     # Bus ID of the NVIDIA GPU.
-    #     nvidiaBusId = "PCI:1:0:0";
-    #   };
-    # };
-  };
-
   services = {
+
     asusd.enable = true;
-    hardware.bolt.enable = true;
+
     libinput = {
       enable = true;
       touchpad.tapping = false;
     };
+
     # xserver.videoDrivers = lib.mkDefault ["nvidia"];
+
+    tailscale.extraUpFlags = [
+      "--exit-node=us-chi-wg-305.mullvad.ts.net"
+      "--exit-node-allow-lan-access=true"
+    ];
+
+    thermald.enable = lib.mkDefault true;
   };
 
   # TODO: move to shared location if works for both pc hosts
   systemd.services.tailscaled-autoconnect = let
     after = lib.mkDefault [
       "systemd-networkd"
-      "tailscaled.service"
+      "NetworkManager.service"
+      # "tailscaled.service"
     ];
     wants = after;
   in {

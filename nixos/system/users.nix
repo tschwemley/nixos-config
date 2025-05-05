@@ -36,6 +36,7 @@
         "docker"
         "gamemode"
         "networkmanager"
+        "pipewire"
         "plugdev"
         "podman"
         "render"

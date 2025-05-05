@@ -19,6 +19,8 @@
     };
 
     rtcqs.enable = true;
-    soundcardPciId = "00:1f.3"; # TODO: check this value on pikachu and define via host config
+    # TODO: pikachu has the same value but I want to try disabling this for the time being to
+    # make sure it's not causing any issues
+    # soundcardPciId = "00:1f.3"; # TODO: check this value on pikachu and define via host config
   };
 }
