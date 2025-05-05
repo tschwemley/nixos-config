@@ -68,7 +68,7 @@ in {
     ];
   };
 
-  sops.secrets.anonymous-overfow = {
+  sops.secrets.anonymous-overflow = {
     format = "dotenv";
     key = "";
     owner = "anonymous-overflow";
