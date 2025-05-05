@@ -26,7 +26,10 @@ in {
   boot = {
     initrd = {
       availableKernelModules = ["xhci_pci" "thunderbolt" "nvme"];
-      kernelModules = ["kvm-intel"];
+      kernelModules = [
+        "kvm-intel"
+        "snd_hda_scodec_cs35l41"
+      ];
     };
 
     kernelParams = [
