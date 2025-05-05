@@ -1,7 +1,6 @@
 {
   inputs,
   config,
-  lib,
   ...
 }: {
   imports = [
@@ -25,6 +24,7 @@
     # enabled = lib.mkDefault true;
     dynamicBoost.enable = true;
     gsp.enable = true;
+    modesetting.enable = true;
     nvidiaSettings = true;
     open = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;

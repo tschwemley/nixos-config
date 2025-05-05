@@ -25,6 +25,8 @@
     sqlite-interactive
   ];
 
+  nixpkgs.overlays = [self.inputs.nix-private.overlays.stash];
+
   services.getty.autologinUser = "root";
 
   sops.secrets = {
