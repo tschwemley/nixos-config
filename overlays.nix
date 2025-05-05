@@ -41,6 +41,12 @@
     # TODO:  If over time these grow then move overlays into a dir
     ###
 
+    flaresolverr = prev.flaresolverr.overrideAttrs {
+      patches = [
+        ./overlays/flaresolverr.patch
+      ];
+    };
+
     # BUG: upstream -> https://github.com/NixOS/nixpkgs/issues/399907
     qt6Packages =
       prev.qt6Packages
