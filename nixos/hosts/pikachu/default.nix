@@ -29,6 +29,15 @@ in {
       kernelModules = ["kvm-intel"];
     };
 
+    kernelParams = [
+      # These options are needed for suspend to work,
+      # otherwise the nvme will be mounted read-only on resume
+      "pcie_aspm=off"
+      "pcie_port_pm=off"
+      "nvme_core.default_ps_max_latency_us=0"
+      "mem_sleep_default=deep"
+    ];
+
     # extraModprobeConfig = ''
     #   options snd-hda-intel dmic_detect=0
     # '';
@@ -50,7 +59,9 @@ in {
 
   hardware.sensor.iio.enable = true;
 
-  musnix.kernel.packages = lib.mkForce pkgs.linuxPackages_6_11_rt;
+  musnix.kernel = {
+    realtime = lib.mkForce false;
+  };
 
   networking = {
     hostName = "pikachu";
@@ -64,6 +75,9 @@ in {
     # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
     stateVersion = "24.05";
   };
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  services.thermald.enable = lib.mkDefault true;
 
   services.tailscale.extraUpFlags = [
     "--exit-node=us-chi-wg-305.mullvad.ts.net"
@@ -115,17 +129,17 @@ in {
         vaapiVdpau
       ];
     };
-
-    nvidia = {
-      open = lib.mkDefault true;
-      prime = {
-        # Bus ID of the Intel GPU.
-        intelBusId = "PCI:0:2:0";
-
-        # Bus ID of the NVIDIA GPU.
-        nvidiaBusId = "PCI:1:0:0";
-      };
-    };
+    #
+    # nvidia = {
+    #   open = lib.mkDefault true;
+    #   prime = {
+    #     # Bus ID of the Intel GPU.
+    #     intelBusId = "PCI:0:2:0";
+    #
+    #     # Bus ID of the NVIDIA GPU.
+    #     nvidiaBusId = "PCI:1:0:0";
+    #   };
+    # };
   };
 
   services = {
@@ -135,7 +149,7 @@ in {
       enable = true;
       touchpad.tapping = false;
     };
-    xserver.videoDrivers = lib.mkDefault ["nvidia"];
+    # xserver.videoDrivers = lib.mkDefault ["nvidia"];
   };
 
   # TODO: move to shared location if works for both pc hosts
