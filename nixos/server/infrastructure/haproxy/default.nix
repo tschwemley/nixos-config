@@ -60,7 +60,7 @@ in {
         acl domain_reddit hdr(host) -i reddit.schwem.io
         acl domain_rimgo hdr(host) -i rimgo.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
-        # acl domain_stackoverflow hdr(host) -i so.schwem.io
+        acl domain_stackoverflow hdr(host) -i so.schwem.io
         acl domain_tumblr hdr(host) -i tumblr.schwem.io
         acl domain_twitch hdr(host) -i twitch.schwem.io twitch.api.schwem.io
         acl domain_wiki hdr(host) -i wiki.schwem.io
@@ -86,7 +86,7 @@ in {
         use_backend zapados if domain_wiki
         # use_backend zapados if domain_tasks
 
-        # use_backend jolteon if domain_stackoverflow
+        use_backend jolteon if domain_stackoverflow
         use_backend jolteon if domain_git
         # use_backend jolteon if domain_trmnl
 
