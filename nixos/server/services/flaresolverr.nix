@@ -1,0 +1,3 @@
+{
+  services.flaresolverr.enable = true;
+}

@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  pkg = pkgs.anonymous-overflow;
+  pkg = self.inputs.anonymous-overflow.packages.${pkgs.system}.default;
 
   runDir = "/var/run/anonymous-overflow";
   stateDir = "/var/lib/anonymous-overflow";

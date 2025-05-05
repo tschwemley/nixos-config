@@ -2,12 +2,11 @@
   imports = [
     ../../profiles/proxmox.nix
 
-    # BUG: https://github.com/httpjamesm/AnonymousOverflow/issues/175
-    # Uncomment after upstream resolution - OR - I have time to implement cloudflare bypass
-    # ../../server/alt-frontends/anonymous-overflow.nix
+    ../../server/alt-frontends/anonymous-overflow.nix
     ../../server/arr/usenet
     ../../server/development/forgejo
     ../../server/infrastructure/postgresql
+    ../../server/services/flaresolverr.nix
     ../../server/services/trmnl-server.nix
 
     # ../../server/services/webhooks
