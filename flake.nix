@@ -125,8 +125,6 @@
     };
 
     zen-browser = {
-      # FIXME: remove the ref after the hash is fixed in next github action
-      # url = "github:youwen5/zen-browser-flake?ref=ceb2e7122307700e9c310973c793c2c241dc0901";
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -134,6 +132,7 @@
     # imports below here are server-specific imports for schwem.io
     #   TODO: make them into a single repo
 
+    # try removal if upstream fixes BUG: https://github.com/httpjamesm/AnonymousOverflow/issues/175
     anonymous-overflow = {
       url = "git+https://git.schwem.io/schwem/anonymous-overflow";
       inputs.nixpkgs.follows = "nixpkgs";
