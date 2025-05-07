@@ -50,7 +50,11 @@ null_ls.setup({
             group = augroup,
             buffer = bufnr,
             callback = function()
-               vim.lsp.buf.format({ async = false })
+               vim.lsp.buf.format({
+                  filter = function()
+                     return client.name == "null-ls"
+                  end,
+               })
             end,
          })
       end
