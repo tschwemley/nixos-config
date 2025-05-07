@@ -7,6 +7,8 @@
     # };
 
     systemPackages = with pkgs; [
+      alsa-tools
+      alsa-utils
       helvum
       pavucontrol
       pamixer
