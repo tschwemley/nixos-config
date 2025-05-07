@@ -147,5 +147,9 @@
       url = "git+https://git.schwem.io/schwem/oidcproxy";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # TODO: if this works then move it to a separate repo
+    # nixpkgs-sonic-pi-pin.url = "github:nixos/nixpkgs?rev=d86588d23033955df991216f49e334fc9b0e36f1";
+    nixpkgs-sonic-pi-pin.url = "github:nixos/nixpkgs/d86588d23033955df991216f49e334fc9b0e36f1";
   };
 }
