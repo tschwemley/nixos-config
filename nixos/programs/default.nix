@@ -1,6 +1,6 @@
-# TODO: slowly move these files into appropriate subcategories
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    # TODO: slowly move these pkgs into appropriate subcategories
     age
     git
     gnupg
