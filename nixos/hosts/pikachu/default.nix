@@ -41,8 +41,9 @@ in {
       "mem_sleep_default=deep"
     ];
 
+    # options snd-intel-dspcfg dsp_driver=1
     extraModprobeConfig = ''
-      options snd-intel-dspcfg dsp_driver=1
+      options snd-intel-dspcfg dsp_driver=4
       options snd_hda_intel model=1043:12af
     '';
 
