@@ -6,7 +6,6 @@
     gnupg
     nrepl
     pinentry
-    pwgen
     ripgrep
     rsync
     sops
