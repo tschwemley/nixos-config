@@ -62,9 +62,9 @@ in {
 
   hardware.sensor.iio.enable = true;
 
-  musnix.kernel = {
-    realtime = lib.mkForce false;
-  };
+  # musnix.kernel = {
+  #   realtime = lib.mkForce false;
+  # };
 
   networking = {
     hostName = "pikachu";
@@ -123,15 +123,12 @@ in {
   ];
 
   services = {
-
     asusd.enable = true;
 
     libinput = {
       enable = true;
       touchpad.tapping = false;
     };
-
-    # xserver.videoDrivers = lib.mkDefault ["nvidia"];
 
     tailscale.extraUpFlags = [
       "--exit-node=us-chi-wg-305.mullvad.ts.net"

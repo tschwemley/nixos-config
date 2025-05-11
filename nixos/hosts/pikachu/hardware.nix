@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  lib,
   pkgs,
   ...
 }: {
@@ -35,7 +36,7 @@
       modesetting.enable = true;
       nvidiaSettings = true;
       open = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = lib.mkForce config.boot.kernelPackages.nvidiaPackages.stable;
       videoAcceleration = true;
 
       prime = {
