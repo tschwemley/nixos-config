@@ -5,6 +5,7 @@
     self,
     home-manager,
     nix-on-droid,
+    nix-topology,
     nixpkgs,
     systems,
     ...
@@ -17,6 +18,7 @@
       overlays = [
         self.overlays.default
         self.inputs.neovim-overlay.overlays.default
+        self.inputs.nix-topology.overlays.default
       ];
     }));
     eachSystem = fn: lib.genAttrs (import systems) (system: fn pkgsFor.${system});
@@ -55,6 +57,23 @@
       pkgs = import nixpkgs {system = "aarch64-linux";};
       specialArgs = {inherit inputs self;};
       modules = [./droid];
+    };
+
+    # TODO: this needs to be continued to filled out at the individual system level
+    topology = import nix-topology {
+      pkgs = pkgsFor.x86_64-linux;
+      modules = [
+        ({config, ...}: let
+          inherit (config.lib.topology) mkInternet mkRouter mkConnection;
+        in {
+          inherit (self) nixosConfigurations;
+
+          networks.home = {
+            name = "home";
+            cidrv4 = "192.168.1.1/24";
+          };
+        })
+      ];
     };
   };
 
