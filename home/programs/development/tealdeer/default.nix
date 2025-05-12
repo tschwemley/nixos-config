@@ -4,7 +4,8 @@
 
     # REF: https://tealdeer-rs.github.io/tealdeer/config.html
     settings = {
-      directories.custom_pages_dir = ./cheatsheets;
+      # TODO: uncomment as needed. For now trial out default tldr options
+      # directories.custom_pages_dir = ./cheatsheets;
     };
   };
 }
