@@ -15,6 +15,8 @@
     ../server/infrastructure/monitoring/prometheus/node-exporter.nix
     ../server/infrastructure/nginx
     ../server/security/auth/oidcproxy
+
+    self.inputs.nix-topology.nixosModules.default
   ];
 
   # disable man pages on servers
@@ -25,7 +27,9 @@
     sqlite-interactive
   ];
 
-  nixpkgs.overlays = [self.inputs.nix-private.overlays.stash];
+  nixpkgs.overlays = with self.inputs; [
+    nix-private.overlays.stash
+  ];
 
   services.getty.autologinUser = "root";
 
