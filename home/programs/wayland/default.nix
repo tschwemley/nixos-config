@@ -1,6 +1,8 @@
 {pkgs, ...}:
 # Wayland config
 {
+  imports = [./waybar];
+
   home = {
     packages = with pkgs; [
       cliphist
