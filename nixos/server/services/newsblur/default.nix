@@ -10,7 +10,7 @@
     repo = "NewsBlur";
     rev = "2876dd1404708fdf580e80bf7cdb25ac8acbfc13";
     hash = "sha256-UKjwyyJoB/m+fO0gbSzPP1echEPCMGnlHaZcNvhLG9g=";
-    sparseCheckout = ["docker"];
+    sparseCheckout = ["config" "docker"];
   };
   volumeDir = "/var/lib/newsblur/volumes";
 in {
