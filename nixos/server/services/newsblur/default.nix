@@ -235,6 +235,8 @@ in {
     tmpfiles.rules = [
       "d ${volumeDir}/elasticsearch 0755 - - -"
       "d ${volumeDir}/db_mongo 0755 - - -"
+      # "d ${volumeDir}/node/originals 0755 - - -"
+      "d ${volumeDir}/node 0755 - - -"
       "d ${volumeDir}/postgres 0755 - - -"
       "d ${volumeDir}/redis 0755 - - -"
     ];
@@ -426,7 +428,7 @@ in {
         };
         volumes = [
           "${configSrc}/node:/srv:rw"
-          "${configSrc}/node/originals:/srv/originals:rw"
+          # "${configSrc}/node/originals:/srv/originals:rw"
         ];
         ports = [
           "8008:8008/tcp"
