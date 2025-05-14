@@ -232,7 +232,12 @@ in {
       wantedBy = ["multi-user.target"];
     };
 
-    tmpfiles.rules = ["d ${volumeDir} 0755 - - -"];
+    tmpfiles.rules = [
+      "d ${volumeDir}/elasticsearch 0755 - - -"
+      "d ${volumeDir}/db_mongo 0755 - - -"
+      "d ${volumeDir}/postgres 0755 - - -"
+      "d ${volumeDir}/redis 0755 - - -"
+    ];
   };
 
   virtualisation = {
