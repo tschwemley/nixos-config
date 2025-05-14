@@ -9,8 +9,8 @@
     owner = "samuelclay";
     repo = "NewsBlur";
     rev = "2876dd1404708fdf580e80bf7cdb25ac8acbfc13";
-    hash = "sha256-UKjwyyJoB/m+fO0gbSzPP1echEPCMGnlHaZcNvhLG9g=";
-    sparseCheckout = ["config" "docker"];
+    hash = "sha256-aLTqVyzCP414dvq0JnKL0ZL47cSEQnuIIOt6iso0lC0=";
+    sparseCheckout = ["config" "docker" "node"];
   };
   volumeDir = "/var/lib/newsblur/volumes";
 in {
@@ -236,7 +236,7 @@ in {
       "d ${volumeDir}/elasticsearch 0755 - - -"
       "d ${volumeDir}/db_mongo 0755 - - -"
       # "d ${volumeDir}/node/originals 0755 - - -"
-      "d ${volumeDir}/node 0755 - - -"
+      "d ${volumeDir}/node 0755 - - ${configSrc}/node"
       "d ${volumeDir}/postgres 0755 - - -"
       "d ${volumeDir}/redis 0755 - - -"
     ];
@@ -359,7 +359,7 @@ in {
       "imageproxy" = {
         image = "yusukeito/imageproxy:v0.11.2";
         volumes = [
-          # "/tmp:/tmp/imageproxy:rw"
+          "/tmp:/tmp/imageproxy:rw"
         ];
         ports = [
           "8088:8088/tcp"
