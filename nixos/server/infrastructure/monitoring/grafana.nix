@@ -1,6 +1,5 @@
 # TODO: setup w/ postgresql. By default it's using sqlite
-{ config, ... }:
-{
+{config, ...}: {
   services.grafana = {
     enable = true;
     settings = {
@@ -24,7 +23,7 @@
       };
 
       server = {
-        # domain = "monitor.schwem.io";
+        domain = "monitor.schwem.io";
         http_addr = "127.0.0.1";
         http_port = 3000;
         root_url = "https://monitor.schwem.io";

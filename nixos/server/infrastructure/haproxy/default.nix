@@ -73,6 +73,7 @@ in {
 
         use_backend articuno if domain_default
         use_backend articuno if domain_cyberchef
+        use_backend articuno if domain_monitor
         use_backend articuno if domain_ntfy
         use_backend articuno if domain_twitch
 
@@ -95,7 +96,6 @@ in {
         use_backend it-tools if domain_it-tools
         use_backend jellyfin if domain_jellyfin
         use_backend jellyseerr if domain_jellyseerr
-        use_backend monitor if domain_monitor
         use_backend searxng if domain_search
 
         default_backend static
@@ -134,10 +134,6 @@ in {
       backend moltres
         http-request set-header X-Forwarded-Proto https
         server moltres moltres:8080 check send-proxy
-
-      backend monitor
-        http-request set-header X-Forwarded-Proto https
-        server articuno articuno check send-proxy
 
       backend pinterest
         http-request set-header X-Forwarded-Proto https
