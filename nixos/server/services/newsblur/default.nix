@@ -5,6 +5,225 @@
   pkgs,
   ...
 }: {
+  services.nginx.virtualHosts."schwem.io".locations."/".proxyPass = "http://127.0.0.1:${config.variables.ports.newsblur}";
+
+  systemd = {
+    services = {
+      "podman-db_elasticsearch" = {
+        serviceConfig = {
+          Restart = lib.mkOverride 90 "always";
+        };
+        after = [
+          "podman-network-newsblur_default.service"
+        ];
+        requires = [
+          "podman-network-newsblur_default.service"
+        ];
+        partOf = [
+          "podman-compose-newsblur-root.target"
+        ];
+        wantedBy = [
+          "podman-compose-newsblur-root.target"
+        ];
+      };
+      "podman-db_mongo" = {
+        serviceConfig = {
+          Restart = lib.mkOverride 90 "always";
+        };
+        after = [
+          "podman-network-newsblur_default.service"
+        ];
+        requires = [
+          "podman-network-newsblur_default.service"
+        ];
+        partOf = [
+          "podman-compose-newsblur-root.target"
+        ];
+        wantedBy = [
+          "podman-compose-newsblur-root.target"
+        ];
+      };
+      "podman-db_postgres" = {
+        serviceConfig = {
+          Restart = lib.mkOverride 90 "always";
+        };
+        after = [
+          "podman-network-newsblur_default.service"
+        ];
+        requires = [
+          "podman-network-newsblur_default.service"
+        ];
+        partOf = [
+          "podman-compose-newsblur-root.target"
+        ];
+        wantedBy = [
+          "podman-compose-newsblur-root.target"
+        ];
+      };
+      "podman-db_redis" = {
+        serviceConfig = {
+          Restart = lib.mkOverride 90 "always";
+        };
+        after = [
+          "podman-network-newsblur_default.service"
+        ];
+        requires = [
+          "podman-network-newsblur_default.service"
+        ];
+        partOf = [
+          "podman-compose-newsblur-root.target"
+        ];
+        wantedBy = [
+          "podman-compose-newsblur-root.target"
+        ];
+      };
+      "podman-dejavu" = {
+        serviceConfig = {
+          Restart = lib.mkOverride 90 "always";
+        };
+        after = [
+          "podman-network-newsblur_default.service"
+        ];
+        requires = [
+          "podman-network-newsblur_default.service"
+        ];
+        partOf = [
+          "podman-compose-newsblur-root.target"
+        ];
+        wantedBy = [
+          "podman-compose-newsblur-root.target"
+        ];
+      };
+      "podman-haproxy" = {
+        serviceConfig = {
+          Restart = lib.mkOverride 90 "always";
+        };
+        after = [
+          "podman-network-newsblur_default.service"
+        ];
+        requires = [
+          "podman-network-newsblur_default.service"
+        ];
+        partOf = [
+          "podman-compose-newsblur-root.target"
+        ];
+        wantedBy = [
+          "podman-compose-newsblur-root.target"
+        ];
+      };
+      "podman-imageproxy" = {
+        serviceConfig = {
+          Restart = lib.mkOverride 90 "always";
+        };
+        after = [
+          "podman-network-newsblur_default.service"
+        ];
+        requires = [
+          "podman-network-newsblur_default.service"
+        ];
+        partOf = [
+          "podman-compose-newsblur-root.target"
+        ];
+        wantedBy = [
+          "podman-compose-newsblur-root.target"
+        ];
+      };
+      "podman-newsblur_web" = {
+        serviceConfig = {
+          Restart = lib.mkOverride 90 "always";
+        };
+        after = [
+          "podman-network-newsblur_default.service"
+        ];
+        requires = [
+          "podman-network-newsblur_default.service"
+        ];
+        partOf = [
+          "podman-compose-newsblur-root.target"
+        ];
+        wantedBy = [
+          "podman-compose-newsblur-root.target"
+        ];
+      };
+      "podman-nginx" = {
+        serviceConfig = {
+          Restart = lib.mkOverride 90 "always";
+        };
+        after = [
+          "podman-network-newsblur_default.service"
+        ];
+        requires = [
+          "podman-network-newsblur_default.service"
+        ];
+        partOf = [
+          "podman-compose-newsblur-root.target"
+        ];
+        wantedBy = [
+          "podman-compose-newsblur-root.target"
+        ];
+      };
+      "podman-node" = {
+        serviceConfig = {
+          Restart = lib.mkOverride 90 "always";
+        };
+        after = [
+          "podman-network-newsblur_default.service"
+        ];
+        requires = [
+          "podman-network-newsblur_default.service"
+        ];
+        partOf = [
+          "podman-compose-newsblur-root.target"
+        ];
+        wantedBy = [
+          "podman-compose-newsblur-root.target"
+        ];
+      };
+      "podman-task_celery" = {
+        serviceConfig = {
+          Restart = lib.mkOverride 90 "always";
+        };
+        after = [
+          "podman-network-newsblur_default.service"
+        ];
+        requires = [
+          "podman-network-newsblur_default.service"
+        ];
+        partOf = [
+          "podman-compose-newsblur-root.target"
+        ];
+        wantedBy = [
+          "podman-compose-newsblur-root.target"
+        ];
+      };
+
+      # Networks
+      "podman-network-newsblur_default" = {
+        path = [pkgs.podman];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+          ExecStop = "podman network rm -f newsblur_default";
+        };
+        script = ''
+          podman network inspect newsblur_default || podman network create newsblur_default
+        '';
+        partOf = ["podman-compose-newsblur-root.target"];
+        wantedBy = ["podman-compose-newsblur-root.target"];
+      };
+    };
+
+    # Root service
+    # When started, this will automatically create all resources and start
+    # the containers. When stopped, this will teardown all resources.
+    targets."podman-compose-newsblur-root" = {
+      unitConfig = {
+        Description = "Root target generated by compose2nix.";
+      };
+      wantedBy = ["multi-user.target"];
+    };
+  };
+
   virtualisation = {
     oci-containers.containers = {
       "db_elasticsearch" = {
@@ -224,222 +443,6 @@
           "--network=newsblur_default"
         ];
       };
-    };
-  };
-  systemd = {
-    services = {
-      "podman-db_elasticsearch" = {
-        serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
-        };
-        after = [
-          "podman-network-newsblur_default.service"
-        ];
-        requires = [
-          "podman-network-newsblur_default.service"
-        ];
-        partOf = [
-          "podman-compose-newsblur-root.target"
-        ];
-        wantedBy = [
-          "podman-compose-newsblur-root.target"
-        ];
-      };
-      "podman-db_mongo" = {
-        serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
-        };
-        after = [
-          "podman-network-newsblur_default.service"
-        ];
-        requires = [
-          "podman-network-newsblur_default.service"
-        ];
-        partOf = [
-          "podman-compose-newsblur-root.target"
-        ];
-        wantedBy = [
-          "podman-compose-newsblur-root.target"
-        ];
-      };
-      "podman-db_postgres" = {
-        serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
-        };
-        after = [
-          "podman-network-newsblur_default.service"
-        ];
-        requires = [
-          "podman-network-newsblur_default.service"
-        ];
-        partOf = [
-          "podman-compose-newsblur-root.target"
-        ];
-        wantedBy = [
-          "podman-compose-newsblur-root.target"
-        ];
-      };
-      "podman-db_redis" = {
-        serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
-        };
-        after = [
-          "podman-network-newsblur_default.service"
-        ];
-        requires = [
-          "podman-network-newsblur_default.service"
-        ];
-        partOf = [
-          "podman-compose-newsblur-root.target"
-        ];
-        wantedBy = [
-          "podman-compose-newsblur-root.target"
-        ];
-      };
-      "podman-dejavu" = {
-        serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
-        };
-        after = [
-          "podman-network-newsblur_default.service"
-        ];
-        requires = [
-          "podman-network-newsblur_default.service"
-        ];
-        partOf = [
-          "podman-compose-newsblur-root.target"
-        ];
-        wantedBy = [
-          "podman-compose-newsblur-root.target"
-        ];
-      };
-      "podman-haproxy" = {
-        serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
-        };
-        after = [
-          "podman-network-newsblur_default.service"
-        ];
-        requires = [
-          "podman-network-newsblur_default.service"
-        ];
-        partOf = [
-          "podman-compose-newsblur-root.target"
-        ];
-        wantedBy = [
-          "podman-compose-newsblur-root.target"
-        ];
-      };
-      "podman-imageproxy" = {
-        serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
-        };
-        after = [
-          "podman-network-newsblur_default.service"
-        ];
-        requires = [
-          "podman-network-newsblur_default.service"
-        ];
-        partOf = [
-          "podman-compose-newsblur-root.target"
-        ];
-        wantedBy = [
-          "podman-compose-newsblur-root.target"
-        ];
-      };
-      "podman-newsblur_web" = {
-        serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
-        };
-        after = [
-          "podman-network-newsblur_default.service"
-        ];
-        requires = [
-          "podman-network-newsblur_default.service"
-        ];
-        partOf = [
-          "podman-compose-newsblur-root.target"
-        ];
-        wantedBy = [
-          "podman-compose-newsblur-root.target"
-        ];
-      };
-      "podman-nginx" = {
-        serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
-        };
-        after = [
-          "podman-network-newsblur_default.service"
-        ];
-        requires = [
-          "podman-network-newsblur_default.service"
-        ];
-        partOf = [
-          "podman-compose-newsblur-root.target"
-        ];
-        wantedBy = [
-          "podman-compose-newsblur-root.target"
-        ];
-      };
-      "podman-node" = {
-        serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
-        };
-        after = [
-          "podman-network-newsblur_default.service"
-        ];
-        requires = [
-          "podman-network-newsblur_default.service"
-        ];
-        partOf = [
-          "podman-compose-newsblur-root.target"
-        ];
-        wantedBy = [
-          "podman-compose-newsblur-root.target"
-        ];
-      };
-      "podman-task_celery" = {
-        serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
-        };
-        after = [
-          "podman-network-newsblur_default.service"
-        ];
-        requires = [
-          "podman-network-newsblur_default.service"
-        ];
-        partOf = [
-          "podman-compose-newsblur-root.target"
-        ];
-        wantedBy = [
-          "podman-compose-newsblur-root.target"
-        ];
-      };
-
-      # Networks
-      "podman-network-newsblur_default" = {
-        path = [pkgs.podman];
-        serviceConfig = {
-          Type = "oneshot";
-          RemainAfterExit = true;
-          ExecStop = "podman network rm -f newsblur_default";
-        };
-        script = ''
-          podman network inspect newsblur_default || podman network create newsblur_default
-        '';
-        partOf = ["podman-compose-newsblur-root.target"];
-        wantedBy = ["podman-compose-newsblur-root.target"];
-      };
-    };
-
-    # Root service
-    # When started, this will automatically create all resources and start
-    # the containers. When stopped, this will teardown all resources.
-    targets."podman-compose-newsblur-root" = {
-      unitConfig = {
-        Description = "Root target generated by compose2nix.";
-      };
-      wantedBy = ["multi-user.target"];
     };
   };
 }

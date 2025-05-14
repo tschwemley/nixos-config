@@ -59,6 +59,7 @@ in {
         acl domain_pinterest hdr(host) -i pinterest.schwem.io
         acl domain_reddit hdr(host) -i reddit.schwem.io
         acl domain_rimgo hdr(host) -i rimgo.schwem.io
+        acl domain_rss hdr(host) -i rss.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
         acl domain_stackoverflow hdr(host) -i so.schwem.io
         acl domain_tumblr hdr(host) -i tumblr.schwem.io
@@ -83,6 +84,7 @@ in {
         # use_backend moltres if domain_sillytavern
 
         use_backend zapados if domain_pinterest
+        use_backend zapados if domain_rss
         use_backend zapados if domain_tumblr
         use_backend zapados if domain_wiki
         # use_backend zapados if domain_tasks

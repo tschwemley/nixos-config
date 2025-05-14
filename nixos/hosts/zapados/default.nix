@@ -7,6 +7,7 @@
     ../../server/alt-frontends/redlib.nix
     ../../server/automation/home-assistant
     ../../server/knowledge/tiddlywiki
+    ../../server/services/newsblur
     # ../../server/services/webhooks
     ../../system/fonts.nix
   ];
