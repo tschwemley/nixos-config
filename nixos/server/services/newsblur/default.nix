@@ -232,7 +232,7 @@ in {
       wantedBy = ["multi-user.target"];
     };
 
-    tmpfiles.rules = ["d ${volumeDir} 0775 - - -"];
+    tmpfiles.rules = ["d ${volumeDir} 0755 - - -"];
   };
 
   virtualisation = {
