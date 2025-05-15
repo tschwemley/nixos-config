@@ -22,6 +22,7 @@
     lib.listToAttrs (map (path:
       lib.nameValuePair "/mnt/${host}/${path}" {
         inherit fsType options;
+        depends = ["/home"];
         device = "${host}:/${path}";
       })
     paths);
@@ -44,4 +45,24 @@ in {
     path = "/etc/rclone/rclone.conf";
     sopsFile = "${self.lib.secrets.nixos}/rclone.yaml";
   };
+
+  # TODO: create rclone user that is only able to access explicitly defined directories
+  #
+  # services.openssh.settings.Match = [
+  #   {
+  #     # This is the critical section for the user restriction
+  #     User = "rclone_user";
+  #     ChrootDirectory = "/var/chroot/rclone_user";
+  #     ForceCommand = "internal-sftp";
+  #     AllowTcpForwarding = "no";
+  #     PermitTTY = "no";
+  #     X11Forwarding = "no";
+  #   }
+  # ];
+  #
+  # systemd.tmpfiles.rules = [
+  #   "d /var/chroot/rclone/ 0770 rclone rclone -"
+  # ];
+  #
+  # users.groups.rclone
 }
