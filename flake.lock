@@ -529,11 +529,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1747555711,
-        "narHash": "sha256-9Zq7kc/hnJcA7v8fUbYnrFdpaSBBp/5yoBReuWfXFSE=",
+        "lastModified": 1747555850,
+        "narHash": "sha256-5NGZV7nlkZd5dYUrXZM0symSKeY4UsOwFePY0/sgpVc=",
         "ref": "refs/heads/main",
-        "rev": "cfe4f0becce60bf0b5ff03365a6a870526746335",
-        "revCount": 16,
+        "rev": "207c8451e06d6d7b073a4ff1f62f925119fd6c56",
+        "revCount": 17,
         "type": "git",
         "url": "https://git.schwem.io/schwem/nix-private"
       },
