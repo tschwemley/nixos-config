@@ -35,6 +35,7 @@
         "dialout"
         "docker"
         "gamemode"
+        "input"
         "networkmanager"
         "pipewire"
         "plugdev"
