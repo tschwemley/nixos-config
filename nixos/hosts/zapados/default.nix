@@ -6,11 +6,12 @@
     #       low priority
     # ../../server/alt-frontends/binternet.nix
 
+    ../../server/alt-frontends/nitter.nix
     ../../server/alt-frontends/priviblur
     ../../server/alt-frontends/redlib.nix
     ../../server/automation/home-assistant
     ../../server/knowledge/tiddlywiki
-    ../../server/services/newsblur
+    # ../../server/services/newsblur
     # ../../server/services/webhooks
     ../../system/fonts.nix
   ];
