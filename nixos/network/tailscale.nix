@@ -11,7 +11,6 @@
 
     services.tailscale = {
       enable = true;
-      package = self.packages.${pkgs.system}.tailscale;
 
       authKeyFile = config.sops.secrets.tailscale_auth_key.path;
       disableTaildrop = true;
