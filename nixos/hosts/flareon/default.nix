@@ -31,7 +31,7 @@ in {
 
   services = {
     # TODO: remove this after refactoring rclone imports (or making explicit module)
-    rclone.enableJolteon = true;
+    # rclone.enableJolteon = true;
 
     # TODO: remove this after refactoring sabnzbd config/module
     sabnzbd.enable = lib.mkDefault false;
