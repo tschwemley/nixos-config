@@ -12,7 +12,7 @@
       yaml
       */
       ''
-        default-model: "deepseek-chat"
+        default-model: "gemini-flash"
         # Text to append when using the -f flag.
         format-text:
           markdown: "Format the response as markdown without enclosing backticks."
@@ -103,6 +103,12 @@
               deepseek/deepseek-r1:
                 aliases: ["r1"]
                 max-input-chars: 392000
+              google/gemini-2.5-flash-preview:
+                aliases: ["gemini-flash"]
+                max-input-chars: 1048576
+              google/gemini-2.5-pro-preview:
+                aliases: ["gemini", "gemini-pro"]
+                max-input-chars: 1048576
       '';
   };
 }
