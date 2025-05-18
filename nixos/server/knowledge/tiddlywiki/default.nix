@@ -33,6 +33,6 @@
   };
 
   systemd.tmpfiles.rules = [
-    "L+ /var/lib/tiddlywiki/tiddlywiki.info 0644 tiddlywiki tiddlywiki - ${./tiddlywiki.info}"
+    "L+ /var/lib/tiddlywiki/tiddlywiki.info 0644 - - - ${./tiddlywiki.info}"
   ];
 }

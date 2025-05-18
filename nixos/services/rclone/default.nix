@@ -32,7 +32,7 @@ in {
     (lib.mkIf cfg.enableJolteon (import ./jolteon.nix mkRcloneFSOptions))
     (lib.mkIf cfg.enableFlareon (import ./flareon.nix mkRcloneFSOptions))
     (lib.mkIf cfg.enableTentacool (import ./tentacool.nix mkRcloneFSOptions))
-    (lib.mkIf cfg.enableZapados (import ./zapados.nix mkRcloneFSOptions))
+    # (lib.mkIf cfg.enableZapados (import ./zapados.nix mkRcloneFSOptions))
   ];
 
   environment.systemPackages = [pkgs.rclone];

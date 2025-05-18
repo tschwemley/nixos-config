@@ -27,7 +27,6 @@
         "mnt-jolteon.mount"
         "mnt-flareon.mount"
         "mnt-tentacool.mount"
-        "tailscaled.service"
       ];
       wantedBy = before;
     in {

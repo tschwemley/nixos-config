@@ -36,9 +36,6 @@ in {
     # TODO: remove this after refactoring sabnzbd config/module
     sabnzbd.enable = lib.mkDefault false;
 
-    # TODO: reenable after fixing port collision
-    # servarr.enableWhisparr = true;
-
     tailscale.extraSetFlags = [
       "--exit-node=us-chi-wg-301-1.mullvad.ts.net"
       "--exit-node-allow-lan-access=true"

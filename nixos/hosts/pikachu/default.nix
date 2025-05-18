@@ -46,17 +46,9 @@ in {
       options snd-intel-dspcfg dsp_driver=4
       options snd_hda_intel model=1043:12af
     '';
-
-    # extraModprobeConfig = ''
-    #   options snd-hda-intel dmic_detect=0
-    # '';
   };
 
   hardware.sensor.iio.enable = true;
-
-  # musnix.kernel = {
-  #   realtime = lib.mkForce false;
-  # };
 
   networking = {
     hostName = "pikachu";
