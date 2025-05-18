@@ -16,7 +16,7 @@
   ];
 
   networking.hostName = "zapados";
-  services.tailscale.extraFlags = ["--socks5-server=127.0.0.1:1080"];
+  services.tailscale.extraSetFlags = ["--socks5-server=127.0.0.1:1080"];
   sops.defaultSopsFile = ./secrets.yaml;
   system.stateVersion = "23.05";
 }
