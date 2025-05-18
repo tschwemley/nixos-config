@@ -2,7 +2,10 @@
   imports = [
     ../../profiles/proxmox-no-storage.nix
 
-    ../../server/alt-frontends/binternet.nix
+    # BUG: binternet search results empty... check if pulling new image resolves or fork and fix
+    #       low priority
+    # ../../server/alt-frontends/binternet.nix
+
     ../../server/alt-frontends/priviblur
     ../../server/alt-frontends/redlib.nix
     ../../server/automation/home-assistant
@@ -13,8 +16,7 @@
   ];
 
   networking.hostName = "zapados";
+  services.tailscale.extraFlags = ["--socks5-server=127.0.0.1:1080"];
   sops.defaultSopsFile = ./secrets.yaml;
-
-  # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion/ when ready to update
   system.stateVersion = "23.05";
 }
