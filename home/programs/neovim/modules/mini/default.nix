@@ -5,5 +5,6 @@
   xdg.configFile = {
     "nvim/after/plugin/mini/init.lua".source = ./init.lua;
     "nvim/after/plugin/mini/clue.lua".source = ./clue.lua;
+    "nvim/after/plugin/mini/surround.lua".source = ./surround.lua;
   };
 }

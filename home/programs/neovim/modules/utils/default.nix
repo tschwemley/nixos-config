@@ -10,8 +10,8 @@
     plenary-nvim # most plugins install this as a dependency; I'm including for it's log method
     vim-abolish
     vim-speeddating
-    vim-startuptime
     # vim-surround
+    vim-startuptime
   ];
 
   xdg.configFile = {

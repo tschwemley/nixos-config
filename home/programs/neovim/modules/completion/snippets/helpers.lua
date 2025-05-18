@@ -1,9 +1,24 @@
+local ls = require("luasnip")
+
+local M = {}
+
+-- Some shorthands...
+M.c = ls.choice_node
+M.d = ls.dynamic_node
+M.f = ls.function_node
+M.i = ls.insert_node
+M.n = ls.snippet_node
+M.s = ls.snippet
+M.t = ls.text_node
+
+-- TODO: decide on if keeping or removing
+--
 ---Helper method for getting sinular of a plural word in loops
 ---Attempts to (in decreasing order of presedence):
 -- - Convert a plural noun into a singular noun
 -- - Return the first letter of the word
 -- - Return "item" as a fallback
-local function singular(input)
+M.singular = function(input)
    local plural_word = input[1][1]
    local last_word = string.match(plural_word, "[_%w]*$")
 
@@ -20,5 +35,7 @@ local function singular(input)
       singular_word = string.match(last_word, "^_?.")
    end
 
-   return s("{}", i(1, singular_word))
+   return M.s("{}", M.i(1, singular_word))
 end
+
+return M
