@@ -30,8 +30,8 @@ in {
     # rclone.enableJolteon = true;
 
     tailscale.extraSetFlags = [
-      "--exit-node=us-chi-wg-301-1.mullvad.ts.net"
       "--exit-node-allow-lan-access=true"
+      "--exit-node=us-chi-wg-307.mullvad.ts.net"
     ];
   };
 }
