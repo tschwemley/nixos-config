@@ -4,6 +4,7 @@
     age
     git
     gnupg
+    jdupes
     nrepl
     pinentry
     ripgrep
