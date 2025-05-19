@@ -1,8 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}: let
+{inputs, ...}: let
   # two extra storage drives on flareon host TODO: move this to someplace generic
   numExtraDrives = 2;
   extraDrives = builtins.genList (i: let
@@ -32,9 +28,6 @@ in {
   services = {
     # TODO: remove this after refactoring rclone imports (or making explicit module)
     # rclone.enableJolteon = true;
-
-    # TODO: remove this after refactoring sabnzbd config/module
-    sabnzbd.enable = lib.mkDefault false;
 
     tailscale.extraSetFlags = [
       "--exit-node=us-chi-wg-301-1.mullvad.ts.net"
