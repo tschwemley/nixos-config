@@ -8,11 +8,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1746442947,
-        "narHash": "sha256-/XUeAyGWITU0GgPnYdhhsQGESbE6R5veX3nCWKB2tlA=",
+        "lastModified": 1747633448,
+        "narHash": "sha256-BgRmYnoL4lXnCV2V6uYp38OYjUGJfvDBPx0bm+BbTog=",
         "ref": "refs/heads/main",
-        "rev": "fb58479a66d87ca5730230a4d9c10a3a8d8bc5b2",
-        "revCount": 314,
+        "rev": "6d121f1dbd188ebdafe96e745d44616253e58adf",
+        "revCount": 315,
         "type": "git",
         "url": "https://git.schwem.io/schwem/anonymous-overflow"
       },
@@ -49,11 +49,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747274630,
-        "narHash": "sha256-87RJwXbfOHyzTB9LYagAQ6vOZhszCvd8Gvudu+gf3qo=",
+        "lastModified": 1747621015,
+        "narHash": "sha256-j0fo1rNxZvmFLMaE945UrbLJZAHTlQmq0/QMgOP4GTs=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "ec7c109a4f794fce09aad87239eab7f66540b888",
+        "rev": "cec44d77d9dacf0c91d3d51aff128fefabce06ee",
         "type": "github"
       },
       "original": {
@@ -341,16 +341,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1747556810,
-        "narHash": "sha256-KrhgNocSsiDwfIbjBYvCy6fehoXZedbelAg0FrieBHo=",
+        "lastModified": 1747565775,
+        "narHash": "sha256-B6jmKHUEX1jxxcdoYHl7RVaeohtAVup8o3nuVkzkloA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9a4a9f1d6e43fe4044f6715ae7cc85ccb1d2fe09",
+        "rev": "97118a310eb8e13bc1b9b12d67267e55b7bee6c8",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "master",
         "repo": "home-manager",
         "type": "github"
       }
@@ -529,11 +528,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1747557196,
-        "narHash": "sha256-YpglgZMsNz/V3w4Vm7M7RCPcVD27WyCH8Pw8y8o3Yoc=",
+        "lastModified": 1747633511,
+        "narHash": "sha256-rzsBzuT4sFe0i4XmPFBl1uSUSWpfBACjcJQwSUHtsoo=",
         "ref": "refs/heads/main",
-        "rev": "7af1a434c7495322feab520643a3a67f29ae5f73",
-        "revCount": 18,
+        "rev": "173fbcc6cbfeb08aa13415d019fa1ce9faa68b3d",
+        "revCount": 19,
         "type": "git",
         "url": "https://git.schwem.io/schwem/nix-private"
       },
@@ -646,11 +645,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1747327360,
-        "narHash": "sha256-LSmTbiq/nqZR9B2t4MRnWG7cb0KVNU70dB7RT4+wYK4=",
+        "lastModified": 1747542820,
+        "narHash": "sha256-GaOZntlJ6gPPbbkTLjbd8BMWaDYafhuuYRNrxCGnPJw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e06158e58f3adee28b139e9c2bcfcc41f8625b46",
+        "rev": "292fa7d4f6519c074f0a50394dbbe69859bb6043",
         "type": "github"
       },
       "original": {
@@ -847,11 +846,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1746485181,
-        "narHash": "sha256-PxrrSFLaC7YuItShxmYbMgSuFFuwxBB+qsl9BZUnRvg=",
+        "lastModified": 1747603214,
+        "narHash": "sha256-lAblXm0VwifYCJ/ILPXJwlz0qNY07DDYdLD+9H+Wc8o=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "e93ee1d900ad264d65e9701a5c6f895683433386",
+        "rev": "8d215e1c981be3aa37e47aeabd4e61bb069548fd",
         "type": "github"
       },
       "original": {
