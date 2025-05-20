@@ -4,7 +4,6 @@
   in {
     inherit
       (self.packages.${system})
-      anonymous-overflow
       json2go
       nrepl
       scripts
@@ -41,6 +40,10 @@
     # TODO:  If over time these grow then move overlays into a dir
     ###
 
+    # TODO: move this to it's own repo if working
+    # inherit (self.inputs.nixpkgs-sonic-pi-pin.legacyPackages.${system}) sonic-pi;
+
+    # TODO: this should eventually get moved into the flake for the anonymous overflow patch
     flaresolverr = prev.flaresolverr.overrideAttrs {
       patches = [
         ./overlays/flaresolverr.patch
