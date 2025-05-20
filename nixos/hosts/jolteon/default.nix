@@ -1,5 +1,7 @@
-{
+{inputs, ...}: {
   imports = [
+    inputs.nix-private.nixosModules.envs.flareon
+
     ../../profiles/proxmox.nix
 
     ../../server/alt-frontends/anonymous-overflow.nix
