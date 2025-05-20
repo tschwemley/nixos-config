@@ -1,6 +1,6 @@
 {inputs, ...}: {
   imports = [
-    inputs.nix-private.nixosModules.envs.flareon
+    inputs.nix-private.nixosModules.envs.jolteon
 
     ../../profiles/proxmox.nix
 
