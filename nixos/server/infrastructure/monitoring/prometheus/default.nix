@@ -15,12 +15,16 @@ in {
     scrapeConfigs = [
       {
         job_name = "node-details";
-        targets = [
-          (target "articuno")
-          (target "zapados")
-          (target "moltres")
-          (target "flareon")
-          (target "jolteon")
+        static_configs = [
+          {
+            targets = [
+              (target "articuno")
+              (target "zapados")
+              (target "moltres")
+              (target "flareon")
+              (target "jolteon")
+            ];
+          }
         ];
       }
       # (mkNodeExporterScrapeConfig "articuno")
