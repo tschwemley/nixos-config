@@ -25,7 +25,7 @@
     ../programs/lan-mouse.nix
     ../programs/nemo.nix
     ../programs/qt.nix
-    # ../programs/rustdesk.nix FIXME: uncomment next time this comment is noticed
+    ../programs/taskwarrior.nix
     ../programs/wayland/hyprland
     ../programs/wcalc.nix
     ../programs/webcamoid.nix
@@ -44,13 +44,15 @@
     # TODO: go through and decide which to keep and which to remove
     # ../programs/cad.nix
     # ../programs/tailscale-systray.nix
-    # ../programs/taskwarrior.nix
     # ../programs/tigervnc.nix
   ];
 
   home = {
     homeDirectory = "/home/schwem";
     username = "schwem";
+
+    # TODO: move elsewhere
+    packages = with pkgs; [nicotine-plus];
 
     sessionVariables = {
       VISUAL = "nvim";

@@ -33,6 +33,7 @@
     ../services/upower.nix
 
     ../security/onlykey.nix
+    ../security/yubikey.nix
 
     ../system/documentation.nix
     ../system/greetd.nix
