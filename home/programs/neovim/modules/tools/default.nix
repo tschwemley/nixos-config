@@ -8,6 +8,9 @@
     #git plugins
     gitsigns-nvim
     neogit
+
+    # other
+    taskwarrior3
   ];
 
   xdg.configFile = {
