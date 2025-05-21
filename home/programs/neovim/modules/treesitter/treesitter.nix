@@ -40,7 +40,6 @@ in
             markdown
             markdown_inline
             nix
-            norg
             php
             python
             regex
