@@ -11,6 +11,7 @@
     ../programs/creative
     ../programs/development/bruno.nix
     ../programs/development/databases.nix
+    ../programs/development/nix.nix
     ../programs/gnome
     ../programs/media
     ../programs/music
@@ -33,7 +34,6 @@
 
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
-    ../services/status-notifier-watcher.nix
 
     ../theme
 
