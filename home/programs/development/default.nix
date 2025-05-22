@@ -1,7 +1,7 @@
 {
   imports = [
     ./git.nix
-    ./jq.nix
+    ./json.nix
     ./tealdeer
     ./yq.nix
   ];

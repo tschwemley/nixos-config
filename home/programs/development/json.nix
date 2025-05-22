@@ -1,4 +1,6 @@
-{
+{pkgs, ...}: {
+  home.packages = [pkgs.fx];
+
   programs = {
     jq.enable = true;
 
