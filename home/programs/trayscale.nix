@@ -1,0 +1,3 @@
+{
+  programs.trayscale.enable = true;
+}
