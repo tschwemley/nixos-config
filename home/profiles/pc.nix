@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./.
     ../programs/ai
@@ -27,6 +23,7 @@
     ../programs/nemo.nix
     ../programs/qt.nix
     ../programs/taskwarrior.nix
+    ../programs/trayscale.nix
     ../programs/wayland/hyprland
     ../programs/wcalc.nix
     ../programs/webcamoid.nix
@@ -43,8 +40,6 @@
 
     # TODO: go through and decide which to keep and which to remove
     # ../programs/cad.nix
-    # ../programs/tailscale-systray.nix
-    # ../programs/tigervnc.nix
   ];
 
   home = {
