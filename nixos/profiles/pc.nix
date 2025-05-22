@@ -16,7 +16,6 @@
     ../hardware/audio
     ../hardware/flipperzero.nix
 
-    # ../programs/gamemode.nix
     ../programs/hyprland.nix
     ../programs/kdeconnect.nix
     ../programs/keyboards
@@ -29,6 +28,7 @@
 
     ../services/colord.nix
     ../services/dbus.nix
+    ../services/gamemode.nix
     ../services/gnome.nix
     ../services/upower.nix
 

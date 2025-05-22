@@ -17,27 +17,18 @@
 #   '';
 # in
 {
-  # programs.gamemode = {
-  #   enable = true;
-  #   capSysNice = true;
-  #   args = [
-  #     "--rt"
-  #     "--expose-wayland"
-  #   ];
-  #   # settings = {
-  #   #   custom = {
-  #   #     start = startscript.outPath;
-  #   #     end = endscript.outPath;
-  #   #   };
-  #   #   general = {
-  #   #     softrealtime = "auto";
-  #   #     renice = 15;
-  #   #   };
-  #   #   gpu = {
-  #   #     apply_gpu_optimisations = "accept-responsibility";
-  #   #     amd_performance_level = "high";
-  #   #     gpu_device = 1;
-  #   #   };
-  #   # };
-  # };
+  programs.gamemode = {
+    enable = true;
+    settings = {
+      # TODO: if not using either reference script above have start/end instead send notification
+      #   custom = {
+      #     start = startscript.outPath;
+      #     end = endscript.outPath;
+      #   };
+      #   general = {
+      #     softrealtime = "auto";
+      #     renice = 15;
+      #   };
+    };
+  };
 }
