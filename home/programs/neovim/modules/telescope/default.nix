@@ -1,7 +1,14 @@
 {pkgs, ...}: {
-  programs.neovim.plugins = with pkgs.vimPlugins; [
-    telescope-nvim
-  ];
+  programs.neovim = {
+    plugins = with pkgs.vimPlugins; [
+      telescope-nvim
+
+      # telescope extensions
+      telescope-manix
+    ];
+
+    extraPackages = [pkgs.fd];
+  };
 
   xdg.configFile."nvim/after/plugin/telescope.lua".source = ./telescope.lua;
 }

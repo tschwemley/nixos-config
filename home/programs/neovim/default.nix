@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{lib, ...}: {
   imports = [
     ./modules
   ];
@@ -20,7 +16,6 @@
         require('schwem.keymap')
         require('schwem.opts')
       '';
-
     vimAlias = true;
     vimdiffAlias = true;
     withPython3 = true;

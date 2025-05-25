@@ -7,6 +7,9 @@ local t = helpers.t
 -- Snippet Definitions
 -- ===================
 
+local fake_hash =
+    s({ trig = "fakeHash", namr = "Fake Hash (Raw)" }, t("sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="))
+
 local fetch_github = s({
    trig = "fetchFromGitHub",
    namr = "fetchFromGitHub",
@@ -49,10 +52,10 @@ local hm_module = s({
       -- Option 6: Empty (if you just need a simple attribute set)
       t("{ ... }:"),
    }),
-   t({ "", "{" }),                                 -- Blank line and opening brace after chosen args
+   t({ "", "{" }),                                   -- Blank line and opening brace after chosen args
    i(2, "  # Your Home Manager configuration here"), -- Tabstop for the main config body
-   t({ "", "}" }),                                 -- Closing brace
-   i(0),                                           -- Final tabstop
+   t({ "", "}" }),                                   -- Closing brace
+   i(0),                                             -- Final tabstop
 })
 
 local nixos_module = s({
@@ -94,13 +97,14 @@ local nixos_module = s({
   # config = lib.mkIf config.moduleName.myOption {
   #   # Your configuration here
   # };]]
-   ),            -- Tabstop for the main module body with examples
+   ),              -- Tabstop for the main module body with examples
 
    t({ "", "}" }), -- Closing brace
-   i(0),         -- Final tabstop
+   i(0),           -- Final tabstop
 })
 
 return {
+   fake_hash
    fetch_github,
    hm_module,
    nixos_module,

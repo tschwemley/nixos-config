@@ -8,14 +8,27 @@
     environment.systemPackages = with pkgs; [ethtool];
     networking.firewall.trustedInterfaces = ["tailscale0"];
 
-    services.tailscale = {
-      enable = true;
+    services = {
+      # Optimizes the performance of subnet routers and exit nodes
+      networkd-dispatcher = {
+        enable = true;
+        rules."50-tailscale" = {
+          onState = ["routable"];
+          script = ''
+            ${lib.getExe ethtool} -K eth0 rx-udp-gro-forwarding on rx-gro-list off
+          '';
+        };
+      };
 
-      authKeyFile = config.sops.secrets.tailscale_auth_key.path;
-      disableTaildrop = true;
-      extraUpFlags = ["--ssh"];
-      openFirewall = true;
-      useRoutingFeatures = "both"; # sets reverse path 'loose' + ip forwarding
+      tailscale = {
+        enable = true;
+
+        authKeyFile = config.sops.secrets.tailscale_auth_key.path;
+        disableTaildrop = true;
+        extraUpFlags = ["--ssh"];
+        openFirewall = true;
+        useRoutingFeatures = "both"; # sets reverse path 'loose' + ip forwarding
+      };
     };
 
     sops.secrets.tailscale_auth_key = {};
