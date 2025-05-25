@@ -47,7 +47,6 @@ in {
         acl domain_default hdr(host) -i schwem.io
 
         acl domain_ai hdr(host) -i ai.schwem.io
-        acl domain_anki hdr(host) -i anki.schwem.io
         acl domain_auth hdr(host) -i auth.schwem.io
         acl domain_cyberchef hdr(host) -i cyberchef.schwem.io
         acl domain_draw hdr(host) -i draw.schwem.io
@@ -73,7 +72,6 @@ in {
         # acl domain_tasks hdr(host) -i tasks.schwem.io
         # acl domain_threadfin hdr(host) -i threadfin.schwem.io
 
-        use_backend articuno if domain_anki
         use_backend articuno if domain_default
         use_backend articuno if domain_cyberchef
         use_backend articuno if domain_monitor
