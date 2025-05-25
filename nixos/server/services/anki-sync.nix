@@ -1,4 +1,9 @@
-{self, ...}: {
+{
+  self,
+  pkgs,
+  ...
+}: {
+  environment.systemPackages = [pkgs.anki-sync-server];
   services = {
     anki-sync-server = {
       enable = true;

@@ -1,4 +1,4 @@
-local helpers = require("helpers")
+local helpers = require("./helpers")
 local s = helpers.s
 local t = helpers.t
 local i = helpers.i
@@ -9,85 +9,85 @@ local f = helpers.f or require("luasnip").function_node -- Ensure 'f' is availab
 
 -- Uses luasnip.util.util.buffer_comment_chars()[1] for the line comment prefix
 local function get_line_comment_prefix()
-   return require("luasnip.util.util").buffer_comment_chars()[1] or "--"
+	return require("luasnip.util.util").buffer_comment_chars()[1] or "--"
 end
 
 -- Determines the character to use for the box border
 local function get_box_border_char()
-   local prefix = get_line_comment_prefix()
-   -- Try to use the common border chars, fallback to prefix first char
-   if prefix:match("^%-%-$") then
-      return "-"
-   end -- Lua
-   if prefix:match("^#$") then
-      return "#"
-   end -- Python/Shell
-   -- Add other common prefixes if needed
+	local prefix = get_line_comment_prefix()
+	-- Try to use the common border chars, fallback to prefix first char
+	if prefix:match("^%-%-$") then
+		return "-"
+	end -- Lua
+	if prefix:match("^#$") then
+		return "#"
+	end -- Python/Shell
+	-- Add other common prefixes if needed
 
-   return string.sub(prefix, 1, 1) -- Fallback to the first char of the prefix
+	return string.sub(prefix, 1, 1) -- Fallback to the first char of the prefix
 end
 
 -- Calculates padding for centering text within a width
 local function calculate_padding_for_centering(nodes, total_width)
-   local prefix = get_line_comment_prefix()
-   local content = nodes[1][1] or "" -- Get text from tabstop i(1)
+	local prefix = get_line_comment_prefix()
+	local content = nodes[1][1] or "" -- Get text from tabstop i(1)
 
-   -- Available space is total width minus the comment prefix on both sides
-   local available_space = total_width - (2 * #prefix)
+	-- Available space is total width minus the comment prefix on both sides
+	local available_space = total_width - (2 * #prefix)
 
-   local spaces_needed = available_space - #content
+	local spaces_needed = available_space - #content
 
-   -- Ensure non-negative spaces and at least a little space if possible
-   if spaces_needed < 0 then
-      spaces_needed = 0
-   end
+	-- Ensure non-negative spaces and at least a little space if possible
+	if spaces_needed < 0 then
+		spaces_needed = 0
+	end
 
-   local left_padding = math.floor(spaces_needed / 2)
-   local right_padding = math.ceil(spaces_needed / 2)
+	local left_padding = math.floor(spaces_needed / 2)
+	local right_padding = math.ceil(spaces_needed / 2)
 
-   return { left_padding, right_padding }
+	return { left_padding, right_padding }
 end
 
 -- Generates the nodes for a box comment
 local function create_styled_box(opts)
-   local box_width = opts and opts.width or vim.opt.textwidth:get() or 80 -- Use provided width, textwidth, or 80
-   local prefix = get_line_comment_prefix()
-   local border_char = get_box_border_char()
+	local box_width = opts and opts.width or vim.opt.textwidth:get() or 80 -- Use provided width, textwidth, or 80
+	local prefix = get_line_comment_prefix()
+	local border_char = get_box_border_char()
 
-   -- The top/bottom border line
-   local border_line = f(function()
-      return prefix .. string.rep(border_char, box_width - #prefix) -- Border fills remaining space
-   end, {})                                                     -- No dependencies here, fixed
+	-- The top/bottom border line
+	local border_line = f(function()
+		return prefix .. string.rep(border_char, box_width - #prefix) -- Border fills remaining space
+	end, {}) -- No dependencies here, fixed
 
-   -- The middle line with content and padding
-   local content_line = f(function(args)
-      local padding = calculate_padding_for_centering(args, box_width)
-      return prefix .. string.rep(" ", padding[1]) .. args[1][1] .. string.rep(" ", padding[2])
-   end, { i(1) }) -- Depends on the text in i(1)
+	-- The middle line with content and padding
+	local content_line = f(function(args)
+		local padding = calculate_padding_for_centering(args, box_width)
+		return prefix .. string.rep(" ", padding[1]) .. args[1][1] .. string.rep(" ", padding[2])
+	end, { i(1) }) -- Depends on the text in i(1)
 
-   return {
-      border_line,
-      t({ "", "" }), -- Space above content
-      content_line, -- Content line
-      t({ "", "" }), -- Space below content
-      border_line, -- Bottom border (reused)
-      i(0),      -- Final tabstop
-   }
+	return {
+		border_line,
+		t({ "", "" }), -- Space above content
+		content_line, -- Content line
+		t({ "", "" }), -- Space below content
+		border_line, -- Bottom border (reused)
+		i(0), -- Final tabstop
+	}
 end
 
 -- Define the box and bbox snippets using the factory function
 local styled_box = s(
-   { trig = "box", namr = "Styled Box Comment (Fixed 60)", dscr = "Creates a box comment with width 60" },
-   create_styled_box({ width = 60 })
+	{ trig = "box", namr = "Styled Box Comment (Fixed 60)", dscr = "Creates a box comment with width 60" },
+	create_styled_box({ width = 60 })
 )
 local styled_bbox = s(
-   { trig = "bbox", namr = "Styled Box Comment (Textwidth)", dscr = "Creates a box comment based on textwidth" },
-   create_styled_box({})
+	{ trig = "bbox", namr = "Styled Box Comment (Textwidth)", dscr = "Creates a box comment based on textwidth" },
+	create_styled_box({})
 ) -- Uses textwidth default
 
 return {
-   styled_box,
-   styled_bbox,
+	styled_box,
+	styled_bbox,
 }
 
 -- TODO: delete this assuming that the above from gemini works
