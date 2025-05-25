@@ -1,13 +1,9 @@
 {config, ...}: {
   imports = [./config.nix];
 
-  services = {
-    prometheus.exporters.sabnzbd.enable = true;
-
-    sabnzbd = {
-      enable = true;
-      configFile = config.sops.templates."sabnzbd.ini".path;
-    };
+  services.sabnzbd = {
+    enable = true;
+    configFile = config.sops.templates."sabnzbd.ini".path;
   };
 
   systemd = {
