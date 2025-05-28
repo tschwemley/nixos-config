@@ -1,4 +1,6 @@
-{
+{pkgs, ...}: {
+  home.packages = [pkgs.wttrbar];
+
   programs.waybar = {
     enable = true;
 
@@ -15,12 +17,21 @@
           "pulseaudio"
           "pulseaudio/slider"
           "tray"
+          "custom/weather"
           "clock"
         ];
 
         "clock" = {
           interval = 1;
           format = "{:%H:%M:%S}";
+        };
+
+        "custom/weather" = {
+          format = "{}°";
+          tooltip = true;
+          interval = 3600;
+          exec = "wttrbar --fahrenheit --location 48197 --nerd";
+          return-type = "json";
         };
 
         pulseaudio = {
@@ -31,22 +42,23 @@
           format-source = "{volume}% ";
           format-source-muted = "";
           format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
             car = "";
             default = ["" "" ""];
+            headphone = "";
+            headset = "";
+            phone = "";
+            portable = "";
           };
           on-click = "pavucontrol";
           spacing = 4;
         };
-      };
 
-      systemd.enable = true;
+        # tray = {};
+        tray = {spacing = 10;};
+      };
     };
 
     style = ./style.css;
+    systemd.enable = true;
   };
 }

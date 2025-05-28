@@ -9,7 +9,7 @@
     ./settings.nix
 
     # TODO: remove or add back if keeping dunst
-    # ../../../services/dunst.nix
+    ../../../services/dunst.nix
   ];
 
   home.sessionVariables = {
@@ -28,6 +28,10 @@
   # make stuff work on wayland
   wayland.windowManager.hyprland = {
     enable = true;
+
+    # use the hyprland package from the nixos module
+    package = null;
+    portalPackage = null;
 
     systemd = {
       variables = ["--all"];
