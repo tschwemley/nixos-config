@@ -23,7 +23,6 @@
     ../programs/nemo.nix
     ../programs/qt.nix
     ../programs/taskwarrior.nix
-    ../programs/trayscale.nix
     ../programs/wayland/hyprland
     ../programs/wcalc.nix
     ../programs/webcamoid.nix
@@ -31,6 +30,7 @@
 
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
+    ../services/trayscale.nix
 
     ../theme
 
