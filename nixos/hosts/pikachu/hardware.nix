@@ -49,6 +49,9 @@
     nvidia-container-toolkit.enable = true;
   };
 
+  # when building don't use all of the cpu cores
+  nix.settings.cores = 16;
+
   services.hardware.bolt.enable = true;
   services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
 

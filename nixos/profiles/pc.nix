@@ -30,6 +30,7 @@
     ../services/dbus.nix
     ../services/gamemode.nix
     ../services/gnome.nix
+    ../services/libinput.nix
     ../services/upower.nix
 
     ../security/onlykey.nix
