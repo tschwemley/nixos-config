@@ -18,5 +18,10 @@
     };
 
     dataFile."nvim/snippets".source = ./snippets;
+    # dataFile."nvim/snippets/all.lua".source = ./snippets/all.lua;
+    # dataFile."nvim/snippets/helpers.lua".source = ./snippets/helpers.lua;
+    # dataFile."nvim/snippets/lua.lua".source = ./snippets/lua.lua;
+    # dataFile."nvim/snippets/markdown.lua".source = ./snippets/markdown.lua;
+    # dataFile."nvim/snippets/nix.lua".source = ./snippets/nix.lua;
   };
 }

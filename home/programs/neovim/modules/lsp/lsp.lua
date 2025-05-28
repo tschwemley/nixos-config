@@ -28,7 +28,7 @@ local defaultConfig = {
       blink.get_lsp_capabilities(),
       -- File watching is disabled by default for neovim.
       -- See: https://github.com/neovim/neovim/pull/22405
-      { workspace = { didChangeWatchedFiles = { dynamicRegistration = true } } },
+      { workspace = { didChangeWatchedFiles = { dynamicRegistration = true } } }
    ),
 }
 

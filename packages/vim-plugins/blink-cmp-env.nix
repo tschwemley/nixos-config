@@ -9,8 +9,8 @@ vimUtils.buildVimPlugin {
   src = fetchFromGitHub {
     owner = "bydlw98";
     repo = "blink-cmp-env";
-    rev = "491eb6170834c2a5e855bb0b962313376228472e";
-    sha256 = "04776yv6qm00wjjd005gm7q333v7islwifpch1hmypzsqj1k3pnm";
+    rev = "700b6d9542b9d5deea80121abbb46b1400ace302";
+    hash = "sha256-inLSnrm32k1G/lCUr+VVZBKaY9DZ7PB65BHAQ5Qpti8=";
   };
   meta.homepage = "https://github.com/bydlw98/blink-cmp-env/";
   meta.hydraPlatforms = [];

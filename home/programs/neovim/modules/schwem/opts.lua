@@ -18,6 +18,7 @@ vim.opt.shm:append("W") -- append 'W' to shortmessage flag to supress write mess
 
 -- color settings
 vim.o.background = "dark"
+-- vim.cmd("colorscheme gruvbox-material")
 vim.cmd("colorscheme gruvbox")
 
 -- default tab settings

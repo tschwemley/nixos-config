@@ -1,4 +1,4 @@
-local helpers = require("./helpers")
+local helpers = require(".helpers")
 local s = helpers.s
 local t = helpers.t
 local i = helpers.i

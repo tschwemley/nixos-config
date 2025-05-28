@@ -5,67 +5,63 @@
 }: {
   home = {
     packages = with pkgs; [
-      # aider-chat-with-browser
-      aider-chat-with-playwright
-      # aider-chat-full
-      playwright
+      aider-chat-full
     ];
 
     shellAliases = {
-      aider = "aider -c ${config.sops.templates."aider.conf.yml".path} --model-settings-file ${config.xdg.dataFile."aider/.aider.model.settings.yml".source}";
+      aider = "aider -c ${config.sops.templates."aider.conf.yml".path} --model-settings-file ${config.xdg.configFile."aider/.aider.model.settings.yml".source}";
     };
   };
 
   # REF: https://aider.chat/docs/config/aider_conf.html
-  sops.templates."aider.conf.yml".content =
-    # model: "openrouter/deepseek/deepseek-chat-v3-0324"
-    /*
-    yaml
-    */
-    ''
-      # --------------------
-      # Core Settings
-      # --------------------
-      api-key:
-        - openrouter=${config.sops.placeholder.openrouter_api_key}
+  sops.templates."aider.conf.yml" = {
+    path = "${config.xdg.configHome}/aider/aider.conf.yml";
 
-      # --------------------
-      # Model Settings
-      # --------------------
-      alias:
-        - gemini:openrouter/google/gemini-2.5-pro-preview
-        - deepseek-chat:openrouter/deepseek/deepseek-chat-v3-0324
-        - deepseek-chat-free:openrouter/deepseek/deepseek-chat-v3-0324:free
-        - deepseek-r1:openrouter/deepseek/deepseek-r1
-        - deepseek-r1-free:openrouter/deepseek/deepseek-r1:free
-      model: "gemini"
+    content =
+      # yaml
+      ''
+        # --------------------
+        # Core Settings
+        # --------------------
+        api-key:
+          - openrouter=${config.sops.placeholder.openrouter_api_key}
 
-      # --------------------
-      # Appearance Settings
-      # --------------------
-      code-theme: gruvbox-dark
-      pretty: true
-      stream: true
+        # --------------------
+        # Model Settings
+        # --------------------
+        alias:
+          - gemini:openrouter/google/gemini-2.5-pro-preview
+          - deepseek-chat:openrouter/deepseek/deepseek-chat-v3-0324
+          - deepseek-chat-free:openrouter/deepseek/deepseek-chat-v3-0324:free
+          - deepseek-r1:openrouter/deepseek/deepseek-r1
+          - deepseek-r1-free:openrouter/deepseek/deepseek-r1:free
+        model: "gemini"
 
-      ## All colors are based off Gruvbox Dark Material Hard
-      assistant-output-color: "#7daea3"  # Blue
+        # --------------------
+        # Appearance Settings
+        # --------------------
+        code-theme: gruvbox-dark
+        pretty: true
+        stream: true
 
-      completion-menu-color: "#d4be98"   # Foreground
-      completion-menu-bg-color: "#1d2021" # Background
-      completion-menu-current-color: "#3C3836" # Selection foreground
-      completion-menu-current-bg-color: "#D4BE98" # Selection background
+        ## All colors are based off Gruvbox Dark Material Hard
+        assistant-output-color: "#7daea3"  # Blue
 
-      tool-output-color: "#89b482"  # Foreground
-      tool-error-color: "#ea6962"   # Bright Red
-      tool-warning-color: "#d8a657" # Yellow
+        completion-menu-color: "#d4be98"   # Foreground
+        completion-menu-bg-color: "#1d2021" # Background
+        completion-menu-current-color: "#3C3836" # Selection foreground
+        completion-menu-current-bg-color: "#D4BE98" # Selection background
 
-      user-input-color: "#d4Be98"  # Foreground (gray)
-    '';
+        tool-output-color: "#89b482"  # Foreground
+        tool-error-color: "#ea6962"   # Bright Red
+        tool-warning-color: "#d8a657" # Yellow
 
-  xdg.dataFile."aider/.aider.model.settings.yml".text =
-    /*
-    yaml
-    */
+        user-input-color: "#d4Be98"  # Foreground (gray)
+      '';
+  };
+
+  xdg.configFile."aider/.aider.model.settings.yml".text =
+    # yaml
     ''
       - name: "(default values)"
         edit_format: whole
