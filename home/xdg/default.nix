@@ -9,17 +9,19 @@
     enable = true;
     cacheHome = config.home.homeDirectory + "/.local/cache";
 
-    portal = {
-      enable = true;
-
-      config = {
-        common.default = ["gtk"];
-        hyprland.default = ["gtk" "hyprland"];
-      };
-
-      extraPortals = with pkgs; [xdg-desktop-portal-gtk];
-      xdgOpenUsePortal = true;
-    };
+    # TODO: reasses if this should be enabled or not (or is nixos portal fine)
+    #
+    # portal = {
+    #   enable = true;
+    #
+    #   config = {
+    #     common.default = ["gtk"];
+    #     hyprland.default = ["gtk" "hyprland"];
+    #   };
+    #
+    #   extraPortals = with pkgs; [xdg-desktop-portal-gtk];
+    #   xdgOpenUsePortal = true;
+    # };
 
     userDirs = {
       enable = true;
@@ -31,6 +33,8 @@
   };
 
   home.packages = [
+    # TODO: is necessary?
+    #
     # used by `gio open` and xdp-gtk
     # (pkgs.writeShellScriptBin "xdg-terminal-exec" ''
     #   foot "$@"
