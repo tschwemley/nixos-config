@@ -50,6 +50,7 @@
 
   services = {
     getty.autologinUser = "schwem";
+    resolved.dnsovertls = lib.mkDefault "true";
 
     rclone = {
       enableFlareon = true;
@@ -58,8 +59,21 @@
       enableZapados = true;
     };
 
-    resolved.dnsovertls = lib.mkDefault "true";
-    tailscale.extraUpFlags = ["--advertise-tags tag:pc"];
+    tailscale.extraUpFlags = [
+      "--advertise-tags tag:pc"
+      "--exit-node=us-chi-wg-304.mullvad.ts.net"
+      "--exit-node-allow-lan-access=true"
+      "--operator=schwem"
+    ];
+  };
+
+  systemd.services.tailscaled-autoconnect = let
+    after = lib.mkDefault [
+      "NetworkManager-wait-online"
+    ];
+    wants = after;
+  in {
+    inherit after wants;
   };
 
   time.timeZone = "America/New_York";
