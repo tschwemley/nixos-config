@@ -41,6 +41,8 @@ in {
       "mem_sleep_default=deep"
     ];
 
+    # TODO: built-in speakers are a nightmare. Fix at some point.
+    #
     # options snd-intel-dspcfg dsp_driver=1
     extraModprobeConfig = ''
       options snd-intel-dspcfg dsp_driver=4
@@ -48,7 +50,8 @@ in {
     '';
   };
 
-  hardware.sensor.iio.enable = true;
+  # TODO: uncomment or remove
+  # hardware.sensor.iio.enable = true;
 
   networking = {
     hostName = "pikachu";

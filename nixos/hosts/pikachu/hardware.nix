@@ -11,15 +11,10 @@
     inputs.nixos-hardware.nixosModules.asus-battery
   ];
 
-  # TODO: necessary?
-  # expliticly disable proprietary kernel modules
-  # boot.blacklistedKernelModules = [
-  #   "nvidia"
-  #   "nvidiafb"
-  #   "nvidia-drm"
-  #   "nvidia-uvm"
-  #   "nvidia-modeset"
-  # ];
+  environment.systemPackages = with pkgs; [
+    cudatoolkit
+    nvidia-smi
+  ];
 
   hardware = {
     firmware = [pkgs.sof-firmware];
@@ -30,13 +25,16 @@
     };
 
     nvidia = {
-      # enabled = lib.mkDefault true;
+      enabled = lib.mkDefault true;
       dynamicBoost.enable = true;
       gsp.enable = true;
       modesetting.enable = true;
+      nvidiaPersistenced = true;
       nvidiaSettings = true;
-      open = true;
-      package = lib.mkForce config.boot.kernelPackages.nvidiaPackages.stable;
+      # TODO: open preferred theoretically but I'm not sure when it comes to CUDA
+      # open = true;true
+      open = false;
+      # package = lib.mkForce config.boot.kernelPackages.nvidiaPackages.stable;
       videoAcceleration = true;
 
       prime = {
@@ -47,9 +45,15 @@
         nvidiaBusId = "PCI:1:0:0";
       };
     };
+
+    nvidia-container-toolkit.enable = true;
   };
 
   services.hardware.bolt.enable = true;
+  services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
 
-  # services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
+  systemd.services.nvidia-control-devices = {
+    wantedBy = ["multi-user.target"];
+    serviceConfig.ExecStart = "${pkgs.linuxPackages.nvidia_x11.bin}/bin/nvidia-smi";
+  };
 }
