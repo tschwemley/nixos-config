@@ -117,23 +117,6 @@ in {
       touchpad.tapping = false;
     };
 
-    tailscale.extraUpFlags = [
-      "--exit-node=us-chi-wg-305.mullvad.ts.net"
-      "--exit-node-allow-lan-access=true"
-    ];
-
     thermald.enable = lib.mkDefault true;
-  };
-
-  # TODO: move to shared location if works for both pc hosts
-  systemd.services.tailscaled-autoconnect = let
-    after = lib.mkDefault [
-      "systemd-networkd"
-      "NetworkManager.service"
-      # "tailscaled.service"
-    ];
-    wants = after;
-  in {
-    inherit after wants;
   };
 }
