@@ -25,7 +25,8 @@
     };
 
     nvidia = {
-      enabled = lib.mkForce true;
+      # NOTE: Can't define this apparently... already set
+      # enabled = lib.mkForce true;
       dynamicBoost.enable = true;
       gsp.enable = true;
       modesetting.enable = true;
