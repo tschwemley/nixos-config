@@ -13,7 +13,6 @@
 
   environment.systemPackages = with pkgs; [
     cudatoolkit
-    nvidia-smi
   ];
 
   hardware = {
@@ -52,6 +51,9 @@
 
   # when building don't use all of the cpu cores
   nix.settings.cores = 16;
+
+  # declare support for derivations requiring nvidia gpu available
+  programs.nix-required-mounts.presets.nvidia-gpu.enable = true;
 
   services.hardware.bolt.enable = true;
   services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
