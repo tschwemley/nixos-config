@@ -12,15 +12,18 @@
   }: let
     lib = import ./lib (nixpkgs.lib // home-manager.lib);
 
-    pkgsFor = lib.genAttrs (import systems) (system: (import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-      overlays = [
-        self.overlays.default
-        self.inputs.neovim-overlay.overlays.default
-        self.inputs.nix-topology.overlays.default
-      ];
-    }));
+    pkgsFor = lib.genAttrs (import systems) (system:
+      (import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = [
+          self.overlays.default
+          self.inputs.neovim-overlay.overlays.default
+          self.inputs.nix-topology.overlays.default
+        ];
+      })
+      // {inherit lib;});
+
     eachSystem = fn: lib.genAttrs (import systems) (system: fn pkgsFor.${system});
     hosts = lib.attrNames (builtins.readDir ./nixos/hosts);
   in {
