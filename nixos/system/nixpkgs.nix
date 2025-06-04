@@ -2,9 +2,11 @@
   nixpkgs = {
     config.allowUnfree = true;
 
-    overlays = [
-      self.overlays.default
-      self.inputs.neovim-overlay.overlays.default
+    # NOTE: additional overlays may be set in nixos/profiles dependent on host type
+    overlays = with self.overlays; [
+      default
+      neovim
+      vimPlugins
     ];
   };
 }

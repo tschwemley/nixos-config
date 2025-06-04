@@ -28,7 +28,7 @@
 
     devShells = eachSystem (pkgs: import ./devshell pkgs);
     nixosModules = import ./modules;
-    overlays = import ./overlays.nix {inherit self;};
+    overlays = import ./overlays self;
     packages = eachSystem (pkgs: import ./packages self pkgs);
     templates = import ./templates;
 
@@ -79,9 +79,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # NOTE: uncomment these as required/when necessary for overlays
-    # nixpkgs-master.url = "github:nixos/nixpkgs/master";
-    # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     nil.url = "github:oxalica/nil";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
@@ -132,11 +129,6 @@
       url = "github:oddlama/nix-topology";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # scribe = {
-    #   url = "sourcehut:~edwardloveall/scribe/main";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
 
     sops-nix = {
       url = "github:Mic92/sops-nix";

@@ -1,12 +1,11 @@
 {
-  inputs,
+  self,
   lib,
   ...
 }: {
-  # TODO: uncomment below after unfucking my shit up for the asdfa321349873210348723 time
   imports = [
-    inputs.nixos-hardware.nixosModules.common-pc
-    inputs.nixos-hardware.nixosModules.common-pc-ssd
+    self.inputs.nixos-hardware.nixosModules.common-pc
+    self.inputs.nixos-hardware.nixosModules.common-pc-ssd
 
     ./.
 
@@ -44,6 +43,7 @@
   ];
 
   nix.settings.trusted-users = ["schwem"];
+  nixpkgs.overlays = [self.overlays.zen-browser];
 
   # this is required to make home manager managed GTK items function
   programs.dconf.enable = true;
