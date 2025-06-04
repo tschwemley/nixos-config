@@ -10,7 +10,6 @@
     ../programs/neovim
     ../programs/nnn.nix
     ../programs/ripgrep.nix
-    ../programs/thefuck.nix
 
     ../terminal
 
