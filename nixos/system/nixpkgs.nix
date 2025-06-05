@@ -6,6 +6,7 @@
     overlays = with self.overlays; [
       default
       neovim
+      patched-packages
       vimPlugins
     ];
   };
