@@ -1,6 +1,6 @@
 {inputs, ...}: let
   # two extra storage drives on flareon host TODO: move this to someplace generic
-  numExtraDrives = 2;
+  numExtraDrives = 3;
   extraDrives = builtins.genList (i: let
     iStr = builtins.toString (i + 2);
   in
@@ -16,12 +16,6 @@ in {
 
       ../../profiles/proxmox.nix
       ../../services/samba.nix
-
-      #TODO: clean this up + clean up extraDrives
-      (import ../../hardware/disks/block-storage.nix {
-        device = "/dev/disk/by-id/ata-WDC_WD80EDAZ-11CEWB0_WD-RD0D74JE";
-        mountpoint = "storage4";
-      })
     ]
     ++ extraDrives;
 
