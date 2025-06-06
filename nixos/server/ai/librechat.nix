@@ -190,7 +190,10 @@ in {
 
   users = {
     groups.${user} = {};
-    users.${user} = {group = user;};
+    users.${user} = {
+      isSystemUser = true;
+      group = user;
+    };
   };
 
   virtualisation.oci-containers.containers = {
