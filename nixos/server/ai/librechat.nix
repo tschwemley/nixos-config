@@ -1,12 +1,12 @@
 # Auto-generated using compose2nix v0.3.1.
 {
+  self,
   config,
-  lib,
   pkgs,
   ...
 }: let
-  dotenv = lib.secret "server" "librechat.env";
-  db-env = lib.secret "server" "librechat-db.env";
+  dotenv = self.lib.secret "server" "librechat.env";
+  db-env = self.lib.secret "server" "librechat-db.env";
 
   stateDir = "/var/lib/librechat";
   user = "librechat";
@@ -19,12 +19,12 @@ in {
   in {
     librechat-config = {
       inherit group key mode owner;
-      sopsFile = lib.secret "server" "librechat.yaml";
+      sopsFile = self.lib.secret "server" "librechat.yaml";
     };
 
     librechat-env = {
       inherit group key mode owner;
-      sopsFile = lib.secret "server" "librechat.env";
+      sopsFile = self.lib.secret "server" "librechat.env";
     };
   };
 
@@ -32,7 +32,7 @@ in {
     services = {
       "podman-LibreChat-API" = {
         serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
+          Restart = self.lib.mkOverride 90 "always";
         };
         after = [
           "podman-network-librechat_default.service"
@@ -50,7 +50,7 @@ in {
 
       "podman-LibreChat-NGINX" = {
         serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
+          Restart = self.lib.mkOverride 90 "always";
         };
         after = [
           "podman-network-librechat_default.service"
@@ -68,7 +68,7 @@ in {
 
       "podman-chat-meilisearch" = {
         serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
+          Restart = self.lib.mkOverride 90 "always";
         };
         after = [
           "podman-network-librechat_default.service"
@@ -86,7 +86,7 @@ in {
 
       "podman-chat-mongodb" = {
         serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
+          Restart = self.lib.mkOverride 90 "always";
         };
         after = [
           "podman-network-librechat_default.service"
@@ -104,7 +104,7 @@ in {
 
       "podman-librechat-rag_api" = {
         serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
+          Restart = self.lib.mkOverride 90 "always";
         };
         after = [
           "podman-network-librechat_default.service"
@@ -122,7 +122,7 @@ in {
 
       "podman-librechat-vectordb" = {
         serviceConfig = {
-          Restart = lib.mkOverride 90 "always";
+          Restart = self.lib.mkOverride 90 "always";
         };
         after = [
           "podman-network-librechat_default.service"
