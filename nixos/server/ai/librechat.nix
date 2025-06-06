@@ -183,9 +183,14 @@ in {
 
     tmpfiles.rules = [
       "d ${stateDir} 0750 librechat librechat - -"
+
       "d ${stateDir}/images 0750 librechat librechat - -"
       "d ${stateDir}/logs 0750 librechat librechat - -"
       "d ${stateDir}/uploads 0750 librechat librechat - -"
+
+      "d ${stateDir}/data-node librechat librechat - -"
+      "d ${stateDir}/librechat_pgdata2 librechat librechat - -"
+      "d ${stateDir}/meili_data_v1.12 librechat librechat - -"
     ];
   };
 
@@ -307,7 +312,7 @@ in {
       image = "ankane/pgvector:latest";
       environmentFiles = [db-env];
       volumes = [
-        "librechat_pgdata2:/var/lib/postgresql/data:rw"
+        "${stateDir}/librechat_pgdata2:/var/lib/postgresql/data:rw"
       ];
       log-driver = "journald";
       extraOptions = [
