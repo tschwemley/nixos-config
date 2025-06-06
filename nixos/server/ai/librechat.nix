@@ -24,6 +24,7 @@ in {
 
     librechat-env = {
       inherit group key mode owner;
+      format = "dotenv";
       sopsFile = self.lib.secret "server" "librechat.env";
     };
   };
