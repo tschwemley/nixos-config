@@ -18,6 +18,7 @@
         config.allowUnfree = true;
         overlays = [
           self.overlays.default
+          self.overlays.patched-packages
           self.inputs.neovim-overlay.overlays.default
           self.inputs.nix-topology.overlays.default
         ];
