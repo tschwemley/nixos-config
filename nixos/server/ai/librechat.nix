@@ -215,7 +215,7 @@ in {
         "${stateDir}/uploads:/app/uploads:rw"
       ];
       ports = [
-        "${config.variables.ports.neko}:3080/tcp"
+        "${config.variables.ports.librechat}:3080/tcp"
       ];
       dependsOn = [
         "chat-mongodb"
