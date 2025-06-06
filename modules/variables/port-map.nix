@@ -8,6 +8,9 @@
   home-assistant = "8123";
   invidious = "3100";
   it-tools = "7001";
+  keycloak = "8480";
+  librechat = "3080";
+  librechat-rag = "3081";
   nginx-sso = "8082";
   nzbhydra2 = "5076";
   oidcproxy = "1337";
