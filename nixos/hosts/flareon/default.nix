@@ -12,11 +12,16 @@
 in {
   imports =
     [
-      # inputs.stash.nixosModules.default
       inputs.nix-private.nixosModules.envs.flareon
 
       ../../profiles/proxmox.nix
       ../../services/samba.nix
+
+      #TODO: clean this up + clean up extraDrives
+      (import ../../hardware/disks/block-storage.nix {
+        device = "/dev/disk/by-id/ata-WDC_WD80EDAZ-11CEWB0_WD-RD0D74JE";
+        mountpoint = "storage4";
+      })
     ]
     ++ extraDrives;
 
