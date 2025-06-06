@@ -189,7 +189,7 @@ in {
   };
 
   users = {
-    groups = [user];
+    groups.${user} = {};
     users.${user} = {group = user;};
   };
 
