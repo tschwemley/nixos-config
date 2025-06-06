@@ -205,8 +205,6 @@ in {
   virtualisation.oci-containers.containers = {
     # Containers
     "LibreChat-API" = {
-      inherit user;
-
       image = "ghcr.io/danny-avila/librechat-dev-api:latest";
       environment = {
         NODE_ENV = "production";
@@ -236,8 +234,6 @@ in {
     };
 
     "LibreChat-NGINX" = {
-      inherit user;
-
       image = "nginx:1.27.0-alpine";
       volumes = [
         "${stateDir}/client/nginx.conf:/etc/nginx/conf.d/default.conf:rw"
@@ -259,8 +255,6 @@ in {
     };
 
     "chat-meilisearch" = {
-      inherit user;
-
       image = "getmeili/meilisearch:v1.12.3";
       environmentFiles = [dotenv];
       volumes = [
@@ -274,8 +268,6 @@ in {
     };
 
     "chat-mongodb" = {
-      inherit user;
-
       image = "mongo";
       volumes = [
         "${stateDir}/data-node:/data/db:rw"
@@ -289,8 +281,6 @@ in {
     };
 
     "librechat-rag_api" = {
-      inherit user;
-
       image = "ghcr.io/danny-avila/librechat-rag-api-dev-lite:latest";
       environment = {
         DB_HOST = "vectordb";
@@ -307,8 +297,6 @@ in {
     };
 
     "librechat-vectordb" = {
-      inherit user;
-
       image = "ankane/pgvector:latest";
       environmentFiles = [db-env];
       volumes = [
