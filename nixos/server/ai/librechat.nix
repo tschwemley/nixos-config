@@ -188,9 +188,9 @@ in {
       "d ${stateDir}/logs 0750 librechat librechat - -"
       "d ${stateDir}/uploads 0750 librechat librechat - -"
 
-      "d ${stateDir}/data-node librechat librechat - -"
-      "d ${stateDir}/librechat_pgdata2 librechat librechat - -"
-      "d ${stateDir}/meili_data_v1.12 librechat librechat - -"
+      "d ${stateDir}/data-node 0750 librechat librechat - -"
+      "d ${stateDir}/librechat_pgdata2 0750 librechat librechat - -"
+      "d ${stateDir}/meili_data_v1.12 0750 librechat librechat - -"
     ];
   };
 
