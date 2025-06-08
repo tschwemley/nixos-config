@@ -33,6 +33,7 @@
       group = config.services.librechat.user;
       mode = "0400";
 
+      format = "dotenv";
       sopsFile = self.lib.secret "server" "librechat-creds.env";
     };
   };
