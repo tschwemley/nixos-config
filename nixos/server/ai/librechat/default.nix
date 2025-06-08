@@ -13,7 +13,7 @@
       credentials = {
         CREDS_KEY = config.sops.secrets.librechat-creds-key.path;
         CREDS_IV = config.sops.secrets.librechat-creds-iv.path;
-        JWT_SECRET = config.sops.secrets.librechat-jwt-key.path;
+        JWT_SECRET = config.sops.secrets.librechat-jwt-secret.path;
         JWT_REFRESH_SECRET = config.sops.secrets.librechat-jwt-refresh-secret.path;
         MEILI_MASTER_KEY = config.sops.secrets.librechat-meili-master-key.path;
         MONGO_URI = config.sops.secrets.librechat-mongo-uri.path;
