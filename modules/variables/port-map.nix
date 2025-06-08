@@ -1,6 +1,8 @@
 {
   anonymous-overflow = "8010";
   binternet = "8009";
+  calibre-server = "8084";
+  calibre-web = "8083"; # 8083 is set by default for calibre web
   dashboard = "6980";
   excalidraw = "8380";
   forgejo = "8020";
@@ -9,8 +11,8 @@
   invidious = "3100";
   it-tools = "7001";
   keycloak = "8480";
-  librechat = "3080";
-  librechat-rag = "3081";
+  # librechat = "3080";
+  # librechat-rag = "3081";
   nginx-sso = "8082";
   nzbhydra2 = "5076";
   oidcproxy = "1337";
