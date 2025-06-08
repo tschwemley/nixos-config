@@ -257,7 +257,7 @@ in {
     "chat-meilisearch" = {
       image = "getmeili/meilisearch:v1.12.3";
       environment = {
-        MEILI_NO_ANALYTICS = "True";
+        MEILI_NO_ANALYTICS = "true";
       };
       environmentFiles = [dotenv];
       volumes = [
