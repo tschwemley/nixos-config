@@ -21,7 +21,7 @@ in {
     ../../profiles/server.nix
 
     # server imports
-    ../../server/media/jellyfin
+    ../../server/media/jellyfin.nix
   ];
 
   boot = {
@@ -37,14 +37,6 @@ in {
   ethDev = "enp2s0";
 
   hardware = {
-    opengl = {
-      enable = true;
-      extraPackages = with pkgs; [
-        vaapiVdpau
-        intel-compute-runtime
-        intel-media-sdk
-      ];
-    };
     nvidia = {
       modesetting.enable = true;
       open = true;
@@ -55,6 +47,15 @@ in {
         # Bus ID of the NVIDIA GPU.
         nvidiaBusId = "PCI:1:0:0";
       };
+    };
+
+    opengl = {
+      enable = true;
+      extraPackages = with pkgs; [
+        vaapiVdpau
+        intel-compute-runtime
+        intel-media-sdk
+      ];
     };
   };
 
