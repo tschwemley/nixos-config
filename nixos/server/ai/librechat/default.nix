@@ -18,6 +18,7 @@
         JWT_KEY = secretPath;
         JWT_REFRESH_KEY = secretPath;
         MEILI_MASTER_KEY = secretPath;
+        MONGO_URI = secretPath;
       };
 
       env = {
