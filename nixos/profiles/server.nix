@@ -28,6 +28,7 @@
   ];
 
   nixpkgs.overlays = with self.inputs; [
+    nix-private.overlays.shhinfo
     nix-private.overlays.stash
   ];
 

@@ -1,4 +1,4 @@
-{inputs, ...}: let
+{self, ...}: let
   # two extra storage drives on flareon host TODO: move this to someplace generic
   numExtraDrives = 3;
   extraDrives = builtins.genList (i: let
@@ -12,7 +12,7 @@
 in {
   imports =
     [
-      inputs.nix-private.nixosModules.envs.flareon
+      self.inputs.nix-private.nixosModules.envs.flareon
 
       ../../profiles/proxmox.nix
       ../../services/samba.nix
