@@ -5,8 +5,8 @@
   pkgs,
   ...
 }: let
-  dotenv = self.lib.secret "server" "librechat.env";
-  db-env = self.lib.secret "server" "librechat-db.env";
+  dotenv = config.sops.secrets.librechat-env.path;
+  db-env = config.sops.secrets.librechat-db-env.path;
 
   stateDir = "/var/lib/librechat";
   user = "librechat";
@@ -23,9 +23,17 @@ in {
     };
 
     librechat-env = {
-      inherit group key mode owner;
+      # inherit group key mode owner;
+      inherit group mode owner;
       format = "dotenv";
       sopsFile = self.lib.secret "server" "librechat.env";
+    };
+
+    librechat-db-env = {
+      # inherit group key mode owner;
+      inherit group mode owner;
+      format = "dotenv";
+      sopsFile = self.lib.secret "server" "librechat-db.env";
     };
   };
 
