@@ -1,16 +1,16 @@
 {
   self,
   config,
+  lib,
   pkgs,
   ...
-}:
-let
+}: let
   mongo-setup-script = pkgs.writeShellScript "librechat-mongo-setup" ''
     #!${pkgs.runtimeShell}
     set -euo pipefail
     # this command will fail if the user already exists, which is fine.
     # we could make this more robust, but for now this is sufficient.
-    ${config.services.mongodb.package}/bin/mongosh admin \
+    ${lib.getExe pkgs.mongosh} admin \
       --username root \
       --password "$(cat ${config.sops.secrets.mongoRootPassword.path})" \
       --eval "db.getSiblingDB('LibreChat').createUser({ \
@@ -19,8 +19,7 @@ let
         roles: [ { role: 'readWrite', db: 'LibreChat' } ] \
       })" || true
   '';
-in
-{
+in {
   imports = [./module.nix];
 
   services = {
@@ -60,9 +59,9 @@ in
       User = "root";
       ExecStart = "${mongo-setup-script}";
     };
-    after = [ "mongodb.service" ];
-    requires = [ "mongodb.service" ];
-    wantedBy = [ "multi-user.target" ];
+    after = ["mongodb.service"];
+    requires = ["mongodb.service"];
+    wantedBy = ["multi-user.target"];
   };
 
   sops.secrets = let
