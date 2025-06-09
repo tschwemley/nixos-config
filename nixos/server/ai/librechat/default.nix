@@ -35,7 +35,7 @@ in {
         MONGO_URI = config.sops.secrets.librechatMongoUri.path;
         OPENID_CLIENT_SECRET = config.sops.secrets.librechatOpenIDClientSecret.path;
         OPENID_SESSION_SECRET = config.sops.secrets.librechatOpenIDSessionSecret.path;
-        OPENROUTER_KEY = config.sops.secrets.libreChatOpenRouterKey.path;
+        OPENROUTER_KEY = config.sops.secrets.librechatOpenRouterKey.path;
       };
 
       env = {
