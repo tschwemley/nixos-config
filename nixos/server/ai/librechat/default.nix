@@ -11,12 +11,12 @@
       enable = true;
 
       credentials = {
-        CREDS_KEY = config.sops.secrets.librechat-creds-key.path;
-        CREDS_IV = config.sops.secrets.librechat-creds-iv.path;
-        JWT_SECRET = config.sops.secrets.librechat-jwt-secret.path;
-        JWT_REFRESH_SECRET = config.sops.secrets.librechat-jwt-refresh-secret.path;
-        MEILI_MASTER_KEY = config.sops.secrets.librechat-meili-master-key.path;
-        MONGO_URI = config.sops.secrets.librechat-mongo-uri.path;
+        CREDS_KEY = config.sops.secrets.librechatCredsKey.path;
+        CREDS_IV = config.sops.secrets.librechatCredsIV.path;
+        JWT_SECRET = config.sops.secrets.librechatJwtSecret.path;
+        JWT_REFRESH_SECRET = config.sops.secrets.librechatJwtRefreshSecret.path;
+        MEILI_MASTER_KEY = config.sops.secrets.librechatMeiliMasterKey.path;
+        MONGO_URI = config.sops.secrets.librechatMongoUri.path;
       };
 
       env = {
@@ -30,8 +30,46 @@
 
     mongodb = {
       enable = true;
-      initialRootPasswordFile = config.sops.secrets.librechat-mongo-pw.path;
+      enableAuth = true;
+      initialRootPasswordFile = config.sops.secrets.mongoRootPassword.path;
       package = pkgs.mongodb-ce;
+
+      initialScript = pkgs.writeTextFile {
+        name = "mongodb-librechat-sops-init.js";
+
+        # This JavaScript is executed by `mongosh`, which has a Node.js backend.
+        # Therefore, we can use Node.js filesystem APIs like `fs.readFileSync`.
+        text = let
+          dbUser = "librechat";
+          dbName = "LibreChat";
+        in
+          # javascript
+          ''
+            // Nix injects the *path* to the secret file here. This path is known at build time.
+            const passwordFile = "${config.sops.secrets.librechatMongoPassword.path}";
+
+            // The script reads the *content* of the secret file at RUNTIME.
+            // `fs.readFileSync` reads the file, 'utf8' decodes it, and `.trim()`
+            // removes any trailing whitespace or newlines.
+            const password = fs.readFileSync(passwordFile, 'utf8').trim();
+
+            // Get database and user info from Nix variables
+            const dbName = '${dbName}';
+            const user = '${dbUser}';
+
+            // Switch to the correct database
+            const libreChatDb = db.getSiblingDB(dbName);
+
+            // Create the user with the password read from the sops secret file
+            libreChatDb.createUser({
+              user: user,
+              pwd: password,
+              roles: [
+                { role: "readWrite", db: dbName }
+              ]
+            });
+          '';
+      };
     };
   };
 
@@ -43,12 +81,13 @@
 
     getSecret = key: {inherit group owner mode sopsFile key;};
   in {
-    librechat-creds-key = getSecret "creds_key";
-    librechat-creds-iv = getSecret "creds_iv";
-    librechat-jwt-secret = getSecret "jwt_secret";
-    librechat-jwt-refresh-secret = getSecret "jwt_refresh_secret";
-    librechat-meili-master-key = getSecret "meili_master_key";
-    librechat-mongo-uri = getSecret "mongo_uri";
-    librechat-mongo-pw = getSecret "mongo_pw";
+    librechatCredsKey = getSecret "creds_key";
+    librechatCredsIV = getSecret "creds_iv";
+    librechatJwtSecret = getSecret "jwt_secret";
+    librechatJwtRefreshSecret = getSecret "jwt_refresh_secret";
+    librechatMeiliMasterKey = getSecret "meili_master_key";
+    librechatMongoUri = getSecret "mongo_uri";
+    mongoRootPassword = getSecret "mongo_root_pw";
+    librechatMongoPassword = getSecret "mongo_pw";
   };
 }
