@@ -33,11 +33,29 @@ in {
         JWT_REFRESH_SECRET = config.sops.secrets.librechatJwtRefreshSecret.path;
         MEILI_MASTER_KEY = config.sops.secrets.librechatMeiliMasterKey.path;
         MONGO_URI = config.sops.secrets.librechatMongoUri.path;
+        OPENID_CLIENT_SECRET = config.sops.secrets.librechatOpenIDClientSecret.path;
+        OPENID_SESSION_SECRET = config.sops.secrets.librechatOpenIDSessionSecret.path;
+        OPENROUTER_KEY = config.sops.secrets.libreChatOpenRouterKey.path;
       };
 
       env = {
+        HOST = "0.0.0.0"; # TODO: move this back to 127.0.0.1 and put behind reverse proxy
+
         ALLOW_REGISTRATION = "false";
-        HOST = "127.0.0.1";
+
+        # DOMAIN_CLIENT = "";
+        # DOMAIN_SERVER = "";
+
+        NO_INDEX = "true";
+
+        MEILI_NO_ANALYTICS = "true";
+
+        # OpenID configuration
+        OPENID_CLIENT_ID = "librechat";
+        OPENID_ISSUER = "https://auth.schwem.io/realms/schwem-io";
+        OPENID_REQUIRED_ROLE = "user";
+        OPENID_REQUIRED_ROLE_PARAMETER_PATH = "resource_access.librechat.roles";
+        OPENID_USE_END_SESSION_ENDPOINT = "true";
       };
 
       # NOTE: settings is free-form nix attribute set that will be converted to librechat.yaml
@@ -78,7 +96,10 @@ in {
     librechatJwtRefreshSecret = getSecret "jwt_refresh_secret";
     librechatMeiliMasterKey = getSecret "meili_master_key";
     librechatMongoUri = getSecret "mongo_uri";
-    mongoRootPassword = getSecret "mongo_root_pw";
     librechatMongoPassword = getSecret "mongo_pw";
+    librechatOpenIDClientSecret = getSecret "openid_client_secret";
+    librechatOpenIDSessionSecret = getSecret "openid_session_secret";
+    librechatOpenRouterKey = getSecret "openrouter_key";
+    mongoRootPassword = getSecret "mongo_root_pw";
   };
 }
