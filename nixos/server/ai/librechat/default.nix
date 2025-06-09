@@ -3,7 +3,24 @@
   config,
   pkgs,
   ...
-}: {
+}:
+let
+  mongo-setup-script = pkgs.writeShellScript "librechat-mongo-setup" ''
+    #!${pkgs.runtimeShell}
+    set -euo pipefail
+    # this command will fail if the user already exists, which is fine.
+    # we could make this more robust, but for now this is sufficient.
+    ${config.services.mongodb.package}/bin/mongosh admin \
+      --username root \
+      --password "$(cat ${config.sops.secrets.mongoRootPassword.path})" \
+      --eval "db.getSiblingDB('LibreChat').createUser({ \
+        user: 'librechat', \
+        pwd: '$(cat ${config.sops.secrets.librechatMongoPassword.path})', \
+        roles: [ { role: 'readWrite', db: 'LibreChat' } ] \
+      })" || true
+  '';
+in
+{
   imports = [./module.nix];
 
   services = {
@@ -34,6 +51,18 @@
       initialRootPasswordFile = config.sops.secrets.mongoRootPassword.path;
       package = pkgs.mongodb-ce;
     };
+  };
+
+  systemd.services.librechat-mongodb-setup = {
+    description = "Initial MongoDB setup for LibreChat";
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+      ExecStart = "${mongo-setup-script}";
+    };
+    after = [ "mongodb.service" ];
+    requires = [ "mongodb.service" ];
+    wantedBy = [ "multi-user.target" ];
   };
 
   sops.secrets = let
