@@ -33,43 +33,6 @@
       enableAuth = true;
       initialRootPasswordFile = config.sops.secrets.mongoRootPassword.path;
       package = pkgs.mongodb-ce;
-
-      initialScript = pkgs.writeTextFile {
-        name = "mongodb-librechat-sops-init.js";
-
-        # This JavaScript is executed by `mongosh`, which has a Node.js backend.
-        # Therefore, we can use Node.js filesystem APIs like `fs.readFileSync`.
-        text = let
-          dbUser = "librechat";
-          dbName = "LibreChat";
-        in
-          # javascript
-          ''
-            // Nix injects the *path* to the secret file here. This path is known at build time.
-            const passwordFile = "${config.sops.secrets.librechatMongoPassword.path}";
-
-            // The script reads the *content* of the secret file at RUNTIME.
-            // `fs.readFileSync` reads the file, 'utf8' decodes it, and `.trim()`
-            // removes any trailing whitespace or newlines.
-            const password = fs.readFileSync(passwordFile, 'utf8').trim();
-
-            // Get database and user info from Nix variables
-            const dbName = '${dbName}';
-            const user = '${dbUser}';
-
-            // Switch to the correct database
-            const libreChatDb = db.getSiblingDB(dbName);
-
-            // Create the user with the password read from the sops secret file
-            libreChatDb.createUser({
-              user: user,
-              pwd: password,
-              roles: [
-                { role: "readWrite", db: dbName }
-              ]
-            });
-          '';
-      };
     };
   };
 
