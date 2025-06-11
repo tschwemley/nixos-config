@@ -6,6 +6,7 @@
   dashboard = "6980";
   excalidraw = "8380";
   forgejo = "8020";
+  freetar = "22000";
   glance = "6143";
   home-assistant = "8123";
   invidious = "3100";
