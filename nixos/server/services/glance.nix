@@ -1,6 +1,7 @@
 {
   self,
   config,
+  lib,
   ...
 }: let
   host = "127.0.0.1";
@@ -89,5 +90,5 @@ in {
     sopsFile = "${self.lib.secrets.server}/glance.env";
   };
 
-  systemd.services.glance.serviceConfig.EnvironmentFile = config.sops.secrets.glanceEnv.path;
+  systemd.services.glance.serviceConfig.EnvironmentFile = lib.mkDefault config.sops.secrets.glanceEnv.path;
 }
