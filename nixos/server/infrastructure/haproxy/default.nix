@@ -50,6 +50,7 @@ in {
         acl domain_auth hdr(host) -i auth.schwem.io
         acl domain_cyberchef hdr(host) -i cyberchef.schwem.io
         acl domain_draw hdr(host) -i draw.schwem.io
+        acl domain_freetar hdr(host) -i freetar.schwem.io
         acl domain_git hdr(host) -i git.schwem.io
         acl domain_it-tools hdr(host) -i it-tools.schwem.io
         acl domain_jellyfin hdr(host) -i jellyfin.schwem.io
@@ -74,6 +75,7 @@ in {
 
         use_backend articuno if domain_default
         use_backend articuno if domain_cyberchef
+        use_backend articuno if domain_freetar
         use_backend articuno if domain_monitor
         use_backend articuno if domain_ntfy
         use_backend articuno if domain_twitch

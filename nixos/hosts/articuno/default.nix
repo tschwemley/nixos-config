@@ -14,6 +14,7 @@ in {
       ../../profiles/buyvm.nix
 
       # server imports
+      ../../server/alt-frontends/freetar.nix
       ../../server/alt-frontends/safetwitch
       ../../server/communication/ntfy.nix
       ../../server/development/cyberchef.nix
