@@ -2,8 +2,12 @@
   config,
   lib,
   ...
-}: {
+}: let
+  disk = import ../../hardware/disks/btrfs-encrypted.nix "/dev/disk/by-id/nvme-SHPP41-2000GM_SJC4N477711104A4V-part1" "crypted";
+in {
   imports = [
+    disk
+
     ../../hardware/amd.nix
   ];
 
