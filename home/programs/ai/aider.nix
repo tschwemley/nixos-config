@@ -85,7 +85,7 @@
         system_prompt_prefix: null
         accepts_settings: null
 
-      - name: openrouter/google/gemini-2.5-pro-preview-03-25
+      - name: openrouter/google/gemini-2.5-pro-preview
         edit_format: diff-fenced
         weak_model_name: openrouter/google/gemini-2.0-flash-001
         use_repo_map: true
