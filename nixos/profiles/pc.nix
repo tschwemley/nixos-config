@@ -43,7 +43,10 @@
   ];
 
   nix.settings.trusted-users = ["schwem"];
-  nixpkgs.overlays = [self.overlays.zen-browser];
+  nixpkgs.overlays = with self.overlays; [
+    # aseprite
+    zen-browser
+  ];
 
   # this is required to make home manager managed GTK items function
   programs.dconf.enable = true;
@@ -61,8 +64,8 @@
 
     tailscale.extraUpFlags = [
       "--advertise-tags tag:pc"
-      "--exit-node=us-chi-wg-304.mullvad.ts.net"
       "--exit-node-allow-lan-access=true"
+      "--exit-node=us-chi-wg-305.mullvad.ts.net"
       "--operator=schwem"
     ];
   };
