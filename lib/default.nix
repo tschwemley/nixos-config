@@ -8,7 +8,7 @@ lib
   # TODO: change isPC and isServer to read from a config (json?) file. Or make it an option def.
   isPC = host: builtins.elem host ["charizard" "pikachu"];
 
-  isServer = host: builtins.elem host ["articuno" "zapados" "jolteon" "flareon"];
+  isServer = host: builtins.elem host ["articuno" "zapados" "moltres" "jolteon" "flareon"];
 
   mkStrOption = attrs: lib.mkOption ({type = lib.types.str;} // attrs);
 
