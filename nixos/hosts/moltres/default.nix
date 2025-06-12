@@ -3,7 +3,6 @@
     ../../profiles/racknerd.nix
 
     ../../server/ai/librechat
-    # ../../server/ai/open-webui.nix
     ../../server/alt-frontends/redlib.nix
     ../../server/alt-frontends/redlib.nix
     ../../server/alt-frontends/rimgo.nix

@@ -3,7 +3,10 @@
   pkgs,
   ...
 }: {
-  environment.systemPackages = [pkgs.nix-doc];
+  environment.systemPackages = with pkgs; [
+    nix-doc
+    nix-prefetch-git
+  ];
 
   nix = {
     # TODO: re-enable or remove this (is it still necessary with current builds?

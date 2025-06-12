@@ -5,6 +5,10 @@
   pkgs,
   ...
 }: let
+  listenAddress = "127.0.0.1";
+  listenPort = "3080";
+
+  # TODO: move the mongo setup script out (probably create a new mongo service option)
   mongo-setup-script = pkgs.writeShellScript "librechat-mongo-setup" ''
     #!${pkgs.runtimeShell}
     set -euo pipefail
@@ -39,12 +43,14 @@ in {
       };
 
       env = {
-        HOST = "0.0.0.0"; # TODO: move this back to 127.0.0.1 and put behind reverse proxy
+        # Server settings
+        HOST = listenAddress;
+        DOMAIN_CLIENT = "https://ai.schwem.io";
+        DOMAIN_SERVER = "https://ai.schwem.io";
 
+        # General settings
         ALLOW_REGISTRATION = "false";
-
-        # DOMAIN_CLIENT = "";
-        # DOMAIN_SERVER = "";
+        ALLOW_SOCIAL_LOGIN = "true";
 
         NO_INDEX = "true";
 
@@ -52,14 +58,38 @@ in {
 
         # OpenID configuration
         OPENID_CLIENT_ID = "librechat";
+        OPENID_CALLBACK_URL = "/oauth/openid/callback";
         OPENID_ISSUER = "https://auth.schwem.io/realms/schwem-io";
         OPENID_REQUIRED_ROLE = "user";
         OPENID_REQUIRED_ROLE_PARAMETER_PATH = "resource_access.librechat.roles";
+        # OPENID_REQUIRED_ROLE_TOKEN_KIND = "(access|id)";
+        OPENID_REQUIRED_ROLE_TOKEN_KIND = "id";
+        OPENID_SCOPE = "openid profile email";
         OPENID_USE_END_SESSION_ENDPOINT = "true";
       };
 
       # NOTE: settings is free-form nix attribute set that will be converted to librechat.yaml
-      settings = {};
+      settings = {
+        version = "1.2.5";
+        cache = true;
+        endpoints.custom = [
+          {
+            name = "OpenRouter";
+            apiKey = "\${OPENROUTER_KEY}";
+            baseURL = "https://openrouter.ai/api/v1";
+            models = {
+              default = ["google/gemini-2.5-pro-preview"];
+              fetch = true;
+            };
+            titleConvo = true;
+            titleModel = "google/gemini-2.5-flash-preview-05-20";
+            summarize = false;
+            summaryModel = "google/gemini-2.5-flash-preview-05-20";
+            forcePrompt = false;
+            modelDisplayLabel = "OpenRouter";
+          }
+        ];
+      };
     };
 
     mongodb = {
@@ -67,6 +97,16 @@ in {
       enableAuth = true;
       initialRootPasswordFile = config.sops.secrets.mongoRootPassword.path;
       package = pkgs.mongodb-ce;
+    };
+
+    nginx.virtualHosts."ai.schwem.io".locations = {
+      "/" = {
+        proxyPass = "http://${listenAddress}:${listenPort}";
+        extraConfig = ''
+          proxy_cache_bypass $http_upgrade;
+        '';
+        # proxyWebsockets = true;
+      };
     };
   };
 
