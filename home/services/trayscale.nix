@@ -1,3 +1,0 @@
-{
-  services.trayscale.enable = true;
-}

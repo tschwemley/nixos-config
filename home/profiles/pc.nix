@@ -30,7 +30,6 @@
 
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
-    ../services/trayscale.nix
 
     ../theme
 
