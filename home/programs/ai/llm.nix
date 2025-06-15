@@ -20,10 +20,5 @@
       inherit mode sopsFile;
       key = "openrouter_api_key";
     };
-
-    open_webui_api_key = {
-      inherit mode sopsFile;
-      key = "open_webui_api_key";
-    };
   };
 }
