@@ -2,6 +2,7 @@
 vim.filetype.add({
    extension = {
       bru = "bruno",
+      pac = "js",
       zsh = "bash",
    },
    filename = {
