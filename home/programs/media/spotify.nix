@@ -5,19 +5,8 @@
 }: {
   imports = [self.inputs.spicetify-nix.homeManagerModules.spicetify];
 
-  # home.packages = with pkgs; [
-  #   librespot
-  #   mopidy
-  #   # spicetify-cli
-  #   spotify
-  #   spot
-  # ];
-
   # REF: https://gerg-l.github.io/spicetify-nix/
   programs.spicetify = let
-    # For Flakeless:
-    # spicePkgs = spicetify-nix.packages;
-    # With flakes:
     spicePkgs = self.inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
   in {
     enable = true;
