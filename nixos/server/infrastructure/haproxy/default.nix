@@ -58,6 +58,7 @@ in {
         acl domain_monitor hdr(host) -i monitor.schwem.io
         acl domain_ntfy hdr(host) -i ntfy.schwem.io
         acl domain_pinterest hdr(host) -i pinterest.schwem.io
+        acl domain_pds hdr(host) -i pds.schwem.io
         acl domain_reddit hdr(host) -i reddit.schwem.io
         acl domain_rimgo hdr(host) -i rimgo.schwem.io
         acl domain_rss hdr(host) -i rss.schwem.io
@@ -81,6 +82,8 @@ in {
         use_backend articuno if domain_twitch
 
         use_backend moltres if domain_ai
+        use_backend moltres if domain_draw
+        use_backend moltres if domain_pds
         use_backend moltres if domain_reddit
         use_backend moltres if domain_rimgo
         # use_backend moltres if domain_sillytavern
@@ -96,7 +99,6 @@ in {
         # use_backend jolteon if domain_trmnl
 
         use_backend auth if domain_auth
-        use_backend draw if domain_draw
         use_backend it-tools if domain_it-tools
         use_backend jellyfin if domain_jellyfin
         use_backend jellyseerr if domain_jellyseerr
@@ -109,10 +111,6 @@ in {
 
       backend auth
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
-
-      backend draw
-        http-request set-header X-Forwarded-Proto https
-        server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
 
       backend git_ssh_backend
         mode tcp

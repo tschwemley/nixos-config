@@ -8,6 +8,7 @@
     ../../server/alt-frontends/rimgo.nix
     ../../server/knowledge/excalidraw
     ../../server/services/anki-sync.nix
+    ../../server/services/pds.nix
     ../../server/services/taskchampion-sync-server.nix
 
     # ../../server/ai/sillytavern.nix

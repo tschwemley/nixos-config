@@ -86,7 +86,6 @@ in {
 
   sops.secrets.glanceEnv = {
     format = "dotenv";
-    # key = "";
     sopsFile = "${self.lib.secrets.server}/glance.env";
   };
 
