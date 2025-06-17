@@ -1,10 +1,15 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
     # TODO: revisit navbuddy when time... looks interesting
     # navbuddy # old config: navbuddy = import ./navbuddy.nix pkgs.vimPlugins;
 
     direnv-vim
     dressing-nvim
+    leap-nvim
     nnn-vim
     nvim-ufo
     plenary-nvim # most plugins install this as a dependency; I'm including for it's log method
@@ -14,8 +19,9 @@
     vim-startuptime
   ];
 
-  xdg.configFile = {
-    "nvim/after/plugin/nnn.lua".source = ./nnn.lua;
-    "nvim/after/plugin/ufo.lua".source = ./ufo.lua;
-  };
+  xdg.configFile."nvim/after/plugin/utils.lua".text = ''
+    ${lib.readFile ./leap.lua}
+    ${lib.readFile ./nnn.lua}
+    ${lib.readFile ./ufo.lua}
+  '';
 }

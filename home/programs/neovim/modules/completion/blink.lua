@@ -45,7 +45,7 @@ require("blink.cmp").setup({
          dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
          css_vars = { name = "css-vars", module = "css-vars.blink" },
          env = { name = "Env", module = "blink-cmp-env" },
-         lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+         lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 100 },
 
          emoji = {
             name = "Emoji",
