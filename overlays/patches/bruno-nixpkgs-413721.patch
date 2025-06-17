@@ -1,14 +1,16 @@
-From 23559d6729679a3f5cc4f052fd04137c5a580633 Mon Sep 17 00:00:00 2001
+From 9832a4c0ff1146ef349beea7a686ce39f3ee8c52 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Gutyina=20Gerg=C5=91?= <gutyina.gergo.2@gmail.com>
 Date: Tue, 3 Jun 2025 22:56:24 +0200
 Subject: [PATCH] bruno: fix build
 
+Explanation at
+https://github.com/NixOS/nixpkgs/pull/411803#issuecomment-2937157503.
 ---
  pkgs/by-name/br/bruno/package.nix | 6 ++----
  1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/pkgs/by-name/br/bruno/package.nix b/pkgs/by-name/br/bruno/package.nix
-index 690601abe9173..5a13b1dfea00d 100644
+index 690601abe91731..5a13b1dfea00d2 100644
 --- a/pkgs/by-name/br/bruno/package.nix
 +++ b/pkgs/by-name/br/bruno/package.nix
 @@ -38,8 +38,6 @@ buildNpmPackage rec {
