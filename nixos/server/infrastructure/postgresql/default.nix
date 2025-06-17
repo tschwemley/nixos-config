@@ -1,6 +1,8 @@
-{lib, ...}: {
+{
   services.postgresql = {
     enable = true;
+
+    extensions = ps: with ps; [pgvector];
 
     identMap = ''
       # mapName systemUser  DBUser
