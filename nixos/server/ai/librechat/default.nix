@@ -6,7 +6,7 @@
   ...
 }: let
   listenAddress = "127.0.0.1";
-  listenPort = "3080";
+  librechatPort = "3080";
 
   # TODO: move the mongo setup script out (probably create a new mongo service option)
   mongo-setup-script = pkgs.writeShellScript "librechat-mongo-setup" ''
@@ -107,7 +107,9 @@ in {
 
         env = {
           EMBEDDING_MODEL = "huggingface";
+          RAG_HOST = listenAddress;
           RAG_PORT = port;
+          RAG_UPLOAD_DIR = "${config.services.librechat.workDir}/uploads";
           POSTGRES_DB = "librechat";
           POSTGRES_USER = "librechat";
           VECTOR_DB_TYPE = "pgvector";
@@ -124,7 +126,7 @@ in {
 
     nginx.virtualHosts."ai.schwem.io".locations = {
       "/" = {
-        proxyPass = "http://${listenAddress}:${listenPort}";
+        proxyPass = "http://${listenAddress}:${librechatPort}";
         extraConfig = ''
           proxy_cache_bypass $http_upgrade;
         '';

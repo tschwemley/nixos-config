@@ -377,11 +377,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1750158414,
-        "narHash": "sha256-m20XGjtFbT7QubIvgZXo3/zA8VtDrqEWfwBa8wnQFt4=",
+        "lastModified": 1750161836,
+        "narHash": "sha256-yumOPxkkC5VIHDMkteJIYdAXYkEQwVB7v7xv/MWJ35o=",
         "owner": "tschwemley",
         "repo": "librechat-flake",
-        "rev": "3ef088079507fadd79dde2fef3076d7b93953b58",
+        "rev": "856e685a4fae3810d80280a469415e10edf75114",
         "type": "github"
       },
       "original": {
