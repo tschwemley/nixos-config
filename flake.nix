@@ -109,10 +109,10 @@
       flake = false;
     };
 
-    # hyprland-input-capture = {
-    #   url = "github:3l0w/Hyprland/feat/input-capture-impl";
-    #   # inputs.nixpkgs.follows = "nixpkgs"; # comment this out if trouble building
-    # };
+    librechat = {
+      url = "github:tschwemley/librechat-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     musnix = {
       url = "github:musnix/musnix";

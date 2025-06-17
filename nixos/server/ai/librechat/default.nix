@@ -24,7 +24,8 @@
       })" || true
   '';
 in {
-  imports = [./module.nix];
+  # imports = [./module.nix];
+  imports = [self.inputs.librechat.nixosModules.librechat];
 
   services = {
     librechat = {
@@ -90,6 +91,28 @@ in {
           }
         ];
       };
+
+      ragApi = let
+        port = lib.toInt config.variables.ports.librechat-rag;
+      in {
+        inherit port;
+
+        enable = true;
+
+        credentials = {
+          DB_HOST = config.sops.secrets.ragDBHost.path;
+          DB_PORT = config.sops.secrets.ragDBPort.path;
+          POSTGRES_PASSWORD = config.sops.secrets.ragPostgresPassword.path;
+        };
+
+        env = {
+          EMBEDDING_MODEL = "huggingface";
+          RAG_PORT = port;
+          POSTGRES_DB = "librechat";
+          POSTGRES_USER = "librechat";
+          VECTOR_DB_TYPE = "pgvector";
+        };
+      };
     };
 
     mongodb = {
@@ -105,7 +128,6 @@ in {
         extraConfig = ''
           proxy_cache_bypass $http_upgrade;
         '';
-        # proxyWebsockets = true;
       };
     };
   };
@@ -141,5 +163,10 @@ in {
     librechatOpenIDSessionSecret = getSecret "openid_session_secret";
     librechatOpenRouterKey = getSecret "openrouter_key";
     mongoRootPassword = getSecret "mongo_root_pw";
+
+    # rag scecrets
+    librechatRagDBHost = getSecret "rag_db_host";
+    librechatRagDBPort = getSecret "rag_db_port";
+    librechatRagPostgresPassword = getSecret "rag_postgres_password";
   };
 }
