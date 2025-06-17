@@ -1,4 +1,5 @@
 {
+  self,
   config,
   pkgs,
   ...
@@ -60,6 +61,16 @@
       enable = true;
       listenAddress = "0.0.0.0";
       port = 9187;
+    };
+  };
+
+  sops.secrets = {
+    librechatRagPostgresPassword = {
+      group = "postgres";
+      key = "rag_postgres_password";
+      mode = "0400";
+      owner = "postgres";
+      sopsFile = self.lib.secret "server" "librechat.yaml";
     };
   };
 }
