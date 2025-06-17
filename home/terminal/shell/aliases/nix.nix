@@ -1,4 +1,4 @@
-lib: {
+{
   cdnix = "cd ~/nixos-config";
   hms = "nix run home-manager/master -- switch --flake ";
   nfc = "nix flake check";

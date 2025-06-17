@@ -11,7 +11,6 @@
   jl = "journalctl -xeu";
   lgroups = "bat /etc/group";
   lusers = "bat /etc/passwd";
-  pwgen = "pwgen -N1 -snyr \]\[\|\?\{\}\(\)\'%\;~\"\<\>\`-\/=:, 12 | copy";
   randstr = "head /dev/urandom | tr -dc A-Za-z0-9 | head -c10";
   userctl = "systemctl --user";
 }

@@ -4,6 +4,80 @@ nbuild() {
   $(tail -n1 /tmp/last-build.error.log | sed "s/.*\(nix log.*\)'./\1/")
 }
 
+npfgit() {
+	# local url=${1:-""}
+	# local rev=${2:-""}
+	# [[ -z $url ]] && echo "no url passed" && exit
+	# nix-prefetch-git --url $1 2>/dev/null | jq .hash | wl-copy
+  local url=${1}
+  local rev=${2}
+  local nix_options=()
+  local hash
+
+  if [[ -z "$url" ]]; then
+    echo "Error: No URL passed to npfgit." >&2
+    return 1
+  fi
+
+  nix_options+=(--url "$url")
+  if [[ -n "$rev" ]]; then
+    nix_options+=(--rev "$rev")
+  fi
+
+  # Capture output to check for errors and parse
+  # Using --json can be more reliable if available and nix-prefetch-git supports it well.
+  # For now, sticking to original approach but capturing stdout for jq.
+  # We also capture stderr from nix-prefetch-git to show it on failure.
+  local prefetch_output
+  local prefetch_stderr
+  
+  # Command substitution $(...) captures stdout. We need to redirect stderr.
+  # Using process substitution for stderr capture or a temp file.
+  # Simpler: just run and check status, then run again for jq if successful (less efficient).
+  # Or, let stderr go to terminal if nix-prefetch-git fails.
+  
+  echo "Prefetching from $url ${rev:+"with revision $rev"}..."
+  prefetch_output=$(nix-prefetch-git "${nix_options[@]}" 2> >(prefetch_stderr=$(cat); cat >&2))
+  # Alternative to above stderr capture, if it's too complex:
+  # prefetch_output=$(nix-prefetch-git "${nix_options[@]}" 2>/tmp/npfgit_error.log)
+  # local nix_status=$?
+  # prefetch_stderr=$(cat /tmp/npfgit_error.log)
+  # rm -f /tmp/npfgit_error.log
+
+  local nix_status=$?
+
+  if [[ $nix_status -ne 0 ]]; then
+    echo "Error: nix-prefetch-git failed (exit code $nix_status) for URL: $url" >&2
+    # if [[ -n "$prefetch_stderr" ]]; then
+    #   echo "Stderr from nix-prefetch-git:" >&2
+    #   echo "$prefetch_stderr" >&2
+    # fi
+    return 1
+  fi
+
+  hash=$(echo "$prefetch_output" | jq -r .hash)
+  local jq_status=$?
+
+  if [[ $jq_status -ne 0 ]] || [[ -z "$hash" ]] || [[ "$hash" == "null" ]]; then
+    echo "Error: Could not extract .hash using jq." >&2
+    echo "Output from nix-prefetch-git:" >&2
+    echo "$prefetch_output" >&2
+    return 1
+  fi
+
+  echo "$hash" | wl-copy
+  local wl_copy_status=$?
+
+  if [[ $wl_copy_status -ne 0 ]]; then
+    echo "Error: wl-copy failed to copy the hash." >&2
+    echo "Hash was: $hash" # So user can still copy it manually
+    return 1
+  fi
+
+  echo "Hash '$hash' copied to clipboard."
+  return 0
+}
+
 rnum() {                                                      
 	local min max
 	echo $#
