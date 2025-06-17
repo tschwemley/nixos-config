@@ -1,21 +1,65 @@
 {
-  services.postgresql = {
-    enable = true;
+  config,
+  pkgs,
+  ...
+}: {
+  services = {
+    postgresql = {
+      enable = true;
+      extensions = ps: with ps; [pgvector];
 
-    extensions = ps: with ps; [pgvector];
+      # authentication = ''
+      #   local   sameuser    all         peer                          map=user_map
+      #
+      #   host    keycloak    keycloak    127.0.0.1/32  scram-sha-256
+      #   host    all         all         100.64.0.0/10 scram-sha-256
+      # '';
 
-    identMap = ''
-      # mapName systemUser  DBUser
-      user_map  root        postgres
-      user_map  postgres    postgres
-    '';
+      authentication = ''
+        # TYPE  DATABASE        USER            ADDRESS                 METHOD
+        # Allow the system user 'postgres' to connect locally without a password
+        local   all             postgres                                peer
 
-    # authentication = lib.mkOverride 10 ''
-    authentication = ''
-      local   sameuser    all         peer                          map=user_map
-      host    keycloak    keycloak    127.0.0.1/32  scram-sha-256
-      host    bitmagnet   bitmagnet   100.64.0.0/10 scram-sha-256  # Tailscale network
-      host    openwebui   openwebui   100.64.0.0/10 scram-sha-256  # Tailscale network
-    '';
+        # Require a password for all other local connections
+        local   all             all                                     scram-sha-256
+
+        # Remote rules
+        host    keycloak        keycloak        127.0.0.1/32            scram-sha-256
+        host    all             all             100.64.0.0/10           scram-sha-256
+      '';
+
+      identMap = ''
+        # mapName systemUser  DBUser
+        user_map  root        postgres
+        user_map  postgres    postgres
+
+        # Let other names login as themselves
+        user_map  /^(.*)$     \1
+      '';
+
+      initialScript =
+        pkgs.writeText "postgresql-init-script"
+        #sh
+        ''
+            # Read the password from the sops-nix secret file
+            PASSWORD=$(cat ${config.sops.secrets.librechatRagPostgresPassword.path})
+
+            # Use psql's variable substitution (-v) to safely pass the password.
+            # The :password syntax inside the SQL block is replaced by the variable.
+            psql -v password="'$PASSWORD'" <<EOSQL
+              -- Create the postgres user 'librechat' and require a password for logging in
+              CREATE ROLE librechat WITH LOGIN PASSWORD :password;
+
+              -- Create DB and assign ownership
+              CREATE DATABASE librechat OWNER librechat;
+          EOSQL
+        '';
+    };
+
+    prometheus.exporters.postgres = {
+      enable = true;
+      listenAddress = "0.0.0.0";
+      port = 9187;
+    };
   };
 }
