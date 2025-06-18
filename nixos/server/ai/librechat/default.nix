@@ -24,7 +24,6 @@
       })" || true
   '';
 in {
-  # imports = [./module.nix];
   imports = [self.inputs.librechat.nixosModules.librechat];
 
   services = {
@@ -63,7 +62,6 @@ in {
         OPENID_ISSUER = "https://auth.schwem.io/realms/schwem-io";
         OPENID_REQUIRED_ROLE = "user";
         OPENID_REQUIRED_ROLE_PARAMETER_PATH = "resource_access.librechat.roles";
-        # OPENID_REQUIRED_ROLE_TOKEN_KIND = "(access|id)";
         OPENID_REQUIRED_ROLE_TOKEN_KIND = "id";
         OPENID_SCOPE = "openid profile email";
         OPENID_USE_END_SESSION_ENDPOINT = "true";
@@ -107,6 +105,7 @@ in {
 
         env = {
           EMBEDDINGS_PROVIDER = "huggingface";
+          HF_HUB_CACHE = config.services.librechat.ragApi.cacheDir;
           RAG_HOST = listenAddress;
           RAG_PORT = port;
           RAG_UPLOAD_DIR = "${config.services.librechat.ragApi.workDir}/uploads";
