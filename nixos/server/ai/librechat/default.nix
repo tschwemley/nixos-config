@@ -106,7 +106,7 @@ in {
         };
 
         env = {
-          EMBEDDING_MODEL = "huggingface";
+          EMBEDDINGS_PROVIDER = "huggingface";
           RAG_HOST = listenAddress;
           RAG_PORT = port;
           POSTGRES_DB = "librechat";
