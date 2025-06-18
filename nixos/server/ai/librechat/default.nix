@@ -109,6 +109,7 @@ in {
           EMBEDDINGS_PROVIDER = "huggingface";
           RAG_HOST = listenAddress;
           RAG_PORT = port;
+          RAG_UPLOAD_DIR = "${config.services.librechat.ragApi.workDir}/uploads";
           POSTGRES_DB = "librechat";
           POSTGRES_USER = "librechat";
           VECTOR_DB_TYPE = "pgvector";
