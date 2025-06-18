@@ -100,16 +100,15 @@ in {
         enable = true;
 
         credentials = {
-          DB_HOST = config.sops.secrets.ragDBHost.path;
-          DB_PORT = config.sops.secrets.ragDBPort.path;
-          POSTGRES_PASSWORD = config.sops.secrets.ragPostgresPassword.path;
+          DB_HOST = config.sops.secrets.librechatRagDBHost.path;
+          DB_PORT = config.sops.secrets.librechatRagDBPort.path;
+          POSTGRES_PASSWORD = config.sops.secrets.librechatRagPostgresPassword.path;
         };
 
         env = {
           EMBEDDING_MODEL = "huggingface";
           RAG_HOST = listenAddress;
           RAG_PORT = port;
-          RAG_UPLOAD_DIR = "${config.services.librechat.workDir}/uploads";
           POSTGRES_DB = "librechat";
           POSTGRES_USER = "librechat";
           VECTOR_DB_TYPE = "pgvector";
