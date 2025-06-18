@@ -323,11 +323,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1750127463,
-        "narHash": "sha256-K2xFtlD3PcKAZriOE3LaBLYmVfGQu+rIF4Jr1RFYR0Q=",
+        "lastModified": 1750263149,
+        "narHash": "sha256-VYSGDzq4ds4LIYvyEYG+RBqGMGBZhES2tvnmU4TJBn0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "28eef8722d1af18ca13e687dbf485e1c653a0402",
+        "rev": "85e68c6a388ef1dfc799aaa01f00758c58e87d89",
         "type": "github"
       },
       "original": {
@@ -377,11 +377,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1750243991,
-        "narHash": "sha256-yQdMG9U/+8SiIb3jPy0MIs8cD20LsLQotPP2wrSJOpw=",
+        "lastModified": 1750267073,
+        "narHash": "sha256-aYZPoR6z5LPn4dP0T7h6NaRCk6JFxhz6avRsO+2kk7k=",
         "owner": "tschwemley",
         "repo": "librechat-flake",
-        "rev": "e24dd14b2457138452bf003fc893f7fe97d44cbe",
+        "rev": "13142f5beff39d14f3b06af067923f5c864cc7de",
         "type": "github"
       },
       "original": {
