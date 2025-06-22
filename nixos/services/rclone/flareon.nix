@@ -4,6 +4,7 @@ mkRcloneFSOptions: let
     "storage"
     "storage2"
     "storage3"
+    "storage4"
   ];
 in {
   fileSystems = mkRcloneFSOptions host paths;
