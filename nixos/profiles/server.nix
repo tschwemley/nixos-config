@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./.
 
@@ -30,6 +31,7 @@
   nixpkgs.overlays = with self.inputs; [
     nix-private.overlays.shhinfo
     nix-private.overlays.stash
+    self.overlays.redlib
   ];
 
   services.getty.autologinUser = "root";
