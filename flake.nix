@@ -1,88 +1,103 @@
 {
   description = "Schwem's NixOS configuration and dotfiles";
 
-  outputs = inputs @ {
-    self,
-    home-manager,
-    nix-on-droid,
-    nix-topology,
-    nixpkgs,
-    systems,
-    ...
-  }: let
-    lib = import ./lib (nixpkgs.lib // home-manager.lib);
+  outputs =
+    inputs@{
+      self,
+      home-manager,
+      nix-on-droid,
+      nix-topology,
+      nixpkgs,
+      systems,
+      ...
+    }:
+    let
+      lib = import ./lib (nixpkgs.lib // home-manager.lib);
 
-    pkgsFor = lib.genAttrs (import systems) (system:
-      (import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-        overlays = [
-          self.overlays.default
-          self.overlays.patched-packages
-          self.inputs.neovim-overlay.overlays.default
-          self.inputs.nix-topology.overlays.default
-        ];
-      })
-      // {inherit lib;});
-
-    eachSystem = fn: lib.genAttrs (import systems) (system: fn pkgsFor.${system});
-    hosts = lib.attrNames (builtins.readDir ./nixos/hosts);
-  in {
-    inherit lib;
-
-    devShells = eachSystem (pkgs: import ./devshell pkgs);
-    nixosModules = import ./modules;
-    overlays = import ./overlays self;
-    packages = eachSystem (pkgs: import ./packages self pkgs);
-    templates = import ./templates;
-
-    homeConfigurations = {
-      # TODO: For possible solution for building and then deploying remotely to work server
-      #       see: https://gist.github.com/fricklerhandwerk/fbf0b212bbbf51b79a08fdac8659481d
-      "work@linux" = lib.homeManagerConfiguration {
-        pkgs = pkgsFor."x86_64-linux";
-        extraSpecialArgs = {inherit inputs self;};
-        modules = [./home/profiles/work.nix];
-      };
-      "work@mac" = lib.homeManagerConfiguration {
-        pkgs = pkgsFor."aarch64-darwin";
-        extraSpecialArgs = {inherit inputs self;};
-        modules = [./home/profiles/work.nix];
-      };
-    };
-
-    nixosConfigurations = lib.genAttrs hosts (host:
-      lib.nixosSystem {
-        specialArgs = {inherit inputs self;};
-        modules = [./nixos/hosts/${host}];
-      });
-
-    nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
-      pkgs = import nixpkgs {system = "aarch64-linux";};
-      specialArgs = {inherit inputs self;};
-      modules = [./droid];
-    };
-
-    # TODO: this needs to be continued to filled out at the individual system level
-    topology = import nix-topology {
-      pkgs = pkgsFor.x86_64-linux;
-      modules = [
-        ({config, ...}: let
-          inherit (config.lib.topology) mkInternet mkRouter mkConnection;
-        in {
-          inherit (self) nixosConfigurations;
-
-          networks.home = {
-            name = "home";
-            cidrv4 = "192.168.1.1/24";
-          };
+      pkgsFor = lib.genAttrs (import systems) (
+        system:
+        (import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+          overlays = with self.overlays; [
+            default
+            patchedPackages
+            neovim
+            # self.inputs.neovim-overlay.overlays.default
+            self.inputs.nix-topology.overlays.default
+          ];
         })
-      ];
+        // {
+          inherit lib;
+        }
+      );
+
+      eachSystem = fn: lib.genAttrs (import systems) (system: fn pkgsFor.${system});
+      hosts = lib.attrNames (builtins.readDir ./nixos/hosts);
+    in
+    {
+      inherit lib;
+
+      devShells = eachSystem (pkgs: import ./devshell pkgs);
+      nixosModules = import ./modules;
+      overlays = import ./overlays self;
+      packages = eachSystem (pkgs: import ./packages self pkgs);
+      templates = import ./templates;
+
+      homeConfigurations = {
+        # TODO: For possible solution for building and then deploying remotely to work server
+        #       see: https://gist.github.com/fricklerhandwerk/fbf0b212bbbf51b79a08fdac8659481d
+        "work@linux" = lib.homeManagerConfiguration {
+          pkgs = pkgsFor."x86_64-linux";
+          extraSpecialArgs = { inherit inputs self; };
+          modules = [ ./home/profiles/work.nix ];
+        };
+        "work@mac" = lib.homeManagerConfiguration {
+          pkgs = pkgsFor."aarch64-darwin";
+          extraSpecialArgs = { inherit inputs self; };
+          modules = [ ./home/profiles/work.nix ];
+        };
+      };
+
+      nixosConfigurations = lib.genAttrs hosts (
+        host:
+        lib.nixosSystem {
+          specialArgs = { inherit inputs self; };
+          modules = [ ./nixos/hosts/${host} ];
+        }
+      );
+
+      nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
+        pkgs = import nixpkgs { system = "aarch64-linux"; };
+        specialArgs = { inherit inputs self; };
+        modules = [ ./droid ];
+      };
+
+      # TODO: this needs to be continued to filled out at the individual system level
+      topology = import nix-topology {
+        pkgs = pkgsFor.x86_64-linux;
+        modules = [
+          (
+            { config, ... }:
+            let
+              inherit (config.lib.topology) mkInternet mkRouter mkConnection;
+            in
+            {
+              inherit (self) nixosConfigurations;
+
+              networks.home = {
+                name = "home";
+                cidrv4 = "192.168.1.1/24";
+              };
+            }
+          )
+        ];
+      };
     };
-  };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
     nil.url = "github:oxalica/nil";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
