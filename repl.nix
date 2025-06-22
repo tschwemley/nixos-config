@@ -6,11 +6,16 @@ let
   username = if (self.config.home-manager.users ? schwem) then "schwem" else "root";
   hm = self.config.home-manager.users.${username};
 in
-  {
-    inherit curHost flake self hm;
-    inherit (flake) lib;
-    inherit (self) config pkgs;
-    inherit (self.pkgs) system;
-  }
+{
+  inherit
+    curHost
+    flake
+    self
+    hm
+    ;
+  inherit (flake) lib;
+  inherit (self) config pkgs;
+  inherit (self.pkgs) system;
+}
 // flake.nixosConfigurations
-  // flake
+// flake
