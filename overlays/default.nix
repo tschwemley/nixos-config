@@ -22,7 +22,7 @@ in
 
   aseprite = import ./aseprite.nix;
   neovim = self.inputs.neovim-overlay.overlays.default;
-  patchedPackages = import ./patched-packages.nix self;
+  patchedPackages = import ./patched-packages.nix;
   redlib = import ./redlib.nix;
   rocmPackages = import ./rocm-packages.nix self;
   vimPlugins = import ./vimplugins.nix self;
