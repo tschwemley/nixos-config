@@ -11,6 +11,8 @@ _: prev: {
       hash = "sha256-ANNZEDLbiZr3i2FmeyAft8bkKh2xz12dYD8dXEbWe48=";
     };
 
+    cargoHash = "";
+
     passthru.updateScript = prev.nix-update-script {};
   };
 }

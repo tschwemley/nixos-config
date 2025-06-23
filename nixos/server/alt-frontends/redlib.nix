@@ -5,6 +5,8 @@
 }: let
   address = "127.0.0.1";
 in {
+  nixpkgs.overlays = [self.overlays.redlib];
+
   services = {
     nginx.virtualHosts."reddit.schwem.io" = {
       locations."/" = {
