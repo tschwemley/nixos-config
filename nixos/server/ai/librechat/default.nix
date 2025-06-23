@@ -68,6 +68,10 @@ in
         OPENID_REQUIRED_ROLE_TOKEN_KIND = "id";
         OPENID_SCOPE = "openid profile email";
         OPENID_USE_END_SESSION_ENDPOINT = "true";
+
+        # RAG settings
+        EMBEDDINGS_PROVIDER = "huggingface";
+        RAG_API_URL = "${listenAddress}:${config.variables.ports.librechat-rag}";
       };
 
       # NOTE: settings is free-form nix attribute set that will be converted to librechat.yaml
