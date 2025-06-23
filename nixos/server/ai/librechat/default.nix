@@ -71,7 +71,7 @@ in
 
         # RAG settings
         EMBEDDINGS_PROVIDER = "huggingface";
-        RAG_API_URL = "${listenAddress}:${config.variables.ports.librechat-rag}";
+        RAG_API_URL = "http://${listenAddress}:${config.variables.ports.librechat-rag}";
       };
 
       # NOTE: settings is free-form nix attribute set that will be converted to librechat.yaml
