@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   listenAddress = "127.0.0.1";
   librechatPort = "3080";
 
@@ -23,8 +24,9 @@
         roles: [ { role: 'readWrite', db: 'LibreChat' } ] \
       })" || true
   '';
-in {
-  imports = [self.inputs.librechat.nixosModules.librechat];
+in
+{
+  imports = [ self.inputs.librechat.nixosModules.librechat ];
 
   services = {
     librechat = {
@@ -33,6 +35,7 @@ in {
       credentials = {
         CREDS_KEY = config.sops.secrets.librechatCredsKey.path;
         CREDS_IV = config.sops.secrets.librechatCredsIV.path;
+        HF_TOKEN = config.sops.secrets.librechatHuggingFaceToken.path;
         JWT_SECRET = config.sops.secrets.librechatJwtSecret.path;
         JWT_REFRESH_SECRET = config.sops.secrets.librechatJwtRefreshSecret.path;
         MEILI_MASTER_KEY = config.sops.secrets.librechatMeiliMasterKey.path;
@@ -77,7 +80,7 @@ in {
             apiKey = "\${OPENROUTER_KEY}";
             baseURL = "https://openrouter.ai/api/v1";
             models = {
-              default = ["google/gemini-2.5-pro-preview"];
+              default = [ "google/gemini-2.5-pro-preview" ];
               fetch = true;
             };
             titleConvo = true;
@@ -90,30 +93,42 @@ in {
         ];
       };
 
-      ragApi = let
-        port = lib.toInt config.variables.ports.librechat-rag;
-      in {
-        inherit port;
+      ragApi =
+        let
+          port = lib.toInt config.variables.ports.librechat-rag;
+        in
+        {
+          inherit port;
 
-        enable = true;
+          enable = true;
 
-        credentials = {
-          DB_HOST = config.sops.secrets.librechatRagDBHost.path;
-          DB_PORT = config.sops.secrets.librechatRagDBPort.path;
-          POSTGRES_PASSWORD = config.sops.secrets.librechatRagPostgresPassword.path;
+          credentials = {
+            DB_HOST = config.sops.secrets.librechatRagDBHost.path;
+            DB_PORT = config.sops.secrets.librechatRagDBPort.path;
+            HF_TOKEN = config.sops.secrets.librechatHuggingFaceToken.path;
+            POSTGRES_PASSWORD = config.sops.secrets.librechatRagPostgresPassword.path;
+          };
+
+          env = {
+            DEBUG_RAG_API = "True";
+            EMBEDDINGS_PROVIDER = "huggingface";
+            EMBEDDINGS_MODEL = "sentence-transformers/all-MiniLM-L6-v2";
+
+            HF_HOME = "/var/cache/rag-api";
+            HF_HUB_CACHE = "/var/cache/rag-api";
+            SENTENCE_TRANSFORMERS_HOME = "/var/cache/rag-api";
+
+            # TODO: remove after validating systemd unit still works just fine
+            # TRANSFORMERS_CACHE = "/var/cache/rag-api";
+
+            RAG_HOST = listenAddress;
+            RAG_PORT = port;
+            RAG_UPLOAD_DIR = "${config.services.librechat.ragApi.workDir}/uploads";
+            POSTGRES_DB = "librechat";
+            POSTGRES_USER = "librechat";
+            VECTOR_DB_TYPE = "pgvector";
+          };
         };
-
-        env = {
-          EMBEDDINGS_PROVIDER = "huggingface";
-          HF_HUB_CACHE = config.services.librechat.ragApi.cacheDir;
-          RAG_HOST = listenAddress;
-          RAG_PORT = port;
-          RAG_UPLOAD_DIR = "${config.services.librechat.ragApi.workDir}/uploads";
-          POSTGRES_DB = "librechat";
-          POSTGRES_USER = "librechat";
-          VECTOR_DB_TYPE = "pgvector";
-        };
-      };
     };
 
     mongodb = {
@@ -140,34 +155,45 @@ in {
       User = "root";
       ExecStart = "${mongo-setup-script}";
     };
-    after = ["mongodb.service"];
-    requires = ["mongodb.service"];
-    wantedBy = ["multi-user.target"];
+    after = [ "mongodb.service" ];
+    requires = [ "mongodb.service" ];
+    wantedBy = [ "multi-user.target" ];
   };
 
-  sops.secrets = let
-    group = config.services.librechat.user;
-    owner = config.services.librechat.user;
-    mode = "0400";
-    sopsFile = self.lib.secret "server" "librechat.yaml";
+  sops.secrets =
+    let
+      group = config.services.librechat.user;
+      owner = config.services.librechat.user;
+      mode = "0400";
+      sopsFile = self.lib.secret "server" "librechat.yaml";
 
-    getSecret = key: {inherit group owner mode sopsFile key;};
-  in {
-    librechatCredsKey = getSecret "creds_key";
-    librechatCredsIV = getSecret "creds_iv";
-    librechatJwtSecret = getSecret "jwt_secret";
-    librechatJwtRefreshSecret = getSecret "jwt_refresh_secret";
-    librechatMeiliMasterKey = getSecret "meili_master_key";
-    librechatMongoUri = getSecret "mongo_uri";
-    librechatMongoPassword = getSecret "mongo_pw";
-    librechatOpenIDClientSecret = getSecret "openid_client_secret";
-    librechatOpenIDSessionSecret = getSecret "openid_session_secret";
-    librechatOpenRouterKey = getSecret "openrouter_key";
-    mongoRootPassword = getSecret "mongo_root_pw";
+      getSecret = key: {
+        inherit
+          group
+          owner
+          mode
+          sopsFile
+          key
+          ;
+      };
+    in
+    {
+      librechatCredsKey = getSecret "creds_key";
+      librechatCredsIV = getSecret "creds_iv";
+      librechatHuggingFaceToken = getSecret "hugging_face_token";
+      librechatJwtSecret = getSecret "jwt_secret";
+      librechatJwtRefreshSecret = getSecret "jwt_refresh_secret";
+      librechatMeiliMasterKey = getSecret "meili_master_key";
+      librechatMongoUri = getSecret "mongo_uri";
+      librechatMongoPassword = getSecret "mongo_pw";
+      librechatOpenIDClientSecret = getSecret "openid_client_secret";
+      librechatOpenIDSessionSecret = getSecret "openid_session_secret";
+      librechatOpenRouterKey = getSecret "openrouter_key";
+      mongoRootPassword = getSecret "mongo_root_pw";
 
-    # rag scecrets
-    librechatRagDBHost = getSecret "rag_db_host";
-    librechatRagDBPort = getSecret "rag_db_port";
-    librechatRagPostgresPassword = getSecret "rag_postgres_password";
-  };
+      # rag scecrets
+      librechatRagDBHost = getSecret "rag_db_host";
+      librechatRagDBPort = getSecret "rag_db_port";
+      librechatRagPostgresPassword = getSecret "rag_postgres_password";
+    };
 }
