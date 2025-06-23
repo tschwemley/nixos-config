@@ -3,18 +3,13 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   services = {
     postgresql = {
       enable = true;
-      extensions = ps: with ps; [pgvector];
-
-      # authentication = ''
-      #   local   sameuser    all         peer                          map=user_map
-      #
-      #   host    keycloak    keycloak    127.0.0.1/32  scram-sha-256
-      #   host    all         all         100.64.0.0/10 scram-sha-256
-      # '';
+      enableTCPIP = true;
+      extensions = ps: with ps; [ pgvector ];
 
       authentication = ''
         # TYPE  DATABASE        USER            ADDRESS                 METHOD
@@ -40,21 +35,21 @@
 
       initialScript =
         pkgs.writeText "postgresql-init-script"
-        #sh
-        ''
-            # Read the password from the sops-nix secret file
-            PASSWORD=$(cat ${config.sops.secrets.librechatRagPostgresPassword.path})
+          #sh
+          ''
+              # Read the password from the sops-nix secret file
+              PASSWORD=$(cat ${config.sops.secrets.librechatRagPostgresPassword.path})
 
-            # Use psql's variable substitution (-v) to safely pass the password.
-            # The :password syntax inside the SQL block is replaced by the variable.
-            psql -v password="'$PASSWORD'" <<EOSQL
-              -- Create the postgres user 'librechat' and require a password for logging in
-              CREATE ROLE librechat WITH LOGIN PASSWORD :password;
+              # Use psql's variable substitution (-v) to safely pass the password.
+              # The :password syntax inside the SQL block is replaced by the variable.
+              psql -v password="'$PASSWORD'" <<EOSQL
+                -- Create the postgres user 'librechat' and require a password for logging in
+                CREATE ROLE librechat WITH LOGIN PASSWORD :password;
 
-              -- Create DB and assign ownership
-              CREATE DATABASE librechat OWNER librechat;
-          EOSQL
-        '';
+                -- Create DB and assign ownership
+                CREATE DATABASE librechat OWNER librechat;
+            EOSQL
+          '';
     };
 
     prometheus.exporters.postgres = {
