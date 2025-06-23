@@ -1,14 +1,21 @@
-{self, ...}: let
+{
+  self,
+  pkgs,
+  ...
+}: let
   # two extra storage drives on flareon host TODO: move this to someplace generic
   numExtraDrives = 3;
-  extraDrives = builtins.genList (i: let
-    iStr = builtins.toString (i + 2);
-  in
-    import ../../hardware/disks/block-storage.nix {
-      device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi${iStr}";
-      mountpoint = "storage${iStr}";
-    })
-  numExtraDrives;
+  extraDrives =
+    builtins.genList (
+      i: let
+        iStr = builtins.toString (i + 2);
+      in
+        import ../../hardware/disks/block-storage.nix {
+          device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi${iStr}";
+          mountpoint = "storage${iStr}";
+        }
+    )
+    numExtraDrives;
 in {
   imports =
     [
@@ -18,6 +25,8 @@ in {
       ../../services/samba.nix
     ]
     ++ extraDrives;
+
+  environment.systemPackages = [pkgs.unrar];
 
   networking.hostName = "flareon";
 
