@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./.
     ../programs/ai
@@ -13,15 +14,12 @@
     ../programs/music
     ../programs/productivity
 
-    ../programs/neovide.nix
-
     ../programs/bitwarden.nix
     ../programs/cowsay.nix
     ../programs/glow.nix
-    # ../programs/input-leap.nix
-    ../programs/lan-mouse.nix
     ../programs/nemo.nix
     ../programs/qt.nix
+    ../programs/reddit-tui.nix
     ../programs/taskwarrior.nix
     ../programs/wayland/hyprland
     ../programs/wcalc.nix
@@ -36,17 +34,11 @@
     ../xdg
     ../xdg/netrc.nix
     ../xdg/ssh/personal.nix
-
-    # TODO: go through and decide which to keep and which to remove
-    # ../programs/cad.nix
   ];
 
   home = {
     homeDirectory = "/home/schwem";
     username = "schwem";
-
-    # TODO: move elsewhere
-    packages = with pkgs; [nicotine-plus];
 
     sessionVariables = {
       VISUAL = "nvim";
