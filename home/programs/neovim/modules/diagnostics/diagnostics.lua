@@ -3,9 +3,15 @@ require("trouble").setup()
 require("todo-comments").setup({
    keywords = {
       REF = {
-         icon = "󰈙 ",
+         icon = "󰈙",
          color = "info",
          alt = { "DOCS", "DOC", "DOCUMENTATION", "REFERENCE", "LINK", "LINKS" },
+      },
+
+      UPSTREAM = {
+         icon = "󰞍",
+         -- alt = { "DOCS", "DOC", "DOCUMENTATION", "REFERENCE", "LINK", "LINKS" },
+         color = "hint", -- TODO: decide which color to use: error, hint, warning, info, default, or test (prob not test tho)
       },
    },
 })
