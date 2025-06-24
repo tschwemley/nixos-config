@@ -1,15 +1,13 @@
-{inputs, ...}: {
+{ inputs, ... }:
+{
   imports = [
     inputs.sops-nix.homeManagerModule
 
     ../programs/development
-    ../programs/bat.nix
-    ../programs/btop.nix
-    ../programs/eza.nix
-    ../programs/fzf.nix
+    ../programs/utils
+
     ../programs/neovim
     ../programs/nnn.nix
-    ../programs/ripgrep.nix
 
     ../terminal
 
