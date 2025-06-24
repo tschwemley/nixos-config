@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     curl
     dmidecode
@@ -6,6 +7,7 @@
     fclones
     inxi
     lsof
+    parallel
     pciutils
     psmisc
     tree
