@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./books.nix
     ./jellyfin.nix
     ./spotify.nix
     ./loupe.nix
