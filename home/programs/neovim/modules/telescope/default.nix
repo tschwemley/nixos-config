@@ -2,6 +2,7 @@
   programs.neovim = {
     plugins = with pkgs.vimPlugins; [
       telescope-nvim
+      telescope-frecency-nvim
 
       # telescope extensions
       telescope-manix
