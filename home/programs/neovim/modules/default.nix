@@ -8,6 +8,7 @@
     ./completion
     ./debug
     ./diagnostics
+    ./editing
     ./files
     ./lsp
     ./mini
