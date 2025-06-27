@@ -13,11 +13,9 @@
       expireDuplicatesFirst = true;
       extended = true;
     };
-    # profileExtra =
+
     initContent =
-      /*
-      bash
-      */
+      # bash
       ''
         ${builtins.readFile ./functions.zsh}
 
