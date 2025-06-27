@@ -9,7 +9,6 @@
 
     ./.
 
-    ../development/android.nix
     ../development/embedded.nix
 
     ../hardware/audio
@@ -40,6 +39,8 @@
     ../system/security.nix
 
     ../virtualisation/qemu.nix
+
+    ../../android
   ];
 
   nix.settings.trusted-users = ["schwem"];
