@@ -6,6 +6,8 @@
   ...
 }: {
   imports = [
+    (import ./disk.nix "nvme0n1" "pika-crypted")
+
     "${inputs.nixos-hardware}/common/cpu/intel/alder-lake"
     inputs.nixos-hardware.nixosModules.common-pc-laptop
     inputs.nixos-hardware.nixosModules.asus-battery

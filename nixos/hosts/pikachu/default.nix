@@ -5,7 +5,6 @@
   pkgs,
   ...
 }: let
-  disk = import ../../hardware/disks/btrfs-encrypted.nix "nvme0n1" "pika-crypted";
   networking = {
     imports = [
       ../../network/tailscale.nix
@@ -14,7 +13,6 @@
   user = (import ../../system/users.nix {inherit self config pkgs;}).schwem;
 in {
   imports = [
-    disk
     networking
     user
 
@@ -25,7 +23,12 @@ in {
 
   boot = {
     initrd = {
-      availableKernelModules = ["xhci_pci" "thunderbolt" "nvme"];
+      availableKernelModules = [
+        "xhci_pci"
+        "thunderbolt"
+        "nvme"
+      ];
+
       kernelModules = [
         "kvm-intel"
         "snd_hda_scodec_cs35l41"
