@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./.
     ../programs/ai
@@ -23,7 +22,6 @@
     ../programs/taskwarrior.nix
     ../programs/wayland/hyprland
     ../programs/wcalc.nix
-    ../programs/webcamoid.nix
     ../programs/wofi.nix
 
     ../services/kdeconnect.nix
