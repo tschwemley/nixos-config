@@ -1,12 +1,19 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   documentation = {
     enable = true;
 
     man = {
       enable = true;
-      man-db.enable = false;
-      mandoc.enable = true;
-      generateCaches = true;
+      # NOTE: originally flipped
+      man-db.enable = true;
+      mandoc.enable = false;
+
+      # generateCaches = true;
+      generateCaches = lib.mkForce false;
     };
   };
 

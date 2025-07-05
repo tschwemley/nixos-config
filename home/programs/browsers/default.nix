@@ -5,6 +5,9 @@
         "--enable-features=TouchpadOverscrollHistoryNavigation"
       ];
     };
+    vivaldi = pkgs.vivaldi.override {
+      commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland";
+    };
   in
     with pkgs; [
       brave
@@ -12,6 +15,7 @@
       mullvad-browser
       tor-browser
       ungoogled-chromium
+      vivaldi
       zen-browser
     ];
 }

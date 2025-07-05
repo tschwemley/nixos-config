@@ -1,3 +1,7 @@
-{
-  programs.wofi.enable = true;
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    wofi
+    wofi-emoji
+    wofi-power-menu
+  ];
 }

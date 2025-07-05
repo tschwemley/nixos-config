@@ -3,6 +3,11 @@
   config,
   ...
 }: {
+  home.shellAliases = {
+    modsc = "mods -C ";
+    modsl = "mods -l";
+  };
+
   programs.mods = {
     enable = true;
     enableZshIntegration = true;
@@ -19,9 +24,7 @@
       path = "${config.home.homeDirectory}/.config/mods/mods.yml";
 
       content =
-        /*
-        yaml
-        */
+        # yaml
         ''
           # default-model: "gemini-flash"
           default-model: google/gemini-2.5-flash-preview

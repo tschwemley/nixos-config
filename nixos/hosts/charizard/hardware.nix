@@ -2,11 +2,13 @@
   config,
   lib,
   ...
-}: let
-  disk = import ../../hardware/disks/btrfs-encrypted.nix "/dev/disk/by-id/nvme-SHPP41-2000GM_SJC4N477711104A4V-part1" "crypted";
-in {
+  # }: let
+  #   disk = import ../../hardware/disks/btrfs-encrypted.nix "/dev/disk/by-id/nvme-SHPP41-2000GM_SJC4N477711104A4V-part1" "crypted";
+  # disk = import ../../hardware/disks/btrfs-encrypted.nix "/dev/disk/by-id/nvme-SHPP41-2000GM_SJC4N477711104A4V-part1" "crypted";
+  # in {
+}: {
   imports = [
-    disk
+    (import ./disk.nix "nvme1n1" "crypted")
 
     ../../hardware/amd.nix
   ];

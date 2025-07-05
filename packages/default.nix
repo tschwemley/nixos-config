@@ -1,5 +1,4 @@
 self: pkgs: {
-  aider-chat = pkgs.python313Packages.callPackage ./aider-chat {};
   android = import ./android pkgs;
   extraVimPlugins = import ./vim-plugins pkgs;
   hueforge = pkgs.callPackage ./hueforge {inherit (self.inputs) hueforge;};

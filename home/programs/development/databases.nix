@@ -8,9 +8,10 @@
 
     # TODO: evaluate below options; delete unwanted items
     jailer
+    lazysql
     schemacrawler
     schemaspy
     tbls
-    usql
+    visidata
   ];
 }

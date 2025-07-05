@@ -1,5 +1,6 @@
+# TODO: refactor this (same as pikachu/disk.nix)
 diskName: luksName: {
-  imports = [./common.nix];
+  imports = [../../hardware/disks/common.nix];
 
   disko.devices = {
     disk = {
@@ -37,19 +38,39 @@ diskName: luksName: {
                   subvolumes = {
                     "rootfs" = {
                       mountpoint = "/";
-                      mountOptions = ["defaults" "autodefrag" "compress=zstd" "noatime"];
+                      mountOptions = [
+                        "defaults"
+                        "autodefrag"
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "home" = {
                       mountpoint = "/home";
-                      mountOptions = ["defaults" "autodefrag" "compress=zstd" "noatime"];
+                      mountOptions = [
+                        "defaults"
+                        "autodefrag"
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "nix" = {
                       mountpoint = "/nix";
-                      mountOptions = ["defaults" "autodefrag" "compress=zstd" "noatime"];
+                      mountOptions = [
+                        "defaults"
+                        "autodefrag"
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     "persist" = {
                       mountpoint = "/persist";
-                      mountOptions = ["defaults" "autodefrag" "compress=zstd" "noatime"];
+                      mountOptions = [
+                        "defaults"
+                        "autodefrag"
+                        "compress=zstd"
+                        "noatime"
+                      ];
                     };
                     # "games" = {
                     #   mountpoint = "/games";
