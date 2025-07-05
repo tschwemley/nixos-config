@@ -5,11 +5,24 @@
 }: {
   home = {
     packages = with pkgs; [
-      aider-chat-full
+      # TODO: this is failing due to The Python derivation 'python3.12-torch-2.7.1' depends on a
+      # Python derivation named 'python3.13-triton-3.2.0':
+      #
+      # aider-chat-full
+
+      # aider-chat
+
+      # TODO: get rid of these... want to isolate out what's causing us issues
+      # aider-chat-with-bedrock
+      # aider-chat-with-browser
+      aider-chat-with-help
+      # aider-chat-with-playwright
     ];
 
     shellAliases = {
-      aider = "aider -c ${config.sops.templates."aider.conf.yml".path} --model-settings-file ${config.xdg.configFile."aider/.aider.model.settings.yml".source}";
+      aider = "aider -c ${config.sops.templates."aider.conf.yml".path} --model-settings-file ${
+        config.xdg.configFile."aider/.aider.model.settings.yml".source
+      }";
     };
   };
 
