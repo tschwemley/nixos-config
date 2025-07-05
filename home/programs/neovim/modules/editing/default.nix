@@ -4,8 +4,14 @@
     boole-nvim
   ];
 
-  xdg.configFile."nvim/after/plugin/boole.lua".text = # lua
+  xdg.configFile."nvim/after/plugin/boole.lua".text =
+    # lua
     ''
-      require("boole").setup()
+      require("boole").setup({
+        mappings = {
+          increment = '<C-a>',
+          decrement = '<C-x>'
+        },
+      })
     '';
 }
