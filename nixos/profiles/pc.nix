@@ -46,6 +46,7 @@
   nix.settings.trusted-users = ["schwem"];
   nixpkgs.overlays = with self.overlays; [
     # aseprite
+    visidata
     zen-browser
   ];
 
