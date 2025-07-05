@@ -24,7 +24,11 @@
       };
     };
 in {
-  home.sessionVariables.NNN_FIFO = "/tmp/nnn.fifo";
+  home.sessionVariables = {
+    NNN_COLORS = "1234";
+    NNN_FCOLORS = "33427561";
+    NNN_FIFO = "/tmp/nnn.fifo";
+  };
 
   programs.nnn = {
     inherit extraPackages plugins;
