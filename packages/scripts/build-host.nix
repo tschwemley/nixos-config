@@ -3,11 +3,18 @@
   lib,
   writeShellScriptBin,
 }:
-writeShellScriptBin "build-host" ''
+writeShellScriptBin "build-host"
+# bash
+''
     hosts=$(${lib.getExe eza} --only-dirs "$HOME/nixos-config/nixos/hosts")
     host=$1
 
     [ -z "$host" ] && echo "no hostname provided" && exit 1
+
+    no_copy_flag="false"                                                
+    [[ "''${1:-""}" == "--no-copy" ]] && no_copy_flag="true"
+
+
 
     function buildHost() {
       [ ! -d "" ]

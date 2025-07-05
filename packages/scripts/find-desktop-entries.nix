@@ -1,8 +1,6 @@
 {writeShellScriptBin}:
 writeShellScriptBin "find-desktop-entries"
-/*
-bash
-*/
+# bash
 ''
   for p in $\{XDG_DATA_DIRS//:/ }; do
   	[[ ! -d $p/applications ]] && continue
