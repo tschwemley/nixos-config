@@ -5,18 +5,7 @@
 }: {
   home = {
     packages = with pkgs; [
-      # TODO: this is failing due to The Python derivation 'python3.12-torch-2.7.1' depends on a
-      # Python derivation named 'python3.13-triton-3.2.0':
-      #
-      # aider-chat-full
-
-      # aider-chat
-
-      # TODO: get rid of these... want to isolate out what's causing us issues
-      # aider-chat-with-bedrock
-      # aider-chat-with-browser
-      aider-chat-with-help
-      # aider-chat-with-playwright
+      aider-chat
     ];
 
     shellAliases = {
