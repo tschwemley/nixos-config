@@ -1,4 +1,8 @@
 {
+  self,
+  config,
+  ...
+}: {
   imports = [
     ./.
     ../programs/ai
@@ -50,5 +54,14 @@
         insteadOf = "https://github.com";
       };
     };
+
+    zsh.envExtra = "source ${config.sops.secrets.private-env-vars.path}";
+  };
+
+  sops.secrets.private-env-vars = {
+    key = "";
+    format = "dotenv";
+    mode = "0400";
+    sopsFile = self.lib.secret "home" "private-env-vars.env";
   };
 }
