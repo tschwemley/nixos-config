@@ -4,6 +4,7 @@ self: let
   in {
     inherit
       (self.packages.${system})
+      aider-chat
       json2go
       nrepl
       scripts
