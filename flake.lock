@@ -580,11 +580,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1751799234,
-        "narHash": "sha256-oPFIi63xxGi/RzxGz1hZ+hwZFkESGrk/IwFsDCeCpCU=",
+        "lastModified": 1751800083,
+        "narHash": "sha256-ky/3pOzp4Imi8dq7GWfZJqGjfgAwo3MztmGIXeButRo=",
         "ref": "refactor",
-        "rev": "36c3a2c7606126befe55a5cb9eb47375491a34ea",
-        "revCount": 38,
+        "rev": "d4ce4abb2f58551d71f7efafd9a88e8a996d5004",
+        "revCount": 39,
         "type": "git",
         "url": "https://git.schwem.io/schwem/nix-private"
       },
@@ -978,11 +978,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1751799185,
-        "narHash": "sha256-VdzcJleDvt1Ipdep9BWWbiF5fJJLQOL294c3Tz0sa6s=",
+        "lastModified": 1751800061,
+        "narHash": "sha256-bnGL2NZonYE6P8l+GrhcfrAgPK2Ku5FWL0s1hUYa4ao=",
         "ref": "refactor",
-        "rev": "277092b6a8dac8c6d8fe6956f0fb80338c46234e",
-        "revCount": 20,
+        "rev": "f17ef7d4ce09b26e3a3d27708029e61b86167967",
+        "revCount": 21,
         "type": "git",
         "url": "https://git.schwem.io/schwem/stash-flake"
       },
