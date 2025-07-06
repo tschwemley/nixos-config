@@ -4,10 +4,10 @@
   outputs = inputs @ {
     self,
     home-manager,
-    nix-on-droid,
     nix-topology,
     nixpkgs,
     systems,
+    # nix-on-droid,  TODO: re-add nix-on-droid when circling back to mobile config
     ...
   }: let
     lib = import ./lib (nixpkgs.lib // home-manager.lib);
@@ -95,18 +95,39 @@
   };
 
   inputs = {
+    #---
+    # Nix Related Inputs
+    #---
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
-
-    nil.url = "github:oxalica/nil";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     systems.url = "github:nix-systems/default";
+
+    nil = {
+      url = "github:oxalica/nil";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-update = {
+      url = "github:Mic92/nix-update";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    #---
+    # Non-Nix Inputs
+    #---
 
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # TODO: trial and replace waybar or remove
     gbar = {
       url = "github:scorpion-26/gBar";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -117,7 +138,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # TODO: fix up private appimage import(s)
+    # TODO: refactor private appimage import(s)
     hueforge = {
       url = "file:/home/schwem/appimages/HueForge_v0.9.0-beta-1.AppImage";
       flake = false;
@@ -148,11 +169,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -173,9 +189,10 @@
     };
 
     nix-private = {
-      url = "git+https://git.schwem.io/schwem/nix-private";
+      url = "git+https://git.schwem.io/schwem/nix-private?ref=refactor";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        nix-update.follows = "nix-update";
         sops-nix.follows = "sops-nix";
       };
     };
