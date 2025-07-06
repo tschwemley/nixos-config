@@ -10,23 +10,20 @@
     bind = let
       # map over workspaces && return a list of the binds for moving apps/switching to
       # we also flatten since we're merging into the bind attr
-      workspaceBinds =
-        lib.lists.flatten
-        (
-          lib.lists.imap0 (
-            k: _: let
-              num = builtins.toString (k + 1);
-            in [
-              "$mod, ${num}, workspace, ${num}"
-              "$mod shift, ${num}, movetoworkspacesilent, ${num}"
-            ]
-          )
-          config.hyprland.workspaces
-        );
+      workspaceBinds = lib.lists.flatten (
+        lib.lists.imap0 (
+          k: _: let
+            num = builtins.toString (k + 1);
+          in [
+            "$mod, ${num}, workspace, ${num}"
+            "$mod shift, ${num}, movetoworkspacesilent, ${num}"
+          ]
+        )
+        config.hyprland.workspaces
+      );
     in
       [
         # application launching
-        "$mod, p, exec, wofi --show drun"
         "$mod, Return, exec, ${pkgs.wezterm}/bin/wezterm"
 
         # clipboard, ocr, and screenshot
@@ -44,6 +41,11 @@
         "$mod shift, f, fullscreen, 1"
         "$mod shift, h, movewindow, mon:1"
         "$mod shift, l, movewindow, mon:0"
+
+        # wofi
+        "$mod, e, exec, wofi-emoji"
+        "$mod, p, exec, wofi --show drun"
+        "$mod shift, p, exec, wofi-power-menu"
       ]
       ++ workspaceBinds
       ++ config.hyprland.pluginBinds;

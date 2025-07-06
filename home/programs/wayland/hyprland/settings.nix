@@ -20,7 +20,7 @@
     ];
 
     general = {
-      gaps_out = 10;
+      gaps_out = 8;
       layout = "dwindle"; # defaults: dwindle, master
     };
 
@@ -54,7 +54,5 @@
     };
 
     workspace = config.hyprland.workspaces;
-
-    xwayland.force_zero_scaling = true;
   };
 }

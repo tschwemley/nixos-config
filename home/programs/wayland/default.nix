@@ -6,14 +6,12 @@
   home = {
     packages = with pkgs; [
       cliphist
-      grim # TODO: are grimblast and grim both needed?
-      slurp # TODO: I don't remember what slurp does/if it's necessary anymore
-
-      # utils
+      # utility that gives x,y && w x h coordinates for a selection
+      slurp
       wl-clipboard
       wl-ocr
       wf-recorder
-      ydotool # TODO: still need?
+      ydotool
     ];
 
     sessionVariables = {

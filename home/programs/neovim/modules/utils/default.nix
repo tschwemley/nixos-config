@@ -17,6 +17,8 @@
     vim-speeddating
     # vim-surround
     vim-startuptime
+
+    (import ./colorizer.nix pkgs.vimPlugins)
   ];
 
   xdg.configFile."nvim/after/plugin/utils.lua".text = ''

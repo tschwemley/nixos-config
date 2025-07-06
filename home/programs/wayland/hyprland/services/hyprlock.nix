@@ -1,5 +1,5 @@
 {config, ...}: let
-  font_family = "Hasklig";
+  font_family = "Hasklug Nerd Font Mono";
   monitor = config.hyprland.monitors.primary;
 in {
   # TODO: clean up this file
