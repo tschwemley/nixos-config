@@ -18,7 +18,6 @@
     ../programs/kdeconnect.nix
     ../programs/keyboards
     ../programs/lutris.nix
-    ../programs/man.nix
     ../programs/steam.nix
     ../programs/usbutils.nix
     ../programs/wine.nix
@@ -36,6 +35,7 @@
 
     ../system/documentation.nix
     ../system/greetd.nix
+    ../system/man.nix
     ../system/security.nix
 
     ../virtualisation/qemu.nix
