@@ -28,6 +28,7 @@
     ../services/gamemode.nix
     ../services/gnome.nix
     ../services/libinput.nix
+    ../services/printing.nix
     ../services/upower.nix
 
     ../security/onlykey.nix
