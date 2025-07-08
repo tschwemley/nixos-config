@@ -6,6 +6,7 @@ _: prev: {
         ibis-framework
         mysqlclient
         pyarrow-hotfix
+        sqlparse
       ];
 
     postInstall =

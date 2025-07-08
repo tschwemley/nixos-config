@@ -12,6 +12,5 @@
     schemacrawler
     schemaspy
     tbls
-    visidata
   ];
 }
