@@ -1,8 +1,8 @@
-local helpers = require(".helpers")
-local s = helpers.s
-local t = helpers.t
-local i = helpers.i
-local f = helpers.f or require("luasnip").function_node -- Ensure 'f' is available
+-- local helpers = require("luasnip_helpers")
+-- local s = helpers.s
+-- local t = helpers.t
+-- local i = helpers.i
+-- local f = helpers.f or require("luasnip").function_node -- Ensure 'f' is available
 
 -- Snippet Definitions
 -- ===================

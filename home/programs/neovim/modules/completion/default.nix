@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.neovim.plugins = with pkgs.vimPlugins; [
     blink-compat # necessary for compat with any nvim-cmp plugins
     blink-cmp
@@ -15,6 +16,7 @@
     configFile = {
       "nvim/after/plugin/blink.lua".source = ./blink.lua;
       "nvim/after/plugin/luasnip.lua".source = ./luasnip.lua;
+      "nvim/after/plugin/luasnip_helpers.lua".source = ./luasnip_helpers.lua;
     };
 
     dataFile."nvim/snippets".source = ./snippets;
