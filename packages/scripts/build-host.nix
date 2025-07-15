@@ -11,7 +11,7 @@ writeShellScriptBin "build-host"
 
     [ -z "$host" ] && echo "no hostname provided" && exit 1
 
-    no_copy_flag="false"                                                
+    no_copy_flag="false"
     [[ "''${1:-""}" == "--no-copy" ]] && no_copy_flag="true"
 
 
@@ -22,8 +22,8 @@ writeShellScriptBin "build-host"
       nix build .#nixosConfigurations."$1".config.system.build.toplevel -o "$1" --show-trace
 
       # if --build-only is passed as an option then exit without copying closure
-      if [[ "$2" == "--build-only" ]]; then
-        exit
+      if [[ "$2" == "--build-only" || "$2" == "--skip-copy" ]]; then
+        exit 0
       fi
 
       nix-copy-closure --to "$1" "$1"
