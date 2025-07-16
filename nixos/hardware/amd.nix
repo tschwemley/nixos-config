@@ -1,37 +1,52 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   environment = {
     sessionVariables = {
+      LIBVA_DRIVER_NAME = "radeonsi";
       VDPAU_DRIVER = "radeonsi";
+
+      # TODO: probably don't need these... but we'll see
+      #
+      # ROCm/OpenCL for compute
+      ROCR_VISIBLE_DEVICES = "1";
+      HSA_OVERRIDE_GFX_VERSION = "11.0.0"; # RDNA3 (7900 XTX = GFX1100)
     };
 
     systemPackages = with pkgs; [
       amdgpu_top
-      glxinfo
-      pciutils
+      clinfo
+      libva-utils
+      rocmPackages.rocminfo
       vulkan-tools
     ];
   };
 
   hardware = {
     amdgpu = {
-      initrd.enable = lib.mkDefault true;
+      initrd.enable = true;
       opencl.enable = true;
     };
 
     graphics = {
-      enable = lib.mkDefault true;
-      enable32Bit = lib.mkDefault true;
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        # amdvlk
+        libva
+        rocmPackages.clr.icd
+        rocmPackages.hipblas
+        rocmPackages.rocblas
+        vaapiVdpau
+      ];
     };
   };
 
-  nixpkgs.config.rocmSupport = true;
-  services.xserver.videoDrivers = lib.mkDefault ["modesetting"];
+  nixpkgs = {
+    config.rocmSupport = true;
+    # overlays = [self.overlays.rocmPackages];
+  };
 
-  # Most software has the HIP libraries hard-coded. You can work around it on NixOS by using:
+  services.xserver.videoDrivers = ["modesetting"];
+
   systemd.tmpfiles.rules = let
     rocmEnv = pkgs.symlinkJoin {
       name = "rocm-combined";
