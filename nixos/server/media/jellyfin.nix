@@ -1,6 +1,4 @@
 {pkgs, ...}: {
-  imports = [./virtualhost.nix];
-
   environment.systemPackages = with pkgs; [
     jellyfin
     jellyfin-ffmpeg
