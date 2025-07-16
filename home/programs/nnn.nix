@@ -25,7 +25,8 @@
     };
 in {
   home.sessionVariables = {
-    NNN_COLORS = "1234";
+    # 0-black, 1-red, 2-green, 3-yellow, 4-blue (default), 5-magenta, 6-cyan, 7-white
+    NNN_COLORS = "4652";
     NNN_FCOLORS = "33427561";
     NNN_FIFO = "/tmp/nnn.fifo";
   };
