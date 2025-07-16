@@ -85,22 +85,19 @@ in {
       "3, monitor:eDP-1"
       "4, monitor:eDP-1"
       "5, monitor:DP-1"
-      "6, monitor:DP-1"
-      "7, monitor:DP-1"
-      "8, monitor:DP-1"
     ];
   };
 
-  home-manager.users.schwem.wayland.windowManager.hyprland.settings.bind = [
-    "$mod, 5, workspace, 5"
-    "$mod, 6, workspace, 6"
-    "$mod, 7, workspace, 7"
-    "$mod, 8, workspace, 8"
-    "$mod shift, 5, movetoworkspace, 5"
-    "$mod shift, 6, movetoworkspace, 6"
-    "$mod shift, 7, movetoworkspace, 7"
-    "$mod shift, 8, movetoworkspace, 8"
-  ];
+  home-manager.users.schwem.wayland.windowManager.hyprland.settings = {
+    bind = [
+      "$mod, 5, workspace, 5"
+      "$mod shift, 5, movetoworkspace, 5"
+    ];
+
+    input = {
+      kboptions = "shift:nocaps";
+    };
+  };
 
   # laptop specific options
   environment.systemPackages = with pkgs; [
