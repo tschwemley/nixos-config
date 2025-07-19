@@ -6,8 +6,8 @@ _: prev: {
     src = prev.fetchFromGitHub {
       owner = "redlib-org";
       repo = "redlib";
-      rev = "dcb507d56710a047c743fe79a5326e4f1ca930a6";
-      hash = "sha256-ANNZEDLbiZr3i2FmeyAft8bkKh2xz12dYD8dXEbWe48=";
+      rev = "f1e5aa5e1790c4d7f0d4c5f222771cb3bbbc4b77";
+      hash = "sha256-ga+y8iVt+GjqgtLrS/jOC0rMDOhpyGbmYWUfwZDdoaM=";
     };
 
     # Re-create cargoDeps from scratch using the new src.
