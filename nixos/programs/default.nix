@@ -6,7 +6,7 @@
     age
     git
     gnupg
-    isd
+    # isd
     jdupes
     nrepl
     pinentry
