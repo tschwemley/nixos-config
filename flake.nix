@@ -1,47 +1,61 @@
 {
   description = "Schwem's NixOS configuration and dotfiles";
 
-  outputs =
-    inputs@{
-      self,
-      home-manager,
-      nix-topology,
-      nixpkgs,
-      systems,
-      # nix-on-droid,  TODO: re-add nix-on-droid when circling back to mobile config
-      ...
-    }:
-    let
-      lib = import ./lib (nixpkgs.lib // home-manager.lib);
+  outputs = inputs @ {
+    self,
+    home-manager,
+    nix-topology,
+    nixpkgs,
+    systems,
+    # nix-on-droid,  TODO: re-add nix-on-droid when circling back to mobile config
+    ...
+  }: let
+    lib = import ./lib (nixpkgs.lib // home-manager.lib);
 
-      pkgsFor = lib.genAttrs (import systems) (
-        system:
-        let
-          nixpkgs-patched =
-            (import nixpkgs {
-              inherit lib system;
-              # config = {
-              #   allowUnfree = true;
-              #   android_sdk.accept_license = true;
-              # };
-              # overlays = with self.overlays; [
-              #   default
-              #   patchedPackages
-              #   neovim
-              #   # self.inputs.neovim-overlay.overlays.default
-              #   self.inputs.nix-topology.overlays.default
-              # ];
-            }).applyPatches
-              {
-                name = "nixpkgs-patched";
-                src = nixpkgs;
-                patches = [ ./425404.patch ];
-              };
-          # // {
-          #   inherit lib;
-          # };
-        in
-        import nixpkgs-patched {
+    pkgsFor = lib.genAttrs (import systems) (
+      system:
+      #   let
+      #     nixpkgs-patched =
+      #       (import nixpkgs {
+      #         inherit lib system;
+      #         # config = {
+      #         #   allowUnfree = true;
+      #         #   android_sdk.accept_license = true;
+      #         # };
+      #         # overlays = with self.overlays; [
+      #         #   default
+      #         #   patchedPackages
+      #         #   neovim
+      #         #   # self.inputs.neovim-overlay.overlays.default
+      #         #   self.inputs.nix-topology.overlays.default
+      #         # ];
+      #       }).applyPatches
+      #         {
+      #           name = "nixpkgs-patched";
+      #           src = nixpkgs;
+      #           patches = [ ./425404.patch ];
+      #         };
+      #     # // {
+      #     #   inherit lib;
+      #     # };
+      #   in
+      #   import nixpkgs-patched {
+      #     inherit system;
+      #     config = {
+      #       allowUnfree = true;
+      #       android_sdk.accept_license = true;
+      #     };
+      #     overlays = with self.overlays; [
+      #       default
+      #       patchedPackages
+      #       neovim
+      #       # self.inputs.neovim-overlay.overlays.default
+      #       self.inputs.nix-topology.overlays.default
+      #       vimPlugins
+      #     ];
+      #   }
+      # );
+        (import nixpkgs {
           inherit system;
           config = {
             allowUnfree = true;
@@ -55,96 +69,78 @@
             self.inputs.nix-topology.overlays.default
             vimPlugins
           ];
+        })
+        // {
+          inherit lib;
         }
-      );
+    );
 
-      # (import nixpkgs {
-      #   inherit system;
-      #   config = {
-      #     allowUnfree = true;
-      #     android_sdk.accept_license = true;
-      #   };
-      #   overlays = with self.overlays; [
-      #     default
-      #     patchedPackages
-      #     neovim
-      #     # self.inputs.neovim-overlay.overlays.default
-      #     self.inputs.nix-topology.overlays.default
-      #   ];
-      # })
-      # // {
-      #   inherit lib;
-      # }
+    eachSystem = fn: lib.genAttrs (import systems) (system: fn pkgsFor.${system});
+    hosts = lib.attrNames (builtins.readDir ./nixos/hosts);
+  in {
+    inherit lib;
 
-      eachSystem = fn: lib.genAttrs (import systems) (system: fn pkgsFor.${system});
-      hosts = lib.attrNames (builtins.readDir ./nixos/hosts);
-    in
-    {
-      inherit lib;
+    devShells = eachSystem (pkgs: import ./devshell pkgs);
+    nixosModules = import ./modules;
+    overlays = import ./overlays self;
+    packages = eachSystem (pkgs: import ./packages self pkgs);
+    templates = import ./templates;
 
-      devShells = eachSystem (pkgs: import ./devshell pkgs);
-      nixosModules = import ./modules;
-      overlays = import ./overlays self;
-      packages = eachSystem (pkgs: import ./packages self pkgs);
-      templates = import ./templates;
-
-      homeConfigurations = {
-        # TODO: For possible solution for building and then deploying remotely to work server
-        #       see: https://gist.github.com/fricklerhandwerk/fbf0b212bbbf51b79a08fdac8659481d
-        "work@linux" = lib.homeManagerConfiguration {
-          pkgs = pkgsFor."x86_64-linux";
-          extraSpecialArgs = { inherit inputs self; };
-          modules = [ ./home/profiles/work.nix ];
-        };
-        "work@mac" = lib.homeManagerConfiguration {
-          pkgs = pkgsFor."aarch64-darwin";
-          extraSpecialArgs = { inherit inputs self; };
-          modules = [ ./home/profiles/work.nix ];
-        };
+    homeConfigurations = {
+      # TODO: For possible solution for building and then deploying remotely to work server
+      #       see: https://gist.github.com/fricklerhandwerk/fbf0b212bbbf51b79a08fdac8659481d
+      "work@linux" = lib.homeManagerConfiguration {
+        pkgs = pkgsFor."x86_64-linux";
+        extraSpecialArgs = {inherit inputs self;};
+        modules = [./home/profiles/work.nix];
       };
+      "work@mac" = lib.homeManagerConfiguration {
+        pkgs = pkgsFor."aarch64-darwin";
+        extraSpecialArgs = {inherit inputs self;};
+        modules = [./home/profiles/work.nix];
+      };
+    };
 
-      nixosConfigurations = lib.genAttrs hosts (
-        host:
+    nixosConfigurations = lib.genAttrs hosts (
+      host:
         lib.nixosSystem {
-          specialArgs = { inherit inputs self; };
+          specialArgs = {inherit inputs self;};
           modules = [
             {
-              nixpkgs = { inherit (pkgsFor."x86_64-linux") config overlays; };
+              nixpkgs = {inherit (pkgsFor."x86_64-linux") config overlays;};
             }
 
             ./nixos/hosts/${host}
           ];
         }
-      );
+    );
 
-      nixOnDroidConfigurations = import ./android/nix-on-droid self;
-      # nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
-      #   pkgs = import nixpkgs {system = "aarch64-linux";};
-      #   specialArgs = {inherit inputs self;};
-      #   modules = [./android];
-      # };
+    nixOnDroidConfigurations = import ./android/nix-on-droid self;
+    # nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
+    #   pkgs = import nixpkgs {system = "aarch64-linux";};
+    #   specialArgs = {inherit inputs self;};
+    #   modules = [./android];
+    # };
 
-      # TODO: this needs to be continued to filled out at the individual system level
-      topology = import nix-topology {
-        pkgs = pkgsFor.x86_64-linux;
-        modules = [
-          (
-            { config, ... }:
-            let
-              inherit (config.lib.topology) mkInternet mkRouter mkConnection;
-            in
-            {
-              inherit (self) nixosConfigurations;
+    # TODO: this needs to be continued to filled out at the individual system level
+    topology = import nix-topology {
+      pkgs = pkgsFor.x86_64-linux;
+      modules = [
+        (
+          {config, ...}: let
+            inherit (config.lib.topology) mkInternet mkRouter mkConnection;
+          in {
+            inherit (self) nixosConfigurations;
 
-              networks.home = {
-                name = "home";
-                cidrv4 = "192.168.1.1/24";
-              };
-            }
-          )
-        ];
-      };
+            networks.home = {
+              name = "home";
+              cidrv4 = "192.168.1.1/24";
+            };
+          }
+        )
+      ];
     };
+  };
 
   inputs = {
     #---
