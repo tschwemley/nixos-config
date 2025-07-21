@@ -14,9 +14,9 @@
     };
 
     # uncomment this if having trouble playing certain videos
-    sig-helper = {
-      enable = true;
-      listenAddress = "127.0.0.1:${config.variables.ports.invidiousSigHelper}";
-    };
+    # sig-helper = {
+    #   enable = true;
+    #   listenAddress = "127.0.0.1:${config.variables.ports.invidiousSigHelper}";
+    # };
   };
 }
