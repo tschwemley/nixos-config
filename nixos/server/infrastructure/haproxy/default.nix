@@ -12,6 +12,7 @@ in {
   # TODO: set up load balancing or failover between ny servers
   services.haproxy = {
     enable = true;
+
     # TODO: WIP: finish converting config into an opt for my needs
     config = ''
       defaults
@@ -67,12 +68,12 @@ in {
         acl domain_tumblr hdr(host) -i tumblr.schwem.io
         acl domain_twitch hdr(host) -i twitch.schwem.io twitch.api.schwem.io
         acl domain_wiki hdr(host) -i wiki.schwem.io
+        acl domain_yt hdr(host) -i yt.schwem.io
 
         # acl domain_medium hdr(host) -i medium.schwem.io
         # acl domain_sillytavern hdr(host) -i sillytavern.schwem.io
         # acl domain_trmnl hdr(host) -i trmnl.schwem.io
         # acl domain_tasks hdr(host) -i tasks.schwem.io
-        # acl domain_threadfin hdr(host) -i threadfin.schwem.io
 
         use_backend articuno if domain_default
         use_backend articuno if domain_cyberchef
@@ -80,6 +81,7 @@ in {
         use_backend articuno if domain_monitor
         use_backend articuno if domain_ntfy
         use_backend articuno if domain_twitch
+        use_backend articuno if domain_yt
 
         use_backend moltres if domain_ai
         use_backend moltres if domain_draw
@@ -154,10 +156,6 @@ in {
         http-request set-header X-Forwarded-Proto https
         server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
-      # backend threadfin
-      #   http-request set-header X-Forwarded-Proto https
-      #   server moltres moltres.wyvern-map.ts.net:8080 check send-proxy
-
       backend zapados
         http-request set-header X-Forwarded-Proto https
         server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
@@ -165,8 +163,16 @@ in {
   };
 
   systemd.services.haproxy = {
-    after = ["systemd-networkd.service"];
-    requires = ["systemd-networkd.service"];
+    after = [
+      "systemd-networkd.service"
+      "tailscaled.service"
+    ];
+    requires = [
+      "systemd-networkd.service"
+      "tailscaled.service"
+    ];
+
+    # restartIfChanged = false;
   };
 
   users.users.haproxy.extraGroups = ["acme"];
