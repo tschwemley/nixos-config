@@ -1,4 +1,5 @@
 {
+  self,
   config,
   lib,
   ...
@@ -9,6 +10,11 @@
     nginx.enable = true;
     port = lib.toInt config.variables.ports.invidious;
 
+    database = {
+      host = "127.0.0.1";
+      passwordFile = config.sops.secrets.invidiousPostgresPassword.path;
+    };
+
     settings = {
       # domain = "yt.schwem.io";
     };
@@ -18,5 +24,10 @@
     #   enable = true;
     #   listenAddress = "127.0.0.1:${config.variables.ports.invidiousSigHelper}";
     # };
+  };
+
+  sops.secrets.invidiousPostgresPassword = {
+    key = "postgres_password";
+    sopsFile = self.lib.secret "server" "invidious.yaml";
   };
 }
