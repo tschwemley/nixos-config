@@ -5,11 +5,12 @@
 }: {
   services.invidious = {
     enable = true;
+    domain = "yt.schwem.io";
     nginx.enable = true;
     port = lib.toInt config.variables.ports.invidious;
 
     settings = {
-      domain = "yt.schwem.io";
+      # domain = "yt.schwem.io";
     };
 
     # uncomment this if having trouble playing certain videos
