@@ -17,6 +17,10 @@
 
     settings = {
       # domain = "yt.schwem.io";
+      db = {
+        dbname = "invidious";
+        user = "invidious";
+      };
     };
 
     # uncomment this if having trouble playing certain videos
