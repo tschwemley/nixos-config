@@ -1,6 +1,11 @@
-return {
-   init_options = {
-      ["language_server_phpstan.enabled"] = false,
-      ["language_server_psalm.enabled"] = false,
-   },
-}
+-- vim.lsp.enable("phpactor")
+-- return {
+--    settings = {
+--       phpactor = {
+--          init_options = {
+--             ["language_server_phpstan.enabled"] = false,
+--             ["language_server_psalm.enabled"] = false,
+--          },
+--       },
+--    },
+-- }
