@@ -27,7 +27,7 @@
         # yaml
         ''
           # default-model: "gemini-flash"
-          default-model: google/gemini-2.5-flash-preview
+          default-model: google/gemini-2.5-flash
           # Text to append when using the -f flag.
           format-text:
             markdown: "Format the response as markdown without enclosing backticks."
@@ -142,10 +142,10 @@
                 deepseek/deepseek-r1:
                   aliases: ["r1"]
                   max-input-chars: 392000
-                google/gemini-2.5-flash-preview:
+                google/gemini-2.5-flash:
                   aliases: ["gemini-flash"]
                   max-input-chars: 1048576
-                google/gemini-2.5-pro-preview:
+                google/gemini-2.5-pro:
                   aliases: ["gemini", "gemini-pro"]
                   max-input-chars: 1048576
         '';
