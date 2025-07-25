@@ -24,7 +24,7 @@
             default
             patchedPackages
             neovim
-            nix-topology
+            # nix-topology
             textual
             vimPlugins
           ];
