@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   programs.neovim.plugins = with pkgs.vimPlugins; [
     lazydev-nvim
+    # markview-nvim
+    # render-markdown-nvim
     taskwarrior3
   ];
 
