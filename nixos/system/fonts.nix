@@ -18,6 +18,7 @@
 in {
   environment.systemPackages = with pkgs; [
     fontconfig
+    scripts.search-nf
   ];
 
   fonts = {
@@ -25,7 +26,6 @@ in {
       enable = true;
 
       defaultFonts = {
-        # emoji = ["OpenMoji Color"];
         emoji = ["Twitter Color Emoji"];
         serif = ["DaddyTimeMono Nerd Font"];
         monospace = ["CaskaydiaCove Nerd Font"];
