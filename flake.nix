@@ -14,47 +14,6 @@
 
     pkgsFor = lib.genAttrs (import systems) (
       system:
-      #   let
-      #     nixpkgs-patched =
-      #       (import nixpkgs {
-      #         inherit lib system;
-      #         # config = {
-      #         #   allowUnfree = true;
-      #         #   android_sdk.accept_license = true;
-      #         # };
-      #         # overlays = with self.overlays; [
-      #         #   default
-      #         #   patchedPackages
-      #         #   neovim
-      #         #   # self.inputs.neovim-overlay.overlays.default
-      #         #   self.inputs.nix-topology.overlays.default
-      #         # ];
-      #       }).applyPatches
-      #         {
-      #           name = "nixpkgs-patched";
-      #           src = nixpkgs;
-      #           patches = [ ./425404.patch ];
-      #         };
-      #     # // {
-      #     #   inherit lib;
-      #     # };
-      #   in
-      #   import nixpkgs-patched {
-      #     inherit system;
-      #     config = {
-      #       allowUnfree = true;
-      #       android_sdk.accept_license = true;
-      #     };
-      #     overlays = with self.overlays; [
-      #       default
-      #       patchedPackages
-      #       neovim
-      #       # self.inputs.neovim-overlay.overlays.default
-      #       self.inputs.nix-topology.overlays.default
-      #       vimPlugins
-      #     ];
-      #   }
-      # );
         (import nixpkgs {
           inherit system;
           config = {
@@ -65,8 +24,8 @@
             default
             patchedPackages
             neovim
-            # self.inputs.neovim-overlay.overlays.default
-            self.inputs.nix-topology.overlays.default
+            nix-topology
+            textual
             vimPlugins
           ];
         })
@@ -150,6 +109,7 @@
     nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
+    pinned-textual-nixpkgs.url = "github:nixos/nixpkgs/9b008d60392981ad674e04016d25619281550a9d";
     systems.url = "github:nix-systems/default";
 
     nil = {

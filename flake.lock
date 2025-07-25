@@ -744,11 +744,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1753418588,
-        "narHash": "sha256-pdpkbarGU0sP38sWt56FQRRGnpOy6pGfVkoRNP3fhRw=",
+        "lastModified": 1753420490,
+        "narHash": "sha256-nHZ8EvhqCGBSSC1O3Bl/pT8tfR5D436fxK6DWaj0bJ4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "a0a889d240ff8fda7209aec00d1877d440b23735",
+        "rev": "3935fce40797784e999267b0d036c3a217b0f2a6",
         "type": "github"
       },
       "original": {
@@ -760,11 +760,11 @@
     },
     "nixpkgs-small": {
       "locked": {
-        "lastModified": 1753333399,
-        "narHash": "sha256-whYj15V9N5XJF3PMMzBY8axIFtHJxlomzggVmX+GliA=",
+        "lastModified": 1753418588,
+        "narHash": "sha256-pdpkbarGU0sP38sWt56FQRRGnpOy6pGfVkoRNP3fhRw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "57ccc02c7fe9294deee037379a4a6378661cbab8",
+        "rev": "a0a889d240ff8fda7209aec00d1877d440b23735",
         "type": "github"
       },
       "original": {
@@ -848,6 +848,22 @@
         "url": "https://git.schwem.io/schwem/oidcproxy"
       }
     },
+    "pinned-textual-nixpkgs": {
+      "locked": {
+        "lastModified": 1751949589,
+        "narHash": "sha256-mgFxAPLWw0Kq+C8P3dRrZrOYEQXOtKuYVlo9xvPntt8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "9b008d60392981ad674e04016d25619281550a9d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "9b008d60392981ad674e04016d25619281550a9d",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_3",
@@ -895,6 +911,7 @@
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-small": "nixpkgs-small",
         "oidcproxy": "oidcproxy",
+        "pinned-textual-nixpkgs": "pinned-textual-nixpkgs",
         "sops-nix": "sops-nix_2",
         "spicetify-nix": "spicetify-nix",
         "systems": "systems_7",
