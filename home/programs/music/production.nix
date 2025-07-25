@@ -1,15 +1,19 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
+  # TODO: split this up further than just "production"
   home.packages = with pkgs; [
     cardinal
     # carla
     reaper
-    sonic-pi
+    # sonic-pi
     supercollider
     # yabridge
     # yabridgectl
 
-    # TODO: TESTING THIS
+    tuxguitar
+
+    # TODO: also look into similar projects e.g.
+    #         [proteus](https://guitarml.com/#products)
+    #         [amperium nnm](https://www.st-rock.com/vst/)
     neural-amp-modeler-lv2
   ];
 
