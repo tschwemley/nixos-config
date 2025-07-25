@@ -11,6 +11,7 @@
     (import ./disk.nix "nvme1n1" "crypted")
 
     ../../hardware/amd.nix
+    ../../hardware/odyssey-ark.nix
   ];
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
