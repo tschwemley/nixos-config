@@ -1,4 +1,7 @@
-output: {
+{
+  pkgs,
+  output,
+}: {
   fonts.fontconfig.subpixel.rgba = "bgr";
 
   hardware.display = {
