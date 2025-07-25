@@ -9,9 +9,9 @@
 }: {
   imports = [
     (import ./disk.nix "nvme1n1" "crypted")
+    (import ../../hardware/odyssey-ark.nix "DP-1")
 
     ../../hardware/amd.nix
-    ../../hardware/odyssey-ark.nix
   ];
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
