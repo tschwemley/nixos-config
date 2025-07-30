@@ -33,13 +33,11 @@
     ../services/printing.nix
     ../services/upower.nix
 
-    ../security/onlykey.nix
-    ../security/yubikey.nix
+    ../security
 
     ../system/documentation.nix
     ../system/greetd.nix
     ../system/man.nix
-    ../system/security.nix
 
     ../virtualisation/qemu.nix
 
