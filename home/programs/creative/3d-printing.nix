@@ -1,6 +1,3 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
-    # bambu-studio
-    orca-slicer
-  ];
+  home.packages = [pkgs.orca-slicer];
 }
