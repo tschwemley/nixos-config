@@ -18,10 +18,33 @@
     enable = true;
     remotePlay.openFirewall = true;
 
-    # gamescopeSession.enable = true;
+    gamescopeSession.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
+    lutris
     sidequest
   ];
+
+  # ---
+  # TODO: uncomment or delete, pending lutris config
+
+  # enable esync compatability (for Lutris)
+
+  # home-manager.users.schwem.systemd.user.settings.Manager.DefaultLimitNOFILE = "524288";
+  # security = {
+  #   pam = {
+  #     loginLimits = [
+  #       {
+  #         domain = "schwem";
+  #         item = "nofile";
+  #         type = "hard";
+  #         value = "524288";
+  #       }
+  #     ];
+  #   };
+  # };
+  #
+  # systemd.extraConfig = "DefaultLimitNOFILE=524288";
+  # systemd.user.extraConfig = "DefaultLimitNOFILE=524288";
 }

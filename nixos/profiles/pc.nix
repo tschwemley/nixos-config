@@ -9,16 +9,18 @@
 
     ./.
 
-    ../development/embedded.nix
+    # TODO: re-enable when noticing comment next... as of 2025-07-28 issues with build
+    #
+    # ../development/embedded.nix
 
     ../hardware/audio
     ../hardware/flipperzero.nix
+    ../hardware/xbox-controller.nix
 
     ../programs/hyprland.nix
     ../programs/kdeconnect.nix
     ../programs/keyboards
-    ../programs/lutris.nix
-    ../programs/steam.nix
+    ../programs/gaming.nix
     ../programs/usbutils.nix
     ../programs/wine.nix
     ../programs/xdg.nix
