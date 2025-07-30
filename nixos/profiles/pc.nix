@@ -75,7 +75,7 @@
 
   systemd.services.tailscaled-autoconnect = let
     after = lib.mkDefault [
-      "NetworkManager-wait-online"
+      "NetworkManager-wait-online.service"
     ];
     wants = after;
   in {

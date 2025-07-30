@@ -14,7 +14,7 @@
   services.printing.enable = true;
 
   systemd.services.ensure-printers = {
-    after = ["NetworkManager-wait-online"];
-    requires = ["NetworkManager-wait-online"];
+    after = ["NetworkManager-wait-online.service"];
+    requires = ["NetworkManager-wait-online.service"];
   };
 }
