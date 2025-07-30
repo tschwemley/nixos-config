@@ -1,3 +1,10 @@
+# calculations from cli
+c () { 
+    local exp 
+    (( $# > 0 )) && a="$@" || read -r -p "expression: " exp
+    wcalc -EE <<< "$exp"
+}
+
 # nix build with output of last error
 nbuild() {
   nix build "$@" 2>/tmp/last-build.error.log
