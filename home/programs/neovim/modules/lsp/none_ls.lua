@@ -26,10 +26,10 @@ null_ls.setup({
       null_ls.builtins.formatting.prettierd,
 
       --nix
-      null_ls.builtins.diagnostics.deadnix,
-      null_ls.builtins.diagnostics.statix,
+      -- null_ls.builtins.diagnostics.deadnix,
+      -- null_ls.builtins.diagnostics.statix,
 
-      null_ls.builtins.formatting.alejandra,
+      -- null_ls.builtins.formatting.alejandra,
 
       -- other
       null_ls.builtins.hover.printenv.with({

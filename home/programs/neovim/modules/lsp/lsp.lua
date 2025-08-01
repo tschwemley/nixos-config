@@ -8,7 +8,7 @@
 vim.lsp.enable({
    "bashls",
    "gopls",
-   -- "intelephense",
+   "intelephense",
    "lua_ls",
    "marksman",
    "nil_ls", -- TODO: choose one of either nixd or nil_ls for nix lsp

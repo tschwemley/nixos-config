@@ -1,0 +1,3 @@
+{
+  imports = [./timed-highlight.nix]; 
+}

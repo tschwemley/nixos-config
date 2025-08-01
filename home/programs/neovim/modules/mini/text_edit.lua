@@ -1,6 +1,6 @@
 require("mini.align").setup()
 require("mini.move").setup()
-require("mini.pairs").setup()
+-- require("mini.pairs").setup()
 
 -- TODO: Get this dialed in or revert back to using the tpope plugin
 --

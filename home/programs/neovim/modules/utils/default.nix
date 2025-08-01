@@ -3,6 +3,8 @@
   pkgs,
   ...
 }: {
+  imports = [./boole.nix];
+
   programs.neovim.plugins = with pkgs.vimPlugins; [
     # TODO: revisit navbuddy when time... looks interesting
     # navbuddy # old config: navbuddy = import ./navbuddy.nix pkgs.vimPlugins;

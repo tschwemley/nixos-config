@@ -1,5 +1,11 @@
 {lib, ...}: {
   imports = [
+    ./diagnostics
+    ./formatting
+    ./linting
+    ./lsp
+
+    # TODO: slowly move to a flat structure then delete this import
     ./modules
   ];
 
