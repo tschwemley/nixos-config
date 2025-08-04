@@ -12,7 +12,6 @@
     ./debug
     ./diagnostics
     ./files
-    ./lsp
     ./mini
     ./telescope
     ./terminal
