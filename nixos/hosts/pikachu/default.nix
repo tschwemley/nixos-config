@@ -95,7 +95,7 @@ in {
     ];
 
     input = {
-      kboptions = "shift:nocaps";
+      kb_options = "shift:nocaps";
     };
   };
 
