@@ -16,7 +16,7 @@
     ../server/infrastructure/nginx
     ../server/security/auth/oidcproxy
 
-    self.inputs.nix-topology.nixosModules.default
+    # self.inputs.nix-topology.nixosModules.default
   ];
 
   # disable man pages on servers
