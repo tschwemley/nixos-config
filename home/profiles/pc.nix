@@ -32,7 +32,7 @@
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
 
-    # ../theme
+    ../theme
 
     ../xdg
     ../xdg/netrc.nix
