@@ -3,12 +3,13 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   services = {
     postgresql = {
       enable = true;
       enableTCPIP = true;
-      extensions = ps: with ps; [pgvector];
+      extensions = ps: with ps; [ pgvector ];
 
       authentication = ''
         # TYPE  DATABASE        USER            ADDRESS                 METHOD
@@ -34,24 +35,24 @@
 
       initialScript =
         pkgs.writeText "postgresql-init-script"
-        #sh
-        ''
-            # Read the password from the sops-nix secret file
-            LIBRECHAT_PASSWORD=$(cat ${config.sops.secrets.librechatRagPostgresPassword.path})
+          #sh
+          ''
+              # Read the password from the sops-nix secret file
+              LIBRECHAT_PASSWORD=$(cat ${config.sops.secrets.librechatRagPostgresPassword.path})
 
-            # Use psql's variable substitution (-v) to safely pass the password.
-            # The :password syntax inside the SQL block is replaced by the variable.
-            psql -v password="'$LIBRECHAT_PASSWORD'" <<EOSQL
-              CREATE ROLE librechat WITH LOGIN PASSWORD :password;
-              CREATE DATABASE librechat OWNER librechat;
-          EOSQL
+              # Use psql's variable substitution (-v) to safely pass the password.
+              # The :password syntax inside the SQL block is replaced by the variable.
+              psql -v password="'$LIBRECHAT_PASSWORD'" <<EOSQL
+                CREATE ROLE librechat WITH LOGIN PASSWORD :password;
+                CREATE DATABASE librechat OWNER librechat;
+            EOSQL
 
-          INVIDIOUS_PASSWORD=$(cat ${config.sops.secrets.invidiousPostgresPassword.path})
-            psql -v password="'$LIBRECHAT_PASSWORD'" <<EOSQL
-              CREATE ROLE invidious WITH LOGIN PASSWORD :password;
-              CREATE DATABASE invidious OWNER invidious;
-          EOSQL
-        '';
+            # INVIDIOUS_PASSWORD=$(cat ${config.sops.secrets.invidiousPostgresPassword.path})
+            #   psql -v password="'$LIBRECHAT_PASSWORD'" <<EOSQL
+            #     CREATE ROLE invidious WITH LOGIN PASSWORD :password;
+            #     CREATE DATABASE invidious OWNER invidious;
+            EOSQL
+          '';
     };
 
     prometheus.exporters.postgres = {
