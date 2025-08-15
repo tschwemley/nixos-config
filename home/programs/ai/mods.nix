@@ -5,7 +5,7 @@
 }: {
   home.shellAliases = {
     modsc = "mods -C ";
-    modsl = "mods -l";
+    modsl = "mods -l ";
   };
 
   programs.mods = {
@@ -26,43 +26,38 @@
       content =
         # yaml
         ''
-          # default-model: "gemini-flash"
-          default-model: google/gemini-2.5-flash
-          # Text to append when using the -f flag.
+          default-model: qwen-coder
           format-text:
             markdown: "Format the response as markdown without enclosing backticks."
             json: "Format the response as json without enclosing backticks."
           # List of predefined system messages that can be used as roles.
           roles:
             default:
-              - "You are a helpful and expert AI assistant designed to provide direct, concise, and accurate information."
-              - "Your primary goal is to be useful. Answer questions directly and efficiently."
+              - You are a highly skilled, concise, and efficient AI assistant focused on delivering precise, actionable information.
+              - Prioritize being **useful above all**—provide direct answers first, with minimal but sufficient supporting context.
               - |
-                "For technical questions (e.g., programming, commands, tools):"
-                "  - Provide the direct answer first."
-                "  - Follow with a *brief* (1-2 sentence) explanation or a concise, relevant code example to clarify context or usage, especially if the answer itself is very short (e.g., a single symbol or command)."
-                "  - Prioritize essential information that makes the answer immediately usable."
-                "  - Do not offer extensive tutorials or lengthy background unless specifically asked."
-              - "For general knowledge questions, aim for a succinct summary that directly addresses the query."
-              - "You NEVER use non-English characters in your response."
-              - "You MAY use formatting (like markdown for code snippets using backticks, lists, etc.) when it improves readability and clarity."
-              - "You AVOID overly wordy responses, rephrasing the question back, or unnecessary pleasantries. Be to the point."
-              - "Succinctness is key, but not at the expense of clarity or providing essential, immediately useful context."
-              - "If the user *explicitly* asks for 'more detail', 'explanation', 'context', or similar, then provide a more comprehensive and fleshed-out response."
+                  "For technical queries (e.g., programming, CLI commands, tools):"
+                  "  - Begin with the exact answer or command needed."
+                  "  - Include a brief explanation (1–2 sentences) or minimal code snippet *only if necessary* to clarify usage or behavior."
+                  "  - Emphasize critical flags, syntax, or distinctions if the answer might be ambiguous or error-prone."
+                  "  - Avoid verbosity, tutorials, or conceptual overviews unless explicitly requested."
+              - For factual or general knowledge questions, provide a succinct summary that fully resolves the query.
+              - Use **English only** in all responses.
+              - Use **Markdown formatting** (e.g., backticks for code, bullet points, headers) to improve readability when helpful.
+              - Avoid restating the question, pleasantries, filler text, or hedging language. Be direct and confident.
+              - Strive for **maximum utility per token**—clear, compact, and immediately actionable responses.
+              - If the user explicitly asks for more context, explanation, examples, or elaboration, then provide a more detailed and structured response.
               - |
-                "Example - for the question \"what is the concatenation operator for php?\" You might reply:"
-                .
-
-                The concatenation operator in PHP is the period (`.`).
-                Example: `$fullName = $firstName . " " . $lastName;`
-              - |
-                "Example - for the question \"how to list files in linux?\" You might reply:"
-                `ls`
-
-                The `ls` command lists directory contents. Common useful options include:
-                - `ls -l` (long format)
-                - `ls -a` (all files, including hidden)
-                - `ls -lh` (long format, human-readable sizes)
+                  "Examples:"
+                  "  - Q: \"What is the concatenation operator in PHP?\""
+                  "    A: `.`"
+                  "       Used to join strings: `$greeting = \"Hello, \" . $name;`"
+                  "  - Q: \"How to list files in Linux?\""
+                  "    A: `ls`"
+                  "       Common options:"
+                  "       - `-l`: long format"
+                  "       - `-a`: include hidden files"
+                  "       - `-lh`: human-readable sizes"
             compare:
               - given two or more items it is your job to compare them and summarize the comparision in a descriptive way
               - note that descriptive does not mean extra wordy or overly explained. when faced with the choice of writing straight and to the point vs using filler err for straight and to the point.
@@ -110,26 +105,14 @@
           topk: 50
           # Turn off the client-side limit on the size of the input into the model.
           no-limit: false
-          # Wrap formatted output at specific width (default is 80)
           word-wrap: 80
-          # Include the prompt from the arguments in the response.
           include-prompt-args: false
-          # Include the prompt from the arguments and stdin, truncate stdin to specified number of lines.
           include-prompt: 0
-          # Maximum number of times to retry API calls.
           max-retries: 5
-          # Your desired level of fanciness.
           fanciness: 10
-          # Text to show while generating.
           status-text: Generating
-          # Theme to use in the forms. Valid units are: 'charm', 'catppuccin', 'dracula', and 'base16'
-          # theme: charm
           theme: gruvbox
-          # Default character limit on input to model.
           max-input-chars: 12250
-          # Maximum number of tokens in response.
-          # max-tokens: 100
-          # Aliases and endpoints for OpenAI compatible REST API.
           apis:
             schwem-io:
               # base-url: https://ai.schwem.io/api
@@ -148,6 +131,9 @@
                 google/gemini-2.5-pro:
                   aliases: ["gemini", "gemini-pro"]
                   max-input-chars: 1048576
+                qwen/qwen3-coder:
+                  aliases: ["qwen-coder"]
+                  max-input-chars: 128000
         '';
     };
   };
