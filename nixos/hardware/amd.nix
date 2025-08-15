@@ -27,7 +27,7 @@
     ];
   };
 
-  nixpkgs.config.rocmSupport = lib.mkDefault true;
+  nixpkgs.config.rocmSupport = true;
 
   # systemd.tmpfiles.rules =
   # 	let

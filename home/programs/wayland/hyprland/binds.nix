@@ -47,8 +47,7 @@
         "$mod, p, exec, wofi --show drun"
         "$mod shift, p, exec, wofi-power-menu"
       ]
-      ++ workspaceBinds
-      ++ config.hyprland.pluginBinds;
+      ++ workspaceBinds;
 
     # mouse binds
     bindm = [

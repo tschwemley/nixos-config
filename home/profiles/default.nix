@@ -7,7 +7,7 @@
     ../programs/utils
 
     ../programs/neovim
-    ../programs/nnn.nix
+    ../programs/yazi.nix
 
     ../terminal
 

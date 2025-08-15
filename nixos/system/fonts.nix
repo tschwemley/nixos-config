@@ -1,21 +1,10 @@
 {
-  lib,
   pkgs,
   ...
-}: let
-  nerdfonts = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
-  # nerdfonts = with pkgs.nerd-fonts; [
-  #   _0xproto
-  #   agave
-  #   fira-code
-  #   hasklug
-  #   iosevka
-  #   iosevka-term
-  #   jetbrains-mono
-  #   lilex
-  #   symbols-only
-  # ];
-in {
+}:
+let
+in
+{
   environment.systemPackages = with pkgs; [
     fontconfig
     scripts.search-nf
@@ -26,32 +15,33 @@ in {
       enable = true;
 
       defaultFonts = {
-        emoji = ["Twitter Color Emoji"];
-        serif = ["DaddyTimeMono Nerd Font"];
-        monospace = ["CaskaydiaCove Nerd Font"];
-        sansSerif = ["CaskaydiaCove Nerd Font"];
+        emoji = [ "Twitter Color Emoji" ];
+        monospace = [ "CaskaydiaCove Nerd Font" ];
+        serif = [ "Inter" ];
+        sansSerif = [ "Inter" ];
+
+        # serif = [ "DaddyTimeMono Nerd Font" ];
+        # sansSerif = [ "CaskaydiaCove Nerd Font" ];
       };
 
+      # Hinting aligns glyphs to pixel boundaries to improve rendering sharpness at low resolution
       hinting = {
         enable = true;
-        # TODO: switch back to slight if full/medium make font lose shape
-        # style = "full"; # default is slight. other option is medium
+
+        # slight (fuzzier but more grid align, retains shape) -> medium -> full (opposite slight)
+        style = "full";
       };
     };
 
     # fontDir.enable = true; TODO: reenable if comapatbility issues. Otherwise delete
 
-    packages = with pkgs;
-      [
-        hasklig
-        inter # used for reaper theme(s)
+    packages = with pkgs; [
+      inter # used for reaper theme(s)
 
-        # TODO: only keep the ones I give a fuck about
-        openmoji-black
-        openmoji-color
-        noto-fonts-color-emoji
-        twemoji-color-font
-      ]
-      ++ nerdfonts;
+      nerd-fonts.caskaydia-cove
+      nerd-fonts.daddy-time-mono
+
+      twemoji-color-font
+    ];
   };
 }

@@ -1,7 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     celluloid
-    ffmpeg
+    handbrake
+    ffmpeg-full
     mpv
     vlc
     webcamoid

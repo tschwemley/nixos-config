@@ -1,6 +1,6 @@
 {
   wayland.windowManager.hyprland.settings = {
-    layerrule = [];
+    layerrule = [ ];
     windowrulev2 = [
       # android
       "float, initialClass:Emulator"
@@ -24,13 +24,11 @@
       "stayfocused, minsize 1 1, title:^VST.*$, class:^(REAPER)$"
 
       # steam
-      "float, title:^(Steam)$"
-      "float, title:^(Friends List)$"
-      # NOTE: reenable this if having issues with steam context menus
-      # "stayfocused, minsize 1 1, title:^()$, class:^(steam)$" # fixes steam menu focus issues
+      "float, initialClass:steam"
 
       # zen
       "float, title:^(Picture-in-Picture)$"
+      "float, title:^(Developer Tools)"
     ];
   };
 }

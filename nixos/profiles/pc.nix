@@ -2,7 +2,8 @@
   self,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     self.inputs.nixos-hardware.nixosModules.common-pc
     self.inputs.nixos-hardware.nixosModules.common-pc-ssd
@@ -16,6 +17,8 @@
     ../hardware/audio
     ../hardware/flipperzero.nix
     ../hardware/xbox-controller.nix
+
+    ../network/wireshark.nix
 
     ../programs/hyprland.nix
     ../programs/kdeconnect.nix
@@ -39,12 +42,14 @@
     ../system/greetd.nix
     ../system/man.nix
 
+    # ../theme
+
     ../virtualisation/qemu.nix
 
     ../../android
   ];
 
-  nix.settings.trusted-users = ["schwem"];
+  nix.settings.trusted-users = [ "schwem" ];
   nixpkgs.overlays = with self.overlays; [
     # aseprite
     visidata
@@ -73,14 +78,16 @@
     ];
   };
 
-  systemd.services.tailscaled-autoconnect = let
-    after = lib.mkDefault [
-      "NetworkManager-wait-online.service"
-    ];
-    wants = after;
-  in {
-    inherit after wants;
-  };
+  systemd.services.tailscaled-autoconnect =
+    let
+      after = lib.mkDefault [
+        "NetworkManager-wait-online.service"
+      ];
+      wants = after;
+    in
+    {
+      inherit after wants;
+    };
 
   time.timeZone = "America/New_York";
   users.mutableUsers = true; # allow mutable users on non-servers

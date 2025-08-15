@@ -1,7 +1,7 @@
 # calculations from cli
 c () { 
     local exp 
-    (( $# > 0 )) && a="$@" || read -r -p "expression: " exp
+    (( $# > 0 )) && exp="$@" || read -r -p "expression: " exp
     wcalc -EE <<< "$exp"
 }
 

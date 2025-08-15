@@ -1,5 +1,14 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.wttrbar];
+{
+  self,
+  pkgs,
+  ...
+}:
+{
+  home.packages = [
+    pkgs.wttrbar
+
+    self.packages.${pkgs.system}.pomobar-rs
+  ];
 
   programs.waybar = {
     enable = true;
@@ -11,7 +20,7 @@
           "hyprland/workspaces"
         ];
 
-        modules-center = ["hyprland/window"];
+        modules-center = [ "hyprland/window" ];
 
         modules-right = [
           "pulseaudio"
@@ -24,6 +33,22 @@
         "clock" = {
           interval = 1;
           format = "{:%H:%M:%S}";
+        };
+
+        "custom/pomobar" = {
+          format = "{} {icon}";
+          format-icons = {
+            idle = "";
+            paused = "";
+            work = "";
+            short_break = "";
+            long_break = "";
+          };
+          interval = 1;
+          exec = "pomobar-cli status";
+          on-click = "pomobar-cli toggle";
+          on-click-middle = "pomobar-cli reset";
+          return-type = "json";
         };
 
         "custom/weather" = {
@@ -43,7 +68,11 @@
           format-source-muted = "";
           format-icons = {
             car = "";
-            default = ["" "" ""];
+            default = [
+              ""
+              ""
+              ""
+            ];
             headphone = "";
             headset = "";
             phone = "";
@@ -54,7 +83,9 @@
         };
 
         # tray = {};
-        tray = {spacing = 10;};
+        tray = {
+          spacing = 10;
+        };
       };
     };
 
