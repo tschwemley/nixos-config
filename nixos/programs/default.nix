@@ -1,12 +1,13 @@
-{pkgs, ...}: {
-  imports = [./nerdfetch.nix];
+{ pkgs, ... }:
+{
+  imports = [ ./nerdfetch.nix ];
 
   # TODO: slowly move these pkgs into appropriate subcategories
   environment.systemPackages = with pkgs; [
     age
     git
     gnupg
-    # isd
+    isd
     jdupes
     nrepl
     pinentry

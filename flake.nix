@@ -17,18 +17,9 @@
         system:
         (import nixpkgs {
           inherit system;
-          config = {
-            allowUnfree = true;
-            android_sdk.accept_license = true;
-            permittedInsecurePackages = [
-              "libsoup-2.74.3"
-            ];
-          };
-          overlays = with self.overlays; [
-            default
-            neovim
-            vimPlugins
-          ];
+
+          # Inherit from system nixpkgs option module for consistency between package sets
+          inherit ((import ./nixos/system/nixpkgs.nix { inherit self; }).nixpkgs) config overlays;
         })
         // {
           inherit lib;
@@ -67,10 +58,6 @@
         lib.nixosSystem {
           specialArgs = { inherit inputs self; };
           modules = [
-            {
-              nixpkgs = { inherit (pkgsFor."x86_64-linux") config overlays; };
-            }
-
             ./nixos/hosts/${host}
           ];
         }
@@ -87,7 +74,6 @@
     nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
-    pinned-textual-nixpkgs.url = "github:nixos/nixpkgs/9b008d60392981ad674e04016d25619281550a9d";
     systems.url = "github:nix-systems/default";
 
     nil = {
@@ -104,6 +90,11 @@
     # Non-Nix Inputs
     #---
 
+    charm = {
+      url = "github:charmbracelet/nur";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -118,12 +109,6 @@
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # TODO: refactor private appimage import(s)
-    hueforge = {
-      url = "file:/home/schwem/appimages/HueForge_v0.9.0-beta-1.AppImage";
-      flake = false;
     };
 
     librechat = {
@@ -154,6 +139,11 @@
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    stylix = {
+      url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

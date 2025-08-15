@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
   # }: let
   #   disk = import ../../hardware/disks/btrfs-encrypted.nix "/dev/disk/by-id/nvme-SHPP41-2000GM_SJC4N477711104A4V-part1" "crypted";
@@ -9,7 +10,10 @@
 }: {
   imports = [
     (import ./disk.nix "nvme1n1" "crypted")
-    (import ../../hardware/odyssey-ark.nix "DP-1")
+    (import ../../hardware/odyssey-ark.nix {
+      inherit pkgs;
+      output = "DP-1";
+    })
 
     ../../hardware/amd.nix
   ];

@@ -5,9 +5,11 @@
   lib,
   pkgs,
   ...
-}: let
-  rootUser = (import ../system/users.nix {inherit self config pkgs;}).root;
-in {
+}:
+let
+  rootUser = (import ../system/users.nix { inherit self config pkgs; }).root;
+in
+{
   imports = [
     inputs.sops-nix.nixosModules.sops
     inputs.disko.nixosModules.disko

@@ -18,6 +18,11 @@
   ];
 
   hardware = {
+		asus.battery = {
+			chargeUpto = 90;
+			enableChartUptoScript = true;
+		};
+
     firmware = [pkgs.sof-firmware];
 
     graphics = {

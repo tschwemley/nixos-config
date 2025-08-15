@@ -1,9 +1,8 @@
-{ config, ... }:
-{
+{config, ...}: {
   security.acme = {
     acceptTerms = true;
     certs = {
-      "schwem.io" = { };
+      "schwem.io" = {};
       "schwem.io-wildcard" = {
         domain = "*.schwem.io";
       };
@@ -11,6 +10,7 @@
         domain = "*.api.schwem.io";
       };
     };
+
     defaults = {
       credentialFiles = {
         CF_DNS_API_TOKEN_FILE = config.sops.secrets.cloudflareApiZoneKey.path;

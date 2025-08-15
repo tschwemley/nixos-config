@@ -30,9 +30,7 @@
       sandbox = "relaxed";
       substituters = [
         "https://cache.nixos.org?priority=10"
-        "https://nix-community.cachix.org"
-        # "https://yazi.cachix.org?priority=99"
-        # "https://hyprland.cachix.org"
+        "https://nix-community.cachix.org?priority=20"
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
