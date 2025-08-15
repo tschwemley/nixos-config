@@ -7,6 +7,7 @@
 			''
 				local loaded = false
 				local neogit = require("neogit")
+				neogit.setup()
 
 				-- local function load_git_plugins()
 				-- 	if not loaded and vim.fs.root(0, ".git") ~= nil then

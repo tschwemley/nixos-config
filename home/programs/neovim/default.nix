@@ -1,43 +1,41 @@
 { lib, ... }:
 {
-	imports = [
-		./colors
-		./core
-		./diagnostics
-		./files
-		./formatting
-		./ftplugin
-		./linting
-		./lsp
-		./mini
-		./telescope
-		./treesitter
+  imports = [
+    ./formatters.nix
+    ./lsp.nix
+    ./plugins.nix
+    ./treesitter.nix
 
-		# TODO: figure out home for these -- OR -- use the architecture: plugin/ ftplugin/ ... for nix modules
-		./bufferline.nix
-		./neogit.nix
-		
+    # ./colors
+    # ./core
+    # ./diagnostics
+    # ./files
+    # ./formatting
+    # ./ftplugin
+    # ./linting
+    # ./lsp
+    # #./mini
+    # ./telescope
+    # ./treesitter
 
-		# TODO: slowly move to a flat structure then delete this import
-		# ./modules
-	];
+    # TODO: figure out home for these -- OR -- use the architecture: plugin/ ftplugin/ ... for nix modules
+    # ./bufferline.nix
+    # ./neogit.nix
 
-	programs.neovim = {
-		enable = true;
-		# extraLuaConfig = 
-		# 	# lua
-		# 	''
-		# 		vim.o.colorscheme = "gruvbox";
-		# 	'';
-		# plugins = with pkgs.vimPlugins; [
-		# 	everforest
-		# 	gruvbox-nvim
-		# ];
+    # TODO: slowly move to a flat structure then delete this import
+    # ./modules
+  ];
 
-		defaultEditor = lib.mkDefault true;
-		vimAlias = true;
-		vimdiffAlias = true;
-		withPython3 = true;
-		withNodeJs = true;
-	};
+  programs.neovim = {
+    enable = true;
+    defaultEditor = lib.mkDefault true;
+    vimAlias = true;
+    vimdiffAlias = true;
+    withPython3 = true;
+    withNodeJs = true;
+  };
+
+  xdg.configFile = {
+    "nvim".source = ./config;
+  };
 }

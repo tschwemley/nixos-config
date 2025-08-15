@@ -3,7 +3,7 @@
   programs.neovim = with pkgs; {
     extraPackages = [
       nixd
-      nodePackages.intelephense
+			nodePackages.intelephense
     ];
 
     plugins = [
