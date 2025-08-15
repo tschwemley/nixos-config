@@ -1,4 +1,4 @@
-require('bufferline').setup()
+require("bufferline").setup()
 
 vim.keymap.set("n", "<leader>bb", "<cmd>BufferLineCyclePrev<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>bn", "<cmd>BufferLineCycleNext<cr>", { noremap = true })

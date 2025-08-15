@@ -35,6 +35,7 @@
     vim-dadbod-ui
 
     # other/unsorted
+    lazydev-nvim
     todo-comments-nvim
   ];
 }
