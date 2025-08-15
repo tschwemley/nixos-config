@@ -2,8 +2,6 @@
   imports = [
     ../../profiles/racknerd.nix
 
-    ../../server/ai/librechat
-    ../../server/alt-frontends/redlib.nix
     ../../server/alt-frontends/redlib.nix
     ../../server/alt-frontends/rimgo.nix
     ../../server/knowledge/excalidraw
@@ -11,6 +9,7 @@
     ../../server/services/pds.nix
     ../../server/services/taskchampion-sync-server.nix
 
+    # ../../server/ai/librechat
     # ../../server/ai/sillytavern.nix
     # ../../server/alt-frontends/scribe
     # ../../server/infrastructure/haproxy
@@ -24,5 +23,5 @@
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
   system.stateVersion = "24.11";
 
-  services.tailscale.extraUpFlags = ["--exit-node=ca-tor-wg-002.mullvad.ts.net"];
+  services.tailscale.extraUpFlags = [ "--exit-node=ca-tor-wg-002.mullvad.ts.net" ];
 }
