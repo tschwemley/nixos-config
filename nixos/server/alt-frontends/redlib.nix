@@ -2,10 +2,13 @@
   self,
   lib,
   ...
-}: let
+}:
+let
   address = "127.0.0.1";
-in {
-  nixpkgs.overlays = [self.overlays.redlib];
+in
+{
+  # TODO: uncomment or delete depending on test of recent nixos package
+  # nixpkgs.overlays = [self.overlays.redlib];
 
   services = {
     nginx.virtualHosts."reddit.schwem.io" = {
