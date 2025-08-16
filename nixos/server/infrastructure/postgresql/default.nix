@@ -47,11 +47,11 @@
                 CREATE DATABASE librechat OWNER librechat;
             EOSQL
 
-            INVIDIOUS_PASSWORD=$(cat ${config.sops.secrets.invidiousPostgresPassword.path})
-              psql -v password="'$LIBRECHAT_PASSWORD'" <<EOSQL
-                CREATE ROLE invidious WITH LOGIN PASSWORD :password;
-                CREATE DATABASE invidious OWNER invidious;
-            EOSQL
+            # INVIDIOUS_PASSWORD=$(cat ''${config.sops.secrets.invidiousPostgresPassword.path})
+            #   psql -v password="'$LIBRECHAT_PASSWORD'" <<EOSQL
+            #     CREATE ROLE invidious WITH LOGIN PASSWORD :password;
+            #     CREATE DATABASE invidious OWNER invidious;
+            # EOSQL
           '';
     };
 
