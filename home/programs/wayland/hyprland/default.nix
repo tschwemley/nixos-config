@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ../.
+
     ./binds.nix
     ./options.nix
     ./plugins.nix

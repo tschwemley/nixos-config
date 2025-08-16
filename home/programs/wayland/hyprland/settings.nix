@@ -1,13 +1,15 @@
-{config, ...}: {
-  # For all settings available REF: https://wiki.hyprland.org/Configuring/Variables/
+{ config, ... }:
+{
   wayland.windowManager.hyprland.settings = {
+    # REF: https://wiki.hyprland.org/Configuring/Variables/
+
     debug.disable_logs = false;
 
     cursor = {
       inactive_timeout = 4;
-      min_refresh_rate = 240;
+      min_refresh_rate = 120;
       no_break_fs_vrr = true;
-      no_hardware_cursors = true;
+      # no_hardware_cursors = true;
     };
 
     ecosystem = {
@@ -19,8 +21,12 @@
       "wl-paste --watch cliphist store"
     ];
 
+    # experimental.xx_color_management_v4 = true;
+
     general = {
+      allow_tearing = true;
       gaps_out = 8;
+      # layout = "scrolling"; # defaults: dwindle, master
       layout = "dwindle"; # defaults: dwindle, master
     };
 
@@ -44,13 +50,16 @@
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
       force_default_wallpaper = 0;
+      vfr = false;
     };
 
     monitor = config.hyprland.monitors.config;
 
     render = {
       # direct scanout attempts to reduce lag when there is only one fullscreen application on a screen
-      direct_scanout = true;
+      direct_scanout = 1;
+      # xp_mode = true;
+      # new_render_scheduling = true;
     };
 
     workspace = config.hyprland.workspaces;
