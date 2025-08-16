@@ -3,16 +3,19 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   host = "127.0.0.1";
   port = self.lib.toInt config.variables.ports.glance;
-in {
+in
+{
   services = {
     glance = {
       enable = true;
+      environmentFile = config.sops.secrets.glanceEnv.path;
       # REF: https://github.com/glanceapp/glance/blob/main/docs/configuration.md
       settings = {
-        server = {inherit host port;};
+        server = { inherit host port; };
 
         # TODO:
         #   1. decide if want/need more than just the dashboard/home page
@@ -31,7 +34,7 @@ in {
                   {
                     type = "clock";
                     timezones = [
-                      {timezone = "\${DEFAULT_TIMEZONE}";}
+                      { timezone = "\${DEFAULT_TIMEZONE}"; }
                     ];
                   }
                   {
@@ -52,8 +55,8 @@ in {
                   {
                     type = "split-column";
                     widgets = [
-                      {type = "hacker-news";}
-                      {type = "lobsters";}
+                      { type = "hacker-news"; }
+                      { type = "lobsters"; }
                     ];
                   }
                 ];
@@ -88,6 +91,4 @@ in {
     format = "dotenv";
     sopsFile = "${self.lib.secrets.server}/glance.env";
   };
-
-  systemd.services.glance.serviceConfig.EnvironmentFile = lib.mkDefault config.sops.secrets.glanceEnv.path;
 }
