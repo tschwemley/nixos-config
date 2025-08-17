@@ -1,14 +1,18 @@
 { pkgs, ... }:
 {
   home.pointerCursor = {
-    # package = pkgs.bibata-cursors;
-    # name = "Bibata-Modern-Classic";
-
-    package = pkgs.volantes-cursors;
-    name = "Volantes Cursors";
-    size = 32;
+    enable = true;
     gtk.enable = true;
-    hyprcursor.enable = true;
+
+    name = "Posy_Cursor_Black";
+    package = pkgs.posy-cursors;
+
+    size = 32;
     x11.enable = true;
+
+    hyprcursor = {
+      enable = true;
+      size = 32;
+    };
   };
 }
