@@ -23,7 +23,7 @@ in
 
   # Custom defined overlays
   aseprite = import ./aseprite.nix;
-  crush = import ./crush.nix;
+  crush = import ./crush.nix self;
   vimPlugins = import ./vimplugins.nix self;
   visidata = import ./visidata.nix;
   zen-browser = import ./zen-browser.nix self;
