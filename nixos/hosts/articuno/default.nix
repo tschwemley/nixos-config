@@ -14,6 +14,7 @@ in
     ../../profiles/buyvm.nix
 
     # server imports
+    ../../server/alt-frontends/redlib.nix
     ../../server/alt-frontends/freetar.nix
     ../../server/alt-frontends/safetwitch
 

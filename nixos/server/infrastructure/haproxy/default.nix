@@ -2,7 +2,8 @@ let
   baseCert = "/var/lib/acme/schwem.io/full.pem";
   wildcardCert = "/var/lib/acme/schwem.io-wildcard/full.pem";
   wildcardApiCert = "/var/lib/acme/schwem.io-wildcard-api/full.pem";
-in {
+in
+{
   networking.firewall.allowedTCPPorts = [
     80
     443
@@ -80,13 +81,14 @@ in {
         use_backend articuno if domain_freetar
         use_backend articuno if domain_monitor
         use_backend articuno if domain_ntfy
+        use_backend articuno if domain_reddit
         use_backend articuno if domain_twitch
         use_backend articuno if domain_yt
 
         use_backend moltres if domain_ai
         use_backend moltres if domain_draw
         use_backend moltres if domain_pds
-        use_backend moltres if domain_reddit
+        # use_backend moltres if domain_reddit
         use_backend moltres if domain_rimgo
         # use_backend moltres if domain_sillytavern
 
@@ -175,5 +177,5 @@ in {
     # restartIfChanged = false;
   };
 
-  users.users.haproxy.extraGroups = ["acme"];
+  users.users.haproxy.extraGroups = [ "acme" ];
 }
