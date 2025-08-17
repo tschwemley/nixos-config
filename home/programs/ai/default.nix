@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ self, pkgs, ... }:
 {
   imports = [
     ./mods.nix
@@ -9,4 +9,6 @@
   home.packages = with pkgs; [
     piper-tts
   ];
+
+  nixpkgs.overlays = [ self.overlays.crush ];
 }
