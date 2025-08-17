@@ -5,10 +5,6 @@
       allowUnfree = true;
     };
 
-    overlays = with self.overlays; [
-      default
-      neovim
-      vimPlugins
-    ];
+    overlays = builtins.attrValues self.overlays;
   };
 }
