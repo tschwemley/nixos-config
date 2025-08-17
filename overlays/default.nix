@@ -23,8 +23,7 @@ in
 
   # Custom defined overlays
   aseprite = import ./aseprite.nix;
-  # redlib = import ./redlib.nix;
-  # rocmPackages = import ./rocm-packages.nix self;
+  crush = import ./crush.nix;
   vimPlugins = import ./vimplugins.nix self;
   visidata = import ./visidata.nix;
   zen-browser = import ./zen-browser.nix self;
