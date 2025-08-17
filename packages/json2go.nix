@@ -1,7 +1,8 @@
 {
   buildGoModule,
-  lib,
   fetchFromGitHub,
+  lib,
+  nix-update-script,
 }:
 buildGoModule {
   pname = "json2go";
@@ -15,6 +16,8 @@ buildGoModule {
   };
 
   vendorHash = "sha256-nkxidf1Wc1LuNyBV4tmO5Swv0eYBR5rhIqSUDZqXgU4=";
+
+  passthru.updateScript = nix-update-script { };
 
   meta = {
     description = "Provides utilities for creating go type representation from json inputs";
