@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./.
 
@@ -25,11 +26,6 @@
   environment.systemPackages = with pkgs; [
     postgresql_16
     sqlite-interactive
-  ];
-
-  nixpkgs.overlays = with self.inputs; [
-    nix-private.overlays.shhinfo
-    nix-private.overlays.stash
   ];
 
   services.getty.autologinUser = "root";

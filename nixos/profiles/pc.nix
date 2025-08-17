@@ -50,12 +50,6 @@
   ];
 
   nix.settings.trusted-users = [ "schwem" ];
-  nixpkgs.overlays = with self.overlays; [
-    # aseprite
-    crush
-    visidata
-    zen-browser
-  ];
 
   # this is required to make home manager managed GTK items function
   programs.dconf.enable = true;

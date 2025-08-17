@@ -14,7 +14,6 @@ let
         wl-ocr
         ;
 
-      # TODO: move this belo with the other input overlays?
       oidcproxy = self.inputs.oidcproxy.packages.${system}.default;
     };
 in
@@ -22,13 +21,14 @@ in
   inherit default;
 
   # Custom defined overlays
-  aseprite = import ./aseprite.nix;
-  crush = import ./crush.nix self;
+  # aseprite = import ./aseprite.nix;
+  charm = import "${self.inputs.charm}/overlay.nix";
   vimPlugins = import ./vimplugins.nix self;
   visidata = import ./visidata.nix;
   zen-browser = import ./zen-browser.nix self;
 
   # Overlays defined via inputs
   neovim = self.inputs.neovim-overlay.overlays.default;
-  nix-topology = self.inputs.nix-topology.overlays.default;
+
+  # nix-topology = self.inputs.nix-topology.overlays.default;
 }
