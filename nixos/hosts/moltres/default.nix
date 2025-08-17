@@ -2,7 +2,7 @@
   imports = [
     ../../profiles/racknerd.nix
 
-    ../../server/alt-frontends/redlib.nix
+    # ../../server/alt-frontends/redlib.nix
     ../../server/alt-frontends/rimgo.nix
     ../../server/knowledge/excalidraw
     ../../server/services/anki-sync.nix
