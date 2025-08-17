@@ -1,6 +1,7 @@
 # environment
 .direnv/*
 !.direnv/init.lua
+.crush
 
 # build/script outputs
 ./articuno
