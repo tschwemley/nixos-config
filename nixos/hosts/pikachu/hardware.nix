@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     (import ./disk.nix "nvme0n1" "pika-crypted")
 
@@ -18,12 +19,12 @@
   ];
 
   hardware = {
-		asus.battery = {
-			chargeUpto = 90;
-			enableChartUptoScript = true;
-		};
+    asus.battery = {
+      chargeUpto = 90;
+      enableChargeUptoScript = true;
+    };
 
-    firmware = [pkgs.sof-firmware];
+    firmware = [ pkgs.sof-firmware ];
 
     graphics = {
       enable = true;
@@ -63,10 +64,10 @@
   programs.nix-required-mounts.presets.nvidia-gpu.enable = true;
 
   services.hardware.bolt.enable = true;
-  services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
+  services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
 
   systemd.services.nvidia-control-devices = {
-    wantedBy = ["multi-user.target"];
+    wantedBy = [ "multi-user.target" ];
     serviceConfig.ExecStart = "${pkgs.linuxPackages.nvidia_x11.bin}/bin/nvidia-smi";
   };
 }
