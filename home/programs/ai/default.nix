@@ -9,6 +9,4 @@
   home.packages = with pkgs; [
     piper-tts
   ];
-
-  nixpkgs.overlays = [ self.overlays.crush ];
 }
