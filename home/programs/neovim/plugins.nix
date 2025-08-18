@@ -7,15 +7,6 @@
     # collections
     mini-nvim
 
-    # git
-    neogit
-
-    # fuzzy find
-    telescope-nvim
-
-    # file explorer
-    yazi-nvim
-
     # colors
     everforest
     gruvbox-nvim
@@ -29,13 +20,26 @@
     css-vars-nvim
     luasnip
 
-    # DB
+    # db
     vim-dadbod
     vim-dadbod-completion
     vim-dadbod-ui
 
+    # diagnostitics
+    todo-comments-nvim
+    trouble-nvim
+    wtf-nvim
+
+    # fuzzy find
+    telescope-nvim
+
+    # file explorer
+    yazi-nvim
+
+    # git
+    neogit
+
     # other/unsorted
     lazydev-nvim
-    todo-comments-nvim
   ];
 }

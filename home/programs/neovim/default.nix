@@ -1,6 +1,7 @@
 { lib, ... }:
 {
   imports = [
+    ./env.nix
     ./formatters.nix
     ./lsp.nix
     ./plugins.nix
@@ -21,5 +22,4 @@
 
     dataFile."nvim/snippets".source = ./snippets;
   };
-
 }

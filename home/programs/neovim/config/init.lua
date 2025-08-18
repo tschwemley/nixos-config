@@ -1,4 +1,6 @@
-require('opts')
+require("opts")
+-- require("dotenv").load_env("~/.config/sops-nix/secrets/neovim.env")
+require("dotenv").load_env("/home/schwem/.config/sops-nix/secrets/neovim.env")
 
 -- Init colorscheme immediately to ensure load prior to any plugin that references for styling
 vim.go.background = "dark"
