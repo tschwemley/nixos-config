@@ -28,6 +28,7 @@
     ../programs/wayland/hyprland
     ../programs/wcalc.nix
     ../programs/wofi.nix
+    ../programs/zathura.nix
 
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
