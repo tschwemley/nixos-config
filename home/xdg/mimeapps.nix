@@ -1,19 +1,24 @@
 let
-  # audioPlayer = ["io.bassi.Amberol"];
-  browser = ["zen"];
-  imageViewer = ["org.gnome.Loupe"];
-  videoPlayer = ["vlc"];
+  audioPlayer = [ "vlc" ];
+  browser = [ "zen" ];
+  imageViewer = [ "org.gnome.Loupe" ];
+  videoPlayer = [ "vlc" ];
 
-  xdgAssociations = type: program: list:
+  xdgAssociations =
+    type: program: list:
     builtins.listToAttrs (
       map (e: {
         name = "${type}/${e}";
         value = program;
-      })
-      list
+      }) list
     );
 
-  # audio = xdgAssociations "audio" audioPlayer ["mp3" "flac" "wav" "aac"];
+  audio = xdgAssociations "audio" audioPlayer [
+    "mp3"
+    "flac"
+    "wav"
+    "aac"
+  ];
 
   browserTypes =
     (xdgAssociations "application" browser [
@@ -33,25 +38,37 @@ let
       "https"
       "unknown"
     ]);
-  image = xdgAssociations "image" imageViewer ["png" "svg" "jpeg" "gif"];
-  video = xdgAssociations "video" videoPlayer ["mp4" "mpeg" "x-flv" "x-matroska" "x-ms-wmv" "x-msvideo"];
+  image = xdgAssociations "image" imageViewer [
+    "png"
+    "svg"
+    "jpeg"
+    "gif"
+  ];
+  video = xdgAssociations "video" videoPlayer [
+    "mp4"
+    "mpeg"
+    "x-flv"
+    "x-matroska"
+    "x-ms-wmv"
+    "x-msvideo"
+  ];
 
   # XDG MIME types
   associations = builtins.mapAttrs (_: v: (map (e: "${e}.desktop") v)) (
     {
-      # "application/pdf" = ["org.pwmt.zathura-pdf-mupdf"];
+      "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf" ];
       "text/html" = browser;
-      "text/plain" = ["nvim"];
+      "text/plain" = [ "nvim" ];
       "x-scheme-handler/chrome" = browser;
-      # "inode/directory" = ["yazi"];
-      "inode/directory" = ["nemo"];
+      "inode/directory" = [ "yazi" ];
     }
+    // audio
+    // browserTypes
     // image
     // video
-    // browserTypes
-    # // audio
   );
-in {
+in
+{
   xdg.mimeApps = {
     enable = true;
     defaultApplications = associations;
