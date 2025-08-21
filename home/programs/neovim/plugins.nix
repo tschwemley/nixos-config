@@ -41,5 +41,7 @@
 
     # other/unsorted
     lazydev-nvim
+    nvim-colorizer-lua
+    taskwarrior3
   ];
 }
