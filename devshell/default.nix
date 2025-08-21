@@ -6,6 +6,7 @@ pkgs: {
       nix-output-monitor
       nix-prefetch-scripts
       nix-tree
+      nix-update
       nurl
       scripts.buildHost
       scripts.rotateSecrets
