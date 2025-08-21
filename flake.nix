@@ -128,7 +128,10 @@
 
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/release-24.05";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
 
     # TODO: low prio - add/remove when readressing in future
@@ -136,6 +139,11 @@
     #   url = "github:oddlama/nix-topology";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+
+    redlib = {
+      url = "github:redlib-org/redlib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
