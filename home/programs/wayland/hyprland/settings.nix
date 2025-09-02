@@ -30,9 +30,9 @@
       layout = "dwindle"; # defaults: dwindle, master
     };
 
-    gestures = {
-      workspace_swipe = true;
-    };
+    # gestures = {
+    #   workspace_swipe = true;
+    # };
 
     input = {
       follow_mouse = 1;

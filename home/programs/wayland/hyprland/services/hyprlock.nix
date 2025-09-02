@@ -1,7 +1,9 @@
-{config, ...}: let
+{ config, ... }:
+let
   font_family = "Hasklug Nerd Font Mono";
   monitor = config.hyprland.monitors.primary;
-in {
+in
+{
   # TODO: clean up this file
   programs.hyprlock = {
     enable = true;

@@ -1,3 +1,4 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.orca-slicer];
+{ pkgs, ... }:
+{
+  home.packages = [ pkgs.orca-slicer ];
 }

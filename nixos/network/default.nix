@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [ pkgs.traceroute ];
+  environment.systemPackages = with pkgs; [
+    traceroute
+    unixtools.net-tools
+  ];
 
   networking = {
     firewall = {

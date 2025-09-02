@@ -21,10 +21,10 @@ window#waybar {
 #workspaces button label{
     color: #689d6a;
 }
-#workspaces button.focused label {
+#workspaces button.active label {
     color: #1d2021;
 }
-#workspaces button.focused {
+#workspaces button.active {
     background: #689d6a; 
 }
 

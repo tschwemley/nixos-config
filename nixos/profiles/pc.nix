@@ -26,7 +26,6 @@
     ../programs/gaming.nix
     ../programs/usbutils.nix
     ../programs/wine.nix
-    ../programs/xdg.nix
 
     ../services/colord.nix
     ../services/dbus.nix

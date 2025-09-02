@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.neovim = {
     extraPackages = with pkgs; [
       # go
@@ -10,6 +11,9 @@
 
       # lua
       stylua
+
+      # toml
+      taplo
     ];
 
     plugins = with pkgs.vimPlugins; [

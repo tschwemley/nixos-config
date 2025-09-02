@@ -22,7 +22,7 @@
     ../programs/cowsay.nix
     ../programs/glow.nix
     ../programs/nemo.nix
-    ../programs/qt.nix
+    # ../programs/qt.nix
     ../programs/reddit-tui.nix
     ../programs/taskwarrior.nix
     ../programs/wayland/hyprland

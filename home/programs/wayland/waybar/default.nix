@@ -30,26 +30,50 @@
           "clock"
         ];
 
-        "clock" = {
-          interval = 1;
-          format = "{:%H:%M:%S}";
+        # "clock" = {
+        #   interval = 1;
+        #   format = "{:%H:%M:%S}";
+        #
+        # };
+
+        clock = {
+          actions = {
+            on-click-right = "mode";
+            on-scroll-down = "shift_down";
+            on-scroll-up = "shift_up";
+          };
+          calendar = {
+            format = {
+              days = "<span color='#ecc6d9'><b>{}</b></span>";
+              months = "<span color='#ffead3'><b>{}</b></span>";
+              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
+              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+              weeks = "<span color='#99ffdd'><b>W{}</b></span>";
+            };
+            mode = "month";
+            # on-scroll = 1;
+            # weeks-pos = "right";
+          };
+          format = "{:%H:%M}  ";
+          format-alt = "{:%A, %B %d, %Y (%R)}  ";
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
         };
 
-        "custom/pomobar" = {
-          format = "{} {icon}";
-          format-icons = {
-            idle = "";
-            paused = "";
-            work = "";
-            short_break = "";
-            long_break = "";
-          };
-          interval = 1;
-          exec = "pomobar-cli status";
-          on-click = "pomobar-cli toggle";
-          on-click-middle = "pomobar-cli reset";
-          return-type = "json";
-        };
+        # "custom/pomobar" = {
+        #   format = "{} {icon}";
+        #   format-icons = {
+        #     idle = "";
+        #     paused = "";
+        #     work = "";
+        #     short_break = "";
+        #     long_break = "";
+        #   };
+        #   interval = 1;
+        #   exec = "pomobar-cli status";
+        #   on-click = "pomobar-cli toggle";
+        #   on-click-middle = "pomobar-cli reset";
+        #   return-type = "json";
+        # };
 
         "custom/weather" = {
           format = "{}°";

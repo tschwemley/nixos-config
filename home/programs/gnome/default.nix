@@ -1,6 +1,8 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   themes = import ./themes.nix pkgs;
-in {
+in
+{
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
   gtk = {
@@ -9,9 +11,6 @@ in {
     enable = true;
 
     font = {
-      # name = "0xProtoNerdFontPropo-Regular";
-      # name = "Hasklug Nerd Font Mono";
-      # name = "Fira Code";
       name = "Ioveska";
       # size = 12;
     };
