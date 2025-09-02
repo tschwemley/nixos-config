@@ -111,6 +111,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland-easymotion = {
+      url = "github:zakk4223/hyprland-easymotion";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     librechat = {
       url = "github:tschwemley/librechat-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -156,7 +166,8 @@
     };
 
     zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
+      # url = "github:youwen5/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
