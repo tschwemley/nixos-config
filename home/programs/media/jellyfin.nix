@@ -1,3 +1,6 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [jellyfin-media-player];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [
+    # jellyfin-media-player
+  ];
 }
