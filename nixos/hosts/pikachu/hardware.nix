@@ -2,10 +2,14 @@
   inputs,
   lib,
   pkgs,
+  modulesPath,
   ...
 }:
 {
+
   imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+
     (import ./disk.nix "nvme0n1" "pika-crypted")
 
     "${inputs.nixos-hardware}/common/cpu/intel/alder-lake"
@@ -23,7 +27,7 @@
       enableChargeUptoScript = true;
     };
 
-    firmware = [ pkgs.sof-firmware ];
+    # firmware = [ pkgs.sof-firmware ];
 
     graphics = {
       enable = true;
