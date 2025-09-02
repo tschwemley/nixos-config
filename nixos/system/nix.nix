@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     nix-doc
     nix-prefetch-git
@@ -21,23 +22,40 @@
       persistent = true;
     };
 
-    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
     settings = {
       auto-optimise-store = true;
-      experimental-features = ["nix-command" "flakes"];
-      extra-sandbox-paths = ["/etc/sops/nix-sandbox"];
+      extra-sandbox-paths = [ "/etc/sops/nix-sandbox" ];
       sandbox = "relaxed";
-      substituters = [
-        "https://cache.nixos.org?priority=10"
-        "https://nix-community.cachix.org?priority=20"
+
+      experimental-features = [
+        "nix-command"
+        "flakes"
       ];
+
+      # nix-serve hard-codes priority 30; no idea if it matters but use higher prio values in case
+      substituters = [
+        "https://cache.nixos.org?priority=40"
+        "https://nix-community.cachix.org?priority=50"
+
+        "https://hyprland.cachix.org"
+      ];
+
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        # "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
-        # "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       ];
+
+      trusted-substituters = [
+        "https://hyprland.cachix.org"
+      ];
+    };
+
+    sshServe = {
+      enable = true;
+      keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH7IcQegp1x3gwJ6X6+ykVQHByzKaNK233H5z2zdzahG *@pc" ];
     };
   };
 }

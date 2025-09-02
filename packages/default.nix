@@ -1,7 +1,6 @@
 self: pkgs: {
   android = import ./android pkgs;
   extraVimPlugins = import ./vim-plugins pkgs;
-  hueforge = pkgs.callPackage ./hueforge {inherit (self.inputs) hueforge;};
   json2go = pkgs.callPackage ./json2go.nix {};
   nrepl = pkgs.callPackage ./nrepl.nix {};
   pomobar-rs = pkgs.callPackage ./pomobar-rs {};
@@ -16,4 +15,6 @@ self: pkgs: {
   #   version = "13.5.0";
   #   src = /home/schwem/projects/ai/image/retro-diffusion/aseprite-extension/extension/python;
   # };
+
+  # hueforge = pkgs.callPackage ./hueforge {inherit (self.inputs) hueforge;};
 }
