@@ -1,6 +1,7 @@
-{ pkgs, ... }:
+{ self, pkgs, ... }:
 {
   imports = [
+    ./floorp.nix
     ./zen.nix
   ];
 
@@ -18,10 +19,11 @@
     with pkgs;
     [
       brave
-      firefox
+      # firefox
       lynx
       mullvad-browser
       tor-browser
       vivaldi
+      # zen-browser
     ];
 }

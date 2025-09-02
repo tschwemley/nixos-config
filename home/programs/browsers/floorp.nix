@@ -1,9 +1,6 @@
-{ self, pkgs, ... }:
+{ pkgs, ... }:
 {
-  # imports = [ self.inputs.zen-browser.homeModules.twilight ];
-  imports = [ self.inputs.zen-browser.homeModules.default ];
-
-  programs.zen-browser = {
+  programs.floorp = {
     enable = true;
 
     nativeMessagingHosts = [ pkgs.firefoxpwa ];
