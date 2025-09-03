@@ -31,7 +31,7 @@ in
 
       frontend www
         bind *:80
-        bind *:443 ssl crt ${wildcardCert} crt ${baseCert} crt ${wildcardApiCert}
+        bind *:443 ssl crt ${wildcardApiCert} crt ${wildcardCert} crt ${baseCert}
 
         mode http
 
