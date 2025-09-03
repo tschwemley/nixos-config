@@ -7,10 +7,10 @@
         fraction = 0.5;
       };
       y = {
-        fraction = 0.3;
+        fraction = 0.5;
       };
       width = {
-        fraction = 0.3;
+        fraction = 0.25;
       };
       hideIcons = false;
       ignoreExclusiveZones = false;

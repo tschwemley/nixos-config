@@ -18,7 +18,9 @@
     ../programs/music
     ../programs/productivity
 
-    ../programs/anyrun.nix
+    # TODO: decide if keeping anyrun... honestly it seems kind of ass so far
+    # ../programs/anyrun.nix
+
     ../programs/bitwarden.nix
     ../programs/cowsay.nix
     ../programs/glow.nix
@@ -28,7 +30,7 @@
     ../programs/taskwarrior.nix
     ../programs/wayland/hyprland
     ../programs/wcalc.nix
-    # ../programs/wofi.nix
+    ../programs/wofi.nix
     ../programs/zathura.nix
 
     ../services/kdeconnect.nix
