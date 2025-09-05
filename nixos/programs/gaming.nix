@@ -2,9 +2,9 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    lutris
-    retroarch-full
-    sidequest
+    # lutris
+    # retroarch-full
+    # sidequest
   ];
 
   # Gamescope is the the SteamOS session compositing window manager. It runs on top of a desktop
@@ -15,7 +15,7 @@
   programs = {
     gamescope = {
       enable = true;
-      capSysNice = true; # NOTE: this may break steam overlay (it used to - not sure if fixed by now)
+      capSysNice = true;
       args = [
         "--rt"
         "--expose-wayland"
@@ -24,7 +24,10 @@
 
     steam = {
       enable = true;
-      remotePlay.openFirewall = true;
+
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
 
       gamescopeSession.enable = true;
     };

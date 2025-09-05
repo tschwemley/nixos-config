@@ -50,6 +50,7 @@
         # wofi
         "$mod, e, exec, wofi-emoji"
         "$mod, p, exec, wofi --show drun"
+        "$mod, p, exec, anyrun"
         "$mod shift, p, exec, wofi-power-menu"
       ]
       ++ workspaceBinds;

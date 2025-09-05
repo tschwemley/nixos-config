@@ -32,7 +32,11 @@ vim.keymap.set("n", "<leader>sc", builtin.commands)
 vim.keymap.set("n", "<leader>sf", builtin.find_files)
 vim.keymap.set("n", "<leader>sh", builtin.help_tags)
 vim.keymap.set("n", "<leader>sk", builtin.keymaps)
-vim.keymap.set("n", "<leader>st", builtin.live_grep)
+
+vim.keymap.set("n", "<leader>st", function()
+	builtin.live_grep({ glob_pattern = { "!doc/scat/**", "!script/unit/**" } })
+end)
+
 vim.keymap.set("n", "<leader>sw", builtin.grep_string)
 
 -- misc. commands

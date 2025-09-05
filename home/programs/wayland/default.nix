@@ -1,7 +1,7 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 # Wayland config
 {
-  imports = [./waybar];
+  imports = [ ./waybar ];
 
   home = {
     packages = with pkgs; [
@@ -11,6 +11,7 @@
       wl-clipboard
       wl-ocr
       wf-recorder
+      wlr-randr
       ydotool
     ];
 

@@ -1,6 +1,6 @@
 let
   audioPlayer = [ "vlc" ];
-  browser = [ "zen" ];
+  browser = [ "zen-beta" ];
   imageViewer = [ "org.gnome.Loupe" ];
   videoPlayer = [ "vlc" ];
 
