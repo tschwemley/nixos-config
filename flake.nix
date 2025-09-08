@@ -111,15 +111,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
+    hyprland.url = "github:hyprwm/Hyprland";
 
     hyprland-easymotion = {
       url = "github:zakk4223/hyprland-easymotion";
       inputs.hyprland.follows = "hyprland";
     };
+
+    hyprlock.url = "github:hyprwm/hyprlock";
 
     librechat = {
       url = "github:tschwemley/librechat-flake";
