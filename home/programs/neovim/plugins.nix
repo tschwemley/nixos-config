@@ -37,6 +37,7 @@
     yazi-nvim
 
     # git
+    gitsigns-nvim
     neogit
 
     # other/unsorted
