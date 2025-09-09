@@ -3,10 +3,12 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   partitions = import ../../hardware/disks/efi-partitions.nix;
   rootDisk = import ../../hardware/disks/ephemeral-root.nix "/dev/sda" partitions;
-in {
+in
+{
   imports = [
     # hardware
     rootDisk
@@ -25,8 +27,8 @@ in {
   ];
 
   boot = {
-    kernelParams = ["acpi_rev_override"];
-    kernelModules = ["kvm-intel"];
+    kernelParams = [ "acpi_rev_override" ];
+    kernelModules = [ "kvm-intel" ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -54,7 +56,6 @@ in {
       extraPackages = with pkgs; [
         vaapiVdpau
         intel-compute-runtime
-        intel-media-sdk
       ];
     };
   };
@@ -73,7 +74,7 @@ in {
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
-    vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
 
   services = {
