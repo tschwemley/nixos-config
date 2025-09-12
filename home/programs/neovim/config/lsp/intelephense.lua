@@ -26,7 +26,8 @@
 --- ```
 
 local get_intelephense_license = function()
-	local f = assert(io.open(os.getenv("HOME") .. "/.config/sops-nix/secrets/intelephense_license", "rb"))
+	-- local f = assert(io.open(os.getenv("HOME") .. "/.config/sops-nix/secrets/intelephense_license", "rb"))
+	local f = assert(io.open("/run/secrets/intelephense_license", "rb"))
 	local content = f:read("*a")
 	f:close()
 	return string.gsub(content, "%s+", "")
@@ -64,30 +65,3 @@ return {
 		},
 	},
 }
-
--- return {
---    settings = {
---       intelephense = {
---          files = {
---             exclude = {
---                "**/.git/**",
---                "**/.svn/**",
---                "**/.hg/**",
---                "**/CVS/**",
---                "**/.DS_Store/**",
---                "**/node_modules/**",
---                "**/bower_components/**",
---                "**/vendor/**/{Tests,tests}/**",
---                "**/.history/**",
---                "**/vendor/**/vendor/**",
---                "/nix/store/**",
---             },
---          },
---          references = {
---             exclude = {
---                "/nix/store/**",
---             },
---          },
---       },
---    },
--- }

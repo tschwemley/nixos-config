@@ -31,6 +31,7 @@
     wtf-nvim
 
     # fuzzy find
+    fzf-lua
     telescope-nvim
 
     # file explorer
@@ -42,7 +43,9 @@
 
     # other/unsorted
     lazydev-nvim
+    nui-nvim
     nvim-colorizer-lua
+    nvim-origami
     taskwarrior3
   ];
 }

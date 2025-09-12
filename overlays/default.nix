@@ -15,12 +15,6 @@ let
         ;
 
       oidcproxy = self.inputs.oidcproxy.packages.${system}.default;
-
-      # TODO: remove after merged upstream
-      # UPSTREAM: https://nixpkgs-tracker.ocfox.me/?pr=437045
-      python3Packages = prev.python3Packages // {
-        inherit (self.inputs.nixpkgs-master.legacyPackages.${system}.python3Packages) vdirsyncer;
-      };
     };
 in
 {
@@ -32,11 +26,12 @@ in
   redlib = import ./redlib.nix self;
   vimPlugins = import ./vimplugins.nix self;
   visidata = import ./visidata.nix;
-  # zen-browser = import ./zen-browser.nix self;
 
   # Overlays defined via inputs
-  hyprland = self.inputs.hyprland.overlays.default;
-  neovim = self.inputs.neovim-overlay.overlays.default;
+  # hypridle = self.inputs.hypridle.overlays.default;
+  # hyprland = self.inputs.hyprland.overlays.default;
+  # hyprlock = self.inputs.hyprlock.overlays.default;
+  neovim = self.inputs.neovim-nightly-overlay.overlays.default;
 
   # nix-topology = self.inputs.nix-topology.overlays.default;
 }
