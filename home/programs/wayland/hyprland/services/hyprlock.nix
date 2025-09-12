@@ -1,4 +1,9 @@
-{ config, ... }:
+{
+  self,
+  config,
+  pkgs,
+  ...
+}:
 let
   font_family = "Hasklug Nerd Font Mono";
   monitor = config.hyprland.monitors.primary;
@@ -7,6 +12,7 @@ in
   # TODO: clean up this file
   programs.hyprlock = {
     enable = true;
+    # package = self.inputs.hyprlock.packages.${pkgs.system}.default;
 
     settings = {
       general = {

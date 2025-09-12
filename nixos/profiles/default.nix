@@ -54,7 +54,7 @@ in
           inherit key;
 
           group = "users";
-          mode = "0400";
+          mode = "0440";
           sopsFile = "${self}/secrets/home/neovim.yaml";
         };
 
