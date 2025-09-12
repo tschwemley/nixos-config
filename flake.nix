@@ -100,25 +100,42 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # TODO: trial and replace waybar or remove
-    gbar = {
-      url = "github:scorpion-26/gBar";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
-
+    # hyprland.url = "github:hyprwm/Hyprland";
+    #
     hyprland-easymotion = {
       url = "github:zakk4223/hyprland-easymotion";
-      inputs.hyprland.follows = "hyprland";
+      inputs = {
+        # hyprland.follows = "hyprland";
+        # nixpkgs.follows = "hyprland/nixpkgs";
+        # nixpkgs.follows = "nixpkgs";
+      };
     };
-
-    hyprlock.url = "github:hyprwm/hyprlock";
+    #
+    # hypridle = {
+    #   url = "github:hyprwm/hypridle";
+    #   inputs = {
+    #     hyprlang.follows = "hyprland/hyprlang";
+    #     hyprutils.follows = "hyprland/hyprutils";
+    #     nixpkgs.follows = "hyprland/nixpkgs";
+    #     systems.follows = "hyprland/systems";
+    #   };
+    # };
+    #
+    # hyprlock = {
+    #   url = "github:hyprwm/hyprlock";
+    #   inputs = {
+    #     hyprgraphics.follows = "hyprland/hyprgraphics";
+    #     hyprlang.follows = "hyprland/hyprlang";
+    #     hyprutils.follows = "hyprland/hyprutils";
+    #     nixpkgs.follows = "hyprland/nixpkgs";
+    #     systems.follows = "hyprland/systems";
+    #   };
+    # };
 
     librechat = {
       url = "github:tschwemley/librechat-flake";
@@ -130,7 +147,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-overlay = {
+    neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
