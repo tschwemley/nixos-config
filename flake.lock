@@ -978,11 +978,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1758007114,
-        "narHash": "sha256-HBk+/DZwZn9rbcc8SD+/btLJQdCDjn9d4inbQjZgq8c=",
+        "lastModified": 1758007779,
+        "narHash": "sha256-HGPQa1MHsTua40MBDsiAaa5DGZ0XtNp0H4qj6PKIY0U=",
         "ref": "refactor",
-        "rev": "00c7031f1ffef0307f61186f42dda0c781987f09",
-        "revCount": 67,
+        "rev": "a1ea1b6ea8c92e901588d3020f8ea3e1603e7e7b",
+        "revCount": 68,
         "type": "git",
         "url": "https://git.schwem.io/schwem/nix-private"
       },
@@ -1361,11 +1361,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757847158,
-        "narHash": "sha256-TumOaykhZO8SOs/faz6GQhqkOcFLoQvESLSF1cJ4mZc=",
+        "lastModified": 1758007585,
+        "narHash": "sha256-HYnwlbY6RE5xVd5rh0bYw77pnD8lOgbT4mlrfjgNZ0c=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "ee6f91c1c11acf7957d94a130de77561ec24b8ab",
+        "rev": "f77d4cfa075c3de66fc9976b80e0c4fc69e2c139",
         "type": "github"
       },
       "original": {
@@ -1381,11 +1381,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757847158,
-        "narHash": "sha256-TumOaykhZO8SOs/faz6GQhqkOcFLoQvESLSF1cJ4mZc=",
+        "lastModified": 1758007585,
+        "narHash": "sha256-HYnwlbY6RE5xVd5rh0bYw77pnD8lOgbT4mlrfjgNZ0c=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "ee6f91c1c11acf7957d94a130de77561ec24b8ab",
+        "rev": "f77d4cfa075c3de66fc9976b80e0c4fc69e2c139",
         "type": "github"
       },
       "original": {
@@ -1428,11 +1428,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758006272,
-        "narHash": "sha256-H0//KUZ0Mb6c8tIRp2s7MbGSSLe5RUiTaK08ohZY8SQ=",
+        "lastModified": 1758007762,
+        "narHash": "sha256-kZMSh4++x5e25n+ljPnWZs/lSN/ouXFhTDFnERodqa4=",
         "ref": "refactor",
-        "rev": "8b401096f8b14121874ef364e39d9e5d32d0c355",
-        "revCount": 33,
+        "rev": "e36715d5d42df68b1d33c30d9946ec27f1f8ad2e",
+        "revCount": 34,
         "type": "git",
         "url": "https://git.schwem.io/schwem/stash-flake"
       },
