@@ -31,7 +31,7 @@
     wtf-nvim
 
     # fuzzy find
-    fzf-lua
+    # fzf-lua # BUG: failing tests
     telescope-nvim
 
     # file explorer
