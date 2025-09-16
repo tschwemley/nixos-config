@@ -978,11 +978,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1758000025,
-        "narHash": "sha256-V1ZJG55aMzT4tFR/aMsYuPDhe/aq1xiuSpmgCQggCs4=",
+        "lastModified": 1758002227,
+        "narHash": "sha256-+Vo4qbRuYDMcKpcXJKw2YpIklTOTi8bCFYr7ojGPCIk=",
         "ref": "refactor",
-        "rev": "a441b4243b8b7659a3fc344d29ba9874a7d38f31",
-        "revCount": 63,
+        "rev": "6d6dbcf21827e96811fdb26f6299acce5914681d",
+        "revCount": 64,
         "type": "git",
         "url": "https://git.schwem.io/schwem/nix-private"
       },
@@ -1081,11 +1081,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1757999423,
-        "narHash": "sha256-9xhri2GAzSIC50Sc+wJRi0xf9EDCWeurhPvKTf/4CUE=",
+        "lastModified": 1758001788,
+        "narHash": "sha256-ZZv+V20dbqiAs/QBdfTHg1nYziGL1M3F/FhHKRgoiRw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "1ee605f7690249d0d9fb2d31b34576a65bd282c2",
+        "rev": "2f8e099a1ade196425532f944280c911399db897",
         "type": "github"
       },
       "original": {
@@ -1428,11 +1428,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758000007,
-        "narHash": "sha256-N6ZBko1NrkHIDnyxoKGTnMKRtvbXqg8BwfjAo6lfWLo=",
+        "lastModified": 1758002206,
+        "narHash": "sha256-H+Knjl+puirgO7FWt1xfukvKE/1YKBSn1AYOdpMQYg4=",
         "ref": "refactor",
-        "rev": "5ab2ddaacb0851197fc7f58ea802de200bb215ad",
-        "revCount": 28,
+        "rev": "7a45e1e6f17ff66ce109ab2c068b4266704bd981",
+        "revCount": 29,
         "type": "git",
         "url": "https://git.schwem.io/schwem/stash-flake"
       },
