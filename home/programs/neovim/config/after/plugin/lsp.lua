@@ -8,12 +8,14 @@ local function show_variables()
 	builtin.lsp_document_symbols({ symbols = { "constant", "property", "variable" } })
 end
 
-vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
-vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to Declaration" })
-vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+vim.keymap.set("n", "gd", function()
+	vim.lsp.buf.definition({
+		reuse_win = true,
+	})
+end)
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
 vim.keymap.set("n", "K", vim.lsp.buf.hover)
 
