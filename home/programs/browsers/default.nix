@@ -1,7 +1,7 @@
 { self, pkgs, ... }:
 {
   imports = [
-    ./floorp.nix
+    # ./floorp.nix
     ./zen.nix
   ];
 
