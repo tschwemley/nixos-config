@@ -49,6 +49,16 @@
         SponsoredSuggestions = false;
         WebSuggestions = false;
       };
+
+      UserMessaging = {
+        ExtensionRecommendations = false;
+        FeatureRecommendations = false;
+        FirefoxLabs = false;
+        Locked = false;
+        MoreFromMozilla = false;
+        SkipOnboarding = true;
+        UrlbarInterventions = false;
+      };
     };
   };
 }
