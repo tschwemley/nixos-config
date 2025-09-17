@@ -166,11 +166,6 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    redlib = {
-      url = "github:redlib-org/redlib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -206,6 +201,11 @@
 
     oidcproxy = {
       url = "git+https://git.schwem.io/schwem/oidcproxy";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    redlib = {
+      url = "github:redlib-org/redlib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
