@@ -7,6 +7,7 @@
     age
     git
     gnupg
+    hw-probe
     isd
     jdupes
     nrepl
