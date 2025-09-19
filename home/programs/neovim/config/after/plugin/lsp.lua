@@ -8,29 +8,42 @@ local function show_variables()
 	builtin.lsp_document_symbols({ symbols = { "constant", "property", "variable" } })
 end
 
-vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("LspGroup", {}),
+	callback = function(e)
+		-- local opts = function(desc)
+		-- 	local opts = { buffer = e.buf }
+		-- 	if desc ~= nil and desc ~= "" then
+		-- 		opts["desc"] = desc
+		-- 	end
+		-- 	return opts
+		-- end
 
-vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to Declaration" })
-vim.keymap.set("n", "gd", function()
-	vim.lsp.buf.definition({
-		reuse_win = true,
-	})
-end)
-vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
-vim.keymap.set("n", "K", vim.lsp.buf.hover)
+		vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 
-vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
-vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
-vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename)
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to Declaration" })
+		vim.keymap.set("n", "gd", function()
+			vim.lsp.buf.definition({
+				reuse_win = true,
+			})
+		end)
+		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
+		vim.keymap.set("n", "K", vim.lsp.buf.hover)
 
-vim.keymap.set("n", "<leader>lm", show_methods)
-vim.keymap.set("n", "<leader>ls", builtin.lsp_document_symbols)
-vim.keymap.set("n", "<leader>lv", show_variables)
+		vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
+		vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
+		vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename)
 
-vim.keymap.set("n", "[d", function()
-	vim.diagnostic.goto_next()
-end)
+		vim.keymap.set("n", "<leader>lm", show_methods)
+		vim.keymap.set("n", "<leader>ls", builtin.lsp_document_symbols)
+		vim.keymap.set("n", "<leader>lv", show_variables)
 
-vim.keymap.set("n", "]d", function()
-	vim.diagnostic.goto_prev()
-end)
+		vim.keymap.set("n", "[d", function()
+			vim.diagnostic.jump({ count = -1, float = true })
+		end)
+
+		vim.keymap.set("n", "]d", function()
+			vim.diagnostic.jump({ count = 1, float = true })
+		end)
+	end,
+})

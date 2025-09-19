@@ -16,6 +16,7 @@
     blink-cmp
     blink-cmp-env
     blink-emoji-nvim
+    blink-nerdfont-nvim
     cmp-dap
     css-vars-nvim
     luasnip
@@ -30,9 +31,13 @@
     trouble-nvim
     wtf-nvim
 
+    # folds
+    nvim-origami
+
     # fuzzy find
     # fzf-lua # BUG: failing tests
     telescope-nvim
+    telescope-frecency-nvim
 
     # file explorer
     yazi-nvim
@@ -41,11 +46,13 @@
     gitsigns-nvim
     neogit
 
+    # ui
+    noice-nvim
+
     # other/unsorted
     lazydev-nvim
-    nui-nvim
+    # nui-nvim TODO: delete me if not necessary/included via noice
     nvim-colorizer-lua
-    nvim-origami
     taskwarrior3
   ];
 }

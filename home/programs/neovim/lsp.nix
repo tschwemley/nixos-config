@@ -12,7 +12,9 @@
 
       nixd
 
+      # php
       nodePackages.intelephense
+      phpactor
 
       superhtml
       vscode-css-languageserver
