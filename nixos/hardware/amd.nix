@@ -1,47 +1,63 @@
 {
-  self,
+  config,
   lib,
   pkgs,
   ...
 }:
 {
-  #nixos-hardware enables hardware.graphics*, initrd and sets modesetting video driver for xserver
-  imports = [ self.inputs.nixos-hardware.nixosModules.common-gpu-amd ];
+  environment = {
+    systemPackages = with pkgs; [
+      clinfo
+      nvtopPackages.amd
 
-  environment.systemPackages = with pkgs; [
-    clinfo
-    nvtopPackages.amd
+      # rocmPackages.rocminfo
 
-    gpu-viewer
-    vulkan-tools
-  ];
+      gpu-viewer
+      vulkan-tools
+    ];
+
+    # TODO: necessary?
+    sessionVariables = {
+      # LIBVA_DRIVER_NAME = "radeonsi";
+      # VDPAU_DRIVER = "radeonsi";
+    };
+  };
 
   hardware = {
     amdgpu = {
-      opencl.enable = true;
-      overdrive.enable = true;
+      initrd.enable = lib.mkDefault true;
+      opencl.enable = lib.mkDefault true;
+      overdrive.enable = lib.mkDefault true;
     };
 
-    graphics.extraPackages = with pkgs; [
-      libva1
-    ];
+    graphics = {
+      enable = lib.mkDefault true;
+      enable32Bit = lib.mkDefault true;
+
+      extraPackages = with pkgs; [
+        libva
+      ];
+    };
   };
 
-  nixpkgs.config.rocmSupport = true;
+  nixpkgs.config.rocmSupport = lib.mkDefault true;
 
-  # systemd.tmpfiles.rules =
-  # 	let
-  # 		rocmEnv = pkgs.symlinkJoin {
-  # 			name = "rocm-combined";
-  # 			paths = with pkgs.rocmPackages; [
-  # 				rocblas
-  # 				hipblas
-  # 				clr
-  # 			];
-  # 		};
-  # 	in [
-  # 		"L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
-  # 	];
+  services.xserver.videoDrivers = lib.mkDefault [ "modesetting" ];
+
+  systemd.tmpfiles.rules =
+    let
+      rocmEnv = pkgs.symlinkJoin {
+        name = "rocm-combined";
+        paths = with pkgs.rocmPackages; [
+          rocblas
+          hipblas
+          clr
+        ];
+      };
+    in
+    [
+      "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+    ];
 
   # ---
   # TODO: below is my original config. Delete if the above minimal config does what I need.
