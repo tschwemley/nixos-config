@@ -20,6 +20,7 @@
       DontCheckDefaultBrowser = true;
       NoDefaultBookmarks = true;
       OfferToSaveLogins = false;
+      SearchSuggestEnabled = false;
       WindowsSSO = false;
 
       EnableTrackingProtection = {
@@ -48,6 +49,12 @@
         Locked = false;
         SponsoredSuggestions = false;
         WebSuggestions = false;
+      };
+
+      Preferences = {
+        # "apz.autoscroll.enabled" = true;
+        "general.authscroll" = true;
+        "general.smoothScroll" = true;
       };
 
       UserMessaging = {
