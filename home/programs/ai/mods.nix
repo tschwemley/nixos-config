@@ -2,7 +2,8 @@
   self,
   config,
   ...
-}: {
+}:
+{
   home.shellAliases = {
     modsc = "mods -C ";
     modsl = "mods -l ";
@@ -26,7 +27,7 @@
       content =
         # yaml
         ''
-          default-model: qwen-coder
+          default-model: qwen3-instruct
           format-text:
             markdown: "Format the response as markdown without enclosing backticks."
             json: "Format the response as json without enclosing backticks."
@@ -115,7 +116,6 @@
           max-input-chars: 12250
           apis:
             schwem-io:
-              # base-url: https://ai.schwem.io/api
               base-url: https://openrouter.ai/api/v1
               api-key: ${config.sops.placeholder.mods_openrouter_api_key}
               models:
@@ -131,9 +131,21 @@
                 google/gemini-2.5-pro:
                   aliases: ["gemini", "gemini-pro"]
                   max-input-chars: 1048576
+                qwen/qwen3-235b-a22b-2507:
+                  aliases: ["qwen3-instruct"]
+                  max-input-chars: 262144
+                qwen/qwen3-235b-a22b-thinking-2507:
+                  aliases: ["qwen3-thinking"]
+                  max-input-chars: 262144
                 qwen/qwen3-coder:
-                  aliases: ["qwen-coder"]
+                  aliases: ["qwen3-coder"]
                   max-input-chars: 128000
+                openai/gpt-5-mini:
+                  aliases: ["gpt5-mini"]
+                  max-input-chars: 200000
+                openai/gpt-5-nano:
+                  aliases: ["gpt5-nano"]
+                  max-input-chars: 200000
         '';
     };
   };
