@@ -112,10 +112,10 @@
       inputs = {
         # hyprland.follows = "hyprland";
         # nixpkgs.follows = "hyprland/nixpkgs";
-        # nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs";
       };
     };
-    #
+
     # hypridle = {
     #   url = "github:hyprwm/hypridle";
     #   inputs = {
@@ -136,6 +136,11 @@
     #     systems.follows = "hyprland/systems";
     #   };
     # };
+
+    lan-mouse = {
+      url = "github:feschber/lan-mouse";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     librechat = {
       url = "github:tschwemley/librechat-flake";

@@ -24,6 +24,7 @@
     ../programs/bitwarden.nix
     ../programs/cowsay.nix
     ../programs/glow.nix
+    ../programs/lan-mouse.nix
     ../programs/nemo.nix
     # ../programs/qt.nix
     ../programs/reddit-tui.nix
