@@ -5,6 +5,7 @@
     ../../server/alt-frontends/redlib.nix
     ../../server/alt-frontends/rimgo.nix
     ../../server/knowledge/excalidraw
+    ../../server/security/anubis.nix
     ../../server/services/anki-sync.nix
     ../../server/services/pds.nix
     ../../server/services/taskchampion-sync-server.nix
