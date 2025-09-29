@@ -12,7 +12,8 @@ in
     nginx.virtualHosts."reddit.schwem.io" = {
       locations."/" = {
         # proxyPass = "http://${address}:${self.lib.port-map.redlib}";
-        proxyPass = "http://unix:${config.services.anubis.instances.redlib.settings.BIND}";
+        # proxyPass = "http://unix:${config.services.anubis.instances.redlib.settings.BIND}";
+        proxyPass = "unix:${config.services.anubis.instances.redlib.settings.BIND}";
       };
     };
 
