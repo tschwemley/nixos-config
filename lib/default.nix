@@ -6,22 +6,36 @@ lib
   flattenAttrs = attrset: builtins.concatLists (builtins.attrValues attrset);
 
   # TODO: change isPC and isServer to read from a config (json?) file. Or make it an option def.
-  isPC = host: builtins.elem host ["charizard" "pikachu"];
+  isPC =
+    host:
+    builtins.elem host [
+      "charizard"
+      "pikachu"
+    ];
 
-  isServer = host: builtins.elem host ["articuno" "zapados" "moltres" "jolteon" "flareon"];
+  isServer =
+    host:
+    builtins.elem host [
+      "articuno"
+      "zapados"
+      "moltres"
+      "jolteon"
+      "flareon"
+    ];
 
-  mkStrOption = attrs: lib.mkOption ({type = lib.types.str;} // attrs);
+  mkStrOption = attrs: lib.mkOption ({ type = lib.types.str; } // attrs);
 
-  nixpkgsPatch = system: nixpkgs:
+  nixpkgsPatch =
+    system: nixpkgs:
     (import nixpkgs {
       inherit system;
       # config.allowUnfree = true;
-    })
-    .applyPatches {
-      name = "nixpkgs-patched";
-      src = nixpkgs;
-      patches = import ./patches.nix;
-    };
+    }).applyPatches
+      {
+        name = "nixpkgs-patched";
+        src = nixpkgs;
+        patches = import ./patches.nix;
+      };
 
   secret = type: filename: ../secrets/${type}/${filename};
 
@@ -37,6 +51,7 @@ lib
   # TODO: remove this once all references are switched over to config.variables.ports
   port-map = {
     anonymous-overflow = "8010";
+    anubis = "8081";
     binternet = "8009";
     dashboard = "6980";
     excalidraw = "8380";
