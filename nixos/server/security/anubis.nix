@@ -4,7 +4,7 @@ let
 in
 {
   services.anubis = {
-    defaultOption.group = "nginx";
+    defaultOptions.group = "nginx";
 
     instances = {
       redlib = {
