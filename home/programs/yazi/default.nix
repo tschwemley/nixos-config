@@ -43,11 +43,25 @@ in
         }
         {
           on = "d";
-          run = "delete --permanently";
+          run = "remove --permanently";
         }
         {
           on = "q";
           run = "close";
+        }
+        {
+          on = [
+            "g"
+            "3"
+          ];
+          run = "cd ~/Downloads/3d-prints";
+        }
+        {
+          on = [
+            "g"
+            "m"
+          ];
+          run = "cd /mnt";
         }
 
         # -- plugins --
