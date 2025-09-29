@@ -4,7 +4,6 @@ let
 in
 {
   services.anubis = {
-    enable = true;
     instances = {
       redlib = {
         settings = {
