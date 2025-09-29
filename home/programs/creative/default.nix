@@ -4,5 +4,6 @@
     # ./aseprite.nix
     ./gimp.nix
     ./inkscape.nix
+    ./krita.nix
   ];
 }
