@@ -17,6 +17,7 @@
     blink-cmp-env
     blink-emoji-nvim
     blink-nerdfont-nvim
+    blink-cmp-conventional-commits
     cmp-dap
     css-vars-nvim
     luasnip
