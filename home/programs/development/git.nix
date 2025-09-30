@@ -1,13 +1,16 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   aliases = {
     b = "branch";
+    bd = "branch --delete";
     cb = "checkout --branch";
     co = "checkout";
     cm = "!git add . && git commit -am";
     s = "status";
   };
-in {
-  home.packages = with pkgs; [gh];
+in
+{
+  home.packages = with pkgs; [ gh ];
   programs.git = {
     inherit aliases;
 
