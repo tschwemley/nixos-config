@@ -208,8 +208,8 @@
     };
 
     redlib = {
-      url = "github:redlib-org/redlib";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      url = "git+https://git.schwem.io/schwem/redlib";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 }
