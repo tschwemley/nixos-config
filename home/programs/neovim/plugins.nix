@@ -1,5 +1,12 @@
 { pkgs, ... }:
+let
+  inherit (pkgs.vscode-extensions.xdebug) php-debug;
+in
 {
+  home.sessionVariables.PHP_DEBUG_PATH = "${php-debug}/share/vscode/extensions/xdebug.php-debug/out/phpDebug.js";
+
+  programs.neovim.extraPackages = [ php-debug ];
+
   programs.neovim.plugins = with pkgs.vimPlugins; [
     # bufferline/status line
     bufferline-nvim
@@ -26,6 +33,9 @@
     vim-dadbod
     vim-dadbod-completion
     vim-dadbod-ui
+
+    # debug
+    nvim-dap
 
     # diagnostitics
     todo-comments-nvim

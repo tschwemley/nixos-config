@@ -1,7 +1,8 @@
-{pkgs, ...}: {
-  imports = [./php.nix];
+{ pkgs, ... }:
+{
+  imports = [ ./php.nix ];
 
-  programs.neovim.extraPackages = [pkgs.vscode-extensions.xdebug.php-debug];
+  # programs.neovim.extraPackages = [pkgs.vscode-extensions.xdebug.php-debug];
 
   programs.neovim.plugins = with pkgs.vimPlugins; [
     nvim-dap

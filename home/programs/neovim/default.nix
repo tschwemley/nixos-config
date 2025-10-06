@@ -1,7 +1,7 @@
 { lib, ... }:
 {
   imports = [
-    ./env.nix
+    # ./env.nix
     ./formatters.nix
     ./lsp.nix
     ./plugins.nix
