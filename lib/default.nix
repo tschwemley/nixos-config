@@ -17,7 +17,7 @@ lib
     host:
     builtins.elem host [
       "articuno"
-      "zapados"
+      "zapdos"
       "moltres"
       "jolteon"
       "flareon"

@@ -93,11 +93,11 @@ in
         use_backend moltres if domain_rimgo
         # use_backend moltres if domain_sillytavern
 
-        use_backend zapados if domain_pinterest
-        use_backend zapados if domain_rss
-        use_backend zapados if domain_tumblr
-        use_backend zapados if domain_wiki
-        # use_backend zapados if domain_tasks
+        use_backend zapdos if domain_pinterest
+        use_backend zapdos if domain_rss
+        use_backend zapdos if domain_tumblr
+        use_backend zapdos if domain_wiki
+        # use_backend zapdos if domain_tasks
 
         use_backend jolteon if domain_stackoverflow
         use_backend jolteon if domain_git
@@ -120,11 +120,11 @@ in
       backend git_ssh_backend
         mode tcp
         server jolteon_ssh jolteon:2222 check
-        # server zapados zapados:2222 check
+        # server zapdos zapdos:2222 check
 
       backend it-tools
         http-request set-header X-Forwarded-Proto https
-        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
+        server zapdos zapdos.wyvern-map.ts.net:8080 check send-proxy
 
       backend jellyfin
         http-request set-header X-Forwarded-Proto https
@@ -144,7 +144,7 @@ in
 
       backend pinterest
         http-request set-header X-Forwarded-Proto https
-        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
+        server zapdos zapdos.wyvern-map.ts.net:8080 check send-proxy
 
       backend searxng
         http-request set-header X-Forwarded-Proto https
@@ -159,9 +159,9 @@ in
         http-request set-header X-Forwarded-Proto https
         server jolteon jolteon.wyvern-map.ts.net:8080 check send-proxy
 
-      backend zapados
+      backend zapdos
         http-request set-header X-Forwarded-Proto https
-        server zapados zapados.wyvern-map.ts.net:8080 check send-proxy
+        server zapdos zapdos.wyvern-map.ts.net:8080 check send-proxy
     '';
   };
 

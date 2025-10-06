@@ -17,8 +17,8 @@
     ../../system/fonts.nix
   ];
 
-  networking.hostName = "zapados";
-  services.tailscale.extraDaemonFlags = ["--socks5-server=0.0.0.0:1080"];
+  networking.hostName = "zapdos";
+  services.tailscale.extraDaemonFlags = [ "--socks5-server=0.0.0.0:1080" ];
   sops.defaultSopsFile = ./secrets.yaml;
   system.stateVersion = "23.05";
 }

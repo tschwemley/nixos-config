@@ -1,4 +1,5 @@
-{config, ...}: let
+{ config, ... }:
+let
   # mkNodeExporterScrapeConfig = name: {
   #   job_name = "${name}";
   #   static_configs = [
@@ -8,7 +9,8 @@
   #   ];
   # };
   target = name: "${name}:${toString config.services.prometheus.exporters.node.port}";
-in {
+in
+{
   services.prometheus = {
     enable = true;
 
@@ -19,7 +21,7 @@ in {
           {
             targets = [
               (target "articuno")
-              (target "zapados")
+              (target "zapdos")
               (target "moltres")
               (target "flareon")
               (target "jolteon")
@@ -28,7 +30,7 @@ in {
         ];
       }
       # (mkNodeExporterScrapeConfig "articuno")
-      # (mkNodeExporterScrapeConfig "zapados")
+      # (mkNodeExporterScrapeConfig "zapdos")
       # (mkNodeExporterScrapeConfig "moltres")
       # (mkNodeExporterScrapeConfig "flareon")
       # (mkNodeExporterScrapeConfig "jolteon")

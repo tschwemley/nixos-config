@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.services.rclone;
 
   options = [
@@ -18,24 +19,29 @@
   ];
   fsType = "rclone";
 
-  mkRcloneFSOptions = host: paths:
-    lib.listToAttrs (map (path:
-      lib.nameValuePair "/mnt/${host}/${path}" {
-        inherit fsType options;
-        depends = ["/home"];
-        device = "${host}:/${path}";
-      })
-    paths);
-in {
+  mkRcloneFSOptions =
+    host: paths:
+    lib.listToAttrs (
+      map (
+        path:
+        lib.nameValuePair "/mnt/${host}/${path}" {
+          inherit fsType options;
+          depends = [ "/home" ];
+          device = "${host}:/${path}";
+        }
+      ) paths
+    );
+in
+{
   imports = [
     ./options.nix
     (lib.mkIf cfg.enableJolteon (import ./jolteon.nix mkRcloneFSOptions))
     (lib.mkIf cfg.enableFlareon (import ./flareon.nix mkRcloneFSOptions))
     (lib.mkIf cfg.enableTentacool (import ./tentacool.nix mkRcloneFSOptions))
-    # (lib.mkIf cfg.enableZapados (import ./zapados.nix mkRcloneFSOptions))
+    # (lib.mkIf cfg.enablezapdos (import ./zapdos.nix mkRcloneFSOptions))
   ];
 
-  environment.systemPackages = [pkgs.rclone];
+  environment.systemPackages = [ pkgs.rclone ];
 
   sops.secrets."rclone.conf" = {
     owner = "root";

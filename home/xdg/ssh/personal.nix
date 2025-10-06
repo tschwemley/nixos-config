@@ -6,7 +6,7 @@
 let
   servers = [
     "articuno"
-    "zapados"
+    "zapdos"
     "moltres"
     "jolteon"
     "flareon"
@@ -76,7 +76,7 @@ in
       };
 
       mac = {
-        hostname = "192.168.1.12";
+        hostname = "192.168.1.12"; # 192.168.1.69 -> alt
         identityFile = config.sops.secrets.mac_key_old.path;
         user = "tschwemley";
         dynamicForwards = [ { port = 9876; } ];
