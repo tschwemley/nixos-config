@@ -61,7 +61,7 @@
       enableFlareon = true;
       enableJolteon = true;
       enableTentacool = true;
-      enableZapdos = true;
+      # enableZapdos = true;
     };
 
     tailscale.extraUpFlags = [
