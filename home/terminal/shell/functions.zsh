@@ -5,10 +5,21 @@ c () {
     wcalc -EE <<< "$exp"
 }
 
+jqkv() {
+	[[ -z $1 ]] && echo "no file passed" && exit 1
+	jq 'to_entries | .[] | "\(.key): \(.value)"' "$1"
+}
+
 # nix build with output of last error
 nbuild() {
   nix build "$@" 2>/tmp/last-build.error.log
   $(tail -n1 /tmp/last-build.error.log | sed "s/.*\(nix log.*\)'./\1/")
+}
+
+
+# nix flake update 
+nfu() { 
+	nix flake update && git add flake.lock && git commit -m 'flake update' && git push origin main
 }
 
 npfgit() {
@@ -134,3 +145,22 @@ sops_extract() {
 
 # tail with bat
 tailf() { tail -f "$1" | bat --paging=never -l log }
+
+highlight-help-output() {
+    # if [[ "$1" == *"--help"* || "$1" == *" -h"* ]]; then
+    if [[ "$1" == *"--help"* ]]; then
+		# $1 | bat -l help
+		# echo "\$1: $1"
+		# cmd=${1/ */}
+		# args=${1/$cmd/}
+		# echo "cmd: $cmd"
+		# echo "args: $args"
+		# "$cmd $args" | bat -pl help
+
+        # # Execute the command and pipe through bat
+        "${(Q)1}" | bat --plain --language=help
+
+        # Prevent the original command from executing
+        return 1
+    fi
+}
