@@ -36,6 +36,7 @@ in
 
     # debug
     nvim-dap
+    nvim-dap-view
 
     # diagnostitics
     todo-comments-nvim

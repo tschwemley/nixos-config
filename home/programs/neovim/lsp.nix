@@ -6,16 +6,23 @@
 {
   programs.neovim = {
     extraPackages = with pkgs; [
+      # python
       basedpyright
 
+      # lua
       lua-language-server
 
+      # markdown
+      marksman
+
+      # nix
       nixd
 
       # php
       nodePackages.intelephense
       phpactor
 
+      # web
       superhtml
       vscode-css-languageserver
     ];

@@ -62,12 +62,9 @@ require("blink.cmp").setup({
 			emoji = {
 				name = "Emoji",
 				module = "blink-emoji",
+				-- Enable emoji completion only for git commits and markdown.
 				should_show_items = function()
-					return vim.tbl_contains(
-						-- Enable emoji completion only for git commits and markdown.
-						{ "gitcommit", "markdown" },
-						vim.o.filetype
-					)
+					return vim.tbl_contains({ "gitcommit", "markdown" }, vim.o.filetype)
 				end,
 			},
 		},

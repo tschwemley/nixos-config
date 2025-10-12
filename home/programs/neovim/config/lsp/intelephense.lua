@@ -11,7 +11,10 @@ return {
 
 	settings = { -- REF: https://github.com/bmewburn/intelephense-docs/blob/master/installation.md#configuration-options
 		intelephense = {
-			format = { braces = "allman" },
+			format = {
+				enable = false, -- TODO: remove the false enable?
+				braces = "allman",
+			},
 			telemetry = { enabled = false },
 
 			environment = {
@@ -39,9 +42,10 @@ return {
 				},
 			},
 
+			phpdoc = { returnVoid = false },
+
 			references = {
 				exclude = {
-					-- "**/.direnv/**",
 					"/nix/store/**/*",
 				},
 			},
