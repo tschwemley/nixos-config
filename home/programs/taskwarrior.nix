@@ -2,13 +2,15 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   package = pkgs.taskwarrior3;
-in {
+in
+{
   home.packages = with pkgs; [
     tasknc
     taskopen
-    tasksh
+    # tasksh
     taskwarrior-tui
     vit
   ];
@@ -17,12 +19,10 @@ in {
     inherit package;
     enable = true;
 
-    config = {};
+    config = { };
 
     extraConfig =
-      /*
-      ini
-      */
+      # ini
       ''
         include ${config.xdg.dataFile."task/gruvbox.theme".source}
       '';
@@ -35,9 +35,7 @@ in {
   };
 
   xdg.dataFile."task/gruvbox.theme".text =
-    /*
-    bash
-    */
+    # bash
     ''
       # Gruvbox Dark Material Hard Theme for Taskwarrior
 
