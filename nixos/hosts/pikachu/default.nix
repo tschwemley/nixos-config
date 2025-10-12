@@ -102,6 +102,7 @@ in
       "3, monitor:eDP-1"
       "4, monitor:eDP-1"
       "5, monitor:DP-1"
+      "6, monitor:DP-1"
     ];
   };
 
