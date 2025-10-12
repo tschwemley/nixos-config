@@ -4,7 +4,7 @@
     ./json.nix
     ./posting.nix
     ./tealdeer
-    ./visidata.nix
+    # ./visidata.nix
     ./yq.nix
   ];
 }
