@@ -27,7 +27,8 @@
       content =
         # yaml
         ''
-          default-model: qwen3-instruct
+          default-model: gpt5-mini
+          # default-model: qwen3-instruct
           format-text:
             markdown: "Format the response as markdown without enclosing backticks."
             json: "Format the response as json without enclosing backticks."
