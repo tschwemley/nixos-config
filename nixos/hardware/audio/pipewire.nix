@@ -1,12 +1,11 @@
 { pkgs, ... }:
 {
   environment = {
-    # TODO: remove these dependent on
-    #
-    sessionVariables = {
-      SDL_AUDIODRIVER = "pipewire";
-      ALSOFT_DRIVERS = "pipewire";
-    };
+    # TODO: remove these dependent on final config
+    # sessionVariables = {
+    #   ALSOFT_DRIVERS = "pipewire";
+    #   SDL_AUDIODRIVER = "pipewire";
+    # };
 
     systemPackages = with pkgs; [
       helvum
@@ -29,12 +28,12 @@
     # TODO: remove these once confirming whether used or not
     #       ** see above todo when resolving
     #
-    alsa = {
-      enable = true;
-      support32Bit = true;
-    };
-
-    pulse.enable = true;
+    # alsa = {
+    #   enable = true;
+    #   support32Bit = true;
+    # };
+    #
+    # pulse.enable = true;
   };
 
   # Enables the RealtimeKit system service, which hands out realtime scheduling priority to user

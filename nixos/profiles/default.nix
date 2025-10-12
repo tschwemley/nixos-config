@@ -48,20 +48,20 @@ in
     defaultSopsFile = ../hosts/${config.networking.hostName}/secrets.yaml;
 
     # default "home" secrets (setting in default profile at system level for root access)
-    # secrets =
-    #   let
-    #     mkSecret = key: {
-    #       inherit key;
-    #
-    #       group = "users";
-    #       mode = "0440";
-    #       sopsFile = "${self}/secrets/home/neovim.yaml";
-    #     };
-    #
-    #   in
-    #   {
-    #     intelephense_license = mkSecret "intelephense_license";
-    #     openrouter_nvim_api_key = mkSecret "openrouter_api_key";
-    #   };
+    secrets =
+      let
+        mkSecret = key: {
+          inherit key;
+
+          group = "users";
+          mode = "0440";
+          sopsFile = "${self}/secrets/home/neovim.yaml";
+        };
+
+      in
+      {
+        intelephense_license = mkSecret "intelephense_license";
+        openrouter_nvim_api_key = mkSecret "openrouter_api_key";
+      };
   };
 }
