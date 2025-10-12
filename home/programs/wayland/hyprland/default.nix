@@ -32,8 +32,8 @@
     enable = true;
 
     # use the hyprland package & portal from the nixos module
-    package = null;
-    portalPackage = null;
+    # package = null;
+    # portalPackage = null;
 
     systemd = {
       variables = [ "--all" ];

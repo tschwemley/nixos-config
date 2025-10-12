@@ -21,8 +21,6 @@
       # make SDL2 applications use wayland
       SDL_VIDEODRIVER = "wayland";
       XDG_SESSION_TYPE = "wayland";
-
-      WAYLAND_DISPLAY = 1;
     };
   };
 }

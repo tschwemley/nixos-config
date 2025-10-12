@@ -26,6 +26,9 @@
       # steam
       "float, initialClass:steam"
 
+      # mpv
+      "float, initialClass:mpv"
+
       # zen
       "float, title:^(Picture-in-Picture)$"
       "float, title:^(Developer Tools)"
