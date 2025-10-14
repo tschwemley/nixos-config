@@ -17,6 +17,22 @@
     inputs.nixos-hardware.nixosModules.asus-battery
   ];
 
+  boot = {
+    initrd = {
+      availableKernelModules = [
+        "xhci_pci"
+        "thunderbolt"
+        "nvme"
+      ];
+    };
+
+    kernelModules = [
+      "kvm-intel"
+      "snd_hda_intel"
+      "sof_audio_pci_intel_tgl"
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     cudatoolkit
   ];
@@ -35,17 +51,13 @@
     };
 
     nvidia = {
-      # NOTE: Can't define this apparently... already set
-      # enabled = lib.mkForce true;
+      # enabled = lib.mkForce true; # NOTE: Can't define this apparently... already set
+
       dynamicBoost.enable = true;
       gsp.enable = true;
       modesetting.enable = true;
       nvidiaPersistenced = true;
       nvidiaSettings = true;
-      # TODO: open preferred theoretically but I'm not sure when it comes to CUDA
-      # open = true;true
-      open = false;
-      # package = lib.mkForce config.boot.kernelPackages.nvidiaPackages.stable;
       videoAcceleration = true;
 
       prime = {
