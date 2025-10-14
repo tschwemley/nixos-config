@@ -1,7 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     jellyfin
-    jellyfin-ffmpeg
+    ffmpeg-headless
+    # jellyfin-ffmpeg
     jellyfin-web
   ];
 
@@ -42,5 +44,5 @@
     };
   };
 
-  users.users.jellyfin.extraGroups = ["users"];
+  users.users.jellyfin.extraGroups = [ "users" ];
 }
