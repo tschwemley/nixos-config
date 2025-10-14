@@ -58,6 +58,7 @@
       modesetting.enable = true;
       nvidiaPersistenced = true;
       nvidiaSettings = true;
+      open = false;
       videoAcceleration = true;
 
       prime = {
