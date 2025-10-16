@@ -2,31 +2,35 @@
   self,
   pkgs,
   ...
-}: let
+}:
+let
   # two extra storage drives on flareon host TODO: move this to someplace generic
   numExtraDrives = 3;
-  extraDrives =
-    builtins.genList (
-      i: let
-        iStr = builtins.toString (i + 2);
-      in
-        import ../../hardware/disks/block-storage.nix {
-          device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi${iStr}";
-          mountpoint = "storage${iStr}";
-        }
-    )
-    numExtraDrives;
-in {
-  imports =
-    [
-      self.inputs.nix-private.nixosModules.envs.flareon
+  extraDrives = builtins.genList (
+    i:
+    let
+      iStr = builtins.toString (i + 2);
+    in
+    import ../../hardware/disks/block-storage.nix {
+      device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi${iStr}";
+      mountpoint = "storage${iStr}";
+    }
+  ) numExtraDrives;
+in
+{
+  imports = [
+    self.inputs.nix-private.nixosModules.envs.flareon
 
-      ../../profiles/proxmox.nix
-      ../../services/samba.nix
-    ]
-    ++ extraDrives;
+    ../../profiles/proxmox.nix
+    ../../services/samba.nix
+  ]
+  ++ extraDrives;
 
-  environment.systemPackages = [pkgs.unrar];
+  environment.systemPackages = with pkgs; [
+    gallery-dl
+    unrar
+    yt-dlp
+  ];
 
   networking.hostName = "flareon";
 
@@ -39,7 +43,7 @@ in {
 
     tailscale.extraSetFlags = [
       "--exit-node-allow-lan-access=true"
-      "--exit-node=us-chi-wg-307.mullvad.ts.net"
+      "--exit-node=us-chi-wg-301.mullvad.ts.net"
     ];
   };
 }
