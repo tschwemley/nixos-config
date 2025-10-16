@@ -28,6 +28,30 @@
 
       eachSystem = fn: lib.genAttrs (import systems) (system: fn pkgsFor.${system});
       hosts = lib.attrNames (builtins.readDir ./nixos/hosts);
+
+      # nixpkgs-patched = (import nixpkgs { system = "x86_64-linux"; }).applyPatches {
+      #   name = "nixpkgs-patched-451188";
+      #   src = nixpkgs;
+      #   patches = [
+      #     (builtins.fetchurl {
+      #       url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/451188.diff";
+      #       sha256 = "sha256-5OAw+WsHoBbHI1kpvHBZU8W0hFvBgSXbNtyLq2bscGQ=";
+      #     })
+      #   ];
+      # };
+
+      # nixpkgs-test = import nixpkgs-patched {
+      #   overlays = builtins.attrValues self.overlays;
+      #
+      #   config = {
+      #     allowUnfree = true;
+      #     android_sdk = {
+      #       accept_license = true;
+      #     };
+      #     rocmSupport = true;
+      #   };
+      #   system = "x86_64-linux";
+      # };
     in
     {
       inherit lib;
@@ -58,6 +82,9 @@
         lib.nixosSystem {
           specialArgs = { inherit inputs self; };
           modules = [
+            # {
+            #   nixpkgs.pkgs = nixpkgs-test;
+            # }
             ./nixos/hosts/${host}
           ];
         }
@@ -71,6 +98,7 @@
     # Nix Related Inputs
     #---
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-rocm-patch.url = "github:nixos/nixpkgs?rev=d33e926c80e6521a55da380a4c4c44a7462af405";
     # nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     systems.url = "github:nix-systems/default";
