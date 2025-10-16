@@ -55,7 +55,7 @@ in
 
           group = "users";
           mode = "0440";
-          sopsFile = "${self}/secrets/home/neovim.yaml";
+          sopsFile = "${self}/secrets/nixos/neovim.yaml";
         };
 
       in
