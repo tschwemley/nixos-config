@@ -62,6 +62,9 @@
       videoAcceleration = true;
 
       prime = {
+        offload.enable = true;
+        enableOffloadCmd = true;
+
         # Bus ID of the Intel GPU.
         intelBusId = "PCI:0:2:0";
 
