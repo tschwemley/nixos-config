@@ -9,8 +9,7 @@
     plugins = with pkgs.hyprlandPlugins; [
       hyprscrolling
 
-      # TODO: move to overlay if keeping?
-      self.inputs.hyprland-easymotion.packages.${pkgs.system}.hyprland-easymotion
+      # self.inputs.hyprland-easymotion.packages.${pkgs.system}.hyprland-easymotion
 
       # adds dispatchers: bringallfrom, closeunfocused, moveorexec, throwunfocused
       xtra-dispatchers
