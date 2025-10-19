@@ -45,7 +45,7 @@
         "$mod shift, h, movewindow, mon:1"
         "$mod shift, l, movewindow, mon:0"
 
-        "$mod, z, easymotion, bgcolor:rgba(ff0000ff),bordersize:5,action:hyprctl dispatch closewindow address:{}"
+        # "$mod, z, easymotion, bgcolor:rgba(ff0000ff),bordersize:5,action:hyprctl dispatch closewindow address:{}"
 
         # wofi
         "$mod, e, exec, wofi-emoji"
