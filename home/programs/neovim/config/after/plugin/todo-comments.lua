@@ -11,7 +11,7 @@ require("todo-comments").setup({
 
 	keywords = {
 		REF = {
-			icon = "󰈙",
+			icon = "",
 			color = "info",
 			alt = { "DOCS", "DOC", "DOCUMENTATION", "REFERENCE", "LINK", "LINKS" },
 		},
