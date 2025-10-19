@@ -134,15 +134,14 @@
 
     # hyprland.url = "github:hyprwm/Hyprland";
     #
-    hyprland-easymotion = {
-      url = "github:zakk4223/hyprland-easymotion";
-      inputs = {
-        # hyprland.follows = "hyprland";
-        # nixpkgs.follows = "hyprland/nixpkgs";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
+    # hyprland-easymotion = {
+    #   url = "github:zakk4223/hyprland-easymotion";
+    #   inputs = {
+    #     # hyprland.follows = "hyprland";
+    #     # nixpkgs.follows = "hyprland/nixpkgs";
+    #     nixpkgs.follows = "nixpkgs";
+    #   };
+    # };
     # hypridle = {
     #   url = "github:hyprwm/hypridle";
     #   inputs = {

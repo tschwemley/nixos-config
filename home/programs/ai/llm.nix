@@ -11,7 +11,15 @@
   home = {
     packages = with pkgs; [
       crush
+      llama-cpp-rocm
     ];
+  };
+
+  programs.aichat = {
+    enable = true;
+    # agents = [];
+    # REF: https://github.com/sigoden/aichat/blob/main/config.example.yaml
+    # settings = {};
   };
 
   sops.secrets =
