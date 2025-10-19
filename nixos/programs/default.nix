@@ -7,6 +7,7 @@
     age
     git
     gnupg
+    hwinfo
     hw-probe
     isd
     jdupes
