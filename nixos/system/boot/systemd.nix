@@ -1,7 +1,9 @@
 {
-  imports = [./.];
+  imports = [ ./. ];
 
   boot = {
+    configurationLimit = 10;
+
     initrd = {
       systemd.enable = true;
     };
