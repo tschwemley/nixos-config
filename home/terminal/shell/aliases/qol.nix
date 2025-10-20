@@ -7,6 +7,9 @@
   gcob = "git checkout -b";
   gcm = "git cm";
   gl = "git log";
+  gspop = "git stash pop --index";
+  gspu = "git stash push -u";
+  gspush = "git stash push -u";
   icat = "kitten icat";
   jl = "journalctl -xeu";
   lgroups = "bat /etc/group";
