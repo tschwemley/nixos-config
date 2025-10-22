@@ -117,6 +117,11 @@
     # Non-Nix Inputs
     #---
 
+    asus-numberpad-driver = {
+      url = "github:asus-linux-drivers/asus-numberpad-driver";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     charm = {
       url = "github:charmbracelet/nur";
       inputs.nixpkgs.follows = "nixpkgs";
