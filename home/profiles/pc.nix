@@ -55,7 +55,7 @@
 
   # pc specific program config
   programs = {
-    git.extraConfig.url = {
+    git.settings.url = {
       "ssh://gh" = {
         insteadOf = "https://github.com";
       };
