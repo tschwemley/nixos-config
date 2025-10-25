@@ -9,8 +9,6 @@
     settings = {
       init.defaultBranch = "main";
       pull.rebase = true;
-      userEmail = "tjschwem@gmail.com";
-      userName = "Tyler Schwemley";
 
       alias = {
         b = "branch";
@@ -23,6 +21,11 @@
 
       core = {
         whitespace = "trailing-space,space-before-tab";
+      };
+
+      user = {
+        email = "tjschwem@gmail.com";
+        name = "Tyler Schwemley";
       };
 
       url = {
