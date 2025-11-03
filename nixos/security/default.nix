@@ -1,12 +1,12 @@
 {
   imports = [
-    ./onlykey.nix
+    # ./onlykey.nix
     ./yubikey.nix
   ];
 
   security = {
     pam = {
-      services.hyprlock = {};
+      services.hyprlock = { };
     };
     polkit.enable = true;
     sudo.wheelNeedsPassword = false;

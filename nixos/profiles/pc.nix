@@ -20,10 +20,11 @@
 
     ../network/wireshark.nix
 
+    # ../programs/flatpak.nix
+    ../programs/gaming.nix
     ../programs/hyprland.nix
     ../programs/kdeconnect.nix
     ../programs/keyboards
-    ../programs/gaming.nix
     ../programs/usbutils.nix
     ../programs/wine.nix
 

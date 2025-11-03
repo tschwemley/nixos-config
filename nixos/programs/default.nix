@@ -12,7 +12,7 @@
     isd
     jdupes
     nrepl
-    pinentry
+    pinentry-curses
     ripgrep
     rsync
     sops

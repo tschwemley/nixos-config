@@ -32,6 +32,8 @@ in
     ../system
   ];
 
+  environment.localBinInPath = true;
+
   hardware.enableRedistributableFirmware = true;
 
   # TODO: set this in each host file explicitly. Once in all host files remove from here
