@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    # ./aider.nix
+    ./aider.nix
   ];
 
   home = {

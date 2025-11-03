@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   home = {
     packages = with pkgs; [
       aider-chat
@@ -34,9 +35,6 @@
         alias:
           - gemini:openrouter/google/gemini-2.5-pro-preview
           - deepseek-chat:openrouter/deepseek/deepseek-chat-v3-0324
-          - deepseek-chat-free:openrouter/deepseek/deepseek-chat-v3-0324:free
-          - deepseek-r1:openrouter/deepseek/deepseek-r1
-          - deepseek-r1-free:openrouter/deepseek/deepseek-r1:free
         model: "gemini"
 
         # --------------------
@@ -87,9 +85,9 @@
         system_prompt_prefix: null
         accepts_settings: null
 
-      - name: openrouter/google/gemini-2.5-pro-preview
-        edit_format: diff-fenced
-        weak_model_name: openrouter/google/gemini-2.0-flash-001
-        use_repo_map: true
+      # - name: openrouter/openai/gemini-2.5-pro-preview
+      #   edit_format: diff-fenced
+      #   weak_model_name: openrouter/google/gemini-2.0-flash-001
+      #   use_repo_map: true
     '';
 }
