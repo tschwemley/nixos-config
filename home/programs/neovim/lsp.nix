@@ -6,8 +6,10 @@
 {
   programs.neovim = {
     extraPackages = with pkgs; [
-      # python
-      basedpyright
+      # go
+      golines
+      gopls
+      gotools
 
       # lua
       lua-language-server
@@ -21,6 +23,9 @@
       # php
       nodePackages.intelephense
       phpactor
+
+      # python
+      basedpyright
 
       # web
       superhtml
