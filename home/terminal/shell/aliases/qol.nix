@@ -13,7 +13,6 @@
   icat = "kitten icat";
   jl = "journalctl -xeu";
   lgroups = "bat /etc/group";
-  ll = "ls -al";
   lusers = "bat /etc/passwd";
   randstr = "head /dev/urandom | tr -dc A-Za-z0-9 | head -c10";
   userctl = "systemctl --user";

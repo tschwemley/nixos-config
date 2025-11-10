@@ -18,9 +18,13 @@ nbuild() {
 
 
 # nix flake update 
-nfu() { 
-	nix flake update && git add flake.lock && git commit -m 'flake update' && git push origin main
-}
+# nfu() { 
+# 	git stash push -u
+# 	nix flake update
+# 	git add flake.lock
+# 	git commit -m "update flake lock"
+# 	git stash pop --index
+# }
 
 npfgit() {
 	# local url=${1:-""}
