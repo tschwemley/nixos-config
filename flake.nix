@@ -63,6 +63,16 @@
       templates = import ./templates;
 
       homeConfigurations = {
+        default = lib.homeManagerConfiguration {
+          extraSpecialArgs = { inherit inputs self; };
+          modules = [ ./home/profiles/default.nix ];
+        };
+
+        pc = lib.homeManagerConfiguration {
+          extraSpecialArgs = { inherit inputs self; };
+          modules = [ ./home/profiles/pc.nix ];
+        };
+
         # TODO: For possible solution for building and then deploying remotely to work server
         #       see: https://gist.github.com/fricklerhandwerk/fbf0b212bbbf51b79a08fdac8659481d
         "work@linux" = lib.homeManagerConfiguration {
