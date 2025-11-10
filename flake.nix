@@ -16,14 +16,14 @@
       pkgsFor = lib.genAttrs (import systems) (
         system:
         (import nixpkgs {
-          inherit system;
+          inherit lib system;
 
           # Inherit from system nixpkgs option module for consistency between package sets
           inherit ((import ./nixos/system/nixpkgs.nix { inherit self; }).nixpkgs) config overlays;
         })
-        // {
-          inherit lib;
-        }
+        # // {
+        #   inherit lib;
+        # }
       );
 
       eachSystem = fn: lib.genAttrs (import systems) (system: fn pkgsFor.${system});
@@ -64,11 +64,13 @@
 
       homeConfigurations = {
         default = lib.homeManagerConfiguration {
+          pkgs = pkgsFor."x86_64-linux";
           extraSpecialArgs = { inherit inputs self; };
           modules = [ ./home/profiles/default.nix ];
         };
 
         pc = lib.homeManagerConfiguration {
+          pkgs = pkgsFor."x86_64-linux";
           extraSpecialArgs = { inherit inputs self; };
           modules = [ ./home/profiles/pc.nix ];
         };
