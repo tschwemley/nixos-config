@@ -68,7 +68,7 @@
     tailscale.extraUpFlags = [
       "--advertise-tags tag:pc"
       "--exit-node-allow-lan-access=true"
-      "--exit-node=us-chi-wg-305.mullvad.ts.net"
+      "--exit-node=us-chi-wg-302.mullvad.ts.net"
       "--operator=schwem"
     ];
   };
