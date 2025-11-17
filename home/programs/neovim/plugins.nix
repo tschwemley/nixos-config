@@ -66,5 +66,6 @@ in
     # nui-nvim TODO: delete me if not necessary/included via noice
     nvim-colorizer-lua
     taskwarrior3
+    vim-abolish
   ];
 }
