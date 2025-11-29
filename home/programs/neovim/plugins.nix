@@ -28,6 +28,7 @@ in
     cmp-dap
     css-vars-nvim
     luasnip
+    nvim-autopairs
 
     # db
     vim-dadbod
@@ -58,7 +59,8 @@ in
     gitsigns-nvim
     neogit
 
-    # ui
+    # ui/dressing
+    colorful-menu-nvim
     noice-nvim
 
     # other/unsorted

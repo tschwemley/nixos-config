@@ -36,7 +36,7 @@ vim.opt.laststatus = 3 -- when last window will have status line | 3=always && o
 vim.opt.signcolumn = "yes" -- always showing the sign column
 
 -- search opts
-vim.opt.hlsearch = true -- highlighting search matches
+-- vim.opt.hlsearch = true -- highlighting search matches
 vim.opt.ignorecase = true -- ignoring case in search
-vim.opt.incsearch = true -- incremental search
+-- vim.opt.incsearch = true -- incremental search
 vim.opt.smartcase = true -- smart case searching

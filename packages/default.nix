@@ -8,7 +8,9 @@ self: pkgs: {
   scripts = import ./scripts pkgs;
   tree-sitter-bruno = pkgs.callPackage ./tree-sitter-bruno.nix { };
   trmnl-server = pkgs.callPackage ./trmnl-server.nix { };
+  wezterm-nvim-navigator = pkgs.callPackage ./wezterm-nvim-navigator.nix { };
   wl-ocr = pkgs.callPackage ./wl-ocr.nix { };
+  yaziPlugins = import ./yazi-plugins pkgs;
 
   # asepritePlugins.retro-diffusion = pkgs.python311Packages.buildPythonApplication {
   #   pname = "retro-diffusion";

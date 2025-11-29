@@ -1,36 +1,31 @@
+-- REF: https://github.com/xzbdmw/colorful-menu.nvim
+require("colorful-menu").setup({})
+
 -- REF: https://cmp.saghen.dev/configuration/general.html
 require("blink.cmp").setup({
 	keymap = { preset = "super-tab" },
 	signature = { enabled = true }, -- signature.window.show_documentation = false to only show the signature, and not the documentation
 	snippets = { preset = "luasnip" },
 
-	-- -- use mini.icons in the completion menu
-	-- completion = {
-	--    menu = {
-	--       draw = {
-	--          components = {
-	--             kind_icon = {
-	--                text = function(ctx)
-	--                   local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
-	--                   return kind_icon
-	--                end,
-	--                -- (optional) use highlights from mini.icons
-	--                highlight = function(ctx)
-	--                   local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
-	--                   return hl
-	--                end,
-	--             },
-	--             kind = {
-	--                -- (optional) use highlights from mini.icons
-	--                highlight = function(ctx)
-	--                   local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
-	--                   return hl
-	--                end,
-	--             },
-	--          },
-	--       },
-	--    },
-	-- },
+	completion = {
+		menu = {
+			draw = {
+				-- We don't need label_description now because label and label_description are already
+				-- combined together in label by colorful-menu.nvim.
+				columns = { { "kind_icon" }, { "label", gap = 1 } },
+				components = {
+					label = {
+						text = function(ctx)
+							return require("colorful-menu").blink_components_text(ctx)
+						end,
+						highlight = function(ctx)
+							return require("colorful-menu").blink_components_highlight(ctx)
+						end,
+					},
+				},
+			},
+		},
+	},
 
 	sources = {
 		default = { "buffer", "emoji", "lsp", "path", "snippets" },

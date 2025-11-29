@@ -1,3 +1,5 @@
+require("autocmds")
+require("keymaps")
 require("opts")
 
 -- Init colorscheme immediately to ensure load prior to any plugin that references for styling

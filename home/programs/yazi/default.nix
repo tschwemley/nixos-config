@@ -3,17 +3,11 @@
   pkgs,
   ...
 }:
-let
-  yaziGruvbox = pkgs.fetchFromGitHub {
-    owner = "bennyyip";
-    repo = "gruvbox-dark.yazi";
-    rev = "e5e1aef";
-    hash = "sha256-RWqyAdETD/EkDVGcnBPiMcw1mSd78Aayky9yoxSsry4=";
-  };
-in
 {
+  # dependencies required by plugins
   home.packages = with pkgs; [
-    # poppler # pdf preview
+    dragon-drop
+    f3d
     poppler-utils # pdf preview
   ];
 
@@ -22,7 +16,6 @@ in
     enableZshIntegration = config.programs.zsh.enable;
 
     flavors = {
-      # gruvbox-dark = yaziGruvbox;
       gruvbox-dark = ./gruvbox-dark.yazi;
     };
 
@@ -40,6 +33,10 @@ in
         {
           on = "<C-c>";
           run = "quit";
+        }
+        {
+          on = "<C-n>";
+          run = "shell -- dragon -x -i -T '$0'";
         }
         {
           on = "d";
@@ -107,13 +104,16 @@ in
         bypass
         chmod
         diff
+        f3d-preview
         full-border
+        glow
         ;
     };
 
     # REF: https://yazi-rs.github.io/docs/configuration/overview
     settings = {
-      manager = {
+      # manager = {
+      mgr = {
         layout = [
           1
           4
@@ -126,6 +126,73 @@ in
         sort_dir_first = true;
         sort_reverse = false;
         sort_sensitive = true;
+      };
+
+      plugin = {
+
+        prepend_preloaders = [
+          # 3d objects
+          {
+            name = "*.3mf";
+            run = "f3d-preview";
+          }
+          {
+            name = "*.obj";
+            run = "f3d-preview";
+          }
+          {
+            name = "*.pts";
+            run = "f3d-preview";
+          }
+          {
+            name = "*.ply";
+            run = "f3d-preview";
+          }
+          {
+            name = "*.stl";
+            run = "f3d-preview";
+          }
+          {
+            name = "*.step";
+            run = "f3d-preview";
+          }
+          {
+            name = "*.stp";
+            run = "f3d-preview";
+          }
+        ];
+
+        prepend_previewers = [
+          # 3d objects
+          {
+            name = "*.3mf";
+            run = "f3d-preview";
+          }
+          {
+            name = "*.obj";
+            run = "f3d-preview";
+          }
+          {
+            name = "*.pts";
+            run = "f3d-preview";
+          }
+          {
+            name = "*.ply";
+            run = "f3d-preview";
+          }
+          {
+            name = "*.stl";
+            run = "f3d-preview";
+          }
+          {
+            name = "*.step";
+            run = "f3d-preview";
+          }
+          {
+            name = "*.stp";
+            run = "f3d-preview";
+          }
+        ];
       };
     };
 

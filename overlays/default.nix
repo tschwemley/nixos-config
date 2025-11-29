@@ -27,6 +27,7 @@ in
   # redlib = import ./redlib.nix self;
   vimPlugins = import ./vimplugins.nix self;
   visidata = import ./visidata.nix;
+  yaziPlugins = import ./yaziplugins.nix self;
 
   # Overlays defined via inputs
   # hypridle = self.inputs.hypridle.overlays.default;

@@ -11,12 +11,6 @@ return {
 
 	settings = { -- REF: https://github.com/bmewburn/intelephense-docs/blob/master/installation.md#configuration-options
 		intelephense = {
-			format = {
-				enable = false, -- TODO: remove the false enable?
-				braces = "allman",
-			},
-			telemetry = { enabled = false },
-
 			environment = {
 				phpVersion = "8.2.23",
 				shortOpenTag = true,
@@ -42,6 +36,11 @@ return {
 				},
 			},
 
+			format = {
+				enable = false, -- TODO: remove the false enable?
+				braces = "allman",
+			},
+
 			phpdoc = { returnVoid = false },
 
 			references = {
@@ -49,6 +48,8 @@ return {
 					"/nix/store/**/*",
 				},
 			},
+
+			telemetry = { enabled = false },
 		},
 	},
 }
