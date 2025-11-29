@@ -2,7 +2,8 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    # lutris
+    lutris
+    protonup-qt
     # retroarch-full
     # sidequest
   ];
@@ -30,6 +31,7 @@
       ];
 
       gamescopeSession.enable = true;
+      protontricks.enable = true;
     };
   };
 
