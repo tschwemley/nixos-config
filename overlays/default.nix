@@ -3,7 +3,7 @@ let
   default =
     _: prev:
     let
-      inherit (prev) system;
+      inherit (prev.stdenv.hostPlatform) system;
     in
     {
       inherit (self.packages.${system})
