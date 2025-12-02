@@ -23,8 +23,6 @@ in
   # Custom defined overlays
   # aseprite = import ./aseprite.nix;
   charm = import "${self.inputs.charm}/overlay.nix";
-  # TODO: remove or fix the build failure due to cargo dep wrong rustc version in upstream flake
-  # redlib = import ./redlib.nix self;
   vimPlugins = import ./vimplugins.nix self;
   visidata = import ./visidata.nix;
   yaziPlugins = import ./yaziplugins.nix self;

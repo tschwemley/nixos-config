@@ -748,11 +748,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1759736400,
-        "narHash": "sha256-u94SDK3ZHx+IYBwxzFeV5faCptoAVyRCEyoPnyN6Eu8=",
+        "lastModified": 1764665328,
+        "narHash": "sha256-ltXODmCvq3YnYh+yNxZbikOTSPWV1z83SEQurh42Z/Y=",
         "ref": "refs/heads/main",
-        "rev": "89f3d87fdd9c2bb671d4b4f10c9c7957be995695",
-        "revCount": 1369,
+        "rev": "e9304ae50bae6a220717df0c9eca1d58ceba9ec8",
+        "revCount": 1374,
         "type": "git",
         "url": "https://git.schwem.io/schwem/redlib"
       },
