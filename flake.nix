@@ -21,9 +21,6 @@
           # Inherit from system nixpkgs option module for consistency between package sets
           inherit ((import ./nixos/system/nixpkgs.nix { inherit self; }).nixpkgs) config overlays;
         })
-        # // {
-        #   inherit lib;
-        # }
       );
 
       eachSystem = fn: lib.genAttrs (import systems) (system: fn pkgsFor.${system});
