@@ -8,6 +8,7 @@
 
     ../../server/alt-frontends/nitter.nix
     ../../server/alt-frontends/priviblur
+    ../../server/alt-frontends/quatre
     ../../server/automation/home-assistant
     ../../server/knowledge/tiddlywiki
     # ../../server/todo-resort-all-dirs/neko.nix
