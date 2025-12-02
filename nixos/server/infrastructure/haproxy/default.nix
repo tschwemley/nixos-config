@@ -62,6 +62,7 @@ in
         acl domain_ntfy hdr(host) -i ntfy.schwem.io
         acl domain_pinterest hdr(host) -i pinterest.schwem.io
         acl domain_pds hdr(host) -i pds.schwem.io
+        acl domain_quora hdr(host) -i quora.schwem.io
         acl domain_reddit hdr(host) -i reddit.schwem.io
         acl domain_rimgo hdr(host) -i rimgo.schwem.io
         acl domain_rss hdr(host) -i rss.schwem.io
@@ -94,6 +95,7 @@ in
         # use_backend moltres if domain_sillytavern
 
         use_backend zapdos if domain_pinterest
+        use_backend zapdos if domain_quora
         use_backend zapdos if domain_rss
         use_backend zapdos if domain_tumblr
         use_backend zapdos if domain_wiki

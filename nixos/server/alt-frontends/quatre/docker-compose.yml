@@ -1,0 +1,19 @@
+name: quatre
+services:
+  quetre:
+    container_name: quetre
+    image: quay.io/pussthecatorg/quetre:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:13000:3000" # Replace with "3000:3000" if you don't use a reverse proxy
+    environment:
+      - "NODE_ENV=production"
+      - "PORT=3000"
+      - "CACHE_PERIOD=1h"
+      - "REDIS_URL=quetre-redis:6379"
+      - "REDIS_TTL=3600"
+
+  quetre-redis:
+    container_name: quetre-redis
+    image: docker.io/redis:alpine
+    restart: unless-stopped
