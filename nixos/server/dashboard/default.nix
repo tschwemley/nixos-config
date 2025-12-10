@@ -5,9 +5,9 @@
   pkgs,
   ...
 }: let
-  pkg = inputs.dashboard.packages.${pkgs.system}.default;
+  pkg = inputs.dashboard.packages.${pkgs.stdenv.hostPlatform.system}.default;
   stateDir = "/var/lib/dashboard";
-  staticPath = "${inputs.dashboard.packages.${pkgs.system}.default}/bin/web/static";
+  staticPath = "${inputs.dashboard.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/web/static";
 in {
   services = {
     oidcproxy.protectedHosts."schwem.io" = {
