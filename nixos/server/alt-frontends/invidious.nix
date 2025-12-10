@@ -30,7 +30,8 @@ in
       statistics_enabled = true;
 
       db = {
-        name = "invidious";
+        dbname = "invidious";
+        host = "127.0.0.1";
         user = "invidious";
       };
     };
