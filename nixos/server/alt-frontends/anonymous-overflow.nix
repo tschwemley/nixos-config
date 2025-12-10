@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  pkg = self.inputs.anonymous-overflow.packages.${pkgs.system}.default;
+  pkg = self.inputs.anonymous-overflow.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
   runDir = "/var/run/anonymous-overflow";
   stateDir = "/var/lib/anonymous-overflow";
