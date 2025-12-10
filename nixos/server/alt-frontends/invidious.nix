@@ -15,10 +15,14 @@ in
 
     enable = true;
 
-    database.passwordFile = config.sops.secrets.invidiousPostgresPassword.path;
     http3-ytproxy.enable = true;
     nginx.enable = false;
     port = lib.toInt self.lib.port-map.invidious;
+
+    database = {
+      host = "localhost";
+      passwordFile = config.sops.secrets.invidiousPostgresPassword.path;
+    };
 
     # REF:: https://github.com/iv-org/invidious/blob/master/config/config.example.yml
     settings = {
@@ -31,7 +35,6 @@ in
 
       db = {
         dbname = "invidious";
-        host = "127.0.0.1";
         user = "invidious";
       };
     };
