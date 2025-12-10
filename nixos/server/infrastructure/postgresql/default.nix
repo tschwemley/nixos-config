@@ -47,18 +47,21 @@
                 CREATE DATABASE librechat OWNER librechat;
             EOSQL
 
-            # INVIDIOUS_PASSWORD=$(cat ''${config.sops.secrets.invidiousPostgresPassword.path})
-            #   psql -v password="'$LIBRECHAT_PASSWORD'" <<EOSQL
-            #     CREATE ROLE invidious WITH LOGIN PASSWORD :password;
-            #     CREATE DATABASE invidious OWNER invidious;
-            # EOSQL
+            INVIDIOUS_PASSWORD=$(cat ${config.sops.secrets.invidiousPostgresPassword.path})
+
+              psql -v password="'$INVIDIOUS_PASSWORD'" <<EOSQL
+                CREATE ROLE invidious WITH LOGIN PASSWORD :password;
+                CREATE DATABASE invidious OWNER invidious;
+            EOSQL
           '';
     };
 
     prometheus.exporters.postgres = {
       enable = true;
-      listenAddress = "0.0.0.0";
-      port = 9187;
+      listenAddress = "127.0.0.1";
+      port = 9187; # TODO: port-map?
+
+      # listenAddress = "0.0.0.0"; TODO: remove after confirming this 127... works
     };
   };
 
