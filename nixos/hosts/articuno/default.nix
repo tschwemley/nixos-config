@@ -14,9 +14,10 @@ in
     ../../profiles/buyvm.nix
 
     # server imports
-    # ../../server/alt-frontends/redlib.nix
     ../../server/alt-frontends/freetar.nix
-    ../../server/alt-frontends/safetwitch
+    ../../server/alt-frontends/invidious.nix
+    # ../../server/alt-frontends/redlib.nix
+    # ../../server/alt-frontends/safetwitch
 
     ../../server/communication/ntfy.nix
     ../../server/development/cyberchef.nix
