@@ -12,18 +12,20 @@ let
 in
 {
   # services.nginx.virtualHosts.${domain}.enableACME = lib.mkForce false;
-  services.nginx.virtualHosts.${domain} = {
-    locations = {
-      "/".proxyPass =
-        if serviceScale == 1 then "http://${address}:${toString port}" else "http://upstream-invidious";
+  services.nginx = {
+    virtualHosts.${domain} = {
+      locations = {
+        "/".proxyPass =
+          if serviceScale == 1 then "http://${address}:${toString port}" else "http://upstream-invidious";
 
-      # enableACME = lib.mkDefault true;
-      # forceSSL = lib.mkDefault true;
-    };
+        # enableACME = lib.mkDefault true;
+        # forceSSL = lib.mkDefault true;
+      };
 
-    # ytproxy
-    "~ (^/videoplayback|^/vi/|^/ggpht/|^/sb/)" = {
-      proxyPass = "http://unix:/run/http3-ytproxy/socket/http-proxy.sock";
+      # ytproxy
+      "~ (^/videoplayback|^/vi/|^/ggpht/|^/sb/)" = {
+        proxyPass = "http://unix:/run/http3-ytproxy/socket/http-proxy.sock";
+      };
     };
 
     upstreams = lib.mkIf (serviceScale > 1) {
