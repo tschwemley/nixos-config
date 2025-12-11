@@ -24,11 +24,10 @@ in
     ../../server/infrastructure/haproxy
     ../../server/infrastructure/monitoring
     ../../server/infrastructure/postgresql
-    # ../../server/media/invidious.nix
+
     ../../server/security/acme
     ../../server/security/auth/keycloak
     ../../server/services/glance.nix
-    ../../server/services/searxng
   ]
   ++ storageDisks;
 
