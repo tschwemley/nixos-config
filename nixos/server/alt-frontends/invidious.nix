@@ -5,20 +5,44 @@
   ...
 }:
 let
+  address = "127.0.0.1";
   domain = "yt.schwem.io";
+  port = lib.toInt self.lib.port-map.invidious;
+  serviceScale = config.services.invidious.serviceScale;
 in
 {
-  services.nginx.virtualHosts.${domain}.enableACME = lib.mkForce false;
+  # services.nginx.virtualHosts.${domain}.enableACME = lib.mkForce false;
+  services.nginx.virtualHosts.${domain} = {
+    locations = {
+      "/".proxyPass =
+        if serviceScale == 1 then "http://${address}:${toString port}" else "http://upstream-invidious";
+
+      # enableACME = lib.mkDefault true;
+      # forceSSL = lib.mkDefault true;
+    };
+
+    # ytproxy
+    "~ (^/videoplayback|^/vi/|^/ggpht/|^/sb/)" = {
+      proxyPass = "http://unix:/run/http3-ytproxy/socket/http-proxy.sock";
+    };
+
+    upstreams = lib.mkIf (serviceScale > 1) {
+      "upstream-invidious".servers = builtins.listToAttrs (
+        builtins.genList (scaleIndex: {
+          name = "${address}:${toString (port + scaleIndex)}";
+          value = { };
+        }) serviceScale
+      );
+    };
+  };
 
   services.invidious = {
-    inherit domain;
+    inherit address domain port;
 
     enable = true;
 
-    address = "127.0.0.1";
     http3-ytproxy.enable = true;
-    nginx.enable = true;
-    port = lib.toInt self.lib.port-map.invidious;
+    nginx.enable = false; # I configure this manually
 
     database = {
       host = "localhost";
