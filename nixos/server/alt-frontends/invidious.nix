@@ -15,6 +15,7 @@ in
 
     enable = true;
 
+    address = "127.0.0.1";
     http3-ytproxy.enable = true;
     nginx.enable = true;
     port = lib.toInt self.lib.port-map.invidious;
