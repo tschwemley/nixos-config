@@ -38,14 +38,18 @@ in
         user = "invidious";
       };
     };
-
   };
 
   sops.secrets.invidiousPostgresPassword = {
     group = "postgres";
     key = "postgres_password";
     mode = "0440";
-    owner = "invidious";
     sopsFile = self.lib.secret "server" "invidious.yaml";
+  };
+
+  systemd.services.invidious = {
+    serviceConfig = {
+      SupplementaryGroups = "postgres";
+    };
   };
 }
