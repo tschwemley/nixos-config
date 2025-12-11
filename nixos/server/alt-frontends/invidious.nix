@@ -16,7 +16,7 @@ in
     enable = true;
 
     http3-ytproxy.enable = true;
-    nginx.enable = false;
+    nginx.enable = true;
     port = lib.toInt self.lib.port-map.invidious;
 
     database = {
