@@ -83,7 +83,6 @@ in
         use_backend articuno if domain_freetar
         use_backend articuno if domain_monitor
         use_backend articuno if domain_ntfy
-        # use_backend articuno if domain_reddit
         use_backend articuno if domain_twitch
         use_backend articuno if domain_yt
 

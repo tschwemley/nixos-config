@@ -12,6 +12,7 @@
   glance = "6143";
   home-assistant = "8123";
   invidious = "3100";
+  invidious-companion = "8282";
   it-tools = "7001";
   keycloak = "8480";
   librechat = "3080";
