@@ -27,8 +27,7 @@
       content =
         # yaml
         ''
-          default-model: gpt5-mini
-          # default-model: qwen3-instruct
+          default-model: claude-opus-4.5
           format-text:
             markdown: "Format the response as markdown without enclosing backticks."
             json: "Format the response as json without enclosing backticks."
@@ -120,33 +119,9 @@
               base-url: https://openrouter.ai/api/v1
               api-key: ${config.sops.placeholder.mods_openrouter_api_key}
               models:
-                deepseek/deepseek-chat-v3-0324:
-                  aliases: ["deepseek-chat"]
-                  max-input-chars: 128000
-                deepseek/deepseek-r1:
-                  aliases: ["r1"]
-                  max-input-chars: 392000
-                google/gemini-2.5-flash:
-                  aliases: ["gemini-flash"]
-                  max-input-chars: 1048576
-                google/gemini-2.5-pro:
-                  aliases: ["gemini", "gemini-pro"]
-                  max-input-chars: 1048576
-                qwen/qwen3-235b-a22b-2507:
-                  aliases: ["qwen3-instruct"]
-                  max-input-chars: 262144
-                qwen/qwen3-235b-a22b-thinking-2507:
-                  aliases: ["qwen3-thinking"]
-                  max-input-chars: 262144
-                qwen/qwen3-coder:
-                  aliases: ["qwen3-coder"]
-                  max-input-chars: 128000
-                openai/gpt-5-mini:
-                  aliases: ["gpt5-mini"]
-                  max-input-chars: 200000
-                openai/gpt-5-nano:
-                  aliases: ["gpt5-nano"]
-                  max-input-chars: 200000
+                anthropic/claude-opus-4.5:
+                  aliases: ["claude-opus-4.5"]
+                  max-input-chars: 640000
         '';
     };
   };
