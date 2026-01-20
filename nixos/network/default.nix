@@ -17,10 +17,12 @@
   # always use systemd-resolved
   services.resolved = {
     enable = true;
-    dnssec = "true";
-    dnsovertls = "opportunistic";
-    domains = [ "~." ];
-    fallbackDns = [ "9.9.9.9" ];
+    settings.Resolve = {
+      DNSSEC = "true";
+      DNSOverTLS = "opportunistic";
+      Domains = [ "~." ];
+      FallbackDNS = [ "9.9.9.9" ];
+    };
   };
 
   services.openssh = {
