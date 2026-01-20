@@ -15,10 +15,6 @@
     enable = true;
     enableZshIntegration = config.programs.zsh.enable;
 
-    flavors = {
-      gruvbox-dark = ./gruvbox-dark.yazi;
-    };
-
     initLua = # lua
       ''
         require("full-border"):setup {
@@ -59,6 +55,13 @@
             "m"
           ];
           run = "cd /mnt";
+        }
+        {
+          on = [
+            "g"
+            "/"
+          ];
+          run = "cd /";
         }
 
         # -- plugins --
@@ -195,7 +198,5 @@
         ];
       };
     };
-
-    theme.flavor.dark = "gruvbox-dark";
   };
 }
