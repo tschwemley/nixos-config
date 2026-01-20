@@ -2,7 +2,6 @@
 {
   console = {
     earlySetup = true;
-    font = "CaskaydiaCove Nerd Font";
 
     colors = [
       "282828"
@@ -21,10 +20,6 @@
       "d3869b"
       "8ec07c"
       "ebdbb2"
-    ];
-
-    packages = with pkgs; [
-      nerd-fonts.caskaydia-cove
     ];
   };
 }

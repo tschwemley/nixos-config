@@ -1,17 +1,14 @@
+{ pkgs, ... }:
 {
-  config,
-  lib,
-  ...
-}: {
   services.greetd = {
     enable = true;
+    useTextGreeter = true;
+
     settings = {
       default_session = {
-        command = lib.getExe config.programs.hyprland.package;
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session";
         user = "schwem";
       };
-
-      terminal.vt = 1;
     };
   };
 }
