@@ -1,77 +1,123 @@
 * {
-    border: none;
-    border-radius: 0px;
-    font-family: "Inconsolata";
-    font-size: 16px;
-    min-height: 0;
-    color: #ebdbb2;
+  border: none;
+  border-radius: 0px;
+  font-family: "Inconsolata";
+  font-size: 16px;
+  min-height: 0;
+  color: #ebdbb2;
 }
 
 window#waybar {
-    border-bottom-style: inset;
-    border-bottom: 4px solid #689d6a;
-    background: #1d2021;
+  border-bottom-style: inset;
+  border-bottom: 4px solid #89b482;
+  background: #1d2021;
 }
 
-#workspaces, #clock, #custom-music, #window { 
-    font-weight: 800;
+#workspaces,
+#clock,
+#custom-music,
+#window {
+  font-weight: 800;
 }
 
 /* Workspace Buttons */
-#workspaces button label{
-    color: #689d6a;
+#workspaces button label {
+  color: #89b482;
 }
+
 #workspaces button.active label {
-    color: #1d2021;
+  color: #1d2021;
 }
+
 #workspaces button.active {
-    background: #689d6a; 
+  background: #89b482;
 }
 
 #mode {
-    background-color: #cc241d;
-    color: white;
+  background-color: #ea6962;
+  color: white;
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #tray, #mode, #idle_inhibitor {
-    padding: 0 5px;
-    margin: 0 10px;
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#tray,
+#mode,
+#idle_inhibitor {
+  padding: 0 5px;
+  margin: 0 10px;
 }
 
 
 #idle_inhibitor {
-    padding: 0 10px;
+  padding: 0 10px;
 }
 
 #idle_inhibitor.activated {
-    background-color: #689d6a;
-    color: #1d2021;
+  background-color: #89b482;
+  color: #1d2021;
 }
 
 
 #custom-music {
-    color: #b8bb26;
-    margin: 0 15px;
-    padding: 0 20px;
-    border-bottom: 4px solid #b8bb26;
+  color: #b8bb26;
+  margin: 0 15px;
+  padding: 0 20px;
+  border-bottom: 4px solid #b8bb26;
 
 }
 
 #clock {
-    margin: 0;
-    color: #fabd2f;
-    border-bottom: 4px solid #fabd2f;
+  margin: 0;
+  color: #d8a657;
+  border-bottom: 4px solid #d8a657;
+}
+
+#gamemode {
+  color: #89b482;
+  min-width: 50px;
 }
 
 
 #network.disconnected {
-    color: #cc241d;
-    border-bottom: 4px solid #cc241d;
+  color: #ea6962;
+  border-bottom: 4px solid #ea6962;
 }
 
 
 #pulseaudio.muted {
-    padding: 0 20px;
-    color: #cc241d;
-    border-bottom: 4px solid #cc241d;
+  padding: 0 20px;
+  color: #ea6962;
+  border-bottom: 4px solid #ea6962;
+}
+
+#pulseaudio-slider {
+  padding: 0;
+  margin: 0;
+}
+
+#pulseaudio-slider slider {
+  min-height: 0px;
+  min-width: 0px;
+  opacity: 0;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+
+#pulseaudio-slider trough {
+  min-height: 10px;
+  min-width: 80px;
+  border-radius: 5px;
+  background: #1D2021;
+  /* background: #3C3836; */
+}
+
+#pulseaudio-slider highlight {
+  min-width: 10px;
+  border-radius: 5px;
+  background: #a9b665;
 }

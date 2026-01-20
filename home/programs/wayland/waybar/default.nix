@@ -7,7 +7,7 @@
   home.packages = [
     pkgs.wttrbar
 
-    self.packages.${pkgs.system}.pomobar-rs
+    self.packages.${pkgs.stdenv.hostPlatform.system}.pomobar-rs
   ];
 
   programs.waybar = {
@@ -25,16 +25,11 @@
         modules-right = [
           "pulseaudio"
           "pulseaudio/slider"
+          "gamemode"
           "tray"
           "custom/weather"
           "clock"
         ];
-
-        # "clock" = {
-        #   interval = 1;
-        #   format = "{:%H:%M:%S}";
-        #
-        # };
 
         clock = {
           actions = {
@@ -83,6 +78,19 @@
           return-type = "json";
         };
 
+        gamemode = {
+          # hide-not-running = true;
+          format = "{glyph}";
+          format-alt = "{glyph} {count}";
+          glyph = "";
+          hide-not-running = false;
+          icon-size = 20;
+          icon-spacing = 4;
+          tooltip = true;
+          tooltip-format = "Games running: {count}";
+          use-icon = false;
+        };
+
         pulseaudio = {
           format = "{volume}% {icon} {format_source}";
           format-bluetooth = "{volume}% {icon} {format_source}";
@@ -104,6 +112,12 @@
           };
           on-click = "pavucontrol";
           spacing = 4;
+        };
+
+        "pulseaudio/slider" = {
+          min = 0;
+          max = 100;
+          orientation = "horizontal";
         };
 
         # tray = {};
