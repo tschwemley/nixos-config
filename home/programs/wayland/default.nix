@@ -1,7 +1,11 @@
 { pkgs, ... }:
 # Wayland config
 {
-  imports = [ ./waybar ];
+  imports = [
+    ./fuzzel.nix
+    ./swaylock.nix
+    ./waybar
+  ];
 
   home = {
     packages = with pkgs; [
@@ -19,7 +23,7 @@
       MOZ_ENABLE_WAYLAND = 1;
 
       # make SDL2 applications use wayland
-      SDL_VIDEODRIVER = "wayland";
+      SDL_VIDEODRIVER = "wayland,x11";
       XDG_SESSION_TYPE = "wayland";
     };
   };
