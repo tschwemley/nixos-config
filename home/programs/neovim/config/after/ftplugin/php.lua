@@ -8,3 +8,8 @@ vim.lsp.enable("intelephense")
 
 vim.opt_local.foldenable = true
 vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
+
+vim.treesitter.start()
+
+-- TODO: uncomment this if issues with syntax highlighting
+-- vim.bo.syntax = "ON"

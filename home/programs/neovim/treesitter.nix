@@ -11,7 +11,7 @@ let
     };
   };
 
-  treesitter = pkgs.vimPlugins.nvim-treesitter.withPlugins (
+  nvim-treesitter = pkgs.vimPlugins.nvim-treesitter.withPlugins (
     parser:
     with parser;
     [
@@ -33,7 +33,7 @@ let
       javascript
       jq
       json
-      jsonc
+      kdl
       lua
       luadoc
       make
@@ -60,8 +60,12 @@ let
   );
 in
 {
-  programs.neovim.plugins = [
-    treesitter
-    pkgs.vimPlugins.nvim-treesitter-textobjects
-  ];
+  programs.neovim = {
+    extraPackages = [ pkgs.tree-sitter ];
+
+    plugins = [
+      nvim-treesitter
+      pkgs.vimPlugins.nvim-treesitter-textobjects
+    ];
+  };
 }

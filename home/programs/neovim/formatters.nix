@@ -6,6 +6,9 @@
       go
       golines
 
+      # kdl
+      kdlfmt
+
       # nix
       nixfmt
 

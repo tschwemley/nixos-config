@@ -16,7 +16,7 @@ in
 
     # colors
     everforest
-    gruvbox-nvim
+    gruvbox-material
 
     # completion
     blink-compat # necessary for compat with any nvim-cmp plugins
@@ -58,6 +58,9 @@ in
     # git
     gitsigns-nvim
     neogit
+
+    # language
+    markdown-nvim
 
     # ui/dressing
     colorful-menu-nvim

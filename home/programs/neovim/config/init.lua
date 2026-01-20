@@ -5,7 +5,11 @@ require("opts")
 -- Init colorscheme immediately to ensure load prior to any plugin that references for styling
 vim.go.background = "dark"
 vim.go.termguicolors = true -- enabling true color support in the terminal
-vim.cmd("colorscheme gruvbox")
+
+-- additional options: bg -> hard/soft; fg -> original mix (avg. of orig/material)
+vim.g.gruvbox_material_background = "medium"
+vim.g.gruvbox_material_foreground = "material"
+vim.cmd("colorscheme gruvbox-material")
 
 -- TODO: move out basic keymaps or keep here?
 vim.g.mapleader = " "
