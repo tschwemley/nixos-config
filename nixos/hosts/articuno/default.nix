@@ -15,7 +15,7 @@ in
 
     # server imports
     ../../server/alt-frontends/freetar.nix
-    ../../server/alt-frontends/invidious.nix
+    # ../../server/alt-frontends/invidious.nix
     # ../../server/alt-frontends/redlib.nix
     # ../../server/alt-frontends/safetwitch
 
