@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   home.file.".zsh_completions".source = ./completions;
 
@@ -35,5 +36,14 @@
         #
         # add-zsh-hook preexec highlight-help-output
       '';
+
+    # TODO: choose to keep one of these since home-manager decided to fuck around w/ this setting
+
+    # To silence this warning and lock in the current behavior, set:
+    dotDir = config.home.homeDirectory;
+
+    # To adopt the new behavior (XDG config directory), set:
+    # dotDir = "${config.xdg.configHome}/zsh";
+
   };
 }
