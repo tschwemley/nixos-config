@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     age-plugin-yubikey
     yubikey-agent
@@ -8,6 +9,6 @@
 
   services = {
     pcscd.enable = true;
-    udev.packages = with pkgs; [yubikey-personalization];
+    udev.packages = with pkgs; [ yubikey-personalization ];
   };
 }

@@ -1,6 +1,6 @@
 {
   imports = [
-    # ./onlykey.nix
+    ./onlykey.nix
     ./yubikey.nix
   ];
 

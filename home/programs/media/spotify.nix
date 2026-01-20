@@ -9,7 +9,7 @@
   # REF: https://gerg-l.github.io/spicetify-nix/
   programs.spicetify =
     let
-      spicePkgs = self.inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+      spicePkgs = self.inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
     in
     {
       enable = true;

@@ -1,3 +1,4 @@
-self: (_: prev: {
-  inherit (self.inputs.zen-browser.packages.${prev.system}) zen-browser;
+self:
+(_: prev: {
+  inherit (self.inputs.zen-browser.packages.${self.lib.system prev}) zen-browser;
 })

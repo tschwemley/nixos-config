@@ -1,15 +1,14 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # enable zsh autocompletion for system packages (systemd, etc)
-  environment.pathsToLink = ["/share/zsh"];
+  environment.pathsToLink = [ "/share/zsh" ];
 
-  programs = {
-    zsh = {
+  programs.zsh = {
+    enable = true;
+    autosuggestions.enable = true;
+    enableCompletion = true;
+    syntaxHighlighting = {
       enable = true;
-      autosuggestions.enable = true;
-      enableCompletion = true;
-      syntaxHighlighting = {
-        enable = true;
-      };
     };
   };
 

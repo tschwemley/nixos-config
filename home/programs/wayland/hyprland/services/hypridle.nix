@@ -1,8 +1,6 @@
-{ self, pkgs, ... }:
 {
   services.hypridle = {
     enable = true;
-    # package = self.inputs.hypridle.packages.${pkgs.system}.default;
     settings =
       let
         afterCmd = "systemctl --user waybar start && hyprctl dispatch dpms on";
@@ -22,8 +20,6 @@
           }
           {
             timeout = 3600; # 1 hour
-            # on-timeout = "hyprctl dispatch dpms off";
-            # on-resume = "hyprctl dispatch dpms on";
             on-timeout = beforeCmd;
             on-resume = afterCmd;
           }

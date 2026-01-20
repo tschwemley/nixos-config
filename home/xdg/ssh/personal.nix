@@ -76,7 +76,7 @@ in
       };
 
       mac = {
-        hostname = "192.168.1.12"; # 192.168.1.69 -> alt
+        hostname = "192.168.1.103";
         identityFile = config.sops.secrets.mac_key_old.path;
         user = "tschwemley";
         dynamicForwards = [ { port = 9876; } ];

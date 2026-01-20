@@ -1,21 +1,21 @@
-{config, ...}: {
-  boot = { 
-    extraModulePackages = [config.boot.kernelPackages.xpadneo]; 
-    extraModprobeConfig = "options bluetooth disable_ertm=Y"; 
+{
+  environment.sessionVariables = {
+    SDL_JOYSTICK_HIDAPI = "0";
   };
 
+  # REF: https://wiki.archlinux.org/title/Bluetooth#No_BLE_device_can_be_discovered_with_Intel_Corp._AX200_Bluetooth
+  # REF: https://discourse.nixos.org/t/xbox-controller-stuck-in-a-disconnect-reconnect-loop/67845/6
   hardware = {
     bluetooth.settings.General = {
-      experimental = true;
-
-      # https://www.reddit.com/r/NixOS/comments/1ch5d2p/comment/lkbabax/
-      # for pairing bluetooth controller
       Privacy = "device";
-
       JustWorksRepairing = "always";
       Class = "0x000100";
-      FastConnectable = true;
+      FastConnectable = "true";
+
+      # TODO: possibly add GATT?
     };
+
+    # this option adds the extra modprobe config && kernel modules needed
     xpadneo.enable = true;
   };
 }

@@ -6,10 +6,14 @@ let
       inherit (prev.stdenv.hostPlatform) system;
     in
     {
+      # BUG: https://nixpkgs-tracker.ocfox.me/?pr=480871
+      # TODO:remove after upstream pr merged  -- should be within a few days of 01/19/26
+      inherit (self.inputs.nixpkgs-small.legacyPackages.${system}) pagmo2;
+
       inherit (self.packages.${system})
         json2go
         nrepl
-        scripts
+        # scripts
         trmnl-server
         wl-ocr
         ;
@@ -23,15 +27,12 @@ in
   # Custom defined overlays
   # aseprite = import ./aseprite.nix;
   charm = import "${self.inputs.charm}/overlay.nix";
+  formats = import ./formats;
   vimPlugins = import ./vimplugins.nix self;
   visidata = import ./visidata.nix;
   yaziPlugins = import ./yaziplugins.nix self;
 
   # Overlays defined via inputs
-  # hypridle = self.inputs.hypridle.overlays.default;
-  # hyprland = self.inputs.hyprland.overlays.default;
-  # hyprlock = self.inputs.hyprlock.overlays.default;
   neovim = self.inputs.neovim-nightly-overlay.overlays.default;
-
   # nix-topology = self.inputs.nix-topology.overlays.default;
 }

@@ -1,4 +1,4 @@
 self:
 (_: prev: {
-  yaziPlugins = prev.yaziPlugins // self.packages.${prev.system}.yaziPlugins;
+  yaziPlugins = prev.yaziPlugins // self.packages.${self.lib.system prev}.yaziPlugins;
 })

@@ -78,4 +78,7 @@ lib
     tiddlywiki = "4242";
     webhooks = "7780";
   };
+
+  # Gets the system defined for the nixpkgs passed
+  system = pkgs: pkgs.stdenv.hostPlatform.system;
 }
