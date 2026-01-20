@@ -3,11 +3,25 @@
   ...
 }:
 let
+  search-nf = pkgs.writeShellScriptBin "search-nf" /* bash */ ''
+    pattern="nf-\w*-.*?''${1}"
+    res=$(curl -sL 'https://nerdfonts.com/cheat-sheet' \
+         | rg "$pattern" \
+         | awk -F'"' '{printf "| %c | %s |\n", strtonum("0x" $4), $2}'
+    )
+
+
+    cat <<MARKDOWN
+    | Icon | NF Class  |
+    | :--- | :-------  |
+    $res
+    MARKDOWN
+  '';
 in
 {
   environment.systemPackages = with pkgs; [
     fontconfig
-    scripts.search-nf
+    search-nf
   ];
 
   fonts = {
@@ -33,6 +47,8 @@ in
       };
     };
 
+    #TODO: fix for steam?
+    fontDir.enable = true;
     # fontDir.enable = true; TODO: reenable if comapatbility issues. Otherwise delete
 
     packages = with pkgs; [
@@ -44,4 +60,7 @@ in
       twemoji-color-font
     ];
   };
+
+  # TODO: keep/remove depending on steam behavior
+  fonts.fontconfig.useEmbeddedBitmaps = true;
 }
