@@ -48,7 +48,6 @@ in
     nvim-origami
 
     # fuzzy find
-    # fzf-lua # BUG: failing tests
     telescope-nvim
     telescope-frecency-nvim
 
@@ -60,7 +59,8 @@ in
     neogit
 
     # language
-    markdown-nvim
+    # markdown-nvim
+    render-markdown-nvim
 
     # ui/dressing
     colorful-menu-nvim
@@ -68,9 +68,10 @@ in
 
     # other/unsorted
     lazydev-nvim
+    nui-nvim
     # nui-nvim TODO: delete me if not necessary/included via noice
     nvim-colorizer-lua
-    taskwarrior3
+    # taskwarrior3
     vim-abolish
   ];
 }

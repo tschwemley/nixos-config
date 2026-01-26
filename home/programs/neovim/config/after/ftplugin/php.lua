@@ -1,15 +1,9 @@
 require("helpers").set_tabs(4)
 
-vim.bo.commentstring = "// %s"
-
--- TODO: decide which lsp to use
 vim.lsp.enable("intelephense")
--- vim.lsp.enable("phpactor")
-
-vim.opt_local.foldenable = true
-vim.opt_local.foldexpr = "nvim_treesitter#foldexpr()"
-
 vim.treesitter.start()
+
+vim.bo.commentstring = "// %s"
 
 -- TODO: uncomment this if issues with syntax highlighting
 -- vim.bo.syntax = "ON"

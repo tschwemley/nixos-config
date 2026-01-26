@@ -16,6 +16,8 @@ require("todo-comments").setup({
 			alt = { "DOCS", "DOC", "DOCUMENTATION", "REFERENCE", "LINK", "LINKS" },
 		},
 
+		NOTE = { color = "warning" },
+
 		TODO = { icon = " ", color = "info" },
 
 		UPSTREAM = {

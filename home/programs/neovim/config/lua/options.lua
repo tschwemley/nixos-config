@@ -25,6 +25,13 @@ vim.opt.shiftwidth = 4 -- the number of spaces for each indentation level
 vim.opt.softtabstop = 4 -- the number of spaces in a tab
 vim.opt.tabstop = 4 -- the number of spaces that a tab character counts for
 
+-- fold options
+vim.opt.foldenable = true
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 99 -- start with all folds open
+vim.opt.foldlevelstart = 99
+
 -- nvim generated files
 vim.opt.backup = false
 vim.opt.swapfile = false
