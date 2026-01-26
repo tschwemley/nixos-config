@@ -72,7 +72,7 @@
         }
       );
 
-      nixOnDroidConfigurations = import ./android/nix-on-droid self;
+      # nixOnDroidConfigurations = import ./android/nix-on-droid self;
     };
 
   inputs = {
@@ -80,7 +80,6 @@
     # Nix Related Inputs
     #---
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     systems.url = "github:nix-systems/default";
 
@@ -133,13 +132,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-on-droid = {
-      url = "github:nix-community/nix-on-droid/release-24.05";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
+    # nix-on-droid = {
+    #   url = "github:nix-community/nix-on-droid/release-24.05";
+    #   inputs = {
+    #     nixpkgs.follows = "nixpkgs";
+    #     home-manager.follows = "home-manager";
+    #   };
+    # };
 
     # TODO: low prio - add/remove when readressing in future
     # nix-topology = {

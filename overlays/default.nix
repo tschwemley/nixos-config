@@ -6,14 +6,9 @@ let
       inherit (prev.stdenv.hostPlatform) system;
     in
     {
-      # BUG: https://nixpkgs-tracker.ocfox.me/?pr=480871
-      # TODO:remove after upstream pr merged  -- should be within a few days of 01/19/26
-      inherit (self.inputs.nixpkgs-small.legacyPackages.${system}) pagmo2;
-
       inherit (self.packages.${system})
         json2go
         nrepl
-        # scripts
         trmnl-server
         wl-ocr
         ;
