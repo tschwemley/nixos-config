@@ -51,14 +51,17 @@ in
     #   };
     # };
 
+    xdg.configFile."niri/binds.kdl".source = ./binds.kdl;
     xdg.configFile."niri/config.kdl".source = ./config.kdl;
-    # xdg.configFile."niri/config.kdl".source = settingsFormat.generate cfg.programs.niri.settings;
+    xdg.configFile."niri/layout.kdl".source = ./layout.kdl;
+    xdg.configFile."niri/input.kdl".source = ./input.kdl;
+
     programs.niri.settings = {
       gestures = [
         { hot-corners = "off"; }
       ];
     };
 
-    xdg.configFile."niri/config-generated.kdl".text = lib.hm.generators.toKDL { } cfg.settings;
+    # xdg.configFile."niri/config-generated.kdl".text = lib.hm.generators.toKDL { } cfg.settings;
   };
 }

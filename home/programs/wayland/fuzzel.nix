@@ -4,10 +4,13 @@
 
     settings = {
       colors = {
-        background = "1d2021ff";
-        input = "ea6962ff";
-        selection = "45403dff";
-        text = "1d2021ff";
+        background = "282828ff";
+        text = "d4be98ff";
+        match = "a9b665ff";
+        selection = "504945ff";
+        selection-text = "d4be98ff";
+        selection-match = "a9b665ff";
+        border = "7c6f64ff";
       };
 
       main = {
