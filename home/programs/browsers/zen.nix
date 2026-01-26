@@ -6,7 +6,10 @@
   programs.zen-browser = {
     enable = true;
 
-    nativeMessagingHosts = [ pkgs.firefoxpwa ];
+    # BUG: misssed cache hit resulting in fucking ridiculous build times due to dependency on
+    # firefox-unwrapped-144.0.2.drv
+    # ---
+    # nativeMessagingHosts = [ pkgs.firefoxpwa ];
 
     # REF: https://mozilla.github.io/policy-templates/
     policies = {
