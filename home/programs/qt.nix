@@ -23,7 +23,6 @@
     krusader
 
     kdePackages.ark
-    kdePackages.dolphin
     kdePackages.kdegraphics-thumbnailers
     kdePackages.kio
     kdePackages.kio-admin

@@ -6,7 +6,8 @@ in
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
   gtk = {
-    inherit (themes.gruvbox-dark) iconTheme theme;
+    # inherit (themes.gruvbox-dark) iconTheme theme;
+    inherit (themes.gruvbox-material-dark) iconTheme theme;
 
     enable = true;
 
