@@ -1,8 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    celluloid
-    handbrake
+    # handbrake
     ffmpeg-full
     mpv
     vlc
