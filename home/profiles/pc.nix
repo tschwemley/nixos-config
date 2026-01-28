@@ -12,24 +12,22 @@
     ../programs/creative
     ../programs/development/bruno.nix
     ../programs/development/databases.nix
+    ../programs/development/lg-webos.nix
     ../programs/development/nix.nix
     ../programs/gnome
     ../programs/media
     ../programs/music
     ../programs/productivity
 
-    # TODO: decide if keeping anyrun... honestly it seems kind of ass so far
-    # ../programs/anyrun.nix
-
     ../programs/bitwarden.nix
     ../programs/cowsay.nix
     ../programs/glow.nix
     ../programs/lan-mouse.nix
-    ../programs/nemo.nix
     ../programs/qt.nix
     ../programs/reddit-tui.nix
-    ../programs/taskwarrior.nix
-    ../programs/wayland/hyprland
+    ../programs/wayland
+    ../programs/wayland/niri
+    ../services/mako.nix
     ../programs/wcalc.nix
     ../programs/wofi.nix
     ../programs/zathura.nix
@@ -42,6 +40,10 @@
     ../xdg
     ../xdg/netrc.nix
     ../xdg/ssh/personal.nix
+
+    # TODO:remove if not keeping
+    # ../programs/taskwarrior.nix
+    ../programs/wayland/hyprland
   ];
 
   home = {
