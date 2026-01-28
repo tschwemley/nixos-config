@@ -10,9 +10,7 @@
 
     ./.
 
-    # TODO: re-enable when noticing comment next... as of 2025-07-28 issues with build
-    #
-    # ../development/embedded.nix
+    ../development/embedded.nix
 
     ../hardware/audio
     ../hardware/flipperzero.nix
@@ -20,11 +18,11 @@
 
     ../network/wireshark.nix
 
-    # ../programs/flatpak.nix
     ../programs/gaming.nix
     ../programs/hyprland.nix
     ../programs/kdeconnect.nix
     ../programs/keyboards
+    ../programs/niri.nix
     ../programs/usbutils.nix
     ../programs/wine.nix
 
@@ -43,6 +41,7 @@
     ../system/man.nix
 
     # ../theme
+    # ../programs/flatpak.nix
 
     ../virtualisation/qemu.nix
 
@@ -56,19 +55,22 @@
 
   services = {
     getty.autologinUser = "schwem";
-    resolved.dnsovertls = lib.mkDefault "true";
+    resolved.settings.Resolve.DNSOverTLS = lib.mkDefault "true";
 
     rclone = {
+      # enableArticuno = true;
       enableFlareon = true;
       enableJolteon = true;
       enableTentacool = true;
       # enableZapdos = true;
     };
 
+    # TODO: make the exit-node choose based on the fastest connection (tailscale exit-node suggest)
+    # instead of being hard-coded
     tailscale.extraUpFlags = [
       "--advertise-tags tag:pc"
       "--exit-node-allow-lan-access=true"
-      "--exit-node=us-chi-wg-302.mullvad.ts.net"
+      "--exit-node=us-chi-wg-308.mullvad.ts.net"
       "--operator=schwem"
     ];
   };
