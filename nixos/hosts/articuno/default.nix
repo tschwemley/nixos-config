@@ -35,4 +35,26 @@ in
   services.tailscale.extraUpFlags = [ "--advertise-tags=tags:server,tags:master" ];
   sops.defaultSopsFile = ./secrets.yaml;
   system.stateVersion = "23.05"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+
+  # TODO: commit this and standarize
+  users.users.rclone-shared = {
+    isNormalUser = true;
+    home = "/storage/shared";
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIitj/kzZlHZN19wNO3tSpkjuLQ3ewMhMRgvyyIWUPeH rclone shared access"
+    ];
+  };
+
+  services.openssh.extraConfig = ''
+    Match User rclone-shared
+      ChrootDirectory /storage/shared
+      ForceCommand internal-sftp
+      AllowTcpForwarding no
+      X11Forwarding no
+  '';
+
+  systemd.tmpfiles.rules = [
+    "d /storage 755 root root -"
+    "d /storage/shared 755 rclone-shared rclone-shared -"
+  ];
 }
