@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # TODO: split this up further than just "production"
   home.packages = with pkgs; [
     cardinal
