@@ -58,9 +58,9 @@ in
     gitsigns-nvim
     neogit
 
-    # language
-    # markdown-nvim
+    # markdown
     render-markdown-nvim
+    vim-table-mode
 
     # ui/dressing
     colorful-menu-nvim

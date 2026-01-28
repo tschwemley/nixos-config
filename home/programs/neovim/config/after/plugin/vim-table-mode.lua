@@ -1,0 +1,1 @@
+vim.g.table_mode_tableize_auto_border = 1
