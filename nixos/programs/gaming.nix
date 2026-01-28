@@ -30,20 +30,34 @@
         proton-ge-bin
       ];
 
-      gamescopeSession.enable = true;
+      # translate X11 input events to uinput events (e.g. for using Steam Input on Wayland)
+      # extest.enable = true;
+
+      gamescopeSession = {
+        enable = true;
+
+        # REF: https://github.com/ChimeraOS/gamescope-session#user-configuration
+        env = {
+          OUTPUT_CONNECTOR = "eDP-1,DP-1,DP-2-HDMI-A-1,HDMI-A-2";
+        };
+      };
+
+      localNetworkGameTransfers.openFirewall = true;
       protontricks.enable = true;
+
+      # remotePlay.openFirewall = true;
     };
   };
 
-  services.monado = {
-    enable = true;
-    defaultRuntime = true; # Register as default OpenXR runtime
-  };
-
-  systemd.user.services.monado.environment = {
-    STEAMVR_LH_ENABLE = "1";
-    XRT_COMPOSITOR_COMPUTE = "1";
-  };
+  # services.monado = {
+  #   enable = true;
+  #   defaultRuntime = true; # Register as default OpenXR runtime
+  # };
+  #
+  # systemd.user.services.monado.environment = {
+  #   STEAMVR_LH_ENABLE = "1";
+  #   XRT_COMPOSITOR_COMPUTE = "1";
+  # };
 
   # ---
   # TODO: uncomment or delete, pending lutris config
