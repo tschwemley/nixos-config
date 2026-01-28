@@ -10,8 +10,6 @@
     ../programs/yazi
 
     ../terminal
-
-    ../xdg/ssh/default.nix
   ];
 
   home.sessionVariables.TERM = "wezterm";
