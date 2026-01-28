@@ -7,8 +7,8 @@
 
     cursor = {
       inactive_timeout = 4;
-      min_refresh_rate = 120;
-      no_break_fs_vrr = true;
+      # min_refresh_rate = 120;
+      # no_break_fs_vrr = true;
       # no_hardware_cursors = true;
     };
 
@@ -18,13 +18,15 @@
     };
 
     exec-once = [
+      "pypr"
       "wl-paste --watch cliphist store"
     ];
 
     # experimental.xx_color_management_v4 = true;
 
     general = {
-      allow_tearing = true;
+      # allow_tearing = true;
+      # allow_tearing = false;
       gaps_out = 8;
       # layout = "scrolling"; # defaults: dwindle, master
       layout = "dwindle"; # defaults: dwindle, master
@@ -50,7 +52,9 @@
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
       force_default_wallpaper = 0;
-      vfr = false;
+      # vfr = false;
+      vfr = true;
+      vrr = 1;
     };
 
     monitor = config.hyprland.monitors.config;

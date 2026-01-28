@@ -34,6 +34,13 @@
         "$mod, o, exec, wl-ocr"
         "$mod $shift, s, exec, grimblast --notify copysave area"
 
+        # minimize windows
+        "$mod, S, togglespecialworkspace, minimized"
+        "$mod, S, movetoworkspace, +0"
+        "$mod, S, togglespecialworkspace, minimized"
+        "$mod, S, movetoworkspace, special:minimized"
+        "$mod, S, togglespecialworkspace, minimized"
+
         # window management
         "alt, tab, cyclenext"
         "alt shift, tab, cyclenext, prev"

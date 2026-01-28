@@ -17,6 +17,12 @@
       # input leap
       "float, initialClass:io.github.input_leap.InputLeap"
 
+      # nemo
+      "float, initialClass:nemo"
+
+      # overskride
+      "float, initialTitle:overskride"
+
       # pavucontrol
       "float, class:org.pulseaudio.pavucontrol"
 

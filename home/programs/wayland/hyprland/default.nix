@@ -7,7 +7,7 @@
     ./options.nix
     ./plugins.nix
     ./rules.nix
-    ./services
+    # ./services
     ./settings.nix
 
     ../../../services/dunst.nix
@@ -24,6 +24,7 @@
     packages = with pkgs; [
       grimblast
       hyprpicker
+      pyprland
     ];
   };
 
