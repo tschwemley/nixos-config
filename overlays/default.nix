@@ -14,10 +14,6 @@ let
         ;
 
       oidcproxy = self.inputs.oidcproxy.packages.${system}.default;
-
-      # BUG: fixes broken linuxPackages_zen. Remove after upstream is in nixos-unstable.
-      # UPSTREAM: https://nixpkgs-tracker.ocfox.me/?pr=482971
-      inherit (self.inputs.nixpkgs-small.legacyPackages.${system}) linuxPackages_zen;
     };
 in
 {
