@@ -1,23 +1,56 @@
-{ self, ... }:
+{ self, config, ... }:
 {
   imports = [ self.inputs.lan-mouse.homeManagerModules.default ];
 
   programs.lan-mouse.enable = true;
 
-  xdg.configFile."lan-mouse/config.toml".text = /* toml */ ''
-    # configure release bind
-    # release_bind = [ "KeyA", "KeyS", "KeyD", "KeyF" ]
+  sops = {
+    secrets =
+      let
+        key = "lan_mouse_certificate_fingerprint";
+      in
+      {
+        lan-mouse-cert-fingerprint-charizard = {
+          inherit key;
+          sopsFile = ../../nixos/hosts/charizard/secrets.yaml;
+        };
 
-    # optional port (defaults to 4242)
-    port = 4242
+        lan-mouse-cert-fingerprint-pikachu = {
+          inherit key;
+          sopsFile = ../../nixos/hosts/pikachu/secrets.yaml;
+        };
+      };
 
-    # define a client on the right side with host name "iridium"
-    [[clients]]
-    activate_on_startup = true
-    hostname = "192.168.1.103"
-    ips = ["192.168.1.103"]
+    templates."lan-mouse-config.toml" = {
+      path = "${config.xdg.configHome}/lan-mouse/config.toml";
+      content = /* toml */ ''
+        # configure release bind
+        # release_bind = [ "KeyA", "KeyS", "KeyD", "KeyF" ]
 
-    # position (left | right | top | bottom)
-    position = "right"
-  '';
+        # optional port (defaults to 4242)
+        port = 4242
+
+        # define a client on the right side with host name "iridium"
+        [[clients]]
+        activate_on_startup = false
+        hostname = "192.168.1.103"
+        ips = ["192.168.1.103"]
+
+        [[clients]]
+        activate_on_startup = false
+        hostname = "charizard"
+
+        [[clients]]
+        activate_on_startup = false
+        hostname = "pikachu"
+
+        # position (left | right | top | bottom)
+        position = "right"
+
+        [authorized_fingerprints]
+        "${config.sops.placeholder.lan-mouse-cert-fingerprint-charizard}" = "charizard"
+        "${config.sops.placeholder.lan-mouse-cert-fingerprint-pikachu}" = "pikachu"
+      '';
+    };
+  };
 }
