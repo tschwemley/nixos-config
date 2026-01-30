@@ -131,11 +131,11 @@
     },
     "crane": {
       "locked": {
-        "lastModified": 1764782380,
-        "narHash": "sha256-9tpiB/ta9m4fNXAjmgrLOCOHXsqUYq4mTPcBYSUDvqk=",
+        "lastModified": 1769737823,
+        "narHash": "sha256-DrBaNpZ+sJ4stXm+0nBX7zqZT9t9P22zbk6m5YhQxS4=",
         "owner": "ipetkov",
         "repo": "crane",
-        "rev": "e09877b775852470808fda69120691647960bcf2",
+        "rev": "b2f45c3830aa96b7456a4c4bc327d04d7a43e1ba",
         "type": "github"
       },
       "original": {
@@ -574,11 +574,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1764833284,
-        "narHash": "sha256-9zwRFtTfJCzRPmZAVvO0T1ZpON2aDs3gEdnpSocB46w=",
+        "lastModified": 1769760871,
+        "narHash": "sha256-R7WpoWUJmcHcF/cWHkYwD+oLo3i4BOKhkaNpp8cnTSk=",
         "ref": "refs/heads/main",
-        "rev": "d9602d87090ee7642efbd03b2620c96d89a55e0f",
-        "revCount": 1377,
+        "rev": "15d5cb203c37cbab007b9724dd0e0c9e12c54f07",
+        "revCount": 1378,
         "type": "git",
         "url": "https://git.schwem.io/schwem/redlib"
       },
@@ -639,11 +639,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764816035,
-        "narHash": "sha256-F0IQSmSj4t2ThkbWZooAhkCTO+YpZSd2Pqiv2uoYEHo=",
+        "lastModified": 1769742225,
+        "narHash": "sha256-roSD/OJ3x9nF+Dxr+/bLClX3U8FP9EkCQIFpzxKjSUM=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "74d9abb7c5c030469f90d97a67d127cc5d76c238",
+        "rev": "bcdd8d37594f0e201639f55889c01c827baf5c75",
         "type": "github"
       },
       "original": {
