@@ -21,19 +21,10 @@
     ];
   };
 
-  # environment = {
-  #   systemPackages = with pkgs; [
-  #     libva-utils
-  #     gpu-viewer
-  #     nvtopPackages.amd
-  #     rocmPackages.rocminfo
-  #   ];
-  # };
-
   hardware = {
     amdgpu = {
       initrd.enable = lib.mkDefault true;
-      # opencl.enable = lib.mkDefault true;
+      opencl.enable = lib.mkDefault true;
     };
 
     graphics = {
@@ -44,15 +35,19 @@
     };
   };
 
-  # TODO: should I enable this globally or for each application explicitly?
-  # NOTE: changing will force a rebuild of the entire kernel
-  # nixpkgs.config.rocmSupport = lib.mkDefault true;
+  # enable rocm support for all packages
+  nixpkgs.config.rocmSupport = lib.mkDefault true;
 
-  services = {
-    # xserver.videoDrivers = [ "amdgpu" ];
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="drm", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="manual"
+  '';
 
-    udev.extraRules = ''
-      ACTION=="add", SUBSYSTEM=="drm", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="manual"
-    '';
-  };
+  # environment = {
+  #   systemPackages = with pkgs; [
+  #     libva-utils
+  #     gpu-viewer
+  #     nvtopPackages.amd
+  #     rocmPackages.rocminfo
+  #   ];
+  # };
 }
