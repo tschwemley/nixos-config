@@ -79,7 +79,11 @@
   };
 
   # when building don't use all of the cpu cores
-  nix.settings.cores = 16;
+  nix.settings = {
+    # TODO: make sure this matches the cpu cores for pikachu
+    cores = 8; # when building don't use all of the cpu cores
+    max-jobs = 8;
+  };
 
   # declare support for derivations requiring nvidia gpu available
   programs.nix-required-mounts.presets.nvidia-gpu.enable = true;

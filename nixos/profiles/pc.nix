@@ -1,6 +1,7 @@
 {
   self,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -47,6 +48,8 @@
 
     ../../android
   ];
+
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   nix.settings.trusted-users = [ "schwem" ];
 
