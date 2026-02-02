@@ -7,6 +7,12 @@
 include "binds.kdl"
 include "input.kdl"
 include "layout.kdl"
+include "window-rules.kdl"
+
+environment {
+    XDG_CURRENT_DESKTOP "niri"
+	XDG_DESKTOP_SESSION "niri"
+}
 
 gestures {
 	hot-corners {
@@ -41,8 +47,6 @@ output "HDMI-A-2" {
 	// Transform allows to rotate the output counter-clockwise, valid values are:
 	// normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
 	transform "normal"
-
-	variable-refresh-rate
 }
 
 // Add lines like this to spawn processes at startup.
@@ -51,7 +55,7 @@ output "HDMI-A-2" {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
