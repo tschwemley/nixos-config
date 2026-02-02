@@ -2,25 +2,29 @@
   self,
   config,
   ...
-}: let
+}:
+let
   inherit (config.networking) hostName;
-in {
+in
+{
   sops = {
-    secrets = let
-      secretAttrs = {
-        sopsFile = "${self.lib.secrets.server}/sabnzbd.yaml";
+    secrets =
+      let
+        secretAttrs = {
+          sopsFile = "${self.lib.secrets.server}/sabnzbd.yaml";
+        };
+      in
+      {
+        "sabnzbd_api_key" = secretAttrs;
+        "sabnzbd_nzb_key" = secretAttrs;
+        "sabnzbd_extra_categories" = secretAttrs;
+        "sabnzbd_servers" = secretAttrs;
       };
-    in {
-      "sabnzbd_api_key" = secretAttrs;
-      "sabnzbd_nzb_key" = secretAttrs;
-      "sabnzbd_extra_categories" = secretAttrs;
-      "sabnzbd_servers" = secretAttrs;
-    };
 
     templates."sabnzbd.ini" = {
       group = "sabnzbd";
       owner = "sabnzbd";
-      mode = "0640";
+      mode = "0440";
       path = "/var/lib/sabnzbd/sabnzbd.ini";
       content =
         # ini
