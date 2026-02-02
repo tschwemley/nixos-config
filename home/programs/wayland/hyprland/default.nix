@@ -15,10 +15,10 @@
 
   home = {
     sessionVariables = {
-      GDK_SCALE = 2;
-      XCURSOR_SIZE = 32;
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_DESKTOP = "Hyprland";
+      # GDK_SCALE = 2;
+      # XCURSOR_SIZE = 32;
+      # XDG_CURRENT_DESKTOP = "Hyprland";
+      # XDG_SESSION_DESKTOP = "Hyprland";
     };
 
     packages = with pkgs; [
