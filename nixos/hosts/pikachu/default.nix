@@ -88,35 +88,6 @@ in
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
-  home-manager.users.schwem.hyprland = {
-    monitors = {
-      primary = "eDP-1";
-      config = [
-        "eDP-1,3840x2160@60,0x0,1.5"
-        "DP-1,3840x1100@120,0x1440,1.67"
-      ];
-    };
-    workspaces = [
-      "1, monitor:eDP-1"
-      "2, monitor:eDP-1"
-      "3, monitor:eDP-1"
-      "4, monitor:eDP-1"
-      "5, monitor:DP-1"
-      "6, monitor:DP-1"
-    ];
-  };
-
-  home-manager.users.schwem.wayland.windowManager.hyprland.settings = {
-    bind = [
-      "$mod, 5, workspace, 5"
-      "$mod shift, 5, movetoworkspace, 5"
-    ];
-
-    input = {
-      kb_options = "shift:nocaps";
-    };
-  };
-
   # laptop specific options
   environment.systemPackages = with pkgs; [
     asusctl

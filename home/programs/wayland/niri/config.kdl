@@ -7,6 +7,7 @@
 include "binds.kdl"
 include "input.kdl"
 include "layout.kdl"
+include "output.kdl"
 include "window-rules.kdl"
 
 environment {
@@ -18,35 +19,6 @@ gestures {
 	hot-corners {
 		off 
 	}
-}
-
-// Find outputs via `niri msg outputs` while inside a niri instance.
-// REF: https://yalter.github.io/niri/Configuration:-Outputs
-output "DP-1" {
-	// mode "3840x2160@120.000"
-	mode "3840x2160@119.879997"
-	position x=0 y=0
-
-	// You can use integer or fractional scale, for example use 1.5 for 150% scale.
-	scale 1
-
-	// Transform allows to rotate the output counter-clockwise, valid values are:
-	// normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
-	transform "normal"
-
-	variable-refresh-rate
-}
-
-output "HDMI-A-2" {
-	mode "2160x2880@60.000"
-	position x=3840 y=0
-
-	// You can use integer or fractional scale, for example use 1.5 for 150% scale.
-	scale 1.5 
-
-	// Transform allows to rotate the output counter-clockwise, valid values are:
-	// normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
-	transform "normal"
 }
 
 // Add lines like this to spawn processes at startup.

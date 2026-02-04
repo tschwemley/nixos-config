@@ -78,6 +78,24 @@
     nvidia-container-toolkit.enable = true;
   };
 
+  home-manager.users.schwem = {
+    xdg.configFile."niri/output.kdl".text = /* kdl */ ''
+      output "eDP-1" {
+      	mode "3860x2160@60.000"
+      	position x=0 y=0
+      	scale 1
+      	transform "normal"
+      }
+
+      output "DP-1" {
+      	mode "3840x1100@60"
+      	position x=0 y=2160
+      	scale 1
+      	transform "normal"
+      }
+    '';
+  };
+
   # when building don't use all of the cpu cores
   nix.settings = {
     # TODO: make sure this matches the cpu cores for pikachu
