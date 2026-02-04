@@ -1,18 +1,34 @@
 {
-  fetchFromGitHub,
   buildNpmPackage,
+  fetchFromGitHub,
+  importNpmLock,
+  sentry-cli,
 }:
-buildNpmPackage {
-  name = "raindrop";
-
+let
   src = fetchFromGitHub {
     owner = "raindropio";
     repo = "app";
-    rev = "master";
-    hash = "sha256-ZQq0WK/wPQCP0V4rtOBd8T0mPy8lVoBz6E+u3WxDPy8=";
+    rev = "latest";
+    hash = "sha256-IrVqM1jMQlSmR430f9ubnYMYTcnYHflAzzrivvSlEJY=";
   };
 
-  npmDepsHash = "sha256-/dTNln8NPW5Z973HrFkxUudR3yINM+UTkWszueZxw2U=";
+  npmHooks = importNpmLock { npmRoot = src; };
+in
+buildNpmPackage {
+  inherit src;
+  inherit (importNpmLock) npmConfigHook;
+
+  name = "raindrop";
+  version = "5.6.94";
+
+  nativeBuildInputs = [ sentry-cli ];
+
+  npmDeps = importNpmLock { npmRoot = src; };
+
+  npmConfigHook = ''
+    export SENTRY_CLI=${sentry-cli}/bin/sentry-cli                 
+    ${npmHooks.npmConfigHook}                                      
+  '';
 
   # The prepack script runs the build script, which we'd rather do in the build phase.
   npmPackFlags = [ "--ignore-scripts" ];

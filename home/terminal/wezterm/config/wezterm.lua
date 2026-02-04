@@ -6,6 +6,7 @@ local config = {
 	default_prog = { "zsh" },
 	enable_wayland = true,
 	keys = require("keys"),
+	ssh_domains = require("ssh_domains"),
 	term = "wezterm",
 }
 

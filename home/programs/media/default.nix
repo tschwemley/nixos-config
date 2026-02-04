@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ./books.nix
+    # ./books.nix
     ./jellyfin.nix
     ./spotify.nix
     ./loupe.nix

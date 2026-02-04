@@ -12,7 +12,7 @@
   # Thanks to https://github.com/nix-community/home-manager/blob/60e4624302d956fe94d3f7d96a560d14d70591b9/modules/lib/shell.nix :)
   export = n: v: ''export ${n}="${builtins.toString v}"'';
   exportAll = vars: lib.concatStringsSep "\n" (lib.mapAttrsToList export vars);
-  exportCredentials = n: _: ''export ${n}="$(${pkgs.systemd}/bin/systemd-creds cat ${n}_FILE)"'';
+  exportCredentials = n: _: ''export ${n}="$(${pkgs.stdenv.hostPlatform.systemd}/bin/systemd-creds cat ${n}_FILE)"'';
   exportAllCredentials = vars: lib.concatStringsSep "\n" (lib.mapAttrsToList exportCredentials vars);
   transformCredential = n: v: "${n}_FILE:${v}";
   getLoadCredentialList = lib.mapAttrsToList transformCredential cfg.credentials;

@@ -6,7 +6,7 @@ self: pkgs: {
   pomobar-rs = pkgs.callPackage ./pomobar-rs { };
   raindrop = pkgs.callPackage ./raindrop.nix { };
   scripts = import ./scripts pkgs;
-  tree-sitter-bruno = pkgs.callPackage ./tree-sitter-bruno.nix { };
+  tdarr = import ./tdarr pkgs;
   trmnl-server = pkgs.callPackage ./trmnl-server.nix { };
   wezterm-nvim-navigator = pkgs.callPackage ./wezterm-nvim-navigator.nix { };
   wl-ocr = pkgs.callPackage ./wl-ocr.nix { };

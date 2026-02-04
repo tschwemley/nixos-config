@@ -22,7 +22,7 @@ require("todo-comments").setup({
 
 		UPSTREAM = {
 			icon = "󰞍",
-			color = "info",
+			color = "hint",
 		},
 	},
 })

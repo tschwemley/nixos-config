@@ -23,22 +23,13 @@ in
 
     ./hardware.nix
     ../../profiles/pc.nix
-    ../../system/boot/systemd.nix
-  ];
 
-  boot = {
-    initrd = {
-      availableKernelModules = [
-        "xhci_pci"
-        "ahci"
-        "nvme"
-        "usbhid"
-        "uas"
-        "sd_mod"
-      ];
-      kernelModules = [ "kvm-intel" ];
-    };
-  };
+    # TODO: make systemd boot import from the nixos/pc profile (unless pika is an exception for some reason)
+    ../../system/boot/systemd.nix
+
+    # TODO: move this to a profile
+    # ../../services/llama-cpp.nix
+  ];
 
   networking = {
     enableIPv6 = true;
@@ -49,23 +40,4 @@ in
 
   # read: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion when ready to update
   system.stateVersion = "24.05";
-
-  services.tailscale.extraUpFlags = [
-    "--exit-node=us-chi-wg-303.mullvad.ts.net"
-    "--exit-node-allow-lan-access=true"
-    "--operator=schwem"
-  ];
-
-  # TODO: move below here elsewhere
-  systemd.services.tailscaled-autoconnect =
-    let
-      after = lib.mkDefault [
-        "NetworkManager-wait-online"
-        "tailscaled.service"
-      ];
-      wants = after;
-    in
-    {
-      inherit after wants;
-    };
 }

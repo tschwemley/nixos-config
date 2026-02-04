@@ -35,6 +35,7 @@ in
 {
   imports = [
     ./options.nix
+    # (lib.mkIf cfg.enableArticuno (import ./articuno.nix mkRcloneFSOptions))
     (lib.mkIf cfg.enableJolteon (import ./jolteon.nix mkRcloneFSOptions))
     (lib.mkIf cfg.enableFlareon (import ./flareon.nix mkRcloneFSOptions))
     (lib.mkIf cfg.enableTentacool (import ./tentacool.nix mkRcloneFSOptions))

@@ -13,6 +13,8 @@
     let
       lib = import ./lib (nixpkgs.lib // home-manager.lib);
 
+      originPackages = system: nixpkgs.legacyPackages.${system};
+
       pkgsFor = lib.genAttrs (import systems) (
         system:
         (import nixpkgs {
@@ -129,7 +131,10 @@
     };
 
     neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
+      # TODO: revert this back to the nix-community url when merged upstream
+      # UPSTREAM: https://github.com/nix-community/neovim-nightly-overlay/pull/1166
+      url = "github:Prince213/neovim-nightly-overlay/push-nttnuzwkprtq";
+      # url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -15,13 +15,12 @@
     enable = true;
     enableZshIntegration = config.programs.zsh.enable;
 
-    initLua = # lua
-      ''
-        require("full-border"):setup {
-        	-- Available values: ui.Border.PLAIN, ui.Border.ROUNDED
-        	type = ui.Border.ROUNDED,
-        }
-      '';
+    initLua = /* lua */ ''
+      require("full-border"):setup {
+      	-- Available values: ui.Border.PLAIN, ui.Border.ROUNDED
+      	type = ui.Border.ROUNDED,
+      }
+    '';
 
     keymap = {
       mgr.prepend_keymap = [
@@ -66,22 +65,22 @@
 
         # -- plugins --
 
-        # bypass
-        {
-          on = "L";
-          run = "plugin bypass";
-          desc = "Recursively enter child directory, skipping children with only a single subdirectory";
-        }
-        {
-          on = "H";
-          run = "plugin bypass reverse";
-          desc = "Recursively enter parent directory, skipping parents with only a single subdirectory";
-        }
-        {
-          on = "l";
-          run = "plugin bypass smart-enter";
-          desc = "Open a file, or recursively enter child directory, skipping children with only a single subdirectory";
-        }
+        # # bypass
+        # {
+        #   on = "L";
+        #   run = "plugin bypass";
+        #   desc = "Recursively enter child directory, skipping children with only a single subdirectory";
+        # }
+        # {
+        #   on = "H";
+        #   run = "plugin bypass reverse";
+        #   desc = "Recursively enter parent directory, skipping parents with only a single subdirectory";
+        # }
+        # {
+        #   on = "l";
+        #   run = "plugin bypass smart-enter";
+        #   desc = "Open a file, or recursively enter child directory, skipping children with only a single subdirectory";
+        # }
 
         # chmod
         {
@@ -104,7 +103,7 @@
 
     plugins = {
       inherit (pkgs.yaziPlugins)
-        bypass
+        # bypass
         chmod
         diff
         f3d-preview
@@ -115,24 +114,23 @@
 
     # REF: https://yazi-rs.github.io/docs/configuration/overview
     settings = {
-      # manager = {
       mgr = {
-        layout = [
-          1
-          4
-          3
-        ];
-        linemode = "none";
-        show_hidden = false;
+        linemode = "mtime";
+        show_hidden = true;
         show_symlink = true;
         sort_by = "alphabetical";
         sort_dir_first = true;
         sort_reverse = false;
         sort_sensitive = true;
+
+        layout = [
+          1
+          4
+          3
+        ];
       };
 
       plugin = {
-
         prepend_preloaders = [
           # 3d objects
           {

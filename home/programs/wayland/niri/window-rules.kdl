@@ -1,3 +1,10 @@
+// basslocker
+window-rule {
+	match app-id="Bass Locker"
+	open-floating true
+}
+
+// screen share dialog
 window-rule {
 	match title="Select what to share"
 	open-floating true

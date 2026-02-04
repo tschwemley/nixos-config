@@ -2,6 +2,9 @@
 {
   programs.neovim = {
     extraPackages = with pkgs; [
+      # bash
+      bash-language-server
+
       # go
       golines
       gopls

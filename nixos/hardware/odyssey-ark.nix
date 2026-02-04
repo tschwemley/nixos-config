@@ -4,17 +4,20 @@
   output,
 }:
 {
-  # fonts.fontconfig.subpixel.rgba = lib.mkDefault "bgr";
-  fonts.fontconfig.subpixel.rgba = lib.mkDefault "vbgr";
+  fonts.fontconfig.subpixel.rgba = lib.mkDefault "bgr";
+  # fonts.fontconfig.subpixel.rgba = lib.mkDefault "vbgr";
 
   hardware = {
     display = {
       edid = {
+        enable = true;
+
         # linuxhw."SAM72C3_2022" = [ "SAM72C3" ];
         # linuxhw."SAM72C8_2022" = [
         #   "SAM72C8"
         #   "2022"
         # ];
+
         packages = [
           (pkgs.runCommand "edid-ark" { } ''
             mkdir -p $out/lib/firmware/edid
@@ -26,8 +29,9 @@
       };
 
       outputs.${output} = {
-        # edid = "SAM72C8_2022.bin";
         edid = "ark.bin";
+        # edid = "SAM72C8_2022.bin";
+
         mode = "e";
       };
     };
