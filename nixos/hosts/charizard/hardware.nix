@@ -13,7 +13,6 @@
     (import ../../hardware/odyssey-ark.nix {
       inherit lib pkgs;
       output = "DP-1";
-      # output = "HDMI-A-2";
     })
 
     ../../hardware/amd.nix
