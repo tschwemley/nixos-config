@@ -7,7 +7,6 @@
 {
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
-    # inputs.nixos-hardware.nixosModules.common-gpu-amd
     (import ./disk.nix "nvme1n1" "crypted")
 
     (import ../../hardware/odyssey-ark.nix {
