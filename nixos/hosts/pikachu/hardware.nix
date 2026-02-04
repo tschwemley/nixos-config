@@ -83,14 +83,14 @@
       output "eDP-1" {
       	mode "3860x2160@60.000"
       	position x=0 y=0
-      	scale 1
+      	scale 1.5
       	transform "normal"
       }
 
       output "DP-1" {
       	mode "3840x1100@60"
-      	position x=0 y=2160
-      	scale 1
+      	position x=0 y=1440
+      	scale 1.5
       	transform "normal"
       }
     '';
