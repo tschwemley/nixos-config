@@ -4,6 +4,12 @@ window-rule {
 	open-floating true
 }
 
+// media-downloader
+window-rule {
+	match app-id="media-downloader"
+	open-floating
+}
+
 // screen share dialog
 window-rule {
 	match title="Select what to share"
