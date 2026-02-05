@@ -58,6 +58,9 @@ in
     gitsigns-nvim
     neogit
 
+    # language specific
+    openscad-nvim
+
     # markdown
     render-markdown-nvim
     vim-table-mode
@@ -69,9 +72,12 @@ in
     # other/unsorted
     lazydev-nvim
     nui-nvim
-    # nui-nvim TODO: delete me if not necessary/included via noice
     nvim-colorizer-lua
-    # taskwarrior3
     vim-abolish
+
+    # TODO: delete me if not necessary/included via noice
+    # nui-nvim
+
+    # taskwarrior3
   ];
 }

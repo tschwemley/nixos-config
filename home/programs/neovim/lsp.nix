@@ -19,6 +19,9 @@
       # nix
       nixd
 
+      # openscad
+      openscad-lsp
+
       # php
       nodePackages.intelephense
       phpactor
