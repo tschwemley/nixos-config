@@ -4,18 +4,22 @@
   lib,
   nix-update-script,
 }:
+let
+  version = "1.2.3";
+in
 buildGoModule {
+  inherit version;
+
   pname = "json2go";
-  version = "1.1.4";
 
   src = fetchFromGitHub {
     owner = "m-zajac";
     repo = "json2go";
-    rev = "69f8d7e3f9e756b10e76c040097ab75f239eab81";
-    hash = "sha256-llSuwIGTz02sGVTFeyVV07fNIo2nM7xapbB5Gdikc+w=";
+    rev = "v${version}";
+    hash = "sha256-ztqCRqIh/ocIBLjRBxPuNgeDXLSgqXfe7VkX1lvxh0s=";
   };
 
-  vendorHash = "sha256-nkxidf1Wc1LuNyBV4tmO5Swv0eYBR5rhIqSUDZqXgU4=";
+  vendorHash = "sha256-3Bl3BZe9CZ0KybDHPcRRauL0Zz5J1YR7uzcZIXgkv3c=";
 
   passthru.updateScript = nix-update-script { };
 
