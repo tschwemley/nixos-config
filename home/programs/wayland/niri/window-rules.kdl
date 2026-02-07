@@ -4,14 +4,29 @@ window-rule {
 	open-floating true
 }
 
+// fix steam notification pop up positioning at the center of the screen
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
+// float zen pip
+window-rule {
+	match app-id=r#"zen-beta$"# title="^Picture-in-Picture$"
+	open-floating true
+}
+
 // screen share dialog
 window-rule {
 	match title="Select what to share"
 	open-floating true
 }
 
-// steam 
+// Work around wezterm initial configure bug by setting an empty default-column-width.
 window-rule {
-    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
-    default-floating-position x=10 y=10 relative-to="bottom-right"
+	// This regular expression is intentionally made as specific as possible,
+	// since this is the default config, and we want no false positives.
+	// You can get away with just app-id="wezterm" if you want.
+	match app-id=r#"^org\.wezfurlong\.wezterm$"#
+	default-column-width {}
 }
