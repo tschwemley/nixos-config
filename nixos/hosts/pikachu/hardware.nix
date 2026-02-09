@@ -81,16 +81,17 @@
   home-manager.users.schwem = {
     xdg.configFile."niri/output.kdl".text = /* kdl */ ''
       output "eDP-1" {
-      	mode "3860x2160@60.000"
+        focus-at-startup
+      	mode "3840x2160@60.000"
       	position x=0 y=0
-      	scale 1.75
+      	scale 1.6875
       	transform "normal"
       }
 
       output "DP-1" {
       	mode "3840x1100@60"
-      	position x=0 y=1440
-      	scale 1.75
+      	position x=0 y=-1280
+      	scale 1.6875
       	transform "normal"
       }
     '';
