@@ -28,7 +28,7 @@
           User = "sabnzbd";
           Group = "sabnzbd";
           StateDirectory = "/var/lib/sabnzbd";
-          ExecStart = "${pkgs.sabnzbd} -d -f ${iniPathQuoted}";
+          ExecStart = "${lib.getExe pkgs.sabnzbd} -d -f ${iniPathQuoted}";
         };
 
       # preStart = "";
