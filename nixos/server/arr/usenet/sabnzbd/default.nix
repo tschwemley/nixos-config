@@ -1,24 +1,37 @@
-{ lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [ ./config.nix ];
 
-  services.sabnzbd = {
-    enable = true;
-    configFile = null;
-  };
-
   systemd = {
-    services.sabznbd = {
+    services.sabnzbd = {
+      description = "sabnzbd server";
+      wantedBy = [ "multi-user.target" ];
+
       after = [
         "storage.mount"
-        "tailscaled.service"
-      ];
-      wants = [
-        "storage.mount"
+        "network.target"
         "tailscaled.service"
       ];
 
-      preStart = lib.mkForce "";
+      serviceConfig =
+        let
+          iniPathQuoted = lib.escapeShellArg config.sops.templates."sabnzbd.ini".path;
+        in
+        {
+          Type = "forking";
+          GuessMainPID = "no";
+          User = "sabnzbd";
+          Group = "sabnzbd";
+          StateDirectory = "/var/lib/sabnzbd";
+          ExecStart = "${pkgs.sabnzbd} -d -f ${iniPathQuoted}";
+        };
+
+      # preStart = "";
     };
 
     tmpfiles = {
@@ -32,26 +45,14 @@
     };
   };
 
-  users.users.sabnzbd.extraGroups = [ "arr" ];
+  users = {
+    groups.sabnzbd = { };
+    users.sabnzbd = {
+      isSystemUser = true;
+      description = "sabnzbd user";
+
+      extraGroups = [ "arr" ];
+      group = "sabnzbd";
+    };
+  };
 }
-
-/*
-    set -euo pipefail
-
-  	declare -a files=(/var/lib/sabnzbd/sabnzbd.ini)
-
-  	tmpfile=$(mktemp)
-
-  	/nix/store/jpz0dz82jyqxfh93dgdlc938jxr67ib6-python3-3.13.11-env/bin/python3.13 \\
-  	  /nix/store/jk124ww1dlhqqhg3nfs38q78cqz0frl0-config_merge.py \\
-  	  \"\${files[@]}\" \\
-  	  > \"$tmpfile\"
-
-  	install -D \\
-  	  -m 600 \\
-  	  -o 'sabnzbd' -g 'sabnzbd' \\
-  	  \"$tmpfile\" \\
-  	  /var/lib/sabnzbd/sabnzbd.ini
-
-  	rm \"$tmpfile\"
-*/
