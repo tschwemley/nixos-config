@@ -1,9 +1,10 @@
-{config, ...}: {
-  imports = [./config.nix];
+{ lib, ... }:
+{
+  imports = [ ./config.nix ];
 
   services.sabnzbd = {
     enable = true;
-    configFile = config.sops.templates."sabnzbd.ini".path;
+    configFile = null;
   };
 
   systemd = {
@@ -16,6 +17,8 @@
         "storage.mount"
         "tailscaled.service"
       ];
+
+      preStart = lib.mkForce "";
     };
 
     tmpfiles = {
@@ -29,5 +32,26 @@
     };
   };
 
-  users.users.sabnzbd.extraGroups = ["arr"];
+  users.users.sabnzbd.extraGroups = [ "arr" ];
 }
+
+/*
+    set -euo pipefail
+
+  	declare -a files=(/var/lib/sabnzbd/sabnzbd.ini)
+
+  	tmpfile=$(mktemp)
+
+  	/nix/store/jpz0dz82jyqxfh93dgdlc938jxr67ib6-python3-3.13.11-env/bin/python3.13 \\
+  	  /nix/store/jk124ww1dlhqqhg3nfs38q78cqz0frl0-config_merge.py \\
+  	  \"\${files[@]}\" \\
+  	  > \"$tmpfile\"
+
+  	install -D \\
+  	  -m 600 \\
+  	  -o 'sabnzbd' -g 'sabnzbd' \\
+  	  \"$tmpfile\" \\
+  	  /var/lib/sabnzbd/sabnzbd.ini
+
+  	rm \"$tmpfile\"
+*/
