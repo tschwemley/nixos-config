@@ -84,14 +84,14 @@
         focus-at-startup
       	mode "3840x2160@60.000"
       	position x=0 y=0
-      	scale 1.6875
+      	scale 1.75
       	transform "normal"
       }
 
       output "DP-1" {
       	mode "3840x1100@60"
-      	position x=0 y=-1280
-      	scale 1.6875
+      	position x=0 y=-1234
+      	scale 1.75
       	transform "normal"
       }
     '';
