@@ -30,7 +30,7 @@
       basedpyright
 
       # web
-      superhtml
+      # superhtml
       vscode-css-languageserver
     ];
 
