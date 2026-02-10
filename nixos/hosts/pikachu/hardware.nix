@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   lib,
   pkgs,
   modulesPath,
@@ -15,6 +16,8 @@
     "${inputs.nixos-hardware}/common/cpu/intel/alder-lake"
     inputs.nixos-hardware.nixosModules.common-pc-laptop
     inputs.nixos-hardware.nixosModules.asus-battery
+
+    ./ux582_cirrus_patch
   ];
 
   boot = {
@@ -26,11 +29,28 @@
       ];
     };
 
+    loader.efi.canTouchEfiVariables = true;
+
     kernelModules = [
       "kvm-intel"
-      "snd_hda_intel"
-      "sof_audio_pci_intel_tgl"
+      # "snd_hda_intel"
+      # "sof_audio_pci_intel_tgl"
     ];
+
+    kernelParams = [
+      # These options are needed for suspend to work,
+      # otherwise the nvme will be mounted read-only on resume
+      "pcie_aspm=off"
+      "pcie_port_pm=off"
+      "nvme_core.default_ps_max_latency_us=0"
+      "mem_sleep_default=deep"
+
+      # "snd-intel-dspcfg.dsp_driver=1"
+      # "snd-hda-intel.model=1043:1a8f"
+      # "snd-hda-intel.model=1043:1c9f"
+    ];
+
+    # extraModprobeConfig = "options snd-hda-intel model=1043:1a8f";
   };
 
   environment.systemPackages = with pkgs; [
@@ -38,12 +58,13 @@
   ];
 
   hardware = {
+    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    sensor.iio.enable = true;
+
     asus.battery = {
       chargeUpto = 90;
       enableChargeUptoScript = true;
     };
-
-    # firmware = [ pkgs.sof-firmware ];
 
     graphics = {
       enable = true;
@@ -90,7 +111,7 @@
 
       output "DP-1" {
       	mode "3840x1100@60"
-      	position x=0 y=-1234
+      	position x=0 y=1234
       	scale 1.75
       	transform "normal"
       }

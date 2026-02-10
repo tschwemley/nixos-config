@@ -55,24 +55,6 @@ in
   #   # '';
   # };
 
-  # TODO: uncomment or remove
-  # hardware.sensor.iio.enable = true;
-
-  boot.extraModulePackages = [ ];
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "thunderbolt"
-    "nvme"
-    "usb_storage"
-    "sd_mod"
-    "sr_mod"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
   networking = {
     hostName = "pikachu";
     networkmanager.enable = true;
@@ -92,10 +74,6 @@ in
   environment.systemPackages = with pkgs; [
     asusctl
     supergfxctl
-
-    # acpi
-    # acpidump-all
-    # sof-firmware
   ];
 
   services = {
