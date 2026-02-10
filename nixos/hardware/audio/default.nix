@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ./bluetooth.nix
@@ -6,4 +7,6 @@
     ./pipewire.nix
     ./scarlett8i6.nix
   ];
+
+  environment.systemPackages = [ pkgs.alsa-utils ];
 }
