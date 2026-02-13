@@ -23,6 +23,7 @@ in
   # aseprite = import ./aseprite.nix;
   charm = import "${self.inputs.charm}/overlay.nix";
   formats = import ./formats;
+  linux-manual = import ./linux-manual.nix;
   sops = import ./sops;
   vimPlugins = import ./vimplugins.nix self;
   visidata = import ./visidata.nix;
