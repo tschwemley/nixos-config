@@ -18,6 +18,7 @@
     with pkgs;
     [
       brave
+      ladybird
       lynx
       mullvad-browser
       tor-browser
