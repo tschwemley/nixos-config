@@ -1,8 +1,5 @@
-//DefinitionBlock ("", "SSDT", 1, "CUSTOM", "CSC3551", 0x00000001)
 DefinitionBlock ("", "SSDT", 1, "CUSTOM", "CSC3551", 0x00000002)
 {
-    //External (_SB.PC00.SPI1, DeviceObj)
-    //External (_SB.PC00.SPI1.SPK1, DeviceObj)
     External (_SB_.PC00.SPI1, DeviceObj)
     External (_SB_.PC00.SPI1.SPK1, DeviceObj)
 
@@ -17,8 +14,6 @@ DefinitionBlock ("", "SSDT", 1, "CUSTOM", "CSC3551", 0x00000002)
                 Package () { "reset-gpios", Package () {
 		            SPK1, One, Zero, Zero,
 		            SPK1, One, Zero, Zero
-		            //SPK1, Zero, Zero, Zero,
-		            //SPK1, Zero, Zero, Zero
                 } },
                 Package () { "spk-id-gpios", Package () {
                     SPK1, 0x02, Zero, Zero,
