@@ -31,11 +31,7 @@
 
     loader.efi.canTouchEfiVariables = true;
 
-    kernelModules = [
-      "kvm-intel"
-      # "snd_hda_intel"
-      # "sof_audio_pci_intel_tgl"
-    ];
+    kernelModules = [ "kvm-intel" ];
 
     kernelParams = [
       # These options are needed for suspend to work,
@@ -44,22 +40,16 @@
       "pcie_port_pm=off"
       "nvme_core.default_ps_max_latency_us=0"
       "mem_sleep_default=deep"
-
-      # "snd-intel-dspcfg.dsp_driver=1"
-      # "snd-hda-intel.model=1043:1a8f"
-      # "snd-hda-intel.model=1043:1c9f"
     ];
-
-    # extraModprobeConfig = "options snd-hda-intel model=1043:1a8f";
   };
 
   environment.systemPackages = with pkgs; [
     cudatoolkit
+    nvtopPackages.nvidia
   ];
 
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    sensor.iio.enable = true;
 
     asus.battery = {
       chargeUpto = 90;
@@ -88,15 +78,14 @@
           enableOffloadCmd = true;
         };
 
-        # Bus ID of the Intel GPU.
-        intelBusId = "PCI:0:2:0";
-
-        # Bus ID of the NVIDIA GPU.
-        nvidiaBusId = "PCI:1:0:0";
+        intelBusId = "PCI:0@0:2:0";
+        nvidiaBusId = "PCI:1@0:0:0";
       };
     };
 
     nvidia-container-toolkit.enable = true;
+
+    sensor.iio.enable = true;
   };
 
   home-manager.users.schwem = {
