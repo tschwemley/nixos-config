@@ -17,10 +17,12 @@
     settings = {
       statusBar = {
         modules-left = [
-          "hyprland/workspaces"
+          "niri/workspaces"
         ];
 
-        modules-center = [ "hyprland/window" ];
+        modules-center = [
+          "niri/window"
+        ];
 
         modules-right = [
           "pulseaudio"
