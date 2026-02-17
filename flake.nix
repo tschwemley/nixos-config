@@ -73,7 +73,7 @@
         }
       );
 
-      # nixOnDroidConfigurations = import ./android/nix-on-droid self;
+      nixOnDroidConfigurations = import ./android/nix-on-droid self;
     };
 
   inputs = {
@@ -138,19 +138,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nix-on-droid = {
-    #   url = "github:nix-community/nix-on-droid/release-24.05";
-    #   inputs = {
-    #     nixpkgs.follows = "nixpkgs";
-    #     home-manager.follows = "home-manager";
-    #   };
-    # };
-
-    # TODO: low prio - add/remove when readressing in future
-    # nix-topology = {
-    #   url = "github:oddlama/nix-topology";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
