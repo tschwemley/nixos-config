@@ -30,12 +30,15 @@
         ];
 
         battery = {
+          format = "{capacity}% {icon}";
           interval = 60;
+          max-length = 25;
+
           states = {
             warning = 30;
             critical = 15;
           };
-          format = "{capacity}% {icon}";
+
           format-icons = [
             ""
             ""
@@ -43,30 +46,29 @@
             ""
             ""
           ];
-          max-length = 25;
         };
 
         clock = {
+          format = "{:%H:%M}  ";
+          format-alt = "{:%A, %B %d, %Y (%R)}  ";
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+
           actions = {
             on-click-right = "mode";
             on-scroll-down = "shift_down";
             on-scroll-up = "shift_up";
           };
+
           calendar = {
             format = {
-              days = "<span color='#ecc6d9'><b>{}</b></span>";
-              months = "<span color='#ffead3'><b>{}</b></span>";
-              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
-              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-              weeks = "<span color='#99ffdd'><b>W{}</b></span>";
+              days = "<span color='#d4be98'><b>{}</b></span>";
+              months = "<span color='#e78a4e'><b>{}</b></span>";
+              today = "<span color='#ea6962'><b><u>{}</u></b></span>";
+              weekdays = "<span color='#d8a657'><b>{}</b></span>";
+              weeks = "<span color='#a9b665'><b>W{}</b></span>";
             };
             mode = "month";
-            # on-scroll = 1;
-            # weeks-pos = "right";
           };
-          format = "{:%H:%M}  ";
-          format-alt = "{:%A, %B %d, %Y (%R)}  ";
-          tooltip-format = "<tt><small>{calendar}</small></tt>";
         };
 
         # "custom/weather" = {
@@ -119,7 +121,6 @@
           orientation = "horizontal";
         };
 
-        # tray = {};
         tray = {
           spacing = 10;
         };
