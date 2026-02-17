@@ -1,21 +1,15 @@
+{ pkgs, ... }:
 {
-  self,
-  pkgs,
-  ...
-}:
-{
-  home.packages = [
-    pkgs.wttrbar
-
-    self.packages.${pkgs.stdenv.hostPlatform.system}.pomobar-rs
-  ];
+  # home.packages = [
+  #   pkgs.wttrbar
+  # ];
 
   programs.waybar = {
     enable = true;
 
     # REF: https://github.com/Alexays/Waybar/wiki/Configuration
     settings = {
-      statusBar = {
+      mainBar = {
         modules-left = [
           "niri/workspaces"
         ];
@@ -25,12 +19,13 @@
         ];
 
         modules-right = [
+          "systemd-failed-units"
           "pulseaudio"
           "pulseaudio/slider"
           "gamemode"
           "tray"
           "battery"
-          "custom/weather"
+          # "custom/weather"
           "clock"
         ];
 
@@ -74,29 +69,13 @@
           tooltip-format = "<tt><small>{calendar}</small></tt>";
         };
 
-        # "custom/pomobar" = {
-        #   format = "{} {icon}";
-        #   format-icons = {
-        #     idle = "";
-        #     paused = "";
-        #     work = "";
-        #     short_break = "";
-        #     long_break = "";
-        #   };
-        #   interval = 1;
-        #   exec = "pomobar-cli status";
-        #   on-click = "pomobar-cli toggle";
-        #   on-click-middle = "pomobar-cli reset";
+        # "custom/weather" = {
+        #   format = "{}°";
+        #   tooltip = true;
+        #   interval = 3600;
+        #   exec = "wttrbar --fahrenheit --location 48197 --nerd";
         #   return-type = "json";
         # };
-
-        "custom/weather" = {
-          format = "{}°";
-          tooltip = true;
-          interval = 3600;
-          exec = "wttrbar --fahrenheit --location 48197 --nerd";
-          return-type = "json";
-        };
 
         gamemode = {
           # hide-not-running = true;
