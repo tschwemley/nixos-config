@@ -46,7 +46,7 @@
       );
 
       nixOnDroidConfigurations = {
-        togepi = lib.nixOnDroidConfiguration {
+        togepi = nix-on-droid.lib.nixOnDroidConfiguration {
           config = ./android/nix-on-droid/default.nix;
           system = "aarch64-linux";
         };
