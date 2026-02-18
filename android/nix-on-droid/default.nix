@@ -1,5 +1,5 @@
-{ self, ... }:
-{
+# { self, ... }:
+self: {
   default = {
     # Read Nix-on-Droid changelog before changing this value
     system.stateVersion = "24.05";
