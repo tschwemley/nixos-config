@@ -1,5 +1,5 @@
-self:
-self.inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+{ self, ... }:
+{
   default = {
     system.stateVersion = "24.05";
 

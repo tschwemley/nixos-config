@@ -47,7 +47,7 @@
 
       nixOnDroidConfigurations = {
         togepi = nix-on-droid.lib.nixOnDroidConfiguration {
-          config = ./android/nix-on-droid/default.nix;
+          modules = [ ./android/nix-on-droid/default.nix ];
           pkgs = pkgsFor."aarch64-linux";
         };
       };
