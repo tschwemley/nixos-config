@@ -7,7 +7,7 @@
       home-manager,
       nixpkgs,
       systems,
-      # nix-on-droid,  TODO: re-add nix-on-droid when circling back to mobile config
+      nix-on-droid,
       ...
     }:
     let
@@ -35,34 +35,6 @@
       packages = eachSystem (pkgs: import ./packages self pkgs);
       templates = import ./templates;
 
-      homeConfigurations = {
-        #   default = lib.homeManagerConfiguration {
-        #     pkgs = pkgsFor."x86_64-linux";
-        #     extraSpecialArgs = { inherit inputs self; };
-        #     modules = [ ./home/profiles/default.nix ];
-        #   };
-        #
-        #   pc = lib.homeManagerConfiguration {
-        #     pkgs = pkgsFor."x86_64-linux";
-        #     extraSpecialArgs = { inherit inputs self; };
-        #     modules = [ ./home/profiles/pc.nix ];
-        #   };
-        #
-        #   # TODO: For possible solution for building and then deploying remotely to work server
-        #   #       see: https://gist.github.com/fricklerhandwerk/fbf0b212bbbf51b79a08fdac8659481d
-        #   "work@linux" = lib.homeManagerConfiguration {
-        #     pkgs = pkgsFor."x86_64-linux";
-        #     extraSpecialArgs = { inherit inputs self; };
-        #     modules = [ ./home/profiles/work.nix ];
-        #   };
-
-        "work@mac" = lib.homeManagerConfiguration {
-          pkgs = pkgsFor."aarch64-darwin";
-          extraSpecialArgs = { inherit inputs self; };
-          modules = [ ./home/profiles/work.nix ];
-        };
-      };
-
       nixosConfigurations = lib.genAttrs hosts (
         host:
         lib.nixosSystem {
@@ -73,7 +45,22 @@
         }
       );
 
-      nixOnDroidConfigurations = import ./android/nix-on-droid self;
+      nixOnDroidConfigurations = {
+        togepi = lib.nixOnDroidConfiguration {
+          config = ./android/nix-on-droid/default.nix;
+          system = "aarch64-linux";
+        };
+      };
+
+      homeConfigurations = {
+        # TODO: For possible solution for building and then deploying remotely to work server
+        #       see: https://gist.github.com/fricklerhandwerk/fbf0b212bbbf51b79a08fdac8659481d
+        "work@mac" = lib.homeManagerConfiguration {
+          pkgs = pkgsFor."aarch64-darwin";
+          extraSpecialArgs = { inherit inputs self; };
+          modules = [ ./home/profiles/work.nix ];
+        };
+      };
     };
 
   inputs = {
