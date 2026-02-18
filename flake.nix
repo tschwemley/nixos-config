@@ -45,17 +45,12 @@
         }
       );
 
-      nixOnDroidConfigurations =
-        let
-          system = "aarch64-linux";
-        in
-        {
-          togepi = nix-on-droid.lib.nixOnDroidConfiguration {
-            inherit system;
-            config = ./android/nix-on-droid/default.nix;
-            pkgs = pkgsFor.${system};
-          };
+      nixOnDroidConfigurations = {
+        togepi = nix-on-droid.lib.nixOnDroidConfiguration {
+          config = ./android/nix-on-droid/default.nix;
+          pkgs = pkgsFor."aarch64-linux";
         };
+      };
 
       homeConfigurations = {
         # TODO: For possible solution for building and then deploying remotely to work server
