@@ -22,6 +22,10 @@
         use_refresh_token = true;
       };
 
+      security = {
+        secret_key = "$__file{${config.sops.secrets.grafana_oauth_client_secret.path}}";
+      };
+
       server = {
         domain = "monitor.schwem.io";
         http_addr = "127.0.0.1";
