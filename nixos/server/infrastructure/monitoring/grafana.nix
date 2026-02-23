@@ -1,5 +1,5 @@
-# TODO: setup w/ postgresql. By default it's using sqlite
-{config, ...}: {
+{ config, ... }:
+{
   services.grafana = {
     enable = true;
     settings = {
@@ -31,9 +31,16 @@
     };
   };
 
-  sops.secrets.grafana_oauth_client_secret = {
-    sopsFile = ./secrets.yaml;
-    group = config.users.users.grafana.group;
-    owner = config.users.users.grafana.name;
-  };
+  sops.secrets =
+    let
+      sopsGrafana = {
+        sopsFile = ./secrets.yaml;
+        group = config.users.users.grafana.group;
+        owner = config.users.users.grafana.name;
+      };
+    in
+    {
+      grafana_oauth_client_secret = sopsGrafana;
+      grafana_security_secret_key = sopsGrafana;
+    };
 }
