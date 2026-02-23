@@ -5,7 +5,7 @@
 }:
 let
   # two extra storage drives on flareon host TODO: move this to someplace generic
-  numExtraDrives = 4;
+  numExtraDrives = 3;
   extraDrives = builtins.genList (
     i:
     let
