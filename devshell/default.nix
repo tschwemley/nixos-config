@@ -8,6 +8,7 @@ in
       # nix
       compose2nix
       disko
+      nix-init
       nix-output-monitor
       nix-prefetch-scripts
       nix-tree
