@@ -25,6 +25,8 @@ in
     # TODO: make systemd boot import from the nixos/pc profile (unless pika is an exception for some reason)
     ../../system/boot/systemd.nix
 
+    self.inputs.stylix.nixosModules.stylix
+
     # TODO: move this to a profile
     # ../../services/llama-cpp.nix
 
@@ -64,6 +66,15 @@ in
   ## SERVICES ##
   # services.n8n.enable = true;
   services.shiori.enable = true;
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
+    targets = {
+      fontconfig.enable = false;
+      font-packages.enable = false;
+      # waybar.enable = false;
+    };
+  };
 
   ## HOME MANAGER ##
   home-manager.users.schwem = {
@@ -72,6 +83,10 @@ in
     imports = [
       ../../../home/programs/media/gallery-dl.nix
     ];
+
+    stylix.targets = {
+      waybar.enable = false;
+    };
 
     programs.yt-dlp = {
       enable = true;
@@ -85,28 +100,6 @@ in
 
     programs.zsh.shellAliases."yt-dlp" =
       "yt-dlp --cookies-from-browser firefox:~/.zen/fd4lnfim.default";
-
-    xdg.configFile =
-      let
-        inherit (pkgs) fetchFromGitHub;
-      in
-      {
-        "yt-dlp/plugins/yt-dlp-PMVHaven_com-plugin".source = fetchFromGitHub {
-          owner = "Strad";
-          repo = "yt-dlp-PMVHaven_com-plugin";
-          rev = "main";
-          hash = "sha256-JNHSEhpAePRDci5jfMkEibb2dqvIq/GWkIMWtgsiOkk=";
-          # https://github.com/Strad/yt-dlp-PMVHaven_com-plugin
-        };
-
-        "yt-dlp/plugins/yt-dlp-HypnoTube_com-plugin".source = fetchFromGitHub {
-          owner = "Earthworm-Banana";
-          repo = "yt-dlp-HypnoTube_com-plugin";
-          rev = "master";
-          hash = "sha256-hB5POSyxVPHR9KkJOvKwVUfBiDhQ5zVchbNhARgVFC4=";
-          # https://github.com/Earthworm-Banana/yt-dlp-HypnoTube_com-plugin
-        };
-      };
 
     # TODO: remove unused/move keeping items elsewhere
     home.packages = with pkgs; [
