@@ -5,17 +5,11 @@
 }:
 {
   environment.systemPackages = with pkgs; [
-    # nix-doc
+    nix-output-monitor
     nix-prefetch-git
   ];
 
   nix = {
-    # TODO: re-enable or remove this (is it still necessary with current builds?
-    # for documentation
-    # extraOptions = ''
-    #   # plugin-files = ${pkgs.nix-doc}/lib/libnix_doc_plugin.so
-    # '';
-
     gc = {
       dates = "0 0 8 * * 2"; # every tues at 08:00:00
       # stores time last triggered so if host was powered off during last schedule run it will trigger immediately
@@ -51,9 +45,10 @@
       ];
     };
 
-    sshServe = {
-      enable = true;
-      keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH7IcQegp1x3gwJ6X6+ykVQHByzKaNK233H5z2zdzahG *@pc" ];
-    };
+    # TODO: delete me unless an issue
+    # sshServe = {
+    #   enable = true;
+    #   keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH7IcQegp1x3gwJ6X6+ykVQHByzKaNK233H5z2zdzahG *@pc" ];
+    # };
   };
 }
