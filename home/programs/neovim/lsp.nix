@@ -20,7 +20,7 @@
       nixd
 
       # openscad
-      openscad-lsp
+      # openscad-lsp
 
       # php
       nodePackages.intelephense
@@ -30,7 +30,6 @@
       basedpyright
 
       # web
-      # superhtml
       vscode-css-languageserver
     ];
 
