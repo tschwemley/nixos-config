@@ -2,7 +2,8 @@
 {
   home.packages = with pkgs; [
     # handbrake
-    ffmpeg-full
+    # ffmpeg-full
+    ffmpeg-headless
     mpv
     vlc
     webcamoid
