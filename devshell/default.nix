@@ -9,6 +9,7 @@ in
       compose2nix
       disko
       nix-init
+      nixfmt
       nix-output-monitor
       nix-prefetch-scripts
       nix-tree
