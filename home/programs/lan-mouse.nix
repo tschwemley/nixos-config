@@ -35,6 +35,7 @@
         activate_on_startup = false
         hostname = "192.168.1.103"
         ips = ["192.168.1.103"]
+        position = "right"
 
         [[clients]]
         activate_on_startup = false
@@ -43,9 +44,6 @@
         [[clients]]
         activate_on_startup = false
         hostname = "pikachu"
-
-        # position (left | right | top | bottom)
-        position = "right"
 
         [authorized_fingerprints]
         "${config.sops.placeholder.lan-mouse-cert-fingerprint-charizard}" = "charizard"
