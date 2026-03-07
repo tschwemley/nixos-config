@@ -43,7 +43,7 @@
 
     # TODO:remove if not keeping
     # ../programs/taskwarrior.nix
-    ../programs/wayland/hyprland
+    # ../programs/wayland/hyprland
   ];
 
   home = {
