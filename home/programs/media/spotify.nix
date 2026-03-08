@@ -39,7 +39,5 @@
         # wikify
         # writeify
       ];
-
-      theme = spicePkgs.themes.onepunch;
     };
 }

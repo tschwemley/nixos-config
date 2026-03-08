@@ -28,15 +28,12 @@ in
     fontconfig = {
       enable = true;
 
-      defaultFonts = {
-        emoji = [ "Twitter Color Emoji" ];
-        monospace = [ "CaskaydiaCove Nerd Font" ];
-        serif = [ "Inter" ];
-        sansSerif = [ "Inter" ];
-
-        # serif = [ "DaddyTimeMono Nerd Font" ];
-        # sansSerif = [ "CaskaydiaCove Nerd Font" ];
-      };
+      # defaultFonts = {
+      #   emoji = [ "Twitter Color Emoji" ];
+      #   monospace = [ "CaskaydiaCove Nerd Font" ];
+      #   serif = [ "Inter" ];
+      #   sansSerif = [ "Inter" ];
+      # };
 
       # Hinting aligns glyphs to pixel boundaries to improve rendering sharpness at low resolution
       hinting = {
@@ -45,22 +42,16 @@ in
         # slight (fuzzier but more grid align, retains shape) -> medium -> full (opposite slight)
         style = "full";
       };
+
+      useEmbeddedBitmaps = true;
     };
 
-    #TODO: fix for steam?
     fontDir.enable = true;
-    # fontDir.enable = true; TODO: reenable if comapatbility issues. Otherwise delete
 
-    packages = with pkgs; [
-      inter # used for reaper theme(s)
-
-      nerd-fonts.caskaydia-cove
-      nerd-fonts.daddy-time-mono
-
-      twemoji-color-font
-    ];
+    # packages = with pkgs; [
+    #   inter # used for reaper theme(s)
+    #   nerd-fonts.caskaydia-cove
+    #   twemoji-color-font
+    # ];
   };
-
-  # TODO: keep/remove depending on steam behavior
-  fonts.fontconfig.useEmbeddedBitmaps = true;
 }

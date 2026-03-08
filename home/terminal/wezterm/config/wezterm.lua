@@ -2,7 +2,7 @@ local font_config = require("fonts")
 
 local config = {
 	audible_bell = "Disabled",
-	color_scheme = "GruvboxMaterialDarkHard",
+	color_scheme = "stylix",
 	default_prog = { "zsh" },
 	enable_wayland = true,
 	keys = require("keys"),
@@ -13,7 +13,7 @@ local config = {
 -- Helper function to merge (shallow) t2 into t1.
 -- Keys in t2 will overwrite keys in t1 if they conflict.
 --
--- NOTE: defining here instead of helpers prevents error span during nixos-rebuild
+-- NOTE: defining here instead of helpers prevents error spam during nixos-rebuild
 local table_merge = function(t1, t2)
 	for k, v in pairs(t2) do
 		t1[k] = v

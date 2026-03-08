@@ -1,4 +1,4 @@
-{ self, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     # ./services/hypridle.nix
@@ -7,8 +7,6 @@
 
   wayland.windowManager.hyprland = {
     plugins = with pkgs.hyprlandPlugins; [
-      hyprscrolling
-
       # self.inputs.hyprland-easymotion.packages.${pkgs.stdenv.hostPlatform.system}.hyprland-easymotion
 
       # adds dispatchers: bringallfrom, closeunfocused, moveorexec, throwunfocused

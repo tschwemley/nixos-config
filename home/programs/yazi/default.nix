@@ -22,6 +22,8 @@
       }
     '';
 
+    shellWrapperName = "y"; # old option was "yy"
+
     keymap = {
       mgr.prepend_keymap = [
         # -- core --
