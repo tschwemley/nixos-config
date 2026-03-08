@@ -7,10 +7,10 @@
   # REF: https://discourse.nixos.org/t/xbox-controller-stuck-in-a-disconnect-reconnect-loop/67845/6
   hardware = {
     bluetooth.settings.General = {
-      Privacy = "device";
-      JustWorksRepairing = "always";
       Class = "0x000100";
       FastConnectable = "true";
+      JustWorksRepairing = "always";
+      Privacy = "device";
 
       # TODO: possibly add GATT?
     };
