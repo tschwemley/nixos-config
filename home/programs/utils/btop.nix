@@ -6,7 +6,6 @@
       # presets = "mem:0:default";
       # shown_boxes = "proc cpu mem net gpu0";
 
-      ## color_theme = "Default"
       background_update = true;
       base_10_bitrate = "Auto";
       base_10_sizes = false;
