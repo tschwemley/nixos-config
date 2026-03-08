@@ -8,7 +8,7 @@
     # };
 
     systemPackages = with pkgs; [
-      helvum
+      crosspipe
 
       # NOTE: these are for pulse... maybe split pulse into its own file?
       ncpamixer
