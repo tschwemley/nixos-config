@@ -1,5 +1,5 @@
 {
-  btop = "sudo btop";
+  # btop = "sudo btop";
   checkip = "curl https://ipinfo.io/ip";
   checkmullvad = "curl -sS https://am.i.mullvad.net/json | jq";
   dirsizes = "sudo du -h --max-depth=1 | sort -hr";
