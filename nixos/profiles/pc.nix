@@ -9,6 +9,8 @@
     self.inputs.nixos-hardware.nixosModules.common-pc
     self.inputs.nixos-hardware.nixosModules.common-pc-ssd
 
+    self.nixosModules.stylix
+
     ./.
 
     ../development/embedded.nix
