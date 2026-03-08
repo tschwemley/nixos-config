@@ -28,7 +28,7 @@ in
 
   environment.systemPackages = with pkgs; [
     gallery-dl
-    unrar
+    unrar-free
     yt-dlp
   ];
 
