@@ -1,7 +1,8 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     bottles
-    wineWowPackages.waylandFull
+    wineWow64Packages.waylandFull
     winetricks
 
     # deps for various wine packages
