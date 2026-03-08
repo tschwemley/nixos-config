@@ -15,7 +15,7 @@
 
   qt = {
     enable = true;
-    platformTheme.name = "gtk3";
+    # platformTheme.name = "gtk3";
   };
 
   # TODO: move out into it's own file?
