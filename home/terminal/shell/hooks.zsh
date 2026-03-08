@@ -20,7 +20,7 @@
 # Register the hook
 autoload -Uz add-zsh-hook
 
-add-zsh-hook preexec highlight-help-output
+# add-zsh-hook preexec highlight-help-output
 
 # highlight-help-output() {
 # 	# echo $1
