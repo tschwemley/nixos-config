@@ -1,3 +1,4 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [libreoffice];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ libreoffice-fresh ];
 }
