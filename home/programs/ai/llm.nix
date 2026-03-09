@@ -5,13 +5,13 @@
 }:
 {
   imports = [
-    ./aider.nix
+    # ./aider.nix
   ];
 
   home = {
     packages = with pkgs; [
       #  crush
-      llama-cpp-rocm
+      # llama-cpp-rocm
     ];
   };
 

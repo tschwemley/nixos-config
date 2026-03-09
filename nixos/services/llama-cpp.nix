@@ -1,7 +1,5 @@
-{ self, pkgs, ... }:
-let
-  inherit (self.inputs.nixpkgs-master.legacyPackages.${pkgs.stdenv.hostPlatform.system}) llama-cpp-rocm;
-in
+{ pkgs, ... }:
+with pkgs;
 {
   environment.systemPackages = [ llama-cpp-rocm ];
 
