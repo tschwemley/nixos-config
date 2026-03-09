@@ -1,20 +1,7 @@
 { pkgs, ... }:
 let
-  bruno = pkgs.tree-sitter.buildGrammar {
-    language = "bruno";
-    version = "8af0aab";
-    src = pkgs.fetchFromGitHub {
-      owner = "Scalamando";
-      repo = "tree-sitter-bruno";
-      rev = "dd27fe0eff8e7f8184dfc91e426b886dc8369c46";
-      sha256 = "sha256-WjA5Y6ZejFlHi5C/Wv56Hqpo/BJ4+vq9VIMSzWrznx4=";
-    };
-  };
-
   nvim-treesitter = pkgs.vimPlugins.nvim-treesitter.withPlugins (
-    parser:
-    with parser;
-    [
+    parser: with parser; [
       astro
       awk
       bash
@@ -56,7 +43,6 @@ let
       yaml
       zig
     ]
-    ++ [ bruno ]
   );
 in
 {

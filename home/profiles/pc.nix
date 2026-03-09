@@ -10,7 +10,6 @@
     ../programs/browsers
     ../programs/communication
     ../programs/creative
-    ../programs/development/bruno.nix
     ../programs/development/databases.nix
     ../programs/development/lg-webos.nix
     ../programs/development/nix.nix
