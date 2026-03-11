@@ -48,6 +48,7 @@
       nixOnDroidConfigurations = {
         togepi = nix-on-droid.lib.nixOnDroidConfiguration {
           modules = [ ./android/nix-on-droid/default.nix ];
+          specialArgs = { inherit inputs self; };
           pkgs = pkgsFor."aarch64-linux";
         };
       };
