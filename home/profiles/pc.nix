@@ -34,8 +34,6 @@
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
 
-    ../theme
-
     ../xdg
     ../xdg/netrc.nix
     ../xdg/ssh/personal.nix

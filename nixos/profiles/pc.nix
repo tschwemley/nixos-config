@@ -9,8 +9,6 @@
     self.inputs.nixos-hardware.nixosModules.common-pc
     self.inputs.nixos-hardware.nixosModules.common-pc-ssd
 
-    self.nixosModules.stylix
-
     ./.
 
     ../development/embedded.nix
@@ -33,7 +31,6 @@
     ../services/dbus.nix
     ../services/gamemode.nix
     # ../services/gnome.nix
-    ../services/libinput.nix
     ../services/printing.nix
     ../services/upower.nix
 
@@ -43,8 +40,7 @@
     ../system/greetd.nix
     ../system/man.nix
 
-    # ../theme
-    # ../programs/flatpak.nix
+    ../theme
 
     ../virtualisation/qemu.nix
 
