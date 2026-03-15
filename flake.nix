@@ -171,9 +171,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    redlib = {
-      url = "git+https://git.schwem.io/schwem/redlib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # TODO: remove after testing no ill consequences
+    # redlib = {
+    #   url = "git+https://git.schwem.io/schwem/redlib";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 }
