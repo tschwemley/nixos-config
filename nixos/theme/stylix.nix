@@ -7,7 +7,8 @@
   stylix = {
     enable = true;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
     image = ./gruvbox-castle.png;
     polarity = "dark";
 
@@ -27,14 +28,21 @@
         monospace = mkFont nerd-fonts.caskaydia-cove "CaskaydiaCove Nerd Font";
         serif = mkFont pkgs.inter "Inter";
         sansSerif = mkFont pkgs.inter "Inter";
+
+        sizes = {
+          applications = 12;
+          desktop = 12;
+        };
       };
   };
 
   home-manager.users.schwem.stylix.targets = {
-    # fontconfig.enable = false;
-    # font-packages.enable = false;
+    waybar = {
+      enable = true;
 
-    waybar.enable = true;
+      # addCss = false;
+    };
+
     wezterm = {
       enable = true;
       fonts.enable = false;
@@ -42,11 +50,7 @@
 
     zen-browser = {
       enable = true;
-      profileNames = [
-        "default"
-        # "Default Profile"
-        # "fd4lnfim"
-      ];
+      profileNames = [ "default" ];
     };
   };
 }

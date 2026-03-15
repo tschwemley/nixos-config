@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, ... }:
 {
   # home.packages = [
   #   pkgs.wttrbar
@@ -6,6 +6,9 @@
 
   programs.waybar = {
     enable = true;
+
+    style = lib.readFile ./style.css;
+    systemd.enable = true;
 
     # REF: https://github.com/Alexays/Waybar/wiki/Configuration
     settings = {
@@ -86,7 +89,7 @@
           glyph = "";
           hide-not-running = false;
           icon-size = 20;
-          icon-spacing = 4;
+          # icon-spacing = 4;
           tooltip = true;
           tooltip-format = "Games running: {count}";
           use-icon = false;
@@ -112,7 +115,7 @@
             portable = "";
           };
           on-click = "pavucontrol";
-          spacing = 4;
+          # spacing = 4;
         };
 
         "pulseaudio/slider" = {
@@ -126,8 +129,5 @@
         };
       };
     };
-
-    # style = ./style.css;
-    systemd.enable = true;
   };
 }

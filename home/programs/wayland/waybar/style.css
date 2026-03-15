@@ -1,24 +1,24 @@
-* {
-  border: none;
-  border-radius: 0px;
-  font-family: "Inconsolata";
-  font-size: 16px;
-  min-height: 0;
-  color: #ebdbb2;
-}
+/* * { */
+/*   border: none; */
+/*   border-radius: 0px; */
+/*   font-family: "Inconsolata"; */
+/*   font-size: 16px; */
+/*   min-height: 0; */
+/*   color: #ebdbb2; */
+/* } */
 
 window#waybar {
   border-bottom-style: inset;
-  border-bottom: 4px solid #89b482;
-  background: #1d2021;
+  /* border-bottom: 4px solid #89b482; */
+  /* background: #1d2021; */
 }
 
-#workspaces,
-#clock,
-#custom-music,
-#window {
-  font-weight: 800;
-}
+/* #workspaces, */
+/* #clock, */
+/* #custom-music, */
+/* #window { */
+/*   font-weight: 800; */
+/* } */
 
 /* Workspace Buttons */
 #workspaces button label {
@@ -35,7 +35,7 @@ window#waybar {
 
 #mode {
   background-color: #ea6962;
-  color: white;
+  /* color: white; */
 }
 
 #clock,
@@ -45,29 +45,9 @@ window#waybar {
 #network,
 #pulseaudio,
 #tray,
-#mode,
-#idle_inhibitor {
+#mode {
   padding: 0 5px;
   margin: 0 10px;
-}
-
-
-#idle_inhibitor {
-  padding: 0 10px;
-}
-
-#idle_inhibitor.activated {
-  background-color: #89b482;
-  color: #1d2021;
-}
-
-
-#custom-music {
-  color: #b8bb26;
-  margin: 0 15px;
-  padding: 0 20px;
-  border-bottom: 4px solid #b8bb26;
-
 }
 
 #clock {
@@ -81,12 +61,10 @@ window#waybar {
   min-width: 50px;
 }
 
-
 #network.disconnected {
   color: #ea6962;
   border-bottom: 4px solid #ea6962;
 }
-
 
 #pulseaudio.muted {
   padding: 0 20px;
@@ -94,30 +72,23 @@ window#waybar {
   border-bottom: 4px solid #ea6962;
 }
 
-#pulseaudio-slider {
-  padding: 0;
-  margin: 0;
-}
-
 #pulseaudio-slider slider {
-  min-height: 0px;
-  min-width: 0px;
-  opacity: 0;
   background-image: none;
   border: none;
   box-shadow: none;
+  min-height: 0px;
+  min-width: 0px;
+  opacity: 0;
 }
 
 #pulseaudio-slider trough {
+  border-radius: 5px;
   min-height: 10px;
   min-width: 80px;
-  border-radius: 5px;
-  background: #1D2021;
-  /* background: #3C3836; */
 }
 
 #pulseaudio-slider highlight {
-  min-width: 10px;
-  border-radius: 5px;
   background: #a9b665;
+  border-radius: 5px;
+  min-width: 10px;
 }
