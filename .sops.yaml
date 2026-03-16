@@ -103,6 +103,7 @@ creation_rules:
       - age:
           - *personal
           - *charizard
+          - *pikachu
           - *schwem-io
 
   - path_regex: ^(./)?(nixos/)?(containers|modules|network|services|server)/(.*/)?(.*/)?(.*.yaml|.env)
