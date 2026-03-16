@@ -11,7 +11,8 @@ include "output.kdl"
 include "window-rules.kdl"
 
 environment {
-    XDG_CURRENT_DESKTOP "niri"
+	GDK_SCALE "1.75"
+	XDG_CURRENT_DESKTOP "niri"
 	XDG_DESKTOP_SESSION "niri"
 }
 
