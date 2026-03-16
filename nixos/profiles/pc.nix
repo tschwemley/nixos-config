@@ -32,6 +32,7 @@
     ../services/gamemode.nix
     # ../services/gnome.nix
     ../services/printing.nix
+    ../services/udisks2.nix
     ../services/upower.nix
 
     ../security

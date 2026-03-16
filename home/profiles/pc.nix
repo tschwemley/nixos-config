@@ -33,6 +33,7 @@
 
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
+    ../services/udiskie.nix
 
     ../xdg
     ../xdg/netrc.nix
