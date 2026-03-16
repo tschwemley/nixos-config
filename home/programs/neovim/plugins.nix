@@ -71,6 +71,7 @@ in
 
     # other/unsorted
     lazydev-nvim
+    fterm-nvim
     nui-nvim
     nvim-colorizer-lua
     vim-abolish
