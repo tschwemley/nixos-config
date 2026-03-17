@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ./zen.nix
+    ./zen
   ];
 
   home.packages =
