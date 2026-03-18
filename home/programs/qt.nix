@@ -19,18 +19,16 @@
   };
 
   # TODO: move out into it's own file?
-  home.packages = with pkgs; [
-    krusader
-
-    kdePackages.ark
-    kdePackages.kdegraphics-thumbnailers
-    kdePackages.kio
-    kdePackages.kio-admin
-    kdePackages.kio-extras
-    kdePackages.kio-extras-kf5
-    kdePackages.kio-fuse
-    kdePackages.qtimageformats
-    kdePackages.qtsvg
-    qdirstat
-  ];
+  # home.packages = with pkgs; [
+  #   kdePackages.ark
+  #   kdePackages.kdegraphics-thumbnailers
+  #   kdePackages.kio
+  #   kdePackages.kio-admin
+  #   kdePackages.kio-extras
+  #   kdePackages.kio-extras-kf5
+  #   kdePackages.kio-fuse
+  #   kdePackages.qtimageformats
+  #   kdePackages.qtsvg
+  #   qdirstat
+  # ];
 }
