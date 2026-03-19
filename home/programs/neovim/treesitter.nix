@@ -47,11 +47,11 @@ let
 in
 {
   # home.packages = [ pkgs.tree-sitter ];
-  programs.neovim = {
-    # extraPackages = [ pkgs.tree-sitter ];
+  programs.neovim = with pkgs; {
+    extraPackages = [ tree-sitter ];
 
     plugins = [
-      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+      vimPlugins.nvim-treesitter.withAllGrammars
       # nvim-treesitter
       # pkgs.vimPlugins.nvim-treesitter-textobjects
     ];

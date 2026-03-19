@@ -14,6 +14,8 @@ let
         wl-ocr
         ;
 
+      inherit (self.inputs.neovim-nightly-overlay.packages.${system}) tree-sitter;
+
       oidcproxy = self.inputs.oidcproxy.packages.${system}.default;
     };
 in
@@ -24,16 +26,11 @@ in
   # aseprite = import ./aseprite.nix;
   charm = import "${self.inputs.charm}/overlay.nix";
   formats = import ./formats;
-  neovim = import ./neovim.nix self;
   sops = import ./sops;
-  # vimPlugins = import ./vimplugins.nix self;
+  vimPlugins = import ./vimplugins.nix self;
   visidata = import ./visidata.nix;
   yaziPlugins = import ./yaziplugins.nix self;
 
-  # Overlay that uses the current linux kernel version for manual generation.
-  # Sometimes necessary when mismatch between default kernel and other kernels like linux zen
-  # linux-manual = import ./linux-manual.nix;
-
   # Overlays defined via inputs
-  # neovim = self.inputs.neovim-nightly-overlay.overlays.default;
+  neovim = self.inputs.neovim-nightly-overlay.overlays.default;
 }
