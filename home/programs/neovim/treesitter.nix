@@ -50,8 +50,9 @@ in
     extraPackages = [ pkgs.tree-sitter ];
 
     plugins = [
-      nvim-treesitter
-      pkgs.vimPlugins.nvim-treesitter-textobjects
+      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+      # nvim-treesitter
+      # pkgs.vimPlugins.nvim-treesitter-textobjects
     ];
   };
 }

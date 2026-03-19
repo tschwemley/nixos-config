@@ -1,4 +1,4 @@
-vim.lsp.enable("openscad_ls")
+vim.lsp.enable("openscad_lsp")
 
 require("openscad")
 

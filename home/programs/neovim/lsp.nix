@@ -19,8 +19,7 @@
       # nix
       nixd
 
-      # openscad
-      # openscad-lsp
+      openscad-lsp
 
       # php
       nodePackages.intelephense

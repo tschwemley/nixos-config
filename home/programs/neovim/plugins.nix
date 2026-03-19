@@ -59,7 +59,7 @@ in
     neogit
 
     # language specific
-    # openscad-nvim
+    openscad-nvim
 
     # markdown
     render-markdown-nvim
