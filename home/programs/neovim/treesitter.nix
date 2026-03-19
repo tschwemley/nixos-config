@@ -46,8 +46,9 @@ let
   );
 in
 {
+  # home.packages = [ pkgs.tree-sitter ];
   programs.neovim = {
-    extraPackages = [ pkgs.tree-sitter ];
+    # extraPackages = [ pkgs.tree-sitter ];
 
     plugins = [
       pkgs.vimPlugins.nvim-treesitter.withAllGrammars

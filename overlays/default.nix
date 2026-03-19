@@ -24,8 +24,9 @@ in
   # aseprite = import ./aseprite.nix;
   charm = import "${self.inputs.charm}/overlay.nix";
   formats = import ./formats;
+  neovim = import ./neovim.nix self;
   sops = import ./sops;
-  vimPlugins = import ./vimplugins.nix self;
+  # vimPlugins = import ./vimplugins.nix self;
   visidata = import ./visidata.nix;
   yaziPlugins = import ./yaziplugins.nix self;
 
@@ -34,5 +35,5 @@ in
   # linux-manual = import ./linux-manual.nix;
 
   # Overlays defined via inputs
-  neovim = self.inputs.neovim-nightly-overlay.overlays.default;
+  # neovim = self.inputs.neovim-nightly-overlay.overlays.default;
 }
