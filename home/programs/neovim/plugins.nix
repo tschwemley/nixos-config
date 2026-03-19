@@ -74,10 +74,9 @@ in
     FTerm-nvim
     nui-nvim
     nvim-colorizer-lua
+    nvim-web-devicons
+    snacks-nvim
     vim-abolish
-
-    # TODO: delete me if not necessary/included via noice
-    # nui-nvim
 
     # taskwarrior3
   ];
