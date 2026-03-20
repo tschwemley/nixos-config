@@ -22,6 +22,7 @@
     ../programs/cowsay.nix
     ../programs/glow.nix
     ../programs/lan-mouse.nix
+    ../programs/qalculate-gtk.nix
     ../programs/qt.nix
     ../programs/reddit-tui.nix
     ../programs/wayland
