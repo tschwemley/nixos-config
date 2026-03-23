@@ -1,4 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.orca-slicer ];
+  home.packages = with pkgs; [
+    orca-slicer
+  ];
 }
