@@ -1,3 +1,3 @@
-require("snacks.nvim").setup({
+require("snacks").setup({
 	notifier = { enable = true },
 })
