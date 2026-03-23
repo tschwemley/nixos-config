@@ -37,6 +37,7 @@
 
     ../security
 
+    ../system/boot/systemd.nix
     ../system/documentation.nix
     ../system/greetd.nix
     ../system/man.nix

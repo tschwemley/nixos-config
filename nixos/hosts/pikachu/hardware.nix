@@ -3,18 +3,19 @@
   config,
   lib,
   pkgs,
-  modulesPath,
   ...
 }:
 {
 
   imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-
     (import ./disk.nix "nvme0n1" "pika-crypted")
 
     "${inputs.nixos-hardware}/common/cpu/intel/alder-lake"
+    "${inputs.nixos-hardware}/common/gpu/nvidia/ampere"
+    "${inputs.nixos-hardware}/common/gpu/nvidia/prime.nix"
+
     inputs.nixos-hardware.nixosModules.common-pc-laptop
+    inputs.nixos-hardware.nixosModules.common-pc-ssd
     inputs.nixos-hardware.nixosModules.asus-battery
 
     ./ux582_cirrus_patch
@@ -34,8 +35,8 @@
     kernelModules = [ "kvm-intel" ];
 
     kernelParams = [
-      # These options are needed for suspend to work,
-      # otherwise the nvme will be mounted read-only on resume
+      # These options are needed for suspend to work, otherwise nvme will mount RO on resume
+      # REF: https://github.com/NixOS/nixos-hardware/blob/master/asus/zenbook/ux481/shared.nix#L14
       "pcie_aspm=off"
       "pcie_port_pm=off"
       "nvme_core.default_ps_max_latency_us=0"
@@ -62,15 +63,16 @@
     };
 
     nvidia = {
-      # enabled = lib.mkForce true; # NOTE: Can't define this apparently... already set
-
-      dynamicBoost.enable = true;
-      gsp.enable = true;
-      modesetting.enable = true;
-      nvidiaPersistenced = true;
-      nvidiaSettings = true;
-      open = false;
-      videoAcceleration = true;
+      #   # NOTE: Apparently this is set elsewhere and can't be defined here
+      #   #enabled = lib.mkForce true;
+      #
+      #   # dynamicBoost.enable = true;
+      #   # nvidiaPersistenced = true;
+      #
+      #   modesetting.enable = true;
+      #   nvidiaSettings = false;
+      #   open = true;
+      #   videoAcceleration = true;
 
       prime = {
         offload = {
@@ -83,7 +85,7 @@
       };
     };
 
-    nvidia-container-toolkit.enable = true;
+    # nvidia-container-toolkit.enable = true;
 
     sensor.iio.enable = true;
   };
@@ -113,6 +115,8 @@
     cores = 8; # when building don't use all of the cpu cores
     max-jobs = 8;
   };
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   # declare support for derivations requiring nvidia gpu available
   programs.nix-required-mounts.presets.nvidia-gpu.enable = true;
