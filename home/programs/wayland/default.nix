@@ -10,11 +10,14 @@
   home = {
     packages = with pkgs; [
       cliphist
-      # utility that gives x,y && w x h coordinates for a selection
-      slurp
+
+      swaybg
+
+      slurp # utility that gives x,y && w x h coordinates for a selection
       wl-clipboard
       wl-ocr
       wf-recorder
+
       wlr-randr
       ydotool
     ];
