@@ -1,0 +1,23 @@
+[hosts]
+app = "https://localhost:8880"
+api = "https://localhost:8880/api"
+events = "wss://localhost:8880/ws"
+autumn = "https://localhost:8880/autumn"
+january = "https://localhost:8880/january"
+
+[hosts.livekit]
+worldwide = "wss://localhost:8880/livekit"
+
+[pushd.vapid]
+private_key = "LS0tLS1CRUdJTiBFQyBQUklWQVRFIEtFWS0tLS0tCk1IY0NBUUVFSU1BTXphVWpyL3crdys4V2VtVXBNTUVNdUNVUUs4dkFQN2hRQnV5NWpKS3dvQW9HQ0NxR1NNNDkKQXdFSG9VUURRZ0FFMGNHd0hyTktvYTA1R2xEdTIyNG1ZbUMyNmtld3puL2xCZzI1bUw0aFVLdHhiN1JkQ2tRSwpyckZ6NWdOZHpZQVFRZml3S1c5ekJJbmNSRlhONjBFR3hRPT0KLS0tLS1FTkQgRUMgUFJJVkFURSBLRVktLS0tLQo"
+public_key = "BNHBsB6zSqGtORpQ7ttuJmJgtupHsM5_5QYNuZi-IVCrcW-0XQpECq6xc-YDXc2AEEH4sClvcwSJ3ERVzetBBsU"
+
+[files]
+encryption_key = "K7FX5kojGHlAwPCGYYJZZhVMRBl0oHhImLYaXL1pLN0="
+
+[api.livekit.nodes.worldwide]
+url = "http://livekit:7880"
+lat = 0.0
+lon = 0.0
+key = "48b56058662d"
+secret = "e448bfa066444be00e8533d7b5754a13e6d33f453ea3ff8e"
