@@ -1,5 +1,8 @@
 {
-  imports = [ ../../../services/mako.nix ];
+  imports = [
+    ../../../services/mako.nix
+    ../../../services/wpaperd.nix
+  ];
 
   # creates xdg.configFile.<name>.source entries for the strings in the list.
   config.xdg.configFile = builtins.listToAttrs (

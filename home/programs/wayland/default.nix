@@ -11,8 +11,6 @@
     packages = with pkgs; [
       cliphist
 
-      swaybg
-
       slurp # utility that gives x,y && w x h coordinates for a selection
       wl-clipboard
       wl-ocr
