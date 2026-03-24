@@ -28,11 +28,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773816759,
-        "narHash": "sha256-pFRbcdR0m5seCCkbCJlDDoZJAwvDHEkoTKLj7e+leSg=",
+        "lastModified": 1774348162,
+        "narHash": "sha256-7t4mvoYw6y3mkCP5has6dDFw7kvOCOK53s9nIgQ+Mj0=",
         "owner": "asus-linux-drivers",
         "repo": "asus-numberpad-driver",
-        "rev": "8b8b786de714183899fa7d0fb0fe8bcd05693a23",
+        "rev": "3e8748027f0e25563651e462bbdcc98a3103793a",
         "type": "github"
       },
       "original": {
@@ -305,11 +305,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774293042,
-        "narHash": "sha256-OEBV+Y5I4Ldu98k0KvGXRfJYh+jjE8ocCSL/dxTGs1s=",
+        "lastModified": 1774368172,
+        "narHash": "sha256-Vdfo8+2SQhgc7i+TCIkBXzypQCFAvNrWvhUkZQtFGKE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bc357c75e3142a31b849ba49c5299fb52c61cf59",
+        "rev": "5068d0b03e8b2cfae58441775aa849b7028a3d39",
         "type": "github"
       },
       "original": {
@@ -326,11 +326,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1771778753,
-        "narHash": "sha256-5pyZQbceDRBh2xYYcMf39WeyMp7z7z7X1ydFpyt+kGU=",
+        "lastModified": 1774361163,
+        "narHash": "sha256-p/QSRpEqlCzZuWvdmk6tUUZy5aboXGcRrOGp2VUFQRc=",
         "owner": "feschber",
         "repo": "lan-mouse",
-        "rev": "27225ed56435681b18cfbb0499320fc626359730",
+        "rev": "9af5f9452efe30a715823320088b6d70fd31b83d",
         "type": "github"
       },
       "original": {
@@ -762,11 +762,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1752806774,
-        "narHash": "sha256-4cHeoR2roN7d/3J6gT+l6o7J2hTrBIUiCwVdDNMeXzE=",
+        "lastModified": 1773025773,
+        "narHash": "sha256-Wik8+xApNfldpUFjPmJkPdg0RrvUPSWGIZis+A/0N1w=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "3c90219b3ba1c9790c45a078eae121de48a39c55",
+        "rev": "3c06fdbbd36ff60386a1e590ee0cd52dcd1892bf",
         "type": "github"
       },
       "original": {
