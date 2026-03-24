@@ -46,6 +46,7 @@
 
   environment.systemPackages = with pkgs; [
     cudatoolkit
+    nvtopPackages.intel
     nvtopPackages.nvidia
   ];
 
@@ -69,7 +70,6 @@
       #   # dynamicBoost.enable = true;
       #   # nvidiaPersistenced = true;
       #
-      #   modesetting.enable = true;
       #   nvidiaSettings = false;
       #   open = true;
       #   videoAcceleration = true;
