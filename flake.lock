@@ -692,11 +692,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757962780,
-        "narHash": "sha256-S43al1AZbH3vyd+Lwk8Hh4KYAJg0xmYyZjLrU9QL2Ys=",
+        "lastModified": 1774578999,
+        "narHash": "sha256-9VjE0dOSBffgX1lWbwvuHSKO/gKLL6+1zRv17rokI0g=",
         "ref": "refs/heads/main",
-        "rev": "e9ca16327df8f66e4c3a3aa5a0b396cc57ef28e2",
-        "revCount": 32,
+        "rev": "a1ce13499c84e8cf64dd1626da27cdaee0f48948",
+        "revCount": 33,
         "type": "git",
         "url": "https://git.schwem.io/schwem/oidcproxy"
       },
