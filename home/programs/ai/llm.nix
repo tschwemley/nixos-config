@@ -10,8 +10,8 @@
 
   home = {
     packages = with pkgs; [
-      #  crush
-      # llama-cpp-rocm
+      crush
+      lmstudio
     ];
   };
 
