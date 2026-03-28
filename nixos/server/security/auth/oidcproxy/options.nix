@@ -1,18 +1,19 @@
-{lib, ...}: let
+{ lib, ... }:
+let
   inherit (lib) mkOption types;
 
   protectedHostOption = {
     options = with types; {
       allowedGroups = mkOption {
-        default = [];
+        default = [ ];
         type = listOf str;
       };
       allowedRealmRoles = mkOption {
-        default = [];
+        default = [ ];
         type = listOf str;
       };
       allowedResourceAccess = mkOption {
-        default = {};
+        default = { };
         type = attrsOf (listOf str);
       };
       clientName = mkOption {
@@ -20,17 +21,17 @@
         type = str;
       };
       unprotectedPaths = mkOption {
-        default = [];
+        default = [ ];
         type = listOf str;
       };
-      upstream = mkOption {type = str;};
+      upstream = mkOption { type = str; };
     };
   };
-in {
+in
+{
   options.services.oidcproxy.protectedHosts = mkOption {
-    # type = with types; listOf (submodule protectedHostOption);
     type = with types; attrsOf (submodule protectedHostOption);
-    default = {};
+    default = { };
     description = "List of virtual hosts to put behind auth proxy.";
   };
 }
