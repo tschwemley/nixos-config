@@ -5,6 +5,7 @@
     ../../server/alt-frontends/redlib.nix
     ../../server/alt-frontends/rimgo.nix
     ../../server/knowledge/excalidraw
+    ../../server/media/audiobookshelf.nix
     ../../server/security/anubis.nix
     # ../../server/services/pds.nix
 

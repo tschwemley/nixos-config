@@ -1,6 +1,7 @@
 {
   anonymous-overflow = "8010";
   anubis = "8081";
+  audiobookshelf = "8004";
   bluesky-pds = "3200";
   binternet = "8009";
   calibre-server = "8084";

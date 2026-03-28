@@ -50,6 +50,7 @@ in
         acl domain_default hdr(host) -i schwem.io
 
         acl domain_ai hdr(host) -i ai.schwem.io
+        acl domain_audiobook hdr(host) -i audiobook.schwem.io
         acl domain_auth hdr(host) -i auth.schwem.io
         acl domain_cyberchef hdr(host) -i cyberchef.schwem.io
         acl domain_draw hdr(host) -i draw.schwem.io
@@ -68,6 +69,7 @@ in
         acl domain_rss hdr(host) -i rss.schwem.io
         acl domain_search hdr(host) -i search.schwem.io
         acl domain_stackoverflow hdr(host) -i so.schwem.io
+        acl domain_transfer hdr(host) -i transfer.schwem.io
         acl domain_tumblr hdr(host) -i tumblr.schwem.io
         acl domain_twitch hdr(host) -i twitch.schwem.io twitch.api.schwem.io
         acl domain_wiki hdr(host) -i wiki.schwem.io
@@ -83,10 +85,12 @@ in
         use_backend articuno if domain_freetar
         use_backend articuno if domain_monitor
         use_backend articuno if domain_ntfy
+        use_backend articuno if domain_transfer
         use_backend articuno if domain_twitch
         use_backend articuno if domain_yt
 
         use_backend moltres if domain_ai
+        use_backend moltres if domain_audiobook
         use_backend moltres if domain_draw
         use_backend moltres if domain_pds
         use_backend moltres if domain_reddit
@@ -113,6 +117,7 @@ in
         default_backend static
 
       backend articuno
+        http-request set-header X-Forwarded-Proto https
         server articuno articuno.wyvern-map.ts.net:8080 check send-proxy
 
       backend auth
@@ -121,7 +126,6 @@ in
       backend git_ssh_backend
         mode tcp
         server jolteon_ssh jolteon:2222 check
-        # server zapdos zapdos:2222 check
 
       backend it-tools
         http-request set-header X-Forwarded-Proto https
@@ -176,7 +180,7 @@ in
       "tailscaled.service"
     ];
 
-    # restartIfChanged = false;
+    stopIfChanged = false;
   };
 
   users.users.haproxy.extraGroups = [ "acme" ];
