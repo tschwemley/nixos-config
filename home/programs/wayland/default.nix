@@ -20,12 +20,7 @@
       ydotool
     ];
 
-    sessionVariables = {
-      MOZ_ENABLE_WAYLAND = 1;
-
-      # make SDL2 applications use wayland
-      SDL_VIDEODRIVER = "wayland,x11";
-      XDG_SESSION_TYPE = "wayland";
-    };
+    # ensure proper hinting for electron applications
+    sessionVariables.NIXOS_OZONE_WL = "1";
   };
 }
