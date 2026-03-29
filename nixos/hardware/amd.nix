@@ -21,6 +21,12 @@
     ];
   };
 
+  environment.systemPackages = with pkgs; [
+    gpu-viewer
+    nvtopPackages.amd
+    rocmPackages.rocminfo
+  ];
+
   hardware = {
     amdgpu = {
       initrd.enable = lib.mkDefault true;
@@ -41,13 +47,4 @@
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="drm", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="manual"
   '';
-
-  # environment = {
-  #   systemPackages = with pkgs; [
-  #     libva-utils
-  #     gpu-viewer
-  #     nvtopPackages.amd
-  #     rocmPackages.rocminfo
-  #   ];
-  # };
 }
