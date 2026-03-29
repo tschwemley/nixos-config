@@ -7,7 +7,6 @@ let
     in
     {
       inherit (self.packages.${system})
-        crush
         json2go
         nrepl
         trmnl-server
