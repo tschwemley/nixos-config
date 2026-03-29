@@ -13,7 +13,7 @@
 
     audiobookshelf = {
       enable = true;
-      port = self.lib.port-map.audiobookshelf;
+      port = with self.lib; toInt port-map.audiobookshelf;
     };
   };
 }

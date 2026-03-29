@@ -1,7 +1,9 @@
-{config, ...}: let
+{ self, ... }:
+let
   ip = "127.0.0.1";
-  port = config.variables.ports.webhooks;
-in {
+  port = self.lib.port-map.webhooks;
+in
+{
   services = {
     nginx.virtualHosts."search.schwem.io".locations."/".proxyPass = "http://${ip}:${port}";
 

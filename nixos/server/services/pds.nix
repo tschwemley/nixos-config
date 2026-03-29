@@ -1,11 +1,11 @@
 {
-  config,
+  self,
   lib,
   ...
 }:
 let
   listenAddr = "127.0.0.1";
-  port = config.variables.ports.bluesky-pds;
+  port = self.lib.port-map.bluesky-pds;
   portInt = lib.toInt port;
 in
 {

@@ -1,6 +1,8 @@
-{config, ...}: let
-  port = config.variables.ports.freetar;
-in {
+{ self, ... }:
+let
+  port = self.lib.port-map.freetar;
+in
+{
   services.nginx = {
     virtualHosts."freetar.schwem.io" = {
       locations."/" = {
@@ -13,7 +15,7 @@ in {
   virtualisation.oci-containers.containers."freetar" = {
     autoStart = true;
     image = "kmille2/freetar";
-    extraOptions = ["--pull=always"];
-    ports = ["127.0.0.1:${port}:${port}"];
+    extraOptions = [ "--pull=always" ];
+    ports = [ "127.0.0.1:${port}:${port}" ];
   };
 }

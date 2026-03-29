@@ -1,6 +1,6 @@
-{ config, ... }:
+{ self, ... }:
 let
-  port = config.variables.ports.excalidraw;
+  port = self.lib.port-map.excalidraw;
 in
 {
   services.nginx.virtualHosts."draw.schwem.io" = {

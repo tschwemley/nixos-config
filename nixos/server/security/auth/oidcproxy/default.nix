@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   stateDir = "/var/lib/oidcproxy";
 
   cfg = config.services.oidcproxy;
@@ -13,48 +14,53 @@
     text = builtins.toJSON cfg.protectedHosts;
   };
 
-  virtualHosts =
-    lib.attrsets.mapAttrs (host: info: let
+  virtualHosts = lib.attrsets.mapAttrs (
+    host: info:
+    let
       baseUrl = "http://oidcproxy_server";
-    in {
+    in
+    {
       extraConfig = ''
         error_page 401 = @error401;
       '';
 
-      locations = let
-        proxyPass = "${baseUrl}$request_uri";
-        baseLocations = {
-          ".auth" = {
-            proxyPass = "${baseUrl}/auth";
-            extraConfig = "internal;";
-          };
-
-          "/auth" = {inherit proxyPass;};
-          "/auth/callback" = {inherit proxyPass;};
-          "/login" = {inherit proxyPass;};
-
-          "@error401".return = "302 https://${host}/login?redirect=${host}";
-
-          "/" = {
-            proxyPass = info.upstream;
-            extraConfig = "auth_request .auth;";
-          };
-        };
-
-        unprotectedLocations = builtins.listToAttrs (builtins.map (path: {
-            name = path;
-            value = {
-              proxyPass = "${info.upstream}$request_uri";
-              extraConfig = "auth_request off;";
+      locations =
+        let
+          proxyPass = "${baseUrl}$request_uri";
+          baseLocations = {
+            ".auth" = {
+              proxyPass = "${baseUrl}/auth";
+              extraConfig = "internal;";
             };
-          })
-          info.unprotectedPaths);
-      in
+
+            "/auth" = { inherit proxyPass; };
+            "/auth/callback" = { inherit proxyPass; };
+            "/login" = { inherit proxyPass; };
+
+            "@error401".return = "302 https://${host}/login?redirect=${host}";
+
+            "/" = {
+              proxyPass = info.upstream;
+              extraConfig = "auth_request .auth;";
+            };
+          };
+
+          unprotectedLocations = builtins.listToAttrs (
+            builtins.map (path: {
+              name = path;
+              value = {
+                proxyPass = "${info.upstream}$request_uri";
+                extraConfig = "auth_request off;";
+              };
+            }) info.unprotectedPaths
+          );
+        in
         unprotectedLocations // baseLocations;
-    })
-    cfg.protectedHosts;
-in {
-  imports = [./options.nix];
+    }
+  ) cfg.protectedHosts;
+in
+{
+  imports = [ ./options.nix ];
 
   services.nginx = {
     inherit virtualHosts;
@@ -62,7 +68,7 @@ in {
     upstreams = {
       "oidcproxy_server" = {
         servers = {
-          "127.0.0.1:1337" = {};
+          "127.0.0.1:1337" = { };
         };
       };
     };
@@ -128,7 +134,7 @@ in {
     };
 
     description = "Simple OIDC/OAuth2 proxy";
-    wantedBy = ["multi-user.target"];
+    wantedBy = [ "multi-user.target" ];
   };
 
   sops.secrets.oidcproxy = {

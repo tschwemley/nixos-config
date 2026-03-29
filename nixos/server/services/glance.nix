@@ -1,12 +1,11 @@
 {
   self,
   config,
-  lib,
   ...
 }:
 let
   host = "127.0.0.1";
-  port = self.lib.toInt config.variables.ports.glance;
+  port = self.lib.toInt self.lib.port-map.glance;
 in
 {
   services = {
