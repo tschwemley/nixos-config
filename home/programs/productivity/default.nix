@@ -2,7 +2,7 @@
   imports = [
     ./anki.nix
     # TODO: uncomment after build is fixed
-    # ./khal.nix
+    ./khal.nix
     ./libreoffice.nix
   ];
 }

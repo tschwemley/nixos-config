@@ -13,8 +13,6 @@
     hw-probe
     isd
     jdupes
-    nrepl
-    pinentry-curses
     ripgrep
     rsync
     sops
