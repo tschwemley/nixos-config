@@ -1,4 +1,9 @@
-{ self, pkgs, ... }:
+{
+  self,
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [
     self.inputs.stylix.nixosModules.stylix
@@ -35,7 +40,7 @@
       };
   };
 
-  home-manager.users.schwem.stylix.targets = {
+  home-manager.users.schwem.stylix.targets = self.lib.mkIf (config.home-manager.users ? schwem) {
     waybar = {
       enable = true;
       # addCss = false;
