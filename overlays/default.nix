@@ -22,9 +22,7 @@ in
   inherit default;
 
   # Custom defined overlays
-  # aseprite = import ./aseprite.nix;
-  charm = import "${self.inputs.charm}/overlay.nix";
-  formats = import ./formats;
+  # charm = import "${self.inputs.charm}/overlay.nix";
   sops = import ./sops;
   vimPlugins = import ./vimplugins.nix self;
   visidata = import ./visidata.nix;
@@ -32,4 +30,7 @@ in
 
   # Overlays defined via inputs
   neovim = self.inputs.neovim-nightly-overlay.overlays.default;
+
+  # TODO: use/modify for local pixel-art workflow or remove - 03/29/2026
+  # aseprite = import ./aseprite.nix;
 }
