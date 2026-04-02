@@ -603,11 +603,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1774576812,
-        "narHash": "sha256-Nl+4xwLQLubYA0c/H7nUzeYOKNvtQ5IMaxZkps+DFpg=",
+        "lastModified": 1775127036,
+        "narHash": "sha256-HJODpxLu4QQ41ATUHxUkP7xbFXpI488e8vMfJ9EybxI=",
         "ref": "refactor",
-        "rev": "a33f4ae53f885e47ed7bc21cfdce7832a3a128ed",
-        "revCount": 84,
+        "rev": "4e7cb9c75c733ad6b8e54da3384f72c8b3125d81",
+        "revCount": 86,
         "type": "git",
         "url": "https://git.schwem.io/schwem/nix-private"
       },
@@ -627,11 +627,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1774152752,
-        "narHash": "sha256-bCU+kOG19c7cFRqw0fPW9ryPjwTpJYN6ZGm66C8XzSc=",
+        "lastModified": 1774758942,
+        "narHash": "sha256-b9qdBNLx9+fDiXnApBVnTqZqUnP6Pt/ImHsXjdb55mY=",
         "owner": "Mic92",
         "repo": "nix-update",
-        "rev": "2153e82f268362cf797edd33574fac2e83ec2623",
+        "rev": "32d6143f3280299572034739948df1ee7fbfab32",
         "type": "github"
       },
       "original": {
