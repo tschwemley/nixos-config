@@ -6,15 +6,15 @@
     #       low priority
     ../../server/alt-frontends/binternet.nix
 
-    ../../server/alt-frontends/nitter.nix
     ../../server/alt-frontends/priviblur
     ../../server/alt-frontends/quatre
-    ../../server/automation/home-assistant
+    # ../../server/automation/home-assistant
     ../../server/knowledge/tiddlywiki
-    # ../../server/todo-resort-all-dirs/neko.nix
+    ../../server/services/n8n
+
+    # ../../server/alt-frontends/nitter.nix
     # ../../server/services/newsblur
     # ../../server/services/webhooks
-    ../../system/fonts.nix
   ];
 
   networking.hostName = "zapdos";
