@@ -10,7 +10,7 @@
     ../../server/alt-frontends/quatre
     # ../../server/automation/home-assistant
     ../../server/knowledge/tiddlywiki
-    ../../server/services/n8n
+    ../../server/services/n8n.nix
 
     # ../../server/alt-frontends/nitter.nix
     # ../../server/services/newsblur
