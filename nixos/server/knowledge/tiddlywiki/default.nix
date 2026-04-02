@@ -2,22 +2,23 @@
   self,
   pkgs,
   ...
-}: {
-  imports = [./plugins.nix];
+}:
+{
+  imports = [ ./plugins.nix ];
 
-  environment.systemPackages = [pkgs.nodePackages.tiddlywiki];
+  environment.systemPackages = with pkgs; [ tiddlywiki ];
 
   services = {
     oidcproxy.protectedHosts."wiki.schwem.io" = {
-      allowedGroups = ["admin"];
-      allowedRealmRoles = ["admin"];
+      allowedGroups = [ "admin" ];
+      allowedRealmRoles = [ "admin" ];
       upstream = "http://tiddlywiki";
     };
 
     nginx.upstreams = {
       "tiddlywiki" = {
         servers = {
-          "127.0.0.1:${self.lib.port-map.tiddlywiki}" = {};
+          "127.0.0.1:${self.lib.port-map.tiddlywiki}" = { };
         };
       };
     };
