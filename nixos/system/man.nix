@@ -10,7 +10,7 @@
   };
 
   environment = {
-    sessionVariables.MANPAGER = "nvim +Man! +'normal gO' +'wincmd H'";
+    sessionVariables.MANPAGER = "nvim +Man!";
 
     systemPackages = with pkgs; [
       man-pages
