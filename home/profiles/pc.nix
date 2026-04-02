@@ -20,6 +20,7 @@
 
     ../programs/bitwarden.nix
     ../programs/cowsay.nix
+    ../programs/displaycal.nix
     ../programs/glow.nix
     ../programs/lan-mouse.nix
     ../programs/qalculate-gtk.nix
