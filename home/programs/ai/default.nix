@@ -1,5 +1,6 @@
 {
   imports = [
+    ./crush.nix
     ./mods.nix
     ./llm.nix
   ];
