@@ -22,7 +22,7 @@
       openscad-lsp
 
       # php
-      nodePackages.intelephense
+      intelephense
       phpactor
 
       # python
