@@ -1,12 +1,13 @@
 { pkgs, ... }:
 {
-  imports = [ ./nerdfetch.nix ];
+  imports = [
+    ./filesystem.nix
+    ./nerdfetch.nix
+  ];
 
   # TODO: slowly move these pkgs into appropriate subcategories
   environment.systemPackages = with pkgs; [
     age
-    fd
-    file
     git
     gnupg
     hwinfo
