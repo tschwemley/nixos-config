@@ -4,8 +4,10 @@
     ../../../services/wpaperd.nix
   ];
 
+  home.sessionVariables.GDK_SCALE = 2;
+
   # creates xdg.configFile.<name>.source entries for the strings in the list.
-  config.xdg.configFile = builtins.listToAttrs (
+  xdg.configFile = builtins.listToAttrs (
     map
       (name: {
         name = "niri/${name}.kdl";
