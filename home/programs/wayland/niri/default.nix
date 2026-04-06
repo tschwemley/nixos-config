@@ -4,7 +4,7 @@
     ../../../services/wpaperd.nix
   ];
 
-  home.sessionVariables.GDK_SCALE = 2;
+  home.sessionVariables.GDK_SCALE = 1.5;
 
   # creates xdg.configFile.<name>.source entries for the strings in the list.
   xdg.configFile = builtins.listToAttrs (
