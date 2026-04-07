@@ -11,16 +11,6 @@ end
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("LspGroup", {}),
 	callback = function(e)
-		-- local opts = function(desc)
-		-- 	local opts = { buffer = e.buf }
-		-- 	if desc ~= nil and desc ~= "" then
-		-- 		opts["desc"] = desc
-		-- 	end
-		-- 	return opts
-		-- end
-
-		vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
-
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to Declaration" })
 		vim.keymap.set("n", "gd", function()
 			vim.lsp.buf.definition({
@@ -31,7 +21,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "K", vim.lsp.buf.hover)
 
 		vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
-		vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 		vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename)
 
 		vim.keymap.set("n", "<leader>lm", show_methods)

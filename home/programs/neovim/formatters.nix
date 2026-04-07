@@ -9,11 +9,14 @@
       # kdl
       kdlfmt
 
+      # lua
+      stylua
+
       # nix
       nixfmt
 
-      # lua
-      stylua
+      # php
+      php82Packages.php-codesniffer
 
       # toml
       taplo

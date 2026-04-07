@@ -20,7 +20,6 @@
 
   xdg = {
     configFile."nvim".source = ./config;
-
     dataFile."nvim/snippets".source = ./snippets;
   };
 }
