@@ -1,6 +1,8 @@
 binds {
-	// TODO: deleteme when below confirmed working
-	Mod+V hotkey-overlay-title="View Clipboard History" { spawn-sh "cliphist-fuzzel-img list | wofi -dmenu | cliphist decode | wl-copy"; }
+	Mod+V hotkey-overlay-title="View Clipboard History" { spawn-sh "cliphist-fuzzel-img list"; }
+
+	Mod+Shift+C { spawn-sh "wl-ocr"; }
+
 	// Mod+V hotkey-overlay-title="View Clipboard History" { spawn-sh "cliphist list | wl-copy"; }
 
 	// ---
