@@ -27,7 +27,7 @@
       content =
         # yaml
         ''
-          default-model: claude-opus-4.5
+          default-model: gemini-3-flash-preview
           format-text:
             markdown: "Format the response as markdown without enclosing backticks."
             json: "Format the response as json without enclosing backticks."
@@ -113,7 +113,7 @@
           fanciness: 10
           status-text: Generating
           theme: gruvbox
-          max-input-chars: 12250
+          # max-input-chars: 12250
           apis:
             schwem-io:
               base-url: https://openrouter.ai/api/v1
@@ -122,6 +122,10 @@
                 anthropic/claude-opus-4.5:
                   aliases: ["claude-opus-4.5"]
                   max-input-chars: 640000
+                google/gemini-3-flash-preview:
+                  aliases: ["gemini-3-flash-preview"]
+                  max-input-chars: 1048576
+                  
         '';
     };
   };
