@@ -16,6 +16,7 @@
     vimdiffAlias = true;
     withPython3 = true;
     withNodeJs = true;
+    withRuby = false;
   };
 
   xdg = {
