@@ -1,7 +1,8 @@
-{ inputs, ... }:
+{ self, ... }:
 {
   imports = [
-    inputs.nix-private.nixosModules.envs.jolteon
+    self.inputs.nix-private.nixosModules.envs.jolteon
+    self.nixosModules.dufs
 
     ../../profiles/proxmox.nix
 
@@ -20,6 +21,16 @@
   ];
 
   networking.hostName = "jolteon";
+
+  services.dufs = {
+    enable = true;
+
+    allowAll = true;
+    group = "sabnzbd";
+    port = with (self.lib); toInt (port-map.dufs);
+    servePath = "/storage/downloads";
+    user = "sabnzbd";
+  };
 
   services = {
     tailscale.extraUpFlags = [
