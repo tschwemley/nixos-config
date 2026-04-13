@@ -178,5 +178,10 @@
       url = "git+https://git.schwem.io/schwem/oidcproxy";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    redlib = {
+      url = "github:Silvenga/redlib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }

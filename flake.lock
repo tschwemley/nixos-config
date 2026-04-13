@@ -188,6 +188,21 @@
         "type": "github"
       }
     },
+    "crane": {
+      "locked": {
+        "lastModified": 1731974733,
+        "narHash": "sha256-enYSSZVVl15FI5p+0Y5/Ckf5DZAvXe6fBrHxyhA/njc=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "3cb338ce81076ce5e461cf77f7824476addb0e1c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -340,6 +355,24 @@
       "original": {
         "owner": "hercules-ci",
         "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems_4"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
         "type": "github"
       }
     },
@@ -601,11 +634,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1775996055,
-        "narHash": "sha256-B8DNgzlpCIJnqXBZU8addm72NRVghia/Kmv8DDdkxn8=",
+        "lastModified": 1776071011,
+        "narHash": "sha256-oRGS2BSPd+bBGPeaeylkmw8+tDoMzWt93RJqaeIvq4A=",
         "ref": "refactor",
-        "rev": "6e56bb6a72f56a61419c026aa8f9f1941822087a",
-        "revCount": 90,
+        "rev": "7c7422757d190ff967214a65b8d19e1903758a76",
+        "revCount": 91,
         "type": "git",
         "url": "https://git.schwem.io/schwem/nix-private"
       },
@@ -848,6 +881,29 @@
         "type": "github"
       }
     },
+    "redlib": {
+      "inputs": {
+        "crane": "crane",
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay_2"
+      },
+      "locked": {
+        "lastModified": 1775740122,
+        "narHash": "sha256-jiLjyp6ze3HEsr7F+eRW3DyKJBJl+EoNjQ0wpEB+xlc=",
+        "owner": "Silvenga",
+        "repo": "redlib",
+        "rev": "72394ed320bd4437bb29e8780af0513b4ff02152",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Silvenga",
+        "repo": "redlib",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "anonymous-overflow": "anonymous-overflow",
@@ -866,10 +922,11 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "oidcproxy": "oidcproxy",
+        "redlib": "redlib",
         "sops-nix": "sops-nix_2",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
-        "systems": "systems_6",
+        "systems": "systems_7",
         "zen-browser": "zen-browser"
       }
     },
@@ -886,6 +943,27 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "rev": "3c06fdbbd36ff60386a1e590ee0cd52dcd1892bf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
+      "inputs": {
+        "nixpkgs": [
+          "redlib",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1732069891,
+        "narHash": "sha256-moKx8AVJrViCSdA0e0nSsG8b1dAsObI4sRAtbqbvBY8=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "8509a51241c407d583b1963d5079585a992506e8",
         "type": "github"
       },
       "original": {
@@ -957,7 +1035,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems_4"
+        "systems": "systems_5"
       },
       "locked": {
         "lastModified": 1775421933,
@@ -1013,7 +1091,7 @@
           "nixpkgs"
         ],
         "nur": "nur",
-        "systems": "systems_5",
+        "systems": "systems_6",
         "tinted-kitty": "tinted-kitty",
         "tinted-schemes": "tinted-schemes",
         "tinted-tmux": "tinted-tmux",
@@ -1109,6 +1187,21 @@
       }
     },
     "systems_6": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_7": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",

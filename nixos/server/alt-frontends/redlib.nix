@@ -2,6 +2,7 @@
   self,
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -20,7 +21,7 @@ in
       inherit address;
 
       enable = true;
-      # package = self.inputs.redlib.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      package = self.inputs.redlib.packages.${pkgs.stdenv.hostPlatform.system}.default;
       port = lib.toInt self.lib.port-map.redlib;
 
       # REF: https://github.com/redlib-org/redlib?tab=readme-ov-file#configuration
