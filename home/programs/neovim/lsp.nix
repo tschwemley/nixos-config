@@ -10,6 +10,9 @@
       gopls
       gotools
 
+      # html
+      superhtml
+
       # lua
       lua-language-server
 
