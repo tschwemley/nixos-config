@@ -35,16 +35,16 @@
       output "DP-1" {
       	mode "3840x2160@119.879997"
       	position x=0 y=0
-      	scale 1
+      	scale 1.2
       	transform "normal"
 
       	variable-refresh-rate
       }
 
-      output "HDMI-A-2" {
-      	mode "2160x2880@60.000"
-      	position x=3840 y=0
-      	scale 1.5 
+      output "HDMI-A-1" {
+      	mode "2560x2880@59.967"
+      	position x=3200 y=0
+      	scale 1.6 
       	transform "normal"
       }
     '';

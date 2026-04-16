@@ -26,6 +26,7 @@ in
     ../programs/systemutils.nix
     ../programs/zsh.nix
 
+    ../services/davfs2.nix
     ../services/fwupd.nix
     ../services/rclone
 
