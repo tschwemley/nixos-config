@@ -33,27 +33,30 @@
         user_map  /^(.*)$     \1
       '';
 
-      initialScript =
-        pkgs.writeText "postgresql-init-script"
-          #sh
-          ''
-              # Read the password from the sops-nix secret file
-              LIBRECHAT_PASSWORD=$(cat ${config.sops.secrets.librechatRagPostgresPassword.path})
-
-              # Use psql's variable substitution (-v) to safely pass the password.
-              # The :password syntax inside the SQL block is replaced by the variable.
-              psql -v password="'$LIBRECHAT_PASSWORD'" <<EOSQL
-                CREATE ROLE librechat WITH LOGIN PASSWORD :password;
-                CREATE DATABASE librechat OWNER librechat;
-            EOSQL
-
-            # INVIDIOUS_PASSWORD=$(cat ''${config.sops.secrets.invidiousPostgresPassword.path})
-            #
-            #   psql -v password="'$INVIDIOUS_PASSWORD'" <<EOSQL
-            #     CREATE ROLE invidious WITH LOGIN PASSWORD :password;
-            #     CREATE DATABASE invidious OWNER invidious;
-            # EOSQL
-          '';
+      # TODO: remove this and the sops.secrets definition below when done using commented block
+      #       for reference
+      #
+      # initialScript =
+      #   pkgs.writeText "postgresql-init-script"
+      #     #sh
+      #     ''
+      #         # Read the password from the sops-nix secret file
+      #         LIBRECHAT_PASSWORD=$(cat ${config.sops.secrets.librechatRagPostgresPassword.path})
+      #
+      #         # Use psql's variable substitution (-v) to safely pass the password.
+      #         # The :password syntax inside the SQL block is replaced by the variable.
+      #         psql -v password="'$LIBRECHAT_PASSWORD'" <<EOSQL
+      #           CREATE ROLE librechat WITH LOGIN PASSWORD :password;
+      #           CREATE DATABASE librechat OWNER librechat;
+      #       EOSQL
+      #
+      #       # INVIDIOUS_PASSWORD=$(cat ''${config.sops.secrets.invidiousPostgresPassword.path})
+      #       #
+      #       #   psql -v password="'$INVIDIOUS_PASSWORD'" <<EOSQL
+      #       #     CREATE ROLE invidious WITH LOGIN PASSWORD :password;
+      #       #     CREATE DATABASE invidious OWNER invidious;
+      #       # EOSQL
+      #     '';
     };
 
     prometheus.exporters.postgres = {
@@ -65,13 +68,13 @@
     };
   };
 
-  sops.secrets = {
-    librechatRagPostgresPassword = {
-      group = "postgres";
-      key = "rag_postgres_password";
-      mode = "0400";
-      owner = "postgres";
-      sopsFile = self.lib.secret "server" "librechat.yaml";
-    };
-  };
+  # sops.secrets = {
+  #   librechatRagPostgresPassword = {
+  #     group = "postgres";
+  #     key = "rag_postgres_password";
+  #     mode = "0400";
+  #     owner = "postgres";
+  #     sopsFile = self.lib.secret "server" "librechat.yaml";
+  #   };
+  # };
 }
