@@ -5,7 +5,6 @@
     ./posting.nix
     ./tealdeer
     ./uv.nix
-    # ./visidata.nix
     ./yq.nix
   ];
 }

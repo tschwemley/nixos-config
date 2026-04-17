@@ -25,7 +25,6 @@ in
   # charm = import "${self.inputs.charm}/overlay.nix";
   sops = import ./sops;
   vimPlugins = import ./vimplugins.nix self;
-  visidata = import ./visidata.nix;
   yaziPlugins = import ./yaziplugins.nix self;
 
   # Overlays defined via inputs
