@@ -23,4 +23,6 @@ in
       }
     ];
   };
+
+  systemd.services.prometheus.stopIfChanged = false;
 }
