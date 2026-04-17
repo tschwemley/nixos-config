@@ -1,3 +1,3 @@
 {
-  imports = [./podman.nix];
+  imports = [ ./podman.nix ];
 }

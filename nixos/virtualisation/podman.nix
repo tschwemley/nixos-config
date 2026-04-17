@@ -1,12 +1,19 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [podman-compose];
+{ config, pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [ podman-compose ];
+  programs = {
+    bash.shellAliases.docker-compose = "podman-compose";
+    zsh.shellAliases.docker-compose = "podman-compose";
+  };
 
-  # Enable container name DNS for non-default Podman networks.
-  # https://github.com/NixOS/nixpkgs/issues/226365
-  networking.firewall.interfaces."podman*".allowedUDPPorts = [
-    53
-    5353
-  ];
+  # Enable container name DNS for all Podman networks.
+  networking.firewall.interfaces =
+    let
+      matchAll = if !config.networking.nftables.enable then "podman+" else "podman*";
+    in
+    {
+      "${matchAll}".allowedUDPPorts = [ 53 ];
+    };
 
   virtualisation = {
     podman = {
