@@ -1,9 +1,23 @@
 local telescope = require("telescope")
+
+local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 
 -- Trouble telescope REF: https://github.com/folke/trouble.nvim?tab=readme-ov-file#telescope
 --
 telescope.setup({
+	defaults = {
+		mappings = {
+			i = {
+				["<C-q>"] = function(prompt_bufnr)
+					local prompt = require("telescope.actions.state").get_current_line()
+					vim.fn.setreg("/", prompt)
+					actions.send_to_qflist(prompt_bufnr)
+					actions.open_qflist(prompt_bufnr)
+				end,
+			},
+		},
+	},
 	extensions = {
 		frecency = {
 			db_safe_mode = false,
