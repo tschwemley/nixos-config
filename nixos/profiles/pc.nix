@@ -29,6 +29,7 @@
     ../services/colord.nix
     ../services/dbus.nix
     ../services/gamemode.nix
+    ../services/orca.nix
     ../services/printing.nix
     ../services/udisks2.nix
     ../services/upower.nix
