@@ -63,10 +63,10 @@
       enable = true;
       listenAddress = "127.0.0.1";
       port = 9187; # TODO: port-map?
-
-      # listenAddress = "0.0.0.0"; TODO: remove after confirming this 127... works
     };
   };
+
+  systemd.services.postgresql.stopIfChanged = false;
 
   # sops.secrets = {
   #   librechatRagPostgresPassword = {
