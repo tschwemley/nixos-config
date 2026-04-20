@@ -1,4 +1,5 @@
 # Contains nixos and home-manager options and programs that I'm trialing before committing to
+{ pkgs, ... }:
 {
   #######################################################
   ##                                                   ##
