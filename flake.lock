@@ -602,11 +602,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1776665570,
-        "narHash": "sha256-Mu/8BzjhHg2LSMVwnpwLqlB1LMfjhcjTYnr0EGl4Z2g=",
+        "lastModified": 1776667584,
+        "narHash": "sha256-1NH3CKFWiG0nszhCfEXRBPS+L8GaR32pdGWmmhawUyI=",
         "ref": "refactor",
-        "rev": "38d67e2fb0bdf4b1b8f531b345d93139d2f59cc8",
-        "revCount": 93,
+        "rev": "c0e662c787b395f75ae6d41cc61b25680fd755f1",
+        "revCount": 94,
         "type": "git",
         "url": "https://git.schwem.io/schwem/nix-private"
       },
