@@ -22,6 +22,8 @@ in
     ./hardware.nix
     ../../profiles/pc.nix
 
+    ./sandboxing.nix
+
     # TODO: make systemd boot import from the nixos/pc profile (unless pika is an exception for some reason)
     ../../system/boot/systemd.nix
 
