@@ -1,5 +1,5 @@
 # Contains nixos and home-manager options and programs that I'm trialing before committing to
-{ pkgs, ... }:
+{ self, pkgs, ... }:
 {
   #######################################################
   ##                                                   ##
@@ -52,4 +52,25 @@
       super-productivity
     ];
   };
+
+  ## ComfyUI##
+  imports = [ self.inputs.comfyui-nix.nixosModules.default ];
+
+  services.comfyui = {
+    enable = true;
+    gpuSupport = "rocm";
+    enableManager = true;
+    port = 8188;
+    listenAddress = "127.0.0.1"; # "0.0.0.0" to access from VR headset on LAN
+    # dataDir = "/home/<your-username>/comfyui-data";
+    openFirewall = false;
+    extraArgs = [ ];
+    environment = {
+      # Important for 7900 XTX (gfx1100)
+      HSA_OVERRIDE_GFX_VERSION = "11.0.0";
+      # Fix for the LD_LIBRARY_PATH shadowing bug (see note below)
+      PYTORCH_ROCM_ARCH = "gfx1100";
+    };
+  };
+
 }
