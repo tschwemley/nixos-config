@@ -16,6 +16,11 @@ let
       mountpoint = "storage${iStr}";
     }
   ) numExtraDrives;
+
+  cacheDrive = import ../../hardware/disks/block-storage.nix {
+    device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi5";
+    mountpoint = "cache";
+  };
 in
 {
   imports = [
@@ -23,6 +28,8 @@ in
 
     ../../profiles/proxmox.nix
     ../../services/samba.nix
+
+    cacheDrive
   ]
   ++ extraDrives;
 
