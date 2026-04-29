@@ -24,6 +24,8 @@ let
             url = "mirror://savannah/davfs2/davfs2-${finalAttrs.version}.tar.gz";
             sha256 = "sha256-pTaBYetQVWUdfl6BgMFgbaleeMlBtruKkobfeSPPy6k=";
           };
+
+          nativeBuildInputs = [ prev.autoreconfHook269 ];
         }
       );
 
