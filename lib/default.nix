@@ -52,4 +52,13 @@ lib
 
   # Gets the system defined for the nixpkgs passed
   system = pkgs: pkgs.stdenv.hostPlatform.system;
+
+  xdgAssociations =
+    type: program: list:
+    builtins.listToAttrs (
+      map (e: {
+        name = "${type}/${e}";
+        value = program;
+      }) list
+    );
 }

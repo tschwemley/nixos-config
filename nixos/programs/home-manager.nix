@@ -1,6 +1,7 @@
 {
   self,
   inputs,
+  lib,
   ...
 }:
 {
@@ -10,7 +11,10 @@
     backupFileExtension = "bak";
     useGlobalPkgs = true;
 
-    extraSpecialArgs = { inherit self inputs; };
+    extraSpecialArgs = {
+      inherit self inputs;
+      lib = lib.extend (_: _: self.inputs.home-manager.lib);
+    };
     sharedModules = [
       self.inputs.nix-private.homeManagerModules.yt-dlp
       self.inputs.sops-nix.homeManagerModules.sops

@@ -14,6 +14,7 @@
     hw-probe
     isd
     jdupes
+    progress
     ripgrep
     rsync
     sops

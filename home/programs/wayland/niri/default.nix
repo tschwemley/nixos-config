@@ -1,26 +1,25 @@
+{ lib, pkgs, ... }:
 {
-  imports = [
-    ../../../services/mako.nix
-    ../../../services/wpaperd.nix
-  ];
+  # imports = [
+  #   ../../../services/mako.nix
+  #   ../../../services/wpaperd.nix
+  # ];
 
-  home.sessionVariables.GDK_SCALE = 1.5;
+  # home.sessionVariables.GDK_SCALE = 1.5;
 
-  # creates xdg.configFile.<name>.source entries for the strings in the list.
-  xdg.configFile = builtins.listToAttrs (
-    map
-      (name: {
-        name = "niri/${name}.kdl";
-        value = {
-          source = ./. + "/${name}.kdl";
-        };
-      })
-      [
-        "binds"
-        "config"
-        "layout"
-        "input"
-        "window-rules"
-      ]
-  );
+  programs.niri = {
+    # enable = true;
+    package = pkgs.niri-unstable;
+    settings = {
+      binds = import ./binds.nix;
+
+      debug.disable-cursor-plane = true;
+      gestures.hot-corners.enable = false;
+
+      xwayland-satellite = {
+        enable = true;
+        path = lib.getExe pkgs.xwayland-satellite;
+      };
+    };
+  };
 }

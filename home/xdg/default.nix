@@ -4,7 +4,7 @@
   ...
 }:
 {
-  imports = [ ./mimeapps.nix ];
+  # imports = [ ./mimeapps.nix ];
 
   xdg = {
     enable = true;

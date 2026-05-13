@@ -103,6 +103,7 @@
 
     comfyui-nix = {
       url = "github:utensils/comfyui-nix";
+      # NOTE: when last checked some deps fail to build when following nixpkgs unstable
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -136,12 +137,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
       };
+    };
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     spicetify-nix = {
@@ -172,7 +183,8 @@
     };
 
     nix-private = {
-      url = "git+https://git.schwem.io/schwem/nix-private?ref=refactor";
+      # url = "git+https://git.schwem.io/schwem/nix-private?ref=refactor";
+      url = "/home/schwem/projects/nix/private";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         sops-nix.follows = "sops-nix";

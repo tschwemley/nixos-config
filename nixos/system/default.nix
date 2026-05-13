@@ -1,6 +1,6 @@
 {
   imports = [
-    ./console.nix
+    # ./console.nix
     ./diagnostics.nix
     ./fonts.nix
     ./nix.nix

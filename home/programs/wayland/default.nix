@@ -2,22 +2,23 @@
 # Wayland config
 {
   imports = [
-    ./fuzzel.nix
-    ./swaylock.nix
-    ./waybar
+    ./dank-material-shell.nix
+    # ./fuzzel.nix
+    ./niri
+    # ./swaylock.nix
+    # ./waybar
   ];
 
   home = {
     packages = with pkgs; [
-      cliphist
-
-      slurp # utility that gives x,y && w x h coordinates for a selection
       wl-clipboard
       wl-ocr
-      wf-recorder
-
       wlr-randr
-      ydotool
+
+      # slurp # utility that gives x,y && w x h coordinates for a selection
+      # wf-recorder
+
+      # ydotool
     ];
 
     # ensure proper hinting for electron applications

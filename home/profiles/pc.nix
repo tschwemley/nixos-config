@@ -27,8 +27,6 @@
     ../programs/qt.nix
     ../programs/reddit-tui.nix
     ../programs/wayland
-    ../programs/wayland/niri
-    ../services/mako.nix
     ../programs/wcalc.nix
     ../programs/wofi.nix
     ../programs/zathura.nix
@@ -40,9 +38,6 @@
     ../xdg
     ../xdg/netrc.nix
     ../xdg/ssh/personal.nix
-
-    # TODO:remove if not keeping
-    # ../programs/taskwarrior.nix
   ];
 
   home = {

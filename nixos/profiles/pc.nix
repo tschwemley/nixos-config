@@ -17,43 +17,49 @@
     ../hardware/flipperzero.nix
     ../hardware/xbox-controller.nix
 
+    # TODO: uncomment me after fix for wrong hash merged upstream (within ~2 days of 05/04/2026)
     ../network/wireshark.nix
 
     ../programs/gaming.nix
     ../programs/kdeconnect.nix
     ../programs/keyboards
-    ../programs/niri.nix
     ../programs/usbutils.nix
     ../programs/wine.nix
 
     ../services/colord.nix
+    ../services/comfyui.nix
     ../services/dbus.nix
     ../services/gamemode.nix
     ../services/orca.nix
     ../services/printing.nix
     ../services/udisks2.nix
-    ../services/upower.nix
 
     ../security
 
     ../system/boot/systemd.nix
     ../system/documentation.nix
-    ../system/greetd.nix
     ../system/man.nix
 
     ../theme
 
     ../virtualisation/qemu.nix
 
+    ../wayland
+
     ../../android
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod;
 
   nix.settings.trusted-users = [ "schwem" ];
+  nixpkgs.overlays = [ self.inputs.niri.overlays.niri ];
 
+  # TODO: split both dconf and niri out from this file
   # this is required to make home manager managed GTK items function
   programs.dconf.enable = true;
+  programs.niri.enable = true;
+  programs.niri.package = pkgs.niri-unstable;
 
   services = {
     getty.autologinUser = "schwem";
