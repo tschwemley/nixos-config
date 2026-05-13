@@ -10,11 +10,12 @@ require("conform").setup({
 		toml = { "taplo" },
 	},
 
-	format_on_save = {
-		-- These options will be passed to conform.format()
-		timeout_ms = 500,
-		lsp_format = "fallback",
-	},
+	format_on_save = function(buffer_num)
+		if vim.g.disable_autoformat or vim.b[buffer_num].disable_autoformat then
+			return
+		end
+		return { timeout_ms = 500, lsp_format = "fallback" }
+	end,
 })
 
 -- vim.keymap.set("", "<leader>lf", function()
