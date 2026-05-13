@@ -43,6 +43,7 @@
   "Mod+Ctrl+R".action.reset-window-height = { };
   "Mod+F".action.maximize-column = { };
   "Mod+Ctrl+F".action.expand-column-to-available-width = { };
+  "Mod+Shift+F".action.toggle-window-floating = { };
 
   "Mod+1".action.focus-workspace = 1;
   "Mod+2".action.focus-workspace = 2;
