@@ -24,6 +24,9 @@
   services.shiori.enable = true;
   # stoat.enable = true;
   # services.torrentstream.enable = true;
+  services.ollama = {
+    enable = true;
+  };
 
   ## HOME MANAGER ##
   home-manager.users.schwem = {
@@ -32,6 +35,13 @@
     imports = [
       ../../../home/programs/media/gallery-dl.nix
     ];
+
+    programs.ghostty = {
+      enable = true;
+      enableZshIntegration = true;
+      installBatSyntax = true;
+      installVimSyntax = true;
+    };
 
     programs.yt-dlp = {
       enable = true;
@@ -52,25 +62,4 @@
       super-productivity
     ];
   };
-
-  ## ComfyUI##
-  imports = [ self.inputs.comfyui-nix.nixosModules.default ];
-
-  services.comfyui = {
-    enable = true;
-    gpuSupport = "rocm";
-    enableManager = true;
-    port = 8188;
-    listenAddress = "127.0.0.1"; # "0.0.0.0" to access from VR headset on LAN
-    # dataDir = "/home/<your-username>/comfyui-data";
-    openFirewall = false;
-    extraArgs = [ ];
-    environment = {
-      # Important for 7900 XTX (gfx1100)
-      HSA_OVERRIDE_GFX_VERSION = "11.0.0";
-      # Fix for the LD_LIBRARY_PATH shadowing bug (see note below)
-      PYTORCH_ROCM_ARCH = "gfx1100";
-    };
-  };
-
 }

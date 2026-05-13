@@ -30,6 +30,7 @@
 
         "adbusers"
         "audio"
+        "comfyui"
         "dialout"
         "docker"
         "gamemode"

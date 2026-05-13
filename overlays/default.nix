@@ -36,14 +36,11 @@ in
   inherit default;
 
   # Custom defined overlays
+
   # charm = import "${self.inputs.charm}/overlay.nix";
   sops = import ./sops;
   vimPlugins = import ./vimplugins.nix self;
   yaziPlugins = import ./yaziplugins.nix self;
-
-  # Overlays defined via inputs
-  comfyui = self.inputs.comfyui-nix.overlays.default;
-  neovim = self.inputs.neovim-nightly-overlay.overlays.default;
 
   # TODO: use/modify for local pixel-art workflow or remove - 03/29/2026
   # aseprite = import ./aseprite.nix;
