@@ -238,11 +238,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1778638030,
-        "narHash": "sha256-h/Jl+0iFoafVDWfkNJJSccObYYWMdfEjMM+v4U2N2nE=",
+        "lastModified": 1778703769,
+        "narHash": "sha256-GnOkNq1sEDy/fH5HEPWVaU1ED5amfDUwhNKgu6hRXwI=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "8f958658dc19b6b31db92d41ff01e903a0e4f1c5",
+        "rev": "9a630fad92f647718ddfac52f728a7ed9cfc7089",
         "type": "github"
       },
       "original": {
@@ -460,11 +460,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778628724,
-        "narHash": "sha256-VNG6hJ146VEenXcDrB3t6MVnrMx+gtyCWTCDkzOp9Qs=",
+        "lastModified": 1778706808,
+        "narHash": "sha256-ihH1UnI6nYSOkjAg4QsOadg6sp2LxXnWO9urPbo3/hw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6a0bbd6b4720da1c9ce7ebf35ff5c41a82db367a",
+        "rev": "9760b31dab3016fc6e422ca241cfeac605fb89c9",
         "type": "github"
       },
       "original": {
@@ -506,11 +506,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1778650849,
-        "narHash": "sha256-rGb5Lywt3gMaWaVBLlWNTgypCWjiekuYG0i39Q6qusY=",
+        "lastModified": 1778709251,
+        "narHash": "sha256-FJXAAE+Q8XhRz74eOpGAfTCWEa71S9kAOiZ+Jeg1+zk=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "63eaec5890d3dfab83d7fdee5a2dd2bad06e165b",
+        "rev": "3d0fd3c69526d8763e44b8c9287bab190d1d1f76",
         "type": "github"
       },
       "original": {
@@ -721,14 +721,18 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1776778382,
-        "narHash": "sha256-6Buw7ltsxKq8kTlO6NtzXlNoF6yOToAkLpPCHVWqgA4=",
-        "path": "/home/schwem/projects/nix/private",
-        "type": "path"
+        "lastModified": 1776778352,
+        "narHash": "sha256-Jq1672rhdhbNQKU7cRsXde7ElsmMqxY7IBax+3ck9Ig=",
+        "ref": "refactor",
+        "rev": "a87c0731e5590821381f02d9ff665793c41eac9e",
+        "revCount": 95,
+        "type": "git",
+        "url": "https://git.schwem.io/schwem/nix-private"
       },
       "original": {
-        "path": "/home/schwem/projects/nix/private",
-        "type": "path"
+        "ref": "refactor",
+        "type": "git",
+        "url": "https://git.schwem.io/schwem/nix-private"
       }
     },
     "nix-update": {
@@ -1208,11 +1212,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1778631739,
-        "narHash": "sha256-p8Ukp87idiyfgYo7NcoPqXA1A3+zkCjmoUsSh39daj0=",
+        "lastModified": 1778680030,
+        "narHash": "sha256-1TY2s0CWtT0gl7bQmZUPEA6pmRBPCfPj7DNzHIXydG0=",
         "owner": "nix-community",
         "repo": "stylix",
-        "rev": "91b0fe011eaf08344ab5b3de593a761b8308e342",
+        "rev": "3401cf7a7d2ce7a3e3180ed4e7225056e7a05c7d",
         "type": "github"
       },
       "original": {
