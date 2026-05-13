@@ -4,14 +4,14 @@
   outputs =
     inputs@{
       self,
-      home-manager,
       nixpkgs,
       systems,
       nix-on-droid,
       ...
     }:
     let
-      lib = import ./lib (nixpkgs.lib // home-manager.lib);
+      # lib = import ./lib (nixpkgs.lib // home-manager.lib);
+      lib = nixpkgs.lib.extend (super: self: import ./lib { lib = self; });
 
       pkgsFor = lib.genAttrs (import systems) (
         system:
@@ -38,7 +38,7 @@
       nixosConfigurations = lib.genAttrs hosts (
         host:
         lib.nixosSystem {
-          specialArgs = { inherit inputs self; };
+          specialArgs = { inherit inputs self lib; };
           modules = [
             ./nixos/hosts/${host}
           ];
@@ -102,13 +102,20 @@
     };
 
     comfyui-nix = {
-      url = "github:utensils/comfyui-nix";
+      url = "github:utensils/comfyui-nix/fix/rocm-xformers-segfault";
+      # url = "github:utensils/comfyui-nix";
+
       # NOTE: when last checked some deps fail to build when following nixpkgs unstable
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     disko = {
       url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell"; # NOTE: add /stable to use stable version
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -148,11 +155,6 @@
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
       };
-    };
-
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     spicetify-nix = {
