@@ -185,8 +185,8 @@
     };
 
     nix-private = {
-      # url = "git+https://git.schwem.io/schwem/nix-private?ref=refactor";
-      url = "/home/schwem/projects/nix/private";
+      url = "git+https://git.schwem.io/schwem/nix-private?ref=refactor";
+      # url = "/home/schwem/projects/nix/private";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         sops-nix.follows = "sops-nix";
