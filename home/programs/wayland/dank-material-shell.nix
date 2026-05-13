@@ -31,9 +31,4 @@
   };
 
   stylix.targets.dank-material-shell.enable = lib.mkIf (builtins.hasAttr "stylix" config) true;
-
-  xdg.mimeApps.defaultApplications = lib.xdgAssociations "x-scheme-handler" "dms-open.desktop" [
-    "http"
-    "https"
-  ];
 }
