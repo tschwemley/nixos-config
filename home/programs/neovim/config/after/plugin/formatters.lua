@@ -6,7 +6,6 @@ require("conform").setup({
 		lua = { "stylua" },
 		nix = { "nixfmt" },
 		php = { "phpcbf" },
-		-- taplo = { "taplo" }, TODO: pretty sure this was a typo... delete after validating
 		toml = { "taplo" },
 	},
 
@@ -17,10 +16,6 @@ require("conform").setup({
 		return { timeout_ms = 500, lsp_format = "fallback" }
 	end,
 })
-
--- vim.keymap.set("", "<leader>lf", function()
--- 	require("conform").format()
--- end)
 
 -- Leave visual mode after range format
 vim.keymap.set("", "<leader>lf", function()
@@ -33,3 +28,24 @@ vim.keymap.set("", "<leader>lf", function()
 		end
 	end)
 end, { desc = "Format code" })
+
+-- create commands for enabling/disabling autoformatting
+vim.api.nvim_create_user_command("FormatDisable", function(args)
+	if args.bang then
+		-- :FormatDisable! disables autoformat for this buffer only
+		vim.b.disable_autoformat = true
+	else
+		-- :FormatDisable disables autoformat globally
+		vim.g.disable_autoformat = true
+	end
+end, {
+	desc = "Disable autoformat-on-save",
+	bang = true, -- allows the ! variant
+})
+
+vim.api.nvim_create_user_command("FormatEnable", function()
+	vim.b.disable_autoformat = false
+	vim.g.disable_autoformat = false
+end, {
+	desc = "Re-enable autoformat-on-save",
+})

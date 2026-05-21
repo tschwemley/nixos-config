@@ -39,6 +39,8 @@ in
     nvim-dap
     nvim-dap-view
 
+    nvim-dap-go
+
     # diagnostitics
     todo-comments-nvim
     trouble-nvim
