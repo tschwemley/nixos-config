@@ -13,13 +13,13 @@ let
     "tentacool"
   ];
 
-  serverSshConfig = builtins.listToAttrs (
+  serverMatches = builtins.listToAttrs (
     map (name: {
       inherit name;
       value = {
-        hostname = name;
-        identityFile = config.sops.secrets."${name}_key".path;
-        user = "root";
+        HostName = name;
+        IdentityFile = config.sops.secrets."${name}_key".path;
+        User = "root";
       };
     }) servers
   );
@@ -38,51 +38,53 @@ in
   imports = [ ./. ];
 
   programs.ssh = {
-    extraConfig = "Include ${config.sops.secrets.extra_work_ssh_config.path}";
-    matchBlocks = {
+    includes = [ "${config.sops.secrets.extra_work_ssh_config.path}" ];
+
+    settings = {
       charizard = {
-        hostname = "charizard";
-        identityFile = config.sops.secrets.charizard_ssh_key.path;
-        user = "schwem";
+        HostName = "charizard";
+        IdentityFile = config.sops.secrets.charizard_ssh_key.path;
+        User = "schwem";
       };
 
       forgejo = {
-        host = "forgejo git.schwem.io";
-        hostname = "git.schwem.io";
-        identityFile = config.sops.secrets."forgejo_schwem_io_key".path;
-        port = 2222;
-        user = "forgejo";
+        Host = "forgejo git.schwem.io";
+        HostName = "git.schwem.io";
+        IdentityFile = config.sops.secrets."forgejo_schwem_io_key".path;
+        Port = 2222;
+        User = "forgejo";
       };
 
       githubZynga = {
-        host = "gh-zynga github-ca.corp.zynga.com";
-        hostname = "github-ca.corp.zynga.com";
-        identityFile = config.sops.secrets.gh_work_key.path;
-        proxyJump = "mac";
-        user = "git";
+        Host = "gh-zynga github-ca.corp.zynga.com";
+        HostName = "github-ca.corp.zynga.com";
+        IdentityFile = config.sops.secrets.gh_work_key.path;
+        ProxyJump = "mac";
+        User = "git";
       };
 
       pikachu = {
-        hostname = "pikachu";
-        identityFile = config.sops.secrets.pikachu_ssh_key.path;
-        user = "schwem";
+        HostName = "pikachu";
+        IdentityFile = config.sops.secrets.pikachu_ssh_key.path;
+        User = "schwem";
       };
 
       personalGithub = {
-        host = "gh github.com";
-        hostname = "github.com";
-        identityFile = config.sops.secrets.personal_gh_key.path;
-        user = "git";
+        Host = "gh github.com";
+        HostName = "github.com";
+        IdentityFile = config.sops.secrets.personal_gh_key.path;
+        User = "git";
       };
 
       mac = {
-        hostname = "192.168.1.103";
-        identityFile = config.sops.secrets.mac_key_old.path;
-        user = "tschwemley";
-        dynamicForwards = [ { port = 9876; } ];
+        HostName = "192.168.1.103";
+        IdentityFile = config.sops.secrets.mac_key_old.path;
+        User = "tschwemley";
+
+        DynamicForward = "127.0.0.1:9876";
       };
     }
-    // serverSshConfig;
+    // serverMatches;
   };
 
   sops.secrets =

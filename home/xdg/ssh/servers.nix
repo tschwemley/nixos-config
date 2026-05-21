@@ -1,13 +1,14 @@
-{nixosConfig, ...}: {
-  imports = [./.];
+{ nixosConfig, ... }:
+{
+  imports = [ ./. ];
 
-  programs.ssh.matchBlocks = {
+  programs.ssh.settings = {
     forgejo = {
-      host = "forgejo git.schwem.io";
-      hostname = "git.schwem.io";
-      identityFile = nixosConfig.sops.secrets."git.schwem.io.deploy.key".path;
-      port = 2222;
-      user = "forgejo";
+      Host = "forgejo git.schwem.io";
+      HostName = "git.schwem.io";
+      IdentityFile = nixosConfig.sops.secrets."git.schwem.io.deploy.key".path;
+      Port = 2222;
+      User = "forgejo";
     };
   };
 }
