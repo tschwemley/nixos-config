@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ./zen
+    ./zen-browser
   ];
 
   home = {
