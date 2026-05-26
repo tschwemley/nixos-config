@@ -23,6 +23,7 @@
     ../programs/gaming.nix
     ../programs/kdeconnect.nix
     ../programs/keyboards
+    ../programs/streamcontroller.nix
     ../programs/usbutils.nix
     ../programs/wine.nix
 

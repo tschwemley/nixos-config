@@ -1,0 +1,3 @@
+{
+  programs.streamcontroller.enable = true;
+}
