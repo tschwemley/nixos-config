@@ -1,14 +1,16 @@
+-- Pull in the wezterm API
+local os = require("os")
 local wezterm = require("wezterm")
-local action = wezterm.action
+local act = wezterm.action
 
--- local handle_movement_key = function(key)
--- 	if key == "j" then
--- 		print("key:", key)
--- 		return action.ActivatePaneDirection("Down")
--- 	end
---
--- 	return nil
--- end
+-- This table will hold the configuration.
+local config = {}
+
+-- In newer versions of wezterm, use the config_builder which will
+-- help provide clearer error messages
+if wezterm.config_builder then
+	config = wezterm.config_builder()
+end
 
 local move_around = function(window, pane, direction_wez, direction_nvim)
 	local result = os.execute(
@@ -76,61 +78,7 @@ wezterm.on("resize-down", function(window, pane)
 	vim_resize(window, pane, "Down", "j")
 end)
 
-return {
-	{
-		key = "D",
-		mods = "CTRL|SHIFT",
-		action = action.ShowDebugOverlay,
-		description = "Open Wezterm debug overlay",
-	},
-	{
-		key = "l",
-		mods = "CTRL|ALT",
-		action = action.SendKey({ key = "l", mods = "CTRL" }),
-		description = "Clear screen",
-	},
-
-	{ key = "Enter", mods = "ALT", action = wezterm.action.DisableDefaultAssignment },
-
-	-- pane management
-	{
-		key = "Enter",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action_callback(function(window, pane)
-			local direction = "Down"
-			local size = { Cells = 20 }
-			print("num panes:", #pane:tab():panes())
-			if #pane:tab():panes() > 1 then
-				direction = "Right"
-				size = nil
-			end
-
-			return pane:split({
-				direction = direction,
-				size = size,
-				command = { args = { "zsh" } },
-			})
-		end),
-	},
-	{
-		key = "%",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
-	},
-	{
-		key = '"',
-		mods = "CTRL|SHIFT",
-		-- action = action.SplitVertical({ domain = "CurrentPaneDomain", size = { Percent = 15 }, }),
-		action = wezterm.action_callback(function(window, pane)
-			-- When using pane:split(), 'size' works to set the dimension of the new pane.
-			-- The direction relates to the new pane's position relative to the current one.
-			-- 'CurrentPaneDomain' is the default for pane:split(), so it's often not needed.
-			return pane:split({
-				direction = "Bottom",
-				size = 22,
-			})
-		end),
-	},
+config.keys = {
 	-- CTRL + (h,j,k,l) to move between panes
 	{
 		key = "h",
@@ -173,31 +121,4 @@ return {
 		mods = "ALT",
 		action = action({ EmitEvent = "resize-right" }),
 	},
-
-	-- {
-	-- 	key = "h",
-	-- 	mods = "CTRL",
-	-- 	action = action.ActivatePaneDirection("Left"),
-	-- },
-	-- {
-	-- 	key = "l",
-	-- 	mods = "CTRL",
-	-- 	action = action.ActivatePaneDirection("Right"),
-	-- },
-	-- {
-	-- 	key = "k",
-	-- 	mods = "CTRL",
-	-- 	action = action.ActivatePaneDirection("Up"),
-	-- },
-	-- {
-	-- 	key = "j",
-	-- 	mods = "CTRL",
-	-- 	action = handle_movement_key("j"),
-	-- },
-	-- {
-	--    key = "l",
-	--    mods = "CTRL|SHIFT",
-	--    action = wezterm.action_callback(pane_utils.cycle_layouts({})),
-	--    description = "Cycle layouts",
-	-- },
 }

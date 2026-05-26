@@ -1,6 +1,16 @@
 local wezterm = require("wezterm")
 local gui = wezterm.gui
 
+-- Local functions/vars
+
+local table_merge = function(t1, t2)
+	for k, v in pairs(t2) do
+		t1[k] = v
+	end
+	return t1
+end
+
+-- Module definition
 local M = {}
 
 function M.active_pane()

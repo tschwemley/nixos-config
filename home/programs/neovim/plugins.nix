@@ -77,6 +77,7 @@ in
     nui-nvim
     nvim-colorizer-lua
     nvim-web-devicons
+    smart-splits-nvim
     snacks-nvim
     vim-abolish
 
