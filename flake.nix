@@ -109,6 +109,11 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    danksearch = {
+      url = "github:AvengeMedia/danksearch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
