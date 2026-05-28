@@ -1,5 +1,6 @@
 { lib, pkgs, ... }:
 {
+
   # imports = [
   #   ../../../services/mako.nix
   #   ../../../services/wpaperd.nix
@@ -8,10 +9,12 @@
   # home.sessionVariables.GDK_SCALE = 1.5;
 
   programs.niri = {
-    # enable = true;
     package = pkgs.niri-unstable;
+
+    # REF: https://github.com/sodiboo/niri-flake
     settings = {
       binds = import ./binds.nix;
+      window-rules = import ./window-rules.nix;
 
       debug.disable-cursor-plane = true;
       gestures.hot-corners.enable = false;
