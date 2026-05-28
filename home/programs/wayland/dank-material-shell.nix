@@ -5,29 +5,37 @@
   ...
 }:
 {
-  imports = with self.inputs.dms.homeModules; [
-    dank-material-shell
-    niri
-  ];
+  imports =
+    with self.inputs.dms.homeModules;
+    [
+      dank-material-shell
+      niri
+    ]
+    // [
+      self.inputs.danksearch.homeModules.dsearch
+    ];
 
-  programs.dank-material-shell = {
-    enable = true;
+  programs = {
+    dank-material-shell = {
+      enable = true;
 
-    # Core features
-    enableSystemMonitoring = true; # System monitoring widgets (dgop)
-    enableVPN = true; # VPN management widget
-    enableDynamicTheming = false; # Wallpaper-based theming (matugen)
-    enableAudioWavelength = true; # Audio visualizer (cava)
-    enableCalendarEvents = true; # Calendar integration (khal)
-    enableClipboardPaste = true; # Pasting items from the clipboard (wtype)
+      # Core features
+      enableSystemMonitoring = true; # System monitoring widgets (dgop)
+      enableVPN = true; # VPN management widget
+      enableDynamicTheming = false; # Wallpaper-based theming (matugen)
+      enableAudioWavelength = true; # Audio visualizer (cava)
+      enableCalendarEvents = true; # Calendar integration (khal)
+      enableClipboardPaste = true; # Pasting items from the clipboard (wtype)
 
-    niri.includes.enable = false;
+      niri.includes.enable = false;
 
-    systemd = {
-      enable = true; # Systemd service for auto-start
-      restartIfChanged = true; # Auto-restart dms.service when dank-material-shell changes
+      systemd = {
+        enable = true; # Systemd service for auto-start
+        restartIfChanged = true; # Auto-restart dms.service when dank-material-shell changes
+      };
     };
 
+    dsearch.enable = true;
   };
 
   stylix.targets.dank-material-shell.enable = lib.mkIf (builtins.hasAttr "stylix" config) true;
