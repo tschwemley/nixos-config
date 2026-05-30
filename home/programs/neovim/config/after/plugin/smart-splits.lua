@@ -1,4 +1,3 @@
--- REF: https://github.com/mrjones2014/smart-splits.nvim#configuration
 require("smart-splits").setup()
 
 -- resizing splits
@@ -19,3 +18,6 @@ vim.keymap.set("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
 vim.keymap.set("n", "<leader><leader>j", require("smart-splits").swap_buf_down)
 vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
 vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
+
+--
+-- REF: https://github.com/mrjones2014/smart-splits.nvim#configuration

@@ -1,4 +1,4 @@
-require("helpers").set_tabs(4)
+require("helpers").set_tabs(4, false)
 
 require("render-markdown").setup({
 	completions = { lsp = { enabled = true } },
