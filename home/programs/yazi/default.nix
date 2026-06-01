@@ -53,6 +53,13 @@
         {
           on = [
             "g"
+            "l"
+          ];
+          run = "cd ~/.local";
+        }
+        {
+          on = [
+            "g"
             "m"
           ];
           run = "cd /mnt";
@@ -134,65 +141,47 @@
 
       plugin = {
         prepend_preloaders = [
-          # 3d objects
           {
-            name = "*.3mf";
+            mime = "model/3mf";
             run = "f3d-preview";
           }
           {
-            name = "*.obj";
+            mime = "model/obj";
             run = "f3d-preview";
           }
           {
-            name = "*.pts";
+            mime = "model/ply";
             run = "f3d-preview";
           }
           {
-            name = "*.ply";
+            mime = "model/stl";
             run = "f3d-preview";
           }
           {
-            name = "*.stl";
-            run = "f3d-preview";
-          }
-          {
-            name = "*.step";
-            run = "f3d-preview";
-          }
-          {
-            name = "*.stp";
+            mime = "model/step";
             run = "f3d-preview";
           }
         ];
 
         prepend_previewers = [
-          # 3d objects
           {
-            name = "*.3mf";
+            mime = "model/3mf";
             run = "f3d-preview";
           }
           {
-            name = "*.obj";
+            mime = "model/obj";
             run = "f3d-preview";
           }
           {
-            name = "*.pts";
+            mime = "model/ply";
             run = "f3d-preview";
           }
           {
-            name = "*.ply";
+            mime = "model/stl";
             run = "f3d-preview";
           }
           {
-            name = "*.stl";
-            run = "f3d-preview";
-          }
-          {
-            name = "*.step";
-            run = "f3d-preview";
-          }
-          {
-            name = "*.stp";
+            mime = "model/step";
             run = "f3d-preview";
           }
         ];
