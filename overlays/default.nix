@@ -30,6 +30,19 @@ let
       );
 
       oidcproxy = self.inputs.oidcproxy.packages.${system}.default;
+
+      openclaw = self.inputs.llm-agents.packages.${self.lib.system prev}.openclaw;
+      # openclaw = self.inputs.llm-agents.packages.${self.lib.system prev}.openclaw.overrideAttrs (
+      #   finalAttrs: prevAttrs: {
+      #     src = prev.fetchFromGitHub {
+      #       owner = "openclaw";
+      #       repo = "openclaw";
+      #       rev = "v${finalAttrs.version}";
+      #       hash = "sha256-SllmrkkbIFwznUhZ6zogmQ91oCao6d0fMI5473jjrU0=";
+      #     };
+      #   }
+      # );
+
     };
 in
 {
