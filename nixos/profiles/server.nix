@@ -28,8 +28,6 @@
     sqlite-interactive
   ];
 
-  services.getty.autologinUser = "root";
-
   sops.secrets = {
     "git.schwem.io.deploy.key" = {
       sopsFile = "${self.lib.secrets.nixos}/ssh.yaml";
