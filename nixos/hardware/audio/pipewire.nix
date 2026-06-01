@@ -1,39 +1,28 @@
 { pkgs, ... }:
 {
-  environment = {
-    # TODO: remove these dependent on final config
-    # sessionVariables = {
-    #   ALSOFT_DRIVERS = "pipewire";
-    #   SDL_AUDIODRIVER = "pipewire";
-    # };
+  environment.systemPackages = with pkgs; [
+    crosspipe
 
-    systemPackages = with pkgs; [
-      crosspipe
+    # NOTE: these are for pulse... maybe split pulse into its own file?
+    ncpamixer
+    pavucontrol
+    pamixer
 
-      # NOTE: these are for pulse... maybe split pulse into its own file?
-      ncpamixer
-      pavucontrol
-      pamixer
-
-      # TODO: remove dependent on final config
-      # alsa-tools
-      # alsa-utils
-    ];
-  };
+    # TODO: remove dependent on final config
+    # alsa-tools
+    # alsa-utils
+  ];
 
   services.pipewire = {
     enable = true;
+    jack.enable = true;
+    pulse.enable = true;
     wireplumber.enable = true;
 
-    # TODO: remove these once confirming whether used or not
-    #       ** see above todo when resolving
-    #
-    # alsa = {
-    #   enable = true;
-    #   support32Bit = true;
-    # };
-    #
-    # pulse.enable = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
   };
 
   # Enables the RealtimeKit system service, which hands out realtime scheduling priority to user
