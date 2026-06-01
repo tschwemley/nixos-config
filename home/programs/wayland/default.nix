@@ -3,14 +3,13 @@
 {
   imports = [
     ./dank-material-shell.nix
-    # ./fuzzel.nix
     ./niri
-    # ./swaylock.nix
-    # ./waybar
   ];
 
   home = {
     packages = with pkgs; [
+      nautilus
+
       wl-clipboard
       wl-ocr
       wlr-randr
