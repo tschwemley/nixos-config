@@ -41,10 +41,8 @@
   };
 
   home-manager.users.schwem.stylix.targets = self.lib.mkIf (config.home-manager.users ? schwem) {
-    waybar = {
-      enable = true;
-      # addCss = false;
-    };
+    qt.enable = true;
+    spicetify.enable = true;
 
     wezterm = {
       enable = true;
