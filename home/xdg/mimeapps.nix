@@ -1,8 +1,7 @@
 let
-  audioPlayer = [ "vlc" ];
-  browser = [ "zen-beta" ];
-  imageViewer = [ "org.gnome.Loupe" ];
-  videoPlayer = [ "vlc" ];
+  audioPlayer = [ "mpv" ];
+  imageViewer = [ "mpv" ];
+  videoPlayer = [ "mpv" ];
 
   xdgAssociations =
     type: program: list:
@@ -20,30 +19,13 @@ let
     "aac"
   ];
 
-  browserTypes =
-    (xdgAssociations "application" browser [
-      "json"
-      "x-extension-htm"
-      "x-extension-html"
-      "x-extension-shtml"
-      "x-extension-xht"
-      "x-extension-xhtml"
-      "x-extension-xhtml+xml"
-    ])
-    // (xdgAssociations "x-scheme-handler" browser [
-      "about"
-      "chrome"
-      "ftp"
-      "http"
-      "https"
-      "unknown"
-    ]);
   image = xdgAssociations "image" imageViewer [
     "png"
     "svg"
     "jpeg"
     "gif"
   ];
+
   video = xdgAssociations "video" videoPlayer [
     "mp4"
     "mpeg"
@@ -57,13 +39,10 @@ let
   associations = builtins.mapAttrs (_: v: (map (e: "${e}.desktop") v)) (
     {
       "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf" ];
-      "text/html" = browser;
       "text/plain" = [ "nvim" ];
-      "x-scheme-handler/chrome" = browser;
       "inode/directory" = [ "yazi" ];
     }
     // audio
-    // browserTypes
     // image
     // video
   );

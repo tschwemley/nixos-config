@@ -4,7 +4,7 @@
   ...
 }:
 {
-  # imports = [ ./mimeapps.nix ];
+  imports = [ ./mimeapps.nix ];
 
   xdg = {
     enable = true;
@@ -13,6 +13,8 @@
     userDirs = {
       enable = true;
       createDirectories = true;
+      setSessionVariables = false;
+
       extraConfig = {
         XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
       };
