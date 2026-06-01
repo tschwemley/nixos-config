@@ -1,8 +1,8 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # TODO: move/rename file appropriately and edit based on which tool(s) keeping in config
   home.packages = with pkgs; [
     dbgate
-    gobang
     mariadb
     sqlite-interactive
 
