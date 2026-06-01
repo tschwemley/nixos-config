@@ -5,15 +5,11 @@
   ...
 }:
 {
-  imports =
-    with self.inputs.dms.homeModules;
-    [
-      dank-material-shell
-      niri
-    ]
-    // [
-      self.inputs.danksearch.homeModules.dsearch
-    ];
+  imports = [
+    self.inputs.dms.homeModules.dank-material-shell
+    self.inputs.dms.homeModules.niri
+    self.inputs.danksearch.homeModules.dsearch
+  ];
 
   programs = {
     dank-material-shell = {
