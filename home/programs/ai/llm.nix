@@ -1,18 +1,19 @@
 {
   self,
+  lib,
   pkgs,
   ...
 }:
 {
   imports = [
+    # self.inputs.llm-agents.packages.${lib.system pkgs}.crush
+
     # ./aider.nix
   ];
 
-  home = {
-    packages = with pkgs; [
-      lmstudio
-    ];
-  };
+  home.packages = with pkgs; [
+    lmstudio
+  ];
 
   sops.secrets =
     let

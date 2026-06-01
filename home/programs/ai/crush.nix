@@ -12,10 +12,17 @@ in
     self.inputs.charm.homeModules.crush
   ];
 
+  home.shellAliases = {
+    mods = "crush run";
+    modsc = "crush -C ";
+    modsl = "mods -l ";
+  };
+
   programs.crush = {
     enable = true;
 
     settings = {
+
       lsp = {
         go = {
           command = lib.getExe pkgs.gopls;
@@ -25,13 +32,12 @@ in
         };
       };
 
-      # options = {
-      #   context_paths = [ "/home/schwem/nixos-config/flake.nix" ];
-      #   tui = {
-      #     compact_mode = true;
-      #   };
-      #   debug = false;
-      # };
+      options = {
+        context_paths = [ "/home/schwem/nixos-config/flake.nix" ];
+        data_directory = "${config.xdg.dataHome}";
+        debug = false;
+        tui.compact_mode = true;
+      };
 
       # permissions = {
       #   allowed_tools = [
