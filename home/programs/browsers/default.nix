@@ -16,11 +16,10 @@
       with pkgs;
       [
         brave
-        ladybird
+        # ladybird
         lynx
         mullvad-browser
         tor-browser
-        vivaldi
       ];
 
     sessionVariables.MOZ_ENABLE_WAYLAND = 1;
