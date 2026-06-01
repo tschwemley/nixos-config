@@ -11,10 +11,6 @@
       niri.default = [
         "gtk"
       ];
-      # hyprland.default = [
-      #   "gtk"
-      #   "hyprland"
-      # ];
     };
 
     extraPortals = with pkgs; [
