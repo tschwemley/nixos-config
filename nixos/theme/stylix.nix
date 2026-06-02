@@ -38,6 +38,13 @@
           desktop = 12;
         };
       };
+
+    # BUG: failing due to upstream not updating away from kmscon module config.
+    # UPSTREAM: https://github.com/nix-community/stylix/pull/2337/changes
+    # TODO: revert when upstream pr is merged. If no effect noticed then leave set to false and
+    # update comment
+    targets.kmscon.enable = false;
+
   };
 
   home-manager.users.schwem.stylix.targets = self.lib.mkIf (config.home-manager.users ? schwem) {
