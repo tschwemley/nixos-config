@@ -16,6 +16,8 @@ in
   inherit (flake) lib;
   inherit (self) config pkgs;
   inherit (self.pkgs) system;
+
+  schwem = if (self.config.home-manager.users ? schwem) then hm else { };
 }
 // flake.nixosConfigurations
 // flake
