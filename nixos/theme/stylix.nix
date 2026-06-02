@@ -44,21 +44,35 @@
     # TODO: revert when upstream pr is merged. If no effect noticed then leave set to false and
     # update comment
     targets.kmscon.enable = false;
-
   };
 
-  home-manager.users.schwem.stylix.targets = self.lib.mkIf (config.home-manager.users ? schwem) {
-    qt.enable = true;
-    spicetify.enable = true;
-
-    wezterm = {
+  home-manager.users.schwem.stylix = self.lib.mkIf (config.home-manager.users ? schwem) {
+    icons = {
       enable = true;
-      fonts.enable = false;
+      dark = "Gruvbox Plus Dark";
+      package = pkgs.gruvbox-plus-icons;
     };
 
-    zen-browser = {
-      enable = true;
-      profileNames = [ "default" ];
+    targets = {
+      gtk.enable = false;
+
+      qt = {
+        enable = true;
+        platform = "gtk3";
+        # standardDialogs = "xdgdesktopportal"; TODO: uncomment? -- A/B this
+      };
+
+      spicetify.enable = true;
+
+      wezterm = {
+        enable = true;
+        fonts.enable = false;
+      };
+
+      zen-browser = {
+        enable = true;
+        profileNames = [ "default" ];
+      };
     };
   };
 }

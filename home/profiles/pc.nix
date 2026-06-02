@@ -13,7 +13,6 @@
     ../programs/development/databases.nix
     ../programs/development/lg-webos.nix
     ../programs/development/nix.nix
-    ../programs/gnome
     ../programs/media
     ../programs/music
     ../programs/productivity
@@ -22,8 +21,8 @@
     ../programs/cowsay.nix
     ../programs/displaycal.nix
     ../programs/glow.nix
+    ../programs/gtk.nix
     ../programs/lan-mouse.nix
-    ../programs/qalculate-gtk.nix
     ../programs/qt.nix
     ../programs/reddit-tui.nix
     ../programs/wayland

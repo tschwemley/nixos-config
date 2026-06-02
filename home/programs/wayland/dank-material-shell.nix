@@ -5,10 +5,13 @@
   ...
 }:
 {
-  imports = [
-    self.inputs.dms.homeModules.dank-material-shell
-    self.inputs.dms.homeModules.niri
-    self.inputs.danksearch.homeModules.dsearch
+  imports = with self.inputs; [
+    dms.homeModules.dank-material-shell
+    dms.homeModules.niri
+
+    dms-plugin-registry.modules.default
+
+    danksearch.homeModules.dsearch
   ];
 
   programs = {
@@ -24,6 +27,10 @@
       enableClipboardPaste = true; # Pasting items from the clipboard (wtype)
 
       niri.includes.enable = false;
+
+      plugins = {
+        calculator.enable = true;
+      };
 
       systemd = {
         enable = true; # Systemd service for auto-start

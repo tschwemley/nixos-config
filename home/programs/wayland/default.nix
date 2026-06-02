@@ -20,7 +20,6 @@
       # ydotool
     ];
 
-    # ensure proper hinting for electron applications
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
 }

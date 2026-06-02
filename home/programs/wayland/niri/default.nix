@@ -9,7 +9,6 @@
     # REF: https://github.com/sodiboo/niri-flake
     settings = {
       binds = import ./binds.nix;
-      # environment
       window-rules = import ./window-rules.nix;
 
       debug.disable-cursor-plane = true;
