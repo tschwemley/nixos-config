@@ -5,5 +5,13 @@ require("render-markdown").setup({
 	latex = { enabled = false },
 })
 
+-- TODO: this requires a workspace for proper setup. Probably should be defined in project local
+-- config @ .nvim.lua
+-- require("obsidian").setup({
+-- 	picker = {
+-- 		name = "telescope.nvim",
+-- 	},
+-- })
+
 vim.lsp.enable("marksman")
 vim.treesitter.start()

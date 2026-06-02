@@ -64,6 +64,7 @@ in
     openscad-nvim
 
     # markdown
+    obsidian-nvim
     render-markdown-nvim
     vim-table-mode
 

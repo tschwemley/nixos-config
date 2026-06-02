@@ -4,6 +4,6 @@
     ./khal.nix
     ./libreoffice.nix
 
-    # ./obsidian.nix
+    ./obsidian.nix
   ];
 }
