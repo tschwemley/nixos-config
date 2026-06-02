@@ -1,11 +1,6 @@
 { lib, pkgs, ... }:
 {
 
-  # imports = [
-  #   ../../../services/mako.nix
-  #   ../../../services/wpaperd.nix
-  # ];
-
   # home.sessionVariables.GDK_SCALE = 1.5;
 
   programs.niri = {
