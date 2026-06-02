@@ -39,17 +39,6 @@
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
-
-      trusted-substituters = [
-        "https://cache.nixos.org"
-        "https://nix-community.cachix.org"
-      ];
     };
-
-    # TODO: delete me unless an issue
-    # sshServe = {
-    #   enable = true;
-    #   keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH7IcQegp1x3gwJ6X6+ykVQHByzKaNK233H5z2zdzahG *@pc" ];
-    # };
   };
 }
