@@ -4,11 +4,13 @@
 
   nixpkgs.overlays = [ self.inputs.comfyui-nix.overlays.default ];
 
+  # users.users.comfyui.extraGroups = [ "users" ];
+
   services.comfyui = {
     enable = true;
     enableManager = true;
 
-    dataDir = "/home/schwem/comfyui";
+    # dataDir = "/home/schwem/.config/comfyui";
     extraArgs = [ ];
     gpuSupport = "rocm";
     listenAddress = "127.0.0.1";
