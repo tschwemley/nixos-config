@@ -25,6 +25,7 @@
       enableAudioWavelength = true; # Audio visualizer (cava)
       enableCalendarEvents = true; # Calendar integration (khal)
       enableClipboardPaste = true; # Pasting items from the clipboard (wtype)
+      managePluginSettings = true;
 
       niri.includes.enable = false;
 

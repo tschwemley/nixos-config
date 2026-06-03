@@ -35,7 +35,7 @@ return {
 			-- 'CurrentPaneDomain' is the default for pane:split(), so it's often not needed.
 			return pane:split({
 				direction = "Bottom",
-				size = 22,
+				size = 17,
 			})
 		end),
 	},

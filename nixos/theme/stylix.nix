@@ -43,14 +43,19 @@
     # UPSTREAM: https://github.com/nix-community/stylix/pull/2337/changes
     # TODO: revert when upstream pr is merged. If no effect noticed then leave set to false and
     # update comment
-    targets.kmscon.enable = false;
+    targets = {
+      kmscon.enable = false;
+      qt.enable = false;
+    };
   };
 
   home-manager.users.schwem.stylix = self.lib.mkIf (config.home-manager.users ? schwem) {
     icons = {
       enable = true;
-      dark = "Gruvbox Plus Dark";
-      package = pkgs.gruvbox-plus-icons;
+      dark = "oomox-gruvbox-dark";
+      package = pkgs.gruvbox-dark-icons-gtk;
+      # dark = "Gruvbox-Plus-Dark";
+      # package = pkgs.gruvbox-plus-icons;
     };
 
     targets = {
@@ -59,7 +64,7 @@
       qt = {
         enable = true;
         platform = "gtk3";
-        # standardDialogs = "xdgdesktopportal"; TODO: uncomment? -- A/B this
+        standardDialogs = "xdgdesktopportal";
       };
 
       spicetify.enable = true;

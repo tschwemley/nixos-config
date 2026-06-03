@@ -77,6 +77,10 @@
   #   repeats = false;
   # };
 
+  "Mod+Shift+C" = {
+    action.spawn = "wl-ocr";
+  };
+
   "Mod+Q" = {
     action.close-window = { };
     repeat = false;
