@@ -82,6 +82,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -93,11 +98,6 @@
 
     asus-numberpad-driver = {
       url = "github:asus-linux-drivers/asus-numberpad-driver";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    charm = {
-      url = "github:charmbracelet/nur";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -5,5 +5,6 @@
     ./fonts.nix
     ./nix.nix
     ./nixpkgs.nix
+    ./nur.nix
   ];
 }
