@@ -42,8 +42,6 @@
   };
 
   Preferences = {
-    # "apz.autoscroll.enabled" = true;
-    "general.authscroll" = true;
     "general.smoothScroll" = true;
   };
 
