@@ -22,8 +22,6 @@
       # nix
       nixd
 
-      openscad-lsp
-
       # php
       intelephense
       phpactor
