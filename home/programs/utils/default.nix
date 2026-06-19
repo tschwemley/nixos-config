@@ -6,6 +6,5 @@
     ./lsd.nix
     ./lazyjournal.nix
     ./ripgrep.nix
-    ./television.nix
   ];
 }

@@ -1,9 +1,17 @@
 {
-  programs.television = {
-    enable = true;
-    enableZshIntegration = true;
+  programs = {
+    nix-search-tv = {
+      enable = true;
+      enableTelevisionIntegration = true;
+      # settings = {};
+    };
 
-    # REF: https://github.com/alexpasmantier/television/blob/main/.config/config.toml
-    # settings = { };
+    television = {
+      enable = true;
+      enableZshIntegration = true;
+
+      # REF: https://github.com/alexpasmantier/television/blob/main/.config/config.toml
+      # settings = { };
+    };
   };
 }

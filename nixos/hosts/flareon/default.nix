@@ -34,7 +34,6 @@ in
   ++ extraDrives;
 
   environment.systemPackages = with pkgs; [
-    gallery-dl
     unrar-free
     yt-dlp
   ];
