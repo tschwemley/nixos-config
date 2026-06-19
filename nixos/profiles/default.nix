@@ -1,20 +1,21 @@
 {
   self,
-  inputs,
   config,
   lib,
   pkgs,
   ...
 }:
 let
+  # TODO: refactor the root user config (and probably all user config)
   rootUser = (import ../system/users.nix { inherit self config pkgs; }).root;
 in
 {
   imports = [
-    inputs.sops-nix.nixosModules.sops
-    inputs.disko.nixosModules.disko
-    rootUser
+    self.inputs.sops-nix.nixosModules.sops
+    self.inputs.disko.nixosModules.disko
     self.nixosModules.variables
+
+    rootUser
 
     ../development
     ../network

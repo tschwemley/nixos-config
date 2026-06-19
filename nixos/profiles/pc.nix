@@ -56,12 +56,6 @@
   nix.settings.trusted-users = [ "schwem" ];
   nixpkgs.overlays = [ self.inputs.niri.overlays.niri ];
 
-  # TODO: split both dconf and niri out from this file
-  # this is required to make home manager managed GTK items function
-  programs.dconf.enable = true;
-  programs.niri.enable = true;
-  programs.niri.package = pkgs.niri-unstable;
-
   services = {
     getty.autologinUser = "schwem";
     resolved.settings.Resolve.DNSOverTLS = lib.mkDefault "true";
