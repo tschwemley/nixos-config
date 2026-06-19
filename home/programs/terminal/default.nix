@@ -1,5 +1,6 @@
 {
   imports = [
+    ./television
     ./wcalc.nix
   ];
 }
