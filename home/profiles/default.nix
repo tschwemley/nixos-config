@@ -1,12 +1,12 @@
-{ inputs, ... }:
+{ self, ... }:
 {
   imports = [
-    inputs.sops-nix.homeManagerModule
+    self.inputs.sops-nix.homeManagerModule
 
     ../programs/development
-    ../programs/utils
-
+    ../programs/media/gallery-dl.nix
     ../programs/neovim
+    ../programs/utils
     ../programs/yazi
 
     ../terminal

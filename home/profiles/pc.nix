@@ -16,6 +16,7 @@
     ../programs/media
     ../programs/music
     ../programs/productivity
+    ../programs/terminal
 
     ../programs/bitwarden.nix
     ../programs/cowsay.nix
@@ -26,7 +27,6 @@
     ../programs/qt.nix
     ../programs/reddit-tui.nix
     ../programs/wayland
-    ../programs/wcalc.nix
     ../programs/wofi.nix
     ../programs/zathura.nix
 
