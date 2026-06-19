@@ -5,7 +5,10 @@ in
 {
   home.sessionVariables.PHP_DEBUG_PATH = "${php-debug}/share/vscode/extensions/xdebug.php-debug/out/phpDebug.js";
 
-  programs.neovim.extraPackages = [ php-debug ];
+  programs.neovim.extraPackages = with pkgs; [
+    numi-cli
+    php-debug
+  ];
 
   programs.neovim.plugins = with pkgs.vimPlugins; [
     # bufferline/status line
@@ -57,11 +60,9 @@ in
     yazi-nvim
 
     # git
+    diffview-nvim
     gitsigns-nvim
     neogit
-
-    # language specific
-    openscad-nvim
 
     # markdown
     obsidian-nvim
@@ -72,6 +73,9 @@ in
     colorful-menu-nvim
     noice-nvim
 
+    # utility
+    nvumi
+
     # other/unsorted
     lazydev-nvim
     FTerm-nvim
@@ -81,7 +85,5 @@ in
     smart-splits-nvim
     snacks-nvim
     vim-abolish
-
-    # taskwarrior3
   ];
 }
