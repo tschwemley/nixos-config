@@ -39,7 +39,6 @@ in
   # TODO: remove me once nixpkgs has gallery-dl version >= 1.32.3
   gallery-dl = import ./gallery-dl.nix;
 
-  numi-cli = import ./numi-cli.nix;
   sops = import ./sops;
   vimPlugins = import ./vimplugins.nix self;
   yaziPlugins = import ./yaziplugins.nix self;

@@ -5,10 +5,7 @@ in
 {
   home.sessionVariables.PHP_DEBUG_PATH = "${php-debug}/share/vscode/extensions/xdebug.php-debug/out/phpDebug.js";
 
-  programs.neovim.extraPackages = with pkgs; [
-    numi-cli
-    php-debug
-  ];
+  programs.neovim.extraPackages = [ php-debug ];
 
   programs.neovim.plugins = with pkgs.vimPlugins; [
     # bufferline/status line
@@ -72,9 +69,6 @@ in
     # ui/dressing
     colorful-menu-nvim
     noice-nvim
-
-    # utility
-    nvumi
 
     # other/unsorted
     lazydev-nvim
