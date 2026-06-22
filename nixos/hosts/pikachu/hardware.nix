@@ -90,24 +90,43 @@
     sensor.iio.enable = true;
   };
 
-  home-manager.users.schwem = {
-    xdg.configFile."niri/output.kdl".text = /* kdl */ ''
-      output "eDP-1" {
-        focus-at-startup
-      	mode "3840x2160@60.000"
-      	position x=0 y=0
-      	scale 1.75
-      	transform "normal"
-      }
+  home-manager.sharedModules = [
+    {
+      programs.niri.settings.outputs = {
+        eDP-1 = {
+          focus-at-startup = true;
+          scale = 1.75;
 
-      output "DP-1" {
-      	mode "3840x1100@60"
-      	position x=0 y=1234
-      	scale 1.75
-      	transform "normal"
-      }
-    '';
-  };
+          mode = {
+            width = 3840;
+            height = 2160;
+            refresh = 120.0;
+          };
+
+          position = {
+            x = 0;
+            y = 0;
+          };
+        };
+
+        DP-1 = {
+          focus-at-startup = true;
+          scale = 1.75;
+
+          mode = {
+            width = 3840;
+            height = 1100;
+            refresh = 60.0;
+          };
+
+          position = {
+            x = 0;
+            y = 1234;
+          };
+        };
+      };
+    }
+  ];
 
   # when building don't use all of the cpu cores
   nix.settings = {
