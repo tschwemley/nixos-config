@@ -11,11 +11,11 @@
 
     # BUG: https://github.com/NixOS/nixpkgs/pull/525720
     # TODO: uncomment after upstream bug resolved
-    nativeMessagingHosts = [ pkgs.firefoxpwa ];
+    # nativeMessagingHosts = [ pkgs.firefoxpwa ];
 
     setAsDefaultBrowser = true;
 
     policies = import ./policies.nix;
-    profiles = import ./profiles pkgs;
+    profiles = import ./profiles self pkgs;
   };
 }

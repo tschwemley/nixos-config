@@ -1,3 +1,3 @@
-pkgs: {
-  default = import ./default pkgs;
+self: pkgs: {
+  default = import ./default self pkgs;
 }
