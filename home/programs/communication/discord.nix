@@ -1,7 +1,8 @@
-{ pkgs, ... }:
+{ self, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    discord
-    # legcord
-  ];
+  imports = [ self.inputs.nixcord.homeModules.default ];
+
+  programs.nixcord = {
+    enable = true;
+  };
 }
