@@ -77,6 +77,7 @@ in
     FTerm-nvim
     nvim-colorizer-lua
     nvim-web-devicons
+    tv-nvim
     vim-abolish
   ];
 }
