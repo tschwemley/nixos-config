@@ -1,16 +1,19 @@
 {
-  inputs,
+  self,
   pkgs,
   ...
-}: let
-  mkHome = system: extraModules:
-    inputs.home-manager.lib.homeManagerConfiguration {
+}:
+let
+  mkHome =
+    system: extraModules:
+    self.inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
-      extraSpecialArgs = {inherit inputs pkgs;};
-      modules = [inputs.sops-nix.homeManagerModule] ++ extraModules;
+      extraSpecialArgs = { inherit self pkgs; };
+      modules = [ self.inputs.sops-nix.homeManagerModule ] ++ extraModules;
     };
-in {
+in
+{
   droid = mkHome "aarch64-linux" [
     ./profiles/droid.nix
   ];

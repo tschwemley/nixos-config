@@ -16,19 +16,7 @@ let
       inherit (self.inputs.neovim-nightly-overlay.packages.${system}) tree-sitter;
 
       oidcproxy = self.inputs.oidcproxy.packages.${system}.default;
-
       openclaw = self.inputs.llm-agents.packages.${self.lib.system prev}.openclaw;
-      # openclaw = self.inputs.llm-agents.packages.${self.lib.system prev}.openclaw.overrideAttrs (
-      #   finalAttrs: prevAttrs: {
-      #     src = prev.fetchFromGitHub {
-      #       owner = "openclaw";
-      #       repo = "openclaw";
-      #       rev = "v${finalAttrs.version}";
-      #       hash = "sha256-SllmrkkbIFwznUhZ6zogmQ91oCao6d0fMI5473jjrU0=";
-      #     };
-      #   }
-      # );
-
     };
 in
 {
@@ -42,7 +30,4 @@ in
   sops = import ./sops;
   vimPlugins = import ./vimplugins.nix self;
   yaziPlugins = import ./yaziplugins.nix self;
-
-  # TODO: use/modify for local pixel-art workflow or remove - 03/29/2026
-  # aseprite = import ./aseprite.nix;
 }

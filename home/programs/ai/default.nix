@@ -3,23 +3,8 @@
   pkgs,
   ...
 }:
-let
-  # inherit (self.inputs.llm-agents.packages.${lib.system pkgs}) crush;
-
-  # openclaw = self.inputs.llm-agents.packages.${lib.system pkgs}.openclaw.overrideAttrs (
-  #   finalAttrs: prevAttrs: {
-  #     src = pkgs.fetchFromGitHub {
-  #       owner = "openclaw";
-  #       repo = "openclaw";
-  #       rev = "v${finalAttrs.version}";
-  #       hash = "sha256-SllmrkkbIFwznUhZ6zogmQ91oCao6d0fMI5473jjrU0=";
-  #     };
-  #   }
-  # );
-in
 {
   imports = [
-    # ./crush.nix
     ./llm.nix
 
     # TODO: split out or delete after trialing

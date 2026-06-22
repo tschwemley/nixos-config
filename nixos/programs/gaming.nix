@@ -17,8 +17,7 @@
   programs = {
     gamescope = {
       enable = true;
-      # TODO: flip capSysNice = true; once mreged into nixos-unstable: https://nixpkgs-tracker.ocfox.me/?pr=524488
-      capSysNice = false;
+      capSysNice = true;
       args = [
         "--rt"
         "--expose-wayland"

@@ -1,26 +1,29 @@
 {
   self,
   config,
-  inputs,
   pkgs,
   ...
-}: let
-  pkg = inputs.dashboard.packages.${pkgs.stdenv.hostPlatform.system}.default;
+}:
+let
+  pkg = self.inputs.dashboard.packages.${pkgs.stdenv.hostPlatform.system}.default;
   stateDir = "/var/lib/dashboard";
-  staticPath = "${inputs.dashboard.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/web/static";
-in {
+  staticPath = "${
+    self.inputs.dashboard.packages.${pkgs.stdenv.hostPlatform.system}.default
+  }/bin/web/static";
+in
+{
   services = {
     oidcproxy.protectedHosts."schwem.io" = {
-      allowedGroups = ["admin"];
-      allowedRealmRoles = ["admin"];
-      unprotectedPaths = ["/static"];
+      allowedGroups = [ "admin" ];
+      allowedRealmRoles = [ "admin" ];
+      unprotectedPaths = [ "/static" ];
       upstream = "http://dashboard";
     };
 
     nginx.upstreams = {
       "dashboard" = {
         servers = {
-          "127.0.0.1:${self.lib.port-map.dashboard}" = {};
+          "127.0.0.1:${self.lib.port-map.dashboard}" = { };
         };
       };
     };
@@ -69,7 +72,7 @@ in {
       "keycloak.service"
       "nginx.service"
     ];
-    wantedBy = ["multi-user.target"];
+    wantedBy = [ "multi-user.target" ];
   };
 
   sops.secrets.dashboard_env = {
@@ -83,7 +86,7 @@ in {
   };
 
   users = {
-    groups.dashboard = {};
+    groups.dashboard = { };
     users.dashboard = {
       group = "dashboard";
       isSystemUser = true;

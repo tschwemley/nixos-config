@@ -1,1 +1,4 @@
-require('helpers').set_tabs(2)
+require("helpers").set_tabs(2)
+
+vim.lsp.enable("vtsls")
+vim.treesitter.start()
