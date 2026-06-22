@@ -5,19 +5,27 @@
 }:
 {
   boot = {
-    kernelModules = [ "amdgpu" ];
+    # initrd.kernelModules = [ "amdgpu" ];
 
+    # NOTE:
+    # REF: https://gist.github.com/danielrosehill/6a531b079906f160911a87dea50e1507
     kernelParams = [
-      # enables dynamic power management
-      "amdgpu.dpm=1"
+      "amdgpu.abmlevel=4"
+      "amdgpu.aspm=1"
+      "amdgpu.dcdebugmask=0x20"
+      "amdgpu.dc=1"
+      "amdgpu.dcfeaturemask=0x2"
+      "amdgpu.disp_priority=2"
+      "amdgpu.gpu_recovery=1"
+      "amdgpu.sg_display=0"
 
-      # TODO: possible flickering fix... check if this works by re-enabling game mode on Ark
-      # "amdgpu.sg_display=0"
+      # "amdgpu.dpm=-1"
+      "amdgpu.exp_hw_support=1"
+      "amdgpu.freesync_video=1"
+      "amdgpu.runpm=0"
 
-      # Sets the powerplay feature mask. default is `0xfffd7fff`, which allows adjusting the
-      # clock, profile, and voltage values. Setting to 0xffffffff enables all features.
-      # REF: https://wiki.nixos.org/wiki/AMD_GPU#Sporadic_Crashes
-      "amdgpu.ppfeaturemask=0xfffd7fff"
+      "amdgpu.modeset=1"
+
     ];
   };
 
@@ -31,6 +39,11 @@
     amdgpu = {
       initrd.enable = lib.mkDefault true;
       opencl.enable = lib.mkDefault true;
+
+      overdrive = {
+        enable = true;
+        ppfeaturemask = "0xffffffff";
+      };
     };
 
     graphics = {
@@ -44,7 +57,31 @@
   # enable rocm support for all packages
   nixpkgs.config.rocmSupport = lib.mkDefault true;
 
+  services.lact.enable = true;
+
+  services.xserver.videoDrivers = lib.mkDefault [
+    "modesetting"
+    "amdgpu"
+  ];
+
+  # KERNEL=="card1", SUBSYSTEM=="drm", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="high"
   services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="drm", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="manual"
+    ACTION=="add", SUBSYSTEM=="drm", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="high"
   '';
+
+  systemd.tmpfiles.rules =
+    let
+      rocmEnv = pkgs.symlinkJoin {
+        name = "rocm-combined";
+        paths = with pkgs.rocmPackages; [
+          rocblas
+          hipblas
+          clr
+          # you can add more as needed, e.g. miopen-hip, rocfft, rocsparse
+        ];
+      };
+    in
+    [
+      "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+    ];
 }
