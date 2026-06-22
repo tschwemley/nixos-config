@@ -4,17 +4,25 @@
     self.inputs.niri.nixosModules.niri
   ];
 
-  nix.settings = {
-    substituters = [ "https://niri.cachix.org" ];
-    trusted-public-keys = [ "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964=" ];
-  };
-
   nixpkgs.overlays = [ self.inputs.niri.overlays.niri ];
-  programs.niri.enable = true;
+
+  # this is required to make home manager managed GTK items function
+  # TODO: this may not be required as it might already be included in the niri module
+  programs.dconf.enable = true;
+
   services.dbus.packages = [ pkgs.nautilus ];
 
-  # environment.systemPackages = with pkgs; [
-  #   nautilus
-  #   xwayland-satellite
-  # ];
+  environment.systemPackages = with pkgs; [
+    nautilus
+    xwayland-satellite
+  ];
+
+  # Enabling the niri modules via nixos will also import the home-manager module for niri.
+  # In addition it handles setting some settings for us like enabling dconf, installing the
+  # gnome xdg portal for screencasting, setting polkit, setting display manager session packages,
+  # and a few more
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri-unstable;
+  };
 }

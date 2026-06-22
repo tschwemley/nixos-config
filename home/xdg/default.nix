@@ -8,7 +8,42 @@
 
   xdg = {
     enable = true;
+
+    # autostart = true;
     cacheHome = config.home.homeDirectory + "/.local/cache";
+
+    portal = {
+      enable = true;
+
+      config = {
+        common = {
+          default = [
+            "gtk"
+            "gnome"
+          ];
+        };
+        niri = {
+          default = [
+            "gnome"
+            "gtk"
+          ];
+
+          "org.freedesktop.impl.portal.Access" = "gtk";
+          "org.freedesktop.impl.portal.Notification" = "gtk";
+          "org.freedesktop.impl.portal.Secret" = "gnome-keyring";
+          "org.freedesktop.impl.portal.FileChooser" = "gtk";
+          "org.freedesktop.impl.portal.ScreenCast" = "gnome";
+          "org.freedesktop.portal.ScreenCast" = "gnome";
+        };
+      };
+
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome
+      ];
+
+      xdgOpenUsePortal = true;
+    };
 
     userDirs = {
       enable = true;

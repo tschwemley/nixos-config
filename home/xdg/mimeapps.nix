@@ -1,7 +1,7 @@
 let
   audioPlayer = [ "mpv" ];
   imageViewer = [ "mpv" ];
-  videoPlayer = [ "mpv" ];
+  videoPlayer = [ "mpv Media Player" ];
 
   xdgAssociations =
     type: program: list:

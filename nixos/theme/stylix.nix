@@ -1,6 +1,7 @@
 {
   self,
   config,
+  lib,
   pkgs,
   ...
 }:
@@ -45,7 +46,10 @@
     # update comment
     targets = {
       kmscon.enable = false;
-      qt.enable = false;
+      # qt = {
+      #   enable = true;
+      #   platform = lib.mkForce "gtk3";
+      # };
     };
   };
 
@@ -59,12 +63,12 @@
     };
 
     targets = {
-      gtk.enable = false;
+      # gtk.enable = false;
 
       qt = {
         enable = true;
-        platform = "gtk3";
-        standardDialogs = "xdgdesktopportal";
+        # platform = "gtk3";
+        # standardDialogs = "xdgdesktopportal";
       };
 
       spicetify.enable = true;
