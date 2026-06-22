@@ -1,0 +1,8 @@
+-- TODO: need to fix some deprectation errors and not a high priority atm
+--
+-- require("obsidian").setup({
+-- 	workspaces = {
+-- 		name = "pkm",
+-- 		path = "~/Documents/knowledge_base/pkm",
+-- 	},
+-- })

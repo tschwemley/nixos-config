@@ -13,6 +13,9 @@
       # html
       superhtml
 
+      # javascript
+      vtsls
+
       # lua
       lua-language-server
 

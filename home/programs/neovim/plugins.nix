@@ -46,9 +46,6 @@ in
     trouble-nvim
     wtf-nvim
 
-    # folds
-    nvim-origami
-
     # fuzzy find
     telescope-nvim
     telescope-frecency-nvim
@@ -66,18 +63,20 @@ in
     render-markdown-nvim
     vim-table-mode
 
-    # ui/dressing
+    # nvim related
     colorful-menu-nvim
     noice-nvim
+    nui-nvim
+    nvim-bqf
+    nvim-origami
+    smart-splits-nvim
+    snacks-nvim
 
     # other/unsorted
     lazydev-nvim
     FTerm-nvim
-    nui-nvim
     nvim-colorizer-lua
     nvim-web-devicons
-    smart-splits-nvim
-    snacks-nvim
     vim-abolish
   ];
 }
