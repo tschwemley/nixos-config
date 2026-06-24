@@ -1,5 +1,5 @@
 {
-  inputs,
+  self,
   config,
   lib,
   pkgs,
@@ -10,13 +10,15 @@
   imports = [
     (import ./disk.nix "nvme0n1" "pika-crypted")
 
-    "${inputs.nixos-hardware}/common/cpu/intel/alder-lake"
-    "${inputs.nixos-hardware}/common/gpu/nvidia/ampere"
-    "${inputs.nixos-hardware}/common/gpu/nvidia/prime.nix"
+    self.inputs.asus-numberpad-driver.nixosModules.default
 
-    inputs.nixos-hardware.nixosModules.common-pc-laptop
-    inputs.nixos-hardware.nixosModules.common-pc-ssd
-    inputs.nixos-hardware.nixosModules.asus-battery
+    "${self.inputs.nixos-hardware}/common/cpu/intel/alder-lake"
+    "${self.inputs.nixos-hardware}/common/gpu/nvidia/ampere"
+    "${self.inputs.nixos-hardware}/common/gpu/nvidia/prime.nix"
+
+    self.inputs.nixos-hardware.nixosModules.common-pc-ssd
+    self.inputs.nixos-hardware.nixosModules.asus-battery
+    self.inputs.nixos-hardware.nixosModules.asus-battery
 
     ./ux582_cirrus_patch
   ];
@@ -110,7 +112,6 @@
         };
 
         DP-1 = {
-          focus-at-startup = true;
           scale = 1.75;
 
           mode = {
