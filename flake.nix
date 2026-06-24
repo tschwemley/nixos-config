@@ -172,7 +172,7 @@
       };
     };
 
-    openclaw = {
+    nix-openclaw = {
       url = "github:openclaw/nix-openclaw";
       inputs.nixpkgs.follows = "nixpkgs";
     };
