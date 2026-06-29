@@ -15,7 +15,9 @@
 
     setAsDefaultBrowser = true;
 
-    policies = import ./policies.nix;
+    # policies = import ./policies.nix;
+
+    policies = import ./policies;
     profiles = import ./profiles self pkgs;
   };
 }

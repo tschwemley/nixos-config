@@ -41,9 +41,7 @@
     WebSuggestions = false;
   };
 
-  Preferences = {
-    "general.smoothScroll" = true;
-  };
+  Preferences = import ./preferences.nix;
 
   UserMessaging = {
     ExtensionRecommendations = false;

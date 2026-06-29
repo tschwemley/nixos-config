@@ -1,0 +1,3 @@
+{
+  policies = import ./policies.nix;
+}
