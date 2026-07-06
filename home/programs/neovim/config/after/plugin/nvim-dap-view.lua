@@ -1,6 +1,10 @@
 require("dap-view").setup({
 	winbar = {
 		default_section = "scopes",
+
+		controls = {
+			enabled = true,
+		},
 	},
 
 	auto_toggle = true,

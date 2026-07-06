@@ -5,6 +5,7 @@
 
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
+      nvim-treesitter-context
       nvim-treesitter-textobjects
     ];
   };
