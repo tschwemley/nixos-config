@@ -5,6 +5,7 @@
 
     ../programs/development
     ../programs/media/gallery-dl.nix
+    ../programs/media/yt-dlp.nix
     ../programs/neovim
     ../programs/utils
     ../programs/yazi
