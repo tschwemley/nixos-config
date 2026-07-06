@@ -8,5 +8,6 @@ local config = {
 
 require("fonts").apply_to_config(config)
 require("keys").apply_to_config(config)
+require("mouse").apply_to_config(config)
 
 return config

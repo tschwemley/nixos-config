@@ -7,6 +7,7 @@
   xdg.configFile = {
     "wezterm/fonts.lua".source = ./config/fonts.lua;
     "wezterm/keys".source = ./config/keys;
+    "wezterm/mouse.lua".source = ./config/mouse.lua;
     "wezterm/wezterm.lua".source = ./config/wezterm.lua;
 
     # "wezterm/keys.lua".source = ./config/keys.lua;
