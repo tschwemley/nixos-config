@@ -50,8 +50,8 @@
     ../../android
   ];
 
-  # boot.kernelPackages = pkgs.linuxPackages_zen;
-  boot.kernelPackages = pkgs.linuxPackages_xanmod;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.linuxPackages_xanmod;
 
   nix.settings.trusted-users = [ "schwem" ];
   nixpkgs.overlays = [ self.inputs.niri.overlays.niri ];
