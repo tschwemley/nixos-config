@@ -53,14 +53,23 @@
         };
       };
 
-      homeConfigurations = {
+      homeConfigurations = let 
+        mkHome = system: profile: lib.homeManagerConfiguration {
+          pkgs = pkgsFor.${system};
+          extraSpecialArgs = { inherit inputs self; };
+          modules = [ ./home/profiles/${profile}.nix ];
+        };
+        in {
+        "mark@Marks-MacBook-Pro" = mkHome "aarch64-darwin";
+        "work@mac" = lib.homeManagerConfiguration {
+
         # TODO: For possible solution for building and then deploying remotely to work server
         #       see: https://gist.github.com/fricklerhandwerk/fbf0b212bbbf51b79a08fdac8659481d
-        "work@mac" = lib.homeManagerConfiguration {
-          pkgs = pkgsFor."aarch64-darwin";
-          extraSpecialArgs = { inherit inputs self; };
-          modules = [ ./home/profiles/work.nix ];
-        };
+        # "work@mac" = lib.homeManagerConfiguration {
+        #   pkgs = pkgsFor."aarch64-darwin";
+        #   extraSpecialArgs = { inherit inputs self; };
+        #   modules = [ ./home/profiles/work.nix ];
+        # };
       };
     };
 
@@ -103,7 +112,6 @@
 
     comfyui-nix = {
       url = "github:utensils/comfyui-nix/fix/rocm-xformers-segfault";
-      # url = "github:utensils/comfyui-nix";
 
       # NOTE: when last checked some deps fail to build when following nixpkgs unstable
       # inputs.nixpkgs.follows = "nixpkgs";
