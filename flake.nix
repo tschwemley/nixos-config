@@ -53,24 +53,29 @@
         };
       };
 
-      homeConfigurations = let 
-        mkHome = system: profile: lib.homeManagerConfiguration {
-          pkgs = pkgsFor.${system};
-          extraSpecialArgs = { inherit inputs self; };
-          modules = [ ./home/profiles/${profile}.nix ];
-        };
-        in {
-        "mark@Marks-MacBook-Pro" = mkHome "aarch64-darwin";
-        "work@mac" = lib.homeManagerConfiguration {
+      homeConfigurations =
+        let
+          mkHome =
+            system: profile:
+            lib.homeManagerConfiguration {
+              pkgs = pkgsFor.${system};
+              extraSpecialArgs = { inherit inputs self; };
+              modules = [ ./home/profiles/${profile}.nix ];
+            };
+        in
+        {
+          "mark@Marks-MacBook-Pro" = mkHome "aarch64-darwin" "minimal";
+          "work@mac" = mkHome "aarch64-darwin" "work";
 
-        # TODO: For possible solution for building and then deploying remotely to work server
-        #       see: https://gist.github.com/fricklerhandwerk/fbf0b212bbbf51b79a08fdac8659481d
-        # "work@mac" = lib.homeManagerConfiguration {
-        #   pkgs = pkgsFor."aarch64-darwin";
-        #   extraSpecialArgs = { inherit inputs self; };
-        #   modules = [ ./home/profiles/work.nix ];
-        # };
-      };
+          # TODO: remove me if above works
+          # TODO: For possible solution for building and then deploying remotely to work server
+          #       see: https://gist.github.com/fricklerhandwerk/fbf0b212bbbf51b79a08fdac8659481d
+          # "work@mac" = lib.homeManagerConfiguration {
+          #   pkgs = pkgsFor."aarch64-darwin";
+          #   extraSpecialArgs = { inherit inputs self; };
+          #   modules = [ ./home/profiles/work.nix ];
+          # };
+        };
     };
 
   inputs = {
