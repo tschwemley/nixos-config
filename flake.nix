@@ -57,7 +57,7 @@
         let
           mkHome =
             system: profile:
-            lib.homeManagerConfiguration {
+            inputs.home-manager.lib.homeManagerConfiguration {
               pkgs = pkgsFor.${system};
               extraSpecialArgs = { inherit inputs self; };
               modules = [ ./home/profiles/${profile}.nix ];
