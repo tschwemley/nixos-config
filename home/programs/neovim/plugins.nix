@@ -11,9 +11,6 @@ in
     # bufferline/status line
     bufferline-nvim
 
-    # collections
-    # mini-nvim
-
     # colors
     everforest
     gruvbox-material

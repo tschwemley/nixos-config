@@ -30,23 +30,24 @@
     configFile."nvim".source = ./config;
     dataFile."nvim/snippets".source = ./snippets;
 
-    desktopEntries.nvim-terminal =
-      with lib;
-      mkIf (isPC nixosConfig.networking.hostName) {
-        name = "Neovim (Terminal)";
-        genericName = "Text Editor";
-        exec = "wezterm -- nvim %F";
-        terminal = true;
-
-        categories = [
-          "Utility"
-          "TextEditor"
-        ];
-
-        mimeType = [
-          "application/xml"
-          "text/xml"
-        ];
-      };
+    # TODO: fix desktop entry
+    # desktopEntries.nvim-terminal =
+    #   with lib;
+    #   mkIf (isPC nixosConfig.networking.hostName) {
+    #     name = "Neovim (Terminal)";
+    #     genericName = "Text Editor";
+    #     exec = "wezterm -- nvim %F";
+    #     terminal = true;
+    #
+    #     categories = [
+    #       "Utility"
+    #       "TextEditor"
+    #     ];
+    #
+    #     mimeType = [
+    #       "application/xml"
+    #       "text/xml"
+    #     ];
+    #   };
   };
 }
