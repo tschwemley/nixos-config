@@ -2,22 +2,24 @@
   lib,
   fetchFromGitHub,
   mkYaziPlugin,
+  nix-update-script,
 }:
 mkYaziPlugin {
   pname = "f3d-preview.yazi";
-  version = "2025-10-26";
+  version = "0-unstable-2026-01-28";
 
   src = fetchFromGitHub {
     owner = "ruudjhuu";
     repo = "f3d-preview.yazi";
-    rev = "713e8d047eda92d4dc2ab81fcdceb4061c05285c";
-    hash = "sha256-lBQThxrfX+nUgOgubnwW4+Ntqyoyt9Acs7X6YyQXxyo=";
+    rev = "76d115d94280828a2116aab3a46e43538f291331";
+    hash = "sha256-katk13VE8J/Gn7N2Ez30/Xq0ldBV3yP2kowA0qVWYEg=";
   };
+
+  passthru.updateScript = nix-update-script { };
 
   meta = {
     description = "f3d-preview.yazi";
     homepage = "https://github.com/ruudjhuu/f3d-preview.yazi";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [ tschwemley ];
   };
 }

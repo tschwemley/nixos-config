@@ -23,9 +23,11 @@
   # disable man pages on servers
   documentation.man.enable = false;
 
+  # TODO: move elsewhere
   environment.systemPackages = with pkgs; [
     postgresql_16
     sqlite-interactive
+    sqlite-web
   ];
 
   sops.secrets = {

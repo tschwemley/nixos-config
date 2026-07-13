@@ -12,7 +12,6 @@
     ../programs/creative
     ../programs/development/databases.nix
     ../programs/development/lg-webos.nix
-    ../programs/development/nix.nix
     ../programs/media
     ../programs/music
     ../programs/productivity

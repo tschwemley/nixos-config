@@ -81,5 +81,43 @@
       run = "plugin diff";
       desc = "Diff the selected with the hovered file";
     }
+
+    # dupes
+    {
+      on = [
+        "<A-j>"
+        "i"
+      ];
+      run = "plugin dupes interactive";
+      desc = "Run dupes interactive";
+    }
+    {
+      on = [
+        "<A-j>"
+        "o"
+      ];
+      run = "plugin dupes override";
+      desc = "Run dupes override";
+    }
+    {
+      on = [
+        "<A-j>"
+        "d"
+      ];
+      run = "plugin dupes dry";
+      desc = "Run dupes dry";
+    }
+    {
+      on = [
+        "<A-j>"
+        "a"
+      ];
+      run = "plugin dupes apply";
+      desc = "Run dupes apply";
+    }
+
+    # on = ["<A-J>" "c"]
+    # run = "plugin dupes custom"
+    # desc = "Run dupes custom"
   ];
 }
