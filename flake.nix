@@ -56,16 +56,16 @@
       homeConfigurations =
         let
           mkHome =
-            system: profile:
+            system: profile: username:
             inputs.home-manager.lib.homeManagerConfiguration {
               pkgs = pkgsFor.${system};
-              extraSpecialArgs = { inherit inputs self; };
+              extraSpecialArgs = { inherit inputs self username; };
               modules = [ ./home/profiles/${profile}.nix ];
             };
         in
         {
-          "mark@Marks-MacBook-Pro" = mkHome "aarch64-darwin" "minimal";
-          "work@mac" = mkHome "aarch64-darwin" "work";
+          "mark@Marks-MacBook-Pro" = mkHome "aarch64-darwin" "minimal" "mark";
+          "work@mac" = mkHome "aarch64-darwin" "work" "tschwemley";
 
           # TODO: remove me if above works
           # TODO: For possible solution for building and then deploying remotely to work server
