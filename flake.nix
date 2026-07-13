@@ -182,6 +182,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    unf = {
+      url = "git+https://git.atagen.co/atagen/unf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     whisp-away = {
       url = "github:madjinn/whisp-away";
       inputs.nixpkgs.follows = "nixpkgs";

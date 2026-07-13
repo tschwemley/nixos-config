@@ -26,13 +26,14 @@
     ../programs/lan-mouse.nix
     ../programs/qt.nix
     ../programs/reddit-tui.nix
+    ../programs/rustdesk.nix
     ../programs/wayland
     ../programs/wofi.nix
     ../programs/zathura.nix
 
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
-    ../services/udiskie.nix
+    # ../services/udiskie.nix
 
     ../xdg
     ../xdg/netrc.nix

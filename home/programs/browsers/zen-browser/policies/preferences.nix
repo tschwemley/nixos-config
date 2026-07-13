@@ -1,5 +1,15 @@
 # Search - REF: https://searchfox.org/firefox-main/source/modules/libpref/init/StaticPrefList.yaml
 {
+  "app.normandy.api_url" = "";
+  "app.normandy.shieldLearnMoreUrl" = "";
+
+  "beacon.enabled" = false;
+
+  "breakpad.reportURL" = "";
+
+  "browser.crashReporter.memtest" = false;
+  "browser.crashReports.unsubmittedCheck.chancesUntilSuppress" = 0;
+  "browser.newtab.preload" = false;
   "browser.startup.homepage" = "https://schwem.io";
   "browser.theme.content-theme" = 2;
   "browser.theme.toolbar-theme" = 2;
@@ -10,6 +20,9 @@
 
   # 0 - Dark.   1 - Light.    2 - system color scheme unless overridden by browser theme.
   "layout.css.prefers-color-scheme.content-override" = 2;
+
+  "pdfjs.enableScripting" = false;
+  "pdfjs.enabledCache.state" = false;
 
   # resistFingerprinting overrides fingerprintingProtection, so these must be disabled
   "privacy.resistFingerprinting" = false;
@@ -22,6 +35,8 @@
   # "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
   "privacy.fingerprintingProtection.overrides" =
     "-CSSPrefersColorScheme,+TouchEvents,+PointerEvents,+KeyboardEvents,+ScreenOrientation,+SpeechSynthesis,+CSSPrefersReducedMotion,+CSSPrefersContrast,+CanvasRandomization,+CanvasImageExtractionPrompt,+CanvasExtractionFromThirdPartiesIsBlocked,+CanvasExtractionBeforeUserInputIsBlocked,+NavigatorAppName,+NavigatorAppVersion,+NavigatorBuildID,+NavigatorHWConcurrency,+NavigatorOscpu,+NavigatorPlatform,+NavigatorUserAgent,+StreamTrackLabel,+StreamVideoFacingMode";
+
+  "signon.rememberSignons" = false;
 
   # boosts are worthless... no hex code entry for colors and foreground color is linked in a way
   # that is not intuitive
