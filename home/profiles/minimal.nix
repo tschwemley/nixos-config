@@ -3,7 +3,7 @@
     ../programs/neovim
     # ../programs/yazi
 
-    ../terminal
+    ../terminal/wezterm
   ];
 
   home.sessionVariables.TERM = "wezterm";
