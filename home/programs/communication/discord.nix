@@ -1,5 +1,6 @@
-{ self, pkgs, ... }:
+{ self, ... }:
 {
+
   imports = [ self.inputs.nixcord.homeModules.default ];
 
   programs.nixcord = {

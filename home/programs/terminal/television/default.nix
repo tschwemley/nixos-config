@@ -1,9 +1,19 @@
-{
+{ self, pkgs, ... }: {
   programs = {
     nix-search-tv = {
       enable = true;
       enableTelevisionIntegration = true;
-      # settings = {};
+      settings = {
+        experimental.options_file = {
+          dms = self.inputs.unf.lib.json {
+            inherit self pkgs;
+            modules = with self.inputs.dms.homeModules; [
+              dankMaterialShell
+              niri
+            ];
+          };
+        };
+      };
     };
 
     television = {
