@@ -1,6 +1,6 @@
 {
   imports = [
-    ./cad.nix
+    # ./cad.nix
     ./gimp.nix
     ./orca-slicer.nix
 
