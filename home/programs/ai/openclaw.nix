@@ -9,4 +9,12 @@ let
 in
 {
   home.packages = [ openclaw ];
+
+  # programs.openclaw = {
+  #   enable = true;
+  # };
+
+  # systemd.user.services.openclaw = {
+  #   enable = true;
+  # };
 }
