@@ -17,6 +17,7 @@
     settings = {
       binds = import ./binds.nix;
       environment = import ./environment.nix;
+      input = import ./input.nix;
       window-rules = import ./window-rules.nix;
 
       # debug.disable-cursor-plane = true;

@@ -38,6 +38,16 @@
     open-floating = true;
   }
 
+  # rematch
+  {
+    matches = [
+      {
+        app-id = "steam_app_2138720";
+      }
+    ];
+    open-fullscreen = true;
+  }
+
   # screen share dialog
   {
     matches = [

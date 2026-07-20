@@ -1,6 +1,6 @@
 {
   touchpad = {
     accel-profile = "flat";
-    accel-speed = 0.2;
+    accel-speed = 0.5;
   };
 }
