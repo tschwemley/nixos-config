@@ -20,6 +20,7 @@
     # TODO: uncomment me after fix for wrong hash merged upstream (within ~2 days of 05/04/2026)
     ../network/wireshark.nix
 
+    ../programs/azeron.nix
     ../programs/gaming.nix
     ../programs/kdeconnect.nix
     ../programs/keyboards
@@ -28,7 +29,7 @@
     ../programs/wine.nix
 
     ../services/colord.nix
-    ../services/comfyui.nix
+    # ../services/comfyui.nix
     ../services/dbus.nix
     ../services/gamemode.nix
     ../services/orca.nix
