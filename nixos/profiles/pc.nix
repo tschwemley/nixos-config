@@ -20,7 +20,7 @@
     # TODO: uncomment me after fix for wrong hash merged upstream (within ~2 days of 05/04/2026)
     ../network/wireshark.nix
 
-    ../programs/azeron.nix
+    ../programs/azeron-software.nix
     ../programs/gaming.nix
     ../programs/kdeconnect.nix
     ../programs/keyboards
