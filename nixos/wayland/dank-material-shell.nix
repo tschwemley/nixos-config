@@ -5,9 +5,9 @@
   ...
 }:
 {
-  imports = [ self.inputs.dms.nixosModules.greeter ];
+  imports = [ self.inputs.dank-greeter.nixosModules.default ];
 
-  programs.dank-material-shell.greeter = {
+  programs.dms-greeter = {
     enable = true;
     compositor.name = "niri";
   };
