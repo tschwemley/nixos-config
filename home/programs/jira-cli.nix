@@ -1,6 +1,3 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    jira-cli-go
-    go-jira
-  ];
+{ pkgs, ... }: {
+  home.packages = [ pkgs.go-jira ];
 }
