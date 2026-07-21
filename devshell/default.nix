@@ -9,6 +9,7 @@ in
       compose2nix
       direnv
       disko
+      git
       home-manager
       nix-init
       nixfmt
