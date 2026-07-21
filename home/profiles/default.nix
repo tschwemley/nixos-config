@@ -14,6 +14,7 @@
   ];
 
   home.sessionVariables.TERM = "wezterm";
-  home.stateVersion = "24.11";
+  # home.stateVersion = "24.11";
+  home.stateVersion = "26.05";
   sops.age.keyFile = "/etc/sops/age-keys.txt";
 }
