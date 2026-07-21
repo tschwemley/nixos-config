@@ -23,9 +23,6 @@ in
       scripts.buildHost
       scripts.rotateSecrets
 
-      # utils
-      wxedid
-
       # TODO: Testing... remove if not keeping (01/20/26)
       deadnix
       nvd
