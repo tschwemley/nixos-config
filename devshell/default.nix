@@ -7,7 +7,9 @@ in
     buildInputs = with pkgs; [
       # nix
       compose2nix
+      direnv
       disko
+      home-manager
       nix-init
       nixfmt
       nix-output-monitor
