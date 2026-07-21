@@ -18,7 +18,7 @@
     in
     {
       inherit username;
-      homeDirectory = "/home/${username}";
+      homeDirectory = "/Users/${username}";
     };
 
   # not 100% sure why this is necessary but without it there's this error:
