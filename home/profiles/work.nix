@@ -26,5 +26,6 @@
   nix.package = pkgs.nix;
 
   programs.git.userEmail = lib.mkDefault "tschwemley@zynga.com";
-  targets.genericLinux.enable = true;
+
+  # targets.genericLinux.enable = true;
 }
