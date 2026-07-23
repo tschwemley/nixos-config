@@ -1,4 +1,4 @@
-# Neovim Configuration
+# (WIP - Do Not Reference Yet) Neovim Configuration
 
 ## Requirements
 
