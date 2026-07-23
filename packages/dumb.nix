@@ -2,7 +2,7 @@
   lib,
   buildGoModule,
   fetchFromGitHub,
-  go_1_24,
+  nix-update-script,
 }:
 
 buildGoModule rec {
@@ -13,18 +13,21 @@ buildGoModule rec {
     owner = "rramiachraf";
     repo = "dumb";
     rev = "188d5f7e41e5fdafab88f30e1b2c3e558399b53d";
-    hash = lib.fakeHash;
+    hash = "sha256-g+MBVqdPtG8ugBfYxjIrJgGcDnikzHgHnjcCYC5vx2Y=";
   };
 
   # Update this with the hash reported by Nix.
-  vendorHash = lib.fakeHash;
+  vendorHash = "sha256-A9QjEYdjwcB690PVpm0NS5vjxpl12gKtrwIMZbS7ym0=";
 
   # The upstream go.mod declares Go 1.24 and uses Go tool dependencies.
-  go = go_1_24;
+  # go = go_1_24;
 
-  nativeBuildInputs = [
-    go
-  ];
+  # nativeBuildInputs = [
+  #   go
+  # ];
+
+  # don't run tests (they rely on making http http requests)
+  doCheck = false;
 
   preBuild = ''
     # Generate Go source files from .templ files.
@@ -43,9 +46,11 @@ buildGoModule rec {
   ];
 
   postInstall = ''
-    install -Dm644 LICENCE \
-      "$out/share/licenses/${pname}/LICENCE"
+    install -Dm644 LICENSE \
+      "$out/share/licenses/${pname}/LICENSE"
   '';
+
+  passthru.updateScript = nix-update-script;
 
   meta = {
     description = "Private alternative front-end for Genius";
