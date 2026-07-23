@@ -1,6 +1,7 @@
 self: pkgs: with pkgs; {
   android = import ./android pkgs;
   azeron-software = callPackage ./azeron-software.nix { };
+  dumb = callPackage ./dumb.nix { };
   extraVimPlugins = import ./vim-plugins pkgs;
   json2go = callPackage ./json2go.nix { };
   nrepl = callPackage ./nrepl.nix { };
