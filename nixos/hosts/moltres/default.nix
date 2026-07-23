@@ -7,6 +7,7 @@
     ../../server/knowledge/excalidraw
     ../../server/media/audiobookshelf.nix
     ../../server/security/anubis.nix
+
     # ../../server/services/pds.nix
 
     # ../../server/ai/librechat
