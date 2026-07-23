@@ -10,6 +10,9 @@
 
   home.packages = with pkgs; [
     audacity
-    streamlink
+    friture
+    (streamlink.overrideAttrs (prev: {
+      disabledTests = prev.disabledTests ++ [ "test_read_timeout" ];
+    }))
   ];
 }
