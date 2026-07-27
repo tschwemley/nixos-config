@@ -3,12 +3,14 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   pkg = self.inputs.anonymous-overflow.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
   runDir = "/var/run/anonymous-overflow";
   stateDir = "/var/lib/anonymous-overflow";
-in {
+in
+{
   services.nginx = {
     virtualHosts."so.schwem.io" = {
       locations."/" = {
@@ -20,15 +22,15 @@ in {
   systemd = {
     services.anonymous-overflow = {
       description = "Alternative front end for stack overflow";
-      wantedBy = ["multi-user.target"];
-      after = ["network.target"];
+      wantedBy = [ "multi-user.target" ];
+      after = [ "network.target" ];
 
       environment = {
         APP_URL = "https://so.schwem.io";
         PORT = self.lib.port-map.anonymous-overflow;
       };
 
-      path = [pkg];
+      path = [ pkg ];
 
       serviceConfig = {
         Type = "simple";
@@ -48,6 +50,8 @@ in {
           runDir
           stateDir
         ];
+        Restart = "always";
+        RestartSec = "30s";
         RestrictAddressFamilies = [
           "AF_UNIX"
           "AF_INET"
@@ -79,7 +83,7 @@ in {
   };
 
   users = {
-    groups.anonymous-overflow = {};
+    groups.anonymous-overflow = { };
     users.anonymous-overflow = {
       isSystemUser = true;
       group = "anonymous-overflow";
