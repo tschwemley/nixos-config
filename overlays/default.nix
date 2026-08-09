@@ -22,7 +22,6 @@ let
       # UPSTREAM: https://github.com/NixOS/nixpkgs/issues/540609
       # TODO: in meantime see: github.com/flaviut/nixpkgs/commit/a846cde45365799b1fd83eafaee57c03a92d89bc
       # gdalMinimal = prev.gdal;
-
     };
 in
 {
