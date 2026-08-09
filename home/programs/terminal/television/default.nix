@@ -1,4 +1,11 @@
-{ self, pkgs, ... }: {
+{
+  self,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   programs = {
     nix-search-tv = {
       enable = true;
@@ -23,5 +30,14 @@
       # REF: https://github.com/alexpasmantier/television/blob/main/.config/config.toml
       # settings = { };
     };
+
+    zsh.shellAliases = lib.mkIf config.programs.zsh.enable {
+      nst = "tv nix-search-tv";
+    };
   };
 }
+
+#---
+# REF:
+#   Television docs: https://alexpasmantier.github.io/television/
+#---
