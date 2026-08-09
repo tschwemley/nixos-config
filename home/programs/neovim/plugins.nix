@@ -38,6 +38,8 @@ in
 
     nvim-dap-go
 
+    unified-nvim
+
     # diagnostitics
     todo-comments-nvim
     trouble-nvim
