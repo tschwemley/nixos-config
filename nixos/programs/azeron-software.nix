@@ -1,7 +1,14 @@
 { pkgs, ... }: {
-  environment.systemPackages = [ pkgs.azeron-software ];
+  boot.kernelModules = [ "xpad" ];
 
-  services.udev.packages = [
-    pkgs.azeron-software
+  environment.systemPackages = with pkgs; [
+    azeron-software
+    dfu-util
+    usbutils
+  ];
+
+  services.udev.packages = with pkgs; [
+    azeron-software
+    teensy-udev-rules
   ];
 }
