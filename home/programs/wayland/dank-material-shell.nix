@@ -19,12 +19,13 @@
       enable = true;
 
       # Core features
-      enableAudioWavelength = true; # Audio visualizer (cava)
-      enableCalendarEvents = true; # Calendar integration (khal)
+      enableAudioWavelength = false; # Audio visualizer (cava)
       enableClipboardPaste = true; # Pasting items from the clipboard (wtype)
       enableDynamicTheming = false; # Wallpaper-based theming (matugen)
       enableSystemMonitoring = true; # System monitoring widgets (dgop)
       enableVPN = true; # VPN management widget
+      # TODO: flip this back to true once merged: https://nixpkgs-tracker.ocfox.me/?pr=539799
+      enableCalendarEvents = false; # Calendar integration (khal)
 
       managePluginSettings = true;
 
@@ -35,6 +36,7 @@
 
       plugins = {
         calculator.enable = true;
+        emojiLauncher.enable = true;
         floaty.enable = true;
 
         # base-url: https://openrouter.ai/api/v1
