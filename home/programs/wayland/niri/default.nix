@@ -11,7 +11,7 @@
   };
 
   programs.niri = {
-    package = pkgs.niri-unstable;
+    package = self.inputs.niri.packages.${self.lib.system pkgs}.niri-unstable;
 
     # REF: https://github.com/sodiboo/niri-flake
     settings = {
