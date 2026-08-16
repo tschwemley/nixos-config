@@ -83,6 +83,7 @@
     # Nix Related Inputs
     #---
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     systems.url = "github:nix-systems/default";
 
@@ -152,6 +153,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    gxlimg = {
+      url = "github:visualphoenix/gxlimg";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     lan-mouse = {
       url = "github:feschber/lan-mouse";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -174,7 +180,8 @@
 
     niri = {
       # TODO: change this back after associated PR is merged: https://github.com/sodiboo/niri-flake/pull/1850
-      url = "github:sodiboo/niri-flake?rev=6bb99ff875919f03ea6054026619d999061e1170";
+      # url = "github:sodiboo/niri-flake?rev=6bb99ff875919f03ea6054026619d999061e1170";
+      url = "github:epireyn/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
