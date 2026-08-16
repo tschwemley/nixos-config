@@ -67,11 +67,10 @@
 
       qt = {
         enable = true;
+        polarity.enable = true;
         # platform = "gtk3";
         # standardDialogs = "xdgdesktopportal";
       };
-
-      spicetify.enable = true;
 
       wezterm = {
         enable = true;

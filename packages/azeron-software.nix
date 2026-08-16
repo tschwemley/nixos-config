@@ -94,7 +94,7 @@ appimageTools.wrapAppImage rec {
       fi
     done
 
-    # Azeron udev rules.
+    # # Azeron udev rules.
     # install -Dm644 /dev/stdin \
     #   "$out/lib/udev/rules.d/99-azeron.rules" <<'EOF'
     # # Azeron Keypad udev rules
@@ -105,35 +105,14 @@ appimageTools.wrapAppImage rec {
     # # Register the Azeron Cyborg II XInput interface with xpad.
     # # This allows xpad to drain the endpoint and expose /dev/input/js*.
     # ACTION=="add", SUBSYSTEM=="usb", \
-    #   ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="12f7", \
+    #   ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="0f3f", \
     #   TEST=="/sys/bus/usb/drivers/xpad/new_id", \
-    #   RUN+="${stdenv.shell} -c 'echo 16d0 12f7 > /sys/bus/usb/drivers/xpad/new_id || true'"
+    #   RUN+="${stdenv.shell} -c 'echo 16d0 0f3f > /sys/bus/usb/drivers/xpad/new_id || true'"
     #
     # # STM32 DFU bootloader used for firmware updates.
     # SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", \
     #   ATTRS{idProduct}=="df11", MODE="0666"
     # EOF
-
-    install -Dm644 /dev/stdin "$out/lib/udev/rules.d/99-azeron.rules" <<'EOF'
-    # Azeron Keypad udev rules
-    # Allow non-root HID access to all Azeron devices.
-    SUBSYSTEM=="hidraw", ATTRS{idVendor}=="16d0", MODE="0666"
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="16d0", MODE="0666"
-
-    # Register every Azeron model with xpad so Interface 0 is drained and
-    # /dev/input/js* is created (prevents XInput lockup, enables gamepads).
-    # PIDs: Cyro=1103, Cyborg v1=113c, Classic=1192, Cyro Lefty=1212,
-    #       Cyborg II=12f7, Keyzen=13ea
-    ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="1103", TEST=="/sys/bus/usb/drivers/xpad/new_id", RUN+="${stdenv.shell} -c 'echo 16d0 1103 > /sys/bus/usb/drivers/xpad/new_id || true'"
-    ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="113c", TEST=="/sys/bus/usb/drivers/xpad/new_id", RUN+="${stdenv.shell} -c 'echo 16d0 113c > /sys/bus/usb/drivers/xpad/new_id || true'"
-    ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="1192", TEST=="/sys/bus/usb/drivers/xpad/new_id", RUN+="${stdenv.shell} -c 'echo 16d0 1192 > /sys/bus/usb/drivers/xpad/new_id || true'"
-    ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="1212", TEST=="/sys/bus/usb/drivers/xpad/new_id", RUN+="${stdenv.shell} -c 'echo 16d0 1212 > /sys/bus/usb/drivers/xpad/new_id || true'"
-    ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="12f7", TEST=="/sys/bus/usb/drivers/xpad/new_id", RUN+="${stdenv.shell} -c 'echo 16d0 12f7 > /sys/bus/usb/drivers/xpad/new_id || true'"
-    ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="13ea", TEST=="/sys/bus/usb/drivers/xpad/new_id", RUN+="${stdenv.shell} -c 'echo 16d0 13ea > /sys/bus/usb/drivers/xpad/new_id || true'"
-
-    # STM32 DFU bootloader used for firmware updates.
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE="0666"
-    EOF
   '';
 
   # postInstall = ''
