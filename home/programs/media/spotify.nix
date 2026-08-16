@@ -4,15 +4,20 @@
   ...
 }:
 {
+  home.packages = with pkgs; [
+    lazyspotify
+  ];
+
   imports = [ self.inputs.spicetify-nix.homeManagerModules.spicetify ];
 
-  # REF: https://gerg-l.github.io/spicetify-nix/
+  # # REF: https://gerg-l.github.io/spicetify-nix/
   programs.spicetify =
     let
       spicePkgs = self.inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
     in
     {
       enable = true;
+      wayland = true;
 
       enabledExtensions = with spicePkgs.extensions; [
         # allOfArtist
@@ -22,7 +27,7 @@
         # bookmark
         # fullAlbumDate
         # goToSong
-        hidePodcasts
+        # hidePodcasts
         # history
         # listPlaylistsWithSong
         # keyboardShortcut # REF: https://spicetify.app/docs/advanced-usage/extensions/#keyboard-shortcut
