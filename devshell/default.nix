@@ -4,7 +4,7 @@ let
 in
 {
   default = pkgs.mkShell {
-    buildInputs = with pkgs; [
+    packages = with pkgs; [
       # nix
       compose2nix
       direnv
