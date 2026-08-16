@@ -1,15 +1,17 @@
 { self, ... }:
 {
   imports = [
-    ./mods.nix
-    ./whisp-away.nix
+    self.inputs.whisp-away.nixosModules.home-manager
   ];
 
-  # TODO: uncomment?
+  # TODO:
+  # TBD: is this needed? should this be used in place of whisp away?
+  # ---
   # home.packages = with pkgs; [
   #   whisper-cpp-vulkan
   # ];
   #
+
   # With home-manager (recommended)
   services.whisp-away = {
     enable = true;
@@ -19,16 +21,4 @@
     useClipboard = false; # Output mode (changes apply immediately)
     useCrane = false; # Enable if you want faster rebuilds when developing
   };
-
-  sops.secrets =
-    let
-      mode = "0400";
-      sopsFile = "${self.lib.secrets.home}/ai.yaml";
-    in
-    {
-      openrouter_api_key = {
-        inherit mode sopsFile;
-        key = "openrouter_api_key";
-      };
-    };
 }
