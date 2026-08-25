@@ -1,12 +1,12 @@
 {
   self,
-  inputs,
   config,
   lib,
   ...
-}: {
+}:
+{
   imports = [
-    inputs.scribe.nixosModules.default
+    self.inputs.scribe.nixosModules.default
   ];
 
   services.nginx.virtualHosts."medium.schwem.io" = {

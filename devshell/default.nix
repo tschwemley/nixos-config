@@ -28,8 +28,6 @@ in
       deadnix
       nvd
       statix
-
-      # (writeShellScriptBin "build-host" (builtins.readFile ../scripts/build-host.sh))
     ];
   };
 }

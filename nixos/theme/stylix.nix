@@ -79,6 +79,7 @@
 
       zen-browser = {
         enable = true;
+        enableCss = true;
         profileNames = [ "default" ];
       };
     };
