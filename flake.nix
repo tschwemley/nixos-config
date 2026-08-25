@@ -148,6 +148,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # hermes-agent.url = "github:NousResearch/hermes-agent";
+    hermes-agent = {
+      url = "github:NousResearch/hermes-agent";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
