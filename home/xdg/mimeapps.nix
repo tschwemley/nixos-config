@@ -1,6 +1,6 @@
 let
   audioPlayer = [ "mpv" ];
-  imageViewer = [ "mpv" ];
+  imageViewer = [ "loupe" ];
   videoPlayer = [ "mpv Media Player" ];
 
   xdgAssociations =
@@ -20,10 +20,11 @@ let
   ];
 
   image = xdgAssociations "image" imageViewer [
+    "gif"
+    "jpeg"
     "png"
     "svg"
-    "jpeg"
-    "gif"
+    "webp"
   ];
 
   video = xdgAssociations "video" videoPlayer [
@@ -38,8 +39,10 @@ let
   # XDG MIME types
   associations = builtins.mapAttrs (_: v: (map (e: "${e}.desktop") v)) (
     {
-      "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf" ];
-      "text/plain" = [ "nvim" ];
+      # "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf" ];
+      # "text/plain" = [ "nvim" ];
+      "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+      "text/plain" = [ "nvim.desktop" ];
       "inode/directory" = [ "yazi" ];
     }
     // audio
