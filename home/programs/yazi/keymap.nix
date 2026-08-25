@@ -85,7 +85,7 @@
     # dupes
     {
       on = [
-        "<A-j>"
+        "<C-p>"
         "i"
       ];
       run = "plugin dupes interactive";
@@ -93,7 +93,7 @@
     }
     {
       on = [
-        "<A-j>"
+        "<C-p>"
         "o"
       ];
       run = "plugin dupes override";
@@ -101,7 +101,7 @@
     }
     {
       on = [
-        "<A-j>"
+        "<C-p>"
         "d"
       ];
       run = "plugin dupes dry";
@@ -109,7 +109,7 @@
     }
     {
       on = [
-        "<A-j>"
+        "<C-p>"
         "a"
       ];
       run = "plugin dupes apply";

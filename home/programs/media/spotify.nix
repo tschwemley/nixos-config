@@ -4,10 +4,6 @@
   ...
 }:
 {
-  home.packages = with pkgs; [
-    lazyspotify
-  ];
-
   imports = [ self.inputs.spicetify-nix.homeManagerModules.spicetify ];
 
   # # REF: https://gerg-l.github.io/spicetify-nix/
