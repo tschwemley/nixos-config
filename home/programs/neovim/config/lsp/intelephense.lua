@@ -37,7 +37,6 @@ return {
 			},
 
 			format = {
-				enable = false, -- TODO: remove the false enable?
 				braces = "allman",
 			},
 

@@ -1,4 +1,5 @@
 require("helpers").set_tabs(2)
+require("videre").setup({})
 
 -- local function prettifyJSON()
 -- 	vim.cmd("%!jq .")

@@ -77,6 +77,7 @@ in
     nvim-colorizer-lua
     nvim-web-devicons
     tv-nvim
+    videre-nvim
     vim-abolish
   ];
 }
