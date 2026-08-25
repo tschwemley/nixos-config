@@ -11,11 +11,12 @@
 
     # BUG: https://github.com/NixOS/nixpkgs/pull/525720
     # TODO: uncomment after upstream bug resolved
-    # nativeMessagingHosts = [ pkgs.firefoxpwa ];
+    nativeMessagingHosts = with pkgs; [
+      bitwarden-desktop
+      firefoxpwa
+    ];
 
     setAsDefaultBrowser = true;
-
-    # policies = import ./policies.nix;
 
     policies = import ./policies;
     profiles = import ./profiles self pkgs;

@@ -19,24 +19,24 @@
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.10 Safari/605.1.1";
 
   # 0 - Dark.   1 - Light.    2 - system color scheme unless overridden by browser theme.
-  "layout.css.prefers-color-scheme.content-override" = 2;
+  "layout.css.prefers-color-scheme.content-override" = 0;
 
   "pdfjs.enableScripting" = false;
   "pdfjs.enabledCache.state" = false;
 
-  # resistFingerprinting overrides fingerprintingProtection, so these must be disabled
-  "privacy.resistFingerprinting" = false;
-  "privacy.resistFingerprinting.pbmode" = false;
+  # # resistFingerprinting overrides fingerprintingProtection, so these must be disabled
+  # "privacy.resistFingerprinting" = false;
+  # "privacy.resistFingerprinting.pbmode" = false;
+  #
+  # # At least one of these two must be enabled
+  # "privacy.fingerprintingProtection" = true;
+  # "privacy.fingerprintingProtection.pbmode" = true;
+  #
+  # # "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
+  # "privacy.fingerprintingProtection.overrides" =
+  #   "-CSSPrefersColorScheme,+TouchEvents,+PointerEvents,+KeyboardEvents,+ScreenOrientation,+SpeechSynthesis,+CSSPrefersReducedMotion,+CSSPrefersContrast,+CanvasRandomization,+CanvasImageExtractionPrompt,+CanvasExtractionFromThirdPartiesIsBlocked,+CanvasExtractionBeforeUserInputIsBlocked,+NavigatorAppName,+NavigatorAppVersion,+NavigatorBuildID,+NavigatorHWConcurrency,+NavigatorOscpu,+NavigatorPlatform,+NavigatorUserAgent,+StreamTrackLabel,+StreamVideoFacingMode";
 
-  # At least one of these two must be enabled
-  "privacy.fingerprintingProtection" = true;
-  "privacy.fingerprintingProtection.pbmode" = true;
-
-  # "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
-  "privacy.fingerprintingProtection.overrides" =
-    "-CSSPrefersColorScheme,+TouchEvents,+PointerEvents,+KeyboardEvents,+ScreenOrientation,+SpeechSynthesis,+CSSPrefersReducedMotion,+CSSPrefersContrast,+CanvasRandomization,+CanvasImageExtractionPrompt,+CanvasExtractionFromThirdPartiesIsBlocked,+CanvasExtractionBeforeUserInputIsBlocked,+NavigatorAppName,+NavigatorAppVersion,+NavigatorBuildID,+NavigatorHWConcurrency,+NavigatorOscpu,+NavigatorPlatform,+NavigatorUserAgent,+StreamTrackLabel,+StreamVideoFacingMode";
-
-  "signon.rememberSignons" = false;
+  "ui.systemUsesDarkTheme" = 0;
 
   # boosts are worthless... no hex code entry for colors and foreground color is linked in a way
   # that is not intuitive
@@ -48,6 +48,8 @@
 
   "zen.theme.use-system-colors" = true;
   "zen.theme.hide-unified-extensions-button" = false;
+
+  "zen.view.window.scheme" = 0;
 
   "zen.watermark.enabled" = false;
   "zen.welcome-screen.seen" = true;

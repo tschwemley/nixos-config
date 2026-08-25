@@ -13,7 +13,7 @@ self: pkgs: {
     ublock-origin
     violentmonkey
     vimium
-    web-archives
+    # web-archives
 
     # TODO: maybe list:
     #   - https://addons.mozilla.org/en-US/firefox/addon/zen-internet/

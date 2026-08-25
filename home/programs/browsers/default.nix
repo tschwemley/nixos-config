@@ -5,23 +5,17 @@
   ];
 
   home = {
-    packages =
-      let
-        brave = pkgs.brave.override {
-          commandLineArgs = [
-            "--enable-features=TouchpadOverscrollHistoryNavigation"
-          ];
-        };
-      in
-      with pkgs;
-      [
-        brave
-        # ladybird
-        lynx
-        mullvad-browser
-        tor-browser
-      ];
+    packages = with pkgs; [
+      brave
+      lynx
+      mullvad-browser
+      tor-browser
+    ];
 
-    sessionVariables.MOZ_ENABLE_WAYLAND = "1";
+    # Env variables are here  instead of ./zen-browser because mullvad-browser also uses them
+    sessionVariables = {
+      MOZ_ENABLE_WAYLAND = "1";
+      MOZ_USE_XINPUT2 = "1";
+    };
   };
 }
