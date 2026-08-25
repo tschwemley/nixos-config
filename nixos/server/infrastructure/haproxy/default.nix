@@ -53,7 +53,7 @@ in
         acl domain_audiobook hdr(host) -i audiobook.schwem.io
         acl domain_auth hdr(host) -i auth.schwem.io
         acl domain_cyberchef hdr(host) -i cyberchef.schwem.io
-        acl domain_draw hdr(host) -i draw.schwem.io
+        acl domain_ffsync hdr(host) -i ffsync.schwem.io
         acl domain_freetar hdr(host) -i freetar.schwem.io
         acl domain_git hdr(host) -i git.schwem.io
         acl domain_it-tools hdr(host) -i it-tools.schwem.io
@@ -76,9 +76,7 @@ in
         acl domain_yt hdr(host) -i yt.schwem.io
 
         # acl domain_medium hdr(host) -i medium.schwem.io
-        # acl domain_sillytavern hdr(host) -i sillytavern.schwem.io
         # acl domain_trmnl hdr(host) -i trmnl.schwem.io
-        # acl domain_tasks hdr(host) -i tasks.schwem.io
 
         use_backend articuno if domain_default
         use_backend articuno if domain_cyberchef
@@ -89,20 +87,17 @@ in
         use_backend articuno if domain_twitch
         use_backend articuno if domain_yt
 
-        use_backend moltres if domain_ai
         use_backend moltres if domain_audiobook
-        use_backend moltres if domain_draw
+        use_backend moltres if domain_ffsync
         use_backend moltres if domain_pds
         use_backend moltres if domain_reddit
         use_backend moltres if domain_rimgo
-        # use_backend moltres if domain_sillytavern
 
         use_backend zapdos if domain_pinterest
         use_backend zapdos if domain_quora
         use_backend zapdos if domain_rss
         use_backend zapdos if domain_tumblr
         use_backend zapdos if domain_wiki
-        # use_backend zapdos if domain_tasks
 
         use_backend jolteon if domain_stackoverflow
         use_backend jolteon if domain_git

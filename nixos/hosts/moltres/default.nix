@@ -4,18 +4,14 @@
 
     ../../server/alt-frontends/redlib.nix
     ../../server/alt-frontends/rimgo.nix
-    ../../server/knowledge/excalidraw
     ../../server/media/audiobookshelf.nix
     ../../server/security/anubis.nix
+    ../../server/services/firefox-sync.nix
 
-    # ../../server/services/pds.nix
-
-    # ../../server/ai/librechat
-    # ../../server/ai/sillytavern.nix
     # ../../server/alt-frontends/scribe
     # ../../server/infrastructure/haproxy
     # ../../server/services/anki-sync.nix
-    # ../../server/services/taskchampion-sync-server.nix
+    # ../../server/services/pds.nix
   ];
 
   networking.hostName = "moltres";
