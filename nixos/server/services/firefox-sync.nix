@@ -22,9 +22,9 @@
     group = config.systemd.services.firefox-syncserver.serviceConfig.Group;
     owner = config.systemd.services.firefox-syncserver.serviceConfig.User;
 
+    format = "dotenv";
     key = "";
     mode = "400";
     sopsFile = lib.secret "server" "firefox-sync.env";
-    type = "dotenv";
   };
 }
