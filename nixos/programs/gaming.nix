@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    butler
+    itch
+    itch-dl
     protonup-qt
 
     # retroarch-full
