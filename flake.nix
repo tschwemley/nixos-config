@@ -97,6 +97,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixtornet = {
+      url = "git+https://codeberg.org/malik/nixtornet.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";

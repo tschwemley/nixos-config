@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  imports = [ ./proton-vpn.nix ];
+  imports = [
+    ./proton-vpn.nix
+    ./vm.nix
+  ];
 
   environment.systemPackages = with pkgs; [
     traceroute
