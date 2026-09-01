@@ -88,11 +88,11 @@ in
         use_backend articuno if domain_yt
 
         use_backend moltres if domain_audiobook
-        use_backend moltres if domain_ffsync
         use_backend moltres if domain_pds
         use_backend moltres if domain_reddit
         use_backend moltres if domain_rimgo
 
+        use_backend zapdos if domain_ffsync
         use_backend zapdos if domain_pinterest
         use_backend zapdos if domain_quora
         use_backend zapdos if domain_rss

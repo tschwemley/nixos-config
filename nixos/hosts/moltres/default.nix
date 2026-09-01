@@ -6,7 +6,6 @@
     ../../server/alt-frontends/rimgo.nix
     ../../server/media/audiobookshelf.nix
     ../../server/security/anubis.nix
-    ../../server/services/firefox-sync.nix
 
     # ../../server/alt-frontends/scribe
     # ../../server/infrastructure/haproxy
