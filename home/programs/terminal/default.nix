@@ -1,6 +1,8 @@
 {
   imports = [
+    ./shell
+    ./ssh
     ./television
-    ./wcalc.nix
+    ./wezterm
   ];
 }

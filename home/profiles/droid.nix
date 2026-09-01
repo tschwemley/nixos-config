@@ -6,8 +6,7 @@
     ../programs/neovim
     ../programs/nnn.nix
     ../programs/ripgrep.nix
-    ../xdg/ssh/default.nix
-    # ../terminal/shell
+    ../programs/terminal/ssh
   ];
 
   home = {

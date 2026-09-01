@@ -9,7 +9,7 @@
 
     ../programs/glow.nix
     ../programs/jira-cli.nix
-    ../xdg/ssh/work.nix
+    ../programs/terminal/ssh/work.nix
   ];
 
   home =

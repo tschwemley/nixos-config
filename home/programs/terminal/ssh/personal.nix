@@ -29,7 +29,7 @@ let
       name = "${name}_key";
       value = {
         key = "user_ssh_key";
-        sopsFile = ../../../nixos/hosts/${name}/secrets.yaml;
+        sopsFile = ../../../../nixos/hosts/${name}/secrets.yaml;
       };
     }) servers
   );

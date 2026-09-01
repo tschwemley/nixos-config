@@ -16,6 +16,7 @@
     ../programs/music
     ../programs/productivity
     ../programs/terminal
+    ../programs/terminal/ssh/personal.nix
 
     ../programs/bitwarden.nix
     ../programs/cowsay.nix
@@ -36,7 +37,6 @@
 
     ../xdg
     ../xdg/netrc.nix
-    ../xdg/ssh/personal.nix
   ];
 
   home = {

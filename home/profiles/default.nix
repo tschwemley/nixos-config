@@ -7,14 +7,12 @@
     ../programs/media/gallery-dl.nix
     ../programs/media/yt-dlp.nix
     ../programs/neovim
+    ../programs/terminal
     ../programs/utils
     ../programs/yazi
-
-    ../terminal
   ];
 
   home.sessionVariables.TERM = "wezterm";
-  # home.stateVersion = "24.11";
   home.stateVersion = "26.05";
   sops.age.keyFile = "/etc/sops/age-keys.txt";
 }

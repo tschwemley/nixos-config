@@ -6,5 +6,6 @@
     ./lsd.nix
     ./lazyjournal.nix
     ./ripgrep.nix
+    ./wcalc.nix
   ];
 }
