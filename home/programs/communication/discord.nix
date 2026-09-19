@@ -5,5 +5,6 @@
 
   programs.nixcord = {
     enable = true;
+    discord.openASAR.enable = false;
   };
 }
