@@ -12,8 +12,6 @@
     ./treesitter.nix
   ];
 
-  nixpkgs.overlays = [ self.inputs.neovim-nightly-overlay.overlays.default ];
-
   programs.neovim = {
     enable = true;
 

@@ -1,6 +1,6 @@
-# REF: https://mozilla.github.io/policy-templates/
+# REF: https://firefox-admin-docs.mozilla.org/reference/policies/
 {
-  AutofillAddressEnabled = true;
+  AutofillAddressEnabled = false;
   AutofillCreditCardEnabled = false;
   DisableAppUpdate = true;
   DisableFeedbackCommands = true;

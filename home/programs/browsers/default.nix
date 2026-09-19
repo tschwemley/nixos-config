@@ -10,6 +10,11 @@
       lynx
       mullvad-browser
       tor-browser
+      ungoogled-chromium
+
+      # TODO: this is in beta on linux now via flatpak, however nixpkgs only contains the darwin
+      # vesrion still... Create a derivation for the beta
+      # orion-browser
     ];
 
     # Env variables are here  instead of ./zen-browser because mullvad-browser also uses them

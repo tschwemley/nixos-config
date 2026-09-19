@@ -11,8 +11,6 @@
     # The module sets required values for transparent proxying
   };
 
-  networking.firewall.enable = true; # Required for transparent proxying
-
   services.nixtornet = {
     enable = true;
 

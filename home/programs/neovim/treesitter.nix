@@ -13,6 +13,7 @@
           # comment
           cpp
           go
+          html
           javascript
           json
           json5
@@ -21,7 +22,9 @@
           nix
           php
           python
+          regex
           rust
+          sql
           toml
           typescript
           xml

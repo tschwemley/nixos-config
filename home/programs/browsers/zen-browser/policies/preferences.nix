@@ -1,5 +1,10 @@
-# Search - REF: https://searchfox.org/firefox-main/source/modules/libpref/init/StaticPrefList.yaml
+# REF:
+#   1. https://searchfox.org/firefox-main/source/modules/libpref/init/StaticPrefList.yaml
+#   2. https://kb.mozillazine.org/About:config_entries
+# ---
 {
+  "accessibility.force_disabled" = 1; # TODO: determine if this fixes memory leak issues
+
   "app.normandy.api_url" = "";
   "app.normandy.shieldLearnMoreUrl" = "";
 
@@ -11,15 +16,23 @@
   "browser.crashReports.unsubmittedCheck.chancesUntilSuppress" = 0;
   "browser.newtab.preload" = false;
   "browser.startup.homepage" = "https://schwem.io";
-  "browser.theme.content-theme" = 2;
-  "browser.theme.toolbar-theme" = 2;
+  "browser.tabs.unloadOnLowMemory" = true;
+  "browser.low_commit_space_threshold_percent" = 100;
+  "browser.tabs.min_inactive_duration_before_unload" = 3600000;
+  # "browser.theme.content-theme" = 2;
+  # "browser.theme.toolbar-theme" = 2;
 
   "general.smoothScroll" = true;
   "general.useragent.override" =
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.10 Safari/605.1.1";
 
   # 0 - Dark.   1 - Light.    2 - system color scheme unless overridden by browser theme.
-  "layout.css.prefers-color-scheme.content-override" = 0;
+  # "layout.css.prefers-color-scheme.content-override" = 0;
+
+  "media.hardware-video-decoding.force-enabled" = true;
+
+  "network.http.max-connections" = 1500;
+  "network.http.max-persistent-connections-per-server" = 10;
 
   "pdfjs.enableScripting" = false;
   "pdfjs.enabledCache.state" = false;
@@ -36,7 +49,7 @@
   # "privacy.fingerprintingProtection.overrides" =
   #   "-CSSPrefersColorScheme,+TouchEvents,+PointerEvents,+KeyboardEvents,+ScreenOrientation,+SpeechSynthesis,+CSSPrefersReducedMotion,+CSSPrefersContrast,+CanvasRandomization,+CanvasImageExtractionPrompt,+CanvasExtractionFromThirdPartiesIsBlocked,+CanvasExtractionBeforeUserInputIsBlocked,+NavigatorAppName,+NavigatorAppVersion,+NavigatorBuildID,+NavigatorHWConcurrency,+NavigatorOscpu,+NavigatorPlatform,+NavigatorUserAgent,+StreamTrackLabel,+StreamVideoFacingMode";
 
-  "ui.systemUsesDarkTheme" = 0;
+  # "ui.systemUsesDarkTheme" = 0;
 
   # boosts are worthless... no hex code entry for colors and foreground color is linked in a way
   # that is not intuitive

@@ -2,7 +2,7 @@
 {
   imports = [
     ./proton-vpn.nix
-    ./vm.nix
+    # ./vm.nix
   ];
 
   environment.systemPackages = with pkgs; [

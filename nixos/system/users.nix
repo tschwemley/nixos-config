@@ -15,7 +15,10 @@
         ../../home/profiles
       ]
       ++ (
-        if self.lib.isServer config.networking.hostName then [ ../../home/xdg/ssh/servers.nix ] else [ ]
+        if self.lib.isServer config.networking.hostName then
+          [ ../../home/programs/terminal/ssh/servers.nix ]
+        else
+          [ ]
       );
       home.homeDirectory = "/root";
     };

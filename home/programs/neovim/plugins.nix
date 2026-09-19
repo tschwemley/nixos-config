@@ -5,79 +5,87 @@ in
 {
   home.sessionVariables.PHP_DEBUG_PATH = "${php-debug}/share/vscode/extensions/xdebug.php-debug/out/phpDebug.js";
 
-  programs.neovim.extraPackages = [ php-debug ];
+  programs.neovim = {
+    extraLuaPackages =
+      luaPkgs: with luaPkgs; [
+        jsregexp
+      ];
 
-  programs.neovim.plugins = with pkgs.vimPlugins; [
-    # bufferline/status line
-    bufferline-nvim
+    extraPackages = [ php-debug ];
 
-    # colors
-    everforest
-    gruvbox-material
+    plugins = with pkgs.vimPlugins; [
+      # bufferline/status line
+      bufferline-nvim
 
-    # completion
-    blink-compat # necessary for compat with any nvim-cmp plugins
-    blink-cmp
-    blink-cmp-env
-    blink-emoji-nvim
-    blink-nerdfont-nvim
-    blink-cmp-conventional-commits
-    cmp-dap
-    css-vars-nvim
-    luasnip
-    nvim-autopairs
+      # colors
+      everforest
+      gruvbox-material
 
-    # db
-    vim-dadbod
-    vim-dadbod-completion
-    vim-dadbod-ui
+      # completion
+      blink-compat # necessary for compat with any nvim-cmp plugins
+      blink-cmp
+      blink-cmp-env
+      blink-emoji-nvim
+      blink-nerdfont-nvim
+      blink-cmp-conventional-commits
+      cmp-dap
+      css-vars-nvim
+      luasnip
+      nvim-autopairs
 
-    # debug
-    nvim-dap
-    nvim-dap-view
+      # db
+      vim-dadbod
+      vim-dadbod-completion
+      vim-dadbod-ui
 
-    nvim-dap-go
+      # debug
+      nvim-dap
+      nvim-dap-view
 
-    unified-nvim
+      nvim-dap-go
 
-    # diagnostitics
-    todo-comments-nvim
-    trouble-nvim
-    wtf-nvim
+      unified-nvim
 
-    # fuzzy find
-    telescope-nvim
-    telescope-frecency-nvim
+      # diagnostitics
+      todo-comments-nvim
+      trouble-nvim
+      wtf-nvim
 
-    # file explorer
-    yazi-nvim
+      # fuzzy find
+      telescope-nvim
+      telescope-frecency-nvim
 
-    # git
-    diffview-nvim
-    gitsigns-nvim
-    neogit
+      # file explorer
+      yazi-nvim
 
-    # markdown
-    obsidian-nvim
-    render-markdown-nvim
-    vim-table-mode
+      # git
+      diffview-nvim
+      gitsigns-nvim
+      neogit
 
-    # nvim related
-    colorful-menu-nvim
-    noice-nvim
-    nui-nvim
-    nvim-bqf
-    nvim-origami
-    smart-splits-nvim
-    snacks-nvim
+      # markdown
+      obsidian-nvim
+      render-markdown-nvim
+      vim-table-mode
 
-    # other/unsorted
-    lazydev-nvim
-    FTerm-nvim
-    nvim-colorizer-lua
-    nvim-web-devicons
-    tv-nvim
-    videre-nvim
-    vim-abolish
-  ];
+      # nvim related
+      colorful-menu-nvim
+      noice-nvim
+      nui-nvim
+      nvim-bqf
+      nvim-origami
+      smart-splits-nvim
+      snacks-nvim
+
+      # other/unsorted
+      dial-nvim
+      lazydev-nvim
+      FTerm-nvim
+      nvim-colorizer-lua
+      nvim-web-devicons
+      tv-nvim
+      videre-nvim
+      vim-abolish
+    ];
+  };
 }

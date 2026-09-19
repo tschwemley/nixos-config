@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  boot.kernelModules = [ "ntsync" ];
+
   environment.systemPackages = with pkgs; [
     butler
     itch
@@ -32,7 +34,7 @@
       extest.enable = true; # translate X11 input events to uinput events (e.g. for using Steam Input on Wayland)
       localNetworkGameTransfers.openFirewall = true;
       protontricks.enable = true;
-      remotePlay.openFirewall = true;
+      remotePlay.openFirewall = false;
 
       extraCompatPackages = with pkgs; [
         proton-ge-bin

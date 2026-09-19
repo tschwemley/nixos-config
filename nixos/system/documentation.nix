@@ -2,18 +2,16 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   documentation = {
     enable = true;
 
     man = {
       enable = true;
-      # NOTE: originally flipped
+      cache.enable = lib.mkForce false;
       man-db.enable = true;
       mandoc.enable = false;
-
-      # generateCaches = true;
-      generateCaches = lib.mkForce false;
     };
   };
 

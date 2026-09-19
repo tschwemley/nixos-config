@@ -32,6 +32,7 @@
     # ../services/comfyui.nix
     ../services/dbus.nix
     ../services/gamemode.nix
+    ../services/hermes-agent.nix
     ../services/orca.nix
     ../services/printing.nix
     ../services/udisks2.nix
@@ -54,7 +55,6 @@
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   nix.settings.trusted-users = [ "schwem" ];
-  nixpkgs.overlays = [ self.inputs.niri.overlays.niri ];
 
   services = {
     getty.autologinUser = "schwem";

@@ -1,6 +1,11 @@
-{
+{ pkgs, ... }: {
   imports = [
     ./yubikey.nix
+  ];
+
+  environment.systemPackages = with pkgs; [
+    hashcat
+    john
   ];
 
   security = {
