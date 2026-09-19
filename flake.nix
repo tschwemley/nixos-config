@@ -97,10 +97,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixtornet = {
-      url = "git+https://codeberg.org/malik/nixtornet.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nixtornet = {
+    #   url = "git+https://codeberg.org/malik/nixtornet.git";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -121,17 +121,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    comfyui-nix = {
-      url = "github:utensils/comfyui-nix/fix/rocm-xformers-segfault";
-
-      # NOTE: when last checked some deps fail to build when following nixpkgs unstable
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    dank-greeter = {
-      url = "github:AvengeMedia/dank-greeter";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # comfyui-nix = {
+    #   url = "github:utensils/comfyui-nix/fix/rocm-xformers-segfault";
+    #
+    #   # NOTE: when last checked some deps fail to build when following nixpkgs unstable
+    #   # inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     danksearch = {
       url = "github:AvengeMedia/danksearch";
@@ -153,7 +148,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # hermes-agent.url = "github:NousResearch/hermes-agent";
+    # Boot creation tool for s905x
+    gxlimg = {
+      url = "github:visualphoenix/gxlimg";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hermes-agent = {
       url = "github:NousResearch/hermes-agent";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -161,11 +161,6 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    gxlimg = {
-      url = "github:visualphoenix/gxlimg";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -189,15 +184,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri = {
-      # TODO: change this back after associated PR is merged: https://github.com/sodiboo/niri-flake/pull/1850
-      # url = "github:sodiboo/niri-flake?rev=6bb99ff875919f03ea6054026619d999061e1170";
-      url = "github:epireyn/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixcord = {
-      url = "github:FlameFlag/nixcord";
+      url = "github:4evy/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -220,14 +208,15 @@
     };
 
     unf = {
+      # unf is the simplest possible way to generate documentation for a nix module
       url = "git+https://git.atagen.co/atagen/unf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    whisp-away = {
-      url = "github:madjinn/whisp-away";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # whisp-away = {
+    #   url = "github:madjinn/whisp-away";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake/beta";
@@ -238,7 +227,7 @@
     };
 
     # imports below here are server-specific imports for schwem.io
-    #   TODO: make them into a single repo
+    #  TODO: make them into a single repo
 
     # try removal if upstream fixes BUG: https://github.com/httpjamesm/AnonymousOverflow/issues/175
     anonymous-overflow = {
