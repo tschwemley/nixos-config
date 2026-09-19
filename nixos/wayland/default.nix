@@ -1,6 +1,6 @@
 {
   imports = [
-    ./dank-material-shell.nix
+    ./dank-greeter.nix
     ./niri.nix
   ];
 }

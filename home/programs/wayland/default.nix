@@ -2,7 +2,7 @@
 # Wayland config
 {
   imports = [
-    ./dank-material-shell.nix
+    ./dms
     ./niri
   ];
 

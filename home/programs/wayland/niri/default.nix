@@ -1,32 +1,24 @@
 {
-  self,
-  lib,
-  pkgs,
-  ...
-}:
-{
   home.sessionVariables = {
-    # GDK_SCALE = 1.5;
-    # QT_QPA_PLATFORM = "wayland";
+    GDK_SCALE = 1.5;
   };
 
-  programs.niri = {
-    package = self.inputs.niri.packages.${self.lib.system pkgs}.niri-unstable;
+  wayland.windowManager.niri = {
+    enable = true;
 
-    # REF: https://github.com/sodiboo/niri-flake
     settings = {
       binds = import ./binds.nix;
       environment = import ./environment.nix;
       input = import ./input.nix;
-      window-rules = import ./window-rules.nix;
+
+      # _children = [] ++ (import ./window-rules.nix);
+      # _children = [ { gestures.hot-corners.enable = false; } ] ++ (import ./window-rules.nix);
+
+      _children = (import ./window-rules.nix);
+
+      gestures.hot-corners.off = { };
 
       # debug.disable-cursor-plane = true;
-      gestures.hot-corners.enable = false;
-
-      xwayland-satellite = {
-        enable = true;
-        path = lib.getExe pkgs.xwayland-satellite;
-      };
     };
   };
 }

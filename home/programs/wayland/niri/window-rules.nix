@@ -1,62 +1,57 @@
 [
-  # basslocker
   {
-    matches = [
-      {
-        app-id = "Bass Locker";
-      }
-    ];
+    window-rule = {
+      _children = [
+        { match._props.app-id = "mpv"; }
+        {
+          match._props = {
+            app-id = "steam";
+            title = "Friends List";
+          };
+        }
+        {
+          match._props = {
+            app-id = "steam";
+            title = "Steam Settings";
+          };
+        }
+        {
+          match._props = {
+            app-id = "zen-beta$";
+            title = "^Picture-in-Picture$";
+          };
+        }
+        {
+          match._props.title = "Select what to share";
+        }
+      ];
 
-    open-floating = true;
+      open-floating = true;
+    };
   }
-  # fix steam notification pop up positioning at the center of the screen
   {
-    matches = [
-      {
-        app-id = "steam";
-        title = "^notificationtoasts_\\d+_desktop$";
-      }
-    ];
+    # fix steam notification pop-up position at the center of the screen
+    window-rule = {
+      _children = [
+        {
+          match._props = {
+            app-id = "steam";
+            title = "^notificationtoasts_\\d+_desktop$";
+          };
+        }
+      ];
 
-    open-focused = false;
+      default-floating-position._props = {
+        x = 10;
+        y = 10;
+        relative-to = "bottom-right";
+      };
 
-    default-floating-position = {
-      x = 10;
-      y = 10;
-      relative-to = "bottom-right";
+      open-focused = false;
     };
   }
 
-  # float zen pip
-  {
-    matches = [
-      {
-        app-id = "zen-beta$";
-        title = "^Picture-in-Picture$";
-      }
-    ];
-    open-floating = true;
-  }
-
-  # rematch
-  {
-    matches = [
-      {
-        app-id = "steam_app_2138720";
-      }
-    ];
-    open-fullscreen = true;
-  }
-
-  # screen share dialog
-  {
-    matches = [
-      {
-        title = "Select what to share";
-      }
-    ];
-    open-floating = true;
-  }
+  # TODO: determine if the rule below is pertintent. If so re-add; otherwise delete.
 
   # # Work around wezterm initial configure bug by setting an empty default-column-width.
   # {

@@ -7,11 +7,7 @@
 {
   imports = with self.inputs; [
     dms.homeModules.dank-material-shell
-    dms.homeModules.niri
-
     dms-plugin-registry.homeModules.default
-
-    danksearch.homeModules.dsearch
   ];
 
   programs = {
@@ -23,16 +19,13 @@
       enableClipboardPaste = true; # Pasting items from the clipboard (wtype)
       enableDynamicTheming = false; # Wallpaper-based theming (matugen)
       enableSystemMonitoring = true; # System monitoring widgets (dgop)
-      enableVPN = true; # VPN management widget
-      # TODO: flip this back to true once merged: https://nixpkgs-tracker.ocfox.me/?pr=539799
-      enableCalendarEvents = false; # Calendar integration (khal)
+      enableCalendarEvents = true; # Calendar integration (khal)
+
+      # TODO: unsure if I want to keep these options or not...
+      enableVPN = false; # VPN management widget
+      # ------
 
       managePluginSettings = true;
-
-      niri = {
-        enableKeybinds = false;
-        includes.enable = false;
-      };
 
       plugins = {
         calculator.enable = true;
@@ -62,21 +55,7 @@
         restartIfChanged = true; # Auto-restart dms.service when dank-material-shell changes
       };
     };
-
-    dsearch.enable = true;
   };
-
-  # TODO: split this up when refactoring niri keybind/config settings
-  # programs.niri.settings.binds = {
-  #   "Mod+Shift+Alt+S" = {
-  #     action.spawn = [
-  #       "sh"
-  #       "-c"
-  #       "dms screenshot region --no-file --no-notify && dms ipc call floaty floatFromClipboard"
-  #     ];
-  #     hotkey-overlay.title = "Screenshot && Float Over Workspace";
-  #   };
-  # };
 
   stylix.targets.dank-material-shell.enable = lib.mkIf (builtins.hasAttr "stylix" config) true;
 }
