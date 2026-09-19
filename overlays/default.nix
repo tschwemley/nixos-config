@@ -11,6 +11,7 @@ let
         json2go
         nrepl
         trmnl-server
+        videoduplicatefinder
         wl-ocr
         ;
 
@@ -25,7 +26,7 @@ in
   # Custom defined overlays
 
   # TODO: remove me once nixpkgs has gallery-dl version >= 1.32.3
-  gallery-dl = import ./gallery-dl.nix;
+  # gallery-dl = import ./gallery-dl.nix;
 
   sops = import ./sops;
   vimPlugins = import ./vimplugins.nix self;

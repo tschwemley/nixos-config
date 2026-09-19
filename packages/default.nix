@@ -9,6 +9,7 @@ self: pkgs: with pkgs; {
   scripts = import ./scripts pkgs;
   tdarr = import ./tdarr pkgs;
   trmnl-server = callPackage ./trmnl-server.nix { };
+  videoduplicatefinder = callPackage ./videoduplicatefinder { };
   wezterm-nvim-navigator = callPackage ./wezterm-nvim-navigator.nix { };
   wl-ocr = callPackage ./wl-ocr.nix { };
   yaziPlugins = import ./yazi-plugins pkgs;

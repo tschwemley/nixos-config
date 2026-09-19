@@ -1,8 +1,9 @@
 { self, ... }:
 {
   imports = [
+    ./coding.nix
     ./mods.nix
-    ./whisp-away.nix
+    # ./whisp-away.nix
   ];
 
   sops.secrets =
