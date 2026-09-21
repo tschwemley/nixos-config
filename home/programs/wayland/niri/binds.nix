@@ -1,16 +1,3 @@
-# TODO: add/test the following:
-#
-# programs.niri.settings.binds = {
-#   "Mod+Shift+Alt+S" = {
-#     action.spawn = [
-#       "sh"
-#       "-c"
-#       "dms screenshot region --no-file --no-notify && dms ipc call floaty floatFromClipboard"
-#     ];
-#     hotkey-overlay.title = "Screenshot && Float Over Workspace";
-#   };
-# };
-
 {
   # ---
   # Window Management

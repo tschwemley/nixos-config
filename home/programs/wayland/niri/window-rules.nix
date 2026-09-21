@@ -1,4 +1,5 @@
 [
+  # open as floating window
   {
     window-rule = {
       _children = [
@@ -29,8 +30,8 @@
       open-floating = true;
     };
   }
+  # fix steam notification pop-up position at the center of the screen
   {
-    # fix steam notification pop-up position at the center of the screen
     window-rule = {
       _children = [
         {
@@ -50,19 +51,24 @@
       open-focused = false;
     };
   }
+  # block from screencasting
+  {
+    window-rule = {
+      _children = [
+        {
+          match._props = {
+            app-id = "bitwarden";
+            title = "^Bitwarden$";
+          };
+        }
+        {
+          match._props = {
+            title = "^Extension: (Bitwarden Password Manager).*";
+          };
+        }
+      ];
 
-  # TODO: determine if the rule below is pertintent. If so re-add; otherwise delete.
-
-  # # Work around wezterm initial configure bug by setting an empty default-column-width.
-  # {
-  #   # This regular expression is intentionally made as specific as possible,
-  #   # since this is the default config, and we want no false positives.
-  #   # You can get away with just app-id = "wezterm" if you want.
-  #   matches = [
-  #     {
-  #       app-id = "^org\\.wezfurlong\\.wezterm$";
-  #     }
-  #   ];
-  #   default-column-width = { };
-  # }
+      block-out-from = "screencast";
+    };
+  }
 ]

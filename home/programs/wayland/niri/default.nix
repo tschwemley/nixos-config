@@ -1,10 +1,11 @@
-{
+{ self, ... }: {
   home.sessionVariables = {
     GDK_SCALE = 1.5;
   };
 
   wayland.windowManager.niri = {
     enable = true;
+    package = self.inputs.niri.packages.x86_64-linux.default;
 
     settings = {
       binds = import ./binds.nix;
