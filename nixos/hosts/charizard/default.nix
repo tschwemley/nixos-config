@@ -24,13 +24,8 @@ in
 
     ./sandboxing.nix
 
-    # TODO: make systemd boot import from the nixos/pc profile (unless pika is an exception for some reason)
-    ../../system/boot/systemd.nix
-
     # TODO: move this to a profile
     # ../../services/llama-cpp.nix
-
-    # ../../../nixos/server/communication/stoat
   ];
 
   networking = {
