@@ -139,7 +139,7 @@
     };
 
     dms = {
-      url = "github:AvengeMedia/DankMaterialShell"; # NOTE: add /stable to use stable version
+      url = "github:AvengeMedia/DankMaterialShell/stable"; # NOTE: add /stable to use stable version
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -155,8 +155,8 @@
     };
 
     hermes-agent = {
-      url = "github:NousResearch/hermes-agent";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:NousResearch/hermes-agent/v2026.9.14";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
@@ -183,6 +183,8 @@
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    niri.url = "github:niri-wm/niri";
 
     nixcord = {
       url = "github:4evy/nixcord";
