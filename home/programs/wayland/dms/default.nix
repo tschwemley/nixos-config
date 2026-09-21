@@ -30,7 +30,7 @@
       plugins = {
         calculator.enable = true;
         emojiLauncher.enable = true;
-        floaty.enable = true;
+        # floaty.enable = true;
 
         # base-url: https://openrouter.ai/api/v1
         # api-key: ${config.sops.placeholder.mods_openrouter_api_key}
