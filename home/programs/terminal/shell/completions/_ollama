@@ -1,0 +1,673 @@
+#compdef ollama
+# ---------------------------------------------------------------------------
+# zsh completion for ollama (tracks the 0.32.x CLI)
+#
+# Features
+#   * every documented command / flag, plus the hidden experimental image flags
+#   * local models (`ollama list`) with size + age descriptions
+#   * running models (`ollama ps`) for `stop`
+#   * ollama.com/library models for `pull` / `run`
+#   * per-model tag completion: `ollama pull qwen3:<TAB>`
+#   * network results cached on disk, refreshed in the background (never blocks
+#     twice), no python required (curl > wget > python3)
+#
+# Styles (all optional)
+#   zstyle ':completion:*:ollama:*' cache-ttl 21600   # seconds, default 21600
+#   zstyle ':completion:*:ollama:*' remote-models no  # disable all network use
+#
+# Flush the cache with: _ollama_cache_flush
+#
+# Contributions:
+#   - ChatGPT [ZSH Expert] as the original creator
+#   - Guidance and revisions by [obeone](https://github.com/obeone)
+#   - zsh plugin conversion and extensions by [jasonm23](https://github.com/ocodo)
+# ---------------------------------------------------------------------------
+
+# --- plumbing --------------------------------------------------------------
+
+_ollama_cache_dir() {
+  local dir=${XDG_CACHE_HOME:-$HOME/.cache}/ollama-zsh-completion
+  [[ -d $dir ]] || mkdir -p -- $dir 2>/dev/null
+  print -r -- $dir
+}
+
+# Remove every cached network response.
+_ollama_cache_flush() {
+  local dir
+  dir=$(_ollama_cache_dir) || return 1
+  rm -f -- $dir/*(N)
+  print -r -- "ollama completion cache flushed ($dir)"
+}
+
+_ollama_cache_ttl() {
+  local ttl
+  zstyle -s ':completion:*:ollama:*' cache-ttl ttl || ttl=21600
+  [[ $ttl == <-> ]] || ttl=21600
+  print -r -- $ttl
+}
+
+_ollama_remote_enabled() {
+  local remote
+  zstyle -s ':completion:*:ollama:*' remote-models remote || remote=yes
+  [[ $remote == (yes|true|on|1) ]]
+}
+
+_ollama_http_get() {
+  local url=$1
+  if (( $+commands[curl] )); then
+    curl -fsSL --max-time 8 -- "$url"
+  elif (( $+commands[wget] )); then
+    wget -q -O - --timeout=8 -- "$url"
+  elif (( $+commands[python3] )); then
+    python3 -c '
+import sys, urllib.request
+try:
+    with urllib.request.urlopen(sys.argv[1], timeout=8) as r:
+        sys.stdout.write(r.read().decode("utf-8", "replace"))
+except Exception:
+    sys.exit(1)
+' "$url"
+  else
+    return 1
+  fi
+}
+
+# _ollama_cached <cache-key> <ttl|""> <cmd> [args...]
+# Serves the cached copy immediately; when it is older than the TTL a refresh
+# is kicked off in the background so completion never waits twice.
+_ollama_cached() {
+  local key=$1 ttl=$2; shift 2
+  local dir file age
+  local -a mtime
+  dir=$(_ollama_cache_dir) || return 1
+  file=$dir/$key
+  [[ $ttl == <-> ]] || ttl=$(_ollama_cache_ttl)
+
+  zmodload -F zsh/stat b:zstat 2>/dev/null
+  zmodload zsh/datetime 2>/dev/null
+
+  if [[ -s $file ]]; then
+    if zstat -A mtime +mtime -- $file 2>/dev/null; then
+      age=$(( EPOCHSECONDS - mtime[1] ))
+      if (( age > ttl )); then
+        ( "$@" >| $file.new 2>/dev/null && [[ -s $file.new ]] \
+            && mv -f -- $file.new $file || rm -f -- $file.new ) &!
+      fi
+    fi
+    cat -- $file
+    return 0
+  fi
+
+  "$@" >| $file.new 2>/dev/null
+  if [[ -s $file.new ]]; then
+    mv -f -- $file.new $file
+    cat -- $file
+    return 0
+  fi
+  rm -f -- $file.new
+  return 1
+}
+
+# compadd a list of values with right-padded descriptions (avoids the ':'
+# quoting mess of _describe with tagged model names).
+# _ollama_add <tag> <group description> <values array name> <descs array name>
+_ollama_add() {
+  # Locals are prefixed to avoid shadowing the caller's arrays, which are
+  # dereferenced by name through ${(P)...}.
+  local _oa_tag=$1 _oa_descr=$2
+  local -a _oa_vals _oa_descs _oa_display expl
+  _oa_vals=( ${(P)3} )
+  _oa_descs=( ${(P)4} )
+  (( $#_oa_vals )) || return 1
+
+  local _oa_i _oa_width=0
+  for _oa_i in $_oa_vals; (( ${#_oa_i} > _oa_width )) && _oa_width=${#_oa_i}
+  for (( _oa_i = 1; _oa_i <= $#_oa_vals; _oa_i++ )); do
+    if [[ -n ${_oa_descs[_oa_i]} ]]; then
+      _oa_display+=( "${(r:_oa_width:)_oa_vals[_oa_i]}  -- ${_oa_descs[_oa_i]}" )
+    else
+      _oa_display+=( "${_oa_vals[_oa_i]}" )
+    fi
+  done
+
+  _wanted $_oa_tag expl $_oa_descr compadd "$expl[@]" -d _oa_display -a _oa_vals
+}
+
+# --- the ollama server -----------------------------------------------------
+
+# Base URL of the server, resolved from OLLAMA_HOST exactly like the CLI does.
+_ollama_base_url() {
+  local host=${OLLAMA_HOST:-127.0.0.1:11434} url scheme rest
+  case $host in
+    (http://*|https://*) url=$host ;;
+    (*)                  url="http://$host" ;;
+  esac
+  url=${url%/}
+  scheme=${url%%://*}
+  rest=${url#*://}
+  [[ $scheme == http && $rest != *:* ]] && url="$url:11434"
+  print -r -- $url
+}
+
+# A filesystem-safe key for the current server, so caches never mix hosts.
+_ollama_host_key() {
+  local url=$(_ollama_base_url)
+  print -r -- ${url//[^A-Za-z0-9]/_}
+}
+
+# Ask the server directly: `ollama list` shells out to the full CLI, which can
+# take seconds against a remote host, while /api/tags answers instantly.
+_ollama_api() {
+  (( $+commands[curl] )) || return 1
+  curl -fsS --max-time 4 -- "$(_ollama_base_url)$1" 2>/dev/null
+}
+
+# /api/tags or /api/ps JSON on stdin -> "name<TAB>description" lines.
+_ollama_json_models() {
+  if (( $+commands[jq] )); then
+    jq -r '
+      def hs: if . == null or . == 0 then ""
+              elif . >= 1073741824 then ((. * 10 / 1073741824 | round) / 10 | tostring) + " GB"
+              else ((. / 1048576 | round) | tostring) + " MB" end;
+      .models[]? |
+      [ .name,
+        ( [ ((.size_vram // .size) | hs),
+            (.details.parameter_size // ""),
+            (.details.quantization_level // "") ]
+          | map(select(. != "")) | join(", ") )
+      ] | @tsv' 2>/dev/null
+  elif (( $+commands[python3] )); then
+    python3 -c '
+import sys, json
+try:
+    data = json.load(sys.stdin)
+except Exception:
+    sys.exit(1)
+def hs(n):
+    if not n:
+        return ""
+    if n >= 1073741824:
+        return "%.1f GB" % (n / 1073741824.0)
+    return "%d MB" % round(n / 1048576.0)
+for m in data.get("models") or []:
+    det = m.get("details") or {}
+    bits = [hs(m.get("size_vram") or m.get("size")),
+            det.get("parameter_size"), det.get("quantization_level")]
+    print("%s\t%s" % (m.get("name", ""), ", ".join(b for b in bits if b)))
+' 2>/dev/null
+  else
+    grep -o '"name":"[^"]*"' | sed -e 's/"name":"//' -e 's/"$//'
+  fi
+}
+
+# /api/show capabilities of one model, minus the uninteresting "completion".
+_ollama_json_caps() {
+  if (( $+commands[jq] )); then
+    jq -r '(.capabilities // []) | map(select(. != "completion")) | join(", ")' 2>/dev/null
+  else
+    grep -o '"capabilities":\[[^]]*\]' \
+      | grep -o '"[a-z_]*"' | tr -d '"' | grep -v '^completion$' \
+      | awk 'NR>1 {printf ", "} {printf "%s", $0} END {print ""}'
+  fi
+}
+
+# $@ = model names -> "name<TAB>capabilities". One POST per model, so this only
+# ever runs in the background.
+_ollama_fetch_caps() {
+  local m json caps url
+  url=$(_ollama_base_url)/api/show
+  for m in "$@"; do
+    json=$(curl -fsS --max-time 6 -X POST -H 'Content-Type: application/json' \
+             -d "{\"model\":\"$m\"}" -- $url 2>/dev/null) || continue
+    caps=$(print -r -- $json | _ollama_json_caps)
+    [[ -n $caps ]] && print -r -- "${m}"$'\t'"${caps}"
+  done
+}
+
+_ollama_caps_file() {
+  print -r -- "$(_ollama_cache_dir)/caps-$(_ollama_host_key)"
+}
+
+_ollama_caps_refresh() {
+  local file=$(_ollama_caps_file) tmpf
+  tmpf=$file.$$
+  { [[ -f $file ]] && cat -- $file; _ollama_fetch_caps "$@" } \
+    | awk -F'\t' 'NF && !seen[$1]++' > $tmpf 2>/dev/null
+  if [[ -s $tmpf ]]; then mv -f -- $tmpf $file; else rm -f -- $tmpf; fi
+}
+
+# Annotate descriptions with model capabilities (vision, tools, thinking...).
+# Only what is already cached is used; anything missing is fetched in the
+# background, so the next completion has it and this one never waits.
+# $1/$2 = names of the value and description arrays to update.
+_ollama_apply_caps() {
+  local enabled
+  zstyle -s ':completion:*:ollama:*' show-capabilities enabled || enabled=yes
+  [[ $enabled == (yes|true|on|1) ]] || return 0
+  (( $+commands[curl] )) || return 0
+
+  local -a _ac_vals _ac_descs _ac_missing
+  local file=$(_ollama_caps_file) line i
+  typeset -A capmap
+  _ac_vals=( ${(P)1} )
+  _ac_descs=( ${(P)2} )
+
+  if [[ -f $file ]]; then
+    for line in ${(f)"$(<$file)"}; do
+      [[ -n $line ]] && capmap[${line%%$'\t'*}]=${line#*$'\t'}
+    done
+  fi
+
+  for i in $_ac_vals; do
+    [[ -n ${capmap[$i]} ]] || _ac_missing+=( $i )
+  done
+  (( $#_ac_missing )) && ( _ollama_caps_refresh ${_ac_missing[1,40]} ) &!
+
+  local caps
+  for (( i = 1; i <= $#_ac_vals; i++ )); do
+    caps=${capmap[${_ac_vals[i]}]}
+    [[ -n $caps ]] || continue
+    if [[ -n ${_ac_descs[i]} ]]; then
+      _ac_descs[i]="${_ac_descs[i]}, $caps"
+    else
+      _ac_descs[i]=$caps
+    fi
+  done
+  set -A $2 "${_ac_descs[@]}"
+}
+
+# Models from the server, API first, `ollama <subcommand>` as a fallback.
+# $1 = api path, $2 = cli subcommand, $3 = columns for the table parser.
+_ollama_server_models() {
+  local key ttl out
+  key="api-${2}-$(_ollama_host_key)"
+  zstyle -s ':completion:*:ollama:*' api-cache-ttl ttl || ttl=30
+  [[ $ttl == <-> ]] || ttl=30
+
+  if out=$(_ollama_cached $key $ttl _ollama_api_models $1) && [[ -n $out ]]; then
+    print -rl -- ${${(f)out}:#\#*}
+    return 0
+  fi
+  # The CLI fallback starts the whole ollama binary, which can take seconds
+  # against a remote host, so it is cached for longer.
+  _ollama_cached "cli-${2}-$(_ollama_host_key)" 300 _ollama_cli_table $2 $3
+}
+
+# Prints a "#none" sentinel when the server answers with an empty list, so an
+# idle server is cached as such instead of falling through to the slow CLI.
+_ollama_api_models() {
+  local json out
+  json=$(_ollama_api $1) || return 1
+  [[ -n $json ]] || return 1
+  out=$(print -r -- $json | _ollama_json_models)
+  [[ -n $out ]] && print -r -- $out || print -r -- '#none'
+}
+
+_ollama_cli_table() {
+  ollama $1 2>/dev/null | _ollama_parse_table $2
+}
+
+# --- model sources ---------------------------------------------------------
+
+# Models already present on the command line, so we never offer them twice.
+_ollama_seen_models() {
+  local -a seen
+  seen=( ${words[2,-1]} )
+  seen=( ${seen:#-*} )
+  seen[$(( CURRENT - 1 ))]=()
+  print -r -- ${(j: :)seen}
+}
+
+# Turn an `ollama list` / `ollama ps` table into "NAME<TAB>description" lines.
+# Columns are located from the header row, so extra or reordered columns in a
+# future release do not break the parser.
+# $1 = comma separated column names to build the description from.
+_ollama_parse_table() {
+  awk -v want=$1 '
+    NR == 1 {
+      ncol = split($0, head, /[ \t][ \t]*/)
+      for (i = 1; i <= ncol; i++) { name[i] = head[i]; start[i] = index($0, head[i]) }
+      next
+    }
+    NF {
+      delete col
+      for (i = 1; i <= ncol; i++) {
+        len = (i < ncol) ? start[i+1] - start[i] : 4096
+        v = substr($0, start[i], len)
+        gsub(/^[ \t]+|[ \t]+$/, "", v)
+        col[name[i]] = v
+      }
+      if (col["NAME"] == "") next
+      out = ""
+      nw = split(want, w, ",")
+      for (j = 1; j <= nw; j++)
+        if (col[w[j]] != "") out = out (out == "" ? "" : ", ") col[w[j]]
+      printf "%s\t%s\n", col["NAME"], out
+    }'
+}
+
+_ollama_local_models() {
+  local -a vals descs seen
+  local line
+  seen=( ${=$(_ollama_seen_models)} )
+
+  for line in ${(f)"$(_ollama_server_models /api/tags list 'SIZE,MODIFIED')"}; do
+    [[ -n $line ]] || continue
+    vals+=( ${line%%$'\t'*} )
+    descs+=( ${line#*$'\t'} )
+  done
+
+  if (( ! $#vals )); then
+    _message -r "no models on $(_ollama_base_url)"
+    return 1
+  fi
+
+  _ollama_apply_caps vals descs
+
+  local -a keep_v keep_d
+  local i
+  for (( i = 1; i <= $#vals; i++ )); do
+    (( ${seen[(I)${vals[i]}]} )) && continue
+    keep_v+=( ${vals[i]} )
+    keep_d+=( ${descs[i]} )
+  done
+
+  _ollama_add local-models 'local model' keep_v keep_d
+}
+
+_ollama_running_models() {
+  local -a vals descs
+  local line
+  for line in ${(f)"$(_ollama_server_models /api/ps ps 'SIZE,PROCESSOR,UNTIL')"}; do
+    [[ -n $line ]] || continue
+    vals+=( ${line%%$'\t'*} )
+    descs+=( ${line#*$'\t'} )
+  done
+
+  if (( ! $#vals )); then
+    _message -r 'no running models'
+    return 1
+  fi
+  _ollama_add running-models 'running model' vals descs
+}
+
+_ollama_fetch_library() {
+  _ollama_http_get https://ollama.com/library \
+    | grep -oE 'href="/library/[^"/?#]+"' \
+    | sed -e 's|href="/library/||' -e 's|"$||' \
+    | awk 'NF && !seen[$0]++'
+}
+
+_ollama_fetch_tags() {
+  local model=$1
+  _ollama_http_get "https://ollama.com/library/${model}/tags" \
+    | grep -oE "/library/${model}:[A-Za-z0-9._-]+" \
+    | sed 's|.*:||' \
+    | awk 'NF && !seen[$0]++'
+}
+
+# Tags of a library model, triggered as soon as the word contains a ':'.
+_ollama_library_tags() {
+  local model=${PREFIX%%:*}
+  [[ -n $model && $model != *[^A-Za-z0-9._/-]* ]] || return 1
+  _ollama_remote_enabled || return 1
+
+  local -a tags vals descs
+  tags=( ${(f)"$(_ollama_cached "tags-${model//\//%2F}" '' _ollama_fetch_tags $model)"} )
+  (( $#tags )) || return 1
+
+  vals=( ${model}:${^tags} )
+  descs=( )
+  _ollama_add library-tags "tag for $model" vals descs
+}
+
+_ollama_library_models() {
+  [[ $PREFIX == *:* ]] && { _ollama_library_tags && return 0 }
+  _ollama_remote_enabled || { _ollama_local_models; return }
+
+  local -a vals descs
+  vals=( ${(f)"$(_ollama_cached library '' _ollama_fetch_library)"} )
+  if (( ! $#vals )); then
+    _message -r 'could not fetch ollama.com/library'
+    return 1
+  fi
+  descs=( )
+  _ollama_add library-models 'ollama.com model' vals descs
+}
+
+# For flags that accept a model the server may still have to pull.
+_ollama_any_models() {
+  _alternative \
+    'local-models:local model:_ollama_local_models' \
+    'library-models:ollama.com model:_ollama_library_models'
+}
+
+# --- value helpers ---------------------------------------------------------
+
+_ollama_quantizations() {
+  local -a quant=(
+    'q4_K_M:4-bit K-means, medium (recommended)'
+    'q4_K_S:4-bit K-means, small'
+    'q5_K_M:5-bit K-means, medium'
+    'q5_K_S:5-bit K-means, small'
+    'q8_0:8-bit, near lossless'
+    'q6_K:6-bit K-means'
+    'q3_K_L:3-bit K-means, large'
+    'q3_K_M:3-bit K-means, medium'
+    'q3_K_S:3-bit K-means, small'
+    'q2_K:2-bit K-means'
+    'q4_0:4-bit legacy'
+    'q4_1:4-bit legacy'
+    'q5_0:5-bit legacy'
+    'q5_1:5-bit legacy'
+    'f16:16-bit float (safetensors)'
+    'bf16:16-bit brain float (safetensors)'
+  )
+  _describe -t quantizations 'quantization level' quant
+}
+
+_ollama_durations() {
+  local -a durations=(
+    '0:unload as soon as the request finishes'
+    '-1:keep loaded forever'
+    '30s:30 seconds'
+    '1m:1 minute'
+    '5m:5 minutes (default)'
+    '30m:30 minutes'
+    '1h:1 hour'
+    '24h:24 hours'
+  )
+  _describe -t durations 'keep-alive duration' durations
+}
+
+_ollama_modelfiles() {
+  _alternative \
+    'modelfiles:Modelfile:_files -g "(#i)*modelfile*"' \
+    'safetensors:model directory:_files -/' \
+    'files:file:_files'
+}
+
+_ollama_integrations() {
+  local -a integrations=(
+    'claude:Claude Code'
+    'chatgpt:ChatGPT (codex-app, codex-desktop, codex-gui)'
+    'codex:Codex'
+    'cline:Cline'
+    'copilot:Copilot CLI (copilot-cli)'
+    'droid:Droid'
+    'dsh:DeepSeek Harness (deepseek-harness)'
+    'hermes:Hermes Agent'
+    'hermes-desktop:Hermes Desktop'
+    'kimi:Kimi Code CLI'
+    'muse:Muse Code (muse-code)'
+    'omp:OMP'
+    'openclaw:OpenClaw (clawdbot, moltbot)'
+    'opencode:OpenCode'
+    'pi:Pi'
+    'pool:Pool'
+    'qwen:Qwen Code'
+    'vscode:VS Code (code)'
+  )
+  _describe -t integrations 'integration' integrations
+}
+
+_ollama_commands() {
+  local -a commands=(
+    'serve:Start Ollama (alias\: start)'
+    'create:Create a model'
+    'show:Show information for a model'
+    'run:Run a model'
+    'stop:Stop a running model'
+    'pull:Pull a model from a registry'
+    'push:Push a model to a registry'
+    'signin:Sign in to ollama.com'
+    'signout:Sign out from ollama.com'
+    'list:List models (alias\: ls)'
+    'ps:List running models'
+    'cp:Copy a model'
+    'rm:Remove a model'
+    'launch:Launch the Ollama menu or an integration'
+    'help:Help about any command'
+  )
+  _describe -t commands 'ollama command' commands
+}
+
+# --- main ------------------------------------------------------------------
+
+_ollama() {
+  local curcontext=$curcontext state line ret=1
+  typeset -A opt_args
+
+  _arguments -C \
+    '(- 1 *)'{-v,--version}'[Show version information]' \
+    '(- 1 *)'{-h,--help}'[Help for ollama]' \
+    "--nowordwrap[Don't wrap words to the next line automatically]" \
+    '--verbose[Show timings for response]' \
+    '1: :_ollama_commands' \
+    '*:: :->args' && ret=0
+
+  [[ $state == args ]] || return ret
+
+  curcontext="${curcontext%:*:*}:ollama-${words[1]}:"
+
+  case ${words[1]} in
+    serve|start)
+      _arguments '(-h --help)'{-h,--help}'[help for serve]' && ret=0
+      ;;
+
+    create)
+      _arguments \
+        '--draft-quantize=[Quantize draft model to this level]:level:_ollama_quantizations' \
+        '--experimental[Enable experimental safetensors model creation]' \
+        '(-f --file)'{-f+,--file=}'[Name of the Modelfile (default "Modelfile")]:modelfile:_ollama_modelfiles' \
+        '(-q --quantize)'{-q+,--quantize=}'[Quantize model to this level (e.g. q4_K_M)]:level:_ollama_quantizations' \
+        '(-h --help)'{-h,--help}'[help for create]' \
+        '1:new model name:' && ret=0
+      ;;
+
+    show)
+      _arguments \
+        '--license[Show license of a model]' \
+        '--modelfile[Show Modelfile of a model]' \
+        '--parameters[Show parameters of a model]' \
+        '--system[Show system message of a model]' \
+        '--template[Show template of a model]' \
+        '(-v --verbose)'{-v,--verbose}'[Show detailed model information]' \
+        '(-h --help)'{-h,--help}'[help for show]' \
+        '1:model:_ollama_local_models' && ret=0
+      ;;
+
+    run)
+      _arguments \
+        '--dimensions=[Truncate output embeddings to this dimension (embedding models)]:dimensions:(64 128 256 512 768 1024)' \
+        '--format=[Response format]:format:(json)' \
+        '--hidethinking[Hide thinking output (if provided)]' \
+        '--insecure[Use an insecure registry]' \
+        '--keepalive=[Duration to keep the model loaded (e.g. 5m)]:duration:_ollama_durations' \
+        "--nowordwrap[Don't wrap words to the next line automatically]" \
+        '--think=-[Enable thinking mode]::mode:(true false high medium low)' \
+        '--truncate=-[Truncate embedding inputs exceeding the context length]::bool:(true false)' \
+        '--verbose[Show timings for response]' \
+        '--width=[Image width (experimental, image models)]:pixels:(512 768 1024 1280 1536)' \
+        '--height=[Image height (experimental, image models)]:pixels:(512 768 1024 1280 1536)' \
+        '--steps=[Denoising steps (experimental, image models)]:steps:(4 8 20 30 50)' \
+        '--seed=[Random seed (experimental, image models)]:seed:' \
+        '(-h --help)'{-h,--help}'[help for run]' \
+        '1:model:_ollama_local_models' \
+        '*:prompt (file paths complete for multimodal input):_files' && ret=0
+      ;;
+
+    stop)
+      _arguments \
+        '(-h --help)'{-h,--help}'[help for stop]' \
+        '1:model:_ollama_running_models' && ret=0
+      ;;
+
+    pull)
+      _arguments \
+        '--insecure[Use an insecure registry]' \
+        '(-h --help)'{-h,--help}'[help for pull]' \
+        '1:model:_ollama_library_models' && ret=0
+      ;;
+
+    push)
+      _arguments \
+        '--insecure[Use an insecure registry]' \
+        '(-h --help)'{-h,--help}'[help for push]' \
+        '1:model:_ollama_local_models' && ret=0
+      ;;
+
+    list|ls)
+      _arguments '(-h --help)'{-h,--help}'[help for list]' && ret=0
+      ;;
+
+    ps)
+      _arguments '(-h --help)'{-h,--help}'[help for ps]' && ret=0
+      ;;
+
+    cp)
+      _arguments \
+        '(-h --help)'{-h,--help}'[help for cp]' \
+        '1:source model:_ollama_local_models' \
+        '2:destination model:' && ret=0
+      ;;
+
+    rm)
+      _arguments \
+        '(-h --help)'{-h,--help}'[help for rm]' \
+        '*:model:_ollama_local_models' && ret=0
+      ;;
+
+    launch)
+      if (( ${words[(I)--]} )); then
+        # everything after `--` is passed through to the integration
+        _message -r 'extra arguments for the integration'
+        return 0
+      fi
+      _arguments \
+        '--config[Configure without launching]' \
+        '--model=[Model to use]:model:_ollama_any_models' \
+        '--restore[Restore an integration to its default profile]' \
+        '(-y --yes)'{-y,--yes}'[Automatically answer yes to confirmation prompts]' \
+        '(-h --help)'{-h,--help}'[help for launch]' \
+        '1:integration:_ollama_integrations' \
+        '*::extra args:_default' && ret=0
+      ;;
+
+    signin|signout)
+      _arguments '(-h --help)'{-h,--help}"[help for ${words[1]}]" && ret=0
+      ;;
+
+    help)
+      _arguments '1:command:_ollama_commands' && ret=0
+      ;;
+
+    *)
+      _default && ret=0
+      ;;
+  esac
+
+  return ret
+}
+
+_ollama "$@"
