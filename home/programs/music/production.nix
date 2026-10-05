@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    demucs-rs
     orca-c
     reaper
     neuralrack
