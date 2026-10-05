@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  imports = [ ./lazysql.nix ];
+
   # TODO: move/rename file appropriately and edit based on which tool(s) keeping in config
   home.packages = with pkgs; [
     dbgate
@@ -8,7 +10,6 @@
 
     # TODO: evaluate below options; delete unwanted items
     jailer
-    lazysql
     schemacrawler
     schemaspy
     tbls
