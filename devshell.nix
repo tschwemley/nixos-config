@@ -1,6 +1,6 @@
 pkgs:
 let
-  scripts = import ../packages/scripts pkgs;
+  scripts = import ./packages/scripts pkgs;
 in
 {
   default = pkgs.mkShell {
