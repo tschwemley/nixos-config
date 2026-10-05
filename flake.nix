@@ -29,7 +29,8 @@
     {
       inherit lib;
 
-      devShells = eachSystem (pkgs: import ./devshell pkgs);
+      # devShells = eachSystem (pkgs: import ./devshell pkgs);
+      devShells = eachSystem (pkgs: import ./devshell.nix pkgs);
       nixosModules = import ./modules;
       overlays = import ./overlays self;
       packages = eachSystem (pkgs: import ./packages self pkgs);
@@ -94,6 +95,11 @@
 
     nixos-cli = {
       url = "github:nix-community/nixos-cli";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nur = {
+      url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
