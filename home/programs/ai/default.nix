@@ -1,7 +1,7 @@
 { self, ... }:
 {
   imports = [
-    ./coding.nix
+    ./pi.nix
     ./mods.nix
     # ./whisp-away.nix
   ];
