@@ -6,11 +6,9 @@
       self,
       nixpkgs,
       systems,
-      nix-on-droid,
       ...
     }:
     let
-      # lib = import ./lib (nixpkgs.lib // home-manager.lib);
       lib = nixpkgs.lib.extend (super: self: import ./lib { lib = self; });
 
       pkgsFor = lib.genAttrs (import systems) (
@@ -46,14 +44,6 @@
         }
       );
 
-      nixOnDroidConfigurations = {
-        togepi = nix-on-droid.lib.nixOnDroidConfiguration {
-          modules = [ ./android/nix-on-droid/default.nix ];
-          extraSpecialArgs = { inherit inputs self; };
-          pkgs = pkgsFor."aarch64-linux";
-        };
-      };
-
       homeConfigurations =
         let
           mkHome =
@@ -67,15 +57,6 @@
         {
           "mark@Marks-MacBook-Pro" = mkHome "aarch64-darwin" "minimal" "mark";
           "work@mac" = mkHome "aarch64-darwin" "work" "tschwemley";
-
-          # TODO: remove me if above works
-          # TODO: For possible solution for building and then deploying remotely to work server
-          #       see: https://gist.github.com/fricklerhandwerk/fbf0b212bbbf51b79a08fdac8659481d
-          # "work@mac" = lib.homeManagerConfiguration {
-          #   pkgs = pkgsFor."aarch64-darwin";
-          #   extraSpecialArgs = { inherit inputs self; };
-          #   modules = [ ./home/profiles/work.nix ];
-          # };
         };
     };
 
@@ -93,15 +74,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-cli = {
-      url = "github:nix-community/nixos-cli";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nixos-cli = {
+    #   url = "github:nix-community/nixos-cli";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nur = {
+    #   url = "github:nix-community/NUR";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # nixtornet = {
     #   url = "git+https://codeberg.org/malik/nixtornet.git";
@@ -133,11 +114,6 @@
     #   # NOTE: when last checked some deps fail to build when following nixpkgs unstable
     #   # inputs.nixpkgs.follows = "nixpkgs";
     # };
-
-    danksearch = {
-      url = "github:AvengeMedia/danksearch";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     disko = {
       url = "github:nix-community/disko";
@@ -190,19 +166,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri.url = "github:niri-wm/niri";
-
     nixcord = {
       url = "github:4evy/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-on-droid = {
-      url = "github:nix-community/nix-on-droid";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
     };
 
     spicetify-nix = {
