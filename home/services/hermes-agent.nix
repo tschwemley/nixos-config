@@ -1,10 +1,11 @@
 { self, config, ... }: {
-  imports = [ self.inputs.hermes-agent.homeModules.default ];
+  imports = [ self.inputs.hermes-agent.homeManagerModules.default ];
 
   services.hermes-agent = {
     enable = true;
 
-    addToSystemPackages = true;
+    workingDirectory = "/home/schwem/.local/share/hermes";
+
     environmentFiles = [ config.sops.secrets."hermes-agent.env".path ];
 
     backend = {
@@ -13,7 +14,20 @@
     };
 
     settings = {
-      model.default = "~deepseek/deepseek-v4-flash-latest";
+      local_runtime = {
+        enabled = true;
+        backend = "auto";
+      };
+
+      model = {
+        # NOTE: uncomment for openrouter (default provider)
+        # default = "~deepseek/deepseek-v4-flash-latest";
+
+        # # NOTE: uncomment for local config
+        # default = "qwen3.8:27b";
+        # provider = "custom";
+        # base_url = "http://localhost:11434/v1";
+      };
     };
   };
 
