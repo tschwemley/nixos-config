@@ -3,15 +3,15 @@
   # imports = [
   #   self.inputs.niri.nixosModules.niri
   # ];
-  #
+
   # nixpkgs.overlays = [ self.inputs.niri.overlays.niri ];
   #
   # # this is required to make home manager managed GTK items function
   # # TODO: this may not be required as it might already be included in the niri module
-  # programs.dconf.enable = true;
-  #
-  # services.dbus.packages = [ pkgs.nautilus ];
-  #
+  programs.dconf.enable = true;
+
+  services.dbus.packages = [ pkgs.nautilus ];
+
   # environment.systemPackages = with pkgs; [
   #   nautilus
   #   xwayland-satellite
@@ -23,6 +23,7 @@
   # and a few more
   programs.niri = {
     enable = true;
+    # package = self.inputs.niri.packages.x86_64-linux.default;
     useNautilus = true;
   };
 }
