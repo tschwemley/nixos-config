@@ -23,14 +23,15 @@
     ../programs/displaycal.nix
     ../programs/glow.nix
     ../programs/gtk.nix
-    ../programs/lan-mouse.nix
+    # TODO: fix lan-mouse or find an alternative
+    # ../programs/lan-mouse.nix
     ../programs/qt.nix
     ../programs/reddit-tui.nix
     ../programs/rustdesk.nix
     ../programs/wayland
-    ../programs/wofi.nix
     ../programs/zathura.nix
 
+    ../services/hermes-agent.nix
     ../services/kdeconnect.nix
     ../services/mpris-proxy.nix
     ../services/udiskie.nix
