@@ -27,6 +27,7 @@
   schwem = {
     users.users.schwem = {
       isNormalUser = true;
+      linger = true;
 
       extraGroups = [
         config.users.groups.keys.name
@@ -37,6 +38,7 @@
         "dialout"
         "docker"
         "gamemode"
+        "greeter"
         "input"
         "networkmanager"
         "pipewire"
