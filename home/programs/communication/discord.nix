@@ -1,12 +1,31 @@
-{ self, ... }:
 {
-
+  self,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  # Fixes BUG: https://github.com/4evy/nixcord/issues/247
+  discordPkg = lib.makeOverridable (
+    args:
+    pkgs.discord.override (
+      builtins.removeAttrs args [
+        "branch"
+        "source"
+      ]
+    )
+  ) { };
+in
+{
   imports = [ self.inputs.nixcord.homeModules.default ];
 
   programs.nixcord = {
     enable = true;
 
-    discord.equicord.enable = true;
+    discord = {
+      package = discordPkg;
+      equicord.enable = true;
+    };
 
     config = {
       frameless = true;
