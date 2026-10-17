@@ -39,9 +39,10 @@ let
   # XDG MIME types
   associations = builtins.mapAttrs (_: v: (map (e: "${e}.desktop") v)) (
     {
-      # "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf" ];
       # "text/plain" = [ "nvim" ];
-      "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+      # org.pwmt.zathura
+      "pdf" = [ "zathura" ];
+      "application/pdf" = [ "zathura" ];
       "text/plain" = [ "nvim.desktop" ];
       "inode/directory" = [ "yazi" ];
     }
