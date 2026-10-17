@@ -11,6 +11,8 @@
 
     ./.
 
+    ../android
+
     ../development/embedded.nix
 
     ../hardware/audio
@@ -32,7 +34,6 @@
     # ../services/comfyui.nix
     ../services/dbus.nix
     ../services/gamemode.nix
-    ../services/hermes-agent.nix
     ../services/orca.nix
     ../services/printing.nix
     ../services/udisks2.nix
@@ -49,7 +50,6 @@
 
     ../wayland
 
-    ../../android
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
