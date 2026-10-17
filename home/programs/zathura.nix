@@ -1,5 +1,7 @@
 {
-  programs.zathura.enable = true;
+  programs.zathura = {
+    enable = true;
+  };
 }
 
 # REF: https://pwmt.org/projects/zathura/
