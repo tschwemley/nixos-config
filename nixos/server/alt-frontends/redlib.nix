@@ -54,7 +54,7 @@ in
       inherit address;
 
       enable = true;
-      package = redlib-fork;
+      # package = redlib-fork;
       port = lib.toInt self.lib.port-map.redlib;
 
       # REF: https://github.com/redlib-org/redlib?tab=readme-ov-file#configuration
