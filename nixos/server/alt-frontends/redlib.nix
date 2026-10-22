@@ -41,7 +41,7 @@ let
 
   package = pkgs.stdenv.mkDerivation {
     name = "redlib";
-    src = fetchurl {
+    src = pkgs.fetchurl {
       url = "https://github.com/redlib-org/redlib/releases/download/v0.40.0/redlib";
       sha256 = "4b3953b00a38eb3acdce5e3fb3db2e9bc016aeea67e5c62fe12a06bb7b613ef1";
     };
