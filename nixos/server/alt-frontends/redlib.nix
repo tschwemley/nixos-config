@@ -58,7 +58,7 @@ let
   };
 
   address = "127.0.0.1";
-  port = lib.toInt self.lib.port-map.redlib;
+  port = self.lib.port-map.redlib;
 in
 {
 
