@@ -65,7 +65,15 @@ in
     autoStart = true;
     image = "ghcr.io/polak14/redlib:latest";
     extraOptions = [ "--pull=always" ];
-    ports = [ "127.0.0.1:8180:8080" ];
+    environment = {
+      PORT = "8180";
+      REDLIB_ROBOTS_DISABLE_INDEXING = "on";
+      REDLIB_DEFAULT_THEME = "gruvboxdark";
+      REDLIB_DEFAULT_SHOW_NSFW = "on";
+      REDLIB_DEFAULT_USE_HLS = "on";
+      REDLIB_DEFAULT_HIDE_HLS_NOTIFICATION = "on";
+    };
+    ports = [ "127.0.0.1:8180:8180/tcp" ];
 
   };
 
