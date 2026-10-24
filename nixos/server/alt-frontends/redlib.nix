@@ -39,68 +39,50 @@ let
   #   ];
   # });
 
-  # package = pkgs.stdenv.mkDerivation {
-  #   name = "redlib";
-  #   src = pkgs.fetchurl {
-  #     url = "https://github.com/redlib-org/redlib/releases/download/v0.40.0/redlib";
-  #     sha256 = "4b3953b00a38eb3acdce5e3fb3db2e9bc016aeea67e5c62fe12a06bb7b613ef1";
-  #   };
-  #
-  #   unpackPhase = ''
-  #     runHook preUnpack
-  #
-  #     mkdir -p $out/bin
-  #     cp $src $out/bin/redlib
-  #     chmod +x $out/bin/redlib
-  #
-  #     runHook postUnpack
-  #   '';
-  # };
-
-  address = "127.0.0.1";
-  port = self.lib.port-map.redlib;
-in
-{
-  virtualisation.oci-containers.containers."redlib" = {
-    autoStart = true;
-    image = "ghcr.io/polak14/redlib:latest";
-    extraOptions = [ "--pull=always" ];
-    environment = {
-      PORT = "8180";
-      REDLIB_ROBOTS_DISABLE_INDEXING = "on";
-      REDLIB_DEFAULT_THEME = "gruvboxdark";
-      REDLIB_DEFAULT_SHOW_NSFW = "on";
-      REDLIB_DEFAULT_USE_HLS = "on";
-      REDLIB_DEFAULT_HIDE_HLS_NOTIFICATION = "on";
+  package = pkgs.stdenv.mkDerivation {
+    name = "redlib";
+    src = pkgs.fetchurl {
+      url = "https://github.com/redlib-org/redlib/releases/download/v0.40.0/redlib";
+      sha256 = "4b3953b00a38eb3acdce5e3fb3db2e9bc016aeea67e5c62fe12a06bb7b613ef1";
     };
-    ports = [ "127.0.0.1:8180:8180/tcp" ];
 
+    unpackPhase = ''
+      runHook preUnpack
+
+      mkdir -p $out/bin
+      cp $src $out/bin/redlib
+      chmod +x $out/bin/redlib
+
+      runHook postUnpack
+    '';
   };
 
+  address = "127.0.0.1";
+in
+{
   services = {
     nginx.virtualHosts."reddit.schwem.io" = {
       locations."/" = {
         # proxyPass = "http://${address}${config.services.anubis.instances.redlib.settings.BIND}";
         proxyPass = "http://unix:${config.services.anubis.instances.redlib.settings.BIND}";
-        proxyWebsockets = true;
       };
     };
-    #
-    #   redlib = {
-    #     inherit address package;
-    #
-    #     enable = true;
-    #     # package = redlib-fork;
-    #     port = lib.toInt self.lib.port-map.redlib;
-    #
-    #     # REF: https://github.com/redlib-org/redlib?tab=readme-ov-file#configuration
-    #     settings = {
-    #       REDLIB_ROBOTS_DISABLE_INDEXING = "on";
-    #       REDLIB_DEFAULT_THEME = "gruvboxdark";
-    #       REDLIB_DEFAULT_SHOW_NSFW = "on";
-    #       REDLIB_DEFAULT_USE_HLS = "on";
-    #       REDLIB_DEFAULT_HIDE_HLS_NOTIFICATION = "on";
-    #     };
-    #   };
+
+    redlib = {
+      inherit address package;
+
+      enable = true;
+      # package = redlib-fork;
+      port = lib.toInt self.lib.port-map.redlib;
+
+      # REF: https://github.com/redlib-org/redlib?tab=readme-ov-file#configuration
+      settings = {
+        REDLIB_ROBOTS_DISABLE_INDEXING = "on";
+        REDLIB_DEFAULT_THEME = "gruvboxdark";
+        REDLIB_DEFAULT_SHOW_NSFW = "on";
+        REDLIB_DEFAULT_USE_HLS = "on";
+        REDLIB_DEFAULT_HIDE_HLS_NOTIFICATION = "on";
+      };
+    };
   };
 }
