@@ -39,23 +39,23 @@ let
   #   ];
   # });
 
-  package = pkgs.stdenv.mkDerivation {
-    name = "redlib";
-    src = pkgs.fetchurl {
-      url = "https://github.com/redlib-org/redlib/releases/download/v0.40.0/redlib";
-      sha256 = "4b3953b00a38eb3acdce5e3fb3db2e9bc016aeea67e5c62fe12a06bb7b613ef1";
-    };
-
-    unpackPhase = ''
-      runHook preUnpack
-
-      mkdir -p $out/bin
-      cp $src $out/bin/redlib
-      chmod +x $out/bin/redlib
-
-      runHook postUnpack
-    '';
-  };
+  # package = pkgs.stdenv.mkDerivation {
+  #   name = "redlib";
+  #   src = pkgs.fetchurl {
+  #     url = "https://github.com/redlib-org/redlib/releases/download/v0.40.0/redlib";
+  #     sha256 = "4b3953b00a38eb3acdce5e3fb3db2e9bc016aeea67e5c62fe12a06bb7b613ef1";
+  #   };
+  #
+  #   unpackPhase = ''
+  #     runHook preUnpack
+  #
+  #     mkdir -p $out/bin
+  #     cp $src $out/bin/redlib
+  #     chmod +x $out/bin/redlib
+  #
+  #     runHook postUnpack
+  #   '';
+  # };
 
   address = "127.0.0.1";
   port = self.lib.port-map.redlib;
@@ -65,7 +65,8 @@ in
     autoStart = true;
     image = "ghcr.io/polak14/redlib:latest";
     extraOptions = [ "--pull=always" ];
-    ports = [ "${address}:${port}:8080" ];
+    ports = [ "127.0.0.1:8180:8080" ];
+
   };
 
   services = {
@@ -73,6 +74,7 @@ in
       locations."/" = {
         # proxyPass = "http://${address}${config.services.anubis.instances.redlib.settings.BIND}";
         proxyPass = "http://unix:${config.services.anubis.instances.redlib.settings.BIND}";
+        proxyWebsockets = true;
       };
     };
     #
