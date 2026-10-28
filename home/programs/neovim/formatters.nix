@@ -16,7 +16,7 @@
       nixfmt
 
       # php
-      php82Packages.php-codesniffer
+      phpPackages.php-codesniffer
 
       # toml
       taplo
