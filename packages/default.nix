@@ -6,6 +6,7 @@ self: pkgs: with pkgs; {
   json2go = callPackage ./json2go.nix { };
   nrepl = callPackage ./nrepl.nix { };
   raindrop = callPackage ./raindrop.nix { };
+  redlib = callPackage ./redlib.nix { }; # TODO: remove once https://github.com/redlib-org/redlib/pull/603 merged
   scripts = import ./scripts pkgs;
   tdarr = import ./tdarr pkgs;
   trmnl-server = callPackage ./trmnl-server.nix { };

@@ -10,6 +10,7 @@ let
         azeron-software
         json2go
         nrepl
+        redlib # TODO: remove once https://github.com/redlib-org/redlib/pull/603 is merged
         trmnl-server
         videoduplicatefinder
         wl-ocr
