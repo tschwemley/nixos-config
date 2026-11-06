@@ -1,9 +1,13 @@
-{ self, ... }:
+{ self, pkgs, ... }:
 {
   imports = [
     ./pi.nix
     ./mods.nix
     # ./whisp-away.nix
+  ];
+
+  home.packages = with pkgs; [
+    skills
   ];
 
   sops.secrets =
