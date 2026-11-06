@@ -36,6 +36,6 @@ in
     };
 
     # NOTE: uncommenting this and rebuilding often fixes issues with discord not opening
-    # discord.openASAR.enable = false;
+    discord.openASAR.enable = false;
   };
 }
