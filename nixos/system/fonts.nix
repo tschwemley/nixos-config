@@ -10,6 +10,8 @@ let
          | awk -F'"' '{printf "| %c | %s |\n", strtonum("0x" $4), $2}'
     )
 
+    # Print and exit if no matches found
+    [[ -z $res ]] && echo "No result found for search term: $1" && exit 1
 
     cat <<MARKDOWN
     | Icon | NF Class  |
@@ -28,13 +30,6 @@ in
     fontconfig = {
       enable = true;
 
-      # defaultFonts = {
-      #   emoji = [ "Twitter Color Emoji" ];
-      #   monospace = [ "CaskaydiaCove Nerd Font" ];
-      #   serif = [ "Inter" ];
-      #   sansSerif = [ "Inter" ];
-      # };
-
       # Hinting aligns glyphs to pixel boundaries to improve rendering sharpness at low resolution
       hinting = {
         enable = true;
@@ -47,11 +42,5 @@ in
     };
 
     fontDir.enable = true;
-
-    # packages = with pkgs; [
-    #   inter # used for reaper theme(s)
-    #   nerd-fonts.caskaydia-cove
-    #   twemoji-color-font
-    # ];
   };
 }
