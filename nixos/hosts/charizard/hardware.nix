@@ -29,38 +29,53 @@
   };
 
   home-manager.users.schwem = {
-    programs.niri.settings.outputs = {
-      DP-1 = {
-        focus-at-startup = true;
-        scale = 1.2;
+    wayland.windowManager.niri.settings._children = [
+      {
+        output = {
+          _args = [ "DP-1" ];
 
-        mode = {
-          width = 3840;
-          height = 2160;
-          refresh = 120.0;
+          focus-at-startup = { };
+          mode = "3840x2160@120.000";
+          # mode = "3840x2160@164.991";
+          scale = 1.20;
+          transform = "normal";
+
+          # modeline._args = [
+          #   1543.00
+          #   3840
+          #   3888
+          #   3920
+          #   4000
+          #   2160
+          #   2163
+          #   2168
+          #   2338
+          #   "+hsync"
+          #   "-vsync"
+          # ];
+
+          position._props = {
+            x = 0;
+            y = 0;
+          };
+
+          # variable-refresh-rate = { };
+          # max-bpc = 8;
         };
-
-        position = {
-          x = 0;
-          y = 0;
-        };
-      };
-
-      DP-2 = {
-        scale = 1.6;
-
-        mode = {
-          width = 2560;
-          height = 2880;
-          refresh = 60.0;
-        };
-
-        position = {
-          x = 3200;
-          y = 0;
-        };
-      };
-    };
+      }
+      # {
+      #   output = {
+      #     _args = [ "DP-2" ];
+      #     mode = "2560x2880@59.982";
+      #     position._props = {
+      #       x = 3200;
+      #       y = 0;
+      #     };
+      #     scale = 1.50;
+      #     transform = "normal";
+      #   };
+      # }
+    ];
   };
 
   nix.settings = {
