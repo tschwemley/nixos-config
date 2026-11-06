@@ -46,7 +46,7 @@
 
     ../theme
 
-    ../virtualisation/qemu.nix
+    # ../virtualisation/qemu.nix
 
     ../wayland
 
