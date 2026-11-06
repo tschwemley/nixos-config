@@ -27,6 +27,12 @@
 
       managePluginSettings = true;
 
+      # niri = {
+      #   enableKeybinds = false;
+      #   enableSpawn = false;
+      #   includes.enable = false;
+      # };
+
       plugins = {
         calculator.enable = true;
         emojiLauncher.enable = true;

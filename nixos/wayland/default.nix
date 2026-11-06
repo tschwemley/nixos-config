@@ -1,6 +1,6 @@
 {
   imports = [
-    ./dank-greeter.nix
+    ./dux-greeter.nix
     ./niri.nix
   ];
 }
