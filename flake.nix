@@ -65,29 +65,21 @@
     # Nix Related Inputs
     #---
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     systems.url = "github:nix-systems/default";
+
+    # BUG: https://nix.ny4.dev/?pr=584534 - Remove when merged into nixos-unstable
+    #      (upstream flake will also add an evaluation warning when it becomes obsolete)
+    brave = {
+      url = "git+https://codeberg.org/buckley310/brave-browser-nix?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nil = {
       url = "github:oxalica/nil";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # nixos-cli = {
-    #   url = "github:nix-community/nixos-cli";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # nur = {
-    #   url = "github:nix-community/NUR";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # nixtornet = {
-    #   url = "git+https://codeberg.org/malik/nixtornet.git";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
 
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
