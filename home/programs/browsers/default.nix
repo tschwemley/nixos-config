@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{ self, pkgs, ... }:
+let
+  # BUG : remove this once the brave flake is removed (should show eval warning)
+  inherit (self.inputs.brave.packages.${self.lib.system pkgs}) brave;
+in
 {
   imports = [
     ./zen-browser
