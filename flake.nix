@@ -27,7 +27,6 @@
     {
       inherit lib;
 
-      # devShells = eachSystem (pkgs: import ./devshell pkgs);
       devShells = eachSystem (pkgs: import ./devshell.nix pkgs);
       nixosModules = import ./modules;
       overlays = import ./overlays self;
@@ -178,11 +177,6 @@
       url = "git+https://git.atagen.co/atagen/unf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # whisp-away = {
-    #   url = "github:madjinn/whisp-away";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake/beta";

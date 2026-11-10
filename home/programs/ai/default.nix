@@ -2,8 +2,6 @@
 {
   imports = [
     ./pi.nix
-    ./mods.nix
-    # ./whisp-away.nix
   ];
 
   home.packages = with pkgs; [
