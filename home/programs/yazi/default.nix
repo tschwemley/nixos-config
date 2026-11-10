@@ -15,13 +15,11 @@
 
     initLua = /* lua */ ''
       require("full-border"):setup {
-        -- Available values: ui.Border.PLAIN, ui.Border.ROUNDED
-        type = ui.Border.ROUNDED,
+        set = "rounded"; -- or plain
       }
 
 
       th.dupes = th.dupes or {}
-      -- th.dupes.mark_style = ui.Style():fg("#FFFFFF")
       th.dupes.mark_style = ui.Style():fg("blue")
       th.dupes.mark_sign = "X"
 
