@@ -22,7 +22,7 @@
 
       # REF: https://github.com/redlib-org/redlib?tab=readme-ov-file#configuration
       settings = {
-        REDLIB_DB_PATH = "/tmp/redlib.db";
+        REDLIB_DB_PATH = "/var/lib/redlib/redlib.db";
 
         REDLIB_DEFAULT_THEME = "gruvboxdark";
         REDLIB_DEFAULT_SHOW_NSFW = "on";
@@ -31,6 +31,18 @@
 
         REDLIB_ROBOTS_DISABLE_INDEXING = "on";
       };
+    };
+  };
+
+  systemd.services.redlib = {
+    preStart = ''
+      ${pkgs.coreutils}/bin/touch /var/lib/redlib/redlib.db
+    '';
+
+    serviceConfig = {
+      StateDirectory = "redlib";
+      StateDirectoryMode = "0750";
+      WorkingDirectory = "/var/lib/redlib";
     };
   };
 }
