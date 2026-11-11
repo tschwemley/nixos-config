@@ -1,50 +1,45 @@
 {
-  lib,
   cacert,
   cmake,
-  fetchpatch,
-  git,
-  perl,
-  nixosTests,
-  rustPlatform,
   fetchFromGitHub,
+  git,
+  lib,
   nix-update-script,
+  nixosTests,
+  perl,
+  pkg-config,
+  rustPlatform,
+  sqlite,
+  zstd,
 }:
 rustPlatform.buildRustPackage {
   pname = "redlib";
-  version = "v0.40.0-patched";
+  version = "ship-2026-11-09-692339c";
 
   src = fetchFromGitHub {
-    owner = "redlib-org";
+    owner = "agandhi4";
     repo = "redlib";
-    rev = "ba116c1186f6b0f9d45f0ae50c827e13eb2f5ea2";
-    hash = "sha256-qv7vIls9BwgwDQuKEQU72J10MpaMfcLvIGfzl628eNU=";
+    rev = "692339c23f2e09290173fb7c2fee5f53d0ece3a1";
+    hash = "sha256-mhF/gpiCSmbtIQnRyJXkX9IgaSATRhVPJP/1PVuGo2Q=";
   };
 
-  cargoHash = "sha256-XgHXqH4EF8TEOI+cKJ0Z2j6QYRCwGgv8bmY8gZpPN9c=";
-
-  patches = [
-    (fetchpatch {
-      url = "https://github.com/redlib-org/redlib/pull/603.diff";
-      hash = "sha256-o0bnV81Sp3wiePOe11sFeLRJFmBPdmfE7dtXumvk1fc=";
-    })
-  ];
+  cargoHash = "sha256-tY+e6JWFVyKGNuDcxmomuWxpW5pqvhFCsGNLODUccKs=";
 
   nativeBuildInputs = [
     cmake
     git
     perl
+    pkg-config
     rustPlatform.bindgenHook
+  ];
+
+  buildInputs = [
+    sqlite
+    zstd
   ];
 
   # BoringSSL's build script invokes CMake; Redlib itself is not a CMake project.
   dontUseCmakeConfigure = true;
-
-  # postInstall = ''
-  #   install --mode=444 -D contrib/redlib.service $out/lib/systemd/system/redlib.service
-  #   substituteInPlace $out/lib/systemd/system/redlib.service \
-  #     --replace-fail "/usr/bin/redlib" "$out/bin/redlib"
-  # '';
 
   checkFlags = [
     # These tests try to connect to Reddit.
@@ -77,7 +72,7 @@ rustPlatform.buildRustPackage {
     "--skip=test_oauth_token_exists"
     "--skip=test_oauth_headers_len"
     "--skip=oauth::test_generic_web_backend"
-    "--skip=oauth::tests::test_mobile_spoof_backend"
+    "--skip=oauth::test_mobile_spoof_backend"
   ];
 
   env = {
@@ -96,9 +91,5 @@ rustPlatform.buildRustPackage {
     homepage = "https://github.com/agandhi4/redlib";
     license = lib.licenses.agpl3Only;
     mainProgram = "redlib";
-    maintainers = with lib.maintainers; [
-      bpeetz
-      Guanran928
-    ];
   };
 }

@@ -2,6 +2,7 @@
   self,
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -16,7 +17,8 @@
       enable = true;
 
       address = "127.0.0.1";
-      port = lib.toInt self.lib.port-map.redlib;
+      package = self.packages.${lib.system pkgs}.redlib;
+      port = lib.toInt lib.port-map.redlib;
 
       # REF: https://github.com/redlib-org/redlib?tab=readme-ov-file#configuration
       settings = {
