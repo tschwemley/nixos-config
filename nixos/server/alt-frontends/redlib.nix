@@ -22,11 +22,14 @@
 
       # REF: https://github.com/redlib-org/redlib?tab=readme-ov-file#configuration
       settings = {
-        REDLIB_ROBOTS_DISABLE_INDEXING = "on";
+        REDLIB_DB_PATH = "/tmp/redlib.db";
+
         REDLIB_DEFAULT_THEME = "gruvboxdark";
         REDLIB_DEFAULT_SHOW_NSFW = "on";
         REDLIB_DEFAULT_USE_HLS = "on";
         REDLIB_DEFAULT_HIDE_HLS_NOTIFICATION = "on";
+
+        REDLIB_ROBOTS_DISABLE_INDEXING = "on";
       };
     };
   };
