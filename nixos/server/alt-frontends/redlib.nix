@@ -43,6 +43,10 @@
       StateDirectory = "redlib";
       StateDirectoryMode = "0750";
       WorkingDirectory = "/var/lib/redlib";
+
+      # Keep the syscall restrictions, but return "Operation not permitted"
+      # rather than killing the process when a blocked syscall is attempted.
+      SystemCallErrorNumber = "EPERM";
     };
   };
 }
