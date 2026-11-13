@@ -2,7 +2,6 @@
 {
   imports = [
     self.inputs.nix-private.nixosModules.envs.jolteon
-    self.nixosModules.dufs
 
     ../../profiles/proxmox.nix
 
@@ -24,12 +23,17 @@
 
   services.dufs = {
     enable = true;
-
-    allowAll = true;
     group = "sabnzbd";
     port = with (self.lib); toInt (port-map.dufs);
     servePath = "/storage/downloads";
     user = "sabnzbd";
+
+    settings = {
+      # REF: https://github.com/sigoden/dufs#configuration-file
+      allow-all = true;
+
+      hidden = [ ];
+    };
   };
 
   services = {
