@@ -74,8 +74,11 @@ in
       nui-nvim
       nvim-bqf
       nvim-origami
-      smart-splits-nvim
       snacks-nvim
+
+      # split handling
+      smart-splits-backend-wezterm
+      smart-splits-nvim
 
       # other/unsorted
       dial-nvim
