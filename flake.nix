@@ -157,6 +157,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    niri = {
+      url = "github:niri-wm/niri";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixcord = {
       url = "github:4evy/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
