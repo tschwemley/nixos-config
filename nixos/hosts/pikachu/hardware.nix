@@ -170,7 +170,8 @@
     max-jobs = 8;
   };
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  # TODO: reevaluate what we want this to be
+  # powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   # declare support for derivations requiring nvidia gpu available
   programs.nix-required-mounts.presets.nvidia-gpu.enable = true;
