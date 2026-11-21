@@ -35,6 +35,7 @@
     ../services/dbus.nix
     ../services/gamemode.nix
     ../services/orca.nix
+    ../services/power.nix
     ../services/printing.nix
     ../services/udisks2.nix
 
@@ -53,6 +54,7 @@
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.linux_zen_custom-packages;
 
   nix.settings.trusted-users = [ "schwem" ];
 
