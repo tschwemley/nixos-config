@@ -16,7 +16,23 @@ let
         wl-ocr
         ;
 
+      inherit (self.inputs.niri.packages.${system}) niri;
       inherit (self.inputs.neovim-nightly-overlay.packages.${system}) tree-sitter;
+
+      # linux-zen-small =
+      #   final: prev:
+      #   let
+      #     pkgsSmall = import self.inputs.nixpkgs-small {
+      #       inherit (final.stdenv.hostPlatform) system;
+      #     };
+      #   in
+      #   {
+      #     linuxKernel = prev.linuxKernel // {
+      #       packages = prev.linuxKernel.packages // {
+      #         inherit (pkgsSmall.linuxKernel.packages) linux_zen;
+      #       };
+      #     };
+      #   };
 
       oidcproxy = self.inputs.oidcproxy.packages.${system}.default;
     };
@@ -28,6 +44,8 @@ in
 
   # TODO: remove me once nixpkgs has gallery-dl version >= 1.32.3
   # gallery-dl = import ./gallery-dl.nix;
+
+  # linux_zen_custom = import ./linux_zen_custom.nix;
 
   sops = import ./sops;
   vimPlugins = import ./vimplugins.nix self;

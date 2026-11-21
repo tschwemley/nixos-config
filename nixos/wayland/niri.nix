@@ -23,7 +23,6 @@
   # and a few more
   programs.niri = {
     enable = true;
-    # package = self.inputs.niri.packages.x86_64-linux.default;
     useNautilus = true;
   };
 }

@@ -15,9 +15,9 @@
       enable = true;
 
       # Core features
-      enableAudioWavelength = false; # Audio visualizer (cava)
+      enableAudioWavelength = true; # Audio visualizer (cava)
       enableClipboardPaste = true; # Pasting items from the clipboard (wtype)
-      enableDynamicTheming = false; # Wallpaper-based theming (matugen)
+      enableDynamicTheming = true; # Wallpaper-based theming (matugen)
       enableSystemMonitoring = true; # System monitoring widgets (dgop)
       enableCalendarEvents = true; # Calendar integration (khal)
 

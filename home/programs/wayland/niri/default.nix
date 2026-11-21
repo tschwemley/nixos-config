@@ -1,4 +1,4 @@
-{ self, lib, ... }: {
+{ lib, ... }: {
   home.sessionVariables = {
     GDK_SCALE = 1.5;
   };
@@ -10,9 +10,6 @@
       binds = import ./binds.nix;
       environment = import ./environment.nix;
       input = import ./input.nix;
-
-      # _children = [] ++ (import ./window-rules.nix);
-      # _children = [ { gestures.hot-corners.enable = false; } ] ++ (import ./window-rules.nix);
 
       _children = (import ./window-rules.nix);
 
