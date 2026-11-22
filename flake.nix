@@ -121,6 +121,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    dfiles = {
+      url = "github:duxlabs-dev/dux-files";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dsearch = {
+      url = "github:duxlabs-dev/dux-search";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Boot creation tool for s905x
     gxlimg = {
       url = "github:visualphoenix/gxlimg";
@@ -159,7 +169,7 @@
 
     niri = {
       url = "github:niri-wm/niri";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixcord = {
