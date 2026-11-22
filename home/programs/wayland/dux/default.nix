@@ -6,6 +6,8 @@
 }:
 {
   imports = with self.inputs; [
+    dfiles.homeModules.dux-files
+    dsearch.homeModules.dsearch
     dms.homeModules.dank-material-shell
     dms-plugin-registry.homeModules.default
   ];
@@ -36,18 +38,6 @@
       plugins = {
         calculator.enable = true;
         emojiLauncher.enable = true;
-
-        # base-url: https://openrouter.ai/api/v1
-        # api-key: ${config.sops.placeholder.mods_openrouter_api_key}
-        aiAssistant = {
-          enable = true;
-          settings = {
-            provider = "custom";
-            baseUrl = "https://openrouter.ai/api/v1";
-            model = "deepseek/deepseek-v4-flash";
-            apiKeyEnvVar = "OPENROUTER_API_KEY";
-          };
-        };
       };
 
       settings = {
@@ -59,6 +49,14 @@
         enable = true; # Systemd service for auto-start
         restartIfChanged = true; # Auto-restart dms.service when dank-material-shell changes
       };
+    };
+
+    dsearch = {
+      enable = true;
+    };
+
+    dux-files = {
+      enable = true;
     };
   };
 

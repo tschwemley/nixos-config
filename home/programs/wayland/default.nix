@@ -2,7 +2,7 @@
 # Wayland config
 {
   imports = [
-    ./dms
+    ./dux
     ./niri
   ];
 
@@ -13,11 +13,6 @@
       wl-clipboard
       wl-ocr
       wlr-randr
-
-      # slurp # utility that gives x,y && w x h coordinates for a selection
-      # wf-recorder
-
-      # ydotool
     ];
 
     sessionVariables.NIXOS_OZONE_WL = "1";
