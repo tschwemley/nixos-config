@@ -45,7 +45,7 @@ in
   # TODO: remove me once nixpkgs has gallery-dl version >= 1.32.3
   # gallery-dl = import ./gallery-dl.nix;
 
-  # linux_zen_custom = import ./linux_zen_custom.nix;
+  linux_zen_custom = import ./linux_zen_custom.nix;
 
   sops = import ./sops;
   vimPlugins = import ./vimplugins.nix self;

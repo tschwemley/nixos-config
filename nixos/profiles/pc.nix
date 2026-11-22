@@ -31,7 +31,6 @@
     ../programs/wine.nix
 
     ../services/colord.nix
-    # ../services/comfyui.nix
     ../services/dbus.nix
     ../services/gamemode.nix
     ../services/orca.nix
@@ -47,14 +46,15 @@
 
     ../theme
 
+    # ../services/comfyui.nix
     # ../virtualisation/qemu.nix
 
     ../wayland
 
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
-  # boot.kernelPackages = pkgs.linux_zen_custom-packages;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linux_zen_custom-packages;
 
   nix.settings.trusted-users = [ "schwem" ];
 
