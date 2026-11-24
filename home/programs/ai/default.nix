@@ -1,6 +1,7 @@
 { self, pkgs, ... }:
 {
   imports = [
+    ./ollama.nix
     ./pi.nix
   ];
 
