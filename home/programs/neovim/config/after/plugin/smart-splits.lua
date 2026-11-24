@@ -1,6 +1,15 @@
-require("smart-splits").setup({
-	mux = { backend = "smart-splits-backend-wezterm-lua" },
-})
+-- require("smart-splits-backend-wezterm").setup({ cli_path = "wezterm" })
+
+-- require("smart-splits").setup({
+-- 	-- move = {
+-- 	-- 	at_edge = "stop",
+-- 	-- },
+-- 	mux = {
+-- 		backend = "smart-splits-backend-wezterm",
+-- 		-- Panes opened before the wezterm plugin set its handshake variable, and headless runs, have no backend.
+-- 		warn_if_unusable = false,
+-- 	},
+-- })
 
 -- require("smart-splits").setup()
 --
