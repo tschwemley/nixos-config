@@ -68,13 +68,6 @@
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     systems.url = "github:nix-systems/default";
 
-    # BUG: https://nix.ny4.dev/?pr=584534 - Remove when merged into nixos-unstable
-    #      (upstream flake will also add an evaluation warning when it becomes obsolete)
-    brave = {
-      url = "git+https://codeberg.org/buckley310/brave-browser-nix?ref=main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nil = {
       url = "github:oxalica/nil";
       inputs.nixpkgs.follows = "nixpkgs";

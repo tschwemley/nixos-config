@@ -109,27 +109,6 @@
         "type": "github"
       }
     },
-    "brave": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1795302764,
-        "narHash": "sha256-an1OpVZ8pWndQUK4GQ7mB6P9XhqCAtdU1HFTkhnBkac=",
-        "ref": "main",
-        "rev": "e8475c3ecce6e04ddb71229a63e32aa51d9f7a65",
-        "revCount": 10,
-        "type": "git",
-        "url": "https://codeberg.org/buckley310/brave-browser-nix"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "https://codeberg.org/buckley310/brave-browser-nix"
-      }
-    },
     "bun2nix": {
       "inputs": {
         "flake-parts": [
@@ -268,11 +247,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795320537,
-        "narHash": "sha256-ox/xEE/JGFLQ2obT/S8777oW3apTvtfH2Jk2M+qzdbI=",
+        "lastModified": 1795356636,
+        "narHash": "sha256-qSb9rViRbKhFrkHPNI9B7Bova1JtZq65v8NCE3qr8JI=",
         "owner": "AvengeMedia",
         "repo": "dms-plugin-registry",
-        "rev": "aae9cd944e85b75de1ba80db163c87f7dc8075f7",
+        "rev": "f383c0acab30bd1107aa73d0b905fbe5fedd92f5",
         "type": "github"
       },
       "original": {
@@ -657,11 +636,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1795341226,
-        "narHash": "sha256-5KruClwP+Sseafmf4xFksKJA1eYajegMkAbTHIcv2CY=",
+        "lastModified": 1795355689,
+        "narHash": "sha256-RPjEcxvqjtbqVbyIHviPV8IDiMnMitu0VlowFnd8pXw=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "3ba11af458c6b66a83447bc6bf6fe180b237d0da",
+        "rev": "63d305102e15a499ae19e54cbbff715382590a1c",
         "type": "github"
       },
       "original": {
@@ -928,11 +907,11 @@
     },
     "nixpkgs-small": {
       "locked": {
-        "lastModified": 1795310876,
-        "narHash": "sha256-gRfzEXCAznJZBF7HrR5fcDW3ms7cpwQ3TcLKA2SB5aI=",
+        "lastModified": 1795342371,
+        "narHash": "sha256-1lgMTMuL7nLgxOUGykeoLdefFGzwEazdkPN7rtOCYAY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "73c38e38fb74519300e45ff24029a6278f57e8af",
+        "rev": "b9f99bced1e453c427001da2206b07755d32c891",
         "type": "github"
       },
       "original": {
@@ -1091,7 +1070,6 @@
       "inputs": {
         "anonymous-overflow": "anonymous-overflow",
         "asus-numberpad-driver": "asus-numberpad-driver",
-        "brave": "brave",
         "dfiles": "dfiles",
         "disko": "disko",
         "dms": "dms",
@@ -1192,11 +1170,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1794871977,
-        "narHash": "sha256-An9Qcr31Z+PmF4TlJWY6RkM4yPbBKc2vkyp6NctvMEk=",
+        "lastModified": 1795350154,
+        "narHash": "sha256-ehnFBWuqh6wzu7CtBlKBZJt/qxWugEFLNSu2tNPjC3c=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "cd7d88aca6db91899373d5574bb252547f4c8c2c",
+        "rev": "5bbd2930ff14300a9d90008003d37fe5baa4dd4d",
         "type": "github"
       },
       "original": {
