@@ -1,21 +1,31 @@
+{ pkgs, ... }:
 {
-  environment.sessionVariables = {
-    SDL_JOYSTICK_HIDAPI = "0";
-  };
+  # ── Optional: handy tools for testing ────────────────────────────────
+  environment.systemPackages = with pkgs; [
+    evtest # evtest /dev/input/eventN  → see every button + paddle
+    jstest-gtk # visual axis/button calibration
+  ];
 
-  # REF: https://wiki.archlinux.org/title/Bluetooth#No_BLE_device_can_be_discovered_with_Intel_Corp._AX200_Bluetooth
-  # REF: https://discourse.nixos.org/t/xbox-controller-stuck-in-a-disconnect-reconnect-loop/67845/6
+  # ── Bluetooth (needed only for wireless) ─────────────────────────────
   hardware = {
     bluetooth.settings.General = {
-      Class = "0x000100";
-      FastConnectable = "true";
-      JustWorksRepairing = "always";
+      # Fixes the classic Xbox "connect / disconnect loop" on Linux
       Privacy = "device";
-
-      # TODO: possibly add GATT?
+      JustWorksRepairing = "always";
+      FastConnectable = "true";
     };
 
-    # this option adds the extra modprobe config && kernel modules needed
-    xpadneo.enable = true;
+    # ── Non-root access to gamepads (/dev/input/js*, hidraw) ─────────────
+    steam-hardware.enable = true; # upstream steam-devices udev rules
+
+    # ── Driver for Xbox One / Series / Elite over Bluetooth ──────────────
+    xpadneo = {
+      enable = true;
+
+      # Optional: reduce rumble so it doesn't rattle the desk
+      # rumbleAttenuation.overall = 50;
+      # settings.disable_deadzones = 1;        # useful for Elite sticks
+      # settings.trigger_rumble_mode = 2;
+    };
   };
 }

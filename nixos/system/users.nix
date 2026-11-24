@@ -46,6 +46,7 @@
         "podman"
         "realtime"
         "render"
+        "uinput"
         "video"
         "wheel"
         "wireshark"
