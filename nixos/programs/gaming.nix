@@ -7,6 +7,7 @@
     itch
     itch-dl
     protonup-qt
+    starsector
 
     # retroarch-full
     # sidequest
