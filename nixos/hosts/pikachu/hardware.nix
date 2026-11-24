@@ -106,62 +106,21 @@
             x = 0;
             y = 0;
           };
-
-          # variable-refresh-rate = { };
-          # max-bpc = 8;
         };
       }
       {
         output = {
           _args = [ "DP-1" ];
-          mode = "3840x1100@60";
+          mode = "3840x1100@60.000";
           position._props = {
             x = 0;
             y = 1234;
           };
           scale = 1.75;
-          transform = "normal";
         };
       }
     ];
   };
-
-  # home-manager.sharedModules = [
-  #   {
-  #     programs.niri.settings.outputs = {
-  #       eDP-1 = {
-  #         focus-at-startup = true;
-  #         scale = 1.75;
-  #
-  #         mode = {
-  #           width = 3840;
-  #           height = 2160;
-  #           refresh = 120.0;
-  #         };
-  #
-  #         position = {
-  #           x = 0;
-  #           y = 0;
-  #         };
-  #       };
-  #
-  #       DP-1 = {
-  #         scale = 1.75;
-  #
-  #         mode = {
-  #           width = 3840;
-  #           height = 1100;
-  #           refresh = 60.0;
-  #         };
-  #
-  #         position = {
-  #           x = 0;
-  #           y = 1234;
-  #         };
-  #       };
-  #     };
-  #   }
-  # ];
 
   # when building don't use all of the cpu cores
   nix.settings = {
