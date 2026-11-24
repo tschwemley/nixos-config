@@ -1,5 +1,5 @@
 {
-  service.ollama = {
+  services.ollama = {
     enable = true;
 
     # NOTE: Be aware that these are only seen by the ollama server (systemd service), not normal
